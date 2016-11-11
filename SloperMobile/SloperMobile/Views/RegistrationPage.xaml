@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SloperMobile.Views.RegistrationPage" Style="{StaticResource AppBackgroundColor}">
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="02"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="02"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="logo" WidthRequest="175" HeightRequest="175" Grid.Column="1" Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+        <StackLayout Grid.Column="1" Grid.Row="3" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+            <Entry  Text="{Binding RegistrationReq.FirstName}" Placeholder="First Name" Margin="05"  Style="{StaticResource GeneralTxtStyle}"/>
+            <Entry  Text="{Binding RegistrationReq.LastName}" Placeholder="Last Name" Margin="05"  Style="{StaticResource GeneralTxtStyle}"/>
+            <Entry x:Name="txtlogin" Text="{Binding RegistrationReq.UserName}" Placeholder="Email" Margin="05"  Style="{StaticResource GeneralTxtStyle}"/>
+            <Entry x:Name="txtPassWord" Text="{Binding RegistrationReq.Password}" IsPassword="True" Margin="05"  Placeholder="Password" Style="{StaticResource GeneralTxtStyle}"/>
+            <Entry x:Name="txtConfirmPassWord" Text="{Binding ConfirmPassword}" IsPassword="True" Margin="05"  Placeholder="Confirm Password" Style="{StaticResource GeneralTxtStyle}"/>
+            <Button Text="CREATE ACCOUNT" Command="{Binding RegistrationCommand}" Style="{StaticResource GeneralButtonStyle}" Margin="05"  />
+            <Label  Text="By Creating an account you agree to the Term of use" LineBreakMode="WordWrap" Margin="05"  Style="{StaticResource PageLabelStyle}" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+        <Label Grid.Column="1" Text="Oops, I already have an account!" Style="{StaticResource PageLabelStyle}" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Grid.Row="5"/>
+        <ActivityIndicator Grid.RowSpan="6" Grid.ColumnSpan="3" Color="White" IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SloperMobile.Views.HomePage" Style="{StaticResource AppBackgroundColor}">
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="02"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="logo" WidthRequest="175" HeightRequest="175" Grid.Column="1" Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+        <Grid Grid.Column="1" Grid.Row="3" ColumnSpacing="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
+                <Image WidthRequest="150" HeightRequest="150" Aspect="Fill" Source="homeClimbingMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                <Image WidthRequest="150" HeightRequest="150" Aspect="Fill" Source="homePyramid" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                <Image WidthRequest="150" HeightRequest="150" Aspect="Fill" Source="homeClimbingDays" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Spacing="0" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand">
+                <Image WidthRequest="150" HeightRequest="150" Aspect="Fill" Source="homeProfile" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                <Image WidthRequest="150" HeightRequest="150" Aspect="Fill" Source="homeSends" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClickSend"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image WidthRequest="150" HeightRequest="150" Aspect="Fill" Source="homeNews" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </Grid>
+
+
+    </Grid>
+
+</ContentPage>

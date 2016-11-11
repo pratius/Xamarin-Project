@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SloperMobile.App">
+    <Application.Resources>
+
+        <!-- Application resource dictionary -->
+        <ResourceDictionary>
+
+            <Style x:Key="AppBackgroundColor" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="Black" />
+            </Style>
+
+            <Style x:Key="GeneralTxtStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="PlaceholderColor" Value="Black"/>
+            </Style>
+
+
+
+            <Style x:Key="GeneralLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+
+            <Style x:Key="PageLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+
+            <Style x:Key="GeneralButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="#FFF400" />
+            </Style>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>
