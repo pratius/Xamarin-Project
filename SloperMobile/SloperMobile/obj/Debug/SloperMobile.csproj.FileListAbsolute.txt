@@ -61,6 +61,7 @@ D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\b
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.pdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Newtonsoft.Json.dll
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Syncfusion.SfGauge.XForms.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\System.Net.Http.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\System.Net.Http.Extensions.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\System.Net.Http.Primitives.dll
@@ -68,6 +69,7 @@ D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\b
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Xamarin.Forms.Platform.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Xamarin.Forms.Xaml.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Newtonsoft.Json.xml
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Syncfusion.SfGauge.XForms.xml
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\System.Net.Http.xml
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\System.Net.Http.Extensions.xml
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\System.Net.Http.Primitives.xml
@@ -85,7 +87,10 @@ D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\o
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.RegistrationPage.xaml.g.cs
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.MenuListPage.xaml.g.cs
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.HomePage.xaml.g.cs
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.SendsUC.xaml.g.cs
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb

@@ -103,6 +103,9 @@ class MonoPackageManager_Resources {
 		"HockeySDK.AndroidBindings.dll",
 		"HockeySDK.dll",
 		"Newtonsoft.Json.dll",
+		"Syncfusion.SfGauge.Android.dll",
+		"Syncfusion.SfGauge.XForms.Android.dll",
+		"Syncfusion.SfGauge.XForms.dll",
 		"Xamarin.Android.Support.Animated.Vector.Drawable.dll",
 		"Xamarin.Android.Support.Design.dll",
 		"Xamarin.Android.Support.v4.dll",
@@ -136,10 +139,10 @@ class MonoPackageManager_Resources {
 		"System.Threading.dll",
 		"System.Reflection.Extensions.dll",
 		"System.Text.Encoding.Extensions.dll",
+		"System.Resources.ResourceManager.dll",
 		"System.ComponentModel.dll",
 		"System.Collections.Concurrent.dll",
 		"System.Runtime.InteropServices.dll",
-		"System.Resources.ResourceManager.dll",
 		"System.Diagnostics.Tools.dll",
 	};
 	public static final String[] Dependencies = new String[]{

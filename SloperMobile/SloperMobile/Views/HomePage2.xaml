@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SloperMobile.Views.HomePage2"
+             xmlns:controls="clr-namespace:TwinTechsForms.NControl;assembly=TwinTechsForms.NControl.SvgImageView">
+  
+  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="10"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="02"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="10"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="20"/>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="20"/>
+    </Grid.ColumnDefinitions>
+    
+    <controls:SvgImageView
+				SvgAssembly="{Binding SvgAssembly}"
+				SvgPath="SloperMobile.Resources.Home-Logo.svg"
+				WidthRequest="175"
+				HeightRequest="175"
+        Grid.Column="1" Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+        />
+    
+    <Grid Grid.Column="1" Grid.Row="3" ColumnSpacing="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <StackLayout Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
+ 
+        <controls:SvgImageView
+          SvgAssembly="{Binding SvgAssembly}"
+          SvgPath="SloperMobile.Resources.Home-Climbing-Map.svg"
+          WidthRequest="150"
+          HeightRequest="150"
+        />
+
+        <controls:SvgImageView
+         SvgAssembly="{Binding SvgAssembly}"
+         SvgPath="SloperMobile.Resources.Home-Pyramid.svg"
+         WidthRequest="150"
+         HeightRequest="150"
+        />
+
+        <controls:SvgImageView
+          SvgAssembly="{Binding SvgAssembly}"
+          SvgPath="SloperMobile.Resources.Home-Climbing-Days.svg"
+          WidthRequest="150"
+          HeightRequest="150"
+        />
+        
+      </StackLayout>
+      <StackLayout Spacing="0" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand">
+        <controls:SvgImageView
+          SvgAssembly="{Binding SvgAssembly}"
+          SvgPath="SloperMobile.Resources.Home-Profile.svg"
+          WidthRequest="150"
+          HeightRequest="150"
+        />
+        <controls:SvgImageView
+         SvgAssembly="{Binding SvgAssembly}"
+         SvgPath="SloperMobile.Resources.Home-Sends.svg"
+         WidthRequest="150"
+         HeightRequest="150"
+        />
+        <controls:SvgImageView
+          SvgAssembly="{Binding SvgAssembly}"
+          SvgPath="SloperMobile.Resources.Home-News.svg"
+          WidthRequest="150"
+          HeightRequest="150"
+        />
+      </StackLayout>
+    </Grid>
+
+
+  </Grid>
+</ContentPage>

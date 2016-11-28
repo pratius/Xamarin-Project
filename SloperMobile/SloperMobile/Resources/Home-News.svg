@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 727 375 667">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Home);
+      }
+
+      .cls-2 {
+        opacity: 0;
+      }
+
+      .cls-3, .cls-5 {
+        fill: #f0f0f1;
+      }
+
+      .cls-3 {
+        font-size: 11px;
+        font-family: AcuminProSemiCond-Light, Acumin Pro SemiCondensed;
+      }
+
+      .cls-17, .cls-3 {
+        font-weight: 300;
+      }
+
+      .cls-4 {
+        fill: #fff400;
+      }
+
+      .cls-10, .cls-13, .cls-6, .cls-7, .cls-8, .cls-9 {
+        fill: #fff;
+      }
+
+      .cls-10, .cls-6, .cls-9 {
+        font-size: 12px;
+        font-family: Helvetica;
+      }
+
+      .cls-13, .cls-14, .cls-15, .cls-16, .cls-8 {
+        fill-rule: evenodd;
+      }
+
+      .cls-9 {
+        letter-spacing: 0.017em;
+      }
+
+      .cls-10 {
+        letter-spacing: 0.008em;
+      }
+
+      .cls-11 {
+        fill: #f4f4f5;
+      }
+
+      .cls-12, .cls-19, .cls-21 {
+        fill: none;
+      }
+
+      .cls-12 {
+        stroke: #fff;
+      }
+
+      .cls-12, .cls-19 {
+        stroke-width: 1px;
+      }
+
+      .cls-13 {
+        opacity: 0.402;
+      }
+
+      .cls-14 {
+        fill: #030203;
+      }
+
+      .cls-15 {
+        fill: #fff100;
+      }
+
+      .cls-17 {
+        font-size: 7px;
+        font-family: HelveticaNeue-Light, Helvetica Neue;
+      }
+
+      .cls-18 {
+        fill: #fefdff;
+      }
+
+      .cls-19 {
+        stroke: #676767;
+        opacity: 0.501;
+      }
+
+      .cls-20 {
+        stroke: none;
+      }
+    </style>
+    <clipPath id="clip-Home">
+      <rect y="80" width="80" height="80"/>
+    </clipPath>
+  </defs>
+    <g id="group-314" transform="translate(0 696)">
+      <text id="News" class="cls-3" transform="translate(282 626.96)"><tspan x="-12.617" y="0">News</tspan></text>
+      <g id="group-83" transform="translate(19.815 436.905)">
+        <path id="path-6" data-name="path" class="cls-7" d="M437.044,394.59H408.29v44.421h36.757V402.263h-8Zm3.763,38h-28.74v-4.255h28.74Zm0-6.893h-28.74v-4.255h28.74Zm0-6.907H428.417v-4.255h12.391Zm0-11.19v4.255H428.417V407.6Zm-28.74,0h13.641v11.19H412.1Z" transform="translate(-161.308 -272.55)"/>
+        <path id="path-7" data-name="path" class="cls-4" d="M138.556,4.7h-3.481l-.015,44.421,36.757.014v-3.3L138.526,45.8Z" transform="translate(104.96 123.949)"/>
+      </g>
+    </g>
+</svg>

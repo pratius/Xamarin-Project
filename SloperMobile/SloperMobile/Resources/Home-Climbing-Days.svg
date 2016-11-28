@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 727 375 667">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Home);
+      }
+
+      .cls-2 {
+        opacity: 0;
+      }
+
+      .cls-3, .cls-5 {
+        fill: #f0f0f1;
+      }
+
+      .cls-3 {
+        font-size: 11px;
+        font-family: AcuminProSemiCond-Light, Acumin Pro SemiCondensed;
+      }
+
+      .cls-3 {
+        font-weight: 300;
+      }
+
+      .cls-4 {
+        fill: #fff400;
+      }
+    </style>
+    <clipPath id="clip-Home">
+      <rect y="80" width="80" height="80"/>
+    </clipPath>
+  </defs>
+    <g id="group-311" transform="translate(0 716)">
+      <text id="Hit_List" data-name="Hit List" class="cls-3" transform="translate(282 476.77)"><tspan x="-13.772" y="0">Sends</tspan></text>
+      <g id="group-31" transform="translate(16.635 78.812)">
+        <rect id="rectangle" class="cls-4" width="7.937" height="15.651" transform="translate(236.23 358.278)"/>
+        <rect id="rectangle-2" data-name="rectangle" class="cls-4" width="7.937" height="23.476" transform="translate(252.091 350.452)"/>
+        <rect id="rectangle-3" data-name="rectangle" class="cls-5" width="7.937" height="31.288" transform="translate(267.966 342.627)"/>
+        <rect id="rectangle-4" data-name="rectangle" class="cls-5" width="7.937" height="39.114" transform="translate(283.84 334.801)"/>
+        <path id="path" class="cls-5" d="M227.427,185.737l1.293,4.523-3.962-2.618-3.962,2.618,1.293-4.523-3.739-2.905,4.768-.192,1.64-4.4,1.654,4.4,4.754.192Z" transform="translate(63.044 140.28)"/>
+        <rect id="rectangle-5" data-name="rectangle" class="cls-5" width="3.125" height="55.548" transform="translate(291.778 377.053) rotate(90)"/>
+        <rect id="rectangle-6" data-name="rectangle" class="cls-4" width="7.937" height="18.104" transform="translate(267.966 355.825)"/>
+      </g>
+    </g>
+</svg>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.UserControls.SendsUC">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="HederLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+            <Style x:Key="ListLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid HeightRequest="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label  Grid.Row="0" Grid.Column="0" Margin="05,0,0,0" Text="DATE" Style="{StaticResource HederLabelStyle}" HorizontalOptions="Center"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="CLIMB"  Style="{StaticResource HederLabelStyle}" HorizontalOptions="Center"/>
+                <Label Grid.Row="0" Grid.Column="2" Text="GRAD" Style="{StaticResource HederLabelStyle}"  HorizontalOptions="Center"/>
+                <Label Grid.Row="0" Grid.Column="3" Text="STYLE" Style="{StaticResource HederLabelStyle}"  HorizontalOptions="Center"/>
+
+            </Grid>
+
+            <ListView  HorizontalOptions="Center" ItemsSource="{Binding SendsList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Date_Climbed}" Style="{StaticResource ListLabelStyle}" HorizontalOptions="Center"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Climbing_Angle}" Style="{StaticResource ListLabelStyle}"  HorizontalOptions="Center"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Grade_Id}"  Style="{StaticResource ListLabelStyle}" HorizontalOptions="Center"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Route_Style}" Style="{StaticResource ListLabelStyle}"  HorizontalOptions="Center"/>
+
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

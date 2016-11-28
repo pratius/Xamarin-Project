@@ -1,6 +1,103 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+              xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms"
              x:Class="SloperMobile.Views.SendsPage" Style="{StaticResource AppBackgroundColor}">
 
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".3*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height=".3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout Orientation="Horizontal" Spacing="07" Grid.Column="1" Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
+            <Label Text="POINT" FontSize="Small"  TextColor="White"/>
+            <Label Text="RANKING" FontSize="Small"  TextColor="White"/>
+            <Label Text="TICK LIST" FontSize="Small"  TextColor="White"/>
+            <Label Text="SENDS" FontSize="Small"  TextColor="White" BackgroundColor="#FFF400"/>
+            <Label Text="CALENDAR" FontSize="Small"  TextColor="White"/>
+            <Label Text="PYRAMID" FontSize="Small" TextColor="White"/>
+        </StackLayout>
+        <!--<StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="2" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+            <Image Source="sendsDonutOnsights" Margin="03"/>
+            <Image Source="sendsDonutRedpoints" Margin="03"/>
+            <Image Source="sendsDonutProjects" Margin="03"/>
+        </StackLayout>-->
+        <Grid  x:Name="main_layout" Grid.Column="1" Grid.Row="2" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <gauge:SfCircularGauge x:Name="circularGauge"
+                WidthRequest ="200"
+                HeightRequest="250"
+                VerticalOptions="FillAndExpand"   >
+                <gauge:SfCircularGauge.Scales>
+                    <gauge:Scale  x:Name="scale"
+                      
+                       StartAngle="135"
+                       SweepAngle="270"
+                       RimThickness="10"
+                       RimColor="#d14646"
+                       LabelColor="Gray"
+                       MinorTicksPerInterval="0"  >
+                        <gauge:Scale.Pointers>
+                            <gauge:RangePointer                   
+                Value="{Binding PointerValue, Mode=TwoWay}"
+           
+                Color="Yellow"
+               
+               
+                >
+                            </gauge:RangePointer>
+                            <!--<gauge:RangePointer   
+             Value="{Binding PointerValue, Mode=TwoWay}"
+                Color="#2bbfb8"
+                Thickness="10">
+                            </gauge:RangePointer>-->
+                        </gauge:Scale.Pointers>
+                        <!--<gauge:Scale.MajorTickSettings>
+                            <gauge:TickSettings x:Name="major"
+                Length="12"
+                Color ="#444444"
+                Thickness="3">
+                            </gauge:TickSettings>
+                        </gauge:Scale.MajorTickSettings>
+                        <gauge:Scale.MinorTickSettings>
+                            <gauge:TickSettings
+                Length="4"
+                Color ="#444444"
+                Thickness="3">
+                            </gauge:TickSettings>
+                        </gauge:Scale.MinorTickSettings>-->
+                    </gauge:Scale>
+                </gauge:SfCircularGauge.Scales>
+                <!--<gauge:SfCircularGauge.Headers>
+                    <gauge:Header Text="Speedometer" TextSize="20" ForegroundColor="White" x:Name="header"/>
+                </gauge:SfCircularGauge.Headers>-->
+            </gauge:SfCircularGauge>
+
+            <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="EndAndExpand">
+              
+            </StackLayout>
+        </Grid>
+        <!--<UC:SendsUC Grid.Column="1" Grid.Row="3" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" />-->
+        <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.Row="4" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+            <Image Source="navNews" HeightRequest="80" WidthRequest="80"/>
+            <Image Source="navProfile" HeightRequest="80" WidthRequest="80"/>
+            <Image Source="navHome" HeightRequest="80" WidthRequest="80"/>
+            <Image Source="navMap" HeightRequest="80" WidthRequest="80" />
+            <Image Source="navSettings" HeightRequest="80" WidthRequest="80"/>
+        </StackLayout>
+    </Grid>
 </ContentPage>

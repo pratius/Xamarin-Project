@@ -63,17 +63,26 @@ namespace SloperMobile.ViewModel
         #region Methods/Functions 
         private async void ExecuteOnLogin(object parma)
         {
-
+            if (Convert.ToString(parma) == "Guest")
+            {
+                LoginReq.u = AppConstant.Guest_UserId;
+                LoginReq.p = AppConstant.Guest_UserPassword;
+            }
             if (string.IsNullOrWhiteSpace(LoginReq.u) || string.IsNullOrWhiteSpace(LoginReq.p))
             {
                 await Application.Current.MainPage.DisplayAlert("Login", "Please enter the Email Id and Password", "OK");
                 return;
             }
-            else if (!Helper.IsEmailValid(loginReq.u))
+            if (Convert.ToString(parma) != "Guest")
             {
-                await Application.Current.MainPage.DisplayAlert("Login", "Invalid Email Id", "OK");
-                return;
+                if (!Helper.IsEmailValid(loginReq.u))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Login", "Invalid Email Id", "OK");
+                    return;
+                }
+
             }
+
             if (!IsRunningTasks)
             {
                 IsRunningTasks = true;
@@ -84,8 +93,9 @@ namespace SloperMobile.ViewModel
                 {
                     if (response.accessToken != null && response.renewalToken != null)
                     {
-                        DisposeObject();
+                        Cache.AccessToken = response.accessToken;
                         PageNavigation?.Invoke();
+                        DisposeObject();
                     }
                     else
                     {
@@ -116,6 +126,7 @@ namespace SloperMobile.ViewModel
                 {
                     if (!string.IsNullOrEmpty(response.successful) && response.successful == "true")
                     {
+
                         await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
                         DisposeObject();
                         PageNavigation?.Invoke();

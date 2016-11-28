@@ -131,6 +131,15 @@
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Syncfusion.SfGauge.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfGauge.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.XForms">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfGauge.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.XForms.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfGauge.XForms.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -195,8 +204,99 @@
     <XamarinComponentReference Include="hockeyappios">
       <Visible>False</Visible>
       <Version>4.1.0.3</Version>
-      <InstallationInProgress>True</InstallationInProgress>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\climbing_days.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\climbing_days%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\climbing_days%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\climbing_map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\climbing_map%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\climbing_map%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\news.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\news%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\news%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profile%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profile%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pyramid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pyramid%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pyramid%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\send%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\send%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\SloperMobile\Views\HomePage3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_old.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\navHome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\navMap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\navNews.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\navProfile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\navSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sendsDonutOnsights.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sendsDonutProjects.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sendsDonutRedpoints.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

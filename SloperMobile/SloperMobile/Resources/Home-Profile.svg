@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 727 375 667">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Home);
+      }
+
+      .cls-2 {
+        opacity: 0;
+      }
+
+      .cls-3, .cls-5 {
+        fill: #f0f0f1;
+      }
+
+      .cls-3 {
+        font-size: 11px;
+        font-family: AcuminProSemiCond-Light, Acumin Pro SemiCondensed;
+      }
+
+      .cls-17, .cls-3 {
+        font-weight: 300;
+      }
+
+      .cls-4 {
+        fill: #fff400;
+      }
+
+      .cls-10, .cls-13, .cls-6, .cls-7, .cls-8, .cls-9 {
+        fill: #fff;
+      }
+
+      .cls-10, .cls-6, .cls-9 {
+        font-size: 12px;
+        font-family: Helvetica;
+      }
+
+      .cls-13, .cls-14, .cls-15, .cls-16, .cls-8 {
+        fill-rule: evenodd;
+      }
+
+      .cls-9 {
+        letter-spacing: 0.017em;
+      }
+
+      .cls-10 {
+        letter-spacing: 0.008em;
+      }
+
+      .cls-11 {
+        fill: #f4f4f5;
+      }
+
+      .cls-12, .cls-19, .cls-21 {
+        fill: none;
+      }
+
+      .cls-12 {
+        stroke: #fff;
+      }
+
+      .cls-12, .cls-19 {
+        stroke-width: 1px;
+      }
+
+      .cls-13 {
+        opacity: 0.402;
+      }
+
+      .cls-14 {
+        fill: #030203;
+      }
+
+      .cls-15 {
+        fill: #fff100;
+      }
+
+      .cls-17 {
+        font-size: 7px;
+        font-family: HelveticaNeue-Light, Helvetica Neue;
+      }
+
+      .cls-18 {
+        fill: #fefdff;
+      }
+
+      .cls-19 {
+        stroke: #676767;
+        opacity: 0.501;
+      }
+
+      .cls-20 {
+        stroke: none;
+      }
+    </style>
+    <clipPath id="clip-Home">
+      <rect y="80" width="80" height="80"/>
+    </clipPath>
+  </defs>
+    <g id="group-310" transform="translate(0 741)">
+      <g id="group-81" transform="translate(138.834 12.006)">
+        <path id="path-5" data-name="path" class="cls-4" d="M322.08,521.07a21.029,21.029,0,0,1-31.7,0,23.406,23.406,0,0,0-9.561,18.668v13.784h50.873V539.738a23.412,23.412,0,0,0-9.613-18.668Z" transform="translate(-163.59 -261.528)"/>
+        <ellipse id="ellipse" class="cls-7" cx="16.209" cy="15.401" rx="16.209" ry="15.401" transform="translate(126.422 231.99)"/>
+      </g>
+      <text id="Profile" class="cls-3" transform="translate(282 321)"><tspan x="-14.031" y="0">Profile</tspan></text>
+    </g>
+</svg>

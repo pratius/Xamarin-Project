@@ -287,7 +287,6 @@ C:\Users\dell 5000\Desktop\SloperMobile\SloperMobile\SloperMobile\SloperMobile.D
 C:\Users\dell 5000\Desktop\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
 C:\Users\dell 5000\Desktop\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
 C:\Users\dell 5000\Desktop\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\SloperMobile.Droid.dll.mdb
-D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\SloperMobile.Droid.csprojResolveAssemblyReference.cache
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.Droid.dll.config
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.Droid.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.Droid.pdb
@@ -298,6 +297,9 @@ D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.D
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\HockeySDK.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Newtonsoft.Json.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.dll
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Syncfusion.SfGauge.Android.dll
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Syncfusion.SfGauge.XForms.Android.dll
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Syncfusion.SfGauge.XForms.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Android.Support.Design.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Android.Support.v4.dll
@@ -311,10 +313,11 @@ D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.D
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Platform.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Xaml.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.pdb
-D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\FormsViewGroup.pdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\FormsViewGroup.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Newtonsoft.Json.xml
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Syncfusion.SfGauge.Android.xml
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Syncfusion.SfGauge.XForms.xml
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Core.pdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Core.xml
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Core.dll.mdb
@@ -323,6 +326,7 @@ D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.D
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Xaml.pdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Xaml.xml
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\SloperMobile.Droid.csprojResolveAssemblyReference.cache
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\SloperMobile.Droid.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\SloperMobile.Droid.pdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\bin\SloperMobile.Droid.apk
@@ -347,7 +351,7 @@ D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.D
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\ic_setting_small.png
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\instagram_symbol.png
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\loader.png
-D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\logo.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\logo_old.png
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\main_header_image.png
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\twitter_logo_shape.png
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-hdpi\facebook_logo.png
@@ -431,9 +435,38 @@ D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.D
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xxhdpi\homeclimbingdays.png
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xxhdpi\homeclimbingmap.png
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xxhdpi\homenews.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\climbing_days.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\climbing_map.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\logo.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-hdpi\climbing_days.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-hdpi\climbing_map.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xhdpi\climbing_days.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xhdpi\climbing_map.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xhdpi\news.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xhdpi\profile.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xhdpi\pyramid.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xhdpi\send.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xxhdpi\climbing_days.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xxhdpi\climbing_map.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xxhdpi\news.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xxhdpi\profile.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xxhdpi\pyramid.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xxhdpi\send.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\navhome.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\navmap.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\navnews.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\navprofile.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\navsettings.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\sendsdonutonsights.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\sendsdonutprojects.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable\sendsdonutredpoints.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-hdpi\logo_old.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xhdpi\logo_old.png
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable-xxhdpi\logo_old.png
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\R.cs.flag
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\uploadflags.txt
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.Droid.dll.mdb
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Java.Interop.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Microsoft.CSharp.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Mono.Android.dll.mdb

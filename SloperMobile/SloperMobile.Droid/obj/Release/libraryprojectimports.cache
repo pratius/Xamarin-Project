@@ -4,6 +4,7 @@
   <ResolvedResourceDirectories>
     <ResolvedResourceDirectory>D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK.AndroidBindings\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Syncfusion.SfGauge.Android\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform\library_project_imports\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
@@ -17,6 +18,7 @@
   <ResolvedResourceDirectoryStamps>
     <ResolvedResourceDirectoryStamp>D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK.AndroidBindings.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Syncfusion.SfGauge.Android.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform.Android.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
