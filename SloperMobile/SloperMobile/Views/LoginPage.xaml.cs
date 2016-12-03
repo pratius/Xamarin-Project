@@ -19,6 +19,7 @@ namespace SloperMobile.Views
             loginViewModel = new UserViewModel();
             BindingContext = loginViewModel;
             loginViewModel.PageNavigation = LoginViewModel_OnLoginClick;
+            var vDB = App.DAUtil;
         }
 
         private async void LoginViewModel_OnLoginClick()
