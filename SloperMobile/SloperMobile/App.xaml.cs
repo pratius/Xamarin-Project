@@ -1,4 +1,5 @@
-﻿using SloperMobile.ViewModel;
+﻿using SloperMobile.DataBase;
+using SloperMobile.ViewModel;
 using SloperMobile.Views;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,24 @@ namespace SloperMobile
 {
     public partial class App : Application
     {
+        static DataAccess dbUtils;
         public App()
         {
             InitializeComponent();         
             MainPage = new NavigationPage(new LoginPage());
         }
+        public static DataAccess DAUtil
+        {
+            get
+            {
+                if (dbUtils == null)
+                {
+                    dbUtils = new DataAccess();
+                }
+                return dbUtils;
+            }
+        }
 
-    
 
         protected override void OnStart()
         {

@@ -15,7 +15,13 @@ namespace SloperMobile.DataBase
         public DataAccess()
         {
             dbConn = DependencyService.Get<ISQLite>().GetConnection();
-            //dbConn.CreateTable<LoginResponse>();
+            dbConn.CreateTable<LAST_UPDATE>();
+            dbConn.CreateTable<T_AREA>();
+            dbConn.CreateTable<T_ROUTE>();
+            dbConn.CreateTable<T_SECTOR>();
+            dbConn.CreateTable<T_CRAG>();
+            dbConn.CreateTable<T_CRAG_SECTOR_MAP>();
+            dbConn.CreateTable<T_TOPO>();
         }
     }
 }
