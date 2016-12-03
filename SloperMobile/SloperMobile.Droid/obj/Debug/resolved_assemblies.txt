@@ -3,6 +3,8 @@ D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.D
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\HockeySDK.AndroidBindings.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\HockeySDK.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Newtonsoft.Json.dll
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\SQLite.Net.dll
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\SQLite.Net.Platform.XamarinAndroid.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Syncfusion.SfGauge.Android.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Syncfusion.SfGauge.XForms.Android.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Syncfusion.SfGauge.XForms.dll

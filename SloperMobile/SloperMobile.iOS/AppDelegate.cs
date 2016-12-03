@@ -6,6 +6,7 @@ using Foundation;
 using UIKit;
 using HockeyApp.iOS;
 using SloperMobile.Common.Constants;
+using Syncfusion.SfGauge.XForms.iOS;
 
 namespace SloperMobile.iOS
 {
@@ -29,6 +30,7 @@ namespace SloperMobile.iOS
             var manager = BITHockeyManager.SharedHockeyManager;
             manager.Configure(AppSetting.HockeyAppId);
             manager.StartManager();
+            new SfGaugeRenderer();
             return base.FinishedLaunching(app, options);
         }
     }
