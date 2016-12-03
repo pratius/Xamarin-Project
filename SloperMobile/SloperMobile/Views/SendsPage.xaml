@@ -34,39 +34,45 @@
         <Grid  x:Name="main_layout" Grid.Column="1" Grid.Row="2" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <gauge:SfCircularGauge x:Name="circularGauge"
-                WidthRequest ="200"
-                HeightRequest="250"
-                VerticalOptions="FillAndExpand"   >
-                <gauge:SfCircularGauge.Scales>
-                    <gauge:Scale  x:Name="scale"
-                      
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="90%" FontSize="Medium" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <gauge:SfCircularGauge x:Name="circularGauge"
+                WidthRequest ="150"
+                HeightRequest="150"
+                VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand"  >
+                    <gauge:SfCircularGauge.Scales>
+                        <gauge:Scale  x:Name="scale"
+                      ShowTicks="False"
+                                      ShowLabels="False"
                        StartAngle="135"
                        SweepAngle="270"
                        RimThickness="10"
                        RimColor="#d14646"
                        LabelColor="Gray"
-                       MinorTicksPerInterval="0"  >
-                        <gauge:Scale.Pointers>
-                            <gauge:RangePointer                   
+                        >
+                            <gauge:Scale.Pointers>
+                                <gauge:RangePointer                   
                 Value="{Binding PointerValue, Mode=TwoWay}"
            
                 Color="Yellow"
                
                
                 >
-                            </gauge:RangePointer>
-                            <!--<gauge:RangePointer   
+                                </gauge:RangePointer>
+                                <!--<gauge:RangePointer   
              Value="{Binding PointerValue, Mode=TwoWay}"
                 Color="#2bbfb8"
                 Thickness="10">
                             </gauge:RangePointer>-->
-                        </gauge:Scale.Pointers>
-                        <!--<gauge:Scale.MajorTickSettings>
+                            </gauge:Scale.Pointers>
+                            <!--<gauge:Scale.MajorTickSettings>
                             <gauge:TickSettings x:Name="major"
                 Length="12"
                 Color ="#444444"
@@ -80,15 +86,15 @@
                 Thickness="3">
                             </gauge:TickSettings>
                         </gauge:Scale.MinorTickSettings>-->
-                    </gauge:Scale>
-                </gauge:SfCircularGauge.Scales>
-                <!--<gauge:SfCircularGauge.Headers>
+                        </gauge:Scale>
+                    </gauge:SfCircularGauge.Scales>
+                    <!--<gauge:SfCircularGauge.Headers>
                     <gauge:Header Text="Speedometer" TextSize="20" ForegroundColor="White" x:Name="header"/>
                 </gauge:SfCircularGauge.Headers>-->
-            </gauge:SfCircularGauge>
-
+                </gauge:SfCircularGauge>
+            </Grid>
             <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="EndAndExpand">
-              
+
             </StackLayout>
         </Grid>
         <!--<UC:SendsUC Grid.Column="1" Grid.Row="3" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" />-->

@@ -61,6 +61,7 @@ D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\b
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.pdb
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Newtonsoft.Json.dll
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SQLite.Net.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Syncfusion.SfGauge.XForms.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\System.Net.Http.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile\bin\Debug\System.Net.Http.Extensions.dll

@@ -297,6 +297,8 @@ D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.D
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\HockeySDK.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Newtonsoft.Json.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.dll
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SQLite.Net.dll
+D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SQLite.Net.Platform.XamarinAndroid.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Syncfusion.SfGauge.Android.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Syncfusion.SfGauge.XForms.Android.dll
 D:\.Slick.Systems\websites\SloperMobile\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Syncfusion.SfGauge.XForms.dll
