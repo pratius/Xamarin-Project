@@ -26,11 +26,15 @@ namespace SloperMobile.Views {
         private global::Syncfusion.SfGauge.XForms.Scale scale;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Syncfusion.SfGauge.XForms.TickSettings major;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(SendsPage));
             main_layout = this.FindByName<global::Xamarin.Forms.Grid>("main_layout");
             circularGauge = this.FindByName<global::Syncfusion.SfGauge.XForms.SfCircularGauge>("circularGauge");
             scale = this.FindByName<global::Syncfusion.SfGauge.XForms.Scale>("scale");
+            major = this.FindByName<global::Syncfusion.SfGauge.XForms.TickSettings>("major");
         }
     }
 }
