@@ -41,7 +41,7 @@ namespace SloperMobile.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-          //  BindingContext = new SendsViewModel();
+            BindingContext = new SendsViewModel();
             circularGauge.BindingContext = this;
            // pointer_slider.BindingContext = this;
 
