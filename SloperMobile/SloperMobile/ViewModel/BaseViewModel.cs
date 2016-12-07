@@ -24,7 +24,7 @@ namespace SloperMobile.ViewModel
             set { isRunningTasks = value; OnPropertyChanged(); }
         }
 
-
+        public Action DisplayMessage;
         public Action PageNavigation;
     }
 }

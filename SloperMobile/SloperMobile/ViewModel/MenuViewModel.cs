@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SloperMobile.Views;
 
 namespace SloperMobile.ViewModel
 {
@@ -76,7 +77,7 @@ namespace SloperMobile.ViewModel
                 {
                     Title = "Check for Update",
                     IconSource = "Menu_side_bar_about",
-
+                    TargetType = typeof(CheckForUpdatesPage),
                 });
 
 

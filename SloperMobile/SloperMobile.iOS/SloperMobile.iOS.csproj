@@ -10,7 +10,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>SloperMobile.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>SloperMobile.iOS</AssemblyName>
+    <AssemblyName>SloperMobileiOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>

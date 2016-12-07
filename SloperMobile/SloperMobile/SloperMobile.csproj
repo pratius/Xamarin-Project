@@ -51,6 +51,7 @@
     <Compile Include="DataBase\DataAccess.cs" />
     <Compile Include="DataBase\DataTables.cs" />
     <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\CheckForUpdateModel.cs" />
     <Compile Include="Model\LoginReq.cs" />
     <Compile Include="Model\LoginResponse.cs" />
     <Compile Include="Model\MasterPageItem.cs" />
@@ -63,9 +64,13 @@
     </Compile>
     <Compile Include="ViewModel\ApiHandler.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\CheckForUpdatesViewModel.cs" />
     <Compile Include="ViewModel\SendsViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
+    <Compile Include="Views\CheckForUpdatesPage.xaml.cs">
+      <DependentUpon>CheckForUpdatesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -107,7 +112,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CheckForUpdatesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\SendsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
