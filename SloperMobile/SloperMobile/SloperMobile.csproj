@@ -52,6 +52,7 @@
     <Compile Include="DataBase\DataTables.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\CheckForUpdateModel.cs" />
+    <Compile Include="Model\CragTemplate.cs" />
     <Compile Include="Model\LoginReq.cs" />
     <Compile Include="Model\LoginResponse.cs" />
     <Compile Include="Model\MasterPageItem.cs" />
