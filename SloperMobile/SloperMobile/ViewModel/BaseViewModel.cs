@@ -24,6 +24,15 @@ namespace SloperMobile.ViewModel
             set { isRunningTasks = value; OnPropertyChanged(); }
         }
 
+        private string pageHeaderText;
+
+        public string PageHeaderText
+        {
+            get { return pageHeaderText; }
+            set { pageHeaderText = value; OnPropertyChanged(); }
+        }
+
+
         public Action DisplayMessage;
         public Action PageNavigation;
     }

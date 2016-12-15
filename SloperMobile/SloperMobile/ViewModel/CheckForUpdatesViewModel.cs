@@ -20,7 +20,7 @@ namespace SloperMobile.ViewModel
         private List<CragTemplate> cragObj;
         private List<T_ROUTE> routeObj;
         private List<T_SECTOR> sectorObj;
-        private string displayupdatemessage;
+        private string displayupdatemessage = "Checking for updates...";
         /// <summary>
         /// Get or set the Check for update class object
         /// </summary>
@@ -67,7 +67,7 @@ namespace SloperMobile.ViewModel
 
         public string DisplayUpdateMessage
         {
-            get { return displayupdatemessage= "Checking for updates..."; }
+            get { return displayupdatemessage; }
             set { displayupdatemessage = value; OnPropertyChanged(); }
         }
         #endregion

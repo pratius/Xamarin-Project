@@ -43,9 +43,7 @@ namespace SloperMobile.Views
             NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = new SendsViewModel();
             circularGauge.BindingContext = this;
-           // pointer_slider.BindingContext = this;
-
-            #region Conditions
+            // pointer_slider.BindingContext = this;
 
 
 
@@ -59,42 +57,8 @@ namespace SloperMobile.Views
                 scale.LabelOffset = 0.1;
             }
 
-            #region Pointer Slider
 
-            //PointerSlider label FontSize
-            if (Device.OS == TargetPlatform.iOS)
-            {
-                ///pointer_text.FontSize = 15;
-            }
-            else if (Device.OS == TargetPlatform.Android)
-            {
-             //   pointer_text.FontSize = 15;
-            }
-            else
-            {
-               // pointer_text.FontSize = 20;
-            }
 
-            //PointerSlider BackgroundColor
-            if (Device.OS == TargetPlatform.WinPhone)
-            {
-              //  pointer_slider.BackgroundColor = Color.Gray;
-            }
-
-            #endregion Pointer Slider
-
-            #endregion Conditions            
         }
-
-        #region Events
-
-        //main_layout SizeChanged
-        void main_layout_SizeChanged(object sender, EventArgs e)
-        {
-            circularGauge.WidthRequest = 330;
-            circularGauge.HeightRequest = 330;
-        }
-
-        #endregion Events
     }
 }

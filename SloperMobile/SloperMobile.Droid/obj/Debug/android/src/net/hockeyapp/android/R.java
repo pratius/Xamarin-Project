@@ -2605,14 +2605,15 @@ containing a value of this type.
         public static final int navprofile=0x7f0200c0;
         public static final int navsettings=0x7f0200c1;
         public static final int news=0x7f0200c2;
-        public static final int notification_template_icon_bg=0x7f0200ca;
+        public static final int notification_template_icon_bg=0x7f0200cb;
         public static final int profile=0x7f0200c3;
         public static final int pyramid=0x7f0200c4;
-        public static final int send=0x7f0200c5;
-        public static final int sendsdonutonsights=0x7f0200c6;
-        public static final int sendsdonutprojects=0x7f0200c7;
-        public static final int sendsdonutredpoints=0x7f0200c8;
-        public static final int twitter_logo_shape=0x7f0200c9;
+        public static final int search=0x7f0200c5;
+        public static final int send=0x7f0200c6;
+        public static final int sendsdonutonsights=0x7f0200c7;
+        public static final int sendsdonutprojects=0x7f0200c8;
+        public static final int sendsdonutredpoints=0x7f0200c9;
+        public static final int twitter_logo_shape=0x7f0200ca;
     }
     public static final class id {
         public static final int action0=0x7f0700ac;
