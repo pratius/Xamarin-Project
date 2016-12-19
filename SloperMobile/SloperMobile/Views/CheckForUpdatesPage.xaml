@@ -14,7 +14,7 @@
     </Grid.ColumnDefinitions>
   </Grid>
   <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
-    <Label x:Name="txtUpdate" Text="{Binding DisplayUpdateMessage}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource GeneralLabelStyle}" />
-    <ActivityIndicator x:Name="progressbar" IsEnabled="True"  WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Color="White" ></ActivityIndicator>
+    <Label x:Name="txtUpdate" Text="{Binding DisplayUpdateMessage,Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource GeneralLabelStyle}" />
+    <ActivityIndicator x:Name="progressbar" IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}"  WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Color="White" ></ActivityIndicator>
   </StackLayout>
 </ContentPage>

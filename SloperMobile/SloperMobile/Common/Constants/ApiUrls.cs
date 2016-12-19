@@ -14,7 +14,7 @@ namespace SloperMobile.Common.Constants
         public const string Url_Login_Extend = Base_Url + "/JwtAuth/API/mobile/extendtoken";
         public const string Url_User_Register = Base_Url + "SloperPlatform/API/v2/SloperUser/Register";
         public const string Url_CheckUpdate_AppData = Base_Url + "SloperPlatform/API/v2/M/AvailableUpdate";
-        public const string Url_GetUpdate_AppData = Base_Url + "SloperPlatform/API/v2/DataExporterTest/GetCodeTemplate?appid={0}&format={1}&type={2}&since={3}";
+        public const string Url_GetUpdate_AppData = Base_Url + "SloperPlatform/API/v2/M/GetUpdatesByType?appid={0}&since={1}&type={2}";
         public const string Url_GetUpdate_TopoData = Base_Url + "SloperPlatform/API/v2/TopoImageServer/Get";
         public const string Url_GetAscent_AppData = Base_Url + "SloperPlatform/API/v2/M/GetAscents?start_date={0}&end_date={1}&crossDoman={2}&dataType={3}&xhrFields={4}&Content-Type={5}";
     }
