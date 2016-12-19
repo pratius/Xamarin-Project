@@ -2460,8 +2460,8 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f0200c2
 			public const int news = 2130837698;
 			
-			// aapt resource value: 0x7f0200ca
-			public const int notification_template_icon_bg = 2130837706;
+			// aapt resource value: 0x7f0200cb
+			public const int notification_template_icon_bg = 2130837707;
 			
 			// aapt resource value: 0x7f0200c3
 			public const int profile = 2130837699;
@@ -2470,19 +2470,22 @@ namespace SloperMobile.Droid
 			public const int pyramid = 2130837700;
 			
 			// aapt resource value: 0x7f0200c5
-			public const int send = 2130837701;
+			public const int Search = 2130837701;
 			
 			// aapt resource value: 0x7f0200c6
-			public const int sendsDonutOnsights = 2130837702;
+			public const int send = 2130837702;
 			
 			// aapt resource value: 0x7f0200c7
-			public const int sendsDonutProjects = 2130837703;
+			public const int sendsDonutOnsights = 2130837703;
 			
 			// aapt resource value: 0x7f0200c8
-			public const int sendsDonutRedpoints = 2130837704;
+			public const int sendsDonutProjects = 2130837704;
 			
 			// aapt resource value: 0x7f0200c9
-			public const int twitter_logo_shape = 2130837705;
+			public const int sendsDonutRedpoints = 2130837705;
+			
+			// aapt resource value: 0x7f0200ca
+			public const int twitter_logo_shape = 2130837706;
 			
 			static Drawable()
 			{

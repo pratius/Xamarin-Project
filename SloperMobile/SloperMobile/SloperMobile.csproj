@@ -60,6 +60,9 @@
     <Compile Include="Model\RgistrationResponse.cs" />
     <Compile Include="Model\Send.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\HeaderUC.xaml.cs">
+      <DependentUpon>HeaderUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SendsUC.xaml.cs">
       <DependentUpon>SendsUC.xaml</DependentUpon>
     </Compile>
@@ -194,6 +197,21 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\HeaderUC.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Home-Climbing-Days.svg" />
+    <Content Include="Resources\Home-Climbing-Map.svg" />
+    <Content Include="Resources\Home-Logo.svg" />
+    <Content Include="Resources\Home-News.svg" />
+    <Content Include="Resources\Home-Profile.svg" />
+    <Content Include="Resources\Home-Pyramid.svg" />
+    <Content Include="Resources\Home-Sends.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

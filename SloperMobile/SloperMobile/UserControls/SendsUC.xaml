@@ -14,7 +14,7 @@
     </ContentView.Resources>
     <ContentView.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid HeightRequest="80">
+            <Grid Margin="02">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -24,7 +24,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label  Grid.Row="0" Grid.Column="0" Margin="05,0,0,0" Text="DATE" Style="{StaticResource HederLabelStyle}" HorizontalOptions="Center"/>
+                <Label  Grid.Row="0" Grid.Column="0" Text="DATE" Style="{StaticResource HederLabelStyle}" HorizontalOptions="Center"/>
                 <Label Grid.Row="0" Grid.Column="1" Text="CLIMB"  Style="{StaticResource HederLabelStyle}" HorizontalOptions="Center"/>
                 <Label Grid.Row="0" Grid.Column="2" Text="GRAD" Style="{StaticResource HederLabelStyle}"  HorizontalOptions="Center"/>
                 <Label Grid.Row="0" Grid.Column="3" Text="STYLE" Style="{StaticResource HederLabelStyle}"  HorizontalOptions="Center"/>
@@ -35,9 +35,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-
                             <Grid>
-
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
