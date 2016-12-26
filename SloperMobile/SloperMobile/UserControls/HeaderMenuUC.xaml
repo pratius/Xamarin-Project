@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.UserControls.HeaderMenuUC">
+    <ContentView.Content>
+
+        <Grid VerticalOptions="StartAndExpand"
+      HorizontalOptions="StartAndExpand"
+      RowSpacing="0"
+      ColumnSpacing="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1"/>
+            </Grid.RowDefinitions>
+
+            <BoxView BackgroundColor="Gray"
+           HeightRequest="1"
+           HorizontalOptions="FillAndExpand"
+           Grid.Row="0"/>
+            <Grid VerticalOptions="Start" ColumnSpacing="0" Grid.Row="1" BackgroundColor="Black">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".2*"/>
+                </Grid.RowDefinitions>
+
+                <BoxView BackgroundColor="Black"
+             WidthRequest="1" VerticalOptions="FillAndExpand"/>
+                <Button Text="POINTS"  Grid.Column="1"  BackgroundColor="Black" TextColor="White"/>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="2"/>
+                <Button Text="RANKING" Grid.Column="3" BackgroundColor="Black" TextColor="White"/>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="4"/>
+                <Button Text="TICK LIST" Grid.Column="5" BackgroundColor="Black" TextColor="White"/>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="6"/>
+
+                <Button Text="SENDS" Grid.Column="7" BackgroundColor="Yellow" TextColor="Black"/>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="8"/>
+
+                <Button Text="CALENDAR" Grid.Column="9" BackgroundColor="Black" TextColor="White"/>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="10"/>
+
+                <Button Text="PYRAMID" Grid.Column="11" BackgroundColor="Black" TextColor="White"/>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="12"/>
+            </Grid>
+            <BoxView BackgroundColor="Gray"
+           HeightRequest="1"
+           HorizontalOptions="FillAndExpand"
+           Grid.Row="2"/>
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>

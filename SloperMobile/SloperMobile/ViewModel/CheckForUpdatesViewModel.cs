@@ -81,7 +81,7 @@ namespace SloperMobile.ViewModel
 
         public async void OnPageAppearing()
         {
-            IsRunningTasks = true;
+            //DisplayUpdateMessage = "Checking for updates...";
             CheckForModelObj = await HttpGetCheckForUpdates();
             if (CheckForModelObj != null && Convert.ToInt32(CheckForModelObj.areas_modified) + Convert.ToInt32(CheckForModelObj.crags_modified) + Convert.ToInt32(CheckForModelObj.routes_modified) + Convert.ToInt32(CheckForModelObj.sectors_modified) > 1)
             {
@@ -199,7 +199,6 @@ namespace SloperMobile.ViewModel
                 updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
                 App.DAUtil.SaveLastUpdate(updated_date);
                 DisplayUpdateMessage = "Thanks for updating.";
-                IsRunningTasks = false;
             }
             else
             {
@@ -207,7 +206,6 @@ namespace SloperMobile.ViewModel
                 updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
                 App.DAUtil.SaveLastUpdate(updated_date);
                 DisplayUpdateMessage = "Your app is uptodate...";
-                IsRunningTasks = false;
             }
         }
 
@@ -226,25 +224,25 @@ namespace SloperMobile.ViewModel
         }
         private async Task<List<T_AREA>> HttpGetAreaUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate,"area"), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, "json", "area", AppLastUpdateDate), Cache.AccessToken);
             var area_response = await apicall.Get<T_AREA>();
             return area_response;
         }
         private async Task<List<CragTemplate>> HttpGetCragUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "crag"), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, "json", "crag", AppLastUpdateDate), Cache.AccessToken);
             var crag_response = await apicall.Get<CragTemplate>();
             return crag_response;
         }
         private async Task<List<T_ROUTE>> HttpGetRouteUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "route" ), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, "json", "route", AppLastUpdateDate), Cache.AccessToken);
             var route_response = await apicall.Get<T_ROUTE>();
             return route_response;
         }
         private async Task<List<T_SECTOR>> HttpGetSectorUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "sector"), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, "json", "sector", AppLastUpdateDate), Cache.AccessToken);
             var sector_response = await apicall.Get<T_SECTOR>();
             return sector_response;
         }

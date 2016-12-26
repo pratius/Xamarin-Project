@@ -15,6 +15,7 @@ namespace SloperMobile.DataBase
         SQLiteConnection dbConn;
         public DataAccess()
         {
+            
             dbConn = DependencyService.Get<ISQLite>().GetConnection();
             dbConn.CreateTable<LAST_UPDATE>();
             dbConn.CreateTable<T_AREA>();

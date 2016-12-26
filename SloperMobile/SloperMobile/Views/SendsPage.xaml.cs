@@ -42,23 +42,21 @@ namespace SloperMobile.Views
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = new SendsViewModel();
-            circularGauge.BindingContext = this;
-            // pointer_slider.BindingContext = this;
+        }
 
-
-
-            //Label Offset
-            if (Device.OS == TargetPlatform.Android)
+        private void Handle_ValueChanged(object sender, EventArgs e)
+        {
+            try
             {
-                scale.LabelOffset = 0.2;
-            }
-            else
-            {
-                scale.LabelOffset = 0.1;
+                //var data = sender as SegmentedControl.FormsPlugin.Abstractions.SegmentedControl;
+
+                //SendVM.ExecuteModeChange(data.SelectedText);
             }
 
+            catch
+            {
 
-
+            }
         }
     }
 }

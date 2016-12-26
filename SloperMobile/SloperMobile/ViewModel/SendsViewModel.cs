@@ -62,7 +62,7 @@ namespace SloperMobile.ViewModel
 
         private async void OnPagePrepration()
         {
-            PageHeaderText = "Sends";
+            PageHeaderText = "SENDS";
             await InvokeServiceGetAscentData();
         }
 
@@ -74,24 +74,27 @@ namespace SloperMobile.ViewModel
 
         private void SetChartValue()
         {
+            int _onsight = 0, _redpoint = 0;
             if (SendsList.Count > 0)
             {
                 foreach (var item in SendsList)
                 {
                     if (item.Ascent_Type_Id == 1)
-                        Onsight = item.Ascent_Type_Id / SendsList.Count;
+                        _onsight++;
                     else if (item.Ascent_Type_Id == 3)
-                        Redpoint = item.Ascent_Type_Id / SendsList.Count;
+                        _redpoint++;
                     else if (item.Ascent_Type_Id == 6)
-                        Projects = item.Ascent_Type_Id / SendsList.Count;
+                        Projects++;
                 }
+                Onsight = (int)Math.Round((double)(100 * _onsight) / SendsList.Count);
+                Redpoint = (int)Math.Round((double)(100 * _redpoint) / SendsList.Count);
             }
         }
 
         #region Service Methods
         private async Task InvokeServiceGetAscentData()
         {
-            HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetAscent_AppData, 20160425, 20161030, "true", "json", "(withCredentials:false)", "application/json"), Cache.AccessToken);
+            HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetAscent_AppData, 20160101, 20300101), Cache.AccessToken);
             Dictionary<string, string> dictquery = new Dictionary<string, string>();
             var response = await apicall.Get<Send>();
             if (response.Count > 0)
@@ -102,6 +105,7 @@ namespace SloperMobile.ViewModel
 
         }
         #endregion
+
 
     }
 }

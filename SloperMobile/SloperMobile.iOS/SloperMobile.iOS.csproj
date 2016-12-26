@@ -176,7 +176,9 @@
       <Name>SloperMobile</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\chartIcon.PNG" />
+  </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Menu_button%403x.png" />
   </ItemGroup>

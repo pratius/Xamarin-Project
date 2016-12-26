@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+             xmlns:SegmentedUC="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
               xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms"
              x:Class="SloperMobile.Views.SendsPage" Style="{StaticResource AppBackgroundColor}">
 
@@ -9,42 +10,41 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".3*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="50"/>
-        <ScrollView Orientation="Horizontal" Grid.Column="1" Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" HeightRequest="30">
-            <StackLayout Orientation="Horizontal" Spacing="07" >
-                <Label Text="POINT" FontSize="Small"  TextColor="White"/>
-                <Label Text="RANKING" FontSize="Small"  TextColor="White"/>
-                <Label Text="TICK LIST" FontSize="Small"  TextColor="White"/>
-                <Label Text="SENDS" FontSize="Small"  TextColor="White" BackgroundColor="#FFF400"/>
-                <Label Text="CALENDAR" FontSize="Small"  TextColor="White"/>
-                <Label Text="PYRAMID" FontSize="Small" TextColor="White"/>
-            </StackLayout>
+        <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="30"/>
+        <ScrollView Orientation="Horizontal"  HeightRequest="40" Grid.Row="1" Grid.Column="1" >
+            <UC:HeaderMenuUC/>
         </ScrollView>
 
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="main_layout" Grid.Column="1" Grid.Row="2">
-                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Label VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" Text="{Binding Onsight,Mode=TwoWay}"/>
-                    <gauge:SfCircularGauge x:Name="circularGauge" 
-                    WidthRequest="350" 
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="02"  Margin="0,10,0,0">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
+                        <Label  TextColor="White" FontSize="Medium" Text="{Binding Onsight,Mode=TwoWay}" HorizontalOptions="Center"/>
+                        <Label  TextColor="White" FontSize="Micro" Text="%" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Label  TextColor="White" FontSize="Micro" Text="Onsight" Grid.Row="1" Grid.ColumnSpan="1" HorizontalOptions="Center"/>
+                    <Image Grid.Row="2" Grid.Column="1" Source="chartIcon" Aspect="AspectFill" HorizontalOptions="Center" HeightRequest="35" WidthRequest="35" VerticalOptions="EndAndExpand"/>
+                </StackLayout>
+                <gauge:SfCircularGauge
+                    WidthRequest="400" 
                 VerticalOptions="FillAndExpand">
 
-                        <gauge:SfCircularGauge.Scales>
-                            <gauge:Scale 
-                        StartValue="0" 
-                        x:Name="scale"
+                    <gauge:SfCircularGauge.Scales>
+                        <gauge:Scale 
+                        StartValue="0"                          
                        EndValue="100"
                        Interval="10"
                        StartAngle="135"
@@ -55,39 +55,41 @@
                        ShowTicks="False"
                        LabelColor="Gray"                       
                        MinorTicksPerInterval="0">
-                                <gauge:Scale.Pointers>
-                                    <gauge:RangePointer Value="{Binding Onsight, Mode=TwoWay}" Color="Yellow" Thickness="10"/>
-                                </gauge:Scale.Pointers>
-                                <gauge:Scale.MajorTickSettings>
-                                    <gauge:TickSettings x:Name="major" Length="12" Color ="#444444" Thickness="3"/>
-                                </gauge:Scale.MajorTickSettings>
-                                <gauge:Scale.MinorTickSettings>
-                                    <gauge:TickSettings Length="4" Color="#444444" Thickness="3"/>
-                                </gauge:Scale.MinorTickSettings>
-                            </gauge:Scale>
-                        </gauge:SfCircularGauge.Scales>
-                        <gauge:SfCircularGauge.Headers>
-                            <gauge:Header x:Name="gaugeHeader1" Text="Onsight"  ForegroundColor="White" TextSize="15">
-                                <gauge:Header.Position>
-                                    <OnPlatform x:TypeArguments="Point" iOS="0.5,0.9"  Android="0.5,0.9"  WinPhone="0.1,0.9" />
-                                </gauge:Header.Position>
-                            </gauge:Header>
-                        </gauge:SfCircularGauge.Headers>
-                    </gauge:SfCircularGauge>
-                </Grid>
-                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Label VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" Text="{Binding Redpoint,Mode=TwoWay}"/>
-                    <gauge:SfCircularGauge 
-             WidthRequest="350" 
+                            <gauge:Scale.Pointers>
+                                <gauge:RangePointer Value="{Binding Path=Onsight,Mode=TwoWay}" Color="Yellow" Thickness="10"/>
+                            </gauge:Scale.Pointers>
+                            <gauge:Scale.MajorTickSettings>
+                                <gauge:TickSettings x:Name="major" Length="12" Color ="#444444" Thickness="3"/>
+                            </gauge:Scale.MajorTickSettings>
+                            <gauge:Scale.MinorTickSettings>
+                                <gauge:TickSettings Length="4" Color="#444444" Thickness="3"/>
+                            </gauge:Scale.MinorTickSettings>
+                        </gauge:Scale>
+                    </gauge:SfCircularGauge.Scales>
+
+                </gauge:SfCircularGauge>
+            </Grid>
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="02" Margin="0,10,0,0">
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
+                        <Label  TextColor="White" FontSize="Medium" Text="{Binding Redpoint,Mode=TwoWay}" HorizontalOptions="Center"/>
+                        <Label  TextColor="White" FontSize="Micro" Text="%" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Label  TextColor="White" FontSize="Micro" Text="Redpoint" Grid.Row="1" Grid.ColumnSpan="1" HorizontalOptions="Center"/>
+                    <Image Grid.Row="2" Grid.Column="1" Source="chartIcon" Aspect="AspectFill" HorizontalOptions="Center" HeightRequest="35" WidthRequest="35"/>
+                </StackLayout>
+                <gauge:SfCircularGauge 
+             WidthRequest="400" 
                 VerticalOptions="FillAndExpand">
 
-                        <gauge:SfCircularGauge.Scales>
-                            <gauge:Scale 
-                        StartValue="0" 
-                         
+                    <gauge:SfCircularGauge.Scales>
+                        <gauge:Scale 
+                        StartValue="0"                          
                        EndValue="100"
                        Interval="10"
                        StartAngle="135"
@@ -98,38 +100,32 @@
                        ShowTicks="False"
                        LabelColor="Gray"                       
                        MinorTicksPerInterval="0">
-                                <gauge:Scale.Pointers>
-                                    <gauge:RangePointer Value="{Binding Redpoint, Mode=TwoWay}" Color="Yellow" Thickness="10"/>
-                                </gauge:Scale.Pointers>
-                                <gauge:Scale.MajorTickSettings>
-                                    <gauge:TickSettings  Length="12" Color ="#444444" Thickness="3"/>
-                                </gauge:Scale.MajorTickSettings>
-                                <gauge:Scale.MinorTickSettings>
-                                    <gauge:TickSettings Length="4" Color="#444444" Thickness="3"/>
-                                </gauge:Scale.MinorTickSettings>
-                            </gauge:Scale>
-                        </gauge:SfCircularGauge.Scales>
-                        <gauge:SfCircularGauge.Headers>
-                            <gauge:Header x:Name="gaugeHeader2" Text="Redpoint"  ForegroundColor="White" TextSize="15">
-                                <gauge:Header.Position>
-                                    <OnPlatform x:TypeArguments="Point" iOS="0.5,0.9"  Android="0.5,0.9"  WinPhone="0.1,0.9" />
-                                </gauge:Header.Position>
-                            </gauge:Header>
-                        </gauge:SfCircularGauge.Headers>
-                    </gauge:SfCircularGauge>
+                            <gauge:Scale.Pointers>
+                                <gauge:RangePointer Value="{Binding Redpoint, Mode=TwoWay}" Color="Yellow" Thickness="10"/>
+                            </gauge:Scale.Pointers>
+                            <gauge:Scale.MajorTickSettings>
+                                <gauge:TickSettings  Length="12" Color ="#444444" Thickness="3"/>
+                            </gauge:Scale.MajorTickSettings>
+                            <gauge:Scale.MinorTickSettings>
+                                <gauge:TickSettings Length="4" Color="#444444" Thickness="3"/>
+                            </gauge:Scale.MinorTickSettings>
+                        </gauge:Scale>
+                    </gauge:SfCircularGauge.Scales>
 
-                </Grid>
-                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
+                </gauge:SfCircularGauge>
 
-                    <gauge:SfCircularGauge  
-                  WidthRequest="350"
+            </Grid>
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <gauge:SfCircularGauge  
+                  WidthRequest="400"
                 VerticalOptions="FillAndExpand">
 
-                        <gauge:SfCircularGauge.Scales>
-                            <gauge:Scale 
+                    <gauge:SfCircularGauge.Scales>
+                        <gauge:Scale 
                         StartValue="0" 
                         
                        EndValue="100"
@@ -142,38 +138,32 @@
                        ShowTicks="False"
                        LabelColor="Gray"                       
                        MinorTicksPerInterval="0">
-                                <gauge:Scale.Pointers>
-                                    <gauge:RangePointer Value="{Binding Projects, Mode=TwoWay}" Color="Yellow" Thickness="10"/>
-                                </gauge:Scale.Pointers>
-                                <gauge:Scale.MajorTickSettings>
-                                    <gauge:TickSettings  Length="12" Color ="#444444" Thickness="3"/>
-                                </gauge:Scale.MajorTickSettings>
-                                <gauge:Scale.MinorTickSettings>
-                                    <gauge:TickSettings Length="4" Color="#444444" Thickness="3"/>
-                                </gauge:Scale.MinorTickSettings>
-                            </gauge:Scale>
-                        </gauge:SfCircularGauge.Scales>
-                        <gauge:SfCircularGauge.Headers>
-                            <gauge:Header x:Name="gaugeHeader3" Text="Projects"  ForegroundColor="White" TextSize="15">
-                                <gauge:Header.Position>
-                                    <OnPlatform x:TypeArguments="Point" iOS="0.5,0.9"  Android="0.5,0.9"  WinPhone="0.1,0.9" />
-                                </gauge:Header.Position>
-                            </gauge:Header>
-                        </gauge:SfCircularGauge.Headers>
+                            <gauge:Scale.Pointers>
+                                <gauge:RangePointer Value="{Binding Projects, Mode=TwoWay}" Color="Yellow" Thickness="10"/>
+                            </gauge:Scale.Pointers>
+                            <gauge:Scale.MajorTickSettings>
+                                <gauge:TickSettings  Length="12" Color ="#444444" Thickness="3"/>
+                            </gauge:Scale.MajorTickSettings>
+                            <gauge:Scale.MinorTickSettings>
+                                <gauge:TickSettings Length="4" Color="#444444" Thickness="3"/>
+                            </gauge:Scale.MinorTickSettings>
+                        </gauge:Scale>
+                    </gauge:SfCircularGauge.Scales>
 
-                    </gauge:SfCircularGauge>
-                    <Label VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" Text="{Binding Projects,Mode=TwoWay}"/>
-                </Grid>
-            </StackLayout>
 
-        
-        <UC:SendsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
-        <StackLayout Orientation="Horizontal" WidthRequest="40" HeightRequest="40" Grid.Column="1" Grid.Row="4" BackgroundColor="#1A1A1A" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
-            <Image Source="navNews" />
-            <Image Source="navProfile" />
-            <Image Source="navHome"/>
-            <Image Source="navMap" />
-            <Image Source="navSettings"/>
+                </gauge:SfCircularGauge>
+                <!--<Label VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" Text="{Binding Projects,Mode=TwoWay}"/>-->
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="02" Margin="0,10,0,0">
+
+                    <Label  TextColor="White" FontSize="Medium" Text="{Binding Projects,Mode=TwoWay}" HorizontalOptions="Center"/>
+                    <Label  TextColor="White" FontSize="Micro" Text="Projects" Grid.Row="1" Grid.ColumnSpan="1" HorizontalOptions="Center"/>
+                    <Image Grid.Row="2" Grid.Column="1" Source="chartIcon" Aspect="AspectFill" HorizontalOptions="Center" HeightRequest="35" WidthRequest="35"/>
+                </StackLayout>
+            </Grid>
         </StackLayout>
+
+
+        <UC:SendsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
+        <UC:FooterUC WidthRequest="40" HeightRequest="40" Grid.Column="1" Grid.Row="4" BackgroundColor="#1A1A1A" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"/>
     </Grid>
 </ContentPage>
