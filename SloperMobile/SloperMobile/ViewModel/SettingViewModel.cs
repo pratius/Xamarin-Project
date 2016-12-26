@@ -8,5 +8,9 @@ namespace SloperMobile.ViewModel
 {
     public class SettingViewModel : BaseViewModel
     {
+        public SettingViewModel()
+        {
+            PageHeaderText = "SETTING";
+        }
     }
 }

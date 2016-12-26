@@ -8,5 +8,9 @@ namespace SloperMobile.ViewModel
 {
     public class SearchViewModel : BaseViewModel
     {
+        public SearchViewModel()
+        {
+            PageHeaderText = "SEARCH";
+        }
     }
 }

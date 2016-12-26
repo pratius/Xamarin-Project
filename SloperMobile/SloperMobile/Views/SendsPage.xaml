@@ -10,18 +10,18 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height=".3*"/>
+            <RowDefinition Height="0.3*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="02"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="02"/>
         </Grid.ColumnDefinitions>
         <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="30"/>
         <ScrollView Orientation="Horizontal"  HeightRequest="40" Grid.Row="1" Grid.Column="1" >
-            <UC:HeaderMenuUC/>
+            <UC:HeaderMenuUC HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
         </ScrollView>
 
 
@@ -164,6 +164,6 @@
 
 
         <UC:SendsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
-        <UC:FooterUC WidthRequest="40" HeightRequest="40" Grid.Column="1" Grid.Row="4" BackgroundColor="#1A1A1A" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"/>
+        <UC:FooterUC  Grid.Column="1" Grid.Row="4" BackgroundColor="#1A1A1A" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"/>
     </Grid>
 </ContentPage>

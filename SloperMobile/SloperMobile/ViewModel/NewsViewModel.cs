@@ -8,5 +8,9 @@ namespace SloperMobile.ViewModel
 {
     public class NewsViewModel : BaseViewModel
     {
+        public NewsViewModel()
+        {
+            PageHeaderText = "NEWS";
+        }
     }
 }

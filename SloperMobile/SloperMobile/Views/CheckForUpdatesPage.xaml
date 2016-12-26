@@ -4,12 +4,12 @@
              x:Class="SloperMobile.Views.CheckForUpdatesPage" Style="{StaticResource AppBackgroundColor}">
   <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
     <Grid.RowDefinitions>
-      <RowDefinition Height="10"></RowDefinition>
-      <RowDefinition Height="*"></RowDefinition>
-    </Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="20"></ColumnDefinition>
-      <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"></ColumnDefinition>
       <ColumnDefinition Width="20"></ColumnDefinition>
     </Grid.ColumnDefinitions>
   </Grid>

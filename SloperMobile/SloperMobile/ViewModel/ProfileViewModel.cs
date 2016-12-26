@@ -8,5 +8,9 @@ namespace SloperMobile.ViewModel
 {
     public class ProfileViewModel : BaseViewModel
     {
+        public ProfileViewModel()
+        {
+            PageHeaderText = "PROFILE";
+        }
     }
 }

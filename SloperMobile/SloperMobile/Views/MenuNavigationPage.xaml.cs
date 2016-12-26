@@ -1,4 +1,5 @@
-﻿using SloperMobile.Model;
+﻿using SloperMobile.Common.Constants;
+using SloperMobile.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace SloperMobile.Views
             NavigationPage.SetHasNavigationBar(this, false);
             Detail = new NavigationPage(new HomePage());
             masterMenuPage.ListView.ItemSelected += OnItemSelected;
+            Cache.MasterPage = this;
         }
 
         void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -30,6 +32,7 @@ namespace SloperMobile.Views
                     Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
                     masterMenuPage.ListView.SelectedItem = null;
                     IsPresented = false;
+                    
                 }
 
             }

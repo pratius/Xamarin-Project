@@ -8,5 +8,9 @@ namespace SloperMobile.ViewModel
 {
     public class PyramidViewModel : BaseViewModel
     {
+        public PyramidViewModel()
+        {
+            PageHeaderText = "PYRAMID";
+        }
     }
 }

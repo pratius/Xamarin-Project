@@ -13,6 +13,7 @@ namespace SloperMobile.Views
         public MapPage()
         {
             InitializeComponent();
+            BindingContext = new ViewModel.MapViewModel();
         }
     }
 }

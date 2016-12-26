@@ -8,5 +8,9 @@ namespace SloperMobile.ViewModel
 {
     public class MapViewModel : BaseViewModel
     {
+        public MapViewModel()
+        {
+            PageHeaderText = "MAPS";
+        }
     }
 }

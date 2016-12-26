@@ -48,7 +48,7 @@ namespace SloperMobile.ViewModel
                 {
                     Title = "Map",
                     IconSource = "ic_gym_map_small",
-
+                    TargetType = typeof(MapPage),
                 });
 
                 MenuList.Add(new MasterPageItem
