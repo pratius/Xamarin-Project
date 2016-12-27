@@ -10,10 +10,18 @@ namespace SloperMobile.Views
 {
     public partial class MapPage : ContentPage
     {
+        private ViewModel.MapViewModel SectorListvm;
         public MapPage()
         {
             InitializeComponent();
-            BindingContext = new ViewModel.MapViewModel();
+            NavigationPage.SetHasNavigationBar(this, false);
+            SectorListvm = new ViewModel.MapViewModel();
+            BindingContext = SectorListvm;
+        }
+        protected override void OnAppearing()
+        {
+            SectorListvm.LoadMoreSector.Execute(null);
+            base.OnAppearing();
         }
     }
 }

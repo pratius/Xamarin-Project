@@ -49,6 +49,7 @@
     <Compile Include="Common\Interfaces\IApplicationDataBase.cs" />
     <Compile Include="Common\Interfaces\ISQLite.cs" />
     <Compile Include="Common\NotifyProperties\NotifyPropertiesChanged.cs" />
+    <Compile Include="CustomControls\InfiniteListView.cs" />
     <Compile Include="DataBase\DataAccess.cs" />
     <Compile Include="DataBase\DataTables.cs" />
     <Compile Include="Model\BaseModel.cs" />
@@ -56,10 +57,12 @@
     <Compile Include="Model\CragTemplate.cs" />
     <Compile Include="Model\LoginReq.cs" />
     <Compile Include="Model\LoginResponse.cs" />
+    <Compile Include="Model\MapListModel.cs" />
     <Compile Include="Model\MasterPageItem.cs" />
     <Compile Include="Model\RegistrationReq.cs" />
     <Compile Include="Model\RgistrationResponse.cs" />
     <Compile Include="Model\Send.cs" />
+    <Compile Include="Model\TopoImageResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\FooterUC.xaml.cs">
       <DependentUpon>FooterUC.xaml</DependentUpon>

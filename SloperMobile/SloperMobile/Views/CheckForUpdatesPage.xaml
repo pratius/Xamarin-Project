@@ -4,17 +4,17 @@
              x:Class="SloperMobile.Views.CheckForUpdatesPage" Style="{StaticResource AppBackgroundColor}">
   <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
     <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+      <RowDefinition Height="10"></RowDefinition>
+      <RowDefinition Height="*"></RowDefinition>
+    </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+      <ColumnDefinition Width="20"></ColumnDefinition>
+      <ColumnDefinition Width="*"></ColumnDefinition>
       <ColumnDefinition Width="20"></ColumnDefinition>
     </Grid.ColumnDefinitions>
   </Grid>
   <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
     <Label x:Name="txtUpdate" Text="{Binding DisplayUpdateMessage,Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource GeneralLabelStyle}" />
-    <ActivityIndicator x:Name="progressbar" IsEnabled="True"  WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Color="White" ></ActivityIndicator>
+    <ActivityIndicator x:Name="progressbar" IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}"  WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Color="White" ></ActivityIndicator>
   </StackLayout>
 </ContentPage>

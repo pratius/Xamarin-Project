@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
              x:Class="SloperMobile.Views.MapPage" Style="{StaticResource AppBackgroundColor}"
              NavigationPage.HasNavigationBar="False"
-                xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile">
+             xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
+             xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile">
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -17,5 +18,28 @@
         </Grid.ColumnDefinitions>
         <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="30"/>
         <UC:FooterUC  Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+      <Grid Grid.Row="1">
+        <Controls:InfiniteListView  x:Name="lstSectorView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding SectorImageList}" SelectedItem="{Binding SelectedSector}" LoadMoreCommand="{Binding LoadMoreSector}">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                  </Grid.RowDefinitions>
+                  <Image Grid.Row="0" Grid.ColumnSpan="2" Source="{Binding SectorImage}" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                  <Label Grid.Row="1" Grid.Column="0" Text="{Binding SectorName}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                  <Label Grid.Row="1" Grid.Column="1" Text="{Binding SectorId}"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="Yellow" LineBreakMode="WordWrap" />
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </Controls:InfiniteListView>
+      </Grid>
     </Grid>
 </ContentPage>

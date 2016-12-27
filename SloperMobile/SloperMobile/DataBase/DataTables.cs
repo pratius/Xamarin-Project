@@ -72,63 +72,63 @@ namespace SloperMobile.DataBase
         /// Primary Key
         /// </summary>
         [PrimaryKey, AutoIncrement]
-        public long  id
+        public long id
         { get; set; }
         [NotNull]
 
-        public string  route_id
+        public string route_id
         { get; set; }
-        public string  area_id
+        public string area_id
         { get; set; }
-        public string  crag_id
+        public string crag_id
         { get; set; }
-        public string  sector_id
+        public string sector_id
         { get; set; }
-        public bool  is_enabled
+        public bool is_enabled
         { get; set; }
-        public string  equipper_date
+        public string equipper_date
         { get; set; }
-        public string  equipper_name
+        public string equipper_name
         { get; set; }
-        public string  first_ascent_date
+        public string first_ascent_date
         { get; set; }
-        public string  first_ascent_name
+        public string first_ascent_name
         { get; set; }
-        public string  grade_bucket_id
+        public string grade_bucket_id
         { get; set; }
-        public string  grade_name
+        public string grade_name
         { get; set; }
-        public string  grade_name_sort_order
+        public string grade_name_sort_order
         { get; set; }
-        public string  grade_type_id
+        public string grade_type_id
         { get; set; }
-        public string  rating_name
+        public string rating_name
         { get; set; }
-        public string  route_type
+        public string route_type
         { get; set; }
-        public string  route_type_id
+        public string route_type_id
         { get; set; }
-        public string  tech_grade
+        public string tech_grade
         { get; set; }
-        public string  tech_grade_sort_order
+        public string tech_grade_sort_order
         { get; set; }
-        public string  start_x
+        public string start_x
         { get; set; }
-        public string  start_y
+        public string start_y
         { get; set; }
-        public string  route_length
+        public string route_length
         { get; set; }
-        public string  route_name
+        public string route_name
         { get; set; }
-        public string  route_info
+        public string route_info
         { get; set; }
-        public string  date_modified
+        public string date_modified
         { get; set; }
-        public string  sort_order
+        public string sort_order
         { get; set; }
-        public string  graded_list_order
+        public string graded_list_order
         { get; set; }
-        public string  version_number
+        public string version_number
         { get; set; }
     }
 
@@ -138,46 +138,46 @@ namespace SloperMobile.DataBase
         /// Primary Key
         /// </summary>
         [PrimaryKey, AutoIncrement]
-        public  long  id
+        public long id
         { get; set; }
         [NotNull]
-        public  string  sector_id
+        public string sector_id
         { get; set; }
-        public  string  crag_id
+        public string crag_id
         { get; set; }
-        public  string  date_modified
+        public string date_modified
         { get; set; }
-        public  bool  is_enabled
+        public bool is_enabled
         { get; set; }
-        public  string  map_id
+        public string map_id
         { get; set; }
-        public  string  sector_info
+        public string sector_info
         { get; set; }
-        public  string  sector_info_short
+        public string sector_info_short
         { get; set; }
-        public  string  sector_map_rect_h
+        public string sector_map_rect_h
         { get; set; }
-        public  string  sector_map_rect_w
+        public string sector_map_rect_w
         { get; set; }
-        public  string  sector_map_rect_x
+        public string sector_map_rect_x
         { get; set; }
-        public  string  sector_map_rect_y
+        public string sector_map_rect_y
         { get; set; }
-        public  string  sector_name
+        public string sector_name
         { get; set; }
-        public  string  sort_order
+        public string sort_order
         { get; set; }
-        public  string  tap_rect_in_parent_map
+        public string tap_rect_in_parent_map
         { get; set; }
-        public  string  topo_name
+        public string topo_name
         { get; set; }
-        public  string  topo_type_id
+        public string topo_type_id
         { get; set; }
-        public  string  scale
+        public string scale
         { get; set; }
-        public  string  sector_orientation
+        public string sector_orientation
         { get; set; }
-        public  string  version_number
+        public string version_number
         { get; set; }
     }
 
@@ -186,7 +186,7 @@ namespace SloperMobile.DataBase
         /// <summary>
         /// Primary Key
         /// </summary>
-        [PrimaryKey,AutoIncrement]
+        [PrimaryKey, AutoIncrement]
         public long id
         { get; set; }
         [NotNull]
@@ -263,7 +263,7 @@ namespace SloperMobile.DataBase
         public bool is_enabled
         { get; set; }
         public string crag_sort_order
-        { get; set; }       
+        { get; set; }
     }
 
     public class T_CRAG_SECTOR_MAP
@@ -295,7 +295,7 @@ namespace SloperMobile.DataBase
         /// Primary Key
         /// </summary>
         [PrimaryKey, AutoIncrement]
-        public long   topo_id
+        public long topo_id
         { get; set; }
         [NotNull]
         public string sector_id
@@ -336,6 +336,4 @@ namespace SloperMobile.DataBase
         public string grade_bucket_id
         { get; set; }
     }
-
-
 }

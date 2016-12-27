@@ -13,10 +13,17 @@ namespace SloperMobile
     public partial class App : Application
     {
         static DataAccess dbUtils;
+        public static string _selectedcrag = "344";//"The Hanger"
         public App()
         {
-            InitializeComponent();         
+            InitializeComponent();
             MainPage = new NavigationPage(new LoginPage());
+        }
+
+        public static string SelectedCrag
+        {
+            get { return _selectedcrag; }
+            set { _selectedcrag = value; }
         }
         public static DataAccess DAUtil
         {
