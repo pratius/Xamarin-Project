@@ -201,6 +201,12 @@ namespace SloperMobile.DataBase
             var secimglist = (dbConn.Table<T_TOPO>().Where(tp => strid.Contains(tp.sector_id))).Skip(skip).Take(take);
             return secimglist;
         }
+
+        public List<T_CRAG> GetCragList()
+        {
+            var craglist = dbConn.Table<T_CRAG>().ToList();
+            return craglist;
+        }
         #endregion
 
     }
