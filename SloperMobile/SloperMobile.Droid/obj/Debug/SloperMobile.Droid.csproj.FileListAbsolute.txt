@@ -187,12 +187,12 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\o
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\R.cs.flag
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\uploadflags.txt
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.Droid.dll.mdb
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Java.Interop.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Microsoft.CSharp.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Mono.Android.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Mono.CSharp.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\mscorlib.dll.mdb
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\System.ComponentModel.Composition.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\System.Core.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\System.dll.mdb
