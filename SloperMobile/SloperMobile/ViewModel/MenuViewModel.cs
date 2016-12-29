@@ -1,10 +1,6 @@
 ﻿using SloperMobile.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SloperMobile.Views;
 
 namespace SloperMobile.ViewModel
@@ -33,7 +29,7 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-
+                var menuDetails = App.DAUtil.GetCragList();
                 MenuList = new ObservableCollection<MasterPageItem>();
 
                 MenuList.Add(new MasterPageItem

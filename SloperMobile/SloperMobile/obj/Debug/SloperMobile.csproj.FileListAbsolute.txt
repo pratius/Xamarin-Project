@@ -210,8 +210,6 @@ E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.ProfilePage.xaml.g.cs
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.PyramidPage.xaml.g.cs
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.SettingsPage.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.config
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.pdb
@@ -259,3 +257,5 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Deb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
