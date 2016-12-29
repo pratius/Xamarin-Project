@@ -36,8 +36,8 @@ namespace SloperMobile.ViewModel
                 {
 
                     Title = "About This App",
-                    IconSource = "ic_about_us"
-
+                    IconSource = "ic_about_us",
+                     TargetType = typeof(HomePage),
                 });
 
                 MenuList.Add(new MasterPageItem
@@ -51,21 +51,21 @@ namespace SloperMobile.ViewModel
                 {
                     Title = "CCC Chinook",
                     IconSource = "Menu_side_bar_service_mode",
-
+                    TargetType = typeof(HomePage),
                 });
 
                 MenuList.Add(new MasterPageItem
                 {
                     Title = "The Hanger",
                     IconSource = "Menu_side_bar_account_settings",
-
+                    TargetType = typeof(SettingsPage),
                 });
 
                 MenuList.Add(new MasterPageItem
                 {
                     Title = "The Stronhold",
                     IconSource = "Menu_side_bar_about",
-
+                    TargetType = typeof(HomePage),
                 });
 
 

@@ -2,27 +2,24 @@
 <Paths>
   <Jars></Jars>
   <ResolvedResourceDirectories>
-    <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK.AndroidBindings\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\SQLite.Net.Platform.XamarinAndroid\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Syncfusion.SfGauge.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK.AndroidBindings\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\SQLite.Net.Platform.XamarinAndroid\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Syncfusion.SfGauge.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform\library_project_imports\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
-    <ResolvedAssetDirectory>obj\Release\__library_projects__\HockeySDK.AndroidBindings\library_project_imports\assets</ResolvedAssetDirectory>
-    <ResolvedAssetDirectory>obj\Release\__library_projects__\HockeySDK\library_project_imports\assets</ResolvedAssetDirectory>
-    <ResolvedAssetDirectory>obj\Release\__library_projects__\SQLite.Net.Platform.XamarinAndroid\library_project_imports\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>obj\Release\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>obj\Release\__library_projects__\Xamarin.Forms.Platform\library_project_imports\assets</ResolvedAssetDirectory>
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
-    <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK.AndroidBindings.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\SQLite.Net.Platform.XamarinAndroid.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Syncfusion.SfGauge.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform.Android.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK.AndroidBindings.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\HockeySDK.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\SQLite.Net.Platform.XamarinAndroid.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Syncfusion.SfGauge.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform.Android.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\__library_projects__\Xamarin.Forms.Platform.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
 </Paths>

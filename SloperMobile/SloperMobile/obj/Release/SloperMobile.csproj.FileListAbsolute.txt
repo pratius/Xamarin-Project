@@ -117,8 +117,6 @@ E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Releas
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.SettingsPage.xaml.g.cs
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.pdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.config
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.pdb
@@ -166,7 +164,11 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Rel
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.csprojResolveAssemblyReference.cache
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
