@@ -1,10 +1,6 @@
 ﻿using SloperMobile.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SloperMobile.Views;
 
 namespace SloperMobile.ViewModel
@@ -33,15 +29,15 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-
+                var menuDetails = App.DAUtil.GetCragList();
                 MenuList = new ObservableCollection<MasterPageItem>();
 
                 MenuList.Add(new MasterPageItem
                 {
 
                     Title = "About This App",
-                    IconSource = "ic_about_us"
-
+                    IconSource = "ic_about_us",
+                     TargetType = typeof(HomePage),
                 });
 
                 MenuList.Add(new MasterPageItem
@@ -55,21 +51,21 @@ namespace SloperMobile.ViewModel
                 {
                     Title = "CCC Chinook",
                     IconSource = "Menu_side_bar_service_mode",
-
+                    TargetType = typeof(HomePage),
                 });
 
                 MenuList.Add(new MasterPageItem
                 {
                     Title = "The Hanger",
                     IconSource = "Menu_side_bar_account_settings",
-
+                    TargetType = typeof(SettingsPage),
                 });
 
                 MenuList.Add(new MasterPageItem
                 {
                     Title = "The Stronhold",
                     IconSource = "Menu_side_bar_about",
-
+                    TargetType = typeof(HomePage),
                 });
 
 

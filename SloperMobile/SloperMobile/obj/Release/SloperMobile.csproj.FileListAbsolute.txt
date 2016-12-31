@@ -142,6 +142,7 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Rel
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Release\Xamarin.Forms.Xaml.pdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Release\Xamarin.Forms.Xaml.xml
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.csproj.App.config
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.csprojResolveAssemblyReference.cache
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.App.xaml.g.cs
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.LoginPage.xaml.g.cs
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MenuNavigationPage.xaml.g.cs
@@ -161,11 +162,9 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Rel
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.ProfilePage.xaml.g.cs
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.PyramidPage.xaml.g.cs
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.SettingsPage.xaml.g.cs
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MapDetailPage.xaml.g.cs
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.pdb
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.csprojResolveAssemblyReference.cache
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
