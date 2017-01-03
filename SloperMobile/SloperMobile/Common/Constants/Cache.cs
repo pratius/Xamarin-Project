@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SloperMobile.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace SloperMobile.Common.Constants
     {
         public static string AccessToken { get; set; }
         public static MasterDetailPage MasterPage { get; set; }
+        public static T_CRAG Selected_CRAG { get; set; }
     }
 }
