@@ -5,7 +5,7 @@
             
              Icon="Menu_button" Title="Sloper">
     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
-        <ListView x:Name="listView" ItemsSource="{Binding MenuList}" AutomationId="lstMenu" HasUnevenRows="True">
+        <ListView x:Name="listView" ItemsSource="{Binding MenuList}" SelectedItem="{Binding SelectedMenu,Mode=TwoWay}" AutomationId="lstMenu" HasUnevenRows="True" BackgroundColor="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -16,8 +16,8 @@
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0"  Source="{Binding IconSource}" />
                             <StackLayout Orientation="Vertical" Grid.Column="1" >
-                                <Label Text="{Binding Title}" FontSize="Medium" VerticalTextAlignment="Center" />
-                                <Label  Text="{Binding Contents}" FontSize="Micro" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"  />
+                                <Label Text="{Binding Title}" FontSize="Medium" VerticalTextAlignment="Center" TextColor="White"/>
+                                <Label  Text="{Binding Contents}" FontSize="Micro" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White"  />
                             </StackLayout>
                         </Grid>
                     </ViewCell>
