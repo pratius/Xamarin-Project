@@ -16,10 +16,9 @@ namespace SloperMobile.ViewModel
     {
         private readonly INavigation _navigation;
         private MapListModel _selectedSector;
-        public MapViewModel(INavigation navigation)
+        public MapViewModel()
         {
             PageHeaderText = "MAPS";
-            _navigation = navigation;
             LoadMoreSector = new DelegateCommand(LoadSectorImages);
         }
         private ObservableCollection<MapListModel> _sectorimageList;
@@ -71,19 +70,13 @@ namespace SloperMobile.ViewModel
             }
         }
 
-        private async void GoToSeletedSector()
+        private void GoToSeletedSector()
         {
-            try
-            {
-                if (SelectedSector == null)
-                    return;
-                var sector_id = SelectedSector.SectorId;
-                await _navigation.PushAsync(new Views.MapDetailPage(SelectedSector));
-            }
-            catch (Exception ex)
-            {
-                string strerr = ex.Message;
-            }
+            if (SelectedSector == null)
+                return;
+            var sector_id = SelectedSector.SectorId;
+            PageNavigation?.Invoke();
+            //await _navigation.PushAsync(new Views.HomePage());
         }
     }
 }
