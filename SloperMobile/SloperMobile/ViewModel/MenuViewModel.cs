@@ -2,8 +2,6 @@
 using System;
 using System.Collections.ObjectModel;
 using SloperMobile.Views;
-using SloperMobile.Common.Constants;
-using System.Linq;
 
 namespace SloperMobile.ViewModel
 {
@@ -13,7 +11,7 @@ namespace SloperMobile.ViewModel
         {
 
             FillMenuItems();
-            SelectedMenu = new Model.MasterPageItem();
+
         }
 
 
@@ -26,28 +24,6 @@ namespace SloperMobile.ViewModel
             get { return menuList; }
             set { menuList = value; OnPropertyChanged(); }
         }
-
-        private MasterPageItem selecteMenu;
-
-        public MasterPageItem SelectedMenu
-        {
-            get { return selecteMenu; }
-            set
-            {
-                selecteMenu = value;
-                if (value?.Title != null)
-                {
-                    var menuDetails = App.DAUtil.GetCragList();
-                    if (menuDetails.Count > 0)
-                    {
-                        var selectedItems = menuDetails?.FirstOrDefault(s => s.crag_name == selecteMenu.Title);
-                        Cache.Selected_CRAG = selectedItems;
-                    }
-                }
-                OnPropertyChanged();
-            }
-        }
-
 
         private void FillMenuItems()
         {
