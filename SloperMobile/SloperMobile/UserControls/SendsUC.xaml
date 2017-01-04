@@ -32,9 +32,9 @@
 
                 </Grid.ColumnDefinitions>
                 <Label  Grid.Row="0" Grid.Column="0" Text="DATE" Style="{StaticResource HederLabelStyle}" HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
-                <Label Grid.Row="0" Grid.Column="1" Text="ROUTE NAME"  Style="{StaticResource HederLabelStyle}" HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
-                <Label Grid.Row="0" Grid.Column="2" Text="TECH GRADE" Style="{StaticResource HederLabelStyle}"  HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
-                <Label Grid.Row="0" Grid.Column="3" Text="ASCENT TYPE" Style="{StaticResource HederLabelStyle}"  HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
+                <Label Grid.Row="0" Grid.Column="1"  Text="CLIMB"  Style="{StaticResource HederLabelStyle}" HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
+                <Label Grid.Row="0" Grid.Column="2" Text="GRADE" Style="{StaticResource HederLabelStyle}"  HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
+                <Label Grid.Row="0" Grid.Column="3" Text="STYLE" Style="{StaticResource HederLabelStyle}"  HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
 
             </Grid>
 
