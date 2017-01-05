@@ -2,6 +2,8 @@
 using System;
 using System.Collections.ObjectModel;
 using SloperMobile.Views;
+using SloperMobile.Common.Constants;
+using System.Linq;
 
 namespace SloperMobile.ViewModel
 {
@@ -11,7 +13,7 @@ namespace SloperMobile.ViewModel
         {
 
             FillMenuItems();
-
+            SelectedMenu = new Model.MasterPageItem();
         }
 
 
@@ -24,6 +26,28 @@ namespace SloperMobile.ViewModel
             get { return menuList; }
             set { menuList = value; OnPropertyChanged(); }
         }
+
+        private MasterPageItem selecteMenu;
+
+        public MasterPageItem SelectedMenu
+        {
+            get { return selecteMenu; }
+            set
+            {
+                selecteMenu = value;
+                if (value?.Title != null)
+                {
+                    var menuDetails = App.DAUtil.GetCragList();
+                    if (menuDetails.Count > 0)
+                    {
+                        var selectedItems = menuDetails?.FirstOrDefault(s => s.crag_name == selecteMenu.Title);
+                        Cache.Selected_CRAG = selectedItems;
+                    }
+                }
+                OnPropertyChanged();
+            }
+        }
+
 
         private void FillMenuItems()
         {
@@ -65,46 +89,14 @@ namespace SloperMobile.ViewModel
                 });
                 foreach (var item in menuDetails)
                 {
-                    if (item.crag_name == "CCC Chinook")
+                    MenuList.Add(new MasterPageItem
                     {
-                        MenuList.Add(new MasterPageItem
-                        {
-                            Title = "CCC Chinook",
-                            IconSource = "Menu_side_bar_service_mode",
-                            Contents = item.crag_general_info,
-                            TargetType = typeof(MapPage),
-                        });
-                    }
-                    if (item.crag_name == "Grassi Lakes")
-                    {
-                        MenuList.Add(new MasterPageItem
-                        {
-                            Title = "Grassi Lakes",
-                            IconSource = "Menu_side_bar_service_mode",
-                            Contents = item.crag_general_info,
-                            TargetType = typeof(MapPage),
-                        });
-                    }
-                    if (item.crag_name == "The Hanger")
-                    {
-                        MenuList.Add(new MasterPageItem
-                        {
-                            Title = "The Hanger",
-                            IconSource = "Menu_side_bar_account_settings",
-                            Contents = item.crag_general_info,
-                            TargetType = typeof(MapPage),
-                        });
-                    }
-                    if (item.crag_name == "The Stronghold")
-                    {
-                        MenuList.Add(new MasterPageItem
-                        {
-                            Title = "The Stronhold",
-                            IconSource = "Menu_side_bar_about",
-                            Contents = item.crag_general_info,
-                            TargetType = typeof(MapPage),
-                        });
-                    }
+                        Title = item.crag_name,
+                        ItemId = item.crag_id,
+                        IconSource = "Menu_side_bar_service_mode",
+                        Contents = item.crag_general_info,
+                        TargetType = typeof(MapPage),
+                    });
 
                 }
 

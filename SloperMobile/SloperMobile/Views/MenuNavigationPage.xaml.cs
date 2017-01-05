@@ -29,10 +29,14 @@ namespace SloperMobile.Views
                 var item = e.SelectedItem as MasterPageItem;
                 if (item != null)
                 {
+                    if (!string.IsNullOrEmpty(item.ItemId))
+                    {
+                        App.SelectedCrag = item.ItemId;
+                    }
                     Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
                     masterMenuPage.ListView.SelectedItem = null;
                     IsPresented = false;
-                    
+
                 }
 
             }

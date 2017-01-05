@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using SloperMobile.DataBase;
 
 namespace SloperMobile.Common.Constants
 {
@@ -11,5 +12,7 @@ namespace SloperMobile.Common.Constants
     {
         public static string AccessToken { get; set; }
         public static MasterDetailPage MasterPage { get; set; }
+        public static T_CRAG Selected_CRAG { get; set; }
+
     }
 }

@@ -13,7 +13,7 @@ namespace SloperMobile
     public partial class App : Application
     {
         static DataAccess dbUtils;
-        public static string _selectedcrag = "344";//"The Hanger"
+        private static string _selectedcrag;
         public App()
         {
             InitializeComponent();
@@ -22,7 +22,19 @@ namespace SloperMobile
 
         public static string SelectedCrag
         {
-            get { return _selectedcrag; }
+            get
+            {
+                if (_selectedcrag == null)
+                {
+                    var menuDetails = App.DAUtil.GetCragList();
+                    if (menuDetails.Count > 0)
+                    {
+                        var selectedItems = menuDetails?.FirstOrDefault();
+                        _selectedcrag = selectedItems.crag_id;
+                    }
+                }
+                return _selectedcrag;
+            }
             set { _selectedcrag = value; }
         }
         public static DataAccess DAUtil
