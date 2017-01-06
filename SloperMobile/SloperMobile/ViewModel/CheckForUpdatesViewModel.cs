@@ -155,26 +155,7 @@ namespace SloperMobile.ViewModel
 
                     }
                 }
-                if (Convert.ToInt32(CheckForModelObj.routes_modified) > 0)
-                {
-                    DisplayUpdateMessage = "Downloading Route now.\nplease wait...";
-                    RouteObj = await HttpGetRouteUpdates();
-                    foreach (T_ROUTE route in RouteObj)
-                    {
-                        App.DAUtil.SaveRoute(route);
 
-                        Dictionary<string, string> topodict = new Dictionary<string, string>();
-                        topodict.Add("sectorID", route.sector_id);
-                        HttpClientHelper apicall = new ApiHandler(ApiUrls.Url_GetUpdate_TopoData, string.Empty);
-                        var topo_response = await apicall.GetJsonString<string>(topodict);
-                        T_TOPO topo = new T_TOPO();
-                        topo.sector_id = route.sector_id;
-                        topo.topo_json = topo_response;
-                        topo.upload_date = Helper.GetCurrentDate("yyyyMMdd");
-                        App.DAUtil.SaveTopo(topo);
-                    }
-
-                }
                 if (Convert.ToInt32(CheckForModelObj.sectors_modified) > 0)
                 {
                     DisplayUpdateMessage = "Downloading Sector now.\nplease wait...";
@@ -195,18 +176,41 @@ namespace SloperMobile.ViewModel
                         App.DAUtil.SaveTopo(topo);
                     }
                 }
-                LAST_UPDATE updated_date = new LAST_UPDATE();
+
+                if (Convert.ToInt32(CheckForModelObj.routes_modified) > 0)
+                {
+                    DisplayUpdateMessage = "Downloading Route now.\nplease wait...";
+                    RouteObj = await HttpGetRouteUpdates();
+                    foreach (T_ROUTE route in RouteObj)
+                    {
+                        App.DAUtil.SaveRoute(route);
+
+                        //Dictionary<string, string> topodict = new Dictionary<string, string>();
+                        //topodict.Add("sectorID", route.sector_id);
+                        //HttpClientHelper apicall = new ApiHandler(ApiUrls.Url_GetUpdate_TopoData, string.Empty);
+                        //var topo_response = await apicall.GetJsonString<string>(topodict);
+                        //T_TOPO topo = new T_TOPO();
+                        //topo.sector_id = route.sector_id;
+                        //topo.topo_json = topo_response;
+                        //topo.upload_date = Helper.GetCurrentDate("yyyyMMdd");
+                        //App.DAUtil.SaveTopo(topo);
+                    }
+
+                }
+                
+                APP_SETTING updated_date = new APP_SETTING();
                 updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
+                updated_date.IS_INITIALIZED = true;
                 App.DAUtil.SaveLastUpdate(updated_date);
                 DisplayUpdateMessage = "Thanks for updating.";
                 IsRunningTasks = false;
             }
             else
             {
-                LAST_UPDATE updated_date = new LAST_UPDATE();
+                APP_SETTING updated_date = new APP_SETTING();
                 updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
                 App.DAUtil.SaveLastUpdate(updated_date);
-                DisplayUpdateMessage = "Your app is uptodate...";
+                DisplayUpdateMessage = "Your app is up to date.";
                 IsRunningTasks = false;
             }
         }

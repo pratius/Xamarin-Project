@@ -11,7 +11,7 @@ namespace SloperMobile.DataBase
     {
     }
 
-    public class LAST_UPDATE
+    public class APP_SETTING
     {
         /// <summary>
         /// Primary Key
@@ -22,7 +22,8 @@ namespace SloperMobile.DataBase
         [NotNull]
         public string UPDATED_DATE
         { get; set; }
-
+        public bool IS_INITIALIZED
+        { get; set; }
     }
 
     public class T_AREA

@@ -16,7 +16,7 @@ namespace SloperMobile.DataBase
         public DataAccess()
         {
             dbConn = DependencyService.Get<ISQLite>().GetConnection();
-            dbConn.CreateTable<LAST_UPDATE>();
+            dbConn.CreateTable<APP_SETTING>();
             dbConn.CreateTable<T_AREA>();
             dbConn.CreateTable<T_ROUTE>();
             dbConn.CreateTable<T_SECTOR>();
@@ -65,14 +65,21 @@ namespace SloperMobile.DataBase
         //============================= LAST_UPDATE ============================
         public string GetLastUpdate()
         {
-            return dbConn.ExecuteScalar<string>("Select [UPDATED_DATE] From [LAST_UPDATE]");
+            return dbConn.ExecuteScalar<string>("Select [UPDATED_DATE] From [APP_SETTING]");
         }
-        public int SaveLastUpdate(LAST_UPDATE lastUpdate)
+
+        public bool CheckAppInitialization()
         {
-            var item = dbConn.Table<LAST_UPDATE>().FirstOrDefault(lastdate => lastdate.ID == 1);
+            return dbConn.ExecuteScalar<bool>("Select [IS_INITIALIZED] From [APP_SETTING]");
+        }
+
+        public int SaveLastUpdate(APP_SETTING lastUpdate)
+        {
+            var item = dbConn.Table<APP_SETTING>().FirstOrDefault(lastdate => lastdate.ID == 1);
             if (item != null)
             {
                 lastUpdate.ID = item.ID;
+                lastUpdate.IS_INITIALIZED = true;
                 return dbConn.Update(lastUpdate);
             }
             else

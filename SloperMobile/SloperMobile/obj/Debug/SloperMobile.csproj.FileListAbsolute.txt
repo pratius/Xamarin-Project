@@ -262,5 +262,3 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Deb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
