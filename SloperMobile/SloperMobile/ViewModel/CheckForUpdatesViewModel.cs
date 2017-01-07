@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using SloperMobile.Common.Constants;
 using SloperMobile.Common.Helpers;
 using SloperMobile.DataBase;
 using SloperMobile.Model;
-using Xamarin.Forms;
 
 namespace SloperMobile.ViewModel
 {
@@ -75,11 +71,24 @@ namespace SloperMobile.ViewModel
         public CheckForUpdatesViewModel()
         {
             CheckForModelObj = new CheckForUpdateModel();
+            currentInstance = this;
         }
 
+        public static CheckForUpdatesViewModel currentInstance;
+        /// <summary>
+        /// Create the singleton CheckForUpdatesViewModel will remove later
+        /// </summary>
+        /// <returns></returns>
+        public static CheckForUpdatesViewModel CurrentInstance()
+        {
+            if (currentInstance == null)
+                return new CheckForUpdatesViewModel();
+            return currentInstance;
+
+        }
         #region Functions
 
-        public async void OnPageAppearing()
+        public async Task OnPageAppearing()
         {
             IsRunningTasks = true;
             CheckForModelObj = await HttpGetCheckForUpdates();
@@ -197,7 +206,7 @@ namespace SloperMobile.ViewModel
                     }
 
                 }
-                
+
                 APP_SETTING updated_date = new APP_SETTING();
                 updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
                 updated_date.IS_INITIALIZED = true;

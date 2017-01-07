@@ -34,6 +34,7 @@ namespace SloperMobile.ViewModel
 
 
         public Action DisplayMessage;
-        public Action PageNavigation;
+        public Action OnPageNavigation;
+        public Action<object> OnConditionNavigation;
     }
 }

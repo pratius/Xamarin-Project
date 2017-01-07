@@ -94,7 +94,7 @@ namespace SloperMobile.ViewModel
                     if (response.accessToken != null && response.renewalToken != null)
                     {
                         Cache.AccessToken = response.accessToken;
-                        PageNavigation?.Invoke();
+                        OnPageNavigation?.Invoke();
                         DisposeObject();
                     }
                     else
@@ -129,7 +129,7 @@ namespace SloperMobile.ViewModel
 
                         await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
                         DisposeObject();
-                        PageNavigation?.Invoke();
+                        OnPageNavigation?.Invoke();
                     }
                     else
                     {

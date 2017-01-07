@@ -16,8 +16,8 @@ namespace SloperMobile
         private static string _selectedcrag;
         public App()
         {
-            InitializeComponent();
-            MainPage = new NavigationPage(new LoginPage());
+
+            InitializeAppStep1();
         }
 
         public static string SelectedCrag
@@ -63,6 +63,16 @@ namespace SloperMobile
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        void InitializeAppStep1()
+        {
+            InitializeComponent();
+            var IsAppinitialized = DAUtil.CheckAppInitialization();
+            if(IsAppinitialized)
+                MainPage = new NavigationPage(new LoginPage());
+            else
+                MainPage = new NavigationPage(new SplashPage());
         }
     }
 }

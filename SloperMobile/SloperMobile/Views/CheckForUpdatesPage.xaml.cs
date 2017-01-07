@@ -18,9 +18,13 @@ namespace SloperMobile.Views
             NavigationPage.SetHasNavigationBar(this, false);
             checkForUpdateVm = new ViewModel.CheckForUpdatesViewModel();
             BindingContext = checkForUpdateVm;
-            checkForUpdateVm.OnPageAppearing();
+            CheckUpdatedDataFromLocalDB();
         }
 
+        private async void CheckUpdatedDataFromLocalDB()
+        {
+          await  checkForUpdateVm.OnPageAppearing();
+        }
         //protected override void OnAppearing()
         //{
         //    checkForUpdateVm.OnPageAppearing();

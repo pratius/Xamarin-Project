@@ -18,7 +18,7 @@ namespace SloperMobile.Views
             NavigationPage.SetHasNavigationBar(this, false);
             loginViewModel = new UserViewModel();
             BindingContext = loginViewModel;
-            loginViewModel.PageNavigation = LoginViewModel_OnLoginClick;
+            loginViewModel.OnPageNavigation = LoginViewModel_OnLoginClick;
             var vDB = App.DAUtil;
         }
 
