@@ -93,7 +93,9 @@ namespace SloperMobile.ViewModel
                 {
                     if (response.accessToken != null && response.renewalToken != null)
                     {
-                        Cache.AccessToken = response.accessToken;
+                        Settings.AccessTokenSettings= response.accessToken;
+                        Settings.RenewalTokenSettings = response.renewalToken;
+                        Settings.DisplayNameSettings = response.displayName;
                         OnPageNavigation?.Invoke();
                         DisposeObject();
                     }

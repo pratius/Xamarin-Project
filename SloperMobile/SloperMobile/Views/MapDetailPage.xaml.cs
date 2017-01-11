@@ -15,7 +15,7 @@ namespace SloperMobile.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            SectorDetailVM = new ViewModel.MapDetailViewModel(SelectedSector);
+            SectorDetailVM = new ViewModel.MapDetailViewModel(SelectedSector,Navigation);
             BindingContext = SectorDetailVM;
         }
     }

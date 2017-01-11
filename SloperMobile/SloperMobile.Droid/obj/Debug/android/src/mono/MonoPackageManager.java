@@ -103,6 +103,8 @@ class MonoPackageManager_Resources {
 		"HockeySDK.AndroidBindings.dll",
 		"HockeySDK.dll",
 		"Newtonsoft.Json.dll",
+		"Plugin.Settings.Abstractions.dll",
+		"Plugin.Settings.dll",
 		"SQLite.Net.dll",
 		"SQLite.Net.Platform.XamarinAndroid.dll",
 		"Syncfusion.SfGauge.Android.dll",

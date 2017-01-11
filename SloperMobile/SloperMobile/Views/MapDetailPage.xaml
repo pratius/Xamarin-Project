@@ -16,7 +16,12 @@
       <ColumnDefinition Width="*"/>
       <ColumnDefinition Width="02"/>
     </Grid.ColumnDefinitions>
-    <Image Grid.Row="1" Grid.Column="1" Source="{Binding SectorImage}"  WidthRequest="100" Aspect="AspectFill" HeightRequest="200"/>
+    <Image Grid.Row="1" Grid.Column="1" Source="{Binding SectorImage}"  WidthRequest="100" Aspect="AspectFill" HeightRequest="200">
+      <Image.GestureRecognizers>
+        <TapGestureRecognizer
+            Command="{Binding TapSectorCommand}" CommandParameter="RoutePage"/>
+      </Image.GestureRecognizers>
+    </Image>
     <Grid Grid.Row="2" Grid.Column="1">
       <ListView  x:Name="lstView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding SecData}">
         <ListView.ItemTemplate>

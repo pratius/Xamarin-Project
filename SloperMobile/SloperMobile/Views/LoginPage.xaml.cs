@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SloperMobile.Common.Helpers;
 using Xamarin.Forms;
 
 namespace SloperMobile.Views
@@ -20,6 +20,10 @@ namespace SloperMobile.Views
             BindingContext = loginViewModel;
             loginViewModel.OnPageNavigation = LoginViewModel_OnLoginClick;
             var vDB = App.DAUtil;
+            if (string.IsNullOrEmpty(Settings.SelectedCragSettings))
+            {
+                Settings.SelectedCragSettings = App.SelectedCrag;
+            }
         }
 
         private async void LoginViewModel_OnLoginClick()

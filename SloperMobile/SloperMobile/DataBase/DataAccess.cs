@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using SloperMobile.Model;
+using SloperMobile.Common.Helpers;
 
 namespace SloperMobile.DataBase
 {
@@ -197,9 +198,17 @@ namespace SloperMobile.DataBase
 
         public List<string> GetSectorIdForSelectedCrag()
         {
-            var item = from ts in dbConn.Table<T_SECTOR>() where ts.crag_id == App.SelectedCrag select ts.sector_id;
-            var x = item.Count();
-            return item.ToList();
+            if (!string.IsNullOrEmpty(Settings.SelectedCragSettings))
+            {
+                var cragid = Settings.SelectedCragSettings;
+                var item = from ts in dbConn.Table<T_SECTOR>() where ts.crag_id == cragid select ts.sector_id;
+                var x = item.Count();
+                return item.ToList();
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public IEnumerable<T_TOPO> GetSectorImages(int skip, int take)

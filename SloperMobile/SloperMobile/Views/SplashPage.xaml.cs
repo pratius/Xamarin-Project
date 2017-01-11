@@ -26,8 +26,6 @@ namespace SloperMobile.Views
                 await Navigation.PushAsync(new LoginPage());
             else if (Convert.ToString(obj) == "Cancel")
                 await Navigation.PopAsync();
-
-
         }
     }
 }

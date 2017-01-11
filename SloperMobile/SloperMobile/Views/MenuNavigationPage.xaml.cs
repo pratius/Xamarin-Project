@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using SloperMobile.Common.Helpers;
 
 namespace SloperMobile.Views
 {
@@ -31,7 +32,7 @@ namespace SloperMobile.Views
                 {
                     if (!string.IsNullOrEmpty(item.ItemId))
                     {
-                        App.SelectedCrag = item.ItemId;
+                        Settings.SelectedCragSettings= item.ItemId;
                     }
                     Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
                     masterMenuPage.ListView.SelectedItem = null;
