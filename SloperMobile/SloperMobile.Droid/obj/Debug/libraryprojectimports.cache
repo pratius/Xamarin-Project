@@ -4,6 +4,7 @@
   <ResolvedResourceDirectories>
     <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\HockeySDK.AndroidBindings\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\HockeySDK\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\ImageCircle.Forms.Plugin.Android\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\Plugin.Settings\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\SQLite.Net.Platform.XamarinAndroid\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\Syncfusion.SfGauge.Android\library_project_imports\res</ResolvedResourceDirectory>
@@ -13,6 +14,7 @@
   <ResolvedAssetDirectories>
     <ResolvedAssetDirectory>obj\Debug\__library_projects__\HockeySDK.AndroidBindings\library_project_imports\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>obj\Debug\__library_projects__\HockeySDK\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\ImageCircle.Forms.Plugin.Android\library_project_imports\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>obj\Debug\__library_projects__\Plugin.Settings\library_project_imports\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>obj\Debug\__library_projects__\SQLite.Net.Platform.XamarinAndroid\library_project_imports\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\assets</ResolvedAssetDirectory>
@@ -22,6 +24,7 @@
   <ResolvedResourceDirectoryStamps>
     <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\HockeySDK.AndroidBindings.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\HockeySDK.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\ImageCircle.Forms.Plugin.Android.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\Plugin.Settings.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\SQLite.Net.Platform.XamarinAndroid.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\__library_projects__\Syncfusion.SfGauge.Android.stamp</ResolvedResourceDirectoryStamp>

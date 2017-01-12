@@ -2,6 +2,8 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\o
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\FormsViewGroup.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\HockeySDK.AndroidBindings.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\HockeySDK.dll
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\ImageCircle.Forms.Plugin.Abstractions.dll
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\ImageCircle.Forms.Plugin.Android.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Newtonsoft.Json.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Plugin.Settings.Abstractions.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Plugin.Settings.dll
@@ -32,6 +34,7 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\o
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\SloperMobile.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Runtime.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.ComponentModel.Composition.dll
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Resources.ResourceManager.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.IO.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Threading.Tasks.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Xml.XDocument.dll
@@ -55,7 +58,6 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\o
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Text.Encoding.Extensions.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Microsoft.CSharp.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Mono.CSharp.dll
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Resources.ResourceManager.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.ComponentModel.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Net.Http.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Collections.Concurrent.dll

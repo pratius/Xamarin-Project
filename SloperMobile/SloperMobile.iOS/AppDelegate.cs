@@ -7,6 +7,7 @@ using UIKit;
 using HockeyApp.iOS;
 using SloperMobile.Common.Constants;
 using Syncfusion.SfGauge.XForms.iOS;
+using ImageCircle.Forms.Plugin.iOS;
 
 namespace SloperMobile.iOS
 {
@@ -26,6 +27,7 @@ namespace SloperMobile.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            ImageCircleRenderer.Init();
             LoadApplication(new App());
             var manager = BITHockeyManager.SharedHockeyManager;
             manager.Configure(AppSetting.HockeyAppId);

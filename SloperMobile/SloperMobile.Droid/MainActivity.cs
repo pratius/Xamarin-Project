@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
+using ImageCircle.Forms.Plugin.Droid;
 using SloperMobile.Common.Constants;
 namespace SloperMobile.Droid
 {
@@ -17,6 +18,7 @@ namespace SloperMobile.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            ImageCircleRenderer.Init();
             LoadApplication(new App());
             CrashManager.Register(this, AppSetting.HockeyAppId);
             //// in your main activity OnCreate-method add:

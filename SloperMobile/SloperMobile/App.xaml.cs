@@ -69,7 +69,7 @@ namespace SloperMobile
             // Handle when your app resumes
         }
 
-        async void InitializeAppStep1()
+        void InitializeAppStep1()
         {
             InitializeComponent();
             var IsAppinitialized = DAUtil.CheckAppInitialization();
@@ -81,21 +81,21 @@ namespace SloperMobile
                 }
                 else
                 {
-                    MainPage = new NavigationPage(new HomePage());
-                    HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login_Extend, Settings.AccessTokenSettings);
-                    ExtendURL extnobj = new ExtendURL();
-                    extnobj.rtoken = Settings.RenewalTokenSettings;
-                    var extnjson = JsonConvert.SerializeObject(extnobj);
-                    var response = await apicall.Post<LoginResponse>(extnjson);
-                    if (response != null)
-                    {
-                        Settings.AccessTokenSettings = response.accessToken;
-                        Settings.RenewalTokenSettings = response.renewalToken;
-                        Settings.DisplayNameSettings = response.displayName;
-                        MainPage = new NavigationPage(new HomePage());
-                    }
-                    else
-                        MainPage = new NavigationPage(new LoginPage());
+                    MainPage = new NavigationPage(new MenuNavigationPage());
+                    //HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login_Extend, Settings.AccessTokenSettings);
+                    //ExtendURL extnobj = new ExtendURL();
+                    //extnobj.rtoken = Settings.RenewalTokenSettings;
+                    //var extnjson = JsonConvert.SerializeObject(extnobj);
+                    //var response = await apicall.Post<LoginResponse>(extnjson);
+                    //if (response != null)
+                    //{
+                    //    Settings.AccessTokenSettings = response.accessToken;
+                    //    Settings.RenewalTokenSettings = response.renewalToken;
+                    //    Settings.DisplayNameSettings = response.displayName;
+                    //    MainPage = new NavigationPage(new HomePage());
+                    //}
+                    //else
+                    //    MainPage = new NavigationPage(new LoginPage());
                 }
 
             }

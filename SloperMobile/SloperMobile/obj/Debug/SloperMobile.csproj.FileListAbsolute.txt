@@ -215,6 +215,7 @@ E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Debug\
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.config
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.pdb
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\ImageCircle.Forms.Plugin.Abstractions.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Newtonsoft.Json.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Plugin.Settings.Abstractions.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Plugin.Settings.dll
@@ -226,6 +227,8 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Deb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Xamarin.Forms.Core.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Xamarin.Forms.Platform.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Xamarin.Forms.Xaml.dll
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\ImageCircle.Forms.Plugin.Abstractions.pdb
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\ImageCircle.Forms.Plugin.Abstractions.xml
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Newtonsoft.Json.xml
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Plugin.Settings.xml
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Plugin.Settings.Abstractions.xml
@@ -239,7 +242,6 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Deb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Xamarin.Forms.Xaml.pdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Xamarin.Forms.Xaml.xml
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csproj.App.config
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csprojResolveAssemblyReference.cache
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.App.xaml.g.cs
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.LoginPage.xaml.g.cs
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.MenuNavigationPage.xaml.g.cs
@@ -264,5 +266,6 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Deb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.MapRoutesPage.xaml.g.cs
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csprojResolveAssemblyReference.cache
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb

@@ -11,10 +11,18 @@ namespace SloperMobile.Views
 {
     public partial class SettingsPage : ContentPage
     {
+        private SettingViewModel settingVM;
         public SettingsPage()
         {
             InitializeComponent();
-            BindingContext = new SettingViewModel();
+            settingVM = new SettingViewModel();
+            BindingContext = settingVM;
+            settingVM.OnPageNavigation = SettingViewModel_OnLogoutClick;
+        }
+
+        private async void SettingViewModel_OnLogoutClick()
+        {
+            await Navigation.PushAsync(new LoginPage());
         }
     }
 }

@@ -229,6 +229,8 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\b
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\FormsViewGroup.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\HockeySDK.AndroidBindings.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\HockeySDK.dll
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\ImageCircle.Forms.Plugin.Abstractions.dll
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\ImageCircle.Forms.Plugin.Android.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Newtonsoft.Json.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Plugin.Settings.Abstractions.dll
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Plugin.Settings.dll
@@ -253,6 +255,12 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\b
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.pdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\FormsViewGroup.pdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\FormsViewGroup.dll.mdb
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\ImageCircle.Forms.Plugin.Abstractions.pdb
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\ImageCircle.Forms.Plugin.Abstractions.xml
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\ImageCircle.Forms.Plugin.Abstractions.dll.mdb
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\ImageCircle.Forms.Plugin.Android.pdb
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\ImageCircle.Forms.Plugin.Android.xml
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\ImageCircle.Forms.Plugin.Android.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Newtonsoft.Json.xml
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Plugin.Settings.xml
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Plugin.Settings.Abstractions.xml
@@ -414,12 +422,12 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\o
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\R.cs.flag
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\uploadflags.txt
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.Droid.dll.mdb
-D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Java.Interop.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Microsoft.CSharp.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Mono.Android.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Mono.CSharp.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\mscorlib.dll.mdb
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\System.ComponentModel.Composition.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\System.Core.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\System.dll.mdb
@@ -429,6 +437,8 @@ D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\b
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\System.Xml.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\System.Xml.Linq.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\FormsViewGroup.dll.mdb
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\ImageCircle.Forms.Plugin.Abstractions.dll.mdb
+D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\ImageCircle.Forms.Plugin.Android.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Java.Interop.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Microsoft.CSharp.dll.mdb
 D:\MIT\MobileDev\Xamarin\XamForms\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Mono.Android.dll.mdb
