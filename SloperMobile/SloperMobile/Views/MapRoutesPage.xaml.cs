@@ -17,6 +17,12 @@ namespace SloperMobile.Views
             NavigationPage.SetHasNavigationBar(this, false);
             MapRouteVM = new ViewModel.MapRoutesViewModel(CurrentSector);
             BindingContext = MapRouteVM;
+            MapRouteVM.OnPageNavigation = OnPageNavigation;
+        }
+
+        private async void OnPageNavigation()
+        {
+            await Navigation.PushAsync(new AscentTypePage());
         }
     }
 }

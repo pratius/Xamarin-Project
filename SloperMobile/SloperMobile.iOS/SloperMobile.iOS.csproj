@@ -193,37 +193,37 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\chartIcon.PNG" />
+    <AndroidResource Include="Resources\chartIcon.PNG" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Menu_button%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Menu_button.png" />
+    <AndroidResource Include="Resources\Menu_button.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Menu_button%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\logo.png" />
+    <AndroidResource Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\homeProfile.png" />
+    <AndroidResource Include="Resources\homeProfile.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\homePyramid.png" />
+    <AndroidResource Include="Resources\homePyramid.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\homeSends.png" />
+    <AndroidResource Include="Resources\homeSends.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\homeClimbingDays.png" />
+    <AndroidResource Include="Resources\homeClimbingDays.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\homeClimbingMap.png" />
+    <AndroidResource Include="Resources\homeClimbingMap.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\homeNews.png" />
+    <AndroidResource Include="Resources\homeNews.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="hockeyappios">
@@ -232,7 +232,7 @@
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\climbing_days.png" />
+    <AndroidResource Include="Resources\climbing_days.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\climbing_days%402x.png" />
@@ -241,7 +241,7 @@
     <BundleResource Include="Resources\climbing_days%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\climbing_map.png" />
+    <AndroidResource Include="Resources\climbing_map.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\climbing_map%402x.png" />
@@ -297,31 +297,181 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\logo_old.png" />
+    <AndroidResource Include="Resources\logo_old.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\navHome.png" />
+    <AndroidResource Include="Resources\navHome.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\navMap.png" />
+    <AndroidResource Include="Resources\navMap.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\navNews.png" />
+    <AndroidResource Include="Resources\navNews.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\navProfile.png" />
+    <AndroidResource Include="Resources\navProfile.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\navSettings.png" />
+    <AndroidResource Include="Resources\navSettings.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\sendsDonutOnsights.png" />
+    <AndroidResource Include="Resources\sendsDonutOnsights.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\sendsDonutProjects.png" />
+    <AndroidResource Include="Resources\sendsDonutProjects.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\sendsDonutRedpoints.png" />
+    <AndroidResource Include="Resources\sendsDonutRedpoints.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\SendsBtnImgs.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Arm.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\bigImage.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\BodyPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\climImg.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\close.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Comment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\EveryThing.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\facebook_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\google_plus_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Google+.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Hand.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Hand2Pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\HandPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_about_us.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_attachement_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_gym_map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_gym_map_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_news.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_news_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_profile_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_setting_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Instagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\instagram_symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\listimage.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\loader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\main_header_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Map.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\NewBig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\OneMore.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\PowerHand.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Ratting.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Right.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Search.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Sequential.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\SettingOne.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\SettingPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Settings.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Sustained.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Twitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\twitter_logo_shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Video.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\WhiteStar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\YellowStar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

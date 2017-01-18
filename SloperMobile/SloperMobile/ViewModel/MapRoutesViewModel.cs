@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SloperMobile.Model;
 using Xamarin.Forms;
+using SloperMobile.Common.Command;
 
 namespace SloperMobile.ViewModel
 {
@@ -19,6 +20,7 @@ namespace SloperMobile.ViewModel
         }
         public MapRoutesViewModel(MapListModel CurrentSector)
         {
+            SendCommand = new DelegateCommand(ExecuteOnSends);
             try
             {
                 PageHeaderText = CurrentSector.SectorName;
@@ -28,5 +30,12 @@ namespace SloperMobile.ViewModel
             {
             }
         }
+
+        private void ExecuteOnSends(object obj)
+        {
+            OnPageNavigation?.Invoke();
+        }
+
+        public DelegateCommand SendCommand { get; set; }
     }
 }

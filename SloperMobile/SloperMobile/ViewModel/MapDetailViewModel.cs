@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SloperMobile.Common.Command;
 using SloperMobile.Model;
 using Xamarin.Forms;
+using SloperMobile.Common.Constants;
 
 namespace SloperMobile.ViewModel
 {
@@ -43,6 +44,7 @@ namespace SloperMobile.ViewModel
             {
                 _navigation = navigaton;
                 CurrentSector = SelectedSector;
+                Cache.SelctedCurrentSector = SelectedSector;
                 PageHeaderText = SelectedSector.SectorName;
                 SectorImage = SelectedSector.SectorImage;
                 TapSectorCommand = new DelegateCommand(TapOnSectorImage);

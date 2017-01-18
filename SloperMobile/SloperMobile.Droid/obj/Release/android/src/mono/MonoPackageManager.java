@@ -102,6 +102,8 @@ class MonoPackageManager_Resources {
 		"FormsViewGroup.dll",
 		"HockeySDK.AndroidBindings.dll",
 		"HockeySDK.dll",
+		"ImageCircle.Forms.Plugin.Abstractions.dll",
+		"ImageCircle.Forms.Plugin.Android.dll",
 		"Newtonsoft.Json.dll",
 		"Plugin.Settings.Abstractions.dll",
 		"Plugin.Settings.dll",

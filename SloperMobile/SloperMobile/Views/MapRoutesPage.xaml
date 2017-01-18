@@ -4,7 +4,7 @@
              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
              x:Class="SloperMobile.Views.MapRoutesPage" Style="{StaticResource AppBackgroundColor}" NavigationPage.HasNavigationBar="False">
 
-  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -15,7 +15,15 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="02"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Row="0" Grid.Column="1" Source="{Binding CurrentSectorImage}" Aspect="AspectFill" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+        <StackLayout Grid.Row="0" Grid.Column="1">
+            <Image  Source="{Binding CurrentSectorImage}" Aspect="AspectFill" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Image  Source="SendsBtnImgs" Aspect="AspectFit" HeightRequest="60" WidthRequest="60">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SendCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+
         <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="30"/>
         <UC:FooterUC  Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
     </Grid>

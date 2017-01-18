@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SloperMobile.Views.AscentRouteStylePage" NavigationPage.HasNavigationBar="False" BackgroundColor="Black">
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="30,30,30,30">
+        <Label Text="  What style" TextColor="White" FontSize="28" HorizontalOptions="Center"/>
+        <Label Text="of climbing is" TextColor="White" FontSize="28" HorizontalOptions="Center" />
+        <Label Text="this route?" TextColor="White" FontSize="28" HorizontalOptions="Center"/>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="02"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".7*"/>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height="02"/>
+            </Grid.RowDefinitions>
+
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="8" BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
+                <BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
+
+
+                <Grid Grid.Row="1" Grid.Column="0" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SendRouteStyleCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Image Aspect="AspectFit" Source="SettingOne" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+                </Grid>
+
+
+                <Grid Grid.Row="1" Grid.Column="2" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SendRouteStyleCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Image Aspect="Fill" Source="Sustained" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+                </Grid>
+                <Grid Grid.Row="7" Grid.Column="0" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SendRouteStyleCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Image Aspect="Fill" Source="Arm" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+                </Grid>
+
+                <Grid  Grid.Row="7" Grid.Column="2" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SendRouteStyleCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Image Aspect="Fill" Source="Sustained" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+                </Grid>
+
+
+            </Grid>
+        </Grid>
+
+    </StackLayout>
+</ContentPage>

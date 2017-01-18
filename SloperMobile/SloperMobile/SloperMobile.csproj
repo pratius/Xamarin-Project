@@ -53,6 +53,7 @@
     <Compile Include="CustomControls\InfiniteListView.cs" />
     <Compile Include="DataBase\DataAccess.cs" />
     <Compile Include="DataBase\DataTables.cs" />
+    <Compile Include="Model\AscentProcessModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\CheckForUpdateModel.cs" />
     <Compile Include="Model\CragTemplate.cs" />
@@ -78,6 +79,7 @@
       <DependentUpon>SendsUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ApiHandler.cs" />
+    <Compile Include="ViewModel\AscentProcessViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CheckForUpdatesViewModel.cs" />
     <Compile Include="ViewModel\ClimbingDaysViewModel.cs" />
@@ -93,6 +95,27 @@
     <Compile Include="ViewModel\SplashViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
+    <Compile Include="Views\AscentClimbingAnglePage.xaml.cs">
+      <DependentUpon>AscentClimbingAnglePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AscentDatePage.xaml.cs">
+      <DependentUpon>AscentDatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AscentHoldTypePage.xaml.cs">
+      <DependentUpon>AscentHoldTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AscentRatingPage.xaml.cs">
+      <DependentUpon>AscentRatingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AscentRouteStylePage.xaml.cs">
+      <DependentUpon>AscentRouteStylePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AscentSummaryPage.xaml.cs">
+      <DependentUpon>AscentSummaryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AscentTypePage.xaml.cs">
+      <DependentUpon>AscentTypePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CheckForUpdatesPage.xaml.cs">
       <DependentUpon>CheckForUpdatesPage.xaml</DependentUpon>
     </Compile>
@@ -321,6 +344,48 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\MapRoutesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AscentTypePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AscentDatePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AscentRatingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AscentRouteStylePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AscentHoldTypePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AscentClimbingAnglePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AscentSummaryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
