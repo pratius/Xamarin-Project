@@ -15,15 +15,13 @@
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
             <Image Source="Camera" HeightRequest="90"/>
             <Label BackgroundColor="White"/>
-            <Image Source="Video" HeightRequest="90"/>
+            <Image Source="Video.png" HeightRequest="90"/>
             <Label/>
             <Image Source="Comment" HeightRequest="90"/>
 
         </StackLayout>
-        <Button BorderColor="Yellow" Text="UPLOAD" TextColor="White" BorderWidth="10" BackgroundColor="Black" FontSize="24">
-            <Button.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding SendRatingCommand}"/>
-            </Button.GestureRecognizers>
-        </Button>
+        <Button Command="{Binding SendRatingCommand}" BorderColor="Yellow" Text="UPLOAD" TextColor="White" BorderWidth="10" BackgroundColor="Black" FontSize="24"/>
+
+
     </StackLayout>
 </ContentPage>

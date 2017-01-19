@@ -17,11 +17,9 @@
         </Grid.ColumnDefinitions>
         <StackLayout Grid.Row="0" Grid.Column="1">
             <Image  Source="{Binding CurrentSectorImage}" Aspect="AspectFill" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
-            <Image  Source="SendsBtnImgs" Aspect="AspectFit" HeightRequest="60" WidthRequest="60">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding SendCommand}"/>
-                </Image.GestureRecognizers>
-            </Image>
+            <Button Text="Send Lists" BackgroundColor="Yellow" TextColor="Black" Command="{Binding SendCommand}" FontSize="Medium" HeightRequest="60" WidthRequest="60"/>
+
+
         </StackLayout>
 
         <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="30"/>

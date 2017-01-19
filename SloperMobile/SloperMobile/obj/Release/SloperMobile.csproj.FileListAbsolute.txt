@@ -192,5 +192,3 @@ E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Releas
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb

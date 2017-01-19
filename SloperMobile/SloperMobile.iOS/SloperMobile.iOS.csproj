@@ -324,7 +324,7 @@
     <AndroidResource Include="Resources\sendsDonutRedpoints.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\SendsBtnImgs.PNG" />
+    <AndroidResource Include="Resources\SendsBtnImgs.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Arm.PNG" />
