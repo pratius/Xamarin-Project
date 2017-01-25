@@ -183,16 +183,16 @@ namespace SloperMobile.DataBase
             var ascentlist = dbConn.Table<TASCENT_TYPE>().ToList();
             return ascentlist;
         }
-        public string GetSectorNameBySectorID(string secid)
+        public T_SECTOR GetSectorDataBySectorID(string secid)
         {
             var item = dbConn.Table<T_SECTOR>().FirstOrDefault(sector => sector.sector_id == secid);
             if (item != null)
             {
-                return item.sector_name;
+                return item;
             }
             else
             {
-                return string.Empty;
+                return null;
             }
         }
 
@@ -222,6 +222,34 @@ namespace SloperMobile.DataBase
         {
             var craglist = dbConn.Table<T_CRAG>().ToList();
             return craglist;
+        }
+
+        /// <summary>
+        /// Get Crag Details by Selected CragID
+        /// </summary>
+        /// <returns></returns>
+        public T_CRAG GetSelectedCragData()
+        {
+            if (!string.IsNullOrEmpty(Settings.SelectedCragSettings))
+            {
+                var cragid = Settings.SelectedCragSettings;
+                var item = dbConn.Table<T_CRAG>().FirstOrDefault(crag => crag.crag_id == cragid);
+                return item;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Get Routes List for Selected Sector
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<T_ROUTE> GetRoutesBySectorId(string sectorid)
+        {
+            var item = dbConn.Table<T_ROUTE>().Where(route => route.sector_id == sectorid);
+            return item;
         }
         #endregion
 

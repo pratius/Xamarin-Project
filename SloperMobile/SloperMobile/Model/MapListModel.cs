@@ -12,5 +12,7 @@ namespace SloperMobile.Model
         public string SectorId { get; set; }
         public string SectorName { get; set; }
         public ImageSource SectorImage { get; set; }
+        public string SectorLatLong { get; set; }
+        public string SectorShortInfo { get; set; }
     }
 }

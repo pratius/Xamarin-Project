@@ -32,6 +32,13 @@ namespace SloperMobile.ViewModel
             set { pageHeaderText = value; OnPropertyChanged(); }
         }
 
+        private string pagesubHeaderText;
+
+        public string PageSubHeaderText
+        {
+            get { return pagesubHeaderText; }
+            set { pagesubHeaderText = value; OnPropertyChanged(); }
+        }
 
         public Action DisplayMessage;
         public Action OnPageNavigation;

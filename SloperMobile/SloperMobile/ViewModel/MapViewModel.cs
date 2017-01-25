@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using SloperMobile.Common.Command;
 using SloperMobile.Model;
 using Xamarin.Forms;
+using SloperMobile.DataBase;
 
 namespace SloperMobile.ViewModel
 {
@@ -16,10 +17,13 @@ namespace SloperMobile.ViewModel
     {
         private readonly INavigation _navigation;
         private MapListModel _selectedSector;
+        private T_CRAG currentCrag;
         public MapViewModel(INavigation navigation)
         {
+            currentCrag = App.DAUtil.GetSelectedCragData();
             _navigation = navigation;
-            PageHeaderText = "MAPS";
+            PageHeaderText = currentCrag.crag_name;
+            PageSubHeaderText = currentCrag.area_name;
             LoadMoreSector = new DelegateCommand(LoadSectorImages);
         }
         private ObservableCollection<MapListModel> _sectorimageList;
@@ -60,8 +64,10 @@ namespace SloperMobile.ViewModel
                     string strimg64 = topoimg.image.data.Split(',')[1];
                     byte[] imageBytes = Convert.FromBase64String(strimg64);
                     objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                    objSec.SectorName = App.DAUtil.GetSectorNameBySectorID(sector.sector_id);
-
+                    T_SECTOR tsec=App.DAUtil.GetSectorDataBySectorID(sector.sector_id);
+                    objSec.SectorName = tsec.sector_name;
+                    objSec.SectorLatLong = "51.08611N / 115.27028W";
+                    objSec.SectorShortInfo=tsec.sector_info_short;
                     SectorImageList.Add(objSec);
                 }
             }

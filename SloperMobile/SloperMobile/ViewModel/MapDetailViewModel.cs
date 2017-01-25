@@ -7,6 +7,7 @@ using SloperMobile.Common.Command;
 using SloperMobile.Model;
 using Xamarin.Forms;
 using SloperMobile.Common.Constants;
+using SloperMobile.DataBase;
 
 namespace SloperMobile.ViewModel
 {
@@ -15,12 +16,13 @@ namespace SloperMobile.ViewModel
     {
         private readonly INavigation _navigation;
         private ImageSource sectorImage;
-        private List<SectorData> secdata;
+        private List<RouteData> routedata;
         private MapListModel currentsec;
-        public List<SectorData> SecData
+        private T_CRAG currentCrag;
+        public List<RouteData> RoutesData
         {
-            get { return secdata; }
-            set { secdata = value; OnPropertyChanged(); }
+            get { return routedata; }
+            set { routedata = value; OnPropertyChanged(); }
         }
         public ImageSource SectorImage
         {
@@ -31,7 +33,7 @@ namespace SloperMobile.ViewModel
         public MapListModel CurrentSector
         {
             get { return currentsec; }
-            set { currentsec = value;OnPropertyChanged();}
+            set { currentsec = value; OnPropertyChanged(); }
         }
 
         #region DelegateCommand
@@ -42,24 +44,33 @@ namespace SloperMobile.ViewModel
         {
             try
             {
+                currentCrag = App.DAUtil.GetSelectedCragData();
                 _navigation = navigaton;
                 CurrentSector = SelectedSector;
                 Cache.SelctedCurrentSector = SelectedSector;
                 PageHeaderText = SelectedSector.SectorName;
+                PageSubHeaderText = currentCrag.crag_name;
                 SectorImage = SelectedSector.SectorImage;
                 TapSectorCommand = new DelegateCommand(TapOnSectorImage);
-                SecData = new List<SectorData>();
-                SecData.Add(new SectorData { TitleText = "03 TIME TO FLY", SubText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", ImagePath = "listimage" });
-                SecData.Add(new SectorData { TitleText = "04 TOMORROW LAND", SubText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", ImagePath = "listimage" });
-                SecData.Add(new SectorData { TitleText = "05 GOOD TIMES CHARLIE", SubText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", ImagePath = "listimage" });
-                SecData.Add(new SectorData { TitleText = "06 NEVER NEVER MIND", SubText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", ImagePath = "listimage" });
-                SecData.Add(new SectorData { TitleText = "07 GREAT EXPERIENCE", SubText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", ImagePath = "listimage" });
-                SecData.Add(new SectorData { TitleText = "08 WORTHLESS CLIMBING", SubText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", ImagePath = "listimage" });
-                SecData.Add(new SectorData { TitleText = "09 IT'S TIME TO CHEER UP", SubText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", ImagePath = "listimage" });
-                SecData.Add(new SectorData { TitleText = "10 GREAT GREAT GREAT", SubText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", ImagePath = "listimage" });
-                SecData.Add(new SectorData { TitleText = "11 WOHA!! COMPLETED FIRST CLIMBING", SubText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", ImagePath = "listimage" });
-                SecData.Add(new SectorData { TitleText = "12 TIME TO FLY AGAIN", SubText = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", ImagePath = "listimage" });
-                
+                var routes = App.DAUtil.GetRoutesBySectorId(SelectedSector.SectorId);
+                RoutesData = new List<RouteData>();
+                int i = 1;
+                foreach (T_ROUTE route in routes)
+                {
+                    RouteData routeobj = new RouteData();
+                    if (i < 10)
+                    {
+                        routeobj.RouteIndex = "0" + i.ToString();
+                    }
+                    else
+                    {
+                        routeobj.RouteIndex = i.ToString();
+                    }
+                    routeobj.TitleText = route.route_name;
+                    routeobj.SubText = route.route_info;
+                    RoutesData.Add(routeobj);
+                    i++;
+                }
             }
             catch
             {
@@ -77,10 +88,10 @@ namespace SloperMobile.ViewModel
         }
     }
 
-    public class SectorData
+    public class RouteData
     {
+        public string RouteIndex { get; set; }
         public string TitleText { get; set; }
         public string SubText { get; set; }
-        public string ImagePath { get; set; }
     }
 }
