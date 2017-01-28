@@ -17,12 +17,12 @@ namespace SloperMobile.Views {
     public partial class MapDetailPage : global::Xamarin.Forms.ContentPage {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.ListView lstView;
+        private global::SloperMobile.CustomControls.InfiniteListView lstView;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(MapDetailPage));
-            lstView = this.FindByName<global::Xamarin.Forms.ListView>("lstView");
+            lstView = this.FindByName<global::SloperMobile.CustomControls.InfiniteListView>("lstView");
         }
     }
 }

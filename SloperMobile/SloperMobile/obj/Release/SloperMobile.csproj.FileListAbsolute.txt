@@ -253,5 +253,3 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb

@@ -59,52 +59,55 @@ namespace SloperMobile.ViewModel
                 var sector_images = App.DAUtil.GetSectorImages(SectorImageList.Count(), 10);
                 foreach (var sector in sector_images)
                 {
-                    MapListModel objSec = new MapListModel();
-                    objSec.SectorId = sector.sector_id;
                     var topoimg = JsonConvert.DeserializeObject<TopoImageResponse>(sector.topo_json);
                     string strimg64 = topoimg.image.data.Split(',')[1];
-                    byte[] imageBytes = Convert.FromBase64String(strimg64);
-                    objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                    T_SECTOR tsec = App.DAUtil.GetSectorDataBySectorID(sector.sector_id);
-                    objSec.SectorName = tsec.sector_name;
-                    string latlong = "";
-                    if (!string.IsNullOrEmpty(tsec.latitude) && !string.IsNullOrEmpty(tsec.longitude))
+                    if (!string.IsNullOrEmpty(strimg64))
                     {
-                        latlong = tsec.latitude + " / " + tsec.longitude;
-                    }
-                    objSec.SectorLatLong = latlong;
-                    objSec.SectorShortInfo = tsec.sector_info_short;
-                    if (string.IsNullOrEmpty(tsec.angles_top_2) || tsec.angles_top_2 == "0")
-                    {
-                        objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(1));
-                        objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(2));
-                    }
-                    else
-                    {
-                        string[] steeps = tsec.angles_top_2.Split(',');
-                        objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[0])));
-                        objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[1])));
-                    }
-                    var tgrades = App.DAUtil.GetBucketCountsBySectorId(tsec.sector_id);
-                    if (tgrades != null)
-                    {
-                        int loopvar = 1;
-                        foreach (T_GRADE tgrd in tgrades)
+                        MapListModel objSec = new MapListModel();
+                        objSec.SectorId = sector.sector_id;
+                        byte[] imageBytes = Convert.FromBase64String(strimg64);
+                        objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                        T_SECTOR tsec = App.DAUtil.GetSectorDataBySectorID(sector.sector_id);
+                        objSec.SectorName = tsec.sector_name;
+                        string latlong = "";
+                        if (!string.IsNullOrEmpty(tsec.latitude) && !string.IsNullOrEmpty(tsec.longitude))
                         {
-                            if (loopvar == 1)
-                            { objSec.BucketCount1 = tgrd.grade_bucket_id_count.ToString(); }
-                            if (loopvar == 2)
-                            { objSec.BucketCount2 = tgrd.grade_bucket_id_count.ToString(); }
-                            if (loopvar == 3)
-                            { objSec.BucketCount3 = tgrd.grade_bucket_id_count.ToString(); }
-                            if (loopvar == 4)
-                            { objSec.BucketCount4 = tgrd.grade_bucket_id_count.ToString(); }
-                            if (loopvar == 5)
-                            { objSec.BucketCount5 = tgrd.grade_bucket_id_count.ToString(); }
-                            loopvar++;
+                            latlong = tsec.latitude + " / " + tsec.longitude;
                         }
+                        objSec.SectorLatLong = latlong;
+                        objSec.SectorShortInfo = tsec.sector_info_short;
+                        if (!string.IsNullOrEmpty(tsec.angles_top_2) && tsec.angles_top_2.Contains(","))
+                        {
+                            string[] steeps = tsec.angles_top_2.Split(',');
+                            objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[0])));
+                            objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[1])));
+                        }
+                        else
+                        {
+                            objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(1));
+                            objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                        }
+                        var tgrades = App.DAUtil.GetBucketCountsBySectorId(tsec.sector_id);
+                        if (tgrades != null)
+                        {
+                            int loopvar = 1;
+                            foreach (T_GRADE tgrd in tgrades)
+                            {
+                                if (loopvar == 1)
+                                { objSec.BucketCount1 = tgrd.grade_bucket_id_count.ToString(); }
+                                if (loopvar == 2)
+                                { objSec.BucketCount2 = tgrd.grade_bucket_id_count.ToString(); }
+                                if (loopvar == 3)
+                                { objSec.BucketCount3 = tgrd.grade_bucket_id_count.ToString(); }
+                                if (loopvar == 4)
+                                { objSec.BucketCount4 = tgrd.grade_bucket_id_count.ToString(); }
+                                if (loopvar == 5)
+                                { objSec.BucketCount5 = tgrd.grade_bucket_id_count.ToString(); }
+                                loopvar++;
+                            }
+                        }
+                        SectorImageList.Add(objSec);
                     }
-                    SectorImageList.Add(objSec);
                 }
             }
             catch (Exception ex)

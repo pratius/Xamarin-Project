@@ -8,6 +8,7 @@ using SloperMobile.Model;
 using Xamarin.Forms;
 using SloperMobile.Common.Constants;
 using SloperMobile.DataBase;
+using SloperMobile.Common.Enumerators;
 
 namespace SloperMobile.ViewModel
 {
@@ -68,6 +69,19 @@ namespace SloperMobile.ViewModel
                     }
                     routeobj.TitleText = route.route_name;
                     routeobj.SubText = route.route_info;
+
+                    if (!string.IsNullOrEmpty(route.angles_top_2) && route.angles_top_2.Contains(","))
+                    {
+                        string[] steeps = route.angles_top_2.Split(',');
+                        routeobj.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[0])));
+                        routeobj.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[1])));
+                    }
+                    else
+                    {
+                        routeobj.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(1));
+                        routeobj.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                    }
+                    routeobj.RouteTechGrade = route.tech_grade;
                     RoutesData.Add(routeobj);
                     i++;
                 }
@@ -86,6 +100,48 @@ namespace SloperMobile.ViewModel
             {
             }
         }
+
+
+        private string GetSteepnessResourceName(int steep)
+        {
+            string resource = "";
+            AppSteepness steepvalue;
+            if (steep == (int)AppSteepness.Slab)
+            {
+                steepvalue = AppSteepness.Slab;
+            }
+            else if (steep == (int)AppSteepness.Vertical)
+            {
+                steepvalue = AppSteepness.Vertical;
+            }
+            else if (steep == (int)AppSteepness.Overhanging)
+            {
+                steepvalue = AppSteepness.Overhanging;
+            }
+            else
+            {
+                steepvalue = AppSteepness.Roof;
+            }
+            switch (steepvalue)
+            {
+                case AppSteepness.Slab:
+                    resource = "steepSlab.png";
+                    break;
+                case AppSteepness.Vertical:
+                    resource = "steepVertical.png";
+                    break;
+                case AppSteepness.Overhanging:
+                    resource = "steepOverhanging.png";
+                    break;
+                case AppSteepness.Roof:
+                    resource = "steepRoof.png";
+                    break;
+                default:
+                    resource = "steepSlab.png";
+                    break;
+            }
+            return resource;
+        }
     }
 
     public class RouteData
@@ -93,5 +149,8 @@ namespace SloperMobile.ViewModel
         public string RouteIndex { get; set; }
         public string TitleText { get; set; }
         public string SubText { get; set; }
+        public ImageSource Steepness1 { get; set; }
+        public ImageSource Steepness2 { get; set; }
+        public string RouteTechGrade { get; set; }
     }
 }

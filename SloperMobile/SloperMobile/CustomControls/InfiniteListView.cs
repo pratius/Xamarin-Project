@@ -35,6 +35,7 @@ namespace SloperMobile.CustomControls
         public InfiniteListView()
         {
             ItemAppearing += InfiniteListView_ItemAppearing;
+            ItemTapped += InfiniteListView_ItemTapped;
         }
 
 
@@ -47,6 +48,14 @@ namespace SloperMobile.CustomControls
                 if (LoadMoreCommand != null && LoadMoreCommand.CanExecute(null))
                     LoadMoreCommand.Execute(null);
             }
+        }
+
+        void InfiniteListView_ItemTapped(object sender,ItemTappedEventArgs e)
+        {
+            // don't do anything if we just de-selected the row
+            if (e.Item == null) return;
+            // do something with e.SelectedItem
+            ((ListView)sender).SelectedItem = null; // de-select the row after ripple effect
         }
     }
 }

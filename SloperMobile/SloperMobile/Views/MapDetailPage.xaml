@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+             xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
              x:Class="SloperMobile.Views.MapDetailPage" Style="{StaticResource AppBackgroundColor}" NavigationPage.HasNavigationBar="False">
 
   <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -23,7 +24,7 @@
       </Image.GestureRecognizers>
     </Image>
     <Grid Grid.Row="2" Grid.Column="1">
-      <ListView  x:Name="lstView" HasUnevenRows="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding RoutesData}">
+      <Controls:InfiniteListView  x:Name="lstView" HasUnevenRows="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding RoutesData}">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
@@ -43,10 +44,10 @@
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
                   <Frame HasShadow="false" BackgroundColor="#036177" Padding="0" WidthRequest="40" HeightRequest="10">
-                    <Label Text="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                    <Label Text="{Binding RouteTechGrade}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
                   </Frame>
-                  <Image Source="climImg" WidthRequest="20" Aspect="AspectFill" HeightRequest="10"  />
-                  <Image Source="climImg" WidthRequest="20" Aspect="AspectFill" HeightRequest="10"  />
+                  <Image Source="{Binding Steepness1}" WidthRequest="20" Aspect="AspectFill" HeightRequest="10"  />
+                  <Image Source="{Binding Steepness2}" WidthRequest="20" Aspect="AspectFill" HeightRequest="10"  />
                 </StackLayout>
                 <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
                   <Label Text="{Binding SubText}"
@@ -60,7 +61,7 @@
             </ViewCell>
           </DataTemplate>
         </ListView.ItemTemplate>
-      </ListView>
+     </Controls:InfiniteListView>
     </Grid>
     
     <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="40"/>
