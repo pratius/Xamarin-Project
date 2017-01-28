@@ -131,6 +131,11 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string version_number
         { get; set; }
+        public string angles
+        { get; set; }
+        public string angles_top_2
+        { get; set; }
+
     }
 
     public class T_SECTOR
@@ -179,6 +184,14 @@ namespace SloperMobile.DataBase
         public string sector_orientation
         { get; set; }
         public string version_number
+        { get; set; }
+        public string latitude
+        { get; set; }
+        public string longitude
+        { get; set; }
+        public string angles
+        { get; set; }
+        public string angles_top_2
         { get; set; }
     }
 
@@ -335,6 +348,28 @@ namespace SloperMobile.DataBase
         public string sort_order
         { get; set; }
         public string grade_bucket_id
+        { get; set; }
+    }
+
+
+    public class T_GRADE
+    {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        [PrimaryKey, AutoIncrement]
+        public long ID
+        { get; set; }
+        [NotNull]
+        public string area_id
+        { get; set; }
+        public string crag_id
+        { get; set; }
+        public string sector_id
+        { get; set; }
+        public string grade_bucket_id
+        { get; set; }
+        public string grade_bucket_id_count
         { get; set; }
     }
 }

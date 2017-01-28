@@ -220,7 +220,6 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Xamarin.Forms.Pl
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Xamarin.Forms.Xaml.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Xamarin.Forms.Xaml.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.csproj.App.config
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.csprojResolveAssemblyReference.cache
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.App.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.LoginPage.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MenuNavigationPage.xaml.g.cs
@@ -252,5 +251,7 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Vie
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.AscentSummaryPage.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.pdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb

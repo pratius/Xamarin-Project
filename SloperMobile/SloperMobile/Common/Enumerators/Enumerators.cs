@@ -24,5 +24,13 @@ namespace SloperMobile.Common.Enumerators
         SettingsPage = 14
 
     }
+
+    public enum AppSteepness
+    {
+        Slab=1 ,
+        Vertical=2 ,
+        Overhanging= 4,
+        Roof= 8 
+    }
 }
 

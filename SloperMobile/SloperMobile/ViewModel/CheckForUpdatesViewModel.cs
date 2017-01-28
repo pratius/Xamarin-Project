@@ -16,6 +16,7 @@ namespace SloperMobile.ViewModel
         private List<CragTemplate> cragObj;
         private List<T_ROUTE> routeObj;
         private List<T_SECTOR> sectorObj;
+        private List<T_GRADE> gradeObj;
         private string displayupdatemessage = "Checking for updates...";
         /// <summary>
         /// Get or set the Check for update class object
@@ -206,7 +207,17 @@ namespace SloperMobile.ViewModel
                     }
 
                 }
+                //==========================Updating GRADE here =======================
 
+                DisplayUpdateMessage = "Downloading Grade now.\nplease wait...";
+                App.DAUtil.DropAndCreateTable(typeof(T_GRADE));
+                gradeObj = await HttpGetGradeUpdates();
+                foreach (T_GRADE grade in gradeObj)
+                {
+                    App.DAUtil.SaveGrade(grade);
+                }
+
+                //=====================================================================
                 APP_SETTING updated_date = new APP_SETTING();
                 updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
                 updated_date.IS_INITIALIZED = true;
@@ -262,7 +273,12 @@ namespace SloperMobile.ViewModel
             return sector_response;
         }
 
-
+        private async Task<List<T_GRADE>> HttpGetGradeUpdates()
+        {
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "grade"), Cache.AccessToken);
+            var grade_response = await apicall.Get<T_GRADE>();
+            return grade_response;
+        }
         #endregion
     }
 }

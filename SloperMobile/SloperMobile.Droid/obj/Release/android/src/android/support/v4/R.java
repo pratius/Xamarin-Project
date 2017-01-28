@@ -2621,7 +2621,7 @@ containing a value of this type.
         public static int navsettings=0x7f0200d0;
         public static int newbig=0x7f0200d1;
         public static int news=0x7f0200d2;
-        public static int notification_template_icon_bg=0x7f0200ea;
+        public static int notification_template_icon_bg=0x7f0200ee;
         public static int onemore=0x7f0200d3;
         public static int powerhand=0x7f0200d4;
         public static int profile=0x7f0200d5;
@@ -2639,12 +2639,16 @@ containing a value of this type.
         public static int settingpic=0x7f0200e1;
         public static int settings=0x7f0200e2;
         public static int star=0x7f0200e3;
-        public static int sustained=0x7f0200e4;
-        public static int twitter=0x7f0200e5;
-        public static int twitter_logo_shape=0x7f0200e6;
-        public static int video=0x7f0200e7;
-        public static int whitestar=0x7f0200e8;
-        public static int yellowstar=0x7f0200e9;
+        public static int steepoverhanging=0x7f0200e4;
+        public static int steeproof=0x7f0200e5;
+        public static int steepslab=0x7f0200e6;
+        public static int steepvertical=0x7f0200e7;
+        public static int sustained=0x7f0200e8;
+        public static int twitter=0x7f0200e9;
+        public static int twitter_logo_shape=0x7f0200ea;
+        public static int video=0x7f0200eb;
+        public static int whitestar=0x7f0200ec;
+        public static int yellowstar=0x7f0200ed;
     }
     public static final class id {
         public static int action0=0x7f0700ac;

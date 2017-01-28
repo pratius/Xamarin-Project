@@ -2508,8 +2508,8 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f0200d2
 			public const int news = 2130837714;
 			
-			// aapt resource value: 0x7f0200ea
-			public const int notification_template_icon_bg = 2130837738;
+			// aapt resource value: 0x7f0200ee
+			public const int notification_template_icon_bg = 2130837742;
 			
 			// aapt resource value: 0x7f0200d3
 			public const int OneMore = 2130837715;
@@ -2563,22 +2563,34 @@ namespace SloperMobile.Droid
 			public const int Star = 2130837731;
 			
 			// aapt resource value: 0x7f0200e4
-			public const int Sustained = 2130837732;
+			public const int steepOverhanging = 2130837732;
 			
 			// aapt resource value: 0x7f0200e5
-			public const int Twitter = 2130837733;
+			public const int steepRoof = 2130837733;
 			
 			// aapt resource value: 0x7f0200e6
-			public const int twitter_logo_shape = 2130837734;
+			public const int steepSlab = 2130837734;
 			
 			// aapt resource value: 0x7f0200e7
-			public const int Video = 2130837735;
+			public const int steepVertical = 2130837735;
 			
 			// aapt resource value: 0x7f0200e8
-			public const int WhiteStar = 2130837736;
+			public const int Sustained = 2130837736;
 			
 			// aapt resource value: 0x7f0200e9
-			public const int YellowStar = 2130837737;
+			public const int Twitter = 2130837737;
+			
+			// aapt resource value: 0x7f0200ea
+			public const int twitter_logo_shape = 2130837738;
+			
+			// aapt resource value: 0x7f0200eb
+			public const int Video = 2130837739;
+			
+			// aapt resource value: 0x7f0200ec
+			public const int WhiteStar = 2130837740;
+			
+			// aapt resource value: 0x7f0200ed
+			public const int YellowStar = 2130837741;
 			
 			static Drawable()
 			{

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using SloperMobile.Model;
 using SloperMobile.Common.Helpers;
+using Newtonsoft.Json;
 
 namespace SloperMobile.DataBase
 {
@@ -26,6 +27,7 @@ namespace SloperMobile.DataBase
             dbConn.CreateTable<T_TOPO>();
             dbConn.CreateTable<TASCENT_TYPE>();
             dbConn.CreateTable<TTECH_GRADE>();
+            dbConn.CreateTable<T_GRADE>();
             if (dbConn.Table<TASCENT_TYPE>().Count() == 0)
             {
                 string ascent_types = "Onsight,Flash,Redpoint,Repeat,One hang,Project";
@@ -176,7 +178,27 @@ namespace SloperMobile.DataBase
                 return dbConn.Insert(aTopo);
             }
         }
+        //========================================================================
+
+        //================================T_GRADE=================================
+        public int SaveGrade(T_GRADE aGrade)
+        {
+            return dbConn.Insert(aGrade);
+        }
         //=======================================================================
+        //================================ Drop and Create Table ================
+        public void DropAndCreateTable(Type aTable)
+        {
+            if(aTable.GetType() == typeof(T_GRADE))
+            {
+                dbConn.DropTable<T_GRADE>();
+                dbConn.CreateTable<T_GRADE>();
+            } 
+        }
+        //=======================================================================
+
+
+
         #region Get Methods
         public List<TASCENT_TYPE> GetAscentType()
         {
@@ -218,6 +240,14 @@ namespace SloperMobile.DataBase
             return secimglist;
         }
 
+        public topoline GetSectorLines(string sectorid)
+        {
+            var sector = dbConn.Table<T_TOPO>().FirstOrDefault(sec => sec.sector_id == sectorid);
+            var topoimg = JsonConvert.DeserializeObject<TopoImageResponse>(sector.topo_json);
+            var line = topoimg.drawing[0].line;
+            return line;
+        }
+
         public List<T_CRAG> GetCragList()
         {
             var craglist = dbConn.Table<T_CRAG>().ToList();
@@ -249,6 +279,16 @@ namespace SloperMobile.DataBase
         public IEnumerable<T_ROUTE> GetRoutesBySectorId(string sectorid)
         {
             var item = dbConn.Table<T_ROUTE>().Where(route => route.sector_id == sectorid);
+            return item;
+        }
+
+        /// <summary>
+        /// Get Bucket Counts for Selected Sector
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<T_GRADE> GetBucketCountsBySectorId(string sectorid)
+        {
+            var item = dbConn.Table<T_GRADE>().Where(grade => grade.sector_id ==sectorid);
             return item;
         }
         #endregion
