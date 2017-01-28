@@ -8,6 +8,11 @@ using HockeyApp.iOS;
 using SloperMobile.Common.Constants;
 using Syncfusion.SfGauge.XForms.iOS;
 using ImageCircle.Forms.Plugin.iOS;
+using XLabs.Forms.Controls;
+using XLabs.Ioc;
+using XLabs.Serialization;
+using XLabs.Platform.Device;
+using XLabs.Serialization.ServiceStack;
 
 namespace SloperMobile.iOS
 {
@@ -26,6 +31,14 @@ namespace SloperMobile.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            var web = new HybridWebViewRenderer();
+
+            var container = new SimpleContainer();
+
+            container.Register<IJsonSerializer, JsonSerializer>();
+            container.Register<IDevice>(AppleDevice.CurrentDevice);
+
+            Resolver.SetResolver(container.GetResolver());
             global::Xamarin.Forms.Forms.Init();
             ImageCircleRenderer.Init();
             LoadApplication(new App());

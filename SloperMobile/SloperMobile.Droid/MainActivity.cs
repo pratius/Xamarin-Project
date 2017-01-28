@@ -5,6 +5,11 @@ using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
 using ImageCircle.Forms.Plugin.Droid;
 using SloperMobile.Common.Constants;
+using XLabs.Ioc;
+using XLabs.Serialization;
+using XLabs.Serialization.ServiceStack;
+using XLabs.Forms.Controls;
+using XLabs.Platform.Device;
 namespace SloperMobile.Droid
 {
     [Activity(Label = "SloperMobile", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -19,6 +24,15 @@ namespace SloperMobile.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             ImageCircleRenderer.Init();
+
+            var web = new HybridWebViewRenderer();
+
+            var container = new SimpleContainer();
+
+            container.Register<IJsonSerializer, JsonSerializer>();
+            container.Register<IDevice>(AndroidDevice.CurrentDevice);
+
+            Resolver.SetResolver(container.GetResolver());
             LoadApplication(new App());
             CrashManager.Register(this, AppSetting.HockeyAppId);
             //// in your main activity OnCreate-method add:

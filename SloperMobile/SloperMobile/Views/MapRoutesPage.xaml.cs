@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SloperMobile.Model;
 using Xamarin.Forms;
+using SloperMobile.Common.Constants;
 
 namespace SloperMobile.Views
 {
@@ -23,6 +24,35 @@ namespace SloperMobile.Views
         private async void OnPageNavigation()
         {
             await Navigation.PushAsync(new AscentTypePage());
+        }
+
+        protected override void OnAppearing()
+        {
+            this.webView.LoadFinished += OnLoadFinished;
+            this.webView.LoadFromContent("HTML/Index.html");
+            base.OnAppearing();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            webView.LoadFinished -= OnLoadFinished;
+        }
+
+        private void OnLoadFinished(object sender, EventArgs args)
+        {
+            var listData = App.DAUtil.GetSectorLines(Cache.SelctedCurrentSector.SectorId);
+            int count = 0;
+            // hybrid.CallJsFunction("bindImage", "");            
+            if (listData.points.Count > 0)
+            {
+                foreach(var line in listData.points)
+                {
+                    count++;
+                    //drawLine(80, 55, 75, 120, 1);//1 =button value
+                    webView.CallJsFunction("drawLine", line.x, "0", "0", line.y, count);
+                }
+            }
         }
     }
 }

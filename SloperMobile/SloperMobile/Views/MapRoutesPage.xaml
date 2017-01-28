@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+              xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="SloperMobile.Views.MapRoutesPage" 
              Style="{StaticResource AppBackgroundColor}" NavigationPage.HasNavigationBar="False">
 
@@ -16,14 +17,12 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="02"/>
         </Grid.ColumnDefinitions>
-        <StackLayout Grid.Row="0" Grid.Column="1">
-            <Image  Source="{Binding CurrentSectorImage}" Aspect="AspectFill" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
-            <Button Text="Send Lists" BackgroundColor="Yellow" TextColor="Black" Command="{Binding SendCommand}" FontSize="Medium" HeightRequest="60" WidthRequest="60"/>
-
-
-        </StackLayout>
-
         <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="40"/>
+
+        <Grid BackgroundColor="White" Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <XLabUC:HybridWebView  x:Name="webView" />
+        </Grid>
+
         <UC:FooterUC  Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
     </Grid>
 </ContentPage>
