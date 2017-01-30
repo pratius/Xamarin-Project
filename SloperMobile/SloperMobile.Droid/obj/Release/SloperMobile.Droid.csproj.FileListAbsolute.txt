@@ -793,7 +793,6 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\as
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\Xamarin.Forms.Core.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\Xamarin.Forms.Xaml.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\SloperMobile.Droid.dll.mdb
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid.dll.config
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid.dll
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid.pdb
@@ -1219,4 +1218,25 @@ E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile.Droid\obj\Rel
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\ImageCircle.Forms.Plugin.Android.dll.mdb
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\Mono.Android.Export.dll.mdb
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile.Droid\obj\Release\SloperMobile.Droid.dll.mdb
-E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\ExifLib.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Core.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.Droid.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Ioc.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.Droid.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.ServiceStack.Droid.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Core.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.Droid.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Ioc.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.Droid.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.ServiceStack.Droid.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\arrowleftwhite.png
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Mono.Android.Export.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\Mono.Android.Export.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\SloperMobile.Droid.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid.dll.mdb

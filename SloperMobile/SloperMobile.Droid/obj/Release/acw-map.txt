@@ -1,3 +1,7 @@
+SloperMobile.Droid.CustomProgressBar, SloperMobile.Droid;md59bf5a2f42cf4ab8f86d0c5a49a61ac32.CustomProgressBar
+SloperMobile.Droid.CustomProgressBar, SloperMobile.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md59bf5a2f42cf4ab8f86d0c5a49a61ac32.CustomProgressBar
+SloperMobile.Droid.CustomProgressBar;md59bf5a2f42cf4ab8f86d0c5a49a61ac32.CustomProgressBar
+slopermobile.droid.CustomProgressBar;md59bf5a2f42cf4ab8f86d0c5a49a61ac32.CustomProgressBar
 SloperMobile.Droid.MainActivity, SloperMobile.Droid;md59bf5a2f42cf4ab8f86d0c5a49a61ac32.MainActivity
 SloperMobile.Droid.MainActivity, SloperMobile.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md59bf5a2f42cf4ab8f86d0c5a49a61ac32.MainActivity
 SloperMobile.Droid.MainActivity;md59bf5a2f42cf4ab8f86d0c5a49a61ac32.MainActivity

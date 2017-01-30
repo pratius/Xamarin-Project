@@ -17,11 +17,19 @@ namespace SloperMobile.Views {
     public partial class MenuListPage : global::Xamarin.Forms.ContentPage {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Image ImageArrow;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Image ImageLogo;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.ListView listView;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(MenuListPage));
+            ImageArrow = this.FindByName<global::Xamarin.Forms.Image>("ImageArrow");
+            ImageLogo = this.FindByName<global::Xamarin.Forms.Image>("ImageLogo");
             listView = this.FindByName<global::Xamarin.Forms.ListView>("listView");
         }
     }

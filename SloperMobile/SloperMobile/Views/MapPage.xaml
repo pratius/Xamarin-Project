@@ -45,8 +45,8 @@
                   </Grid.RowDefinitions>
                   <Label Text="{Binding SectorName}" Grid.Row="0" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
                   <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
-                    <Image Source="{Binding Steepness1}" WidthRequest="20" Aspect="AspectFill" HeightRequest="10"  />
-                    <Image Source="{Binding Steepness2}" WidthRequest="20" Aspect="AspectFill" HeightRequest="10"  />
+                    <Image Source="{Binding Steepness1}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
+                    <Image Source="{Binding Steepness2}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
                   </StackLayout>
                 </Grid>
                 <StackLayout  Grid.Row="1" Grid.ColumnSpan="3">
@@ -69,7 +69,7 @@
                     <Frame HasShadow="false" BackgroundColor="#036177" Padding="0" WidthRequest="20" HeightRequest="10">
                       <Label Text="{Binding BucketCount1}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
                     </Frame>
-                    <Frame HasShadow="false" BackgroundColor="#208A70" Padding="0" WidthRequest="20" HeightRequest="10">
+                    <Frame HasShadow="false" BackgroundColor="#1f8a70" Padding="0" WidthRequest="20" HeightRequest="10">
                       <Label Text="{Binding BucketCount2}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
                     </Frame>
                     <Frame HasShadow="false" BackgroundColor="#91A537" Padding="0" WidthRequest="20" HeightRequest="10">

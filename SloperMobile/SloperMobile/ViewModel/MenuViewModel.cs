@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using SloperMobile.Views;
 using SloperMobile.Common.Constants;
 using System.Linq;
+using SloperMobile.Common.Command;
 
 namespace SloperMobile.ViewModel
 {
@@ -14,6 +15,7 @@ namespace SloperMobile.ViewModel
 
             FillMenuItems();
             SelectedMenu = new Model.MasterPageItem();
+            TapBackCommand = new DelegateCommand(TapOnBackImage);
         }
 
 
@@ -27,6 +29,10 @@ namespace SloperMobile.ViewModel
             set { menuList = value; OnPropertyChanged(); }
         }
 
+        #region DelegateCommand
+
+        public DelegateCommand TapBackCommand { get; set; }
+        #endregion
         private MasterPageItem selecteMenu;
 
         public MasterPageItem SelectedMenu
@@ -55,57 +61,56 @@ namespace SloperMobile.ViewModel
             {
                 var menuDetails = App.DAUtil.GetCragList();
                 MenuList = new ObservableCollection<MasterPageItem>();
-
-                MenuList.Add(new MasterPageItem
-                {
-
-                    Title = "About This App",
-                    IconSource = "ic_about_us",
-                    TargetType = typeof(HomePage),
-                });
-                MenuList.Add(new MasterPageItem
-                {
-                    Title = "Map",
-                    IconSource = "ic_gym_map_small",
-                    TargetType = typeof(MapPage),
-                });
-                MenuList.Add(new MasterPageItem
-                {
-                    Title = "News",
-                    IconSource = "",
-                    TargetType = typeof(MapPage),
-                });
-                MenuList.Add(new MasterPageItem
-                {
-                    Title = "Directions",
-                    IconSource = "",
-                    TargetType = typeof(MapPage),
-                });
-                MenuList.Add(new MasterPageItem
-                {
-                    Title = "Settings",
-                    IconSource = "",
-                    TargetType = typeof(MapPage),
-                });
+                
                 foreach (var item in menuDetails)
                 {
                     MenuList.Add(new MasterPageItem
                     {
-                        Title = item.crag_name,
+                        Title = item.crag_name.ToUpper(),
                         ItemId = item.crag_id,
-                        IconSource = "Menu_side_bar_service_mode",
+                        IconSource = "",
                         Contents = item.crag_general_info,
                         TargetType = typeof(MapPage),
                     });
 
                 }
-
                 MenuList.Add(new MasterPageItem
                 {
-                    Title = "Check for Update",
-                    IconSource = "Menu_side_bar_about",
+                    Title = "DIRECTIONS",
+                    IconSource = "",
+                    TargetType = typeof(MapPage),
+                });
+                MenuList.Add(new MasterPageItem
+                {
+                    Title = "SETTINGS",
+                    IconSource = "",
+                    TargetType = typeof(SettingsPage),
+                });
+                MenuList.Add(new MasterPageItem
+                {
+
+                    Title = "ABOUT THIS APP",
+                    IconSource = "",
+                    TargetType = typeof(HomePage),
+                });
+                MenuList.Add(new MasterPageItem
+                {
+                    Title = "CHECK FOR UPDATE",
+                    IconSource = "",
                     TargetType = typeof(CheckForUpdatesPage),
                 });
+                //MenuList.Add(new MasterPageItem
+                //{
+                //    Title = "Map",
+                //    IconSource = "ic_gym_map_small",
+                //    TargetType = typeof(MapPage),
+                //});
+                //MenuList.Add(new MasterPageItem
+                //{
+                //    Title = "News",
+                //    IconSource = "",
+                //    TargetType = typeof(MapPage),
+                //});
 
             }
             catch (Exception ex)
@@ -115,5 +120,15 @@ namespace SloperMobile.ViewModel
             }
         }
 
+        private void TapOnBackImage(object obj)
+        {
+            try
+            {
+                Cache.MasterPage.IsPresented = false;
+            }
+            catch
+            {
+            }
+        }
     }
 }

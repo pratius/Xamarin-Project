@@ -358,3 +358,16 @@ E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\obj\Debug\Slo
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\ExifLib.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Core.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Forms.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Ioc.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Platform.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Serialization.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Core.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Forms.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Ioc.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Platform.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Serialization.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb

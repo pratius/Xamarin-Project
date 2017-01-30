@@ -251,8 +251,6 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Vie
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.AscentSummaryPage.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.pdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.config
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\bin\Release\SloperMobile.pdb
@@ -327,7 +325,16 @@ E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\obj\Release\S
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\obj\Release\SloperMobile.pdb
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\ExifLib.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Core.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Forms.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Ioc.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Platform.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Serialization.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Core.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Forms.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Ioc.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Platform.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Serialization.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb

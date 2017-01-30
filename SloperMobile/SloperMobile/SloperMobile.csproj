@@ -51,6 +51,7 @@
     <Compile Include="Common\Interfaces\ISQLite.cs" />
     <Compile Include="Common\NotifyProperties\NotifyPropertiesChanged.cs" />
     <Compile Include="CustomControls\InfiniteListView.cs" />
+    <Compile Include="CustomControls\ProgressBar.cs" />
     <Compile Include="DataBase\DataAccess.cs" />
     <Compile Include="DataBase\DataTables.cs" />
     <Compile Include="Model\AscentProcessModel.cs" />
