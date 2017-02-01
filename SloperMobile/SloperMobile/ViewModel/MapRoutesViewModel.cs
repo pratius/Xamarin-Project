@@ -20,6 +20,24 @@ namespace SloperMobile.ViewModel
             get { return currentImage; }
             set { currentImage = value; OnPropertyChanged(); }
         }
+
+        private bool isPopupHide;
+
+        public bool IsPopupHide
+        {
+            get { return isPopupHide; }
+            set { isPopupHide = value;OnPropertyChanged(); }
+        }
+
+        private bool isPopupShow;
+
+        public bool IsPopupShow
+        {
+            get { return isPopupShow; }
+            set { isPopupShow = value;OnPropertyChanged(); }
+        }
+
+
         public MapRoutesViewModel(MapListModel CurrentSector)
         {
             SendCommand = new DelegateCommand(ExecuteOnSends);
@@ -27,6 +45,7 @@ namespace SloperMobile.ViewModel
             {
                 PageHeaderText = CurrentSector.SectorName;
                 CurrentSectorImage = CurrentSector.SectorImage;
+                LoadRouteDate();
             }
             catch
             {
@@ -61,6 +80,11 @@ namespace SloperMobile.ViewModel
             {
                 string strerr = ex.Message;
             }
+        }
+
+        private void LoadRouteDate()
+        {
+            var routeData = App.DAUtil.GetRouteDataByRouteID("16");
         }
 
         public DelegateCommand SendCommand { get; set; }
