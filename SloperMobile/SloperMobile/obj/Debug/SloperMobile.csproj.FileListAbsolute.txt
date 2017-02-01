@@ -252,7 +252,6 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Xamarin.Forms.Plat
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Xamarin.Forms.Xaml.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Xamarin.Forms.Xaml.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csproj.App.config
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csprojResolveAssemblyReference.cache
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.App.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.LoginPage.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.MenuNavigationPage.xaml.g.cs
@@ -358,3 +357,18 @@ E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\obj\Debug\Slo
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 E:\Project\Freelancing Project\SloperApp\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\ExifLib.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Core.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Forms.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Ioc.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Platform.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Serialization.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Core.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Forms.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Ioc.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Platform.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Serialization.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb

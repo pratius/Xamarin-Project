@@ -94,7 +94,7 @@ namespace SloperMobile.ViewModel
         #region Service Methods
         private async Task InvokeServiceGetAscentData()
         {
-            HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetAscent_AppData, 20160101, 20300101), Cache.AccessToken);
+            HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetAscent_AppData, 20160101, 20300101), Settings.AccessTokenSettings);
             Dictionary<string, string> dictquery = new Dictionary<string, string>();
             var response = await apicall.Get<Send>();
             if (response.Count > 0)

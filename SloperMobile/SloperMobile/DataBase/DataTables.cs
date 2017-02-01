@@ -135,7 +135,12 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string angles_top_2
         { get; set; }
-
+        public string hold_type_top_2
+        { get; set; }
+        public string route_style_top_2
+        { get; set; }
+        public string rating
+        { get; set; }
     }
 
     public class T_SECTOR
@@ -350,7 +355,6 @@ namespace SloperMobile.DataBase
         public string grade_bucket_id
         { get; set; }
     }
-
 
     public class T_GRADE
     {

@@ -20,6 +20,7 @@ namespace SloperMobile.ViewModel
         private List<RouteData> routedata;
         private MapListModel currentsec;
         private T_CRAG currentCrag;
+        private string[] gradehex = { "#036177", "#1f8a70", "#91a537", "#b49800", "#fd7400" };
         public List<RouteData> RoutesData
         {
             get { return routedata; }
@@ -56,6 +57,7 @@ namespace SloperMobile.ViewModel
                 var routes = App.DAUtil.GetRoutesBySectorId(SelectedSector.SectorId);
                 RoutesData = new List<RouteData>();
                 int i = 1;
+                int j = 0;
                 foreach (T_ROUTE route in routes)
                 {
                     RouteData routeobj = new RouteData();
@@ -82,8 +84,12 @@ namespace SloperMobile.ViewModel
                         routeobj.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(2));
                     }
                     routeobj.RouteTechGrade = route.tech_grade;
+                    if (j > 4)
+                    { j = 0; }
+                    routeobj.RouteGradeColor = gradehex[j];
                     RoutesData.Add(routeobj);
                     i++;
+                    j++;
                 }
             }
             catch
@@ -152,5 +158,6 @@ namespace SloperMobile.ViewModel
         public ImageSource Steepness1 { get; set; }
         public ImageSource Steepness2 { get; set; }
         public string RouteTechGrade { get; set; }
+        public string RouteGradeColor { get; set; }
     }
 }

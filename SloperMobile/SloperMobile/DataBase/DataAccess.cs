@@ -291,6 +291,21 @@ namespace SloperMobile.DataBase
             var item = dbConn.Table<T_GRADE>().Where(grade => grade.sector_id ==sectorid);
             return item;
         }
+
+        public T_ROUTE GetRouteDataByRouteID(string routeid)
+        {
+            var item = dbConn.Table<T_ROUTE>().FirstOrDefault(route => route.route_id == routeid);
+            if (item != null)
+            {
+                return item;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
         #endregion
 
     }
