@@ -38,7 +38,7 @@
             <Style x:Key="GeneralButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="#FFF400" />
+                <Setter Property="BackgroundColor" Value="#FF9933" />
             </Style>
         </ResourceDictionary>
 

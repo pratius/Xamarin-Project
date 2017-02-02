@@ -11,6 +11,7 @@ namespace SloperMobile.Views
 {
     public partial class MapRoutesPage : ContentPage
     {
+        public MapListModel _CurrentSector { get; set; }
         private ViewModel.MapRoutesViewModel MapRouteVM;
         public MapRoutesPage(MapListModel CurrentSector)
         {
@@ -19,8 +20,8 @@ namespace SloperMobile.Views
             MapRouteVM = new ViewModel.MapRoutesViewModel(CurrentSector);
             BindingContext = MapRouteVM;
             MapRouteVM.OnPageNavigation = OnPageNavigation;
-        }
-
+            _CurrentSector = CurrentSector;
+        }       
         private async void OnPageNavigation()
         {
             await Navigation.PushAsync(new AscentProcessPage());
@@ -41,7 +42,7 @@ namespace SloperMobile.Views
 
         private void OnLoadFinished(object sender, EventArgs args)
         {
-            var listData = App.DAUtil.GetSectorLines(Cache.SelctedCurrentSector.SectorId);
+            var listData = App.DAUtil.GetSectorLines(_CurrentSector?.SectorId);
             int count = 0;
             // hybrid.CallJsFunction("bindImage", "");            
             if (listData.points.Count > 0)
