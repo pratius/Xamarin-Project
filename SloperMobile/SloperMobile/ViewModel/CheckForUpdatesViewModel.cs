@@ -95,11 +95,11 @@ namespace SloperMobile.ViewModel
             CheckForModelObj = await HttpGetCheckForUpdates();
             if (CheckForModelObj != null && Convert.ToInt32(CheckForModelObj.areas_modified) + Convert.ToInt32(CheckForModelObj.crags_modified) + Convert.ToInt32(CheckForModelObj.routes_modified) + Convert.ToInt32(CheckForModelObj.sectors_modified) > 1)
             {
-                DisplayUpdateMessage = "Updates are available,downloading now.\nplease wait...";
+                DisplayUpdateMessage = "Updates are available, downloading now.\n\nplease wait...";
 
                 if (Convert.ToInt32(CheckForModelObj.areas_modified) > 0)
                 {
-                    DisplayUpdateMessage = "Downloading Area now.\nplease wait...";
+                    DisplayUpdateMessage = "Updating Areas, please wait...";
                     AreaObj = await HttpGetAreaUpdates();
                     foreach (T_AREA area in AreaObj)
                     {
@@ -108,7 +108,7 @@ namespace SloperMobile.ViewModel
                 }
                 if (Convert.ToInt32(CheckForModelObj.crags_modified) > 0)
                 {
-                    DisplayUpdateMessage = "Downloading Crag now.\nplease wait...";
+                    DisplayUpdateMessage = "Updating Crags, please wait...";
                     CragObj = await HttpGetCragUpdates();
                     foreach (CragTemplate crag in CragObj)
                     {
@@ -168,7 +168,7 @@ namespace SloperMobile.ViewModel
 
                 if (Convert.ToInt32(CheckForModelObj.sectors_modified) > 0)
                 {
-                    DisplayUpdateMessage = "Downloading Sector now.\nplease wait...";
+                    DisplayUpdateMessage = "Updating Sectors, please wait...";
                     SectorObj = await HttpGetSectorUpdates();
 
                     foreach (T_SECTOR sector in SectorObj)
@@ -189,7 +189,7 @@ namespace SloperMobile.ViewModel
 
                 if (Convert.ToInt32(CheckForModelObj.routes_modified) > 0)
                 {
-                    DisplayUpdateMessage = "Downloading Route now.\nplease wait...";
+                    DisplayUpdateMessage = "Updating Routes, please wait...";
                     RouteObj = await HttpGetRouteUpdates();
                     foreach (T_ROUTE route in RouteObj)
                     {
@@ -209,7 +209,7 @@ namespace SloperMobile.ViewModel
                 }
                 //==========================Updating GRADE here =======================
 
-                DisplayUpdateMessage = "Downloading Grade now.\nplease wait...";
+                DisplayUpdateMessage = "Updating Grades, please wait...";
                 App.DAUtil.DropAndCreateTable(typeof(T_GRADE));
                 gradeObj = await HttpGetGradeUpdates();
                 foreach (T_GRADE grade in gradeObj)

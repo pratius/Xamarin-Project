@@ -25,7 +25,7 @@ namespace SloperMobile.ViewModel
         private bool isProccedEnalbe;
         private bool is_displaytanksnote;
         private string commandtext = "Let's Go!";
-        private string progresstext = "Checking for updates...";
+        private string progresstext = "Initializing App...";
         private string progressvalue = "0";
 
 
@@ -157,11 +157,11 @@ namespace SloperMobile.ViewModel
             CheckForModelObj = await HttpGetCheckForUpdates();
             if (CheckForModelObj != null && Convert.ToInt32(CheckForModelObj.areas_modified) + Convert.ToInt32(CheckForModelObj.crags_modified) + Convert.ToInt32(CheckForModelObj.routes_modified) + Convert.ToInt32(CheckForModelObj.sectors_modified) > 1)
             {
-                ProgressText = "Updates are available,downloading now.\nplease wait...";
+                ProgressText = "Initializing App, please wait...";
 
                 if (Convert.ToInt32(CheckForModelObj.areas_modified) > 0)
                 {
-                    ProgressText = "Downloading Area now.\nplease wait...";
+                    ProgressText = "Loading Areas, please wait...";
                     AreaObj = await HttpGetAreaUpdates();
                     foreach (T_AREA area in AreaObj)
                     {
@@ -171,7 +171,7 @@ namespace SloperMobile.ViewModel
                 }
                 if (Convert.ToInt32(CheckForModelObj.crags_modified) > 0)
                 {
-                    ProgressText = "Downloading Crag now.\nplease wait...";
+                    ProgressText = "Loading Crags, please wait...";
                     CragObj = await HttpGetCragUpdates();
                     foreach (CragTemplate crag in CragObj)
                     {
@@ -232,7 +232,7 @@ namespace SloperMobile.ViewModel
 
                 if (Convert.ToInt32(CheckForModelObj.sectors_modified) > 0)
                 {
-                    ProgressText = "Downloading Sector now.\nplease wait...";
+                    ProgressText = "Loading Sectors , please wait...";
                     SectorObj = await HttpGetSectorUpdates();
 
                     foreach (T_SECTOR sector in SectorObj)
@@ -254,7 +254,7 @@ namespace SloperMobile.ViewModel
 
                 if (Convert.ToInt32(CheckForModelObj.routes_modified) > 0)
                 {
-                    ProgressText = "Downloading Route now.\nplease wait...";
+                    ProgressText = "Loading Routes, please wait...";
                     RouteObj = await HttpGetRouteUpdates();
                     foreach (T_ROUTE route in RouteObj)
                     {
@@ -264,7 +264,7 @@ namespace SloperMobile.ViewModel
                 }
                 //==========================Updating GRADE here =======================
 
-                ProgressText = "Downloading Grade now.\nplease wait...";
+                ProgressText = "Loading Grades, please wait...";
                 App.DAUtil.DropAndCreateTable(typeof(T_GRADE));
                 gradeObj = await HttpGetGradeUpdates();
                 foreach (T_GRADE grade in gradeObj)

@@ -410,7 +410,6 @@ D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\Sl
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\bin\Debug\XLabs.Platform.xml
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\bin\Debug\XLabs.Serialization.xml
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csproj.App.config
-D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csprojResolveAssemblyReference.cache
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.App.xaml.g.cs
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.LoginPage.xaml.g.cs
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.MenuNavigationPage.xaml.g.cs
@@ -442,3 +441,8 @@ D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\Sl
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.AscentSummaryPage.xaml.g.cs
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
+D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csprojResolveAssemblyReference.cache
+D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
+D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
+D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
+D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb

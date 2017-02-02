@@ -21,7 +21,7 @@
       <StackLayout Grid.Row="2" Orientation="Vertical" IsVisible="{Binding IsDisplayThanksNote,Mode=TwoWay}" Padding="40,0,40,0">
         <Label Text="THANKS FOR DOWNLOADING THE CALGARY CLIMBING CENTRE APP." Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center"
              FontFamily="Times New Roman" FontSize="12" LineBreakMode="WordWrap"/>
-        <Label Text="The App works offline,but tou will need either a Wi-Fi connection  or a data plan to download updates and use the maps."
+        <Label Text="The App works offline, but you will need either a Wi-Fi connection or a data plan to download updates and use the maps."
                Style="{StaticResource GeneralLabelStyle}" FontFamily="Times New Roman" FontSize="10" HorizontalTextAlignment="Center"
                LineBreakMode="WordWrap" />
         <Label Text="If you like the app, please leave us a nice review in the app store!" Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center"
