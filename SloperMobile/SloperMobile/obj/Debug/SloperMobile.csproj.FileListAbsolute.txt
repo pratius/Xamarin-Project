@@ -441,7 +441,6 @@ D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\Sl
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.AscentSummaryPage.xaml.g.cs
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
-D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csprojResolveAssemblyReference.cache
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
