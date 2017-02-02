@@ -11,7 +11,7 @@ using System.IO;
 
 namespace SloperMobile.ViewModel
 {
-    public class MapRoutesViewModel:BaseViewModel
+    public class MapRoutesViewModel : BaseViewModel
     {
         private ImageSource currentImage;
 
@@ -26,7 +26,7 @@ namespace SloperMobile.ViewModel
         public bool IsPopupHide
         {
             get { return isPopupHide; }
-            set { isPopupHide = value;OnPropertyChanged(); }
+            set { isPopupHide = value; OnPropertyChanged(); }
         }
 
         private bool isPopupShow;
@@ -34,13 +34,16 @@ namespace SloperMobile.ViewModel
         public bool IsPopupShow
         {
             get { return isPopupShow; }
-            set { isPopupShow = value;OnPropertyChanged(); }
+            set { isPopupShow = value; OnPropertyChanged(); }
         }
 
 
         public MapRoutesViewModel(MapListModel CurrentSector)
         {
             SendCommand = new DelegateCommand(ExecuteOnSends);
+            HidePopupCommand = new DelegateCommand(ExecuteOnHidePopup);
+            ShowPopupCommand = new DelegateCommand(ExecuteOnShowPopup);
+            IsPopupHide = true;          
             try
             {
                 PageHeaderText = CurrentSector.SectorName;
@@ -51,6 +54,8 @@ namespace SloperMobile.ViewModel
             {
             }
         }
+
+   
 
         private void ExecuteOnSends(object obj)
         {
@@ -72,7 +77,7 @@ namespace SloperMobile.ViewModel
                         objSec.SectorId = sector.sector_id;
                         byte[] imageBytes = Convert.FromBase64String(strimg64);
                         objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                        
+
                     }
                 }
             }
@@ -84,9 +89,23 @@ namespace SloperMobile.ViewModel
 
         private void LoadRouteDate()
         {
-            var routeData = App.DAUtil.GetRouteDataByRouteID("63");
+            var routeData = App.DAUtil.GetRouteDataByRouteID("22044");
+        }
+
+        private void ExecuteOnHidePopup(object obj)
+        {
+            IsPopupShow = false;
+            IsPopupHide = true;
+        }
+
+        private void ExecuteOnShowPopup(object obj)
+        {
+            IsPopupShow = true;
+            IsPopupHide = false;
         }
 
         public DelegateCommand SendCommand { get; set; }
+        public DelegateCommand HidePopupCommand { get; set; }
+        public DelegateCommand ShowPopupCommand { get; set; }
     }
 }
