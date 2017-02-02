@@ -23,7 +23,7 @@ namespace SloperMobile.Views
 
         private async void OnPageNavigation()
         {
-            await Navigation.PushAsync(new AscentTypePage());
+            await Navigation.PushAsync(new AscentProcessPage());
         }
 
         protected override void OnAppearing()
@@ -46,7 +46,7 @@ namespace SloperMobile.Views
             // hybrid.CallJsFunction("bindImage", "");            
             if (listData.points.Count > 0)
             {
-                foreach(var line in listData.points)
+                foreach (var line in listData.points)
                 {
                     count++;
                     //drawLine(80, 55, 75, 120, 1);//1 =button value

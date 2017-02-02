@@ -21,6 +21,7 @@
 
         <Grid BackgroundColor="White" Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <XLabUC:HybridWebView  x:Name="webView" />
+          <Button Text="Submit" Style="{StaticResource GeneralButtonStyle}" Command="{Binding SendCommand}" ></Button>
         </Grid>
 
         <UC:FooterUC  Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>

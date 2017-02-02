@@ -13,6 +13,7 @@ namespace SloperMobile.ViewModel
     public class AscentProcessViewModel : BaseViewModel
     {
         private readonly INavigation _navigation;
+        private string highlightingcolor="Black";
         public AscentProcessViewModel(INavigation navigation)
         {
             PageHeaderText = Cache.SelctedCurrentSector?.SectorName;
@@ -36,7 +37,11 @@ namespace SloperMobile.ViewModel
                 return currentInstance;
         }
 
-
+        public string HighlightingColor
+        {
+            get { return highlightingcolor; }
+            set { highlightingcolor = value;OnPropertyChanged(); }
+        }
         public DelegateCommand SendTypeCommand { get; set; }
         public DelegateCommand SendTypeHoldCommand { get; set; }
         public DelegateCommand SendDataCommand { get; set; }
@@ -45,10 +50,11 @@ namespace SloperMobile.ViewModel
         public DelegateCommand SendRatingCommand { get; set; }
         public DelegateCommand SendSummaryCommand { get; set; }
 
-        private async void ExecuteOnSendType(object obj)
+        private  void ExecuteOnSendType(object obj)
         {
-            var param = Convert.ToString(obj);
-            await _navigation.PushAsync(new AscentDatePage());
+            HighlightingColor = "Yellow";
+            //var param = Convert.ToString(obj);
+            //await _navigation.PushAsync(new AscentDatePage());
         }
 
         private async void ExecuteOnData(object obj)

@@ -67,6 +67,27 @@
     <Compile Include="Model\Send.cs" />
     <Compile Include="Model\TopoImageResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\AscentClimbingAngle.xaml.cs">
+      <DependentUpon>AscentClimbingAngle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AscentDate.xaml.cs">
+      <DependentUpon>AscentDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AscentHoldType.xaml.cs">
+      <DependentUpon>AscentHoldType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AscentRating.xaml.cs">
+      <DependentUpon>AscentRating.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AscentRouteStyle.xaml.cs">
+      <DependentUpon>AscentRouteStyle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AscentSummary.xaml.cs">
+      <DependentUpon>AscentSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AscentType.xaml.cs">
+      <DependentUpon>AscentType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FooterUC.xaml.cs">
       <DependentUpon>FooterUC.xaml</DependentUpon>
     </Compile>
@@ -104,6 +125,9 @@
     </Compile>
     <Compile Include="Views\AscentHoldTypePage.xaml.cs">
       <DependentUpon>AscentHoldTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AscentProcessPage.xaml.cs">
+      <DependentUpon>AscentProcessPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AscentRatingPage.xaml.cs">
       <DependentUpon>AscentRatingPage.xaml</DependentUpon>
@@ -412,6 +436,54 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\AscentSummaryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AscentProcessPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\AscentType.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\AscentDate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\AscentRating.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\AscentClimbingAngle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\AscentHoldType.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\AscentRouteStyle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\AscentSummary.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

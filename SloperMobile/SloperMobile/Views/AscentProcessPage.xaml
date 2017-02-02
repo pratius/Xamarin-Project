@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+              x:Class="SloperMobile.Views.AscentProcessPage" 
+              NavigationPage.HasNavigationBar="True" Style="{StaticResource AppBackgroundColor}">
+
+
+  <ContentPage>
+    <ContentPage.Padding>
+      <OnPlatform x:TypeArguments="Thickness" iOS="0,40,0,0" Android="0,40,0,0" />
+    </ContentPage.Padding>
+    <UC:AscentType x:Name="ascType"></UC:AscentType>
+  </ContentPage>
+
+  <ContentPage>
+    <ContentPage.Padding>
+      <OnPlatform x:TypeArguments="Thickness" iOS="0,40,0,0" Android="0,40,0,0" />
+    </ContentPage.Padding>
+    <UC:AscentDate x:Name="ascDate"></UC:AscentDate>
+  </ContentPage>
+
+  <ContentPage>
+    <ContentPage.Padding>
+      <OnPlatform x:TypeArguments="Thickness" iOS="0,40,0,0" Android="0,40,0,0" />
+    </ContentPage.Padding>
+    <UC:AscentRating x:Name="ascRating"></UC:AscentRating>
+  </ContentPage>
+
+  <ContentPage>
+    <ContentPage.Padding>
+      <OnPlatform x:TypeArguments="Thickness" iOS="0,40,0,0" Android="0,40,0,0" />
+    </ContentPage.Padding>
+    <UC:AscentClimbingAngle x:Name="ascClimbingAngle"></UC:AscentClimbingAngle>
+  </ContentPage>
+
+  <ContentPage>
+    <ContentPage.Padding>
+      <OnPlatform x:TypeArguments="Thickness" iOS="0,40,0,0" Android="0,40,0,0" />
+    </ContentPage.Padding>
+    <UC:AscentHoldType x:Name="ascHoldType"></UC:AscentHoldType>
+  </ContentPage>
+
+  <ContentPage>
+    <ContentPage.Padding>
+      <OnPlatform x:TypeArguments="Thickness" iOS="0,40,0,0" Android="0,40,0,0" />
+    </ContentPage.Padding>
+    <UC:AscentRouteStyle x:Name="ascRouteStyle"></UC:AscentRouteStyle>
+  </ContentPage>
+
+  <ContentPage>
+    <ContentPage.Padding>
+      <OnPlatform x:TypeArguments="Thickness" iOS="0,40,0,0" Android="0,40,0,0" />
+    </ContentPage.Padding>
+    <UC:AscentSummary x:Name="ascSummary"></UC:AscentSummary>
+  </ContentPage>
+
+</CarouselPage >
