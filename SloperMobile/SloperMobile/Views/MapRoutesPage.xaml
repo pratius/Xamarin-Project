@@ -50,8 +50,8 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Label Text="3 - FRESCO 5.11C" TextColor="#FA7200" FontSize="Medium" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
-                <Label Grid.Row="1" Text="Test Data" TextColor="White" FontSize="Small" LineBreakMode="WordWrap" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
+                <Label Text="{Binding SectorName,Mode=TwoWay}" TextColor="#FA7200" FontSize="Medium" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
+                <Label Grid.Row="1" Text="{Binding SectorName,Mode=TwoWay}" TextColor="White" FontSize="Small" LineBreakMode="WordWrap" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
                 <StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
                     <Image Source="YellowStar" Aspect="AspectFit" />
                     <Image Source="YellowStar" Aspect="AspectFit"/>
@@ -94,8 +94,8 @@
                     <RowDefinition Height=".1*"/>                   
                 </Grid.RowDefinitions>
                 <StackLayout Orientation="Vertical"  VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
-                    <Label Text="Binding RouteId" TextColor="##FA7200" FontSize="Medium" BackgroundColor="Black"/>
-                    <Label Text="Binding desc." TextColor="White" FontSize="Medium" />
+                    <Label Text="RESILIENCE - 3.15c" TextColor="##FA7200" FontSize="Medium" BackgroundColor="Black"/>
+                    <Label Text="{Binding RouteName,Mode=TwoWay}" TextColor="White" FontSize="Medium" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Spacing="0">
                     <Image Source="YellowStar" Aspect="AspectFit" WidthRequest="25" HeightRequest="25" />
@@ -103,9 +103,22 @@
                     <Image Source="WhiteStar" Aspect="AspectFit" WidthRequest="25" HeightRequest="25"/>
                 </StackLayout>
                 <StackLayout Grid.Row="2" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Spacing="0">
-                    <Image Source="hold_type_2_crimps" Aspect="AspectFit"/>
+                    <!--<Image Source="hold_type_2_crimps" Aspect="AspectFit"/>
                     <Image Source="Icon_Set_Sept_2016_Sustained" Aspect="AspectFit" />
-                    <Image Source="steepOverhanging" Aspect="AspectFit" />
+                    <Image Source="steepOverhanging" Aspect="AspectFit" />-->
+                    <ListView HorizontalOptions="Center" ItemsSource="{Binding RouteImageList}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>                                   
+                                    <ViewCell.View>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image Source="{Binding ImagePath}" Aspect="AspectFit" />
+                                        </StackLayout>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackLayout>
                 <StackLayout Grid.Row="3" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Spacing="0">
                     <Button Text="Tick List" TextColor="White" BackgroundColor="Yellow" FontSize="Medium" />
