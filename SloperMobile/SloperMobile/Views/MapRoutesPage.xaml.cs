@@ -38,7 +38,7 @@ namespace SloperMobile.Views
         protected override void OnAppearing()
         {
             this.webView.LoadFinished += OnLoadFinished;
-            this.webView.LoadFromContent("HTML/Index.html");
+            this.webView.LoadFromContent("HTML/ResizeImage.html");
             base.OnAppearing();
         }
 
