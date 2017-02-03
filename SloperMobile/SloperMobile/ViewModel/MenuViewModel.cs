@@ -72,7 +72,6 @@ namespace SloperMobile.ViewModel
                         Contents = item.crag_general_info,
                         TargetType = typeof(MapPage),
                     });
-
                 }
                 MenuList.Add(new MasterPageItem
                 {
@@ -95,7 +94,7 @@ namespace SloperMobile.ViewModel
                 });
                 MenuList.Add(new MasterPageItem
                 {
-                    Title = "CHECK FOR UPDATE",
+                    Title = "CHECK FOR UPDATES",
                     IconSource = "",
                     TargetType = typeof(CheckForUpdatesPage),
                 });
