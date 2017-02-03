@@ -1110,7 +1110,13 @@
     <AndroidResource Include="Resources\drawable\steepOverhanging.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\steepRoof.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\drawable\steepSlab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\steepVertical.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\steepOverhanging.png" />
@@ -1155,6 +1161,9 @@
     <AndroidResource Include="Resources\drawable\hold_type_2_crimps.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icon_Set_Sept_2016_Overhang.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\drawable\route_style_8_sustained.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1194,9 +1203,10 @@
     <AndroidResource Include="Resources\drawable-hdpi\arrowLeftWhite.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\.DS_Store" />
     <AndroidAsset Include="Assets\HTML\ResizeImage.html" />
-    <Content Include="Assets\HTML\Css\ResizeImage.css" />
-    <Content Include="Assets\HTML\Js\canvas.dashedLine.js" />
+    <AndroidAsset Include="Assets\HTML\Css\ResizeImage.css" />
+    <AndroidAsset Include="Assets\HTML\Js\canvas.dashedLine.js" />
     <AndroidAsset Include="Assets\HTML\img\Dark_annotation.png" />
     <AndroidAsset Include="Assets\HTML\img\cross_black.png" />
     <AndroidAsset Include="Assets\HTML\img\grey-close-button.png" />
@@ -1219,29 +1229,7 @@
     <AndroidAsset Include="Assets\HTML\img\tr-icon.png" />
     <AndroidAsset Include="Assets\HTML\img\trcross-icon.png" />
     <AndroidAsset Include="Assets\HTML\img\x-mark-32.png" />
-    <AndroidResource Include="Resources\drawable\angle_1_slab.png" />
-    <AndroidResource Include="Resources\drawable\angle_2_vertical.png" />
-    <AndroidResource Include="Resources\drawable\angle_4_overhanging.png" />
-    <AndroidResource Include="Resources\drawable\angle_8_roof.png" />
-    <AndroidResource Include="Resources\drawable\Icon_Set_Sept_2016_Steep.png" />
-    <AndroidResource Include="Resources\drawable\Icon_Set_Sept_2016_Vertical.png" />
-    <AndroidResource Include="Resources\drawable\route_style_1_technical.png" />
-    <AndroidResource Include="Resources\drawable\route_style_16_one_move.png" />
-    <AndroidResource Include="Resources\drawable\route_style_2_sequential.png" />
-    <AndroidResource Include="Resources\drawable\route_style_4_powerful.png" />
-    <AndroidResource Include="Resources\drawable\route_style_everything.png" />
-    <AndroidResource Include="Resources\drawable\Search_old.PNG" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_menu.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\Icon_Set_Sept_2016_Overhang.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\Icon_Set_Sept_2016_Slab.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\Icon_Set_Sept_2016_Steep.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\Icon_Set_Sept_2016_Vertical.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\route_style_1_technical.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\route_style_16_one_move.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\route_style_2_sequential.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\route_style_4_powerful.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\route_style_everything.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\Search_old.PNG" />
+    <AndroidAsset Include="Assets\HTML\test.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
