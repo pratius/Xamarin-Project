@@ -72,7 +72,7 @@
           <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeHoldCommand,Mode=TwoWay}" CommandParameter="8"/>
         </Frame.GestureRecognizers>
         <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" >
-          <Image Source="hold_type_1_slopers" VerticalOptions="Start" WidthRequest="50" HeightRequest="50"/>
+          <Image Source="hold_type_8_pockets" VerticalOptions="Start" WidthRequest="50" HeightRequest="50"/>
           <!--<Label Text="pockets" TextColor="White" FontSize="Micro" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>-->
         </StackLayout>
       </Frame>

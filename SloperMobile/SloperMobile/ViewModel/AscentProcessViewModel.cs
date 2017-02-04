@@ -507,7 +507,7 @@ namespace SloperMobile.ViewModel
                     resource = "hold_type_4_jugs.png";
                     break;
                 case "8":
-                    resource = "hold_type_4_jugs.png";
+                    resource = "hold_type_8_pockets.png";
                     break;
             }
             return resource;
