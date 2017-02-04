@@ -1,16 +1,21 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="30,30,30,30" BackgroundColor="Black"
              x:Class="SloperMobile.UserControls.AscentRating">
   <Label Text="Rate the climb!"  TextColor="White" FontSize="28" HorizontalOptions="Center"/>
   <Label/>
-  <StackLayout Orientation="Horizontal">
-    <Image Source="Star" HeightRequest="50"/>
-    <Image Source="Star" HeightRequest="50"/>
-    <Image Source="Star" HeightRequest="50"/>
-    <Image Source="Star" HeightRequest="50"/>
-    <Image Source="Star" HeightRequest="50"/>
+  <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+    <rating:SfRating x:Name="rating" ItemCount="3" ItemSize="30" Precision="Standard"
+                            Value="{Binding SendRating, Mode=TwoWay}"
+                            HorizontalOptions="End" VerticalOptions="Start">
+      <rating:SfRating.RatingSettings>
+        <rating:SfRatingSettings RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
+      </rating:SfRating.RatingSettings>
+    </rating:SfRating>
+    
   </StackLayout>
   <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
     <Image Source="Camera" HeightRequest="90"/>
@@ -18,9 +23,5 @@
     <Image Source="Video.png" HeightRequest="90"/>
     <Label/>
     <Image Source="Comment" HeightRequest="90"/>
-
   </StackLayout>
-  <Button Command="{Binding SendRatingCommand}" BorderColor="Yellow" Text="UPLOAD" TextColor="White" BorderWidth="10" BackgroundColor="Black" FontSize="24"/>
-
-
 </StackLayout>

@@ -13,6 +13,7 @@ using XLabs.Ioc;
 using XLabs.Serialization;
 using XLabs.Platform.Device;
 using XLabs.Serialization.ServiceStack;
+using Syncfusion.SfRating.XForms.iOS;
 
 namespace SloperMobile.iOS
 {
@@ -46,6 +47,7 @@ namespace SloperMobile.iOS
             manager.Configure(AppSetting.HockeyAppId);
             manager.StartManager();
             new SfGaugeRenderer();
+            new SfRatingRenderer();
             return base.FinishedLaunching(app, options);
         }
     }

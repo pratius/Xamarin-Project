@@ -27,7 +27,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
@@ -36,6 +36,15 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <BundleAssemblies>False</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <Debugger>Xamarin</Debugger>
+    <AotAssemblies>False</AotAssemblies>
+    <EnableLLVM>False</EnableLLVM>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableProguard>False</EnableProguard>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -112,6 +121,15 @@
     </Reference>
     <Reference Include="Syncfusion.SfGauge.XForms.Android">
       <HintPath>..\..\lib\android\Syncfusion.SfGauge.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfRating.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms">
+      <HintPath>..\..\lib\android\Syncfusion.SfRating.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms.Android">
+      <HintPath>..\..\lib\android\Syncfusion.SfRating.XForms.Android.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -1204,7 +1222,154 @@
     <AndroidResource Include="Resources\drawable-hdpi\arrowLeftWhite.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\HTML\" />
+    <AndroidAsset Include="Assets\HTML\ResizeImage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\Index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\Js\canvas.dashedLine.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\x-mark-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\cross_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\Dark_annotation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\grey-close-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\icon-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\light_annotation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\move_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\move_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\sample-belay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\sample-grade-label-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\sample-grade-label-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\sample-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\sample-lower-off-black-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\sample-lower-off-black-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\sample-lower-off-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\sample-lower-off-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\sample-route-badge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\sample-route-line-break.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\tl-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\tlcross-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\tr-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\trcross-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\Css\ResizeImage.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\hold_type_4_jugs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\hold_type_4_jugs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\hold_type_4_jugs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\hold_type_4_jugs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\route_style_1_technical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\route_style_16_one_move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\route_style_2_sequential.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\route_style_4_powerful.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\route_style_everything.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\route_style_1_technical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\route_style_16_one_move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\route_style_2_sequential.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\route_style_4_powerful.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\route_style_everything.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\route_style_1_technical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\route_style_16_one_move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\route_style_2_sequential.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\route_style_4_powerful.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\route_style_everything.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\route_style_1_technical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\route_style_16_one_move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\route_style_2_sequential.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\route_style_4_powerful.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\route_style_everything.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

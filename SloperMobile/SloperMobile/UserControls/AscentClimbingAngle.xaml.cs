@@ -14,5 +14,17 @@ namespace SloperMobile.UserControls
         {
             InitializeComponent();
         }
+        public void SetFrameColor(object sender, EventArgs e)
+        {
+            var angleframe = (Frame)sender;
+            if (angleframe.BackgroundColor == Color.Black)
+            {
+                angleframe.BackgroundColor = Color.FromHex("#FF9933");
+            }
+            else
+            {
+                angleframe.BackgroundColor = Color.Black;
+            }
+        }
     }
 }

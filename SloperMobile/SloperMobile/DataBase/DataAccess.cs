@@ -189,11 +189,11 @@ namespace SloperMobile.DataBase
         //================================ Drop and Create Table ================
         public void DropAndCreateTable(Type aTable)
         {
-            if(aTable.GetType() == typeof(T_GRADE))
+            if (aTable.GetType() == typeof(T_GRADE))
             {
                 dbConn.DropTable<T_GRADE>();
                 dbConn.CreateTable<T_GRADE>();
-            } 
+            }
         }
         //=======================================================================
 
@@ -288,7 +288,7 @@ namespace SloperMobile.DataBase
         /// <returns></returns>
         public IEnumerable<T_GRADE> GetBucketCountsBySectorId(string sectorid)
         {
-            var item = dbConn.Table<T_GRADE>().Where(grade => grade.sector_id ==sectorid);
+            var item = dbConn.Table<T_GRADE>().Where(grade => grade.sector_id == sectorid);
             return item;
         }
 
@@ -305,7 +305,12 @@ namespace SloperMobile.DataBase
             }
         }
 
-
+        public List<string> GetTtechGrades()
+        {
+            var item = from tg in dbConn.Table<TTECH_GRADE>() select tg.tech_grade;
+            return item.ToList();
+        }
+        
         #endregion
 
     }

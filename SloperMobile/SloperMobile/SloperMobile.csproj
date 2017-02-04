@@ -50,6 +50,7 @@
     <Compile Include="Common\Interfaces\IApplicationDataBase.cs" />
     <Compile Include="Common\Interfaces\ISQLite.cs" />
     <Compile Include="Common\NotifyProperties\NotifyPropertiesChanged.cs" />
+    <Compile Include="CustomControls\BindablePicker.cs" />
     <Compile Include="CustomControls\InfiniteListView.cs" />
     <Compile Include="CustomControls\ProgressBar.cs" />
     <Compile Include="DataBase\DataAccess.cs" />
@@ -117,29 +118,8 @@
     <Compile Include="ViewModel\SplashViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
-    <Compile Include="Views\AscentClimbingAnglePage.xaml.cs">
-      <DependentUpon>AscentClimbingAnglePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AscentDatePage.xaml.cs">
-      <DependentUpon>AscentDatePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AscentHoldTypePage.xaml.cs">
-      <DependentUpon>AscentHoldTypePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\AscentProcessPage.xaml.cs">
       <DependentUpon>AscentProcessPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AscentRatingPage.xaml.cs">
-      <DependentUpon>AscentRatingPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AscentRouteStylePage.xaml.cs">
-      <DependentUpon>AscentRouteStylePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AscentSummaryPage.xaml.cs">
-      <DependentUpon>AscentSummaryPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AscentTypePage.xaml.cs">
-      <DependentUpon>AscentTypePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CheckForUpdatesPage.xaml.cs">
       <DependentUpon>CheckForUpdatesPage.xaml</DependentUpon>
@@ -274,6 +254,9 @@
     <Reference Include="Syncfusion.SfGauge.XForms">
       <HintPath>..\..\lib\pcl\Syncfusion.SfGauge.XForms.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms">
+      <HintPath>..\..\lib\pcl\Syncfusion.SfRating.XForms.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
       <Private>True</Private>
@@ -394,48 +377,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\MapRoutesPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\AscentTypePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\AscentDatePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\AscentRatingPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\AscentRouteStylePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\AscentHoldTypePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\AscentClimbingAnglePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\AscentSummaryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

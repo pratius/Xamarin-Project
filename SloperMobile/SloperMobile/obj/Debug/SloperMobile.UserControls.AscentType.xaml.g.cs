@@ -17,8 +17,24 @@ namespace SloperMobile.UserControls {
     public partial class AscentType : global::Xamarin.Forms.StackLayout {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Onsight;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Flash;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Redpoint;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Repeat;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(AscentType));
+            Onsight = this.FindByName<global::Xamarin.Forms.Frame>("Onsight");
+            Flash = this.FindByName<global::Xamarin.Forms.Frame>("Flash");
+            Redpoint = this.FindByName<global::Xamarin.Forms.Frame>("Redpoint");
+            Repeat = this.FindByName<global::Xamarin.Forms.Frame>("Repeat");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
              x:Class="SloperMobile.UserControls.AscentSummary">
 
@@ -12,17 +13,31 @@
       <RowDefinition Height=".1*"/>
       <RowDefinition Height="02"/>
     </Grid.RowDefinitions>
-    <Label Text="Route characteristic?" TextColor="Yellow" Grid.Row="1" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+    <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+      <Label Text="AWESOME" TextColor="White"  FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+      <Label Text="{Binding SendsTypeName,Mode=TwoWay}" TextColor="#FF9933" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+      <Label Text="!" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+    </StackLayout>
+    
+    
+    
     <StackLayout Orientation="Vertical" Grid.Row="2" Spacing="05" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-      <Image Source="bigImage" Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-      <Image Source="Ratting" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+      <Image Source="{Binding SummaryImage}" WidthRequest="200" HeightRequest="150"  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+
+      <rating:SfRating x:Name="rating_summary" ItemCount="3" ItemSize="25" Precision="Standard"
+                            Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True"
+                            HorizontalOptions="Center" VerticalOptions="Start">
+        <rating:SfRating.RatingSettings>
+          <rating:SfRatingSettings RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
+        </rating:SfRating.RatingSettings>
+      </rating:SfRating>
+      
       <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
-        <Image Source="Hand" Aspect="AspectFill"/>
-        <Image Source="Right" Aspect="AspectFill"/>
-        <Image Source="Arm" Aspect="AspectFill"/>
-        <Image Source="Settings" Aspect="AspectFill"/>
+        <Image Source="{Binding TopAngle,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
+        <Image Source="{Binding TopHold,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
+        <Image Source="{Binding TopRouteChar,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
       </StackLayout>
-      <Label Text="share your send" TextColor="White" Grid.Row="1" FontSize="Medium" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+      <Label Text="share your send" TextColor="White" Grid.Row="1" FontSize="Micro" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
 
       <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
         <Image Margin="03"  Source="facebook_logo" Aspect="AspectFit"/>
@@ -30,7 +45,7 @@
         <Image Margin="03" Source="instagram_symbol" Aspect="AspectFit"/>
         <Image Margin="03" Source="google_plus_logo" Aspect="AspectFit"/>
       </StackLayout>
-      <Image  Source="close" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+      <Image  Source="close" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Margin="0,30,0,0">
         <Image.GestureRecognizers>
           <TapGestureRecognizer Command="{Binding SendSummaryCommand}"/>
         </Image.GestureRecognizers>

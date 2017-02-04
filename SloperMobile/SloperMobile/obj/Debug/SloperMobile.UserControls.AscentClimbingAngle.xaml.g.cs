@@ -17,8 +17,24 @@ namespace SloperMobile.UserControls {
     public partial class AscentClimbingAngle : global::Xamarin.Forms.StackLayout {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Slab;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Vertical;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Overhanging;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Roof;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(AscentClimbingAngle));
+            Slab = this.FindByName<global::Xamarin.Forms.Frame>("Slab");
+            Vertical = this.FindByName<global::Xamarin.Forms.Frame>("Vertical");
+            Overhanging = this.FindByName<global::Xamarin.Forms.Frame>("Overhanging");
+            Roof = this.FindByName<global::Xamarin.Forms.Frame>("Roof");
         }
     }
 }

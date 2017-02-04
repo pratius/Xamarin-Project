@@ -102,8 +102,9 @@ namespace SloperMobile.ViewModel
             {
                 await _navigation.PushAsync(new Views.MapRoutesPage(CurrentSector));
             }
-            catch
+            catch (Exception ex)
             {
+                var error = ex.Message;
             }
         }
 

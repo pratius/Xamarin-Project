@@ -169,6 +169,15 @@
     <Reference Include="Syncfusion.SfGauge.XForms.iOS">
       <HintPath>..\..\lib\ios-unified\Syncfusion.SfGauge.XForms.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfRating.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfRating.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfRating.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfRating.XForms.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />

@@ -30,7 +30,7 @@ namespace SloperMobile.Views
         protected override void OnAppearing()
         {
             this.webView.LoadFinished += OnLoadFinished;
-            this.webView.LoadFromContent("HTML/Index.html");
+            this.webView.LoadFromContent("HTML/ResizeImage.html");
             base.OnAppearing();
         }
 
@@ -51,7 +51,7 @@ namespace SloperMobile.Views
                 {
                     count++;
                     //drawLine(80, 55, 75, 120, 1);//1 =button value
-                    webView.CallJsFunction("drawLine", line.x, "0", "0", line.y, count);
+                    //webView.CallJsFunction("drawLine", line.x, "0", "0", line.y, count);
                 }
             }
         }

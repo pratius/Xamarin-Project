@@ -17,8 +17,32 @@ namespace SloperMobile.UserControls {
     public partial class AscentRouteStyle : global::Xamarin.Forms.StackLayout {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Technical;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Sequential;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Powerful;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Sustained;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Onemove;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Frame Everything;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(AscentRouteStyle));
+            Technical = this.FindByName<global::Xamarin.Forms.Frame>("Technical");
+            Sequential = this.FindByName<global::Xamarin.Forms.Frame>("Sequential");
+            Powerful = this.FindByName<global::Xamarin.Forms.Frame>("Powerful");
+            Sustained = this.FindByName<global::Xamarin.Forms.Frame>("Sustained");
+            Onemove = this.FindByName<global::Xamarin.Forms.Frame>("Onemove");
+            Everything = this.FindByName<global::Xamarin.Forms.Frame>("Everything");
         }
     }
 }

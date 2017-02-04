@@ -11,11 +11,13 @@ namespace SloperMobile.Views
 {
     public partial class AscentProcessPage : CarouselPage
     {
+        private AscentProcessViewModel AscentProcessVM;
         public AscentProcessPage()
         {
             InitializeComponent();
-            Title = "Ascent Process";
-            BindingContext = new AscentProcessViewModel(Navigation);
+            AscentProcessVM= new AscentProcessViewModel(Navigation);
+            BindingContext = AscentProcessVM;
+            Title = AscentProcessVM.PageHeaderText;
         }
         protected override void OnCurrentPageChanged()
         {
