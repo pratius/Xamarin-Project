@@ -2,18 +2,18 @@
 <Sdk>
   <AndroidApiLevel>25</AndroidApiLevel>
   <AndroidApiLevelName>25</AndroidApiLevelName>
-  <AndroidNdkPath>C:\ProgramData\Microsoft\AndroidNDK\android-ndk-r10e\</AndroidNdkPath>
-  <AndroidSdkBuildToolsPath>C:\Program Files (x86)\Android\android-sdk\build-tools\25.0.0</AndroidSdkBuildToolsPath>
-  <AndroidSdkBuildToolsBinPath>C:\Program Files (x86)\Android\android-sdk\build-tools\25.0.0</AndroidSdkBuildToolsBinPath>
-  <AndroidSdkPath>C:\Program Files (x86)\Android\android-sdk</AndroidSdkPath>
-  <JavaSdkPath>C:\Program Files\Java\jdk1.8.0_112</JavaSdkPath>
+  <AndroidNdkPath>C:\Users\dell 5000\Documents\Android\ndk\android-ndk-r10d</AndroidNdkPath>
+  <AndroidSdkBuildToolsPath>C:\Users\dell 5000\AppData\Local\Android\android-sdk\build-tools\23.0.3</AndroidSdkBuildToolsPath>
+  <AndroidSdkBuildToolsBinPath>C:\Users\dell 5000\AppData\Local\Android\android-sdk\build-tools\23.0.3</AndroidSdkBuildToolsBinPath>
+  <AndroidSdkPath>C:\Users\dell 5000\AppData\Local\Android\android-sdk</AndroidSdkPath>
+  <JavaSdkPath>C:\Program Files (x86)\Java\jdk1.7.0_71</JavaSdkPath>
   <MonoAndroidBinPath>C:\Program Files (x86)\MSBuild\Xamarin\Android</MonoAndroidBinPath>
   <MonoAndroidToolsPath>C:\Program Files (x86)\MSBuild\Xamarin\Android</MonoAndroidToolsPath>
   <ReferenceAssemblyPaths>
     <ReferenceAssemblyPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\</ReferenceAssemblyPath>
   </ReferenceAssemblyPaths>
   <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
-  <ZipAlignPath>C:\Program Files (x86)\Android\android-sdk\build-tools\25.0.0</ZipAlignPath>
+  <ZipAlignPath>C:\Users\dell 5000\AppData\Local\Android\android-sdk\build-tools\23.0.3</ZipAlignPath>
   <MonoAndroidIncludePath />
   <SupportedApiLevel>24</SupportedApiLevel>
   <AndroidSequencePointsMode>None</AndroidSequencePointsMode>

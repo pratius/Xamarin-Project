@@ -15,12 +15,20 @@ namespace SloperMobile.Views
         private ViewModel.MapRoutesViewModel MapRouteVM;
         public MapRoutesPage(MapListModel CurrentSector)
         {
-            InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
-            MapRouteVM = new ViewModel.MapRoutesViewModel(CurrentSector);
-            BindingContext = MapRouteVM;
-            MapRouteVM.OnPageNavigation = OnPageNavigation;
-            _CurrentSector = CurrentSector;
+            try
+            {
+                InitializeComponent();
+                NavigationPage.SetHasNavigationBar(this, false);
+                MapRouteVM = new ViewModel.MapRoutesViewModel(CurrentSector);
+                BindingContext = MapRouteVM;
+                MapRouteVM.OnPageNavigation = OnPageNavigation;
+                _CurrentSector = CurrentSector;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }       
         private async void OnPageNavigation()
         {
@@ -54,6 +62,16 @@ namespace SloperMobile.Views
                     //webView.CallJsFunction("drawLine", line.x, "0", "0", line.y, count);
                 }
             }
+        }
+
+        private void OnMenuTapped(object sender, EventArgs e)
+        {
+            Cache.MasterPage.IsPresented = true;
+        }
+
+        private void OnSearch(object sender, EventArgs e)
+        {
+
         }
     }
 }
