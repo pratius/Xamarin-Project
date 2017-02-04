@@ -508,17 +508,8 @@ E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.MapDetailPage.xaml.g.cs
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.SplashPage.xaml.g.cs
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.MapRoutesPage.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.AscentTypePage.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.AscentDatePage.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.AscentRatingPage.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.AscentRouteStylePage.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.AscentHoldTypePage.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.AscentClimbingAnglePage.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.AscentSummaryPage.xaml.g.cs
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Sandy2\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.config
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Sandy2\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Sandy2\SloperMobile\SloperMobile\bin\Debug\SloperMobile.pdb
@@ -594,5 +585,15 @@ D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Sandy2\SloperMobile\S
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Sandy2\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Sandy2\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Sandy2\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
-D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Sandy2\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
-D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Sandy2\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Syncfusion.SfRating.XForms.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Syncfusion.SfRating.XForms.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.AscentProcessPage.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentType.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentDate.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentRating.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentClimbingAngle.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentHoldType.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentRouteStyle.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentSummary.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
