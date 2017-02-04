@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -1203,7 +1203,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\arrowLeftWhite.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\HTML\.DS_Store" />
     <AndroidAsset Include="Assets\HTML\ResizeImage.html" />
     <AndroidAsset Include="Assets\HTML\Css\ResizeImage.css" />
     <AndroidAsset Include="Assets\HTML\Js\canvas.dashedLine.js" />

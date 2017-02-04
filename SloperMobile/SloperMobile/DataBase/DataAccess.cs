@@ -240,12 +240,10 @@ namespace SloperMobile.DataBase
             return secimglist;
         }
 
-        public topoline GetSectorLines(string sectorid)
+        public string GetSectorLines(string sectorid)
         {
             var sector = dbConn.Table<T_TOPO>().FirstOrDefault(sec => sec.sector_id == sectorid);
-            var topoimg = JsonConvert.DeserializeObject<TopoImageResponse>(sector.topo_json);
-            var line = topoimg.drawing[0].line;
-            return line;
+            return sector.topo_json;
         }
 
         public List<T_CRAG> GetCragList()
