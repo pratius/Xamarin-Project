@@ -32,7 +32,7 @@ namespace SloperMobile.Views
         }       
         private async void OnPageNavigation()
         {
-            await Navigation.PushAsync(new AscentTypePage());
+            await Navigation.PushAsync(new AscentProcessPage());
         }
 
         protected override void OnAppearing()

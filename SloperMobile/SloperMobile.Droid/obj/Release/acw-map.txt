@@ -30,6 +30,14 @@ Syncfusion.SfGauge.XForms.Droid.SfLinearGaugeRenderer, Syncfusion.SfGauge.XForms
 Syncfusion.SfGauge.XForms.Droid.SfLinearGaugeRenderer, Syncfusion.SfGauge.XForms.Android, Version=14.4451.0.15, Culture=neutral, PublicKeyToken=null;md552cdef40d3d3626193a1e76bb5ff9271.SfLinearGaugeRenderer
 Syncfusion.SfGauge.XForms.Droid.SfLinearGaugeRenderer;md552cdef40d3d3626193a1e76bb5ff9271.SfLinearGaugeRenderer
 syncfusion.sfgauge.xforms.droid.SfLinearGaugeRenderer;md552cdef40d3d3626193a1e76bb5ff9271.SfLinearGaugeRenderer
+Com.Syncfusion.Rating.SfRating/IValueChangedListenerImplementor, Syncfusion.SfRating.Android;mono.com.syncfusion.rating.SfRating_valueChangedListenerImplementor
+Com.Syncfusion.Rating.SfRating+IValueChangedListenerImplementor, Syncfusion.SfRating.Android, Version=14.4451.0.15, Culture=neutral, PublicKeyToken=null;mono.com.syncfusion.rating.SfRating_valueChangedListenerImplementor
+Com.Syncfusion.Rating.SfRating.IValueChangedListenerImplementor;mono.com.syncfusion.rating.SfRating_valueChangedListenerImplementor
+mono.com.syncfusion.rating.SfRating_valueChangedListenerImplementor;mono.com.syncfusion.rating.SfRating_valueChangedListenerImplementor
+Syncfusion.SfRating.XForms.Droid.SfRatingRenderer, Syncfusion.SfRating.XForms.Android;md588c982a5a96c32c315cfe2c1be3f4016.SfRatingRenderer
+Syncfusion.SfRating.XForms.Droid.SfRatingRenderer, Syncfusion.SfRating.XForms.Android, Version=14.4451.0.15, Culture=neutral, PublicKeyToken=null;md588c982a5a96c32c315cfe2c1be3f4016.SfRatingRenderer
+Syncfusion.SfRating.XForms.Droid.SfRatingRenderer;md588c982a5a96c32c315cfe2c1be3f4016.SfRatingRenderer
+syncfusion.sfrating.xforms.droid.SfRatingRenderer;md588c982a5a96c32c315cfe2c1be3f4016.SfRatingRenderer
 Android.Support.Design.Widget.Snackbar/SnackbarActionClickImplementor, Xamarin.Android.Support.Design;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar+SnackbarActionClickImplementor, Xamarin.Android.Support.Design, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar.SnackbarActionClickImplementor;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
