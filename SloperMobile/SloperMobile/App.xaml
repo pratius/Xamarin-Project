@@ -9,7 +9,7 @@
 
           <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor" Value="Black"/>
-            <Setter Property="BarTextColor" Value="Yellow"/>
+            <Setter Property="BarTextColor" Value="#FF9933"/>
           </Style>
           
             <Style x:Key="AppBackgroundColor" TargetType="ContentPage">

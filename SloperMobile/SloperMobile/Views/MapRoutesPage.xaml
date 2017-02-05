@@ -121,8 +121,8 @@
                     </ListView>
                 </StackLayout>
                 <StackLayout Grid.Row="3" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Spacing="0">
-                    <Button Text="Tick List" TextColor="White" BackgroundColor="Yellow" FontSize="Medium" />
-                    <Button Text="Sent" Command="{Binding SendCommand}"  TextColor="White" BackgroundColor="Yellow" FontSize="Medium" />
+                    <Button Text="Tick List" TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
+                    <Button Text="Sent" Command="{Binding SendCommand}"  TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
                 </StackLayout>               
             </Grid>
             <Image Source="arrowLeftWhite" Rotation="90" Grid.Row="2" Grid.Column="1" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">

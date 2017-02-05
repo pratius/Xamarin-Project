@@ -56,7 +56,7 @@
                        LabelColor="Gray"                       
                        MinorTicksPerInterval="0">
                             <gauge:Scale.Pointers>
-                                <gauge:RangePointer Value="{Binding Path=Onsight,Mode=TwoWay}" Color="Yellow" Thickness="10"/>
+                                <gauge:RangePointer Value="{Binding Path=Onsight,Mode=TwoWay}" Color="#FF9933" Thickness="10"/>
                             </gauge:Scale.Pointers>
                             <gauge:Scale.MajorTickSettings>
                                 <gauge:TickSettings x:Name="major" Length="12" Color ="#444444" Thickness="3"/>
@@ -101,7 +101,7 @@
                        LabelColor="Gray"                       
                        MinorTicksPerInterval="0">
                             <gauge:Scale.Pointers>
-                                <gauge:RangePointer Value="{Binding Redpoint, Mode=TwoWay}" Color="Yellow" Thickness="10"/>
+                                <gauge:RangePointer Value="{Binding Redpoint, Mode=TwoWay}" Color="#FF9933" Thickness="10"/>
                             </gauge:Scale.Pointers>
                             <gauge:Scale.MajorTickSettings>
                                 <gauge:TickSettings  Length="12" Color ="#444444" Thickness="3"/>
@@ -139,7 +139,7 @@
                        LabelColor="Gray"                       
                        MinorTicksPerInterval="0">
                             <gauge:Scale.Pointers>
-                                <gauge:RangePointer Value="{Binding Projects, Mode=TwoWay}" Color="Yellow" Thickness="10"/>
+                                <gauge:RangePointer Value="{Binding Projects, Mode=TwoWay}" Color="#FF9933" Thickness="10"/>
                             </gauge:Scale.Pointers>
                             <gauge:Scale.MajorTickSettings>
                                 <gauge:TickSettings  Length="12" Color ="#444444" Thickness="3"/>

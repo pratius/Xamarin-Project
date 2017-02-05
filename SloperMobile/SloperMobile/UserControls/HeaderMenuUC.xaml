@@ -67,7 +67,7 @@
              VerticalOptions="FillAndExpand"
              Grid.Column="6"/>
 
-                <Grid Grid.Column="7" BackgroundColor="Yellow" >
+                <Grid Grid.Column="7" BackgroundColor="#FF9933" >
                     <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="SENDS" TextColor="Black"/>
                 </Grid>
                 <BoxView BackgroundColor="Gray"

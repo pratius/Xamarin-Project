@@ -7,7 +7,7 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center"/>
         <!--<Setter Property="FontSize" Value="Large" />-->
-        <Setter Property="TextColor" Value="Yellow" />
+        <Setter Property="TextColor" Value="#FF9933" />
         <Setter Property="Font" Value="15"/>
       </Style>
       <Style x:Key="lblsubTopHeader" TargetType="Label">
