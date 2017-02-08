@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SloperMobile.UserControls.AscentClimbingAngle" BackgroundColor="Black">
-  
+
   <Label Text="  What style" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
   <Label Text="of climbing is" TextColor="White" FontSize="20" HorizontalOptions="Center" />
   <Label Text="this route?" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
@@ -30,9 +30,9 @@
         <ColumnDefinition Width="1*"/>
       </Grid.ColumnDefinitions>
 
-      <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" BackgroundColor="#3F3F3F" 
+      <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" BackgroundColor="#3F3F3F"
                WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
-      <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#3F3F3F" 
+      <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#3F3F3F"
                HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand" Margin="30,0,30,0"/>
 
 
@@ -69,10 +69,10 @@
         <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" >
           <Image  Source="steepRoof" WidthRequest="50" HeightRequest="50"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
-    </Frame>
+      </Frame>
 
 
     </Grid>
   </Grid>
-  
+
 </StackLayout>

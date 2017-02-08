@@ -1,5 +1,8 @@
-﻿using SloperMobile.Common.Command;
+﻿using Newtonsoft.Json;
+using SloperMobile.Common.Command;
 using SloperMobile.Common.Constants;
+using SloperMobile.Common.Helpers;
+using SloperMobile.DataBase;
 using SloperMobile.Model;
 using SloperMobile.UserControls;
 using SloperMobile.Views;
@@ -23,6 +26,13 @@ namespace SloperMobile.ViewModel
         private string sendclimbingstyle;
         private string sendholdtype;
         private string sendroutecharacteristics;
+        private string commenttext;
+        private string routeid;
+        private bool isenable = true;
+        private bool isdisplaymsg;
+        private string commandtext = "Submit";
+        private string progressmsg = "sending...";
+
         private string Slab = "";
         private string Vertical = "";
         private string Overhanging = "";
@@ -46,32 +56,33 @@ namespace SloperMobile.ViewModel
         private ImageSource topangle;
         private ImageSource tophold;
         private ImageSource toproutechar;
-
-        public AscentProcessViewModel(INavigation navigation)
+        private T_ROUTE routeData;
+        public AscentProcessViewModel(INavigation navigation, string routeid)
         {
             PageHeaderText = Cache.SelctedCurrentSector?.SectorName;
             SummaryImage = Cache.SelctedCurrentSector?.SectorImage;
-            SendTypeCommand = new DelegateCommand(ExecuteOnSendType);
+            RouteId = routeid;
+            routeData = App.DAUtil.GetRouteDataByRouteID(RouteId);
 
+            SendTypeCommand = new DelegateCommand(ExecuteOnSendType);
             SendTypeHoldCommand = new DelegateCommand(ExecuteOnSendHold);
-            //SendDataCommand = new DelegateCommand(ExecuteOnData);
             SendRouteCharaterCommand = new DelegateCommand(ExecuteOnRouteCharacteristics);
             SendRouteStyleCommand = new DelegateCommand(ExecuteOnRouteStyle);
             SendRatingCommand = new DelegateCommand(ExecuteOnRating);
             SendSummaryCommand = new DelegateCommand(ExecuteOnSummary);
-            AscentGrages = App.DAUtil.GetTtechGrades();
+            AscentGrages = App.DAUtil.GetTtechGrades(routeData.grade_type_id);
             _navigation = navigation;
-            currentInstance = this;
+            //currentInstance = this;
         }
 
-        private static AscentProcessViewModel currentInstance;
-        public static AscentProcessViewModel CurrentInstance(INavigation navigation)
-        {
-            if (currentInstance == null)
-                return new AscentProcessViewModel(navigation);
-            else
-                return currentInstance;
-        }
+        //private static AscentProcessViewModel currentInstance;
+        //public static AscentProcessViewModel CurrentInstance(INavigation navigation)
+        //{
+        //    if (currentInstance == null)
+        //        return new AscentProcessViewModel(navigation);
+        //    else
+        //        return currentInstance;
+        //}
 
         public List<string> AscentGrages
         {
@@ -119,6 +130,44 @@ namespace SloperMobile.ViewModel
             get { return summaryimage; }
             set { summaryimage = value; OnPropertyChanged(); }
         }
+
+        public string CommandText
+        {
+            get { return commandtext; }
+            set { commandtext = value; OnPropertyChanged(); }
+        }
+
+        public string CommentText
+        {
+            get { return commenttext; }
+            set { commenttext = value; OnPropertyChanged(); }
+        }
+
+
+        public string ProgressMsg
+        {
+            get { return progressmsg; }
+            set { progressmsg = value; OnPropertyChanged(); }
+        }
+
+
+        public bool IsButtonInable
+        {
+            get { return isenable; }
+            set { isenable = value; OnPropertyChanged(); }
+        }
+        public bool IsDisplayMessage
+        {
+            get { return isdisplaymsg; }
+            set { isdisplaymsg = value; OnPropertyChanged(); }
+        }
+
+        public string RouteId
+        {
+            get { return routeid; }
+            set { routeid = value; OnPropertyChanged(); }
+        }
+
 
         public ImageSource TopAngle
         {
@@ -199,9 +248,9 @@ namespace SloperMobile.ViewModel
                     Char_Technical = "";
                 }
             }
-            
 
-            if (Convert.ToString(obj) == "2" )
+
+            if (Convert.ToString(obj) == "2")
             {
                 if (Char_Sequential == "")
                 {
@@ -212,9 +261,9 @@ namespace SloperMobile.ViewModel
                     Char_Sequential = "";
                 }
             }
-            
 
-            if (Convert.ToString(obj) == "4" )
+
+            if (Convert.ToString(obj) == "4")
             {
                 if (Char_Powerful == "")
                 {
@@ -225,9 +274,9 @@ namespace SloperMobile.ViewModel
                     Char_Powerful = "";
                 }
             }
-            
 
-            if (Convert.ToString(obj) == "8" )
+
+            if (Convert.ToString(obj) == "8")
             {
                 if (Char_Sustained == "")
                 {
@@ -238,9 +287,9 @@ namespace SloperMobile.ViewModel
                     Char_Sustained = "";
                 }
             }
-           
 
-            if (Convert.ToString(obj) == "16" )
+
+            if (Convert.ToString(obj) == "16")
             {
                 if (Char_Onemove == "")
                 {
@@ -251,7 +300,7 @@ namespace SloperMobile.ViewModel
                     Char_Onemove = "";
                 }
             }
-            
+
 
             if (Convert.ToString(obj) == "all")
             {
@@ -275,15 +324,15 @@ namespace SloperMobile.ViewModel
                     Char_Everything = "";
                 }
             }
-            
-            
+
+
             string[] characteristics = { Char_Technical, Char_Sequential, Char_Powerful, Char_Sustained, Char_Onemove };
             foreach (string str in characteristics)
             {
                 if (!string.IsNullOrEmpty(str))
                 {
                     routecharacteristics += str + ",";
-                    if(routes!="all")
+                    if (routes != "all")
                     {
                         routes = str;
                     }
@@ -291,11 +340,11 @@ namespace SloperMobile.ViewModel
             }
             if (!string.IsNullOrEmpty(routecharacteristics))
             {
-                SendClimbingStyle = routecharacteristics.TrimEnd(',');
+                SendRouteCharacteristics = routecharacteristics.TrimEnd(',');
             }
             else
             {
-                SendClimbingStyle = routecharacteristics;
+                SendRouteCharacteristics = routecharacteristics;
             }
             TopRouteChar = ImageSource.FromFile(GetRouteResourceName(routes));
         }
@@ -305,7 +354,7 @@ namespace SloperMobile.ViewModel
             var holdingstyle = "";
 
 
-            if (Convert.ToString(obj) == "1" )
+            if (Convert.ToString(obj) == "1")
             {
                 if (Hold_Sloper == "")
                 {
@@ -316,9 +365,9 @@ namespace SloperMobile.ViewModel
                     Hold_Sloper = "";
                 }
             }
-           
 
-            if (Convert.ToString(obj) == "2" )
+
+            if (Convert.ToString(obj) == "2")
             {
                 if (Hold_Crimps == "")
                 {
@@ -329,9 +378,9 @@ namespace SloperMobile.ViewModel
                     Hold_Crimps = "";
                 }
             }
-            
 
-            if (Convert.ToString(obj) == "4" )
+
+            if (Convert.ToString(obj) == "4")
             {
                 if (Hold_Jugs == "")
                 {
@@ -342,7 +391,7 @@ namespace SloperMobile.ViewModel
                     Hold_Jugs = "";
                 }
             }
-           
+
 
             if (Convert.ToString(obj) == "8")
             {
@@ -355,7 +404,7 @@ namespace SloperMobile.ViewModel
                     Hold_Pockets = "";
                 }
             }
-            
+
             string tophold = "";
             string[] holdstyles = { Hold_Sloper, Hold_Crimps, Hold_Jugs, Hold_Pockets };
             foreach (string str in holdstyles)
@@ -368,11 +417,11 @@ namespace SloperMobile.ViewModel
             }
             if (!string.IsNullOrEmpty(holdingstyle))
             {
-                SendClimbingStyle = holdingstyle.TrimEnd(',');
+                SendHoldType = holdingstyle.TrimEnd(',');
             }
             else
             {
-                SendClimbingStyle = holdingstyle;
+                SendHoldType = holdingstyle;
             }
 
             TopHold = ImageSource.FromFile(GetHoldResourceName(tophold));
@@ -381,7 +430,7 @@ namespace SloperMobile.ViewModel
         private void ExecuteOnRouteStyle(object obj)
         {
             var climbingstyles = "";
-            if (Convert.ToString(obj) == "1" )
+            if (Convert.ToString(obj) == "1")
             {
                 if (Slab == "")
                 {
@@ -392,9 +441,9 @@ namespace SloperMobile.ViewModel
                     Slab = "";
                 }
             }
-            
 
-            if (Convert.ToString(obj) == "2" )
+
+            if (Convert.ToString(obj) == "2")
             {
                 if (Vertical == "")
                 {
@@ -405,7 +454,7 @@ namespace SloperMobile.ViewModel
                     Vertical = "";
                 }
             }
-            
+
 
             if (Convert.ToString(obj) == "4")
             {
@@ -418,7 +467,7 @@ namespace SloperMobile.ViewModel
                     Overhanging = "";
                 }
             }
-           
+
 
             if (Convert.ToString(obj) == "8")
             {
@@ -431,7 +480,7 @@ namespace SloperMobile.ViewModel
                     Roof = "";
                 }
             }
-            
+
 
             string[] climbstyles = { Slab, Vertical, Overhanging, Roof };
             string topangle = "";
@@ -467,7 +516,97 @@ namespace SloperMobile.ViewModel
 
         private async void ExecuteOnSummary(object obj)
         {
-            await _navigation.PushAsync(new HomePage());
+            if (CommandText == "Submit")
+            {
+                IsRunningTasks = true;
+                IsDisplayMessage = true;
+                IsButtonInable = false;
+                #region Collecting Ascent Data
+                AscentPostModel ascent = new AscentPostModel();
+
+                ascent.ascent_date = SendsDate;
+                ascent.route_id = RouteId;
+                ascent.ascent_type_id = App.DAUtil.GetAscentTypeIdByName(SendsTypeName);
+                ascent.climbing_angle = "";
+                if (SendClimbingStyle.Contains(","))
+                {
+                    string[] sarr1 = SendClimbingStyle.Split(',');
+                    int climbbitmask = 0;
+                    foreach (string s in sarr1)
+                    {
+                        climbbitmask += Convert.ToInt32(s);
+                    }
+                    ascent.climbing_angle_value = climbbitmask.ToString();
+                }
+                else
+                {
+                    ascent.climbing_angle_value = SendClimbingStyle;
+                }
+                ascent.comment = CommentText;
+                ascent.grade_id = routeData.grade_type_id;
+                ascent.hold_type = "";
+
+
+                if (SendHoldType.Contains(","))
+                {
+                    string[] sarr2 = SendHoldType.Split(',');
+                    int holdbitmask = 0;
+                    foreach (string s in sarr2)
+                    {
+                        holdbitmask += Convert.ToInt32(s);
+                    }
+                    ascent.hold_type_value = holdbitmask.ToString();
+                }
+                else
+                {
+                    ascent.hold_type_value = SendHoldType;
+                }
+
+                ascent.ImageData = "";
+                ascent.ImageName = "";
+                ascent.photo = "";
+                ascent.rating = SendRating.ToString();
+                ascent.route_style = "";
+
+                if (SendRouteCharacteristics.Contains(","))
+                {
+                    string[] sarr3 = SendRouteCharacteristics.Split(',');
+                    int routebitmask = 0;
+                    foreach (string s in sarr3)
+                    {
+                        routebitmask += Convert.ToInt32(s);
+                    }
+                    ascent.route_style_value = routebitmask.ToString();
+                }
+                else
+                {
+                    ascent.route_style_value = SendRouteCharacteristics;
+                }
+                ascent.route_type_id = routeData.route_type_id;
+                ascent.tech_grade_id = App.DAUtil.GetTTechGradeIdByGradeName(routeData.grade_type_id, SendsGrade);
+                ascent.video = "";
+                #endregion
+
+                var response = await HttpSendAscentProcess(ascent);
+                if (response != null)
+                {
+                    ProgressMsg = "Ascent saved successfully.";
+                    IsRunningTasks = false;
+                }
+                else
+                {
+                    ProgressMsg = "Please try again!";
+                    IsRunningTasks = false;
+                }
+                CommandText = "Close";
+                IsButtonInable = true;
+            }
+            else
+            {
+                IsRunningTasks = false;
+                IsDisplayMessage = false;
+                await _navigation.PushAsync(new HomePage());
+            }
 
         }
 
@@ -507,7 +646,7 @@ namespace SloperMobile.ViewModel
                     resource = "hold_type_4_jugs.png";
                     break;
                 case "8":
-                    resource = "hold_type_8_pockets.png";
+                    resource = "hold_type_4_jugs.png";
                     break;
             }
             return resource;
@@ -539,5 +678,16 @@ namespace SloperMobile.ViewModel
             }
             return resource;
         }
+
+        #region Services
+
+        private async Task<AscentReponse> HttpSendAscentProcess(AscentPostModel ascent)
+        {
+            HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_SendAscent_Process, Settings.AccessTokenSettings);
+            var ascentjson = JsonConvert.SerializeObject(ascent);
+            var response = await apicall.Post<AscentReponse>(ascentjson);
+            return response;
+        }
+        #endregion
     }
 }

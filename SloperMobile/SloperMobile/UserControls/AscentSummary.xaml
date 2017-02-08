@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
@@ -18,9 +18,9 @@
       <Label Text="{Binding SendsTypeName,Mode=TwoWay}" TextColor="#FF9933" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
       <Label Text="!" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
     </StackLayout>
-    
-    
-    
+
+
+
     <StackLayout Orientation="Vertical" Grid.Row="2" Spacing="05" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
       <Image Source="{Binding SummaryImage}" WidthRequest="200" HeightRequest="150"  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
 
@@ -31,7 +31,7 @@
           <rating:SfRatingSettings RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
         </rating:SfRating.RatingSettings>
       </rating:SfRating>
-      
+
       <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
         <Image Source="{Binding TopAngle,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
         <Image Source="{Binding TopHold,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
@@ -45,13 +45,17 @@
         <Image Margin="03" Source="instagram_symbol" Aspect="AspectFit"/>
         <Image Margin="03" Source="google_plus_logo" Aspect="AspectFit"/>
       </StackLayout>
-      <Image  Source="close" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Margin="0,30,0,0">
-        <Image.GestureRecognizers>
-          <TapGestureRecognizer Command="{Binding SendSummaryCommand}"/>
-        </Image.GestureRecognizers>
-      </Image>
+
+      <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+        <ActivityIndicator IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}"  WidthRequest="10" HeightRequest="10" Color="White"></ActivityIndicator>
+        <Label Text="{Binding ProgressMsg}" TextColor="White" FontSize="Micro" IsVisible="{Binding IsDisplayMessage}"></Label>
+      </StackLayout>
+      <Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="1" HorizontalOptions="Center" VerticalOptions="StartAndExpand"
+                Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}"
+                IsEnabled="{Binding IsButtonInable}" />
+
     </StackLayout>
 
   </Grid>
-  
+
 </StackLayout>

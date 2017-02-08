@@ -1253,6 +1253,88 @@ D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\Sl
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid-Signed.apk
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile.Droid\obj\Release\android\bin\SloperMobile.Droid.apk
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile.Droid\obj\Release\SloperMobile.Droid.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\ExifLib.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Syncfusion.SfRating.Android.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Syncfusion.SfRating.XForms.Android.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Syncfusion.SfRating.XForms.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Core.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.Droid.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Ioc.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.Droid.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.ServiceStack.Droid.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Syncfusion.SfRating.Android.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Syncfusion.SfRating.XForms.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Core.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.Droid.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Ioc.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.Droid.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.ServiceStack.Droid.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\steepoverhanging.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\steeproof.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\steepslab.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\steepvertical.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\steepoverhanging.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\steeproof.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\steepslab.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\steepvertical.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\steepoverhanging.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\steeproof.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\steepslab.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\steepvertical.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\steepoverhanging.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\steeproof.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\steepslab.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\steepvertical.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\icon_set_sept_2016_sustained.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\hold_type_2_crimps.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\icon_set_sept_2016_overhang.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_8_sustained.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\hold_type_1_slopers.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_8_sustained.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\hold_type_1_slopers.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\hold_type_2_crimps.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_8_sustained.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\hold_type_1_slopers.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\hold_type_2_crimps.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_8_sustained.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\hold_type_1_slopers.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\hold_type_2_crimps.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\arrowleftwhite.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\arrowleftwhite.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_1_technical.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_16_one_move.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_2_sequential.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_4_powerful.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_everything.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_1_technical.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_16_one_move.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_2_sequential.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_4_powerful.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_everything.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_1_technical.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_16_one_move.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_2_sequential.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_4_powerful.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_everything.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_1_technical.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_16_one_move.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_2_sequential.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_4_powerful.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_everything.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\hold_type_8_pockets.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\hold_type_4_jugs.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\hold_type_4_jugs.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\hold_type_4_jugs.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\hold_type_4_jugs.png
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Mono.Android.Export.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\Mono.Android.Export.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\SloperMobile.Droid.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid.dll.config
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid.pdb
@@ -1686,22 +1768,7 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawab
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\hold_type_4_jugs.png
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\R.cs.flag
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\uploadflags.txt
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Java.Interop.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Microsoft.CSharp.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Mono.Android.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Mono.Android.Export.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Mono.CSharp.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\mscorlib.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\System.ComponentModel.Composition.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\System.Core.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\System.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\System.Net.Http.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\System.Runtime.Serialization.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\System.ServiceModel.Internals.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\System.Xml.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\System.Xml.Linq.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\FormsViewGroup.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\ImageCircle.Forms.Plugin.Abstractions.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\ImageCircle.Forms.Plugin.Android.dll.mdb
@@ -1724,86 +1791,4 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\as
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\Xamarin.Forms.Xaml.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\SloperMobile.Droid.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\ExifLib.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Syncfusion.SfRating.Android.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Syncfusion.SfRating.XForms.Android.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Syncfusion.SfRating.XForms.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Core.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.Droid.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Ioc.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.Droid.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.ServiceStack.Droid.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Syncfusion.SfRating.Android.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Syncfusion.SfRating.XForms.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Core.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Forms.Droid.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Ioc.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Platform.Droid.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\XLabs.Serialization.ServiceStack.Droid.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\steepoverhanging.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\steeproof.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\steepslab.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\steepvertical.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\steepoverhanging.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\steeproof.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\steepslab.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\steepvertical.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\steepoverhanging.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\steeproof.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\steepslab.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\steepvertical.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\steepoverhanging.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\steeproof.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\steepslab.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\steepvertical.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\icon_set_sept_2016_sustained.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\hold_type_2_crimps.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\icon_set_sept_2016_overhang.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_8_sustained.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\hold_type_1_slopers.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_8_sustained.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\hold_type_1_slopers.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\hold_type_2_crimps.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_8_sustained.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\hold_type_1_slopers.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\hold_type_2_crimps.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_8_sustained.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\hold_type_1_slopers.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\hold_type_2_crimps.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\arrowleftwhite.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\arrowleftwhite.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_1_technical.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_16_one_move.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_2_sequential.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_4_powerful.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\route_style_everything.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_1_technical.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_16_one_move.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_2_sequential.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_4_powerful.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\route_style_everything.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_1_technical.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_16_one_move.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_2_sequential.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_4_powerful.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\route_style_everything.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_1_technical.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_16_one_move.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_2_sequential.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_4_powerful.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\route_style_everything.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\hold_type_8_pockets.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable\hold_type_4_jugs.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-hdpi\hold_type_4_jugs.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xhdpi\hold_type_4_jugs.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\res\drawable-xxhdpi\hold_type_4_jugs.png
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\Mono.Android.Export.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\android\assets\Mono.Android.Export.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Release\SloperMobile.Droid.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Release\SloperMobile.Droid.dll.mdb

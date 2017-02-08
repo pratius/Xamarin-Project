@@ -12,10 +12,10 @@ namespace SloperMobile.Views
     public partial class AscentProcessPage : CarouselPage
     {
         private AscentProcessViewModel AscentProcessVM;
-        public AscentProcessPage()
+        public AscentProcessPage(string routeid)
         {
             InitializeComponent();
-            AscentProcessVM= new AscentProcessViewModel(Navigation);
+            AscentProcessVM = new AscentProcessViewModel(Navigation, routeid);
             BindingContext = AscentProcessVM;
             Title = AscentProcessVM.PageHeaderText;
         }

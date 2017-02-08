@@ -15,7 +15,7 @@
         <rating:SfRatingSettings RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
       </rating:SfRating.RatingSettings>
     </rating:SfRating>
-    
+
   </StackLayout>
   <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
     <Image Source="Camera" HeightRequest="90"/>

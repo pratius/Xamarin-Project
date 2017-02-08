@@ -2,7 +2,7 @@
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
-              x:Class="SloperMobile.Views.AscentProcessPage" 
+              x:Class="SloperMobile.Views.AscentProcessPage"
               NavigationPage.HasNavigationBar="True" Style="{StaticResource AppBackgroundColor}">
 
 

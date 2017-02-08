@@ -55,6 +55,7 @@
     <Compile Include="CustomControls\ProgressBar.cs" />
     <Compile Include="DataBase\DataAccess.cs" />
     <Compile Include="DataBase\DataTables.cs" />
+    <Compile Include="Model\AscentPostModel.cs" />
     <Compile Include="Model\AscentProcessModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\CheckForUpdateModel.cs" />

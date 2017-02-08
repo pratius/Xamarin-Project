@@ -14,7 +14,7 @@ namespace SloperMobile.UserControls
         {
             InitializeComponent();
         }
-                
+
         public void SetFrameColor(object sender, EventArgs e)
         {
             Onsight.BackgroundColor = Color.Black;

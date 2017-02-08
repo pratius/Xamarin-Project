@@ -135,7 +135,8 @@ namespace SloperMobile.ViewModel
 
         private void ExecuteOnSends(object obj)
         {
-            OnPageNavigation?.Invoke();
+            //OnPageNavigation?.Invoke();
+            OnConditionNavigation?.Invoke("22044");
         }
 
         private void LoadSectorImages()

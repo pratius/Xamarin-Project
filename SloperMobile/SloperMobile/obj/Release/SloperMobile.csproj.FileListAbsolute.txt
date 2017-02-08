@@ -328,38 +328,29 @@ D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\Sl
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Release\SloperMobile.pdb
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
 D:\.Slick.Systems\websites\SloperMobile\Branch-Development-Steve\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.csproj.App.config
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.csprojResolveAssemblyReference.cache
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.App.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.LoginPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MenuNavigationPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.CheckForUpdatesPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.SendsPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.RegistrationPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MenuListPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.HomePage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.SendsUC.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.SearchPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.HeaderUC.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.FooterUC.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.HeaderMenuUC.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.ClimbingDaysPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MapPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.NewsPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.ProfilePage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.PyramidPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.SettingsPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MapDetailPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.SplashPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MapRoutesPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.AscentProcessPage.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentType.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentDate.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentRating.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentClimbingAngle.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentHoldType.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentRouteStyle.xaml.g.cs
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentSummary.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\ExifLib.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\Syncfusion.SfRating.XForms.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Core.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Forms.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Ioc.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Platform.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Serialization.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\Syncfusion.SfRating.XForms.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Core.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Forms.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Ioc.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Platform.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Serialization.xml
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.AscentProcessPage.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentType.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentDate.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentRating.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentClimbingAngle.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentHoldType.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentRouteStyle.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentSummary.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.config
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.pdb
@@ -402,34 +393,40 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Forms.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Ioc.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Platform.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Serialization.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.csproj.App.config
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.App.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.LoginPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MenuNavigationPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.CheckForUpdatesPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.SendsPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.RegistrationPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MenuListPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.HomePage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.SendsUC.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.SearchPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.HeaderUC.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.FooterUC.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.HeaderMenuUC.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.ClimbingDaysPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MapPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.NewsPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.ProfilePage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.PyramidPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.SettingsPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MapDetailPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.SplashPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MapRoutesPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.AscentProcessPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentType.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentDate.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentRating.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentClimbingAngle.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentHoldType.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentRouteStyle.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentSummary.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\ExifLib.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\Syncfusion.SfRating.XForms.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Core.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Forms.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Ioc.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Platform.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Serialization.dll
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\Syncfusion.SfRating.XForms.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Core.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Forms.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Ioc.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Platform.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Serialization.xml
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.AscentProcessPage.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentType.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentDate.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentRating.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentClimbingAngle.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentHoldType.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentRouteStyle.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentSummary.xaml.g.cs
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.dll.mdb

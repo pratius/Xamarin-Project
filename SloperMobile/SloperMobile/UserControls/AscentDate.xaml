@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
              Orientation="Vertical"
              HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="Black"
-             x:Class="SloperMobile.UserControls.AscentDate">  
-    <Label Text="  What date" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
-    <Label Text="did you send" TextColor="White" FontSize="20" HorizontalOptions="Center" />
-    <Label Text="this route?" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
-    <Label/>
-    <Label/>
-    <Label Text="Date Climbed?" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
-    <DatePicker BackgroundColor="White" Date="{Binding SendsDate,Mode=TwoWay}" WidthRequest="200" HorizontalOptions="CenterAndExpand"/>
-    <Label/>
-    <Label/>
-    <Label Text="Grade Thoughts?" TextColor="White" FontSize="20" HorizontalOptions="Center">
-      <Label.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding SendDataCommand}"/>
-      </Label.GestureRecognizers>
-    </Label>
-    <Controls:BindablePicker ItemsSource="{Binding Path=AscentGrages}" SelectedItem="{Binding Path=SendsGrade,Mode=TwoWay}" BackgroundColor="White" WidthRequest="200" HorizontalOptions="CenterAndExpand" />
+             x:Class="SloperMobile.UserControls.AscentDate">
+  <Label Text="  What date" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+  <Label Text="did you send" TextColor="White" FontSize="20" HorizontalOptions="Center" />
+  <Label Text="this route?" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+  <Label/>
+  <Label/>
+  <Label Text="Date Climbed?" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+  <DatePicker BackgroundColor="White" Date="{Binding SendsDate,Mode=TwoWay}" WidthRequest="200" HorizontalOptions="CenterAndExpand"/>
+  <Label/>
+  <Label/>
+  <Label Text="Grade Thoughts?" TextColor="White" FontSize="20" HorizontalOptions="Center">
+    <Label.GestureRecognizers>
+      <TapGestureRecognizer Command="{Binding SendDataCommand}"/>
+    </Label.GestureRecognizers>
+  </Label>
+  <Controls:BindablePicker ItemsSource="{Binding Path=AscentGrages}" SelectedItem="{Binding Path=SendsGrade,Mode=TwoWay}" BackgroundColor="White" WidthRequest="200" HorizontalOptions="CenterAndExpand" />
 </StackLayout>

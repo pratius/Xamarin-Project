@@ -246,6 +246,22 @@ namespace SloperMobile.DataBase
             return sector.topo_json;
         }
 
+        public string GetAscentTypeIdByName(string ascent_name)
+        {
+            var ascenttype = dbConn.Table<TASCENT_TYPE>().FirstOrDefault(asc => asc.ascent_type_description == ascent_name);
+            return ascenttype.ascent_type_id.ToString();
+        }
+
+
+
+        public string GetTTechGradeIdByGradeName(string grade_id, string grade_name)
+        {
+            var ttgrade = dbConn.Table<TTECH_GRADE>().FirstOrDefault(ttg => ttg.grade_type_id == grade_id && ttg.tech_grade == grade_name);
+            return ttgrade.tech_grade_id.ToString();
+        }
+
+        //------------------------------------------
+
         public List<T_CRAG> GetCragList()
         {
             var craglist = dbConn.Table<T_CRAG>().ToList();
@@ -303,12 +319,12 @@ namespace SloperMobile.DataBase
             }
         }
 
-        public List<string> GetTtechGrades()
+        public List<string> GetTtechGrades(string grade_typeid)
         {
-            var item = from tg in dbConn.Table<TTECH_GRADE>() select tg.tech_grade;
+            var item = from tg in dbConn.Table<TTECH_GRADE>() where tg.grade_type_id == grade_typeid select tg.tech_grade;
             return item.ToList();
         }
-        
+
         #endregion
 
     }
