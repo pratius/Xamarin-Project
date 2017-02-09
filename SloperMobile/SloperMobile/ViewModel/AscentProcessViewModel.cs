@@ -70,7 +70,12 @@ namespace SloperMobile.ViewModel
             SendRouteStyleCommand = new DelegateCommand(ExecuteOnRouteStyle);
             SendRatingCommand = new DelegateCommand(ExecuteOnRating);
             SendSummaryCommand = new DelegateCommand(ExecuteOnSummary);
-            AscentGrages = App.DAUtil.GetTtechGrades(routeData.grade_type_id);
+            var grades = App.DAUtil.GetTtechGrades(routeData.grade_type_id);
+            AscentGrages = grades;
+            if(grades.Count>0)
+            {
+                SendsGrade = grades[0];
+            }
             _navigation = navigation;
             //currentInstance = this;
         }

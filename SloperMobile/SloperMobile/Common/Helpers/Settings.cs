@@ -27,6 +27,10 @@ namespace SloperMobile.Common.Helpers
         private const string SelectedCrag = "selectedcrag_id";
         private static readonly string DefaultSelectedCrag = string.Empty;
 
+        private const string ClimbingDays = "climb_days";
+        private static readonly int DefaultClimbingDays = 0;
+
+
         #endregion
 
         #region Getter and Setter
@@ -72,6 +76,18 @@ namespace SloperMobile.Common.Helpers
             set
             {
                 AppSettings.AddOrUpdateValue<string>(SelectedCrag, value);
+            }
+        }
+
+        public static int ClimbingDaysSettings
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault<int>(ClimbingDays, DefaultClimbingDays);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue<int>(ClimbingDays, value);
             }
         }
         #endregion

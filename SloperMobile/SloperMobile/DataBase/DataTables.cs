@@ -133,6 +133,13 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string angles
         { get; set; }
+
+        public string angles_top_1
+        { get; set; }
+        public string hold_type_top_1
+        { get; set; }
+        public string route_style_top_1
+        { get; set; }
         public string angles_top_2
         { get; set; }
         public string hold_type_top_2

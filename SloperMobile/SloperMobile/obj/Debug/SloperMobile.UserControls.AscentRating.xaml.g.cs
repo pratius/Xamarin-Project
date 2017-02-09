@@ -20,9 +20,13 @@ namespace SloperMobile.UserControls {
         private global::Syncfusion.SfRating.XForms.SfRating rating;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Editor rate_comment;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(AscentRating));
             rating = this.FindByName<global::Syncfusion.SfRating.XForms.SfRating>("rating");
+            rate_comment = this.FindByName<global::Xamarin.Forms.Editor>("rate_comment");
         }
     }
 }

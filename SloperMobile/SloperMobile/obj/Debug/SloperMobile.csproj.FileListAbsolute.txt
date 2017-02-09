@@ -566,7 +566,6 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Ioc.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Platform.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\XLabs.Serialization.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csproj.App.config
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csprojResolveAssemblyReference.cache
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.App.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.LoginPage.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.MenuNavigationPage.xaml.g.cs
@@ -599,5 +598,6 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserC
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentSummary.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csprojResolveAssemblyReference.cache
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb

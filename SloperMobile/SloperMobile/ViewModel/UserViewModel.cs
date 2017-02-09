@@ -4,6 +4,7 @@ using SloperMobile.Common.Constants;
 using SloperMobile.Common.Helpers;
 using SloperMobile.Model;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -51,6 +52,21 @@ namespace SloperMobile.ViewModel
             set { confirmPassword = value; OnPropertyChanged(); }
         }
 
+        /// <summary>
+        /// Returns app's last updated date.
+        /// </summary>
+        public string AppLastUpdateDate
+        {
+            get
+            {
+                string lastupdate = App.DAUtil.GetLastUpdate();
+                if (string.IsNullOrEmpty(lastupdate))
+                {
+                    lastupdate = "20160101";
+                }
+                return lastupdate;
+            }
+        }
 
         #endregion
 
@@ -96,6 +112,11 @@ namespace SloperMobile.ViewModel
                         Settings.AccessTokenSettings= response.accessToken;
                         Settings.RenewalTokenSettings = response.renewalToken;
                         Settings.DisplayNameSettings = response.displayName;
+                        var climbdays=await HttpGetClimbdays();
+                        if (climbdays != null)
+                        {
+                            Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
+                        }
                         OnPageNavigation?.Invoke();
                         DisposeObject();
                     }
@@ -189,6 +210,13 @@ namespace SloperMobile.ViewModel
             ConfirmPassword = string.Empty;
         }
         #endregion
-
+        #region Service
+        private async Task<List<ClimbingDaysModel>> HttpGetClimbdays()
+        {
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "ascent"), Settings.AccessTokenSettings);
+            var area_response = await apicall.Get<ClimbingDaysModel>();
+            return area_response;
+        }
+        #endregion
     }
 }

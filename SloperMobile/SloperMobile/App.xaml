@@ -22,10 +22,15 @@
                 <Setter Property="BackgroundColor" Value="White"/>
                 <Setter Property="PlaceholderColor" Value="Black"/>
             </Style>
+          
+          <Style x:Key="GeneralEditorStyle" TargetType="Editor">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="BackgroundColor" Value="White"/>
+          </Style>
+          
 
-
-
-            <Style x:Key="GeneralLabelStyle" TargetType="Label">
+          <Style x:Key="GeneralLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="Medium"/>
             </Style>

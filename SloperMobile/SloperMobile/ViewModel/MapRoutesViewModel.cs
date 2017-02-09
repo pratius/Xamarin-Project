@@ -16,7 +16,9 @@ namespace SloperMobile.ViewModel
     public class MapRoutesViewModel : BaseViewModel
     {
         private ImageSource currentImage;
-
+        private ImageSource topangle;
+        private ImageSource tophold;
+        private ImageSource toproutestyle;
         public ImageSource CurrentSectorImage
         {
             get { return currentImage; }
@@ -95,8 +97,6 @@ namespace SloperMobile.ViewModel
             set { rating = value; OnPropertyChanged(); }
         }
 
-
-
         private string routeTypeTop;
 
         public string RouteTypeTop
@@ -113,6 +113,23 @@ namespace SloperMobile.ViewModel
             set { routeImageList = value; OnPropertyChanged(); }
         }
 
+        public ImageSource TopAngle
+        {
+            get { return topangle; }
+            set { topangle = value; OnPropertyChanged(); }
+        }
+
+        public ImageSource TopHold
+        {
+            get { return tophold; }
+            set { tophold = value; OnPropertyChanged(); }
+        }
+
+        public ImageSource TopRouteStyle
+        {
+            get { return toproutestyle; }
+            set { toproutestyle = value; OnPropertyChanged(); }
+        }
 
         public MapRoutesViewModel(MapListModel CurrentSector)
         {
@@ -124,7 +141,7 @@ namespace SloperMobile.ViewModel
             {
                 PageHeaderText = CurrentSector.SectorName;
                 CurrentSectorImage = CurrentSector.SectorImage;
-                LoadRouteDate();
+                LoadRouteData();
             }
             catch
             {
@@ -164,7 +181,7 @@ namespace SloperMobile.ViewModel
             }
         }
 
-        private void LoadRouteDate()
+        private void LoadRouteData()
         {
             var routeData = App.DAUtil.GetRouteDataByRouteID("22044");
             if (routeData != null)
@@ -175,7 +192,9 @@ namespace SloperMobile.ViewModel
                 RouteInfo = routeData.route_info;
                 Rating = routeData.rating;
                 TechGrade = routeData.tech_grade;
-                LoadTheImageBaseOnRouteType(routeData.route_type);
+                TopAngle = ImageSource.FromFile(GetTopAngleResourceName(routeData.angles_top_1));
+                TopHold= ImageSource.FromFile(GetTopHoldResourceName(routeData.hold_type_top_1));
+                TopRouteStyle= ImageSource.FromFile(GetTopRouteStyleResourceName(routeData.route_style_top_1));
             }
         }
 
@@ -190,38 +209,80 @@ namespace SloperMobile.ViewModel
             IsPopupShow = true;
             IsPopupHide = false;
         }
-
-        private void LoadTheImageBaseOnRouteType(string routeType)
-        {
-            RouteImageList = new ObservableCollection<MapRouteImageModel>();
-            if (string.IsNullOrWhiteSpace(routeType))
-                return;
-            if (routeType == AppConstant.RouteType_climbing_Angle)
-            {
-                RouteImageList.Add(new MapRouteImageModel { Id = 1, ImagePath = AppConstant.RouteType_Angle_Slab_1 });
-                RouteImageList.Add(new MapRouteImageModel { Id = 2, ImagePath = AppConstant.RouteType_Angle_Vertical_2 });
-                RouteImageList.Add(new MapRouteImageModel { Id = 3, ImagePath = AppConstant.RouteType_Angle_Overhanging_4 });
-                RouteImageList.Add(new MapRouteImageModel { Id = 4, ImagePath = AppConstant.RouteType_Angle_Roof_8 });
-            }
-            else if (routeType == AppConstant.RouteType_hold_Type)
-            {
-                RouteImageList.Add(new MapRouteImageModel { Id = 1, ImagePath = AppConstant.RouteType_Hold_Slopers_1 });
-                RouteImageList.Add(new MapRouteImageModel { Id = 2, ImagePath = AppConstant.RouteType_Hold_Crimp_2 });
-                RouteImageList.Add(new MapRouteImageModel { Id = 3, ImagePath = AppConstant.RouteType_Hold_Jungs_4 });
-                RouteImageList.Add(new MapRouteImageModel { Id = 4, ImagePath = AppConstant.RouteType_Hold_Pockets_8 });
-            }
-            else if (routeType == AppConstant.RouteType_Route_Style)
-            {
-                RouteImageList.Add(new MapRouteImageModel { Id = 1, ImagePath = AppConstant.RouteType_Route_Style_Technical_1 });
-                RouteImageList.Add(new MapRouteImageModel { Id = 2, ImagePath = AppConstant.RouteType_Route_Style_Sequential_2 });
-                RouteImageList.Add(new MapRouteImageModel { Id = 3, ImagePath = AppConstant.RouteType_Route_Style_Powerful_4 });
-                RouteImageList.Add(new MapRouteImageModel { Id = 4, ImagePath = AppConstant.RouteType_Route_Style_Sustained_8 });
-                RouteImageList.Add(new MapRouteImageModel { Id = 5, ImagePath = AppConstant.RouteType_Route_Style_One_Move_16 });
-            }
-        }
+        
 
         public DelegateCommand SendCommand { get; set; }
         public DelegateCommand HidePopupCommand { get; set; }
         public DelegateCommand ShowPopupCommand { get; set; }
+
+
+        private string GetTopAngleResourceName(string angle)
+        {
+            string resource = "steepSlab.png";
+            switch (angle)
+            {
+                case "1":
+                    resource = "steepSlab.png";
+                    break;
+                case "2":
+                    resource = "steepVertical.png";
+                    break;
+                case "4":
+                    resource = "steepOverhanging.png";
+                    break;
+                case "8":
+                    resource = "steepRoof.png";
+                    break;
+            }
+            return resource;
+        }
+
+        private string GetTopHoldResourceName(string hold)
+        {
+            string resource = "hold_type_1_slopers.png";
+            switch (hold)
+            {
+                case "1":
+                    resource = "hold_type_1_slopers.png";
+                    break;
+                case "2":
+                    resource = "hold_type_2_crimps.png";
+                    break;
+                case "4":
+                    resource = "hold_type_4_jugs.png";
+                    break;
+                case "8":
+                    resource = "hold_type_4_jugs.png";
+                    break;
+            }
+            return resource;
+        }
+
+        private string GetTopRouteStyleResourceName(string route)
+        {
+            string resource = "route_style_1_technical.png";
+            switch (route)
+            {
+                case "1":
+                    resource = "route_style_1_technical.png";
+                    break;
+                case "2":
+                    resource = "route_style_2_sequential.png";
+                    break;
+                case "4":
+                    resource = "route_style_4_powerful.png";
+                    break;
+                case "8":
+                    resource = "route_style_8_sustained.png";
+                    break;
+                case "16":
+                    resource = "route_style_16_one_move.png";
+                    break;
+                case "all":
+                    resource = "route_style_everything.png";
+                    break;
+            }
+            return resource;
+        }
     }
 }

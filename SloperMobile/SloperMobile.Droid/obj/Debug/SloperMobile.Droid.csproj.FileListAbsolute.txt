@@ -904,13 +904,13 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\res\drawable
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\R.cs.flag
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\uploadflags.txt
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.Droid.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Java.Interop.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Microsoft.CSharp.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Mono.Android.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Mono.Android.Export.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Mono.CSharp.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\mscorlib.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\System.ComponentModel.Composition.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\System.Core.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\System.dll.mdb
