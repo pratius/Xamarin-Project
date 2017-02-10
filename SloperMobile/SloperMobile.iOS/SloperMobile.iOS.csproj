@@ -337,11 +337,6 @@
     <BundleResource Include="Resources\send%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="..\SloperMobile\Views\HomePage3.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\logo_old.png" />
   </ItemGroup>
   <ItemGroup>
@@ -531,8 +526,48 @@
     <BundleResource Include="Resources\steepVertical.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HTML\Css\ResizeImage.css" />
+    <BundleResource Include="HTML\img\cross_black.png" />
+    <BundleResource Include="HTML\img\Dark_annotation.png" />
+    <BundleResource Include="HTML\img\grey-close-button.png" />
+    <BundleResource Include="HTML\img\icon-arrow.png" />
+    <BundleResource Include="HTML\img\light_annotation.png" />
+    <BundleResource Include="HTML\img\move_left.png" />
+    <BundleResource Include="HTML\img\move_right.png" />
+    <BundleResource Include="HTML\img\sample-belay.png" />
+    <BundleResource Include="HTML\img\sample-grade-label-left.png" />
+    <BundleResource Include="HTML\img\sample-grade-label-right.png" />
+    <BundleResource Include="HTML\img\sample-line.png" />
+    <BundleResource Include="HTML\img\sample-lower-off-black-left.png" />
+    <BundleResource Include="HTML\img\sample-lower-off-black-right.png" />
+    <BundleResource Include="HTML\img\sample-lower-off-left.png" />
+    <BundleResource Include="HTML\img\sample-lower-off-right.png" />
+    <BundleResource Include="HTML\img\sample-route-badge.png" />
+    <BundleResource Include="HTML\img\sample-route-line-break.png" />
+    <BundleResource Include="HTML\img\tl-icon.png" />
+    <BundleResource Include="HTML\img\tlcross-icon.png" />
+    <BundleResource Include="HTML\img\tr-icon.png" />
+    <BundleResource Include="HTML\img\trcross-icon.png" />
+    <BundleResource Include="HTML\img\x-mark-32.png" />
     <Content Include="HTML\Index.html" />
+    <Content Include="HTML\Js\canvas.dashedLine.js" />
+    <Content Include="HTML\Js\jquery.mousewheel.js" />
+    <Content Include="HTML\Js\jquery.panzoom.js" />
+    <Content Include="HTML\ResizeImage.html" />
+    <Content Include="HTML\test.html" />
+    <BundleResource Include="Resources\arrowLeftWhite.png" />
+    <BundleResource Include="Resources\hold_type_1_slopers.png" />
+    <BundleResource Include="Resources\hold_type_8_pockets.png" />
+    <BundleResource Include="Resources\hold_type_4_jugs.png" />
+    <BundleResource Include="Resources\hold_type_2_crimps.png" />
+    <BundleResource Include="Resources\route_style_everything.png" />
+    <BundleResource Include="Resources\route_style_8_sustained.png" />
+    <BundleResource Include="Resources\route_style_4_powerful.png" />
+    <BundleResource Include="Resources\route_style_2_sequential.png" />
+    <BundleResource Include="Resources\route_style_1_technical.png" />
+    <BundleResource Include="Resources\route_style_16_one_move.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

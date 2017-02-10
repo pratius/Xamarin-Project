@@ -1,4 +1,5 @@
 ﻿using SloperMobile.Common.Constants;
+using SloperMobile.Common.Interfaces;
 using SloperMobile.iOS.DependancyObjects;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(SQLite_iOS))]
 namespace SloperMobile.iOS.DependancyObjects
 {
-    class SQLite_iOS
+   public class SQLite_iOS: ISQLite
     {
         public SQLite_iOS()
         {

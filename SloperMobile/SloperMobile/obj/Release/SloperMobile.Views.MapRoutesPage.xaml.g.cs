@@ -20,9 +20,17 @@ namespace SloperMobile.Views {
         private global::XLabs.Forms.Controls.HybridWebView webView;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Syncfusion.SfRating.XForms.SfRating rating;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Syncfusion.SfRating.XForms.SfRating rating_detail;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(MapRoutesPage));
             webView = this.FindByName<global::XLabs.Forms.Controls.HybridWebView>("webView");
+            rating = this.FindByName<global::Syncfusion.SfRating.XForms.SfRating>("rating");
+            rating_detail = this.FindByName<global::Syncfusion.SfRating.XForms.SfRating>("rating_detail");
         }
     }
 }

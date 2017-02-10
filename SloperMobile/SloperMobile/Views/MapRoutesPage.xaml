@@ -7,138 +7,136 @@
              x:Class="SloperMobile.Views.MapRoutesPage"
              NavigationPage.HasNavigationBar="False" Style="{StaticResource AppBackgroundColor}">
 
-  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*"/>
-      <RowDefinition Height="auto"/>
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="02"/>
-      <ColumnDefinition Width="1*"/>
-      <ColumnDefinition Width="02"/>
-    </Grid.ColumnDefinitions>
-    <Grid BackgroundColor="White" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-      <XLabUC:HybridWebView  x:Name="webView" />
-    </Grid>
-
-    <Grid BackgroundColor="#77000000" IsVisible="{Binding IsPopupHide,Mode=TwoWay}" HeightRequest="150"  Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="02"/>
-        <ColumnDefinition Width=".5*"/>
-        <ColumnDefinition Width="02"/>
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height=".1*"/>
-        <RowDefinition Height=".7*"/>
-        <RowDefinition Height=".1*"/>
-      </Grid.RowDefinitions>
-      <Image Source="Menu_button" Grid.Column="1" WidthRequest="25" HeightRequest="25" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
-        <Image.GestureRecognizers>
-          <TapGestureRecognizer Tapped="OnMenuTapped"/>
-        </Image.GestureRecognizers>
-      </Image>
-
-      <Image Source="Search" Grid.Column="1" WidthRequest="30" HeightRequest="30" Aspect="AspectFill" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
-        <Image.GestureRecognizers>
-          <TapGestureRecognizer Tapped="OnSearch"/>
-        </Image.GestureRecognizers>
-      </Image>
-
-      <Grid Grid.Column="1" Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>
-          <RowDefinition Height="auto"/>
-          <RowDefinition Height="auto"/>
-          <RowDefinition Height="auto"/>
-          <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <StackLayout Orientation="Vertical" HorizontalOptions="Center" >
-          <Label Text="{Binding RouteName,Mode=TwoWay}" TextColor="#FA7200" FontSize="Medium" VerticalOptions="FillAndExpand" HorizontalOptions="Center"/>
-          <Label Grid.Row="1" Text="{Binding RouteInfo,Mode=TwoWay}"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="02"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="02"/>
+        </Grid.ColumnDefinitions>
+        <Grid BackgroundColor="White" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <XLabUC:HybridWebView  x:Name="webView" />
+        </Grid>
+
+        <Grid BackgroundColor="#77000000" IsVisible="{Binding IsPopupHide,Mode=TwoWay}" HeightRequest="150"  Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="02"/>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width="02"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".7*"/>
+                <RowDefinition Height=".1*"/>
+            </Grid.RowDefinitions>
+            <Image Source="Menu_button" Grid.Column="1" WidthRequest="25" HeightRequest="25" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnMenuTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Source="Search" Grid.Column="1" WidthRequest="30" HeightRequest="30" Aspect="AspectFill" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSearch"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Grid Grid.Column="1" Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" >
+                    <Label Text="{Binding RouteName,Mode=TwoWay}" TextColor="#FA7200" FontSize="Medium" VerticalOptions="FillAndExpand" HorizontalOptions="Center"/>
+                    <Label Grid.Row="1" Text="{Binding RouteInfo,Mode=TwoWay}"
                  TextColor="White" FontSize="Small" LineBreakMode="WordWrap" WidthRequest="300" VerticalOptions="Center" HorizontalOptions="Center"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2">
+                </StackLayout>
+                <Grid  Grid.Row="2" HorizontalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".2*"/>
+                        <ColumnDefinition Width=".5*"/>
+                    </Grid.ColumnDefinitions>
+                    <rating:SfRating x:Name="rating" Grid.Column="1" ItemCount="3" ItemSize="15" Precision="Standard" ReadOnly="True"
+                                  Value="{Binding Rating, Mode=TwoWay}">
+                        <rating:SfRating.RatingSettings>
+                            <rating:SfRatingSettings RatedFill="#FF9933" HorizontalOptions="Center" VerticalOptions="Center" RatedStroke="White" UnRatedStroke="White" />
+                        </rating:SfRating.RatingSettings>
+                    </rating:SfRating>
+                </Grid>
 
-          <rating:SfRating x:Name="rating" ItemCount="3" ItemSize="15" Precision="Standard" ReadOnly="True"
-                                  Value="{Binding Rating, Mode=TwoWay}"
-                                  HorizontalOptions="End" VerticalOptions="Start">
-            <rating:SfRating.RatingSettings>
-              <rating:SfRatingSettings RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
-            </rating:SfRating.RatingSettings>
-          </rating:SfRating>
+                <StackLayout Orientation="Horizontal" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Image Source="{Binding TopHold}"  WidthRequest="20" Aspect="AspectFill" HeightRequest="20" />
+                    <Image Source="{Binding TopRouteStyle}"  WidthRequest="20" Aspect="AspectFill" HeightRequest="20" />
+                    <Image Source="{Binding TopAngle}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
+                </StackLayout>
+            </Grid>
 
-        </StackLayout>
+            <Image Source="arrowLeftWhite" Rotation="270" Grid.Column="1" Grid.Row="2" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowPopupCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
 
-        <StackLayout Orientation="Horizontal" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
-          <Image Source="{Binding TopHold}"  WidthRequest="20" Aspect="AspectFill" HeightRequest="20" />
-          <Image Source="{Binding TopRouteStyle}"  WidthRequest="20" Aspect="AspectFill" HeightRequest="20" />
-          <Image Source="{Binding TopAngle}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
-        </StackLayout>
-      </Grid>
 
-      <Image Source="arrowLeftWhite" Rotation="270" Grid.Column="1" Grid.Row="2" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
-        <Image.GestureRecognizers>
-          <TapGestureRecognizer Command="{Binding ShowPopupCommand}"/>
-        </Image.GestureRecognizers>
-      </Image>
+        </Grid>
 
+        <Grid BackgroundColor="#77000000" IsVisible="{Binding IsPopupShow,Mode=TwoWay}" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="02"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="02"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height=".2*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="40"/>
+            <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height=".1*"/>
+                    <RowDefinition Height=".1*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Vertical"  VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+                    <Label Text="{Binding RouteName,Mode=TwoWay}" TextColor="##FA7200" HorizontalOptions="Center" FontSize="Medium" BackgroundColor="Black"/>
+                    <Label Text="{Binding RouteInfo,Mode=TwoWay}" TextColor="White" HorizontalOptions="Center" FontSize="Medium" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="Center" Grid.Row="1" Padding="15">
+
+                    <rating:SfRating x:Name="rating_detail" HorizontalOptions="StartAndExpand" ItemCount="3" ItemSize="20" Precision="Standard" ReadOnly="True"
+                                  Value="{Binding Rating, Mode=TwoWay}" >
+                        <rating:SfRating.RatingSettings>
+                            <rating:SfRatingSettings VerticalOptions="StartAndExpand" HorizontalOptions="Center" RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
+                        </rating:SfRating.RatingSettings>
+                    </rating:SfRating>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Image Source="{Binding TopHold}" WidthRequest="50" Aspect="AspectFill" HeightRequest="50"/>
+                    <Image Source="{Binding TopRouteStyle}" WidthRequest="50" Aspect="AspectFill" HeightRequest="50"/>
+                    <Image Source="{Binding TopAngle}" WidthRequest="50" Aspect="AspectFill" HeightRequest="50" />
+                </StackLayout>
+                <StackLayout Grid.Row="3" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" >
+                    <Button Text="Tick List" TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
+                    <Button Text="Sent" Command="{Binding SendCommand}"  TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
+                </StackLayout>
+            </Grid>
+            <Image Source="arrowLeftWhite" Rotation="90" Grid.Row="2" Grid.Column="1" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding HidePopupCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+        <UC:FooterUC  Grid.Column="1" Grid.Row="1" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
 
     </Grid>
-
-    <Grid BackgroundColor="#77000000" IsVisible="{Binding IsPopupShow,Mode=TwoWay}" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="02"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="02"/>
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="auto"/>
-        <RowDefinition Height=".2*"/>
-        <RowDefinition Height="*"/>
-
-      </Grid.RowDefinitions>
-      <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="40"/>
-      <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="auto"/>
-          <RowDefinition Height=".1*"/>
-          <RowDefinition Height=".1*"/>
-          <RowDefinition Height=".1*"/>
-        </Grid.RowDefinitions>
-        <StackLayout Orientation="Vertical"  VerticalOptions="StartAndExpand" HorizontalOptions="Center">
-          <Label Text="{Binding RouteName,Mode=TwoWay}" TextColor="##FA7200" HorizontalOptions="Center" FontSize="Medium" BackgroundColor="Black"/>
-          <Label Text="{Binding RouteInfo,Mode=TwoWay}" TextColor="White" HorizontalOptions="Center" FontSize="Medium" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="1">
-
-          <rating:SfRating x:Name="rating_detail" ItemCount="3" ItemSize="20" Precision="Standard" ReadOnly="True"
-                                  Value="{Binding Rating, Mode=TwoWay}"
-                                  HorizontalOptions="End" VerticalOptions="Start">
-            <rating:SfRating.RatingSettings>
-              <rating:SfRatingSettings RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
-            </rating:SfRating.RatingSettings>
-          </rating:SfRating>
-
-        </StackLayout>
-
-
-
-        <StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
-          <Image Source="{Binding TopHold}" WidthRequest="50" Aspect="AspectFill" HeightRequest="50"/>
-          <Image Source="{Binding TopRouteStyle}" WidthRequest="50" Aspect="AspectFill" HeightRequest="50"/>
-          <Image Source="{Binding TopAngle}" WidthRequest="50" Aspect="AspectFill" HeightRequest="50" />
-        </StackLayout>
-        <StackLayout Grid.Row="3" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Spacing="0">
-          <Button Text="Tick List" TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
-          <Button Text="Sent" Command="{Binding SendCommand}"  TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
-        </StackLayout>
-      </Grid>
-      <Image Source="arrowLeftWhite" Rotation="90" Grid.Row="2" Grid.Column="1" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
-        <Image.GestureRecognizers>
-          <TapGestureRecognizer Command="{Binding HidePopupCommand}"/>
-        </Image.GestureRecognizers>
-      </Image>
-    </Grid>
-    <UC:FooterUC  Grid.Column="1" Grid.Row="1" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
-
-  </Grid>
 </ContentPage>
