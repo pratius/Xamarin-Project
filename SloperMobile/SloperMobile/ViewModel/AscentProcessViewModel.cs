@@ -595,6 +595,10 @@ namespace SloperMobile.ViewModel
                 var response = await HttpSendAscentProcess(ascent);
                 if (response != null)
                 {
+                    if(!string.IsNullOrEmpty(response.climbingDays))
+                    {
+                        Settings.ClimbingDaysSettings =Convert.ToInt32(response.climbingDays);
+                    }
                     ProgressMsg = "Ascent saved successfully.";
                     IsRunningTasks = false;
                 }

@@ -17,7 +17,7 @@
     </rating:SfRating>
 
   </StackLayout>
-  <Editor x:Name="rate_comment" Text="{Binding CommentText,Mode=TwoWay}" Style="{StaticResource GeneralEditorStyle}"></Editor>
+  <Editor x:Name="rate_comment" Text="{Binding CommentText,Mode=TwoWay}" HeightRequest="100" Style="{StaticResource GeneralEditorStyle}"></Editor>
   <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
     <Image Source="Camera" HeightRequest="90"/>
     <Label BackgroundColor="White"/>
