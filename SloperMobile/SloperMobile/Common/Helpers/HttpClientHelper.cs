@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SloperMobile.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +34,38 @@ namespace SloperMobile.Common.Helpers
                     httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
                 }
                 var response = await httpClient.PostAsync(endpoint, new StringContent(jsonobject, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                if(response.StatusCode==System.Net.HttpStatusCode.Unauthorized)
+                {
+                    ExtendURL objextend = new ExtendURL();
+                    objextend.rtoken = Settings.RenewalTokenSettings;
+                    var renewjson = JsonConvert.SerializeObject(objextend);
+                    var renewaltoken = await ExtendToken<LoginResponse>(renewjson);
+                    Settings.AccessTokenSettings = renewaltoken.accessToken;
+                    Settings.RenewalTokenSettings = renewaltoken.renewalToken;
+                    httpClient.DefaultRequestHeaders.Accept.Clear();
+                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + renewaltoken.accessToken);
+                    response = await httpClient.PostAsync(endpoint, new StringContent(jsonobject, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                    return JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
+                }
                 return JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
             }
         }
+
+        private async Task<T> ExtendToken<T>(string jsonobject)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Settings.AccessTokenSettings);
+                var response = await httpClient.PostAsync(Constants.ApiUrls.Url_Login_Extend, new StringContent(jsonobject, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                return JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
+            }
+        }
+
+
+
 
         public async Task<List<T>> Get<T>()
         {

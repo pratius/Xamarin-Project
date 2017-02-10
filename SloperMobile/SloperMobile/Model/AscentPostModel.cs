@@ -32,5 +32,6 @@ namespace SloperMobile.Model
     public class AscentReponse
     {
         public string id { get; set; }
+        public string climbingDays { get; set; }
     }
 }
