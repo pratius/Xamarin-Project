@@ -367,13 +367,13 @@
     <AndroidResource Include="Resources\SendsBtnImgs.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Arm.PNG" />
+    <BundleResource Include="Resources\Arm.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\bigImage.PNG" />
+    <BundleResource Include="Resources\bigImage.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\BodyPic.png" />
+    <BundleResource Include="Resources\BodyPic.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Camera.png" />

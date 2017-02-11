@@ -8,16 +8,15 @@
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height=".8*"/>
+            <RowDefinition Height=".1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="02"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="02"/>
         </Grid.ColumnDefinitions>
-        <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="40"/>
-        <UC:FooterUC  Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+        <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="40"/>       
         <Grid Grid.Row="1" Grid.Column="1">
             <Controls:InfiniteListView  x:Name="lstSectorView" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding SectorImageList}" SelectedItem="{Binding SelectedSector}" LoadMoreCommand="{Binding LoadMoreSector}">
                 <Controls:InfiniteListView.Footer>
@@ -97,6 +96,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </Controls:InfiniteListView>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A">
+            <UC:FooterUC VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
         </Grid>
     </Grid>
 </ContentPage>

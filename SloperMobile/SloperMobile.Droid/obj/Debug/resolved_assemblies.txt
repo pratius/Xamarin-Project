@@ -77,3 +77,4 @@ E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Collections.Concurrent.dll
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Runtime.InteropServices.dll
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Diagnostics.Tools.dll
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\System.Net.Primitives.dll
