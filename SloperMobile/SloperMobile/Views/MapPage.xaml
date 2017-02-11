@@ -5,95 +5,98 @@
              NavigationPage.HasNavigationBar="False"
              xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile">
-  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="*"/>
-      <RowDefinition Height="40"/>
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="02"/>
-      <ColumnDefinition Width="*"/>
-      <ColumnDefinition Width="02"/>
-    </Grid.ColumnDefinitions>
-    <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="40"/>
-    <UC:FooterUC  Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
-    <Grid Grid.Row="1" Grid.Column="1">
-      <Controls:InfiniteListView  x:Name="lstSectorView" HasUnevenRows="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding SectorImageList}" SelectedItem="{Binding SelectedSector}" LoadMoreCommand="{Binding LoadMoreSector}">
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <ViewCell>
-              <Grid Padding="0,10,0,10">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="*"/>
-                  <ColumnDefinition Width="*"/>
-                  <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="auto"/>
-                  <RowDefinition Height="auto"/>
-                  <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="02"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="02"/>
+        </Grid.ColumnDefinitions>
+        <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="40"/>
+        <UC:FooterUC  Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Controls:InfiniteListView  x:Name="lstSectorView" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding SectorImageList}" SelectedItem="{Binding SelectedSector}" LoadMoreCommand="{Binding LoadMoreSector}">
+                <Controls:InfiniteListView.Footer>
+                    <Label/>
+                </Controls:InfiniteListView.Footer>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="0,10,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" Grid.ColumnSpan="3">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="1*" />
-                  </Grid.ColumnDefinitions>
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                  </Grid.RowDefinitions>
-                  <Label Text="{Binding SectorName}" Grid.Row="0" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
-                  <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
-                    <Image Source="{Binding Steepness1}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
-                    <Image Source="{Binding Steepness2}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
-                  </StackLayout>
-                </Grid>
-                <StackLayout  Grid.Row="1" Grid.ColumnSpan="3">
-                  <Image Source="{Binding SectorImage}" WidthRequest="100" Aspect="AspectFill" HeightRequest="180" />
-                </StackLayout>
-                
-                <!--Sector Footer-->
+                                <Grid Grid.Row="0" Grid.ColumnSpan="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding SectorName}" Grid.Row="0" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
+                                        <Image Source="{Binding Steepness1}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
+                                        <Image Source="{Binding Steepness2}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
+                                    </StackLayout>
+                                </Grid>
+                                <StackLayout  Grid.Row="1" Grid.ColumnSpan="3">
+                                    <Image Source="{Binding SectorImage}" WidthRequest="100" Aspect="AspectFill" HeightRequest="180" />
+                                </StackLayout>
 
-                <Grid Grid.Row="2" Grid.ColumnSpan="3">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                  </Grid.ColumnDefinitions>
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                  </Grid.RowDefinitions>
-                  <Label Text="{Binding SectorLatLong}" Grid.Row="0" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
-                  <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
-                    <Frame HasShadow="false" BackgroundColor="#036177" Padding="0" WidthRequest="20" HeightRequest="10">
-                      <Label Text="{Binding BucketCount1}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
-                    </Frame>
-                    <Frame HasShadow="false" BackgroundColor="#1f8a70" Padding="0" WidthRequest="20" HeightRequest="10">
-                      <Label Text="{Binding BucketCount2}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
-                    </Frame>
-                    <Frame HasShadow="false" BackgroundColor="#91A537" Padding="0" WidthRequest="20" HeightRequest="10">
-                      <Label Text="{Binding BucketCount3}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
-                    </Frame>
-                    <Frame HasShadow="false" BackgroundColor="#B49800" Padding="0" WidthRequest="20" HeightRequest="10">
-                      <Label Text="{Binding BucketCount4}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
-                    </Frame>
-                    <Frame HasShadow="false" BackgroundColor="#FD7400" Padding="0" WidthRequest="20" HeightRequest="10">
-                      <Label Text="{Binding BucketCount5}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
-                    </Frame>
-                  </StackLayout>
-                  <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
-                    <Label Text="{Binding SectorShortInfo}"
+                                <!--Sector Footer-->
+
+                                <Grid Grid.Row="2" Grid.ColumnSpan="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding SectorLatLong}" Grid.Row="0" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
+                                        <Frame HasShadow="false" BackgroundColor="#036177" Padding="0" WidthRequest="20" HeightRequest="10">
+                                            <Label Text="{Binding BucketCount1}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                                        </Frame>
+                                        <Frame HasShadow="false" BackgroundColor="#1f8a70" Padding="0" WidthRequest="20" HeightRequest="10">
+                                            <Label Text="{Binding BucketCount2}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                                        </Frame>
+                                        <Frame HasShadow="false" BackgroundColor="#91A537" Padding="0" WidthRequest="20" HeightRequest="10">
+                                            <Label Text="{Binding BucketCount3}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                                        </Frame>
+                                        <Frame HasShadow="false" BackgroundColor="#B49800" Padding="0" WidthRequest="20" HeightRequest="10">
+                                            <Label Text="{Binding BucketCount4}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                                        </Frame>
+                                        <Frame HasShadow="false" BackgroundColor="#FD7400" Padding="0" WidthRequest="20" HeightRequest="10">
+                                            <Label Text="{Binding BucketCount5}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                                        </Frame>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                                        <Label Text="{Binding SectorShortInfo}"
                         TextColor="Silver" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap" />
-                    <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
-                  </StackLayout>
-                </Grid>
-                <!--End -->
-              </Grid>
-            </ViewCell>
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </Controls:InfiniteListView>
+                                        <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                </Grid>
+                                <!--End -->
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </Controls:InfiniteListView>
+        </Grid>
     </Grid>
-  </Grid>
 </ContentPage>

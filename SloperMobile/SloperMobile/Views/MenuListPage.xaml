@@ -3,42 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SloperMobile.Views.MenuListPage"
              Style="{StaticResource AppBackgroundColor}" Icon="Menu_button" Title="Sloper">
-  <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="50"/>
-        <RowDefinition Height="150"/>
-        <RowDefinition Height="Auto"/>
-      </Grid.RowDefinitions>
-      <Image x:Name="ImageArrow" Source="arrowLeftWhite.png"  HorizontalOptions="StartAndExpand" Grid.Row="0"
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Image x:Name="ImageArrow" Source="arrowLeftWhite.png"  HorizontalOptions="StartAndExpand" Grid.Row="0"
              WidthRequest="20" Aspect="AspectFill" HeightRequest="20" VerticalOptions="CenterAndExpand" Margin="10">
-        <Image.GestureRecognizers>
-          <TapGestureRecognizer Command="{Binding TapBackCommand}"/>
-        </Image.GestureRecognizers>
-      </Image>
-      <StackLayout Orientation="Vertical" Grid.Row="1" >
-        <Image x:Name="ImageLogo" Source="logo" WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand"
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapBackCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <StackLayout Orientation="Vertical" Grid.Row="1" >
+                <Image x:Name="ImageLogo" Source="logo" WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
-      </StackLayout>
+            </StackLayout>
 
-      <ListView x:Name="listView" Grid.Row="2" ItemsSource="{Binding MenuList}" AutomationId="lstMenu" HasUnevenRows="True">
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <ViewCell>
-              <Grid>
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Orientation="Vertical" Grid.Column="0">
-                  <Label Text="{Binding Title}" FontSize="Medium" VerticalTextAlignment="Center" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"/>
-                  <Label  Text="{Binding Contents}" FontSize="Micro" VerticalTextAlignment="Center" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"  />
-                  <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand" Margin="10,0,0,10"/>
-                </StackLayout>
-              </Grid>
-            </ViewCell>
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </ListView>
-    </Grid>
-  </StackLayout>
+            <ListView x:Name="listView" BackgroundColor="Black" Grid.Row="2" ItemsSource="{Binding MenuList}" AutomationId="lstMenu" HasUnevenRows="True" SeparatorVisibility="None">
+                <ListView.Footer>
+                    <Label/>
+                </ListView.Footer>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Orientation="Vertical" Grid.Column="0">
+                                    <Label Text="{Binding Title}" FontSize="Medium" VerticalTextAlignment="Center" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"/>
+                                    <Label  Text="{Binding Contents}" FontSize="Micro" VerticalTextAlignment="Center" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"  />
+                                    <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand" Margin="10,0,0,10"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </StackLayout>
 </ContentPage>

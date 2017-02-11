@@ -110,9 +110,9 @@
                     <Label Text="{Binding RouteName,Mode=TwoWay}" TextColor="##FA7200" HorizontalOptions="Center" FontSize="Medium" BackgroundColor="Black"/>
                     <Label Text="{Binding RouteInfo,Mode=TwoWay}" TextColor="White" HorizontalOptions="Center" FontSize="Medium" />
                 </StackLayout>
-                <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="Center" Grid.Row="1" Padding="15">
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Row="1">
 
-                    <rating:SfRating x:Name="rating_detail" HorizontalOptions="StartAndExpand" ItemCount="3" ItemSize="20" Precision="Standard" ReadOnly="True"
+                    <rating:SfRating x:Name="rating_detail" HorizontalOptions="CenterAndExpand" ItemCount="3" ItemSize="20" Precision="Standard" ReadOnly="True"
                                   Value="{Binding Rating, Mode=TwoWay}" >
                         <rating:SfRating.RatingSettings>
                             <rating:SfRatingSettings VerticalOptions="StartAndExpand" HorizontalOptions="Center" RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
@@ -125,10 +125,15 @@
                     <Image Source="{Binding TopRouteStyle}" WidthRequest="50" Aspect="AspectFill" HeightRequest="50"/>
                     <Image Source="{Binding TopAngle}" WidthRequest="50" Aspect="AspectFill" HeightRequest="50" />
                 </StackLayout>
-                <StackLayout Grid.Row="3" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" >
-                    <Button Text="Tick List" TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
-                    <Button Text="Sent" Command="{Binding SendCommand}"  TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
-                </StackLayout>
+                <Grid Grid.Row="3" VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="1"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Tick List"  TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
+                    <Button Text="Sent" Grid.Column="2" Command="{Binding SendCommand}"  TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
+                </Grid>
             </Grid>
             <Image Source="arrowLeftWhite" Rotation="90" Grid.Row="2" Grid.Column="1" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                 <Image.GestureRecognizers>
