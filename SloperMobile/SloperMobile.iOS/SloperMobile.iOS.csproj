@@ -346,7 +346,7 @@
     <AndroidResource Include="Resources\navMap.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\navNews.png" />
+    <BundleResource Include="Resources\navNews.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\navProfile.png" />
