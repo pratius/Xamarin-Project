@@ -526,7 +526,8 @@
     <BundleResource Include="Resources\steepVertical.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HTML\Css\ResizeImage.css" />
+    <AndroidAsset Include="HTML\Css\jquery.bxslider.css" />
+    <AndroidAsset Include="HTML\Css\ResizeImage.css" />
     <BundleResource Include="HTML\img\cross_black.png" />
     <BundleResource Include="HTML\img\Dark_annotation.png" />
     <BundleResource Include="HTML\img\grey-close-button.png" />
@@ -550,10 +551,11 @@
     <BundleResource Include="HTML\img\trcross-icon.png" />
     <BundleResource Include="HTML\img\x-mark-32.png" />
     <Content Include="HTML\Index.html" />
-    <Content Include="HTML\Js\canvas.dashedLine.js" />
-    <Content Include="HTML\Js\jquery.mousewheel.js" />
-    <Content Include="HTML\Js\jquery.panzoom.js" />
-    <Content Include="HTML\ResizeImage.html" />
+    <AndroidAsset Include="HTML\Js\canvas.dashedLine.js" />
+    <AndroidAsset Include="HTML\Js\jquery.bxslider.js" />
+    <AndroidAsset Include="HTML\Js\jquery.mousewheel.js" />
+    <AndroidAsset Include="HTML\Js\jquery.panzoom.js" />
+    <AndroidAsset Include="HTML\ResizeImage.html" />
     <Content Include="HTML\test.html" />
     <BundleResource Include="Resources\arrowLeftWhite.png" />
     <BundleResource Include="Resources\hold_type_1_slopers.png" />
