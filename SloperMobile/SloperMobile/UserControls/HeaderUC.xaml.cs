@@ -22,10 +22,10 @@ namespace SloperMobile.UserControls
             Cache.MasterPage.IsPresented = true; 
         }
 
-        private async void OnSearch(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Views.SearchPage());
-        }
+        //private async void OnSearch(object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(new Views.SearchPage());
+        //}
 
 
 

@@ -32,7 +32,7 @@
                 <RowDefinition Height=".7*"/>
                 <RowDefinition Height=".1*"/>
             </Grid.RowDefinitions>
-            <Image Source="Menu_button" Grid.Column="1" WidthRequest="25" HeightRequest="25" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
+            <!--<Image Source="Menu_button" Grid.Column="1" WidthRequest="25" HeightRequest="25" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnMenuTapped"/>
                 </Image.GestureRecognizers>
@@ -42,7 +42,7 @@
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnSearch"/>
                 </Image.GestureRecognizers>
-            </Image>
+            </Image>-->
 
             <Grid Grid.Column="1" Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>

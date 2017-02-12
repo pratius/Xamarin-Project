@@ -18,7 +18,8 @@ namespace SloperMobile.Views
             try
             {
                 InitializeComponent();
-                NavigationPage.SetHasNavigationBar(this, false);
+                NavigationPage.SetHasNavigationBar(this, true);
+                Title = CurrentSector.SectorName;
                 MapRouteVM = new ViewModel.MapRoutesViewModel(CurrentSector);
                 BindingContext = MapRouteVM;
                 MapRouteVM.OnConditionNavigation = OnPageNavigation;
@@ -84,14 +85,14 @@ namespace SloperMobile.Views
 
         }
 
-        private void OnMenuTapped(object sender, EventArgs e)
-        {
-            Cache.MasterPage.IsPresented = true;
-        }
+        //private void OnMenuTapped(object sender, EventArgs e)
+        //{
+        //    Cache.MasterPage.IsPresented = true;
+        //}
 
-        private void OnSearch(object sender, EventArgs e)
-        {
+        //private void OnSearch(object sender, EventArgs e)
+        //{
 
-        }
+        //}
     }
 }

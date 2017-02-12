@@ -521,6 +521,8 @@ E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentHoldType.xaml.g.cs
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentRouteStyle.xaml.g.cs
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentSummary.xaml.g.cs
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
+E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.config
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.pdb
@@ -597,7 +599,5 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserC
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csprojResolveAssemblyReference.cache
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
