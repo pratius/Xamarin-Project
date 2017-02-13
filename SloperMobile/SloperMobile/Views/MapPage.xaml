@@ -9,7 +9,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height=".8*"/>
-            <RowDefinition Height=".1*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="02"/>
@@ -97,8 +97,8 @@
                 </ListView.ItemTemplate>
             </Controls:InfiniteListView>
         </Grid>
-        <Grid Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A">
-            <UC:FooterUC VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+        <Grid Grid.Column="1" Grid.Row="2" BackgroundColor="#151515">
+            <UC:FooterUC HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
         </Grid>
     </Grid>
 </ContentPage>
