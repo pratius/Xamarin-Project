@@ -16,9 +16,9 @@ namespace SloperMobile.ViewModel
     public class MapRoutesViewModel : BaseViewModel
     {
         private ImageSource currentImage;
-        private ImageSource topangle;
-        private ImageSource tophold;
-        private ImageSource toproutestyle;
+        private ImageSource topangle=null;
+        private ImageSource tophold = null;
+        private ImageSource toproutestyle = null;
         public ImageSource CurrentSectorImage
         {
             get { return currentImage; }
@@ -65,7 +65,7 @@ namespace SloperMobile.ViewModel
             set { stateName = value; OnPropertyChanged(); }
         }
 
-        private string routeName;
+        private string routeName="";
 
         public string RouteName
         {
@@ -81,7 +81,7 @@ namespace SloperMobile.ViewModel
             set { techGrade = value; OnPropertyChanged(); }
         }
 
-        private string routeInfo;
+        private string routeInfo="";
 
         public string RouteInfo
         {
@@ -89,7 +89,7 @@ namespace SloperMobile.ViewModel
             set { routeInfo = value; OnPropertyChanged(); }
         }
 
-        private string rating;
+        private string rating="";
 
         public string Rating
         {
@@ -105,6 +105,13 @@ namespace SloperMobile.ViewModel
             set { routeTypeTop = value; OnPropertyChanged(); }
         }
 
+        private string curr_routeid="";
+
+        public string CurrentRouteID
+        {
+            get { return curr_routeid; }
+            set { curr_routeid = value; OnPropertyChanged(); }
+        }
         private ObservableCollection<MapRouteImageModel> routeImageList;
 
         public ObservableCollection<MapRouteImageModel> RouteImageList
@@ -136,12 +143,12 @@ namespace SloperMobile.ViewModel
             SendCommand = new DelegateCommand(ExecuteOnSends);
             HidePopupCommand = new DelegateCommand(ExecuteOnHidePopup);
             ShowPopupCommand = new DelegateCommand(ExecuteOnShowPopup);
-            IsPopupHide = true;
+            IsPopupHide = false;
             try
             {
                 PageHeaderText = CurrentSector.SectorName;
                 CurrentSectorImage = CurrentSector.SectorImage;
-                LoadRouteData();
+                LoadRouteData(CurrentRouteID);
             }
             catch
             {
@@ -153,7 +160,7 @@ namespace SloperMobile.ViewModel
         private void ExecuteOnSends(object obj)
         {
             //OnPageNavigation?.Invoke();
-            OnConditionNavigation?.Invoke("22044");
+            OnConditionNavigation?.Invoke(CurrentRouteID);
         }
 
         private void LoadSectorImages()
@@ -181,9 +188,10 @@ namespace SloperMobile.ViewModel
             }
         }
 
-        private void LoadRouteData()
+        public void LoadRouteData(object obj)
         {
-            var routeData = App.DAUtil.GetRouteDataByRouteID("22044");
+            CurrentRouteID = Convert.ToString(obj);
+            var routeData = App.DAUtil.GetRouteDataByRouteID(CurrentRouteID);
             if (routeData != null)
             {
                 SectorName = routeData.route_name;
@@ -193,8 +201,8 @@ namespace SloperMobile.ViewModel
                 Rating = routeData.rating;
                 TechGrade = routeData.tech_grade;
                 TopAngle = ImageSource.FromFile(GetTopAngleResourceName(routeData.angles_top_1));
-                TopHold= ImageSource.FromFile(GetTopHoldResourceName(routeData.hold_type_top_1));
-                TopRouteStyle= ImageSource.FromFile(GetTopRouteStyleResourceName(routeData.route_style_top_1));
+                TopHold = ImageSource.FromFile(GetTopHoldResourceName(routeData.hold_type_top_1));
+                TopRouteStyle = ImageSource.FromFile(GetTopRouteStyleResourceName(routeData.route_style_top_1));
             }
         }
 
@@ -209,12 +217,11 @@ namespace SloperMobile.ViewModel
             IsPopupShow = true;
             IsPopupHide = false;
         }
-        
+
 
         public DelegateCommand SendCommand { get; set; }
         public DelegateCommand HidePopupCommand { get; set; }
         public DelegateCommand ShowPopupCommand { get; set; }
-
 
         private string GetTopAngleResourceName(string angle)
         {

@@ -204,7 +204,12 @@
             }
         }
         function routePointClick(routeId) {
-            // alert(routeId);
+            
+            try {
+                Native("dataCallback", routeId);
+            } catch (err) {
+                alert(routeId);
+            }
         }
         function resizeImageCanvas(canvasDiv, drawingCanvas, imageId, points, wheight) {
             var canvas = document.getElementById(canvasDiv);
@@ -233,15 +238,15 @@
             }
 
             //logic to fix height
-            if (width > height) {
-                height = height + 250;
-                width = width + (250 * ratio)
-            } else if (width < height) {
-                if ($('#topoimg')[0].height > 1000) {
-                    height = height - 150;
-                    width = width + (150 * ratio)
-                }
-            }
+            //if (width > height) {
+            //    height = height + 250;
+            //    width = width + (250 * ratio)
+            //} else if (width < height) {
+            //    if ($('#topoimg')[0].height > 1000) {
+            //        height = height - 150;
+            //        width = width + (150 * ratio)
+            //    }
+            //}
             $(canvas).width(width);
             $(canvas).height(height);
 

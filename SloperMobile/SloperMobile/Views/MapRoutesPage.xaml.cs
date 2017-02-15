@@ -24,7 +24,14 @@ namespace SloperMobile.Views
                 BindingContext = MapRouteVM;
                 MapRouteVM.OnConditionNavigation = OnPageNavigation;
                 _CurrentSector = CurrentSector;
-                
+                this.webView.RegisterCallback("dataCallback", t =>
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    MapRouteVM.LoadRouteData(t);
+                    MapRouteVM.IsPopupHide = true;
+                })
+            );
+
             }
             catch (Exception ex)
             {
@@ -71,20 +78,14 @@ namespace SloperMobile.Views
             if (!IsRouteClicked)
             {
                 //webView.Eva(string.Format("InitDrawing({0})", staticData));
-                webView.CallJsFunction("initDrawing", staticAnnotationData, listData);
+                webView.CallJsFunction("initDrawing", staticAnnotationData, listData, 0);
                 //int count = 0;
             }
             else
             {
                 webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, "11840", 0);
             }
-
-
-            // Route click function in html - just for reference
-            //function routePointClick(routeId) {
-            //    // alert(routeId);
-            //}
-
+            
         }
 
         private void BindAndDisPlayPopup(string routeid)
