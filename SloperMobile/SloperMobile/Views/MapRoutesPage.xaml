@@ -141,7 +141,7 @@
                 </Image.GestureRecognizers>
             </Image>
         </Grid>
-        <UC:FooterUC  Grid.Column="1" Grid.Row="1" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+        <UC:FooterUC  Grid.Column="1" Grid.Row="1" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
 
     </Grid>
 </ContentPage>

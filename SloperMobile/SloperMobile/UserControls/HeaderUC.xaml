@@ -37,11 +37,11 @@
           <TapGestureRecognizer Tapped="OnMenuTapped"/>
         </Image.GestureRecognizers>
       </Image>
-      <!--<Image Source="Search" WidthRequest="30" HeightRequest="30" Aspect="AspectFill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+      <Image Source="Search" IsVisible="False" WidthRequest="30" HeightRequest="30" Aspect="AspectFill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
         <Image.GestureRecognizers>
           <TapGestureRecognizer Tapped="OnSearch"/>
         </Image.GestureRecognizers>
-      </Image>-->
+      </Image>
 
     </StackLayout>
 

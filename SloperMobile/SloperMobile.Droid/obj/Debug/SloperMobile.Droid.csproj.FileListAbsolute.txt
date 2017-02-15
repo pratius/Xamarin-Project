@@ -942,4 +942,3 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\asse
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\SloperMobile.Droid.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.Droid.dll.mdb

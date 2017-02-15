@@ -340,19 +340,19 @@
     <AndroidResource Include="Resources\logo_old.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\navHome.png" />
+    <BundleResource Include="Resources\navHome.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\navMap.png" />
+    <BundleResource Include="Resources\navMap.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\navNews.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\navProfile.png" />
+    <BundleResource Include="Resources\navProfile.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\navSettings.png" />
+    <BundleResource Include="Resources\navSettings.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\sendsDonutOnsights.png" />
