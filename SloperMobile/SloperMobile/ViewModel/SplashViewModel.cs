@@ -238,7 +238,6 @@ namespace SloperMobile.ViewModel
                     foreach (T_SECTOR sector in SectorObj)
                     {
                         App.DAUtil.SaveSector(sector);
-
                         Dictionary<string, string> topodict = new Dictionary<string, string>();
                         topodict.Add("sectorID", sector.sector_id);
                         HttpClientHelper apicall = new ApiHandler(ApiUrls.Url_GetUpdate_TopoData, string.Empty);
@@ -248,6 +247,7 @@ namespace SloperMobile.ViewModel
                         topo.topo_json = topo_response;
                         topo.upload_date = Helper.GetCurrentDate("yyyyMMdd");
                         App.DAUtil.SaveTopo(topo);
+
                     }
                     ProgressValue = "0.5";
                 }

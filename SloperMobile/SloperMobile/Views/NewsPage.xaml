@@ -2,19 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+             xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="SloperMobile.Views.NewsPage" Style="{StaticResource AppBackgroundColor}" NavigationPage.HasNavigationBar="False">
-    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="02"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="02"/>
-        </Grid.ColumnDefinitions>
-        <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="30"/>
-        <UC:FooterUC  Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="40"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="02"/>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="02"/>
+    </Grid.ColumnDefinitions>
+    <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="30"/>
+    <Grid BackgroundColor="White" Grid.Row="1" Grid.Column="1" Padding="5,0,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+      <XLabUC:HybridWebView  x:Name="webView" />
     </Grid>
+
+    <UC:FooterUC  Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+  </Grid>
+
+
 </ContentPage>

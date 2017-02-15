@@ -351,7 +351,9 @@ namespace SloperMobile.DataBase
         /// Primary Key
         /// </summary>
         [PrimaryKey, AutoIncrement]
-        public long tech_grade_id
+        public long id
+        { get; set; }
+        public string tech_grade_id
         { get; set; }
         public string grade_type_id
         { get; set; }

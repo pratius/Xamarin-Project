@@ -470,6 +470,7 @@ E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
 E:\Project\Freelancing Project\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\SloperMobile.Droid.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Platform.Android.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.Droid.dll.config
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.Droid.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\SloperMobile.Droid.pdb
@@ -532,7 +533,6 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Syncfusion.S
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Core.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Core.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Core.dll.mdb
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Platform.Android.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Xaml.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\bin\Debug\Xamarin.Forms.Xaml.xml

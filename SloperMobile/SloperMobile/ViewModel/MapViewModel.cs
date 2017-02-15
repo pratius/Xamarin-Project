@@ -59,10 +59,11 @@ namespace SloperMobile.ViewModel
                 var sector_images = App.DAUtil.GetSectorImages(SectorImageList.Count(), 10);
                 foreach (var sector in sector_images)
                 {
-                    var topoimg = JsonConvert.DeserializeObject<TopoImageResponse>(sector.topo_json);
-                    if (!string.IsNullOrEmpty(topoimg.image.data))
+                    var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(sector.topo_json);
+
+                    if (!string.IsNullOrEmpty(topoimg[0].image.data))
                     {
-                        string strimg64 = topoimg.image.data.Split(',')[1];
+                        string strimg64 = topoimg[0].image.data.Split(',')[1];
                         if (!string.IsNullOrEmpty(strimg64))
                         {
                             MapListModel objSec = new MapListModel();

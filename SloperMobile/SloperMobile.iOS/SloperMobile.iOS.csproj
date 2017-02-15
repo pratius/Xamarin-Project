@@ -550,6 +550,7 @@
     <BundleResource Include="HTML\img\tr-icon.png" />
     <BundleResource Include="HTML\img\trcross-icon.png" />
     <BundleResource Include="HTML\img\x-mark-32.png" />
+    <Content Include="HTML\Feed.html" />
     <Content Include="HTML\Index.html" />
     <AndroidAsset Include="HTML\Js\canvas.dashedLine.js" />
     <AndroidAsset Include="HTML\Js\jquery.bxslider.js" />

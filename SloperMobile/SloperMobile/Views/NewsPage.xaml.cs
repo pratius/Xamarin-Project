@@ -16,5 +16,10 @@ namespace SloperMobile.Views
             InitializeComponent();
             BindingContext = new NewsViewModel();
         }
+        protected override void OnAppearing()
+        {
+            this.webView.LoadFromContent("HTML/Feed.html");
+            base.OnAppearing();
+        }
     }
 }

@@ -17,8 +17,12 @@ namespace SloperMobile.Views {
     public partial class NewsPage : global::Xamarin.Forms.ContentPage {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::XLabs.Forms.Controls.HybridWebView webView;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(NewsPage));
+            webView = this.FindByName<global::XLabs.Forms.Controls.HybridWebView>("webView");
         }
     }
 }
