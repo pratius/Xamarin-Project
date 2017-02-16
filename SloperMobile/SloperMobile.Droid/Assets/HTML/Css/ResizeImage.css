@@ -119,8 +119,8 @@
     position: absolute;
     top: 50px;
     left: 50px;
-    width: 14px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     z-index: 5000; /* one above the topo Image but below the display and drawing canvas surfaces */
     box-sizing: border-box;
     /* TODO: crosshair background image */
