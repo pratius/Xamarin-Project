@@ -100,7 +100,8 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-                await _navigation.PushAsync(new Views.MapRoutesPage(CurrentSector));
+                // await _navigation.PushAsync(new Views.MapRoutesPage(CurrentSector));
+                await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector));
             }
             catch (Exception ex)
             {
