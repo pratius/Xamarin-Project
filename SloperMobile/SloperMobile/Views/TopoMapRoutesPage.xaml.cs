@@ -57,8 +57,7 @@ namespace SloperMobile.Views
 
         public void LoadWebViews()
         {
-            this.webView.LoadFromContent("HTML/TopoResizeImage.html");
-            this.webView.LoadFinished += OnLoadFinished;
+            OnAppearing();
         }
         protected override void OnDisappearing()
         {
