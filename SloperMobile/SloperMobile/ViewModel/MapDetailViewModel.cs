@@ -9,8 +9,6 @@ using Xamarin.Forms;
 using SloperMobile.Common.Constants;
 using SloperMobile.DataBase;
 using SloperMobile.Common.Enumerators;
-using Newtonsoft.Json;
-using SloperMobile.Views;
 
 namespace SloperMobile.ViewModel
 {
@@ -102,8 +100,7 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-                // await _navigation.PushAsync(new Views.MapRoutesPage(CurrentSector));
-                await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector));
+                await _navigation.PushAsync(new Views.MapRoutesPage(CurrentSector));
             }
             catch (Exception ex)
             {

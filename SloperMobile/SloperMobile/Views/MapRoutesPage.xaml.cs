@@ -87,12 +87,33 @@ namespace SloperMobile.Views
             {
                 webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, "11840", (device.Display.Height - 250));
             }
-            
+
         }
 
         private void BindAndDisPlayPopup(string routeid)
         {
             Application.Current.MainPage.DisplayAlert("Route ID", routeid, "OK");
+        }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await DisplayAlert("test", "Click Down", "Ok");
+        }
+
+        private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            await DisplayAlert("test", "Click Up", "Ok");
+        }
+
+        private void SwipeableImage_SwipedDown(object sender, EventArgs e)
+        {
+            MapRouteVM.ShowPopupCommand.Execute(null);
+        }
+
+        private void SwipeableImage_SwipedUp(object sender, EventArgs e)
+        {
+            MapRouteVM.HidePopupCommand.Execute(null);
+
         }
         //private void OnMenuTapped(object sender, EventArgs e)
         //{
