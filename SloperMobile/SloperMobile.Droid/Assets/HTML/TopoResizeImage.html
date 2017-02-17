@@ -156,7 +156,12 @@
             }
         }
         function routePointClick(routeId) {
-            alert(routeId);
+
+            try {
+                Native("dataCallback", routeId);
+            } catch (err) {
+                alert(routeId);
+            }
         }
         function resizeImageCanvas(canvasDiv, drawingCanvas, imageId, points, wheight) {
             var canvas = document.getElementById(canvasDiv);

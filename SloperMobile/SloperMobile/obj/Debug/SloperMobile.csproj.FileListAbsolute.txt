@@ -599,5 +599,9 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserC
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.UserControls.AscentSummary.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Mono.Android.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\Mono.Android.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.TopoSectorPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.TopoMapRoutesPage.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb

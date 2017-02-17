@@ -9,6 +9,8 @@ using Xamarin.Forms;
 using SloperMobile.Common.Constants;
 using SloperMobile.DataBase;
 using SloperMobile.Common.Enumerators;
+using Newtonsoft.Json;
+using SloperMobile.Views;
 
 namespace SloperMobile.ViewModel
 {

@@ -4,9 +4,9 @@
               xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
               x:Class="SloperMobile.Views.TopoSectorPage"
               NavigationPage.HasNavigationBar="True" Style="{StaticResource AppBackgroundColor}">
-  <ContentPage>
+  <!--<ContentPage>
     <StackLayout Grid.Column="1" Grid.Row="3" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
       <Button Text="GO"  Margin="01" Style="{StaticResource GeneralButtonStyle}" Command="{Binding GoCommand}" />
     </StackLayout>
-   </ContentPage>
+   </ContentPage>-->
 </CarouselPage >
