@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
              xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+               xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              x:Class="SloperMobile.Views.MapRoutesPage"
              NavigationPage.HasNavigationBar="False" Style="{StaticResource AppBackgroundColor}">
@@ -32,17 +33,6 @@
                 <RowDefinition Height=".7*"/>
                 <RowDefinition Height=".1*"/>
             </Grid.RowDefinitions>
-            <!--<Image Source="Menu_button" Grid.Column="1" WidthRequest="25" HeightRequest="25" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnMenuTapped"/>
-                </Image.GestureRecognizers>
-            </Image>
-
-            <Image Source="Search" Grid.Column="1" WidthRequest="30" HeightRequest="30" Aspect="AspectFill" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnSearch"/>
-                </Image.GestureRecognizers>
-            </Image>-->
 
             <Grid Grid.Column="1" Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
@@ -83,6 +73,8 @@
                 </Image.GestureRecognizers>
             </Image>
 
+            <Controls:SwipeableImage SwipedDown="SwipeableImage_SwipedDown" Source="GridImage" BackgroundColor="Transparent" Aspect="AspectFill" Grid.ColumnSpan="2" Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+
 
         </Grid>
 
@@ -104,6 +96,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height=".1*"/>
                     <RowDefinition Height=".1*"/>
+                    <RowDefinition Height="1"/>
                     <RowDefinition Height=".1*"/>
                 </Grid.RowDefinitions>
                 <StackLayout Orientation="Vertical"  VerticalOptions="StartAndExpand" HorizontalOptions="Center">
@@ -121,11 +114,12 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
-                    <Image Source="{Binding TopHold}" WidthRequest="50" Aspect="AspectFill" HeightRequest="50"/>
-                    <Image Source="{Binding TopRouteStyle}" WidthRequest="50" Aspect="AspectFill" HeightRequest="50"/>
-                    <Image Source="{Binding TopAngle}" WidthRequest="50" Aspect="AspectFill" HeightRequest="50" />
+                    <Image Source="{Binding TopHold}" WidthRequest="50" Aspect="AspectFit" HeightRequest="50"/>
+                    <Image Source="{Binding TopRouteStyle}" WidthRequest="50" Aspect="AspectFit" HeightRequest="50"/>
+                    <Image Source="{Binding TopAngle}" WidthRequest="50" Aspect="AspectFit" HeightRequest="50" />
                 </StackLayout>
-                <Grid Grid.Row="3" VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
+
+                <Grid Grid.Row="4" VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="1"/>
@@ -134,12 +128,16 @@
                     <Button Text="Tick List"  TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
                     <Button Text="Sent" Grid.Column="2" Command="{Binding SendCommand}"  TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
                 </Grid>
+                <Controls:SwipeableImage SwipedUp="SwipeableImage_SwipedUp" Source="GridImage" BackgroundColor="Transparent" Aspect="AspectFill" Grid.RowSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+
             </Grid>
+
             <Image Source="arrowLeftWhite" Rotation="90" Grid.Row="2" Grid.Column="1" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding HidePopupCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
+
         </Grid>
         <UC:FooterUC  Grid.Column="1" Grid.Row="1" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
 
