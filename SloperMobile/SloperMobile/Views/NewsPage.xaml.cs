@@ -18,7 +18,7 @@ namespace SloperMobile.Views
         }
         protected override void OnAppearing()
         {
-            this.webView.LoadFromContent("HTML/Feed.html");
+//            this.webView.LoadFromContent("HTML/Feed.html");
             base.OnAppearing();
         }
     }
