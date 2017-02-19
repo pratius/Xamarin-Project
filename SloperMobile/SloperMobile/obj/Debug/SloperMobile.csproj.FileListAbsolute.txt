@@ -234,5 +234,3 @@ E:\Project\Freelancing Project\Sloper App\Sloper-02-19-17\SloperMobile\SloperMob
 E:\Project\Freelancing Project\Sloper App\Sloper-02-19-17\SloperMobile\SloperMobile\obj\Debug\SloperMobile.Views.TopoSectorPage.xaml.g.cs
 E:\Project\Freelancing Project\Sloper App\Sloper-02-19-17\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 E:\Project\Freelancing Project\Sloper App\Sloper-02-19-17\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\Sloper App\Sloper-02-19-17\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
-E:\Project\Freelancing Project\Sloper App\Sloper-02-19-17\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
