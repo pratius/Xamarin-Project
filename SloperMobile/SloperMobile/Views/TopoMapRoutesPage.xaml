@@ -17,10 +17,13 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="02"/>
         </Grid.ColumnDefinitions>
-        <Grid BackgroundColor="White" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <XLabUC:HybridWebView  x:Name="webView" />
-        </Grid>
-
+        <Controls:PinchToZoomContainer Grid.Column="1">
+            <Controls:PinchToZoomContainer.Content>
+                <Grid BackgroundColor="White" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <XLabUC:HybridWebView x:Name="webView" />
+                </Grid>
+            </Controls:PinchToZoomContainer.Content>
+        </Controls:PinchToZoomContainer>
         <Grid BackgroundColor="#77000000" IsVisible="{Binding IsPopupHide,Mode=TwoWay}" HeightRequest="150"  Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="02"/>

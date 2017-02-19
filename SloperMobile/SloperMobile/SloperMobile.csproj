@@ -51,7 +51,9 @@
     <Compile Include="Common\Interfaces\ISQLite.cs" />
     <Compile Include="Common\NotifyProperties\NotifyPropertiesChanged.cs" />
     <Compile Include="CustomControls\BindablePicker.cs" />
+    <Compile Include="CustomControls\DoubleExtensions.cs" />
     <Compile Include="CustomControls\InfiniteListView.cs" />
+    <Compile Include="CustomControls\PinchToZoomContainer.cs" />
     <Compile Include="CustomControls\ProgressBar.cs" />
     <Compile Include="CustomControls\SwipeableImage.cs" />
     <Compile Include="DataBase\DataAccess.cs" />
