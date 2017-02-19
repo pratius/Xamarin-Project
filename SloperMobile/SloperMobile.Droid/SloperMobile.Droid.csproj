@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -227,7 +227,6 @@
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\.DS_Store" />
     <AndroidResource Include="Resources\drawable-hdpi\Google.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Icon_Set_Sept_2016_Overhang.png" />
     <AndroidResource Include="Resources\drawable-hdpi\Icon_Set_Sept_2016_Slab.png" />
@@ -247,7 +246,6 @@
     <AndroidResource Include="Resources\drawable-ldpi\icon_profile.png" />
     <AndroidResource Include="Resources\drawable-ldpi\icon_pyramid.png" />
     <AndroidResource Include="Resources\drawable-ldpi\icon_sends.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\.DS_Store" />
     <AndroidResource Include="Resources\drawable-mdpi\Arm.PNG" />
     <AndroidResource Include="Resources\drawable-mdpi\BodyPic.png" />
     <AndroidResource Include="Resources\drawable-mdpi\Camera.png" />
@@ -353,7 +351,6 @@
     <AndroidResource Include="Resources\drawable-mdpi\steepSlab.png" />
     <AndroidResource Include="Resources\drawable-mdpi\steepVertical.png" />
     <AndroidResource Include="Resources\drawable-mdpi\twitter_logo_shape.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\.DS_Store" />
     <AndroidResource Include="Resources\drawable-xhdpi\Google.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Icon_Set_Sept_2016_Overhang.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Icon_Set_Sept_2016_Slab.png" />
@@ -367,7 +364,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon_profile.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_pyramid.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_sends.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\.DS_Store" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Google.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Icon_Set_Sept_2016_Overhang.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Icon_Set_Sept_2016_Slab.png" />
