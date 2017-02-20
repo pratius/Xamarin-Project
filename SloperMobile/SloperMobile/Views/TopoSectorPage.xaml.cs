@@ -11,11 +11,11 @@ using Xamarin.Forms;
 
 namespace SloperMobile.Views
 {
-    public partial class TopoSectorPage : CarouselPage
+public partial class TopoSectorPage : CarouselPage
     {
         public MapListModel _CurrentSector { get; set; }
         private TopoSectorViewModel topoSectorViewModel;
-        public int _count = 0;       
+        public int _count = 0;
         public TopoSectorPage(MapListModel CurrentSector)
         {
             InitializeComponent();
@@ -28,31 +28,34 @@ namespace SloperMobile.Views
         protected async override void OnAppearing()
         {
             try
-            {                
+            {
                 this.Children.Clear();
                 topoSectorViewModel.IsRunningTasks = true;
-               
+
                 var topolistData = App.DAUtil.GetSectorLines(_CurrentSector?.SectorId);
-                var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);                
+                var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);
                 ContentPage newPage = new ContentPage();
                 if (topoimgages.Count == 1)
                 {
-                    _count = topoimgages.Count;                   
+                    _count = topoimgages.Count;
                     this.Children.Add(newPage);
                 }
                 foreach (TopoImageResponse topores in topoimgages)
-                {                    
-                    TopoMapRoutesPage topopageObj;                   
+                {
+                    TopoMapRoutesPage topopageObj;
                     var topoimg = JsonConvert.SerializeObject(topores);
-                    topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]");                   
+                    topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]");
                     this.Children.Add(topopageObj);
                 }
 
-                await Task.Delay(2000);
-                this.SelectedItem = this.Children.LastOrDefault();
+                await Task.Delay(250);
+                if (Children.Count > 0)
+                {
+                    this.SelectedItem = this.Children.LastOrDefault();
+                }
                 topoSectorViewModel.IsRunningTasks = false;
                 if (topoimgages.Count == 1)
-                {                   
+                {
                     this.Children.Remove(newPage);
                 }
                 base.OnAppearing();
@@ -60,21 +63,21 @@ namespace SloperMobile.Views
             catch (Exception ex)
             {
 
-               throw ex;
-            }            
-        }       
+                throw ex;
+            }
+        }
 
         protected override void OnCurrentPageChanged()
         {
-            base.OnCurrentPageChanged();            
+            base.OnCurrentPageChanged();
             var index = Children.IndexOf(CurrentPage);
             if (index > 0)
             {
-                this.SelectedItem = Children[index];
+                this.SelectedItem = Children[0];
             }
             if (index == 0)
-            {               
-                this.SelectedItem = Children[Children.Count() - 1];
+            {
+                this.SelectedItem = Children[index];
             }
         }
     }
