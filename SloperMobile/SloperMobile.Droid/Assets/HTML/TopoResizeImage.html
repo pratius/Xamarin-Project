@@ -31,14 +31,56 @@
             _staticData = topoData;
 
             $("#mbimage").css('display', 'none');
-            var imgdata = jQuery.parseJSON(_staticData);
-
+            var imgdata = jQuery.parseJSON(_staticData);                        
             getAnnoation();
             resizeCanvas(imgdata[0], height);
 
             $("#mbimage").css('display', 'block');
         }
 
+        function initReDrawing(annotationData, topoData, wheight, routeId, isSingleLine) {
+            clearAll("drawing-canvas");
+            clearAll("display-canvas");
+            _staticAnnotationData = annotationData;
+            _staticData = topoData;
+           
+            var imgdata = jQuery.parseJSON(_staticData);
+
+            getAnnoation();
+            ReDrawLine(imgdata[0], routeId, isSingleLine, wheight);
+        }
+        function clearAll(canvasDiv) {
+            var drawCanvas = document.getElementById(canvasDiv);
+            var ctx = drawCanvas.getContext("2d");
+            ctx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+        }
+        function ReDrawLine(data, routeId, isSingleLine, wheight) {
+            $(".point-highlighterhide").remove();
+            if (isSingleLine == true) {
+                //code to draw line and points on image
+                for (var i = 0; i < data.drawing.length; i++) {
+                    drawLine("display-canvas", data.drawing[i].line, 0, 0, 0);
+                    var pointLength = data.drawing[i].line.points.length;
+
+                    $(data.drawing[i].line.points).each(function (index, point) {
+                        makeDrawingPointTemplateElement(point, index, data.drawing[i].line.pointsText, 0, 0, data.drawing[i].line.pointsDirection, true, data.drawing[i].line.style.color, i, pointLength, data.drawing[i].id)
+                    });
+                }
+            }
+            //get single route data using routeId
+            if (routeId != null && routeId > 0) {               
+                var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
+                var Newdata = routeDrawingData;                
+                drawLine("drawing-canvas", Newdata.line, 0, 0, 0);
+                var pointLength = Newdata.line.points.length;                
+
+                $(Newdata.line.points).each(function (index, point) {
+                    makeDrawingPointTemplateElement(point, index, Newdata.line.pointsText, 0, 0, Newdata.line.pointsDirection, true, Newdata.line.style.color, 0, pointLength, Newdata.id)
+                });
+                $('#display-canvas').fadeTo(500, 0.2);
+            }
+            resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing,wheight);
+        }
         function initRouteDrawing(annotationData, topoData, routeid, height) {
             _staticAnnotationData = annotationData;
             _staticData = topoData;
@@ -100,6 +142,8 @@
             try {
 
                 $('#topoimg')[0].src = data.image.data;
+                $('#topoimg').attr("data-height", data.image.height);
+                
                 $('#display-canvas')[0].height = data.image.height;
                 $('#display-canvas')[0].width = data.image.width;
 
@@ -124,8 +168,8 @@
         }
 
         function drawingInfoForRoute(routeId, drawingData) {
-            var routeDrawingdata = $.grep(drawingData, function (routeDrawing, index) {
-                return (routeId === routeDrawing.id);
+            var routeDrawingdata = $.grep(drawingData, function (routeDrawing, index) {                
+                return (routeId === parseInt(routeDrawing.id));
             });
             if (routeDrawingdata !== null && routeDrawingdata.length > 0) return routeDrawingdata[0];
             return null;
@@ -179,14 +223,23 @@
 
                 var imageheight = $('#topoimg')[0].height;
                 var imagewidth = $('#topoimg')[0].width;
-                ratio = height / parseInt(imageheight);
+                if (parseInt($('#topoimg').attr("data-height")) != parseInt($('#topoimg')[0].height)) {
+                    ratio = height / parseInt($('#topoimg').attr("data-height"));
+                } else {
+                    ratio = height / parseInt(imageheight);
+                }
+                
                 width = imagewidth * ratio;
             }
             else {
                 height = wheight;
                 var imageheight = $('#topoimg')[0].height;
                 var imagewidth = $('#topoimg')[0].width;
-                ratio = height / parseInt(imageheight);
+                if (parseInt($('#topoimg').attr("data-height")) != parseInt($('#topoimg')[0].height)) {
+                    ratio = height / parseInt($('#topoimg').attr("data-height"));
+                } else {
+                    ratio = height / parseInt(imageheight);
+                }
                 width = imagewidth * ratio;
             }
 

@@ -33,7 +33,7 @@ namespace SloperMobile.Views
                 topoSectorViewModel.IsRunningTasks = true;
                
                 var topolistData = App.DAUtil.GetSectorLines(_CurrentSector?.SectorId);
-                var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);
+                var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);                
                 ContentPage newPage = new ContentPage();
                 if (topoimgages.Count == 1)
                 {
@@ -42,9 +42,9 @@ namespace SloperMobile.Views
                 }
                 foreach (TopoImageResponse topores in topoimgages)
                 {                    
-                    TopoMapRoutesPage topopageObj;
+                    TopoMapRoutesPage topopageObj;                   
                     var topoimg = JsonConvert.SerializeObject(topores);
-                    topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]");
+                    topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]");                   
                     this.Children.Add(topopageObj);
                 }
 
