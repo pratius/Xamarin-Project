@@ -5,6 +5,7 @@ using Xamarin.Forms.Platform.Android;
 using SloperMobile.CustomControls;
 using SloperMobile.Droid;
 
+
 [assembly: ExportRenderer(typeof(SwipeableImage), typeof(SwipeableDroidImageRenderer))]
 namespace SloperMobile.Droid
 {

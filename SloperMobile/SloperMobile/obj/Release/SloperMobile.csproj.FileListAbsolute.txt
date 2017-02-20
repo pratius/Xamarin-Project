@@ -394,7 +394,6 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Ioc.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Platform.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Serialization.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.csproj.App.config
-E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.csprojResolveAssemblyReference.cache
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.App.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.LoginPage.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.MenuNavigationPage.xaml.g.cs
