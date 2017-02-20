@@ -37,9 +37,9 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <Debugger>Xamarin</Debugger>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,14 +51,8 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <Debugger>Xamarin</Debugger>
     <DebugSymbols>True</DebugSymbols>
-    <BundleAssemblies>False</BundleAssemblies>
-    <AotAssemblies>False</AotAssemblies>
-    <EnableLLVM>False</EnableLLVM>
-    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-    <EnableProguard>False</EnableProguard>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
   </PropertyGroup>
   <ItemGroup>
@@ -233,6 +227,162 @@
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\Google.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Icon_Set_Sept_2016_Overhang.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Icon_Set_Sept_2016_Slab.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Icon_Set_Sept_2016_Steep.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Icon_Set_Sept_2016_Vertical.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Search_old.PNG" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_menu.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_climbing_days.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_climbing_map.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_news.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_profile.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_pyramid.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_sends.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_climbing_days.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_climbing_map.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_news.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_profile.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_pyramid.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_sends.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Arm.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\BodyPic.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Camera.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Comment.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\EveryThing.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\Facebook.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Google.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Hand.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\Hand2Pic.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\HandPic.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon_Set_Sept_2016_Overhang.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon_Set_Sept_2016_Slab.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon_Set_Sept_2016_Steep.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon_Set_Sept_2016_Sustained.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon_Set_Sept_2016_Vertical.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Instagram.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Map.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\Menu_button.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\NewBig.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\OneMore.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\PowerHand.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\Ratting.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\Right.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\Search.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\Search_old.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\SendsBtnImgs.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\Sequential.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\SettingOne.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\SettingPic.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Settings.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\Star.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Sustained.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\Twitter.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Video.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\WhiteStar.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\YellowStar.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\angle_1_slab.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\angle_2_vertical.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\angle_4_overhanging.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\angle_8_roof.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\arrowLeftWhite.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\bigImage.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\chartIcon.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\climImg.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\climbing_days.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\climbing_map.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\close.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\facebook_logo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\google_plus_logo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\hold_type_1_slopers.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\hold_type_2_crimps.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\hold_type_4_jugs.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\hold_type_8_pockets.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\homeClimbingDays.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\homeClimbingMap.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\homeNews.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\homeProfile.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\homePyramid.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\homeSends.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_about_us.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_attachement_small.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_gym_map.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_gym_map_small.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_news.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_news_small.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_profile.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_profile_small.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_setting_small.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_climbing_days.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_climbing_map.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_news.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_profile.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_pyramid.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_sends.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\instagram_symbol.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\listimage.PNG" />
+    <AndroidResource Include="Resources\drawable-mdpi\loader.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\logo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\logo_old.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\main_header_image.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\navHome.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\navMap.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\navNews.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\navProfile.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\navSettings.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\news.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\profile.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\pyramid.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\route_style_16_one_move.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\route_style_1_technical.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\route_style_2_sequential.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\route_style_4_powerful.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\route_style_8_sustained.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\route_style_everything.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\send.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\sendsDonutOnsights.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\sendsDonutProjects.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\sendsDonutRedpoints.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\steepOverhanging.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\steepRoof.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\steepSlab.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\steepVertical.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\twitter_logo_shape.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Google.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Icon_Set_Sept_2016_Overhang.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Icon_Set_Sept_2016_Slab.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Icon_Set_Sept_2016_Steep.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Icon_Set_Sept_2016_Vertical.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Search_old.PNG" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_menu.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_climbing_days.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_climbing_map.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_news.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_profile.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_pyramid.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_sends.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Google.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Icon_Set_Sept_2016_Overhang.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Icon_Set_Sept_2016_Slab.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Icon_Set_Sept_2016_Steep.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Icon_Set_Sept_2016_Vertical.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Search_old.PNG" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_climbing_days.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_climbing_map.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_news.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_profile.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_pyramid.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_sends.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_climbing_days.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_climbing_map.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_news.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_profile.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_pyramid.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_sends.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">
@@ -245,9 +395,6 @@
       <Visible>False</Visible>
       <Version>4.1.0.3</Version>
     </XamarinComponentReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\news.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\Arm.PNG" />
@@ -455,213 +602,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\YellowStar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Arm.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\bigImage.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\BodyPic.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Camera.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\chartIcon.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\climbing_days.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\climbing_map.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\climImg.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\close.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Comment.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\EveryThing.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Facebook.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\facebook_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\google_plus_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Hand.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Hand2Pic.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\HandPic.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\homeClimbingDays.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\homeClimbingMap.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\homeNews.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\homeProfile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\homePyramid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\homeSends.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_about_us.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_attachement_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_gym_map.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_gym_map_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_news.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_news_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_profile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_profile_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_setting_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Instagram.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\instagram_symbol.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\listimage.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\loader.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\logo_old.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\main_header_image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Map.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Menu_button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\navHome.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\navMap.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\navNews.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\navProfile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\navSettings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\NewBig.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\OneMore.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\PowerHand.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Ratting.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Right.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Search.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\SendsBtnImgs.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\sendsDonutOnsights.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\sendsDonutProjects.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\sendsDonutRedpoints.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Sequential.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\SettingOne.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\SettingPic.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Settings.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Star.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Sustained.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Twitter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\twitter_logo_shape.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Video.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\WhiteStar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\YellowStar.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\Arm.png" />
@@ -1078,15 +1018,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\YellowStar.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\profile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\pyramid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\send.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\news.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1121,18 +1052,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\send.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\steepOverhanging.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\steepRoof.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\steepSlab.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\steepVertical.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\steepOverhanging.png" />
@@ -1171,21 +1090,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\steepVertical.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Icon_Set_Sept_2016_Sustained.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\hold_type_2_crimps.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Icon_Set_Sept_2016_Overhang.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\route_style_8_sustained.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\hold_type_1_slopers.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\route_style_8_sustained.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1213,9 +1117,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\hold_type_2_crimps.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\arrowLeftWhite.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\arrowLeftWhite.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1223,21 +1124,6 @@
     <AndroidAsset Include="Assets\HTML\Css\ResizeImage.css" />
     <AndroidAsset Include="Assets\HTML\Js\canvas.dashedLine.js" />
     <AndroidAsset Include="Assets\HTML\test.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\route_style_1_technical.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\route_style_16_one_move.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\route_style_2_sequential.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\route_style_4_powerful.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\route_style_everything.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\route_style_1_technical.png" />
@@ -1283,12 +1169,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\route_style_everything.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\hold_type_8_pockets.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\hold_type_4_jugs.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\hold_type_4_jugs.png" />
@@ -1387,9 +1267,6 @@
     <AndroidAsset Include="Assets\HTML\Feed.html" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\GridImage.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\GridImage.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1397,6 +1274,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\GridImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\TopoResizeImage.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

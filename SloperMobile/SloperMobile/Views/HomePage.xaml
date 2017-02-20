@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SloperMobile.Views.HomePage" Style="{StaticResource AppBackgroundColor}">
-  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+	<ContentPage.Padding>
+    	<OnPlatform x:TypeArguments="Thickness" iOS="20, 20, 20, 20" Android="20, 0, 20, 20" />
+	</ContentPage.Padding>
+  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
     <Grid.RowDefinitions>
-      <RowDefinition Height="1*" />
+      <RowDefinition Height="2*" />
       <RowDefinition Height="1*" />
       <RowDefinition Height="1" />
       <RowDefinition Height="1*" />
@@ -22,50 +25,51 @@
     <BoxView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
 
     <Grid Grid.ColumnSpan="3" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-      <Image Source="logo" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+      <Image Source="logo" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="150" WidthRequest="150"/>
     </Grid>
 
     <Grid Grid.Row="1" Grid.Column="0" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
       <Grid.GestureRecognizers>
         <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="MapPage"/>
       </Grid.GestureRecognizers>
-      <Image Aspect="Fill" Source="climbing_map" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+      <Image Aspect="Fill" Source="icon_climbing_map" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
     </Grid>
-
-
+		
     <Grid Grid.Row="1" Grid.Column="2" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
       <Grid.GestureRecognizers>
         <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="ProfilePage"/>
       </Grid.GestureRecognizers>
-      <Image Aspect="Fill" Source="profile" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+      <Image Aspect="Fill" Source="icon_profile" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
     </Grid>
+		
     <Grid Grid.Row="3" Grid.Column="0" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
       <Grid.GestureRecognizers>
         <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="PyramidPage"/>
       </Grid.GestureRecognizers>
-      <Image Aspect="Fill" Source="pyramid" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+      <Image Aspect="Fill" Source="icon_pyramid" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
     </Grid>
 
     <Grid  Grid.Row="3" Grid.Column="2" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
       <Grid.GestureRecognizers>
         <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="SendsPage"/>
       </Grid.GestureRecognizers>
-      <Image Aspect="Fill" Source="send" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+      <Image Aspect="Fill" Source="icon_sends" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
     </Grid>
 
     <Grid  Grid.Row="5" Grid.Column="0" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
       <Grid.GestureRecognizers>
         <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="ClimbingDaysPage"/>
       </Grid.GestureRecognizers>
-      <Image Aspect="Fill" Source="climbing_days" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+      <Image Aspect="Fill" Source="icon_climbing_days" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
     </Grid>
-
-    <Grid  Grid.Row="5" Grid.Column="2" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+		
+	<Grid  Grid.Row="5" Grid.Column="2" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
       <Grid.GestureRecognizers>
         <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="NewsPage"/>
       </Grid.GestureRecognizers>
-      <Image Aspect="Fill" Source="news" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
-    </Grid>
+      <Image Aspect="Fill" Source="icon_news" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+	</Grid>
+		
   </Grid>
 
 </ContentPage>

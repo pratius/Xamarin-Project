@@ -9,14 +9,14 @@
 
           <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor" Value="Black"/>
-            <Setter Property="BarTextColor" Value="#FF9933"/>
+            <Setter Property="BarTextColor" Value="#F8B334"/>
           </Style>
-          
-            <Style x:Key="AppBackgroundColor" TargetType="ContentPage">
+
+		  <Style x:Key="AppBackgroundColor" TargetType="ContentPage">
                 <Setter Property="BackgroundColor" Value="Black" />
             </Style>
 
-            <Style x:Key="GeneralTxtStyle" TargetType="Entry">
+			<Style x:Key="GeneralTxtStyle" TargetType="Entry">
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="BackgroundColor" Value="White"/>
@@ -43,7 +43,7 @@
             <Style x:Key="GeneralButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="#FF9933" />
+                <Setter Property="BackgroundColor" Value="#F8B334" />
             </Style>
         </ResourceDictionary>
 

@@ -119,6 +119,25 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\Search_old.PNG" />
+    <BundleResource Include="Resources\icon_climbing_days.png" />
+    <BundleResource Include="Resources\icon_climbing_days%402x.png" />
+    <BundleResource Include="Resources\icon_climbing_days%403x.png" />
+    <BundleResource Include="Resources\icon_climbing_map.png" />
+    <BundleResource Include="Resources\icon_climbing_map%402x.png" />
+    <BundleResource Include="Resources\icon_climbing_map%403x.png" />
+    <BundleResource Include="Resources\icon_news.png" />
+    <BundleResource Include="Resources\icon_news%402x.png" />
+    <BundleResource Include="Resources\icon_news%403x.png" />
+    <BundleResource Include="Resources\icon_profile.png" />
+    <BundleResource Include="Resources\icon_profile%402x.png" />
+    <BundleResource Include="Resources\icon_profile%403x.png" />
+    <BundleResource Include="Resources\icon_pyramid.png" />
+    <BundleResource Include="Resources\icon_pyramid%402x.png" />
+    <BundleResource Include="Resources\icon_pyramid%403x.png" />
+    <BundleResource Include="Resources\icon_sends.png" />
+    <BundleResource Include="Resources\icon_sends%402x.png" />
+    <BundleResource Include="Resources\icon_sends%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -234,7 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">
-      <Project>{1c7d1ca6-50b4-4681-a3da-d855d3c9569f}</Project>
+      <Project>{B8FBADC5-375B-4A91-8B8E-4152CD63812D}</Project>
       <Name>SloperMobile</Name>
     </ProjectReference>
   </ItemGroup>
