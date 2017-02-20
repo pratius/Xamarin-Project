@@ -30,7 +30,9 @@ namespace SloperMobile.Views
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     MapRouteVM.LoadRouteData(t);
-                    MapRouteVM.IsPopupHide = true;                    
+                    MapRouteVM.IsPopupHide = true;
+                    var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
+                    webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (device.Display.Height), Convert.ToInt32(t),true);
                 }));
             }
             catch (Exception ex)
@@ -86,12 +88,12 @@ namespace SloperMobile.Views
             if (!IsRouteClicked)
             {
 
-                webView.CallJsFunction("initDrawing", staticAnnotationData, listData, (device.Display.Height - 250));
+                webView.CallJsFunction("initDrawing", staticAnnotationData, listData, (device.Display.Height));
                 //int count = 0;
             }
             else
             {
-                webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, "11840", (device.Display.Height - 250));
+                webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, "11840", (device.Display.Height));
             }
             MapRouteVM.IsRunningTasks = false;
         }
