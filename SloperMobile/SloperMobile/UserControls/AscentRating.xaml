@@ -19,10 +19,14 @@
   </StackLayout>
   <Editor x:Name="rate_comment" Text="{Binding CommentText,Mode=TwoWay}" HeightRequest="100" Style="{StaticResource GeneralEditorStyle}"></Editor>
   <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-    <Image Source="Camera" HeightRequest="90"/>
+    <Image Source="Camera" HeightRequest="90" WidthRequest="90">
+      <Image.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding CameraClickCommand}"/>
+      </Image.GestureRecognizers>
+    </Image>
     <Label BackgroundColor="White"/>
-    <Image Source="Video.png" HeightRequest="90"/>
+    <Image Source="Video.png" HeightRequest="90" WidthRequest="90"/>
     <Label/>
-    <Image Source="Comment" HeightRequest="90"/>
+    <Image Source="Comment" HeightRequest="90" WidthRequest="90"/>
   </StackLayout>
 </StackLayout>

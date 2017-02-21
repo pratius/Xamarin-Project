@@ -6,6 +6,11 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\asse
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\ImageCircle.Forms.Plugin.Abstractions.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\ImageCircle.Forms.Plugin.Android.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Newtonsoft.Json.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Plugin.CurrentActivity.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Plugin.Media.Abstractions.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Plugin.Media.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Plugin.Permissions.Abstractions.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Plugin.Permissions.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Plugin.Settings.Abstractions.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\Plugin.Settings.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile.Droid\obj\Debug\android\assets\SQLite.Net.dll

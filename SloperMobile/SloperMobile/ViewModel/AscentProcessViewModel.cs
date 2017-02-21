@@ -12,6 +12,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
+using System.IO;
 
 namespace SloperMobile.ViewModel
 {
@@ -56,6 +59,7 @@ namespace SloperMobile.ViewModel
         private ImageSource topangle;
         private ImageSource tophold;
         private ImageSource toproutechar;
+        private Stream camera_image;
         private T_ROUTE routeData;
         public AscentProcessViewModel(INavigation navigation, string routeid)
         {
@@ -70,9 +74,11 @@ namespace SloperMobile.ViewModel
             SendRouteStyleCommand = new DelegateCommand(ExecuteOnRouteStyle);
             SendRatingCommand = new DelegateCommand(ExecuteOnRating);
             SendSummaryCommand = new DelegateCommand(ExecuteOnSummary);
+            CameraClickCommand = new DelegateCommand(ExecuteOnCameraClick);
+            GalleryClickCommand = new DelegateCommand(ExecuteOnCameraClick);
             var grades = App.DAUtil.GetTtechGrades(routeData.grade_type_id);
             AscentGrages = grades;
-            if(grades.Count>0)
+            if (grades.Count > 0)
             {
                 SendsGrade = grades[0];
             }
@@ -134,6 +140,12 @@ namespace SloperMobile.ViewModel
         {
             get { return summaryimage; }
             set { summaryimage = value; OnPropertyChanged(); }
+        }
+
+        public Stream CameraImage
+        {
+            get { return camera_image; }
+            set { camera_image = value; OnPropertyChanged(); }
         }
 
         public string CommandText
@@ -231,6 +243,9 @@ namespace SloperMobile.ViewModel
         public DelegateCommand SendRouteStyleCommand { get; set; }
         public DelegateCommand SendRatingCommand { get; set; }
         public DelegateCommand SendSummaryCommand { get; set; }
+
+        public DelegateCommand CameraClickCommand { get; set; }
+        public DelegateCommand GalleryClickCommand { get; set; }
         #endregion
 
         private void ExecuteOnSendType(object obj)
@@ -515,8 +530,50 @@ namespace SloperMobile.ViewModel
 
         private void ExecuteOnRating(object obj)
         {
+        }
+        private async void ExecuteOnCameraClick(object obj)
+        {
+            await CrossMedia.Current.Initialize();
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await Application.Current.MainPage.DisplayAlert("No Camera", "No camera available!", "OK");
+                return;
+            }
+            var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+            {
+                SaveToAlbum = true,
+                AllowCropping = true,
+                Name = "Ascent_" + DateTime.Now.ToString()
+            });
+            if (file == null)
+            {
+                return;
+            }
+            CameraImage = file.GetStream();
+            SummaryImage = ImageSource.FromStream(() =>
+            {
+                var imgstream = file.GetStream();
+                file.Dispose();
+                return imgstream;
+            });
+            
+        }
 
-
+        private async void ExecuteOnGalleryClick(object obj)
+        {
+            await CrossMedia.Current.Initialize();
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                await Application.Current.MainPage.DisplayAlert("No Gallery", "Picking a photo is not supported.", "OK");
+                return;
+            }
+            var file = await CrossMedia.Current.PickPhotoAsync();
+            if (file == null)
+            {
+                return;
+            }
+            SummaryImage = ImageSource.FromStream(() => file.GetStream());
+            CameraImage = file.GetStream();
         }
 
         private async void ExecuteOnSummary(object obj)
@@ -568,6 +625,15 @@ namespace SloperMobile.ViewModel
                 }
 
                 ascent.ImageData = "";
+                if (CameraImage != null)
+                {
+                    //StreamImageSource strmimg = (StreamImageSource)CameraImage;
+                    //System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
+                    //Task<Stream> task = strmimg.Stream(cancellationToken);
+                    //Stream stream = task.Result;
+                    byte[] imageBytes = ReadStreamByte(CameraImage);
+                    ascent.ImageData = Convert.ToBase64String(imageBytes);
+                }
                 ascent.ImageName = "";
                 ascent.photo = "";
                 ascent.rating = SendRating.ToString();
@@ -595,9 +661,9 @@ namespace SloperMobile.ViewModel
                 var response = await HttpSendAscentProcess(ascent);
                 if (response != null)
                 {
-                    if(!string.IsNullOrEmpty(response.climbingDays))
+                    if (!string.IsNullOrEmpty(response.climbingDays))
                     {
-                        Settings.ClimbingDaysSettings =Convert.ToInt32(response.climbingDays);
+                        Settings.ClimbingDaysSettings = Convert.ToInt32(response.climbingDays);
                     }
                     ProgressMsg = "Ascent saved successfully.";
                     IsRunningTasks = false;
@@ -688,6 +754,15 @@ namespace SloperMobile.ViewModel
             return resource;
         }
 
+
+        private static byte[] ReadStreamByte(Stream input)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                input.CopyTo(ms);
+                return ms.ToArray();
+            }
+        }
         #region Services
 
         private async Task<AscentReponse> HttpSendAscentProcess(AscentPostModel ascent)
