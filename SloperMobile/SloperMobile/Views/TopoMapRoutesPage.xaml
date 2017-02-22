@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
@@ -60,7 +60,7 @@
                     <rating:SfRating x:Name="rating" Grid.Column="1" ItemCount="3" ItemSize="15" Precision="Standard" ReadOnly="True"
                                   Value="{Binding Rating, Mode=TwoWay}">
                         <rating:SfRating.RatingSettings>
-                            <rating:SfRatingSettings RatedFill="#FF9933" HorizontalOptions="Center" VerticalOptions="Center" RatedStroke="White" UnRatedStroke="White" />
+                            <rating:SfRatingSettings RatedFill="#FF8E2D" HorizontalOptions="Center" VerticalOptions="Center" RatedStroke="White" UnRatedStroke="White" />
                         </rating:SfRating.RatingSettings>
                     </rating:SfRating>
                 </Grid>
@@ -113,7 +113,7 @@
                     <rating:SfRating x:Name="rating_detail" HorizontalOptions="CenterAndExpand" ItemCount="3" ItemSize="20" Precision="Standard" ReadOnly="True"
                                   Value="{Binding Rating, Mode=TwoWay}" >
                         <rating:SfRating.RatingSettings>
-                            <rating:SfRatingSettings VerticalOptions="StartAndExpand" HorizontalOptions="Center" RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
+                            <rating:SfRatingSettings VerticalOptions="StartAndExpand" HorizontalOptions="Center" RatedFill="#FF8E2D" RatedStroke="White" UnRatedStroke="White" />
                         </rating:SfRating.RatingSettings>
                     </rating:SfRating>
                 </StackLayout>
@@ -130,8 +130,8 @@
                         <ColumnDefinition Width="1"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Text="Tick List"  TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
-                    <Button Text="Sent" Grid.Column="2" Command="{Binding SendCommand}"  TextColor="White" BackgroundColor="#FF9933" FontSize="Small" />
+                    <Button Text="Tick List"  TextColor="White" BackgroundColor="#FF8E2D" FontSize="Small" />
+                    <Button Text="Sent" Grid.Column="2" Command="{Binding SendCommand}"  TextColor="White" BackgroundColor="#FF8E2D" FontSize="Small" />
                 </Grid>
                 <Controls:SwipeableImage SwipedUp="SwipeableImage_SwipedUp" Source="GridImage" BackgroundColor="Transparent" Aspect="AspectFill" Grid.RowSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
 

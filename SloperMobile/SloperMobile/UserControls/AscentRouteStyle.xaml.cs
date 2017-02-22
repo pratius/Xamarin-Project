@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +21,7 @@ namespace SloperMobile.UserControls
             {
                 if (angleframe.BackgroundColor == Color.Black)
                 {
-                    angleframe.BackgroundColor = Color.FromHex("#FF9933");
+                    angleframe.BackgroundColor = Color.FromHex("#FF8E2D");
                 }
                 else
                 {
@@ -34,7 +34,7 @@ namespace SloperMobile.UserControls
             {
                 if (angleframe.BackgroundColor == Color.Black)
                 {
-                    angleframe.BackgroundColor = Color.FromHex("#FF9933");
+                    angleframe.BackgroundColor = Color.FromHex("#FF8E2D");
                 }
                 else
                 {
@@ -47,7 +47,7 @@ namespace SloperMobile.UserControls
             {
                 if (angleframe.BackgroundColor == Color.Black)
                 {
-                    angleframe.BackgroundColor = Color.FromHex("#FF9933");
+                    angleframe.BackgroundColor = Color.FromHex("#FF8E2D");
                 }
                 else
                 {
@@ -60,7 +60,7 @@ namespace SloperMobile.UserControls
             {
                 if (angleframe.BackgroundColor == Color.Black)
                 {
-                    angleframe.BackgroundColor = Color.FromHex("#FF9933");
+                    angleframe.BackgroundColor = Color.FromHex("#FF8E2D");
                 }
                 else
                 {
@@ -74,7 +74,7 @@ namespace SloperMobile.UserControls
             {
                 if (angleframe.BackgroundColor == Color.Black)
                 {
-                    angleframe.BackgroundColor = Color.FromHex("#FF9933");
+                    angleframe.BackgroundColor = Color.FromHex("#FF8E2D");
                 }
                 else
                 {
@@ -87,12 +87,12 @@ namespace SloperMobile.UserControls
             {
                 if (angleframe.BackgroundColor == Color.Black)
                 {
-                    Technical.BackgroundColor = Color.FromHex("#FF9933");
-                    Sequential.BackgroundColor = Color.FromHex("#FF9933");
-                    Powerful.BackgroundColor = Color.FromHex("#FF9933");
-                    Sustained.BackgroundColor = Color.FromHex("#FF9933");
-                    Onemove.BackgroundColor = Color.FromHex("#FF9933");
-                    Everything.BackgroundColor = Color.FromHex("#FF9933");
+                    Technical.BackgroundColor = Color.FromHex("#FF8E2D");
+                    Sequential.BackgroundColor = Color.FromHex("#FF8E2D");
+                    Powerful.BackgroundColor = Color.FromHex("#FF8E2D");
+                    Sustained.BackgroundColor = Color.FromHex("#FF8E2D");
+                    Onemove.BackgroundColor = Color.FromHex("#FF8E2D");
+                    Everything.BackgroundColor = Color.FromHex("#FF8E2D");
                 }
                 else
                 {

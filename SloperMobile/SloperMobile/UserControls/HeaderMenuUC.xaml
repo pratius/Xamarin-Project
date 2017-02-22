@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.UserControls.HeaderMenuUC">
     <ContentView.Content>
 
@@ -67,7 +67,7 @@
              VerticalOptions="FillAndExpand"
              Grid.Column="6"/>
 
-                <Grid Grid.Column="7" BackgroundColor="#FF9933" >
+                <Grid Grid.Column="7" BackgroundColor="#FF8E2D" >
                     <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="SENDS" TextColor="Black"/>
                 </Grid>
                 <BoxView BackgroundColor="Gray"

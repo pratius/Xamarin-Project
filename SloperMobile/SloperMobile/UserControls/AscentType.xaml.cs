@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +22,7 @@ namespace SloperMobile.UserControls
             Redpoint.BackgroundColor = Color.Black;
             Repeat.BackgroundColor = Color.Black;
             var ascframe = (Frame)sender;
-            ascframe.BackgroundColor = Color.FromHex("#FF9933");
+            ascframe.BackgroundColor = Color.FromHex("#FF8E2D");
         }
     }
 }

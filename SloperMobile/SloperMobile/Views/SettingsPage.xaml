@@ -36,6 +36,6 @@
       </Grid>
     </StackLayout>
     <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="30"/>
-    <UC:FooterUC  Grid.Column="1" Grid.Row="3" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+    <UC:FooterUC  Grid.Column="1" Grid.Row="3" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
   </Grid>
 </ContentPage>

@@ -171,7 +171,9 @@
     <BundleResource Include="Resources\navProfile%403x.png" />
     <BundleResource Include="Resources\navSettings%402x.png" />
     <BundleResource Include="Resources\navSettings%403x.png" />
-    <BundleResource Include="Resources\.DS_Store" />
+    <BundleResource Include="Resources\icon_gauge_mountains.png" />
+    <BundleResource Include="Resources\icon_gauge_mountains%402x.png" />
+    <BundleResource Include="Resources\icon_gauge_mountains%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">

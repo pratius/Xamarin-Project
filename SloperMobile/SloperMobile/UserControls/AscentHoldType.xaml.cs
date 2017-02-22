@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,7 @@ namespace SloperMobile.UserControls
             var holdframe = (Frame)sender;
             if (holdframe.BackgroundColor == Color.Black)
             {
-                holdframe.BackgroundColor = Color.FromHex("#FF9933");
+                holdframe.BackgroundColor = Color.FromHex("#FF8E2D");
             }
             else
             {

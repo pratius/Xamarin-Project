@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,7 @@ namespace SloperMobile.UserControls
             var angleframe = (Frame)sender;
             if (angleframe.BackgroundColor == Color.Black)
             {
-                angleframe.BackgroundColor = Color.FromHex("#FF9933");
+                angleframe.BackgroundColor = Color.FromHex("#FF8E2D");
             }
             else
             {
