@@ -75,12 +75,12 @@ namespace SloperMobile.ViewModel
             SendRatingCommand = new DelegateCommand(ExecuteOnRating);
             SendSummaryCommand = new DelegateCommand(ExecuteOnSummary);
             CameraClickCommand = new DelegateCommand(ExecuteOnCameraClick);
-            GalleryClickCommand = new DelegateCommand(ExecuteOnCameraClick);
+            //GalleryClickCommand = new DelegateCommand(ExecuteOnGalleryClick);
             var grades = App.DAUtil.GetTtechGrades(routeData.grade_type_id);
             AscentGrages = grades;
             if (grades.Count > 0)
             {
-                SendsGrade = grades[0];
+                SendsGrade = routeData.tech_grade; //grades[0];
             }
             _navigation = navigation;
             //currentInstance = this;
@@ -245,7 +245,7 @@ namespace SloperMobile.ViewModel
         public DelegateCommand SendSummaryCommand { get; set; }
 
         public DelegateCommand CameraClickCommand { get; set; }
-        public DelegateCommand GalleryClickCommand { get; set; }
+        //public DelegateCommand GalleryClickCommand { get; set; }
         #endregion
 
         private void ExecuteOnSendType(object obj)
@@ -533,48 +533,67 @@ namespace SloperMobile.ViewModel
         }
         private async void ExecuteOnCameraClick(object obj)
         {
-            await CrossMedia.Current.Initialize();
-            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            var action = await Application.Current.MainPage.DisplayActionSheet("Choose Ascent Image", "Cancel", null, "Take photo", "Pick a file");
+            if (action == "Take photo")
             {
-                await Application.Current.MainPage.DisplayAlert("No Camera", "No camera available!", "OK");
-                return;
+                await CrossMedia.Current.Initialize();
+                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    await Application.Current.MainPage.DisplayAlert("No Camera", "No camera available!", "OK");
+                    return;
+                }
+                var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                {
+                    SaveToAlbum = true,
+                    AllowCropping = true,
+                    Name = "Ascent_" + DateTime.Now.ToString()
+                });
+                if (file == null)
+                {
+                    return;
+                }
+                CameraImage = file.GetStream();
+                SummaryImage = ImageSource.FromStream(() =>
+                {
+                    var imgstream = file.GetStream();
+                    file.Dispose();
+                    return imgstream;
+                });
             }
-            var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+            if (action == "Pick a file")
             {
-                SaveToAlbum = true,
-                AllowCropping = true,
-                Name = "Ascent_" + DateTime.Now.ToString()
-            });
-            if (file == null)
-            {
-                return;
+                await CrossMedia.Current.Initialize();
+                if (!CrossMedia.Current.IsPickPhotoSupported)
+                {
+                    await Application.Current.MainPage.DisplayAlert("No Gallery", "Picking a photo is not supported.", "OK");
+                    return;
+                }
+                var file = await CrossMedia.Current.PickPhotoAsync();
+                if (file == null)
+                {
+                    return;
+                }
+                SummaryImage = ImageSource.FromStream(() => file.GetStream());
+                CameraImage = file.GetStream();
             }
-            CameraImage = file.GetStream();
-            SummaryImage = ImageSource.FromStream(() =>
-            {
-                var imgstream = file.GetStream();
-                file.Dispose();
-                return imgstream;
-            });
-            
         }
 
-        private async void ExecuteOnGalleryClick(object obj)
-        {
-            await CrossMedia.Current.Initialize();
-            if (!CrossMedia.Current.IsPickPhotoSupported)
-            {
-                await Application.Current.MainPage.DisplayAlert("No Gallery", "Picking a photo is not supported.", "OK");
-                return;
-            }
-            var file = await CrossMedia.Current.PickPhotoAsync();
-            if (file == null)
-            {
-                return;
-            }
-            SummaryImage = ImageSource.FromStream(() => file.GetStream());
-            CameraImage = file.GetStream();
-        }
+        //private async void ExecuteOnGalleryClick(object obj)
+        //{
+        //    await CrossMedia.Current.Initialize();
+        //    if (!CrossMedia.Current.IsPickPhotoSupported)
+        //    {
+        //        await Application.Current.MainPage.DisplayAlert("No Gallery", "Picking a photo is not supported.", "OK");
+        //        return;
+        //    }
+        //    var file = await CrossMedia.Current.PickPhotoAsync();
+        //    if (file == null)
+        //    {
+        //        return;
+        //    }
+        //    SummaryImage = ImageSource.FromStream(() => file.GetStream());
+        //    CameraImage = file.GetStream();
+        //}
 
         private async void ExecuteOnSummary(object obj)
         {
