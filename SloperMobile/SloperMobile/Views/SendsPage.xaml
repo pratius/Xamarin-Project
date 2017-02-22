@@ -37,7 +37,7 @@
                         <Label  TextColor="White" FontSize="Medium" Text="{Binding Onsight,Mode=TwoWay}" HorizontalOptions="Center"/>
                         <Label  TextColor="White" FontSize="Micro" Text="%" HorizontalOptions="Start" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Label  TextColor="White" FontSize="Micro" Text="Onsight" Grid.Row="1" Grid.ColumnSpan="1" HorizontalOptions="Center"/>
+                    <Label  TextColor="White" FontSize="Micro" Text="Onsights" Grid.Row="1" Grid.ColumnSpan="1" HorizontalOptions="Center"/>
                     <Image Grid.Row="2" Grid.Column="1" Source="chartIcon" Aspect="AspectFill" HorizontalOptions="Center" HeightRequest="35" WidthRequest="35" VerticalOptions="EndAndExpand"/>
                 </StackLayout>
                 <gauge:SfCircularGauge
@@ -82,7 +82,7 @@
                         <Label  TextColor="White" FontSize="Medium" Text="{Binding Redpoint,Mode=TwoWay}" HorizontalOptions="Center"/>
                         <Label  TextColor="White" FontSize="Micro" Text="%" HorizontalOptions="Start" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Label  TextColor="White" FontSize="Micro" Text="Redpoint" Grid.Row="1" Grid.ColumnSpan="1" HorizontalOptions="Center"/>
+                    <Label  TextColor="White" FontSize="Micro" Text="Redpoints" Grid.Row="1" Grid.ColumnSpan="1" HorizontalOptions="Center"/>
                     <Image Grid.Row="2" Grid.Column="1" Source="chartIcon" Aspect="AspectFill" HorizontalOptions="Center" HeightRequest="35" WidthRequest="35"/>
                 </StackLayout>
                 <gauge:SfCircularGauge 
