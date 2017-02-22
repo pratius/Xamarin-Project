@@ -9,9 +9,9 @@ namespace SloperMobile.Common.Constants
 {
     public class AppConstant
     {
-        public const string APP_TITLE = "CCC Hanger";
+        public const string APP_TITLE = "Sloper Mobile";
         public const string APP_ID = "1";
-        public const string APP_DBNAME = "ccchangerdb.db3";
+        public const string APP_DBNAME = "sloperdb.db3";
 
         public const string EMPTY_STRING = "";
         public const string NETWORK_FAILURE = "No Network Connection found! Please try again.";

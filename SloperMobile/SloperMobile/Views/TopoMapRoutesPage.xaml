@@ -7,6 +7,9 @@
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              x:Class="SloperMobile.Views.TopoMapRoutesPage"
              NavigationPage.HasNavigationBar="False" Style="{StaticResource AppBackgroundColor}">
+	<ContentPage.Padding>
+    	<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+	</ContentPage.Padding>		
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

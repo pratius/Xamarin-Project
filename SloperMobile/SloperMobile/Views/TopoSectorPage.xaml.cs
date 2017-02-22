@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace SloperMobile.Views
 {
-public partial class TopoSectorPage : CarouselPage
+    public partial class TopoSectorPage : CarouselPage
     {
         public MapListModel _CurrentSector { get; set; }
         private TopoSectorViewModel topoSectorViewModel;
@@ -31,34 +31,15 @@ public partial class TopoSectorPage : CarouselPage
             {
                 this.Children.Clear();
                 topoSectorViewModel.IsRunningTasks = true;
-
-                var topolistData = App.DAUtil.GetSectorLines(_CurrentSector?.SectorId);
-                var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);
-                ContentPage newPage = new ContentPage();
-                if (topoimgages.Count == 1)
+                if (Device.OS == TargetPlatform.Android)
                 {
-                    _count = topoimgages.Count;
-                    this.Children.Add(newPage);
+                    LoadOnlyForDriodApp();
                 }
-                foreach (TopoImageResponse topores in topoimgages)
+                else if (Device.OS == TargetPlatform.iOS)
                 {
-                    TopoMapRoutesPage topopageObj;
-                    var topoimg = JsonConvert.SerializeObject(topores);
-                    topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]");
-                    this.Children.Add(topopageObj);
-                }
-
-                await Task.Delay(250);
-                if (Children.Count > 0)
-                {
-                    this.SelectedItem = this.Children.LastOrDefault();
+                    LoadOnlyForIOSApp();
                 }
                 topoSectorViewModel.IsRunningTasks = false;
-                if (topoimgages.Count == 1)
-                {
-                    this.Children.Remove(newPage);
-                }
-                base.OnAppearing();
             }
             catch (Exception ex)
             {
@@ -67,17 +48,65 @@ public partial class TopoSectorPage : CarouselPage
             }
         }
 
+        private async void LoadOnlyForDriodApp()
+        {
+            var topolistData = App.DAUtil.GetSectorLines(_CurrentSector?.SectorId);
+            var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);
+            ContentPage newPage = new ContentPage();
+            if (topoimgages.Count == 1)
+            {
+                _count = topoimgages.Count;
+                this.Children.Add(newPage);
+            }
+            foreach (TopoImageResponse topores in topoimgages)
+            {
+                TopoMapRoutesPage topopageObj;
+                var topoimg = JsonConvert.SerializeObject(topores);
+                topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]");
+                this.Children.Add(topopageObj);
+            }
+
+            await Task.Delay(250);
+            if (Children.Count > 0)
+            {
+                this.SelectedItem = this.Children.LastOrDefault();
+            }
+
+            if (topoimgages.Count == 1)
+            {
+                this.Children.Remove(newPage);
+            }
+            base.OnAppearing();
+        }
+
+        private void LoadOnlyForIOSApp()
+        {
+            var topolistData = App.DAUtil.GetSectorLines(_CurrentSector?.SectorId);
+            var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);
+
+            foreach (TopoImageResponse topores in topoimgages)
+            {
+                TopoMapRoutesPage topopageObj;
+                var topoimg = JsonConvert.SerializeObject(topores);
+                topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]");
+                this.Children.Add(topopageObj);
+            }
+            base.OnAppearing();
+        }
         protected override void OnCurrentPageChanged()
         {
             base.OnCurrentPageChanged();
-            var index = Children.IndexOf(CurrentPage);
-            if (index > 0)
+            if (Device.OS == TargetPlatform.Android)
             {
-                this.SelectedItem = Children[0];
-            }
-            if (index == 0)
-            {
-                this.SelectedItem = Children[index];
+                var index = Children.IndexOf(CurrentPage);
+                if (index > 0)
+                {
+                    this.SelectedItem = Children[0];
+                }
+                if (index == 0)
+                {
+                    this.SelectedItem = Children[index];
+                }
             }
         }
     }

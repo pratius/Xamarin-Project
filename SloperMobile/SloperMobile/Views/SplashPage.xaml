@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:control="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
              x:Class="SloperMobile.Views.SplashPage" Style="{StaticResource AppBackgroundColor}" NavigationPage.HasNavigationBar="False">
+	<ContentPage.Padding>
+    	<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+	</ContentPage.Padding>		
   <ScrollView Orientation="Vertical">
     <Grid>
       <Grid.RowDefinitions>

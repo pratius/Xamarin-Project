@@ -71,7 +71,7 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignKey>iPhone Developer: steve@sbx.ca (5BWJV25VDE)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
@@ -138,6 +138,40 @@
     <BundleResource Include="Resources\icon_sends.png" />
     <BundleResource Include="Resources\icon_sends%402x.png" />
     <BundleResource Include="Resources\icon_sends%403x.png" />
+    <BundleResource Include="HTML\Dark_annotation.png" />
+    <BundleResource Include="HTML\back-arrow.png" />
+    <BundleResource Include="HTML\cross_black.png" />
+    <BundleResource Include="HTML\grey-close-button.png" />
+    <BundleResource Include="HTML\icon-arrow.png" />
+    <BundleResource Include="HTML\light_annotation.png" />
+    <BundleResource Include="HTML\move_left.png" />
+    <BundleResource Include="HTML\move_right.png" />
+    <BundleResource Include="HTML\sample-belay.png" />
+    <BundleResource Include="HTML\sample-grade-label-left.png" />
+    <BundleResource Include="HTML\sample-grade-label-right.png" />
+    <BundleResource Include="HTML\sample-line.png" />
+    <BundleResource Include="HTML\sample-lower-off-black-left.png" />
+    <BundleResource Include="HTML\sample-lower-off-black-right.png" />
+    <BundleResource Include="HTML\sample-lower-off-left.png" />
+    <BundleResource Include="HTML\sample-lower-off-right.png" />
+    <BundleResource Include="HTML\sample-route-badge.png" />
+    <BundleResource Include="HTML\sample-route-line-break.png" />
+    <BundleResource Include="HTML\tl-icon.png" />
+    <BundleResource Include="HTML\tlcross-icon.png" />
+    <BundleResource Include="HTML\tr-icon.png" />
+    <BundleResource Include="HTML\trcross-icon.png" />
+    <BundleResource Include="HTML\x-mark-32.png" />
+    <BundleResource Include="Resources\navHome%402x.png" />
+    <BundleResource Include="Resources\navHome%403x.png" />
+    <BundleResource Include="Resources\navMap%402x.png" />
+    <BundleResource Include="Resources\navMap%403x.png" />
+    <BundleResource Include="Resources\navNews%402x.png" />
+    <BundleResource Include="Resources\navNews%403x.png" />
+    <BundleResource Include="Resources\navProfile%402x.png" />
+    <BundleResource Include="Resources\navProfile%403x.png" />
+    <BundleResource Include="Resources\navSettings%402x.png" />
+    <BundleResource Include="Resources\navSettings%403x.png" />
+    <BundleResource Include="Resources\.DS_Store" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -365,9 +399,6 @@
     <BundleResource Include="Resources\send%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\logo_old.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\navHome.png" />
   </ItemGroup>
   <ItemGroup>
@@ -554,34 +585,6 @@
     <BundleResource Include="Resources\steepVertical.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="HTML\Css\jquery.bxslider.css" />
-    <AndroidAsset Include="HTML\Css\ResizeImage.css" />
-    <AndroidAsset Include="HTML\back-arrow.png" />
-    <AndroidAsset Include="HTML\cross_black.png" />
-    <AndroidAsset Include="HTML\Dark_annotation.png" />
-    <AndroidAsset Include="HTML\Feed.html" />
-    <AndroidAsset Include="HTML\grey-close-button.png" />
-    <AndroidAsset Include="HTML\icon-arrow.png" />
-    <AndroidAsset Include="HTML\Index.html" />
-    <AndroidAsset Include="HTML\Js\canvas.dashedLine.js" />
-    <AndroidAsset Include="HTML\Js\jquery.bxslider.js" />
-    <AndroidAsset Include="HTML\Js\jquery.mousewheel.js" />
-    <AndroidAsset Include="HTML\Js\jquery.panzoom.js" />
-    <AndroidAsset Include="HTML\ResizeImage.html" />
-    <AndroidAsset Include="HTML\light_annotation.png" />
-    <AndroidAsset Include="HTML\move_left.png" />
-    <AndroidAsset Include="HTML\move_right.png" />
-    <AndroidAsset Include="HTML\sample-belay.png" />
-    <AndroidAsset Include="HTML\sample-grade-label-left.png" />
-    <AndroidAsset Include="HTML\sample-grade-label-right.png" />
-    <AndroidAsset Include="HTML\sample-line.png" />
-    <AndroidAsset Include="HTML\sample-lower-off-black-left.png" />
-    <AndroidAsset Include="HTML\sample-lower-off-black-right.png" />
-    <AndroidAsset Include="HTML\sample-lower-off-left.png" />
-    <AndroidAsset Include="HTML\sample-lower-off-right.png" />
-    <AndroidAsset Include="HTML\sample-route-badge.png" />
-    <AndroidAsset Include="HTML\sample-route-line-break.png" />
-    <AndroidAsset Include="HTML\test.html" />
     <BundleResource Include="Resources\arrowLeftWhite.png" />
     <BundleResource Include="Resources\hold_type_1_slopers.png" />
     <BundleResource Include="Resources\hold_type_8_pockets.png" />
@@ -595,22 +598,20 @@
     <BundleResource Include="Resources\route_style_16_one_move.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="HTML\tl-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="HTML\tlcross-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="HTML\tr-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="HTML\trcross-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="HTML\x-mark-32.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\GridImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HTML\TopoResizeImage.html" />
+    <Content Include="HTML\Js\canvas.dashedLine.js" />
+    <Content Include="HTML\Js\jquery.bxslider.js" />
+    <Content Include="HTML\Js\jquery.mousewheel.js" />
+    <Content Include="HTML\Js\jquery.panzoom.js" />
+    <Content Include="HTML\Css\ResizeImage.css" />
+    <Content Include="HTML\Css\jquery.bxslider.css" />
+    <Content Include="HTML\Index.html" />
+    <Content Include="HTML\ResizeImage.html" />
+    <Content Include="HTML\test.html" />
+    <Content Include="HTML\Feed.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

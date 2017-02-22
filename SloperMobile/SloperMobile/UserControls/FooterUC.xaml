@@ -3,37 +3,37 @@
     <ContentView.Content>
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#151515">
             <Grid.RowDefinitions>
-                <RowDefinition Height=".2*"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".2*"/>
-                <ColumnDefinition Width=".2*"/>
-                <ColumnDefinition Width=".2*"/>
-                <ColumnDefinition Width=".2*"/>
-                <ColumnDefinition Width=".2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="navNews" Aspect="AspectFit" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Image Source="navNews" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="NewsPage"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="navProfile" Aspect="AspectFit" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Image Source="navProfile" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="ProfilePage"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="navHome" Aspect="AspectFit" Grid.Column="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Image Source="navHome" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="HomePage"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="navMap" Aspect="AspectFit" Grid.Column="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Image Source="navMap" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="MapPage"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="navSettings" Aspect="AspectFit" Grid.Column="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Image Source="navSettings" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="SettingsPage"/>
                 </Image.GestureRecognizers>
