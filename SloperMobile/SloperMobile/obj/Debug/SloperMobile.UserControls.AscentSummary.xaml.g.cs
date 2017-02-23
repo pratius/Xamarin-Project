@@ -17,11 +17,15 @@ namespace SloperMobile.UserControls {
     public partial class AscentSummary : global::Xamarin.Forms.StackLayout {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::XLabs.Forms.Controls.HybridWebView webView;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Syncfusion.SfRating.XForms.SfRating rating_summary;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(AscentSummary));
+            webView = this.FindByName<global::XLabs.Forms.Controls.HybridWebView>("webView");
             rating_summary = this.FindByName<global::Syncfusion.SfRating.XForms.SfRating>("rating_summary");
         }
     }

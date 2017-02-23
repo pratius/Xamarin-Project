@@ -33,6 +33,10 @@ namespace SloperMobile.ViewModel
         private string routeid;
         private bool isenable = true;
         private bool isdisplaymsg;
+
+        private bool isdisplaysummaryimg = false;
+        private bool isdisplaysummaryweb = true;
+
         private string commandtext = "Submit";
         private string progressmsg = "sending...";
 
@@ -178,6 +182,20 @@ namespace SloperMobile.ViewModel
             get { return isdisplaymsg; }
             set { isdisplaymsg = value; OnPropertyChanged(); }
         }
+
+        public bool IsDisplaySummaryImg
+        {
+            get { return isdisplaysummaryimg; }
+            set { isdisplaysummaryimg = value; OnPropertyChanged(); }
+        }
+
+        public bool IsDisplaySummaryWeb
+        {
+            get { return isdisplaysummaryweb; }
+            set { isdisplaysummaryweb = value; OnPropertyChanged(); }
+        }
+
+
 
         public string RouteId
         {
@@ -559,6 +577,8 @@ namespace SloperMobile.ViewModel
                     file.Dispose();
                     return imgstream;
                 });
+                IsDisplaySummaryWeb = false;
+                IsDisplaySummaryImg = true;
             }
             if (action == "Pick a file")
             {
@@ -575,6 +595,8 @@ namespace SloperMobile.ViewModel
                 }
                 SummaryImage = ImageSource.FromStream(() => file.GetStream());
                 CameraImage = file.GetStream();
+                IsDisplaySummaryWeb = false;
+                IsDisplaySummaryImg = true;
             }
         }
 

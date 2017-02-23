@@ -17,7 +17,8 @@ namespace SloperMobile.Views
         {
             try
             {
-                InitializeComponent();                
+                InitializeComponent();
+                _CurrentSector = CurrentSector;
                 listData = _lstData;
                 NavigationPage.SetHasNavigationBar(this, true);
                 Title = CurrentSector.SectorName;
@@ -44,7 +45,7 @@ namespace SloperMobile.Views
         }
         private async void OnPageNavigation(object obj)
         {
-            await Navigation.PushAsync(new AscentProcessPage(Convert.ToString(obj)));
+            await Navigation.PushAsync(new AscentProcessPage(Convert.ToString(obj), _CurrentSector));
         }
 
         protected override void OnAppearing()

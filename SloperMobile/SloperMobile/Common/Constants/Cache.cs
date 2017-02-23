@@ -15,6 +15,7 @@ namespace SloperMobile.Common.Constants
         public static MasterDetailPage MasterPage { get; set; }
         public static T_CRAG Selected_CRAG { get; set; }
         public static MapListModel SelctedCurrentSector { get; set; }
+        public static int SelectedTopoIndex { get; set; }
 
     }
 }

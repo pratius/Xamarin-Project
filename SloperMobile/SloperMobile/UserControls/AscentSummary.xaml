@@ -2,6 +2,7 @@
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
              x:Class="SloperMobile.UserControls.AscentSummary">
 
@@ -22,8 +23,9 @@
 
 
     <StackLayout Orientation="Vertical" Grid.Row="2" Spacing="05" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-      <Image Source="{Binding SummaryImage}" WidthRequest="200" HeightRequest="150"  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-
+      <Image Source="{Binding SummaryImage}" IsVisible="false" WidthRequest="200" HeightRequest="150"  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+      <XLabUC:HybridWebView x:Name="webView" AutomationId="webView" BackgroundColor="White" IsVisible="true" WidthRequest="200" HeightRequest="150"  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+      
       <rating:SfRating x:Name="rating_summary" ItemCount="3" ItemSize="25" Precision="Standard"
                             Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True"
                             HorizontalOptions="Center" VerticalOptions="Start">

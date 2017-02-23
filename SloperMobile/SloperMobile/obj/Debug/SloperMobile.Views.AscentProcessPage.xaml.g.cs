@@ -35,7 +35,10 @@ namespace SloperMobile.Views {
         private global::SloperMobile.UserControls.AscentRouteStyle ascRouteStyle;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::SloperMobile.UserControls.AscentSummary ascSummary;
+        private global::XLabs.Forms.Controls.HybridWebView webView;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Syncfusion.SfRating.XForms.SfRating rating_summary;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
@@ -46,7 +49,8 @@ namespace SloperMobile.Views {
             ascClimbingAngle = this.FindByName<global::SloperMobile.UserControls.AscentClimbingAngle>("ascClimbingAngle");
             ascHoldType = this.FindByName<global::SloperMobile.UserControls.AscentHoldType>("ascHoldType");
             ascRouteStyle = this.FindByName<global::SloperMobile.UserControls.AscentRouteStyle>("ascRouteStyle");
-            ascSummary = this.FindByName<global::SloperMobile.UserControls.AscentSummary>("ascSummary");
+            webView = this.FindByName<global::XLabs.Forms.Controls.HybridWebView>("webView");
+            rating_summary = this.FindByName<global::Syncfusion.SfRating.XForms.SfRating>("rating_summary");
         }
     }
 }

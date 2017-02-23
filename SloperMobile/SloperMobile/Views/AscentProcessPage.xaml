@@ -2,6 +2,8 @@
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+              xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
               x:Class="SloperMobile.Views.AscentProcessPage"
               NavigationPage.HasNavigationBar="True" Style="{StaticResource AppBackgroundColor}">
 
@@ -51,7 +53,60 @@
     <ContentPage.Padding>
       <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
     </ContentPage.Padding>
-    <UC:AscentSummary x:Name="ascSummary"></UC:AscentSummary>
+    <!--<UC:AscentSummary x:Name="ascSummary"></UC:AscentSummary>-->
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="02"/>
+        <RowDefinition Height=".1*"/>
+        <RowDefinition Height=".7*"/>
+        <RowDefinition Height=".1*"/>
+        <RowDefinition Height="02"/>
+      </Grid.RowDefinitions>
+      <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+        <Label Text="AWESOME" TextColor="White"  FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+        <Label Text="{Binding SendsTypeName,Mode=TwoWay}" TextColor="#FF9933" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+        <Label Text="!" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+      </StackLayout>
+
+
+
+      <StackLayout Orientation="Vertical" Grid.Row="2" Spacing="05" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Image Source="{Binding SummaryImage}" IsVisible="{Binding IsDisplaySummaryImg}" WidthRequest="200" HeightRequest="150"  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+        <XLabUC:HybridWebView x:Name="webView" BackgroundColor="White" IsVisible="{Binding IsDisplaySummaryWeb}" WidthRequest="200" HeightRequest="150"  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+
+        <rating:SfRating x:Name="rating_summary" ItemCount="3" ItemSize="25" Precision="Standard"
+                              Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True"
+                              HorizontalOptions="Center" VerticalOptions="Start">
+          <rating:SfRating.RatingSettings>
+            <rating:SfRatingSettings RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
+          </rating:SfRating.RatingSettings>
+        </rating:SfRating>
+
+        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+          <Image Source="{Binding TopAngle,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
+          <Image Source="{Binding TopHold,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
+          <Image Source="{Binding TopRouteChar,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
+        </StackLayout>
+        <Label Text="share your send" TextColor="White" Grid.Row="1" FontSize="Micro" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+          <Image Margin="03"  Source="facebook_logo" Aspect="AspectFit"/>
+          <Image Margin="03" Source="twitter_logo_shape" Aspect="AspectFit"/>
+          <Image Margin="03" Source="instagram_symbol" Aspect="AspectFit"/>
+          <Image Margin="03" Source="google_plus_logo" Aspect="AspectFit"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+          <ActivityIndicator IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}"  WidthRequest="10" HeightRequest="10" Color="White"></ActivityIndicator>
+          <Label Text="{Binding ProgressMsg}" TextColor="White" FontSize="Micro" IsVisible="{Binding IsDisplayMessage}"></Label>
+        </StackLayout>
+        <Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="1" HorizontalOptions="Center" VerticalOptions="StartAndExpand"
+                  Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}"
+                  IsEnabled="{Binding IsButtonInable}" />
+
+      </StackLayout>
+
+    </Grid>
   </ContentPage>
 
 </CarouselPage >

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using XLabs.Platform.Device;
 
 namespace SloperMobile.UserControls
 {

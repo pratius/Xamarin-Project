@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SloperMobile.Common.Constants;
 using SloperMobile.Model;
 using SloperMobile.ViewModel;
 using System;
@@ -96,6 +97,7 @@ namespace SloperMobile.Views
         protected override void OnCurrentPageChanged()
         {
             base.OnCurrentPageChanged();
+            Cache.SelectedTopoIndex= Children.IndexOf(CurrentPage);
             if (Device.OS == TargetPlatform.Android)
             {
                 var index = Children.IndexOf(CurrentPage);

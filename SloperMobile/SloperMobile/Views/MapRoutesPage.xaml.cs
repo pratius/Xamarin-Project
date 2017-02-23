@@ -42,7 +42,7 @@ namespace SloperMobile.Views
         }
         private async void OnPageNavigation(object obj)
         {
-            await Navigation.PushAsync(new AscentProcessPage(Convert.ToString(obj)));
+            await Navigation.PushAsync(new AscentProcessPage(Convert.ToString(obj), _CurrentSector));
         }
 
         protected override void OnAppearing()
