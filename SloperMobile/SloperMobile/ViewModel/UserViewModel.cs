@@ -86,17 +86,17 @@ namespace SloperMobile.ViewModel
             }
             if (string.IsNullOrWhiteSpace(LoginReq.u) || string.IsNullOrWhiteSpace(LoginReq.p))
             {
-                await Application.Current.MainPage.DisplayAlert("Login", "Please enter the Email Id and Password", "OK");
+                await Application.Current.MainPage.DisplayAlert("Login Error", "Enter both Email and Password.", "OK");
                 return;
             }
             if (Convert.ToString(parma) != "Guest")
             {
-                if (!Helper.IsEmailValid(loginReq.u))
+                //check lowercase username, as they are stored in the database all lowercase.
+                if (!Helper.IsEmailValid(loginReq.u.ToLower()))
                 {
-                    await Application.Current.MainPage.DisplayAlert("Login", "Invalid Email Id", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Login Error", "Account not found, try again.", "OK");
                     return;
                 }
-
             }
 
             if (!IsRunningTasks)
@@ -172,32 +172,32 @@ namespace SloperMobile.ViewModel
 
             if (string.IsNullOrWhiteSpace(RegistrationReq.FirstName))
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Please enter the First Name ", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "First Name required, try again.", "OK");
                 return false;
             }
             else if (string.IsNullOrWhiteSpace(RegistrationReq.LastName))
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Please enter Last Name", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "Last Name required, try again.", "OK");
                 return false;
             }
             else if (string.IsNullOrWhiteSpace(RegistrationReq.UserName))
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Please enter the Email Id", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "Email Address required, try again.", "OK");
                 return false;
             }
-            else if (!Helper.IsEmailValid(RegistrationReq.UserName))
+            else if (!Helper.IsEmailValid(RegistrationReq.UserName.ToLower()))
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Invalid Email Id", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "Email Address already taken.", "OK");
                 return false;
             }
             else if (string.IsNullOrWhiteSpace(RegistrationReq.Password))
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Please enter the Password", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "Password required, try again.", "OK");
                 return false;
             }
             else if (RegistrationReq.Password != ConfirmPassword)
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Enter Password is not Matching", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "Passwords do not match, try again.", "OK");
                 return false;
             }
             return true;

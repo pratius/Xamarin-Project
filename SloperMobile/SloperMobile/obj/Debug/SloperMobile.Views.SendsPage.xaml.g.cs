@@ -20,13 +20,9 @@ namespace SloperMobile.Views {
         private global::Xamarin.Forms.StackLayout main_layout;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Syncfusion.SfGauge.XForms.TickSettings major;
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(SendsPage));
             main_layout = this.FindByName <global::Xamarin.Forms.StackLayout>("main_layout");
-            major = this.FindByName <global::Syncfusion.SfGauge.XForms.TickSettings>("major");
         }
     }
 }
