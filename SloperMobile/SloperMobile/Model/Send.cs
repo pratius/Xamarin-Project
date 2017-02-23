@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace SloperMobile.Model
 {
 
-
     public class Send : BaseModel
     {
         public int Ascent_Id { get; set; }
@@ -25,8 +24,6 @@ namespace SloperMobile.Model
                 DateClimbed = value.ToString("MM/dd/yy");
             }
         }
-
-
 
         private string dateClimbed;
 
@@ -54,6 +51,12 @@ namespace SloperMobile.Model
         public string Ascent_Type_Description { get; set; }
         public string Tech_Grade_Description { get; set; }
         public string route_name { get; set; }
+    }
+
+    public class SendsDTO
+    {
+        public string start_date { get; set; }
+        public string end_date { get; set; }
     }
 
 }

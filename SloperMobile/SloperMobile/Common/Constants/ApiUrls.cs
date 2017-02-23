@@ -16,7 +16,7 @@ namespace SloperMobile.Common.Constants
         public const string Url_CheckUpdate_AppData = Base_Url + "SloperPlatform/API/v2/M/AvailableUpdate";
         public const string Url_GetUpdate_AppData = Base_Url + "SloperPlatform/API/v2/M/GetUpdatesByType?appid={0}&since={1}&type={2}&initialize=true";
         public const string Url_GetUpdate_TopoData = Base_Url + "SloperPlatform/API/v2/TopoImagesServer/Get";
-        public const string Url_GetAscent_AppData = Base_Url + "SloperPlatform/API/v2/M/GetAscents?start_date={0}&end_date={1}";
+        public const string Url_GetAscent_AppData = Base_Url + "SloperPlatform/API/v2/M/GetAscents";
         public const string Url_SendAscent_Process = Base_Url + "SloperPlatform/API/v2/Ascent/CreateAscent";
 
     }
