@@ -23,7 +23,7 @@
       <XLabUC:HybridWebView  x:Name="webView" />
     </Grid>
 
-    <UC:FooterUC  Grid.Column="1" Grid.Row="2" BackgroundColor="#1A1A1A" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+    <UC:FooterUC  Grid.Column="1" Grid.Row="2" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
   </Grid>
 
 

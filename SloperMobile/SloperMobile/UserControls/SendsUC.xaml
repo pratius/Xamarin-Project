@@ -5,7 +5,7 @@
             <Style x:Key="HederLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontSize" Value="12"/>
-            </Style>
+			</Style>
             <Style x:Key="ListLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontSize" Value="12"/>
@@ -13,55 +13,50 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+		<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0" Margin="0,15,0,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="02"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="25" />
+				<RowDefinition Height="1" />
+				<RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            <Grid  Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-
-                </Grid.ColumnDefinitions>
-                <Label  Grid.Row="0" Grid.Column="0" Text="DATE" Style="{StaticResource HederLabelStyle}" HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
-                <Label Grid.Row="0" Grid.Column="1"  Text="CLIMB"  Style="{StaticResource HederLabelStyle}" HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
-                <Label Grid.Row="0" Grid.Column="2" Text="GRADE" Style="{StaticResource HederLabelStyle}"  HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
-                <Label Grid.Row="0" Grid.Column="3" Text="STYLE" Style="{StaticResource HederLabelStyle}"  HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
-
-            </Grid>
-
-            <ListView  HorizontalOptions="Center" ItemsSource="{Binding SendsList}" BackgroundColor="Black" Grid.Row="2">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
+            <Grid Grid.Row="0" >
+				<Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+				</Grid.ColumnDefinitions>
+				<Label Grid.Row="0" Grid.Column="0" Text="DATE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+                <Label Grid.Row="0" Grid.Column="1" Text="CLIMB" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+                <Label Grid.Row="0" Grid.Column="2" Text="GRADE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+                <Label Grid.Row="0" Grid.Column="3" Text="STYLE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+			</Grid>
+			<BoxView Grid.Row="1" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+			<ListView HorizontalOptions="Center" VerticalOptions="Center" ItemsSource="{Binding SendsList}" Grid.Row="2" RowHeight="41" BackgroundColor="Black">
+				<ListView.ItemTemplate>
+					<DataTemplate>
                         <ViewCell>
-                            <Grid>
+							<Grid RowSpacing="0" ColumnSpacing="0" >
+								<Grid.RowDefinitions>
+									<RowDefinition Height="40" />
+									<RowDefinition Height="1" />
+								</Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding DateClimbed}" Style="{StaticResource ListLabelStyle}" HorizontalOptions="Center"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding route_name}" Style="{StaticResource ListLabelStyle}"  HorizontalOptions="Center"/>
-                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Tech_Grade_Description}"  Style="{StaticResource ListLabelStyle}" HorizontalOptions="Center"/>
-                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Ascent_Type_Description}" Style="{StaticResource ListLabelStyle}"  HorizontalOptions="Center"/>
-
-
+								<Label Grid.Row="0" Grid.Column="0" Text="{Binding DateClimbed}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding route_name}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Tech_Grade_Description}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Ascent_Type_Description}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+								<BoxView Grid.Row="1" Grid.ColumnSpan="4" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
                             </Grid>
-
-                        </ViewCell>
+						</ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-
     </ContentView.Content>
 </ContentView>
