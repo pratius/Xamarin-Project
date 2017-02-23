@@ -16,13 +16,13 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="02"/>
+            <ColumnDefinition Width="00"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="02"/>
+            <ColumnDefinition Width="00"/>
         </Grid.ColumnDefinitions>
         <Controls:PinchToZoomContainer Grid.Column="1">
             <Controls:PinchToZoomContainer.Content>
-                <Grid BackgroundColor="White" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid BackgroundColor="Black" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                     <XLabUC:HybridWebView x:Name="webView" />
                 </Grid>
             </Controls:PinchToZoomContainer.Content>

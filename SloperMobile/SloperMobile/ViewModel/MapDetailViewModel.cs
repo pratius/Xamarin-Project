@@ -71,6 +71,7 @@ namespace SloperMobile.ViewModel
                     }
                     routeobj.TitleText = route.route_name;
                     routeobj.SubText = route.route_info;
+                    routeobj.RouteId = route.route_id;
 
                     if (!string.IsNullOrEmpty(route.angles_top_2) && route.angles_top_2.Contains(","))
                     {
@@ -100,7 +101,7 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-                await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector));
+                await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0"));
             }
             catch (Exception ex)
             {
@@ -160,5 +161,7 @@ namespace SloperMobile.ViewModel
         public ImageSource Steepness2 { get; set; }
         public string RouteTechGrade { get; set; }
         public string RouteGradeColor { get; set; }
+        public string RouteId { get; set; }
+        
     }
 }

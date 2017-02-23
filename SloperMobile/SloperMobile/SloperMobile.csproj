@@ -121,6 +121,7 @@
     <Compile Include="ViewModel\SendsViewModel.cs" />
     <Compile Include="ViewModel\SettingViewModel.cs" />
     <Compile Include="ViewModel\SplashViewModel.cs" />
+    <Compile Include="ViewModel\TopoMapRoutesViewModel.cs" />
     <Compile Include="ViewModel\TopoSectorViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />

@@ -31,7 +31,7 @@
             _staticData = topoData;
 
             $("#mbimage").css('display', 'none');
-            var imgdata = jQuery.parseJSON(_staticData);                        
+            var imgdata = jQuery.parseJSON(_staticData);
             getAnnoation();
             resizeCanvas(imgdata[0], height);
 
@@ -43,7 +43,7 @@
             clearAll("display-canvas");
             _staticAnnotationData = annotationData;
             _staticData = topoData;
-           
+
             var imgdata = jQuery.parseJSON(_staticData);
 
             getAnnoation();
@@ -68,18 +68,18 @@
                 }
             }
             //get single route data using routeId
-            if (routeId != null && routeId > 0) {               
+            if (routeId != null && routeId > 0) {
                 var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
-                var Newdata = routeDrawingData;                
+                var Newdata = routeDrawingData;
                 drawLine("drawing-canvas", Newdata.line, 0, 0, 0);
-                var pointLength = Newdata.line.points.length;                
+                var pointLength = Newdata.line.points.length;
 
                 $(Newdata.line.points).each(function (index, point) {
                     makeDrawingPointTemplateElement(point, index, Newdata.line.pointsText, 0, 0, Newdata.line.pointsDirection, true, Newdata.line.style.color, 0, pointLength, Newdata.id)
                 });
                 $('#display-canvas').fadeTo(500, 0.2);
             }
-            resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing,wheight);
+            resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing,wheight,routeId);
         }
         function initRouteDrawing(annotationData, topoData, routeid, height) {
             _staticAnnotationData = annotationData;
@@ -117,7 +117,7 @@
                     $(Newdata.line.points).each(function (index, point) {
                         makeDrawingPointTemplateElement(point, index, Newdata.line.pointsText, 0, 0, Newdata.line.pointsDirection, true, Newdata.line.style.color, 0, pointLength, Newdata.id)
                     });
-                    resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing, height);
+                    resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing, height,0);
                 }
             }
             catch (err) {
@@ -143,7 +143,7 @@
 
                 $('#topoimg')[0].src = data.image.data;
                 $('#topoimg').attr("data-height", data.image.height);
-                
+
                 $('#display-canvas')[0].height = data.image.height;
                 $('#display-canvas')[0].width = data.image.width;
 
@@ -160,7 +160,7 @@
                         makeDrawingPointTemplateElement(point, index, data.drawing[i].line.pointsText, 0, 0, data.drawing[i].line.pointsDirection, true, data.drawing[i].line.style.color, i, pointLength, data.drawing[i].id)
                     });
                 }
-                resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing, wheight);
+                resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing, wheight,0);
             }
             catch (err) {
                 alert("Error In Topo Data: " + err.message);
@@ -168,7 +168,7 @@
         }
 
         function drawingInfoForRoute(routeId, drawingData) {
-            var routeDrawingdata = $.grep(drawingData, function (routeDrawing, index) {                
+            var routeDrawingdata = $.grep(drawingData, function (routeDrawing, index) {
                 return (routeId === parseInt(routeDrawing.id));
             });
             if (routeDrawingdata !== null && routeDrawingdata.length > 0) return routeDrawingdata[0];
@@ -193,7 +193,9 @@
 
                 highlighter.attr("data-x", (initialPoint.x - 15)).attr("data-y", (initialPoint.y - 15)).attr("routeId", routeId);
                 highlighter.on('click', function (e) {
-                    routePointClick(parseInt(e.currentTarget.attributes[4].value));
+                    if (e.currentTarget.className.indexOf('p0') > -1)
+                        routePointClick(parseInt(e.currentTarget.attributes[4].value));
+
                 });
 
                 $("#draw-surface-container").append(highlighter);
@@ -207,7 +209,7 @@
                 alert(routeId);
             }
         }
-        function resizeImageCanvas(canvasDiv, drawingCanvas, imageId, points, wheight) {
+        function resizeImageCanvas(canvasDiv, drawingCanvas, imageId, points, wheight,routeId) {
             var canvas = document.getElementById(canvasDiv);
             var drawingcanvas = document.getElementById(drawingCanvas);
             var imageid = document.getElementById(imageId);
@@ -228,7 +230,7 @@
                 } else {
                     ratio = height / parseInt(imageheight);
                 }
-                
+
                 width = imagewidth * ratio;
             }
             else {
@@ -253,9 +255,12 @@
             $(imageid).height(height);
 
             for (var i = 0; i < points.length; i++) {
-                for (var j = 0; j < points[i].line.points.length; j++) {
-                    $(".p" + j + i).css('top', ((parseInt($(".p" + j + i).attr('data-y'))) * ratio)).css('left', ((parseInt($(".p" + j + i).attr('data-x'))) * ratio)).fadeIn(100);
-                }
+                $(points[i].line.points).each(function (index, point) {
+                    if ($(".p" + index + i)[0].className.indexOf('p0') > -1 && (parseInt($(".p" + index + i).attr('routeid'))) == routeId) {
+                        $("#mbimage").scrollLeft(((parseInt($(".p" + index + i).attr('data-x'))) * ratio));
+                    }
+                    $(".p" + index + i).css('top', ((parseInt($(".p" + index + i).attr('data-y'))) * ratio)).css('left', ((parseInt($(".p" + index + i).attr('data-x'))) * ratio)).fadeIn(100);
+                });
             }
         }
         function createAnnotation(annotations) {
