@@ -9,8 +9,8 @@
     	<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
 	</ContentPage.Padding>
 	<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-	<UC:HeaderUC HeightRequest="40" VerticalOptions="Start" />    
-    <Grid VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="5,0,5,0">
+	<UC:HeaderUC HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" />    
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="5,0,5,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -18,7 +18,7 @@
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
            
-        <Grid Grid.Row="0" Grid.Column="0">
+        <Grid Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand">
             <Controls:InfiniteListView  x:Name="lstSectorView" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding SectorImageList}" SelectedItem="{Binding SelectedSector}" LoadMoreCommand="{Binding LoadMoreSector}">
                 <Controls:InfiniteListView.Footer>
                     <Label/>
@@ -95,6 +95,6 @@
             </Controls:InfiniteListView>
         </Grid>
 	</Grid>
-	<UC:FooterUC VerticalOptions="End" HorizontalOptions="Fill" />
+	<UC:FooterUC VerticalOptions="End" HorizontalOptions="Fill" HeightRequest="40" />
 	</StackLayout>
 </ContentPage>

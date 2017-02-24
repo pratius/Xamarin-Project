@@ -225,5 +225,24 @@ Global
 		$0.DotNetNamingPolicy = $3
 		$3.DirectoryNamespaceAssociation = None
 		$3.ResourceNamePolicy = FileFormatDefault
+		$0.StandardHeader = $4
+		$4.Text = 
+		$4.IncludeInNewFiles = True
+		$0.NameConventionPolicy = $5
+		$5.Rules = $6
+		$6.NamingRule = $7
+		$7.Name = Type Parameters
+		$7.AffectedEntity = TypeParameter
+		$7.VisibilityMask = VisibilityMask
+		$7.NamingStyle = PascalCase
+		$7.IncludeInstanceMembers = True
+		$7.IncludeStaticEntities = True
+		$7.RequiredPrefixes = $8
+		$8.String = T
+		$7.RequiredSuffixes = $9
+		$9.String = Exception
+		$0.VersionControlPolicy = $10
+		$10.inheritsSet = Mono
+		version = v100
 	EndGlobalSection
 EndGlobal
