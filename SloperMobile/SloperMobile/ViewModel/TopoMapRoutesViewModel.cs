@@ -12,11 +12,13 @@ using System.Collections.ObjectModel;
 using SloperMobile.Common.Constants;
 using XLabs.Platform.Device;
 using SloperMobile.Views;
+using SloperMobile.Common.Helpers;
 
 namespace SloperMobile.ViewModel
 {
     public class TopoMapRoutesViewModel : BaseViewModel
     {
+        private readonly INavigation _navigation;
         private ImageSource currentImage;
         private ImageSource topangle=null;
         private ImageSource tophold = null;
@@ -144,8 +146,10 @@ namespace SloperMobile.ViewModel
 
         public MapListModel _CurrentSector { get; set; }
 
-        public TopoMapRoutesViewModel(MapListModel CurrentSector)
+        public TopoMapRoutesViewModel(MapListModel CurrentSector, INavigation navigation)
         {
+            _navigation = navigation;
+            TickListCommand = new DelegateCommand(ExecuteOnTickList);
             SendCommand = new DelegateCommand(ExecuteOnSends);
             HidePopupCommand = new DelegateCommand(ExecuteOnHidePopup);
             ShowPopupCommand = new DelegateCommand(ExecuteOnShowPopup);
@@ -162,7 +166,12 @@ namespace SloperMobile.ViewModel
         }
 
 
-
+        private async void ExecuteOnTickList(object obj)
+        {
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_Tick_List, Convert.ToInt64(CurrentRouteID)), Settings.AccessTokenSettings);
+            var tickList_response = await apicall.Get<string>();
+            await _navigation.PushAsync(new SendsPage("TICKLIST"));
+        }        
         private void ExecuteOnSends(object obj)
         {
             //OnPageNavigation?.Invoke();
@@ -229,7 +238,7 @@ namespace SloperMobile.ViewModel
             IsPopupHide = false;
         }
 
-
+        public DelegateCommand TickListCommand { get; set; }
         public DelegateCommand SendCommand { get; set; }
         public DelegateCommand HidePopupCommand { get; set; }
         public DelegateCommand ShowPopupCommand { get; set; }

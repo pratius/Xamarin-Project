@@ -76,8 +76,8 @@ namespace SloperMobile.Views
                                 topoElement.Add(i);
                                 TopoMapRoutesPage topopageObj;
                                 var topoimg = JsonConvert.SerializeObject(topoimgages[i]);
-                                topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId);
-                                this.Children.Add(topopageObj);
+                                topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId);                                
+                                this.Children.Add(topopageObj);                                
                             }
                         }
                     }

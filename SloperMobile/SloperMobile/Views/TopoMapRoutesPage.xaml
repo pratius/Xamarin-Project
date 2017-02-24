@@ -130,7 +130,7 @@
                         <ColumnDefinition Width="1"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Text="Tick List"  TextColor="White" BackgroundColor="#FF8E2D" FontSize="Small" />
+                    <Button Text="Tick List" Command="{Binding TickListCommand}"  TextColor="White" BackgroundColor="#FF8E2D" FontSize="Small" />
                     <Button Text="Sent" Grid.Column="2" Command="{Binding SendCommand}"  TextColor="White" BackgroundColor="#FF8E2D" FontSize="Small" />
                 </Grid>
                 <Controls:SwipeableImage SwipedUp="SwipeableImage_SwipedUp" Source="GridImage" BackgroundColor="Transparent" Aspect="AspectFill" Grid.RowSpan="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
