@@ -6,33 +6,34 @@
       <Style x:Key="lblTopHeader" TargetType="Label">
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center"/>
+				
         <!--<Setter Property="FontSize" Value="Large" />-->
         <Setter Property="TextColor" Value="#FF8E2D" />
-        <Setter Property="Font" Value="15"/>
+        <Setter Property="Font" Value="Medium"/>
       </Style>
       <Style x:Key="lblsubTopHeader" TargetType="Label">
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center"/>
         <!--<Setter Property="FontSize" Value="Small" />-->
         <Setter Property="TextColor" Value="White" />
-        <Setter Property="Font" Value="10"/>
+        <Setter Property="Font" Value="Small"/>
       </Style>
     </ResourceDictionary>
   </ContentView.Resources>
 
-  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" BackgroundColor="Transparent">
     <Grid.RowDefinitions>
-      <RowDefinition Height="auto"/>
+      <RowDefinition Height="40"/>
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    <StackLayout Orientation="Vertical">
-      <Label Style="{StaticResource lblTopHeader}" Text="{Binding Path=PageHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center"/>
+    <StackLayout Orientation="Vertical" Spacing="0">
+      <Label Style="{StaticResource lblTopHeader}" Text="{Binding Path=PageHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center" />
       <Label Style="{StaticResource lblsubTopHeader}" Text="{Binding Path=PageSubHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center"/>
     </StackLayout>
-    <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
-      <Image Source="Menu_button" WidthRequest="25" HeightRequest="25">
+    <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+      <Image Source="Menu_button" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" Aspect="AspectFit">
         <Image.GestureRecognizers>
           <TapGestureRecognizer Tapped="OnMenuTapped"/>
         </Image.GestureRecognizers>

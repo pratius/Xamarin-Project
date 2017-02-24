@@ -1,5 +1,4 @@
 ﻿using SloperMobile.Common.Enumerators;
-using SloperMobile.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +7,17 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace SloperMobile.UserControls
+namespace SloperMobile.Views
 {
-    public partial class FooterUC : ContentView
+    public partial class HomePage : ContentPage
     {
-        public FooterUC()
+        public HomePage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        private async void OnNavigation(object sender, EventArgs e)
+        private async void OnClickSend(object sender, EventArgs e)
         {
             try
             {
@@ -31,6 +31,7 @@ namespace SloperMobile.UserControls
             catch (Exception ex)
             {
 
+                await DisplayAlert("Error", ex.Message, "Ok");
 
             }
         }
@@ -41,26 +42,31 @@ namespace SloperMobile.UserControls
             {
                 switch (page)
                 {
-                    case ApplicationActivity.NewsPage:
-                        await Navigation.PushAsync(new NewsPage());
-                        break;
-                    case ApplicationActivity.ProfilePage:
-                        await Navigation.PushAsync(new SendsPage());
-                        break;
-                    case ApplicationActivity.HomePage:
-                        await Navigation.PushAsync(new HomePage());
-                        break;
                     case ApplicationActivity.MapPage:
                         await Navigation.PushAsync(new MapPage());
                         break;
-                    case ApplicationActivity.SettingsPage:
-                        await Navigation.PushAsync(new SettingsPage());
+                    case ApplicationActivity.ProfilePage:
+                        await Navigation.PushAsync(new ProfilePage());
                         break;
+                    case ApplicationActivity.PyramidPage:
+                        await Navigation.PushAsync(new PyramidPage());
+                        break;
+                    case ApplicationActivity.SendsPage:
+                        await Navigation.PushAsync(new SendsPage());
+                        break;
+                    case ApplicationActivity.ClimbingDaysPage:
+                        await Navigation.PushAsync(new ClimbingDaysPage());
+                        break;
+                    case ApplicationActivity.NewsPage:
+                        await Navigation.PushAsync(new NewsPage());
+                        break;
+
                 }
             }
             catch (Exception ex)
             {
-
+                await DisplayAlert("Error", ex.Message, "Ok");
+                throw;
             }
 
 

@@ -36,7 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <Debugger>Xamarin</Debugger>
     <AndroidSupportedAbis>arm64-v8a;armeabi;armeabi-v7a;x86;x86_64</AndroidSupportedAbis>
@@ -424,6 +424,18 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\.DS_Store" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_gauge_mountains.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_gauge_mountains.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\steepVertical.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\steepVertical.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\Menu_button.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\logo.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\steepOverhanging.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\steepRoof.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\steepSlab.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Menu_button.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\logo.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\steepOverhanging.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\steepRoof.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\steepSlab.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">

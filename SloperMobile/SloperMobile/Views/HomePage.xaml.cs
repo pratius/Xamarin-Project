@@ -30,9 +30,7 @@ namespace SloperMobile.Views
             }
             catch (Exception ex)
             {
-
                 await DisplayAlert("Error", ex.Message, "Ok");
-
             }
         }
 
@@ -60,7 +58,6 @@ namespace SloperMobile.Views
                     case ApplicationActivity.NewsPage:
                         await Navigation.PushAsync(new NewsPage());
                         break;
-
                 }
             }
             catch (Exception ex)
