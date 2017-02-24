@@ -87,7 +87,7 @@ namespace SloperMobile.ViewModel
                     routeobj.RouteTechGrade = route.tech_grade;
                     if (j > 4)
                     { j = 0; }
-                    routeobj.RouteGradeColor = gradehex[j];
+                    routeobj.RouteGradeColor = GetGradeBucketHex(route.grade_bucket_id);
                     RoutesData.Add(routeobj);
                     i++;
                     j++;
@@ -109,6 +109,24 @@ namespace SloperMobile.ViewModel
             }
         }
 
+        private string GetGradeBucketHex(string grade_bucket_id)
+        {
+            switch (grade_bucket_id)
+            {
+                case "1":
+                    return "#036177";
+                case "2":
+                    return "#1f8a70";
+                case "3":
+                    return "#91a537";
+                case "4":
+                    return "#b49800";
+                case "5":
+                    return "#fd7400";
+                default:
+                    return "#cccccc";
+            }
+        }
 
         private string GetSteepnessResourceName(int steep)
         {
