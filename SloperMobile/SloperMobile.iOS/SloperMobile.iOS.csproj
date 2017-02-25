@@ -13,6 +13,7 @@
     <AssemblyName>SloperMobileiOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <ReleaseVersion>v100</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: steve@sbx.ca (5BWJV25VDE)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
@@ -59,8 +60,9 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>0d77aa26-6c30-497e-8a52-20db17b2de10</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -73,6 +75,7 @@
     <BuildIpa>True</BuildIpa>
     <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>f923247b-80ab-4c27-9ccc-4b99508d24cc</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>none</DebugType>
@@ -174,6 +177,14 @@
     <BundleResource Include="Resources\icon_gauge_mountains.png" />
     <BundleResource Include="Resources\icon_gauge_mountains%402x.png" />
     <BundleResource Include="Resources\icon_gauge_mountains%403x.png" />
+    <BundleResource Include="Resources\steepVertical%402x.png" />
+    <BundleResource Include="Resources\steepVertical%403x.png" />
+    <BundleResource Include="Resources\steepRoof%402x.png" />
+    <BundleResource Include="Resources\steepRoof%403x.png" />
+    <BundleResource Include="Resources\steepOverhanging%402x.png" />
+    <BundleResource Include="Resources\steepOverhanging%403x.png" />
+    <BundleResource Include="Resources\steepSlab%402x.png" />
+    <BundleResource Include="Resources\steepSlab%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">

@@ -16,6 +16,7 @@
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <ReleaseVersion>v100</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -72,6 +73,7 @@
     <Compile Include="Model\RegistrationReq.cs" />
     <Compile Include="Model\RgistrationResponse.cs" />
     <Compile Include="Model\Send.cs" />
+    <Compile Include="Model\TickList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\AscentClimbingAngle.xaml.cs">
       <DependentUpon>AscentClimbingAngle.xaml</DependentUpon>
@@ -97,6 +99,9 @@
     <Compile Include="UserControls\FooterUC.xaml.cs">
       <DependentUpon>FooterUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\HeaderMenuTickListUC.xaml.cs">
+      <DependentUpon>HeaderMenuTickListUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\HeaderMenuUC.xaml.cs">
       <DependentUpon>HeaderMenuUC.xaml</DependentUpon>
     </Compile>
@@ -105,6 +110,9 @@
     </Compile>
     <Compile Include="UserControls\SendsUC.xaml.cs">
       <DependentUpon>SendsUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TickListsUC.xaml.cs">
+      <DependentUpon>TickListsUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ApiHandler.cs" />
     <Compile Include="ViewModel\AscentProcessViewModel.cs" />
@@ -121,6 +129,7 @@
     <Compile Include="ViewModel\SendsViewModel.cs" />
     <Compile Include="ViewModel\SettingViewModel.cs" />
     <Compile Include="ViewModel\SplashViewModel.cs" />
+    <Compile Include="ViewModel\TopoMapRoutesViewModel.cs" />
     <Compile Include="ViewModel\TopoSectorViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
@@ -456,6 +465,18 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TopoSectorPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\HeaderMenuTickListUC.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\TickListsUC.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

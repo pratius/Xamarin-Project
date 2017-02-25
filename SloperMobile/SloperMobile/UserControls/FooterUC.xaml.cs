@@ -45,7 +45,7 @@ namespace SloperMobile.UserControls
                         await Navigation.PushAsync(new NewsPage());
                         break;
                     case ApplicationActivity.ProfilePage:
-                        await Navigation.PushAsync(new ProfilePage());
+                        await Navigation.PushAsync(new SendsPage("SENDS"));
                         break;
                     case ApplicationActivity.HomePage:
                         await Navigation.PushAsync(new HomePage());

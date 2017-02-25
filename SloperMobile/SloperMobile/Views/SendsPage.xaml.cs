@@ -37,11 +37,27 @@ namespace SloperMobile.Views
         #endregion PointerValue
 
         #endregion Properties
-        public SendsPage()
+        public SendsPage(string TabName)
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            BindingContext = new SendsViewModel();
+            BindingContext = new SendsViewModel(TabName);
+            if (TabName == "SENDS")
+            {
+                SendsScrollViewer.IsVisible = true;
+                TickListsScrollViewer.IsVisible = false;
+                main_layout.IsVisible = true;
+                Ticklists.IsVisible = false;
+                Sends.IsVisible = true;
+            }
+            else
+            {
+                SendsScrollViewer.IsVisible = false;
+                TickListsScrollViewer.IsVisible = true;
+                main_layout.IsVisible = false;
+                Ticklists.IsVisible = true;
+                Sends.IsVisible = false;
+            }
         }
 
         private void Handle_ValueChanged(object sender, EventArgs e)

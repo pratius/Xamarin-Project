@@ -79,7 +79,7 @@
                 });
                 $('#display-canvas').fadeTo(500, 0.2);
             }
-            resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing,wheight);
+            resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing,wheight,routeId);
         }
         function initRouteDrawing(annotationData, topoData, routeid, height) {
             _staticAnnotationData = annotationData;
@@ -117,7 +117,7 @@
                     $(Newdata.line.points).each(function (index, point) {
                         makeDrawingPointTemplateElement(point, index, Newdata.line.pointsText, 0, 0, Newdata.line.pointsDirection, true, Newdata.line.style.color, 0, pointLength, Newdata.id)
                     });
-                    resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing, height);
+                    resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing, height,0);
                 }
             }
             catch (err) {
@@ -160,7 +160,7 @@
                         makeDrawingPointTemplateElement(point, index, data.drawing[i].line.pointsText, 0, 0, data.drawing[i].line.pointsDirection, true, data.drawing[i].line.style.color, i, pointLength, data.drawing[i].id)
                     });
                 }
-                resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing, wheight);
+                resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing, wheight,0);
             }
             catch (err) {
                 alert("Error In Topo Data: " + err.message);
@@ -193,7 +193,9 @@
 
                 highlighter.attr("data-x", (initialPoint.x - 15)).attr("data-y", (initialPoint.y - 15)).attr("routeId", routeId);
                 highlighter.on('click', function (e) {
-                    routePointClick(parseInt(e.currentTarget.attributes[4].value));
+                    if (e.currentTarget.className.indexOf('p0') > -1)
+                        routePointClick(parseInt(e.currentTarget.attributes[4].value));
+
                 });
 
                 $("#draw-surface-container").append(highlighter);
@@ -207,7 +209,7 @@
                 alert(routeId);
             }
         }
-        function resizeImageCanvas(canvasDiv, drawingCanvas, imageId, points, wheight) {
+        function resizeImageCanvas(canvasDiv, drawingCanvas, imageId, points, wheight,routeId) {
             var canvas = document.getElementById(canvasDiv);
             var drawingcanvas = document.getElementById(drawingCanvas);
             var imageid = document.getElementById(imageId);
@@ -253,9 +255,12 @@
             $(imageid).height(height);
 
             for (var i = 0; i < points.length; i++) {
-                for (var j = 0; j < points[i].line.points.length; j++) {
-                    $(".p" + j + i).css('top', ((parseInt($(".p" + j + i).attr('data-y'))) * ratio)).css('left', ((parseInt($(".p" + j + i).attr('data-x'))) * ratio)).fadeIn(100);
-                }
+                $(points[i].line.points).each(function (index, point) {
+                    if ($(".p" + index + i)[0].className.indexOf('p0') > -1 && (parseInt($(".p" + index + i).attr('routeid'))) == routeId) {
+                        $("#mbimage").scrollLeft(((parseInt($(".p" + index + i).attr('data-x'))) * ratio));
+                    }
+                    $(".p" + index + i).css('top', ((parseInt($(".p" + index + i).attr('data-y'))) * ratio)).css('left', ((parseInt($(".p" + index + i).attr('data-x'))) * ratio)).fadeIn(100);
+                });
             }
         }
         function createAnnotation(annotations) {
