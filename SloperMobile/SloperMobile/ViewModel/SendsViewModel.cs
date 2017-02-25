@@ -94,9 +94,12 @@ namespace SloperMobile.ViewModel
         #region Service Methods
         private async Task InvokeServiceGetAscentData()
         {
-            HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetAscent_AppData, 20160101, 20300101), Settings.AccessTokenSettings);
-            Dictionary<string, string> dictquery = new Dictionary<string, string>();
-            var response = await apicall.Get<Send>();
+            HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_GetAscent_AppData, Settings.AccessTokenSettings);
+            SendsDTO sendsobj = new SendsDTO();
+            sendsobj.start_date = "20160101";
+            sendsobj.end_date = "20300101";
+            string sendsjson = JsonConvert.SerializeObject(sendsobj);
+            var response = await apicall.Post<List<Send>>(sendsjson);
             if (response.Count > 0)
             {
                 SendsList = new ObservableCollection<Send>(response);

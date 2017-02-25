@@ -240,3 +240,5 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.csprojResolveAssemblyReference.cache
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Debug\SloperMobile.dll.mdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Debug\SloperMobile.dll.mdb

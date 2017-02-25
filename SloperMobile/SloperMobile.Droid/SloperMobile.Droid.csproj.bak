@@ -53,7 +53,7 @@
     <Debugger>Xamarin</Debugger>
     <DebugSymbols>True</DebugSymbols>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -414,6 +414,16 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\navNews.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\navProfile.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\navSettings.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\.DS_Store" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_gauge_mountains.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_gauge_mountains.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\.DS_Store" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_gauge_mountains.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\.DS_Store" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_gauge_mountains.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\.DS_Store" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_gauge_mountains.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_gauge_mountains.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">

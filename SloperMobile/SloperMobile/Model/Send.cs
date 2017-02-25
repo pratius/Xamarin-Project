@@ -56,4 +56,10 @@ namespace SloperMobile.Model
         public string route_name { get; set; }
     }
 
+    public class SendsDTO
+    {
+        public string start_date { get; set; }
+        public string end_date { get; set; }
+    }
+
 }

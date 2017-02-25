@@ -357,6 +357,8 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SloperMobile.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\ExifLib.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\ImageCircle.Forms.Plugin.Abstractions.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Newtonsoft.Json.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Plugin.Media.Abstractions.dll
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Plugin.Media.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Plugin.Settings.Abstractions.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Plugin.Settings.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\SQLite.Net.dll
@@ -376,6 +378,10 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\XLabs.Serializat
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\ImageCircle.Forms.Plugin.Abstractions.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\ImageCircle.Forms.Plugin.Abstractions.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Newtonsoft.Json.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Plugin.Media.pdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Plugin.Media.xml
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Plugin.Media.Abstractions.pdb
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Plugin.Media.Abstractions.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Plugin.Settings.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Plugin.Settings.Abstractions.xml
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\bin\Release\Syncfusion.SfGauge.XForms.xml
@@ -424,6 +430,8 @@ E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Use
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentHoldType.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentRouteStyle.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.UserControls.AscentSummary.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.TopoMapRoutesPage.xaml.g.cs
+E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.Views.TopoSectorPage.xaml.g.cs
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.pdb
 E:\MobileDev\SloperMobile\SloperMobile\SloperMobile\obj\Release\SloperMobile.dll.mdb
