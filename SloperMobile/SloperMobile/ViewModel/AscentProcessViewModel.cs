@@ -22,6 +22,7 @@ namespace SloperMobile.ViewModel
     {
         private readonly INavigation _navigation;
         private List<string> grades;
+        private List<string> listimgs;
         private string sendstypename;
         private DateTime sendsdate = DateTime.Now.Date;
         private string sendsgrade;
@@ -104,6 +105,13 @@ namespace SloperMobile.ViewModel
             get { return grades; }
             set { grades = value; OnPropertyChanged(); }
         }
+
+        public List<string> ListImages
+        {
+            get { return listimgs; }
+            set { listimgs = value; OnPropertyChanged(); }
+        }
+
         public string SendsTypeName
         {
             get { return sendstypename; }
@@ -726,7 +734,7 @@ namespace SloperMobile.ViewModel
 
         }
 
-        private string GetAngleResourceName(string steep)
+        public string GetAngleResourceName(string steep)
         {
             string resource = "steepSlab.png";
             switch (steep)
@@ -747,7 +755,7 @@ namespace SloperMobile.ViewModel
             return resource;
         }
 
-        private string GetHoldResourceName(string hold)
+        public string GetHoldResourceName(string hold)
         {
             string resource = "hold_type_1_slopers.png";
             switch (hold)
@@ -768,7 +776,7 @@ namespace SloperMobile.ViewModel
             return resource;
         }
 
-        private string GetRouteResourceName(string route)
+        public string GetRouteResourceName(string route)
         {
             string resource = "route_style_1_technical.png";
             switch (route)

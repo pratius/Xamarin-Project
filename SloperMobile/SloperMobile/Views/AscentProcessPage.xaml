@@ -83,9 +83,10 @@
         </rating:SfRating>
 
         <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
-          <Image Source="{Binding TopAngle,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
+          <!--<Image Source="{Binding TopAngle,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
           <Image Source="{Binding TopHold,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
-          <Image Source="{Binding TopRouteChar,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
+          <Image Source="{Binding TopRouteChar,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>-->
+          <Grid x:Name="summary_icons"></Grid>
         </StackLayout>
         <Label Text="share your send" TextColor="White" Grid.Row="1" FontSize="Micro" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
 
