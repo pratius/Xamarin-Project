@@ -16,7 +16,11 @@
       </Grid.ColumnDefinitions>
       <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.ColumnSpan="5"/>
       <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0" />
-      <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="SENDS" TextColor="White" FontSize="Small" BackgroundColor="#000" Grid.Row="1" Grid.Column="1"/>
+      <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="SENDS" TextColor="White" FontSize="Small" BackgroundColor="#000" Grid.Row="1" Grid.Column="1">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="ProfilePage"/>
+            </Label.GestureRecognizers>
+	  </Label>
       <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="2" />
       <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="TICK LIST" TextColor="Black" FontSize="Small" BackgroundColor="#FF8E2D" Grid.Row="1" Grid.Column="3"/>
       <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="4" />

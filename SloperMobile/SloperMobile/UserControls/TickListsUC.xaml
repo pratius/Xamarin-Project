@@ -21,33 +21,36 @@
       </Grid.RowDefinitions>
       <Grid Grid.Row="0" >
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="1*"/>
-          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="20*"/>
+          <ColumnDefinition Width="60*"/>
+          <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Text="DATE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
         <Label Grid.Row="0" Grid.Column="1" Text="CLIMB" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
         <Label Grid.Row="0" Grid.Column="2" Text="GRADE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
       </Grid>
-      <BoxView Grid.Row="1" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
-      <ListView HorizontalOptions="Center" VerticalOptions="Center" ItemsSource="{Binding TickListsList}" Grid.Row="2" RowHeight="41" BackgroundColor="Black">
-        <ListView.ItemTemplate>
+      <BoxView Grid.Row="1" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+      <ListView ItemsSource="{Binding TickListsList}" Grid.Row="2" BackgroundColor="Black" SeparatorVisibility="None">
+		<ListView.Footer>
+            <Label/>
+        </ListView.Footer>
+		<ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
-              <Grid RowSpacing="0" ColumnSpacing="0" >
+              <Grid >
                 <Grid.RowDefinitions>
                   <RowDefinition Height="40" />
                   <RowDefinition Height="1" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="1*"/>
-                  <ColumnDefinition Width="1*"/>
-                  <ColumnDefinition Width="1*"/>
+                  <ColumnDefinition Width="20*"/>
+                  <ColumnDefinition Width="60*"/>
+                  <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Text="{Binding DateCreated}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding route_name}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                 <Label Grid.Row="0" Grid.Column="2" Text="{Binding grade_name}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                <BoxView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                <BoxView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="#191919" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
               </Grid>
             </ViewCell>
           </DataTemplate>

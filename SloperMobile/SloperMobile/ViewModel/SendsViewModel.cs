@@ -102,14 +102,14 @@ namespace SloperMobile.ViewModel
         }
         private async void OnPagePrepration(string TabName)
         {
-            if (TabName == "SEND")
+            if (TabName == "SENDS")
             {
-                PageHeaderText = "SENDS";
+                PageHeaderText = "PROFILE - SENDS";
                 await InvokeServiceGetAscentData();
             }
             else
             {
-                PageHeaderText = "TICKLISTS";
+                PageHeaderText = "PROFILE - TICK LIST";
                 await InvokeServiceGetTickListData();
             }
         }
