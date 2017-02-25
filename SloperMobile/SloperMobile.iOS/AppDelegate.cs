@@ -12,8 +12,8 @@ using XLabs.Forms.Controls;
 using XLabs.Ioc;
 using XLabs.Serialization;
 using XLabs.Platform.Device;
-using XLabs.Serialization.ServiceStack;
 using Syncfusion.SfRating.XForms.iOS;
+using XLabs.Serialization.JsonNET;
 
 namespace SloperMobile.iOS
 {
@@ -32,8 +32,7 @@ namespace SloperMobile.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            var web = new HybridWebViewRenderer();
-
+            HybridWebViewRenderer.CopyBundleDirectory("HTML");
             var container = new SimpleContainer();
 
             container.Register<IJsonSerializer, JsonSerializer>();

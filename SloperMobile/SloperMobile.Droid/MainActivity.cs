@@ -7,7 +7,7 @@ using ImageCircle.Forms.Plugin.Droid;
 using SloperMobile.Common.Constants;
 using XLabs.Ioc;
 using XLabs.Serialization;
-using XLabs.Serialization.ServiceStack;
+using XLabs.Serialization.JsonNET;
 using XLabs.Forms.Controls;
 using XLabs.Platform.Device;
 namespace SloperMobile.Droid
@@ -22,17 +22,17 @@ namespace SloperMobile.Droid
 
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
-            ImageCircleRenderer.Init();
-
-            var web = new HybridWebViewRenderer();
-
             var container = new SimpleContainer();
 
             container.Register<IJsonSerializer, JsonSerializer>();
             container.Register<IDevice>(AndroidDevice.CurrentDevice);
 
             Resolver.SetResolver(container.GetResolver());
+
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+            ImageCircleRenderer.Init();
+
+
             LoadApplication(new App());
             CrashManager.Register(this, AppSetting.HockeyAppId);
             //// in your main activity OnCreate-method add:
