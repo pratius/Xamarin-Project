@@ -23,8 +23,8 @@
 
 
     <StackLayout Orientation="Vertical" Grid.Row="2" Spacing="05" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-      <Image Source="{Binding SummaryImage}" IsVisible="false" WidthRequest="200" HeightRequest="150"  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-      <XLabUC:HybridWebView x:Name="webView" AutomationId="webView" BackgroundColor="White" IsVisible="true" WidthRequest="200" HeightRequest="150"  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+      <Image Source="{Binding SummaryImage}" IsVisible="false" WidthRequest="300" HeightRequest="250"  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+      <XLabUC:HybridWebView x:Name="webView" AutomationId="webView" BackgroundColor="White" IsVisible="true" WidthRequest="300" HeightRequest="250"  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
       
       <rating:SfRating x:Name="rating_summary" ItemCount="3" ItemSize="25" Precision="Standard"
                             Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True"

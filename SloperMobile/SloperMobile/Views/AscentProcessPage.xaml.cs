@@ -32,7 +32,7 @@ namespace SloperMobile.Views
             base.OnCurrentPageChanged();
             var index = Children.IndexOf(CurrentPage);
             SelectedItem = Children[index];
-            if(index==6)
+            if (index == 6)
             {
                 if (AscentProcessVM.IsDisplaySummaryWeb)
                 {
@@ -43,6 +43,73 @@ namespace SloperMobile.Views
                     var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
                     webView.CallJsFunction("initReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), true);
                     this.webView.LoadFromContent("HTML/TopoResizeImage.html");
+                }
+                summary_icons.Children?.Clear();
+                summary_icons.RowDefinitions?.Clear();
+                summary_icons.ColumnDefinitions?.Clear();
+                int gridrowcount = 0;
+                List<string> iconsource = new List<string>();
+                var a = AscentProcessVM.SendClimbingStyle;
+                var b = AscentProcessVM.SendHoldType;
+                var c = AscentProcessVM.SendRouteCharacteristics;
+                if (!string.IsNullOrEmpty(a))
+                {
+                    string[] arr1 = a.Split(',');
+                    foreach (string sa in arr1)
+                    {
+                        iconsource.Add(AscentProcessVM.GetAngleResourceName(sa));
+                    }
+                    gridrowcount += arr1.Count();
+                }
+                if (!string.IsNullOrEmpty(b))
+                {
+                    string[] arr2 = b.Split(',');
+                    foreach (string sb in arr2)
+                    {
+                        iconsource.Add(AscentProcessVM.GetHoldResourceName(sb));
+                    }
+                    gridrowcount += arr2.Count();
+                }
+                if (!string.IsNullOrEmpty(c))
+                {
+                    string[] arr3 = c.Split(',');
+                    foreach (string sc in arr3)
+                    {
+                        iconsource.Add(AscentProcessVM.GetRouteResourceName(sc));
+                    }
+                    gridrowcount += arr3.Count();
+                }
+                if (gridrowcount % 4 == 0)
+                {
+                    gridrowcount = gridrowcount / 4;
+                }
+                else
+                {
+                    gridrowcount = (gridrowcount / 4) + 1;
+                }
+                for (var i = 0; i < gridrowcount; i++)
+                {
+                    summary_icons.RowDefinitions?.Add(new RowDefinition { Height = 50 });
+                }
+                for (var i = 0; i < 4; i++)
+                {
+                    summary_icons.ColumnDefinitions?.Add(new ColumnDefinition { Width = 50 });
+                }
+                var iconcount = 0;
+                for (var gr = 0; gr < gridrowcount; gr++)
+                {
+                    for (var gc = 0; gc < 4; gc++)
+                    {
+                        if (iconcount < iconsource.Count)
+                        {
+                            summary_icons.Children.Add(new Image { Source = ImageSource.FromFile(iconsource[iconcount]) }, gc, gr);
+                            iconcount++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
                 }
             }
         }
