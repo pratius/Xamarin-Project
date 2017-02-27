@@ -94,6 +94,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DependancyObjects\SQLite_iOS.cs" />
+    <Compile Include="HybridWebViewRenderers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="SwipeableIosImageRenderer.cs" />

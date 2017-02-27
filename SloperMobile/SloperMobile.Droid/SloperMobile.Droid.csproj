@@ -237,6 +237,7 @@
   <ItemGroup>
     <Compile Include="CustomProgressBar.cs" />
     <Compile Include="DependancyObjects\SQLite_Android.cs" />
+    <Compile Include="HybridWebViewRenderers.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

@@ -17,5 +17,6 @@ namespace SloperMobile.Common.Constants
         public static MapListModel SelctedCurrentSector { get; set; }
         public static int SelectedTopoIndex { get; set; }
 
+        public static int CurrentScreenHeight;
     }
 }

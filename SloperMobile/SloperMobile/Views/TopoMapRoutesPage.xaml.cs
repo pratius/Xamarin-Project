@@ -4,6 +4,8 @@ using Xamarin.Forms;
 using XLabs.Platform.Device;
 using System.IO;
 using System.Net.Http;
+using SloperMobile.Common.Constants;
+
 namespace SloperMobile.Views
 {
     public partial class TopoMapRoutesPage : ContentPage
@@ -39,7 +41,7 @@ namespace SloperMobile.Views
                     MapRouteVM.LoadRouteData(t,listData);
                     MapRouteVM.IsPopupHide = true;
                     var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-                    webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (device.Display.Height), Convert.ToInt32(t),true);
+                    webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight, Convert.ToInt32(t),true);
                 }));
             }
             catch (Exception ex)

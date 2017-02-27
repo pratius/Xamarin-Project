@@ -41,6 +41,7 @@ namespace SloperMobile.iOS
             Resolver.SetResolver(container.GetResolver());
             global::Xamarin.Forms.Forms.Init();
             ImageCircleRenderer.Init();
+            Cache.CurrentScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
             LoadApplication(new App());
             var manager = BITHockeyManager.SharedHockeyManager;
             manager.Configure(AppSetting.HockeyAppId);
