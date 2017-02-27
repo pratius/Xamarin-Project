@@ -1,11 +1,14 @@
 ﻿using SloperMobile.ViewModel;
+using SloperMobile.Model;
 using System;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SloperMobile.DataBase;
+using SloperMobile.Common.Enumerators;
 using Xamarin.Forms;
 
 namespace SloperMobile.Views
@@ -14,7 +17,7 @@ namespace SloperMobile.Views
     {
         #region Properties
 
-        public new event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;             
 
         #region PointerValue
 
@@ -32,7 +35,7 @@ namespace SloperMobile.Views
                         new PropertyChangedEventArgs("PointerValue"));
                 }
             }
-        }
+        }              
 
         #endregion PointerValue
 
@@ -40,7 +43,7 @@ namespace SloperMobile.Views
         public SendsPage(string TabName)
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasNavigationBar(this, false);           
             BindingContext = new SendsViewModel(TabName);
             if (TabName == "SENDS")
             {

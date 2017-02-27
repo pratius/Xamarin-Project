@@ -20,6 +20,7 @@ namespace SloperMobile.Common.Constants
         public const string Url_SendAscent_Process = Base_Url + "SloperPlatform/API/v2/Ascent/CreateAscent";
         public const string Url_Tick_List = Base_Url + "SloperPlatform/API/v2/TickList/AddTickList?routeId={0}";
         public const string Url_GetTick_ListData = Base_Url + "SloperPlatform/API/v2/TickList/GetTickList";
+        public const string Url_Isticklist_Route_Present = Base_Url + "SloperPlatform/API/v2/TickList/IsRoutePresent?routeId={0}";
 
     }
 }

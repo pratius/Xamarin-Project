@@ -16,7 +16,6 @@ namespace SloperMobile.ViewModel
         public SendsViewModel(string TabName)
         {
             OnPagePrepration(TabName);
-
         }
 
         private ObservableCollection<Send> sendsList;
@@ -102,16 +101,16 @@ namespace SloperMobile.ViewModel
         }
         private async void OnPagePrepration(string TabName)
         {
-            if (TabName == "SENDS")
-            {
-                PageHeaderText = "PROFILE - SENDS";
-                await InvokeServiceGetAscentData();
-            }
-            else
-            {
+            //if (TabName == "SENDS")
+            //{
+            //    PageHeaderText = "PROFILE - SENDS";
+            //    await InvokeServiceGetAscentData();
+            //}
+            //else
+            //{
                 PageHeaderText = "PROFILE - TICK LIST";
                 await InvokeServiceGetTickListData();
-            }
+            //}
         }
 
 
@@ -158,22 +157,28 @@ namespace SloperMobile.ViewModel
         }
         private async Task InvokeServiceGetTickListData()
         {
-            HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetTick_ListData), Settings.AccessTokenSettings);
-            var response = await apicall.Get<TickList>();
-            if (response.Count > 0)
+            try
             {
-                TickListsList = new ObservableCollection<TickList>(response);
-                if (TickListsList.Count > 0)
+                HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetTick_ListData), Settings.AccessTokenSettings);
+                var response = await apicall.Get<TickList>();
+                if (response.Count > 0)
                 {
-                    foreach (var item in TickListsList)
+                    TickListsList = new ObservableCollection<TickList>(response);
+                    if (TickListsList.Count > 0)
                     {
-                        route_name = item.route_name;
-                        grade_name = item.grade_name;
-                        DateCreated = item.Date_Created.ToString("MM/dd/yy");
+                        foreach (var item in TickListsList)
+                        {
+                            route_name = item.route_name;
+                            grade_name = item.grade_name;
+                            DateCreated = item.Date_Created.ToString("MM/dd/yy");
+                        }
                     }
                 }
             }
-
+            catch (Exception ex)
+            {
+                throw ex;
+            }           
         }
         #endregion
 

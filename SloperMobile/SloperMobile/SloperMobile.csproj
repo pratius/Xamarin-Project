@@ -65,6 +65,7 @@
     <Compile Include="Model\CheckForUpdateModel.cs" />
     <Compile Include="Model\ClimbingDaysModel.cs" />
     <Compile Include="Model\CragTemplate.cs" />
+    <Compile Include="Model\IsRoutePresent.cs" />
     <Compile Include="Model\LoginReq.cs" />
     <Compile Include="Model\LoginResponse.cs" />
     <Compile Include="Model\MapListModel.cs" />

@@ -168,8 +168,14 @@ namespace SloperMobile.ViewModel
 
         private async void ExecuteOnTickList(object obj)
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_Tick_List, Convert.ToInt64(CurrentRouteID)), Settings.AccessTokenSettings);
-            var tickList_response = await apicall.Get<string>();
+            //first check if route already present in db or not
+            HttpClientHelper _apicall = new ApiHandler(string.Format(ApiUrls.Url_Isticklist_Route_Present, Convert.ToInt64(CurrentRouteID)), Settings.AccessTokenSettings);
+            var isRoutePresent_Response = await _apicall.Get<IsRoutePresent>();
+            if (isRoutePresent_Response.Count == 0 && isRoutePresent_Response[0].isRoutePresent == false)
+            {
+                HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_Tick_List, Convert.ToInt64(CurrentRouteID)), Settings.AccessTokenSettings);
+                var tickList_response = await apicall.Get<string>();
+            }
             await _navigation.PushAsync(new SendsPage("TICKLIST"));
         }        
         private void ExecuteOnSends(object obj)

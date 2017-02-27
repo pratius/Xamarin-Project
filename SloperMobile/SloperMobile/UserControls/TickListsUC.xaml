@@ -30,7 +30,7 @@
         <Label Grid.Row="0" Grid.Column="2" Text="GRADE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
       </Grid>
       <BoxView Grid.Row="1" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
-      <ListView ItemsSource="{Binding TickListsList}" Grid.Row="2" BackgroundColor="Black" SeparatorVisibility="None">
+      <ListView x:Name="lstView" ItemsSource="{Binding TickListsList}" Grid.Row="2" BackgroundColor="Black" SeparatorVisibility="None">
 		<ListView.Footer>
             <Label/>
         </ListView.Footer>
@@ -50,6 +50,8 @@
                 <Label Grid.Row="0" Grid.Column="0" Text="{Binding DateCreated}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding route_name}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                 <Label Grid.Row="0" Grid.Column="2" Text="{Binding grade_name}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding RouteID}" IsVisible="False" />
+                <Label Text="{Binding sector_id}" IsVisible="False" />
                 <BoxView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="#191919" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
               </Grid>
             </ViewCell>

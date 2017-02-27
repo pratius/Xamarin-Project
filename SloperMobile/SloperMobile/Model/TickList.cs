@@ -12,6 +12,7 @@ namespace SloperMobile.Model
         public string grade_name { get; set; }
         public int Grade_Id { get; set; }
         public long RouteID { get; set; }
+        public long sector_id { get; set; }
 
         private DateTime date_Created;
 
