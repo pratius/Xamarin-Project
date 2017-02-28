@@ -89,17 +89,18 @@ namespace SloperMobile.Views
             var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
             if (!IsRouteClicked)
             {
-                webView.CallJsFunction("initDrawing", staticAnnotationData, listData, (device.Display.Height));
+                //webView.CallJsFunction("initDrawing", staticAnnotationData, listData, (device.Display.Height));
+                webView.CallJsFunction("initDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight);
                 if (_routeId > 0)
                 {                    
                     MapRouteVM.LoadRouteData(_routeId,listData);
                     MapRouteVM.IsPopupHide = true;
-                    webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (device.Display.Height), _routeId, true);
+                    webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (Cache.CurrentScreenHeight), _routeId, true);
                 }
             }
             else
             {
-                webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, "11840", (device.Display.Height));
+                webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, "11840", (Cache.CurrentScreenHeight));
             }
             MapRouteVM.IsRunningTasks = false;
         }

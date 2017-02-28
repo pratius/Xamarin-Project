@@ -24,7 +24,8 @@ namespace SloperMobile.Droid
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (Control != null)
-            {                
+            {
+                //Control.Settings.UseWideViewPort = true;
                 Control.Settings.BuiltInZoomControls = true;
                 Control.Settings.DisplayZoomControls = true;
             }

@@ -21,7 +21,8 @@ namespace SloperMobile.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-            Cache.CurrentScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
+            //take screen height -40 for top nav and 40 for bottom nav
+            Cache.CurrentScreenHeight = (int)((Resources.DisplayMetrics.HeightPixels) / Resources.DisplayMetrics.Density)-80;
             var container = new SimpleContainer();
 
             container.Register<IJsonSerializer, JsonSerializer>();

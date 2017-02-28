@@ -15,6 +15,7 @@ using XLabs.Platform.Device;
 using Syncfusion.SfRating.XForms.iOS;
 using XLabs.Serialization.JsonNET;
 
+
 namespace SloperMobile.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -41,7 +42,7 @@ namespace SloperMobile.iOS
             Resolver.SetResolver(container.GetResolver());
             global::Xamarin.Forms.Forms.Init();
             ImageCircleRenderer.Init();
-            Cache.CurrentScreenHeight = (int)UIScreen.MainScreen.Bounds.Height;
+            Cache.CurrentScreenHeight = (int)(UIScreen.MainScreen.Bounds.Height*(int)UIScreen.MainScreen.Scale);
             LoadApplication(new App());
             var manager = BITHockeyManager.SharedHockeyManager;
             manager.Configure(AppSetting.HockeyAppId);

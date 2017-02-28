@@ -18,7 +18,7 @@ namespace SloperMobile.iOS
             {
                 var web = (UIWebView)NativeView;
                 web.ScrollView.ScrollEnabled = true;
-                web.ScalesPageToFit = true;
+                //web.ScalesPageToFit = true;
             }
             base.OnElementPropertyChanged(sender, e);
         }
