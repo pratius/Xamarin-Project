@@ -79,58 +79,66 @@ namespace SloperMobile.ViewModel
         #region Methods/Functions 
         private async void ExecuteOnLogin(object parma)
         {
-            if (Convert.ToString(parma) == "Guest")
+            try
             {
-                LoginReq.u = AppConstant.Guest_UserId;
-                LoginReq.p = AppConstant.Guest_UserPassword;
-            }
-            if (string.IsNullOrWhiteSpace(LoginReq.u) || string.IsNullOrWhiteSpace(LoginReq.p))
-            {
-                await Application.Current.MainPage.DisplayAlert("Login Error", "Enter both Email and Password.", "OK");
-                return;
-            }
-            if (Convert.ToString(parma) != "Guest")
-            {
-                //check lowercase username, as they are stored in the database all lowercase.
-                if (!Helper.IsEmailValid(loginReq.u.ToLower()))
+                if (Convert.ToString(parma) == "Guest")
                 {
-                    await Application.Current.MainPage.DisplayAlert("Login Error", "Account not found, try again.", "OK");
+                    LoginReq.u = AppConstant.Guest_UserId;
+                    LoginReq.p = AppConstant.Guest_UserPassword;
+                }
+                if (string.IsNullOrWhiteSpace(LoginReq.u) || string.IsNullOrWhiteSpace(LoginReq.p))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Login Error", "Enter both Email and Password.", "OK");
                     return;
                 }
-            }
-
-            if (!IsRunningTasks)
-            {
-                IsRunningTasks = true;
-                HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
-                var loginjson = JsonConvert.SerializeObject(LoginReq);
-                var response = await apicall.Post<LoginResponse>(loginjson);
-                if (response != null)
+                if (Convert.ToString(parma) != "Guest")
                 {
-                    if (response.accessToken != null && response.renewalToken != null)
+                    //check lowercase username, as they are stored in the database all lowercase.
+                    if (!Helper.IsEmailValid(loginReq.u.ToLower()))
                     {
-                        Settings.AccessTokenSettings= response.accessToken;
-                        Settings.RenewalTokenSettings = response.renewalToken;
-                        Settings.DisplayNameSettings = response.displayName;
-                        var climbdays=await HttpGetClimbdays();
-                        if (climbdays != null)
+                        await Application.Current.MainPage.DisplayAlert("Login Error", "Account not found, try again.", "OK");
+                        return;
+                    }
+                }
+
+                if (!IsRunningTasks)
+                {
+                    IsRunningTasks = true;
+                    HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
+                    var loginjson = JsonConvert.SerializeObject(LoginReq);
+                    var response = await apicall.Post<LoginResponse>(loginjson);
+                    if (response != null)
+                    {
+                        if (response.accessToken != null && response.renewalToken != null)
                         {
-                            Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
+                            Settings.AccessTokenSettings = response.accessToken;
+                            Settings.RenewalTokenSettings = response.renewalToken;
+                            Settings.DisplayNameSettings = response.displayName;
+                            var climbdays = await HttpGetClimbdays();
+                            if (climbdays != null)
+                            {
+                                Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
+                            }
+                            OnPageNavigation?.Invoke();
+                            DisposeObject();
                         }
-                        OnPageNavigation?.Invoke();
-                        DisposeObject();
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
+                        }
                     }
                     else
                     {
                         await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
                     }
                 }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
-                }
+                IsRunningTasks = false;
             }
-            IsRunningTasks = false;
+            catch (Exception)
+            {
+                IsRunningTasks = false;
+                await Application.Current.MainPage.DisplayAlert("Login Failure", "Incorrect username/password. Please try again.", "OK");
+            }
         }
 
         private async void ExecuteOnRegistration(object obj)
