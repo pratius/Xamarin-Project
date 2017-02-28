@@ -53,6 +53,7 @@
     <Compile Include="Common\NotifyProperties\NotifyPropertiesChanged.cs" />
     <Compile Include="CustomControls\BindablePicker.cs" />
     <Compile Include="CustomControls\DoubleExtensions.cs" />
+    <Compile Include="CustomControls\HybridWebViewCustom.cs" />
     <Compile Include="CustomControls\InfiniteListView.cs" />
     <Compile Include="CustomControls\PinchToZoomContainer.cs" />
     <Compile Include="CustomControls\ProgressBar.cs" />

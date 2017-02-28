@@ -7,9 +7,9 @@
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              x:Class="SloperMobile.Views.TopoMapRoutesPage"
              NavigationPage.HasNavigationBar="False" Style="{StaticResource AppBackgroundColor}">
-	<ContentPage.Padding>
-    	<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
-	</ContentPage.Padding>		
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+    </ContentPage.Padding>
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -20,13 +20,9 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="00"/>
         </Grid.ColumnDefinitions>
-        <Controls:PinchToZoomContainer Grid.Column="1">
-            <Controls:PinchToZoomContainer.Content>
-                <Grid BackgroundColor="Black" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                    <XLabUC:HybridWebView x:Name="webView" />
-                </Grid>
-            </Controls:PinchToZoomContainer.Content>
-        </Controls:PinchToZoomContainer>
+        <Grid BackgroundColor="Black" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Controls:HybridWebViewCustom x:Name="webView"  />
+        </Grid>
         <Grid BackgroundColor="#77000000" IsVisible="{Binding IsPopupHide,Mode=TwoWay}" HeightRequest="150"  Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="02"/>
