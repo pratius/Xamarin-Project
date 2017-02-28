@@ -126,19 +126,37 @@ namespace SloperMobile.ViewModel
             set { routeImageList = value; OnPropertyChanged(); }
         }
 
-        public ImageSource TopAngle
+        public ImageSource TopAngle_20
         {
             get { return topangle; }
             set { topangle = value; OnPropertyChanged(); }
         }
 
-        public ImageSource TopHold
+        public ImageSource TopAngle_54
+        {
+            get { return topangle; }
+            set { topangle = value; OnPropertyChanged(); }
+        }
+
+        public ImageSource TopHold_20
         {
             get { return tophold; }
             set { tophold = value; OnPropertyChanged(); }
         }
 
-        public ImageSource TopRouteStyle
+        public ImageSource TopHold_54
+        {
+            get { return tophold; }
+            set { tophold = value; OnPropertyChanged(); }
+        }
+
+        public ImageSource TopRouteStyle_20
+        {
+            get { return toproutestyle; }
+            set { toproutestyle = value; OnPropertyChanged(); }
+        }
+
+        public ImageSource TopRouteStyle_54
         {
             get { return toproutestyle; }
             set { toproutestyle = value; OnPropertyChanged(); }
@@ -217,14 +235,17 @@ namespace SloperMobile.ViewModel
             if (routeData != null)
             {
                 SectorName = routeData.route_name;
-                RouteName = routeData.route_name;
+                TechGrade = routeData.tech_grade;
+                RouteName = (routeData.route_name).ToUpper() + " " + TechGrade;
                 CragName = routeData.crag_id;
                 RouteInfo = routeData.route_info;
                 Rating = routeData.rating;
-                TechGrade = routeData.tech_grade;
-                TopAngle = ImageSource.FromFile(GetTopAngleResourceName(routeData.angles_top_1));
-                TopHold = ImageSource.FromFile(GetTopHoldResourceName(routeData.hold_type_top_1));
-                TopRouteStyle = ImageSource.FromFile(GetTopRouteStyleResourceName(routeData.route_style_top_1));
+                TopAngle_20 = ImageSource.FromFile(GetTopAngleResourceName(routeData.angles_top_1) + "_20x20");
+                TopAngle_54 = ImageSource.FromFile(GetTopAngleResourceName(routeData.angles_top_1) + "_54x54");
+                TopHold_20 = ImageSource.FromFile(GetTopHoldResourceName(routeData.hold_type_top_1) + "_20x20");
+                TopHold_54 = ImageSource.FromFile(GetTopHoldResourceName(routeData.hold_type_top_1) + "_54x54");
+                TopRouteStyle_20 = ImageSource.FromFile(GetTopRouteStyleResourceName(routeData.route_style_top_1) + "_20x20");
+                TopRouteStyle_54 = ImageSource.FromFile(GetTopRouteStyleResourceName(routeData.route_style_top_1) + "_54x54");
             }
         }
 
@@ -251,20 +272,20 @@ namespace SloperMobile.ViewModel
 
         private string GetTopAngleResourceName(string angle)
         {
-            string resource = "steepSlab.png";
+            string resource = "icon_steepness_1_slab_border";
             switch (angle)
             {
                 case "1":
-                    resource = "steepSlab.png";
+                    resource = "icon_steepness_1_slab_border";
                     break;
                 case "2":
-                    resource = "steepVertical.png";
+                    resource = "icon_steepness_2_vertical_border";
                     break;
                 case "4":
-                    resource = "steepOverhanging.png";
+                    resource = "icon_steepness_4_overhanging_border";
                     break;
                 case "8":
-                    resource = "steepRoof.png";
+                    resource = "icon_steepness_8_roof_border";
                     break;
             }
             return resource;
@@ -272,20 +293,20 @@ namespace SloperMobile.ViewModel
 
         private string GetTopHoldResourceName(string hold)
         {
-            string resource = "hold_type_1_slopers.png";
+            string resource = "icon_hold_type_1_slopers_border";
             switch (hold)
             {
                 case "1":
-                    resource = "hold_type_1_slopers.png";
+                    resource = "icon_hold_type_1_slopers_border";
                     break;
                 case "2":
-                    resource = "hold_type_2_crimps.png";
+                    resource = "icon_hold_type_2_crimps_border";
                     break;
                 case "4":
-                    resource = "hold_type_4_jugs.png";
+                    resource = "icon_hold_type_4_jugs_border";
                     break;
                 case "8":
-                    resource = "hold_type_4_jugs.png";
+                    resource = "icon_hold_type_8_pockets_border";
                     break;
             }
             return resource;
@@ -293,26 +314,26 @@ namespace SloperMobile.ViewModel
 
         private string GetTopRouteStyleResourceName(string route)
         {
-            string resource = "route_style_1_technical.png";
+            string resource = "icon_route_style_1_technical_border";
             switch (route)
             {
                 case "1":
-                    resource = "route_style_1_technical.png";
+                    resource = "icon_route_style_1_technical_border";
                     break;
                 case "2":
-                    resource = "route_style_2_sequential.png";
+                    resource = "icon_route_style_2_sequential_border";
                     break;
                 case "4":
-                    resource = "route_style_4_powerful.png";
+                    resource = "icon_route_style_4_powerful_border";
                     break;
                 case "8":
-                    resource = "route_style_8_sustained.png";
+                    resource = "icon_route_style_8_sustained_border";
                     break;
                 case "16":
-                    resource = "route_style_16_one_move.png";
+                    resource = "icon_route_style_16_one_move_border";
                     break;
                 case "all":
-                    resource = "route_style_everything.png";
+                    resource = "icon_route_style_32_everything_border";
                     break;
             }
             return resource;

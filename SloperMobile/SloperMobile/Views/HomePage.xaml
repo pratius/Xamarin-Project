@@ -23,7 +23,7 @@
     <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
 
     <Grid Grid.ColumnSpan="3" ColumnSpacing="0" VerticalOptions="Center" HorizontalOptions="Center">
-      <Image Source="logo" VerticalOptions="Center" HorizontalOptions="Center"/>
+      <Image Source="logo_215w" VerticalOptions="Center" HorizontalOptions="Center"/>
     </Grid>
 
     <Grid Grid.Row="1" Grid.Column="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">

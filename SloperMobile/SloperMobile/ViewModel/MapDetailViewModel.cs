@@ -20,7 +20,6 @@ namespace SloperMobile.ViewModel
         private List<RouteData> routedata;
         private MapListModel currentsec;
         private T_CRAG currentCrag;
-        private string[] gradehex = { "#036177", "#1f8a70", "#91a537", "#b49800", "#fd7400" };
         public List<RouteData> RoutesData
         {
             get { return routedata; }
@@ -151,19 +150,19 @@ namespace SloperMobile.ViewModel
             switch (steepvalue)
             {
                 case AppSteepness.Slab:
-                    resource = "steepSlab.png";
+                    resource = "icon_steepness_1_slab_border_20x20.png";
                     break;
                 case AppSteepness.Vertical:
-                    resource = "steepVertical.png";
+                    resource = "icon_steepness_2_vertical_border_20x20.png";
                     break;
                 case AppSteepness.Overhanging:
-                    resource = "steepOverhanging.png";
+                    resource = "icon_steepness_4_overhanging_border_20x20.png";
                     break;
                 case AppSteepness.Roof:
-                    resource = "steepRoof.png";
+                    resource = "icon_steepness_8_roof_border_20x20.png";
                     break;
                 default:
-                    resource = "steepSlab.png";
+                    resource = "icon_steepness_1_slab_border_20x20.png";
                     break;
             }
             return resource;
