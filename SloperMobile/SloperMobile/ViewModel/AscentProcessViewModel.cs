@@ -68,11 +68,11 @@ namespace SloperMobile.ViewModel
         private T_ROUTE routeData;
         public AscentProcessViewModel(INavigation navigation, string routeid)
         {
-            PageHeaderText = Cache.SelctedCurrentSector?.SectorName;
+            //PageHeaderText = Cache.SelctedCurrentSector?.SectorName;
             SummaryImage = Cache.SelctedCurrentSector?.SectorImage;
             RouteId = routeid;
             routeData = App.DAUtil.GetRouteDataByRouteID(RouteId);
-
+            PageHeaderText = routeData.route_name;
             SendTypeCommand = new DelegateCommand(ExecuteOnSendType);
             SendTypeHoldCommand = new DelegateCommand(ExecuteOnSendHold);
             SendRouteCharaterCommand = new DelegateCommand(ExecuteOnRouteCharacteristics);

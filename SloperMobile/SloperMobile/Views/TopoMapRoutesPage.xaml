@@ -87,7 +87,7 @@
                 <RowDefinition Height="*"/>
 
             </Grid.RowDefinitions>
-            <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="40"/>
+            <!--<UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="40"/>-->
             <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
