@@ -44,9 +44,10 @@ namespace SloperMobile.Views
                     webView.CallJsFunction("initReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), true);
                     this.webView.LoadFromContent("HTML/TopoResizeImage.html");
                 }
+                  
                 summary_icons.Children?.Clear();
-                summary_icons.RowDefinitions?.Clear();
-                summary_icons.ColumnDefinitions?.Clear();
+                /*summary_icons.RowDefinitions?.Clear();   //=========For Grid UI========
+                summary_icons.ColumnDefinitions?.Clear();*/
                 int gridrowcount = 0;
                 List<string> iconsource = new List<string>();
                 var a = AscentProcessVM.SendClimbingStyle;
@@ -79,6 +80,8 @@ namespace SloperMobile.Views
                     }
                     gridrowcount += arr3.Count();
                 }
+                #region Grid based UI
+                /*   ================================== 
                 if (gridrowcount % 4 == 0)
                 {
                     gridrowcount = gridrowcount / 4;
@@ -87,6 +90,7 @@ namespace SloperMobile.Views
                 {
                     gridrowcount = (gridrowcount / 4) + 1;
                 }
+
                 for (var i = 0; i < gridrowcount; i++)
                 {
                     summary_icons.RowDefinitions?.Add(new RowDefinition { Height = 50 });
@@ -95,6 +99,7 @@ namespace SloperMobile.Views
                 {
                     summary_icons.ColumnDefinitions?.Add(new ColumnDefinition { Width = 50 });
                 }
+
                 var iconcount = 0;
                 for (var gr = 0; gr < gridrowcount; gr++)
                 {
@@ -110,6 +115,13 @@ namespace SloperMobile.Views
                             break;
                         }
                     }
+                }
+                */
+                #endregion
+
+                foreach (string iconstr in iconsource)
+                {
+                    summary_icons.Children.Add(new Image { Source = ImageSource.FromFile(iconstr),HeightRequest=50,WidthRequest=50 });
                 }
             }
         }

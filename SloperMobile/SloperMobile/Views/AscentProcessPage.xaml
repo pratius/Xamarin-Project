@@ -81,13 +81,14 @@
             <rating:SfRatingSettings RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
           </rating:SfRating.RatingSettings>
         </rating:SfRating>
-
-        <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
-          <!--<Image Source="{Binding TopAngle,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
+        <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+          <StackLayout  x:Name="summary_icons" Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+            <!--<Image Source="{Binding TopAngle,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
           <Image Source="{Binding TopHold,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
           <Image Source="{Binding TopRouteChar,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>-->
-          <Grid x:Name="summary_icons"></Grid>
-        </StackLayout>
+            <!--<Grid x:Name="summary_icons"></Grid>-->
+          </StackLayout>
+        </ScrollView>
         <Label Text="share your send" TextColor="White" Grid.Row="1" FontSize="Micro" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand"/>
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
