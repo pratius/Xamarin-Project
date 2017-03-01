@@ -41,13 +41,43 @@
     </Grid>
 
     <Grid  Grid.Row="3" Grid.Column="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-<!--
-add this back in once we have somewhere to go
-	<Gridssss.GestureRecognizers>
-        <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="ClimbingDaysPage"/>
-	</Grid.GestureRecognizers>
--->
-      <Image Aspect="AspectFit" Source="icon_climbing_days" VerticalOptions="Center" HorizontalOptions="Center"/>
+      <!--
+      add this back in once we have somewhere to go
+      	<Grid.GestureRecognizers>
+              <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="ClimbingDaysPage"/>
+      	</Grid.GestureRecognizers>
+      -->
+
+      <RelativeLayout>
+        <Image Aspect="AspectFit" Source="icon_climbing_days" VerticalOptions="Center" HorizontalOptions="Center"
+            x:Name="climbBox"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+            Property=Height,Factor=.15,Constant=0}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Height,Factor=.8,Constant=0}" />
+        <Label x:Name="climb_year" TextColor="Black" Text="{Binding Path=ClimbingYear}" FontSize="Micro"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=climbBox,Property=Y,Factor=1,Constant=7}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=climbBox,Property=X,Factor=1,Constant=25}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Width,Factor=.5,Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Height,Factor=.5,Constant=0}" />
+        <Label x:Name="climb_days" TextColor="White" Text="{Binding Path=ClimbDaysCount}" FontSize="Micro"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=climbBox,Property=Y,Factor=1,Constant=30}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=climbBox,Property=X,Factor=1,Constant=30}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Width,Factor=.5,Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Height,Factor=.5,Constant=0}" />
+        
+      </RelativeLayout>
+      <!--<Image Aspect="AspectFit" Source="icon_climbing_days" VerticalOptions="Center" HorizontalOptions="Center"/>-->
     </Grid>
 		
 	<Grid  Grid.Row="3" Grid.Column="2" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">

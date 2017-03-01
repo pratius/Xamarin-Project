@@ -124,6 +124,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CheckForUpdatesViewModel.cs" />
     <Compile Include="ViewModel\ClimbingDaysViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\MapDetailViewModel.cs" />
     <Compile Include="ViewModel\MapRoutesViewModel.cs" />
     <Compile Include="ViewModel\MapViewModel.cs" />
