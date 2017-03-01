@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -27,7 +27,8 @@
     </NuGetPackageImportStamp>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <ReleaseVersion>v100</ReleaseVersion>
-    <AndroidTlsProvider></AndroidTlsProvider>
+    <AndroidTlsProvider>
+    </AndroidTlsProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -436,7 +437,6 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\steepOverhanging.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\steepRoof.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\steepSlab.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\.DS_Store" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_arrow_left_12x21.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_arrow_up_30x10.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_comment_44w.png" />
@@ -515,7 +515,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon_video_44w.png" />
     <AndroidResource Include="Resources\drawable-hdpi\logo_170w.png" />
     <AndroidResource Include="Resources\drawable-hdpi\logo_215w.png" />
-    <AndroidResource Include="Resources\drawable-ldpi\.DS_Store" />
     <AndroidResource Include="Resources\drawable-ldpi\icon_arrow_left_12x21.png" />
     <AndroidResource Include="Resources\drawable-ldpi\icon_arrow_up_30x10.png" />
     <AndroidResource Include="Resources\drawable-ldpi\icon_comment_44w.png" />
@@ -594,7 +593,6 @@
     <AndroidResource Include="Resources\drawable-ldpi\icon_video_44w.png" />
     <AndroidResource Include="Resources\drawable-ldpi\logo_170w.png" />
     <AndroidResource Include="Resources\drawable-ldpi\logo_215w.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\.DS_Store" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_arrow_left_12x21.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_arrow_up_30x10.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_comment_44w.png" />
@@ -673,7 +671,6 @@
     <AndroidResource Include="Resources\drawable-mdpi\icon_video_44w.png" />
     <AndroidResource Include="Resources\drawable-mdpi\logo_170w.png" />
     <AndroidResource Include="Resources\drawable-mdpi\logo_215w.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\.DS_Store" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_arrow_left_12x21.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_arrow_up_30x10.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_comment_44w.png" />
@@ -752,7 +749,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon_video_44w.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\logo_170w.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\logo_215w.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\.DS_Store" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_arrow_left_12x21.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_arrow_up_30x10.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_comment_44w.png" />
@@ -831,7 +827,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_video_44w.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\logo_170w.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\logo_215w.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\.DS_Store" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_arrow_left_12x21.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_arrow_up_30x10.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_comment_44w.png" />

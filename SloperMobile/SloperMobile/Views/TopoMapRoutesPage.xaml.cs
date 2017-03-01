@@ -18,7 +18,7 @@ namespace SloperMobile.Views
         public TopoMapRoutesPage(MapListModel CurrentSector, string _lstData, int routeId)
         {
             try
-            {                
+            {
                 InitializeComponent();
                 _CurrentSector = CurrentSector;
                 listData = _lstData;
@@ -26,11 +26,11 @@ namespace SloperMobile.Views
                 NavigationPage.SetHasNavigationBar(this, true);
                 Title = CurrentSector.SectorName;
                 MapRouteVM = new ViewModel.TopoMapRoutesViewModel(CurrentSector, Navigation);
-                
+
                 BindingContext = MapRouteVM;
                 if (listData == string.Empty)
                 {
-                    MapRouteVM.LoadRouteData(routeId,listData);
+                    MapRouteVM.LoadRouteData(routeId, listData);
                     MapRouteVM.IsPopupShow = true;
                 }
                 MapRouteVM.OnConditionNavigation = OnPageNavigation;
@@ -38,10 +38,10 @@ namespace SloperMobile.Views
                 this.webView.RegisterCallback("dataCallback", t =>
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    MapRouteVM.LoadRouteData(t,listData);
+                    MapRouteVM.LoadRouteData(t, listData);
                     MapRouteVM.IsPopupHide = true;
                     var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-                    webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight, Convert.ToInt32(t),true);
+                    webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight, Convert.ToInt32(t), true);
                 }));
             }
             catch (Exception ex)
@@ -62,15 +62,15 @@ namespace SloperMobile.Views
             {
                 this.webView.LoadFinished += OnLoadFinished;
                 this.webView.LoadFromContent("HTML/TopoResizeImage.html");
-                base.OnAppearing(); 
+                base.OnAppearing();
             }
             catch (Exception ex)
             {
                 throw ex;
-            }            
-            
+            }
+
         }
-             
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -92,8 +92,8 @@ namespace SloperMobile.Views
                 //webView.CallJsFunction("initDrawing", staticAnnotationData, listData, (device.Display.Height));
                 webView.CallJsFunction("initDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight);
                 if (_routeId > 0)
-                {                    
-                    MapRouteVM.LoadRouteData(_routeId,listData);
+                {
+                    MapRouteVM.LoadRouteData(_routeId, listData);
                     MapRouteVM.IsPopupHide = true;
                     webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (Cache.CurrentScreenHeight), _routeId, true);
                 }
@@ -113,6 +113,12 @@ namespace SloperMobile.Views
         private void SwipeableImage_SwipedUp(object sender, EventArgs e)
         {
             MapRouteVM.HidePopupCommand.Execute(null);
+
+        }
+
+        private void OnSwipeUp(object sender, EventArgs e)
+        {
+            MapRouteVM.IsPopupHide = false;
 
         }
     }

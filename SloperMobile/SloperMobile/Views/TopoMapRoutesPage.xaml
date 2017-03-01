@@ -76,7 +76,7 @@
         </Image.GestureRecognizers>
       </Image>
 
-      <Controls:SwipeableImage SwipedDown="SwipeableImage_SwipedDown" Source="GridImage" BackgroundColor="Transparent" Aspect="AspectFill" Grid.ColumnSpan="2" Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Controls:SwipeableImage SwipedDown="SwipeableImage_SwipedDown" SwipedUp="OnSwipeUp" Source="GridImage" BackgroundColor="Transparent" Aspect="AspectFill" Grid.ColumnSpan="2" Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
 
 
     </Grid>
