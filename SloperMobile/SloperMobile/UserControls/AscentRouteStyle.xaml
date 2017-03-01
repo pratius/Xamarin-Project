@@ -1,95 +1,62 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Black"
-             x:Class="SloperMobile.UserControls.AscentRouteStyle">
-
-  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="02"/>
-      <RowDefinition Height=".1*"/>
-      <RowDefinition Height=".7*"/>
-      <RowDefinition Height=".1*"/>
-      <RowDefinition Height="02"/>
-    </Grid.RowDefinitions>
-    <Label Text="Route characteristic?" TextColor="White" Grid.Row="1" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-
-    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="2">
-      <Grid.RowDefinitions>
-        <RowDefinition Height=".1*" />
-        <RowDefinition Height="1*" />
-        <RowDefinition Height="1" />
-        <RowDefinition Height="1*" />
-        <RowDefinition Height="1" />
-        <RowDefinition Height="1*" />
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="1*"/>
-        <ColumnDefinition Width="1"/>
-        <ColumnDefinition Width="1*"/>
-      </Grid.ColumnDefinitions>
-
-      <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" BackgroundColor="#3F3F3F"
-               WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
-      <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#3F3F3F"
-               HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand" Margin="30,0,30,0"/>
-      <BoxView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#3F3F3F"
-               HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand" Margin="30,0,30,0"/>
-
-      <Frame x:Name="Technical" AutomationId="technical" Grid.Row="1" Grid.Column="0" BackgroundColor="Black" WidthRequest="200" Margin="30,0,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Frame.GestureRecognizers>
-          <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="1"/>
-        </Frame.GestureRecognizers>
-        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" >
-          <Image Source="route_style_1_technical" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
-          <!--<Label Text="technical" TextColor="White" FontSize="Micro" VerticalOptions="End" HorizontalOptions="CenterAndExpand"/>-->
-        </StackLayout>
-      </Frame>
-
-
-      <Frame x:Name="Sequential" AutomationId="sequential" Grid.Row="1" Grid.Column="2" BackgroundColor="Black" WidthRequest="200" Margin="0,0,30,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Frame.GestureRecognizers>
-          <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="2"/>
-        </Frame.GestureRecognizers>
-        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" >
-          <Image Source="route_style_2_sequential" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
-      </Frame>
-      <Frame x:Name="Powerful" AutomationId="powerful" Grid.Row="3" Grid.Column="0" BackgroundColor="Black" WidthRequest="200" Margin="30,0,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Frame.GestureRecognizers>
-          <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="4"/>
-        </Frame.GestureRecognizers>
-        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" >
-          <Image Source="route_style_4_powerful" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
-      </Frame>
-
-      <Frame x:Name="Sustained" AutomationId="sustained" Grid.Row="3" Grid.Column="2" BackgroundColor="Black" WidthRequest="200" Margin="0,0,30,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Frame.GestureRecognizers>
-          <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="8"/>
-        </Frame.GestureRecognizers>
-        <Image Source="route_style_8_sustained" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
-
-      </Frame>
-
-      <Frame x:Name="Onemove" AutomationId="onemove" Grid.Row="5" Grid.Column="0" BackgroundColor="Black" WidthRequest="200" Margin="30,0,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Frame.GestureRecognizers>
-          <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="16"/>
-        </Frame.GestureRecognizers>
-        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" >
-          <Image Source="route_style_16_one_move" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
-      </Frame>
-
-      <Frame x:Name="Everything" AutomationId="everything" Grid.Row="5" Grid.Column="2" BackgroundColor="Black" WidthRequest="200" Margin="0,0,30,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Frame.GestureRecognizers>
-          <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="all"/>
-        </Frame.GestureRecognizers>
-        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" >
-          <Image Source="route_style_everything" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
-      </Frame>
-    </Grid>
-  </Grid>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="Black" x:Class="SloperMobile.UserControls.AscentRouteStyle">
+	<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,20,0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30*" />
+			<RowDefinition Height="20*" />
+			<RowDefinition Height="1" />
+			<RowDefinition Height="20*" />
+			<RowDefinition Height="1" />
+			<RowDefinition Height="20*" />
+			<RowDefinition Height="10*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*" />
+			<ColumnDefinition Width="1" />
+			<ColumnDefinition Width="1*" />
+		</Grid.ColumnDefinitions>
+		<StackLayout Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="Center">
+			<Label Text="What type of send" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+			<Label Text="for this route?" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+		</StackLayout>
+		<BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" BackgroundColor="#191919" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End" />
+		<BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#191919" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand" />
+		<BoxView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#191919" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand" />
+		<Frame x:Name="Technical" AutomationId="technical" Grid.Row="1" Grid.Column="0" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="1" />
+			</Frame.GestureRecognizers>
+			<Image Source="icon_route_style_1_technical_text_73h" VerticalOptions="Center" HorizontalOptions="Center"/>
+		</Frame>
+		<Frame x:Name="Sequential" AutomationId="sequential" Grid.Row="1" Grid.Column="2" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="2" />
+			</Frame.GestureRecognizers>
+			<Image Source="icon_route_style_2_sequential_text_73h" VerticalOptions="Center" HorizontalOptions="Center"/>
+		</Frame>
+		<Frame x:Name="Powerful" AutomationId="powerful" Grid.Row="3" Grid.Column="0" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="4" />
+			</Frame.GestureRecognizers>
+			<Image Source="icon_route_style_4_powerful_text_73h" VerticalOptions="Center" HorizontalOptions="Center"/>
+		</Frame>
+		<Frame x:Name="Sustained" AutomationId="sustained" Grid.Row="3" Grid.Column="2" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="8" />
+			</Frame.GestureRecognizers>
+			<Image Source="icon_route_style_8_sustained_text_73h" VerticalOptions="Center" HorizontalOptions="Center"/>
+		</Frame>
+		<Frame x:Name="Onemove" AutomationId="onemove" Grid.Row="5" Grid.Column="0" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="16" />
+			</Frame.GestureRecognizers>
+			<Image Source="icon_route_style_16_one_move_text_73h" VerticalOptions="Center" HorizontalOptions="Center"/>
+		</Frame>
+		<Frame x:Name="Everything" AutomationId="everything" Grid.Row="5" Grid.Column="2" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="all" />
+			</Frame.GestureRecognizers>
+			<Image Source="icon_route_style_32_everything_text_73h" VerticalOptions="Center" HorizontalOptions="Center"/>
+		</Frame>
+	</Grid>
 </StackLayout>

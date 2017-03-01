@@ -154,19 +154,19 @@ namespace SloperMobile.ViewModel
             switch (steepvalue)
             {
                 case AppSteepness.Slab:
-                    resource = "icon_steepness_1_slab_border_20x20.png";
+                    resource = "icon_steepness_1_slab_border_20x20";
                     break;
                 case AppSteepness.Vertical:
-                    resource = "icon_steepness_2_vertical_border_20x20.png";
+                    resource = "icon_steepness_2_vertical_border_20x20";
                     break;
                 case AppSteepness.Overhanging:
-                    resource = "icon_steepness_4_overhanging_border_20x20.png";
+                    resource = "icon_steepness_4_overhanging_border_20x20";
                     break;
                 case AppSteepness.Roof:
-                    resource = "icon_steepness_8_roof_border_20x20.png";
+                    resource = "icon_steepness_8_roof_border_20x20";
                     break;
                 default:
-                    resource = "icon_steepness_1_slab_border_20x20.png";
+                    resource = "icon_steepness_1_slab_border_20x20";
                     break;
             }
             return resource;

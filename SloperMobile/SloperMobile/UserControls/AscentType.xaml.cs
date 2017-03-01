@@ -21,6 +21,8 @@ namespace SloperMobile.UserControls
             Flash.BackgroundColor = Color.Black;
             Redpoint.BackgroundColor = Color.Black;
             Repeat.BackgroundColor = Color.Black;
+            ProjectBurn.BackgroundColor = Color.Black;
+            OneHang.BackgroundColor = Color.Black;
             var ascframe = (Frame)sender;
             ascframe.BackgroundColor = Color.FromHex("#FF8E2D");
         }

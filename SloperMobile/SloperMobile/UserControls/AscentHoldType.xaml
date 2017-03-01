@@ -1,83 +1,47 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Black"
-             x:Class="SloperMobile.UserControls.AscentHoldType">
-  <Label Text="  What style" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
-  <Label Text="of holds are on" TextColor="White" FontSize="20" HorizontalOptions="Center" />
-  <Label Text="this route?" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
-  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="02"/>
-      <RowDefinition Height=".1*"/>
-      <RowDefinition Height=".7*"/>
-      <RowDefinition Height=".1*"/>
-      <RowDefinition Height="02"/>
-    </Grid.RowDefinitions>
-
-    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="2">
-      <Grid.RowDefinitions>
-        <RowDefinition Height=".1*" />
-        <RowDefinition Height="1*" />
-        <RowDefinition Height="1" />
-        <RowDefinition Height="1*" />
-        <RowDefinition Height="1" />
-        <RowDefinition Height="1*" />
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="1*"/>
-        <ColumnDefinition Width="1"/>
-        <ColumnDefinition Width="1*"/>
-      </Grid.ColumnDefinitions>
-
-      <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" BackgroundColor="#3F3F3F"
-               WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
-      <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#3F3F3F"
-               HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand" Margin="30,0,30,0"/>
-
-
-      <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="Black" WidthRequest="200" Margin="30,0,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Frame.GestureRecognizers>
-          <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeHoldCommand,Mode=TwoWay}" CommandParameter="1"/>
-        </Frame.GestureRecognizers>
-        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" >
-          <Image Source="hold_type_1_slopers" VerticalOptions="Start" WidthRequest="50" HeightRequest="50"/>
-          <!--<Label Text="slopers" TextColor="White" FontSize="Micro" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>-->
-        </StackLayout>
-      </Frame>
-
-
-      <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="Black" WidthRequest="200" Margin="0,0,30,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Frame.GestureRecognizers>
-          <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeHoldCommand,Mode=TwoWay}" CommandParameter="2"/>
-        </Frame.GestureRecognizers>
-        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" >
-          <Image Source="hold_type_2_crimps" VerticalOptions="Start" WidthRequest="50" HeightRequest="50"/>
-          <!--<Label Text="crimps" TextColor="White" FontSize="Micro" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>-->
-        </StackLayout>
-      </Frame>
-
-      <Frame Grid.Row="3" Grid.Column="0" BackgroundColor="Black" WidthRequest="200" Margin="30,0,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Frame.GestureRecognizers>
-          <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeHoldCommand,Mode=TwoWay}" CommandParameter="4"/>
-        </Frame.GestureRecognizers>
-        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" >
-          <Image Source="hold_type_4_jugs" VerticalOptions="Start" WidthRequest="50" HeightRequest="50"/>
-          <!--<Label Text="jugs" TextColor="White" FontSize="Micro" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>-->
-        </StackLayout>
-      </Frame>
-
-      <Frame  Grid.Row="3" Grid.Column="2" BackgroundColor="Black" WidthRequest="200" Margin="0,0,30,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Frame.GestureRecognizers>
-          <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeHoldCommand,Mode=TwoWay}" CommandParameter="8"/>
-        </Frame.GestureRecognizers>
-        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" >
-          <Image Source="hold_type_1_slopers" VerticalOptions="Start" WidthRequest="50" HeightRequest="50"/>
-          <!--<Label Text="pockets" TextColor="White" FontSize="Micro" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>-->
-        </StackLayout>
-      </Frame>
-
-
-    </Grid>
-  </Grid>
+<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="Black" x:Class="SloperMobile.UserControls.AscentHoldType">
+	<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,20,0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40*" />
+			<RowDefinition Height="20*" />
+			<RowDefinition Height="1" />
+			<RowDefinition Height="20*" />
+			<RowDefinition Height="20*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*" />
+			<ColumnDefinition Width="1" />
+			<ColumnDefinition Width="1*" />
+		</Grid.ColumnDefinitions>
+		<StackLayout Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="Center">
+			<Label Text="What style of holds" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+			<Label Text="are on this route?" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+		</StackLayout>
+		<BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" BackgroundColor="#191919" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End" />
+		<BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#191919" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand" />
+		<Frame Grid.Row="1" Grid.Column="0" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeHoldCommand,Mode=TwoWay}" CommandParameter="1" />
+			</Frame.GestureRecognizers>
+			<Image Source="icon_hold_type_1_slopers_text_58x92" VerticalOptions="End" HorizontalOptions="Center" />
+		</Frame>
+		<Frame Grid.Row="1" Grid.Column="2" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeHoldCommand,Mode=TwoWay}" CommandParameter="2" />
+			</Frame.GestureRecognizers>
+			<Image Source="icon_hold_type_2_crimps_text_41x68" VerticalOptions="End" HorizontalOptions="Center" />
+		</Frame>
+		<Frame Grid.Row="3" Grid.Column="0" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeHoldCommand,Mode=TwoWay}" CommandParameter="4" />
+			</Frame.GestureRecognizers>
+			<Image Source="icon_hold_type_4_jugs_text_58x74" VerticalOptions="End" HorizontalOptions="Center" />
+		</Frame>
+		<Frame Grid.Row="3" Grid.Column="2" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeHoldCommand,Mode=TwoWay}" CommandParameter="8" />
+			</Frame.GestureRecognizers>
+			<Image Source="icon_hold_type_8_pockets_text_63x94" VerticalOptions="End" HorizontalOptions="Center" />
+		</Frame>
+	</Grid>
 </StackLayout>

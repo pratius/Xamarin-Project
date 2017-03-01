@@ -72,7 +72,7 @@ namespace SloperMobile.ViewModel
             SummaryImage = Cache.SelctedCurrentSector?.SectorImage;
             RouteId = routeid;
             routeData = App.DAUtil.GetRouteDataByRouteID(RouteId);
-            PageHeaderText = routeData.route_name;
+            PageHeaderText = (routeData.route_name).ToUpper();
             SendTypeCommand = new DelegateCommand(ExecuteOnSendType);
             SendTypeHoldCommand = new DelegateCommand(ExecuteOnSendHold);
             SendRouteCharaterCommand = new DelegateCommand(ExecuteOnRouteCharacteristics);
@@ -82,7 +82,7 @@ namespace SloperMobile.ViewModel
             CameraClickCommand = new DelegateCommand(ExecuteOnCameraClick);
             //GalleryClickCommand = new DelegateCommand(ExecuteOnGalleryClick);
             var grades = App.DAUtil.GetTtechGrades(routeData.grade_type_id);
-            AscentGrages = grades;
+            AscentGrades = grades;
             if (grades.Count > 0)
             {
                 SendsGrade = routeData.tech_grade; //grades[0];
@@ -100,7 +100,7 @@ namespace SloperMobile.ViewModel
         //        return currentInstance;
         //}
 
-        public List<string> AscentGrages
+        public List<string> AscentGrades
         {
             get { return grades; }
             set { grades = value; OnPropertyChanged(); }
@@ -736,20 +736,20 @@ namespace SloperMobile.ViewModel
 
         public string GetAngleResourceName(string steep)
         {
-            string resource = "steepSlab.png";
+            string resource = "icon_steepness_1_slab_border_80x80";
             switch (steep)
             {
                 case "1":
-                    resource = "steepSlab.png";
+                    resource = "icon_steepness_1_slab_border_80x80";
                     break;
                 case "2":
-                    resource = "steepVertical.png";
+                    resource = "icon_steepness_2_vertical_border_80x80";
                     break;
                 case "4":
-                    resource = "steepOverhanging.png";
+                    resource = "icon_steepness_4_overhanging_border_80x80";
                     break;
                 case "8":
-                    resource = "steepRoof.png";
+                    resource = "icon_steepness_8_roof_border_80x80";
                     break;
             }
             return resource;
@@ -757,20 +757,20 @@ namespace SloperMobile.ViewModel
 
         public string GetHoldResourceName(string hold)
         {
-            string resource = "hold_type_1_slopers.png";
+            string resource = "icon_hold_type_1_slopers_text_58x92";
             switch (hold)
             {
                 case "1":
-                    resource = "hold_type_1_slopers.png";
+                    resource = "icon_hold_type_1_slopers_text_58x92";
                     break;
                 case "2":
-                    resource = "hold_type_2_crimps.png";
+                    resource = "icon_hold_type_2_crimps_text_41x68";
                     break;
                 case "4":
-                    resource = "hold_type_4_jugs.png";
+                    resource = "icon_hold_type_4_jugs_text_58x74";
                     break;
                 case "8":
-                    resource = "hold_type_4_jugs.png";
+                    resource = "icon_hold_type_8_pockets_text_63x94";
                     break;
             }
             return resource;
@@ -778,26 +778,26 @@ namespace SloperMobile.ViewModel
 
         public string GetRouteResourceName(string route)
         {
-            string resource = "route_style_1_technical.png";
+            string resource = "icon_route_style_1_technical_border_80x80";
             switch (route)
             {
                 case "1":
-                    resource = "route_style_1_technical.png";
+                    resource = "icon_route_style_1_technical_border_80x80";
                     break;
                 case "2":
-                    resource = "route_style_2_sequential.png";
+                    resource = "icon_route_style_2_sequential_border_80x80";
                     break;
                 case "4":
-                    resource = "route_style_4_powerful.png";
+                    resource = "icon_route_style_4_powerful_border_80x80";
                     break;
                 case "8":
-                    resource = "route_style_8_sustained.png";
+                    resource = "icon_route_style_8_sustained_border_80x80";
                     break;
                 case "16":
-                    resource = "route_style_16_one_move.png";
+                    resource = "icon_route_style_16_one_move_border_80x80";
                     break;
                 case "all":
-                    resource = "route_style_everything.png";
+                    resource = "icon_route_style_32_everything_border_80x80";
                     break;
             }
             return resource;
