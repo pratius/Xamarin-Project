@@ -385,4 +385,21 @@ namespace SloperMobile.DataBase
         public string grade_bucket_id_count
         { get; set; }
     }
+
+    public class T_BUCKET
+    {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        [PrimaryKey, AutoIncrement]
+        public long ID
+        { get; set; }
+        [NotNull]
+        public string grade_type_id
+        { get; set; }
+        public string grade_bucket_id
+        { get; set; }
+        public string bucket_name
+        { get; set; }
+    }
 }

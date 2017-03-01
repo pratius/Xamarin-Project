@@ -34,7 +34,7 @@ namespace SloperMobile.Common.Helpers
                     httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
                 }
                 var response = await httpClient.PostAsync(endpoint, new StringContent(jsonobject, Encoding.UTF8, "application/json")).ConfigureAwait(false);
-                if(response.StatusCode==System.Net.HttpStatusCode.Unauthorized)
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
                     ExtendURL objextend = new ExtendURL();
                     objextend.rtoken = Settings.RenewalTokenSettings;
@@ -80,6 +80,20 @@ namespace SloperMobile.Common.Helpers
                     httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
                 }
                 var response = await httpClient.GetAsync(endpoint, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+                // Addedd on 2nd-March-2017 to extend access token
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    ExtendURL objextend = new ExtendURL();
+                    objextend.rtoken = Settings.RenewalTokenSettings;
+                    var renewjson = JsonConvert.SerializeObject(objextend);
+                    var renewaltoken = await ExtendToken<LoginResponse>(renewjson);
+                    Settings.AccessTokenSettings = renewaltoken.accessToken;
+                    Settings.RenewalTokenSettings = renewaltoken.renewalToken;
+                    httpClient.DefaultRequestHeaders.Accept.Clear();
+                    httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + renewaltoken.accessToken);
+                    response = await httpClient.GetAsync(endpoint, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+                }
                 return JsonConvert.DeserializeObject<List<T>>(response.Content.ReadAsStringAsync().Result);
             }
         }

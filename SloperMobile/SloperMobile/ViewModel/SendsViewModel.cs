@@ -101,16 +101,16 @@ namespace SloperMobile.ViewModel
         }
         private async void OnPagePrepration(string TabName)
         {
-            //if (TabName == "SENDS")
-            //{
-            //    PageHeaderText = "PROFILE - SENDS";
-            //    await InvokeServiceGetAscentData();
-            //}
-            //else
-            //{
+            if (TabName == "SENDS")
+            {
+                PageHeaderText = "PROFILE - SENDS";
+                await InvokeServiceGetAscentData();
+            }
+            else
+            {
                 PageHeaderText = "PROFILE - TICK LIST";
                 await InvokeServiceGetTickListData();
-            //}
+            }
         }
 
 
@@ -159,7 +159,7 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-                HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetTick_ListData), Settings.AccessTokenSettings);
+                HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetTick_ListData, Settings.SelectedCragSettings), Settings.AccessTokenSettings);
                 var response = await apicall.Get<TickList>();
                 if (response.Count > 0)
                 {
