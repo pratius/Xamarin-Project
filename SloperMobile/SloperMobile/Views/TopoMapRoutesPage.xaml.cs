@@ -23,7 +23,7 @@ namespace SloperMobile.Views
                 _CurrentSector = CurrentSector;
                 listData = _lstData;
                 _routeId = routeId;
-                NavigationPage.SetHasNavigationBar(this, true);
+                NavigationPage.SetHasNavigationBar(this, false);
                 Title = CurrentSector.SectorName;
                 MapRouteVM = new ViewModel.TopoMapRoutesViewModel(CurrentSector, Navigation);
 

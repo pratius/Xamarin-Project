@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
               x:Class="SloperMobile.Views.TopoSectorPage"
-              NavigationPage.HasNavigationBar="False" Style="{StaticResource AppBackgroundColor}">
+              NavigationPage.HasNavigationBar="True" Style="{StaticResource AppBackgroundColor}">
 	<ContentPage.Padding>
     	<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
 	</ContentPage.Padding>		

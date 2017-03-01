@@ -6,7 +6,7 @@
                xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
              x:Class="SloperMobile.Views.TopoMapRoutesPage"
-             NavigationPage.HasNavigationBar="False" Style="{StaticResource AppBackgroundColor}">
+             NavigationPage.HasNavigationBar="false" Style="{StaticResource AppBackgroundColor}">
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
   </ContentPage.Padding>
@@ -24,10 +24,10 @@
     <Grid BackgroundColor="Black" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
       <Controls:HybridWebViewCustom x:Name="webView"  />
     </Grid>
-    <StackLayout  Grid.Column="1" HeightRequest="40"
+<!--    <StackLayout  Grid.Column="1" HeightRequest="40"
                   HorizontalOptions="FillAndExpand">
       <UC:BackHeaderUC HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"/>
-    </StackLayout>
+    </StackLayout>-->
 
     <Grid BackgroundColor="#77000000" IsVisible="{Binding IsPopupHide,Mode=TwoWay}" HeightRequest="150" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
       <Grid.ColumnDefinitions>
