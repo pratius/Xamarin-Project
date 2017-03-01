@@ -98,6 +98,9 @@
     <Compile Include="UserControls\AscentType.xaml.cs">
       <DependentUpon>AscentType.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\BackHeaderUC.xaml.cs">
+      <DependentUpon>BackHeaderUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FooterUC.xaml.cs">
       <DependentUpon>FooterUC.xaml</DependentUpon>
     </Compile>
@@ -484,6 +487,12 @@
   <ItemGroup>
     <EmbeddedResource Include="UserControls\TickListsUC.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\BackHeaderUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
