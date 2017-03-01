@@ -1,4 +1,5 @@
 ﻿using SloperMobile.Common.Enumerators;
+using SloperMobile.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,13 @@ namespace SloperMobile.Views
 {
     public partial class HomePage : ContentPage
     {
+        private HomeViewModel HomeVM;
         public HomePage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            HomeVM = new HomeViewModel();
+            BindingContext = HomeVM;
         }
 
         private async void OnClickSend(object sender, EventArgs e)
