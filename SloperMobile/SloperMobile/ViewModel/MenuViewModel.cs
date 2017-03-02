@@ -73,12 +73,12 @@ namespace SloperMobile.ViewModel
                         TargetType = typeof(MapPage),
                     });
                 }
-                MenuList.Add(new MasterPageItem
-                {
-                    Title = "DIRECTIONS",
-                    IconSource = "",
-                    TargetType = typeof(MapPage),
-                });
+                //MenuList.Add(new MasterPageItem
+                //{
+                //    Title = "DIRECTIONS",
+                //    IconSource = "",
+                //    TargetType = typeof(MapPage),
+                //});
                 MenuList.Add(new MasterPageItem
                 {
                     Title = "SETTINGS",

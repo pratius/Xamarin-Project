@@ -4,7 +4,8 @@
              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
              xmlns:SegmentedUC="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
              xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms"
-             x:Class="SloperMobile.Views.SendsPage" Style="{StaticResource AppBackgroundColor}">
+             x:Class="SloperMobile.Views.SendsPage" Style="{StaticResource AppBackgroundColor}"
+             ControlTemplate="{StaticResource PageTemplateFooter}">
 	<ContentPage.Padding>
     	<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
 	</ContentPage.Padding>	
@@ -126,6 +127,5 @@
 
         <UC:TickListsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" x:Name="Ticklists"/>
         <UC:SendsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" x:Name="Sends"/>
-        <UC:FooterUC HeightRequest="40" Grid.Column="1" Grid.Row="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
     </Grid>
 </ContentPage>

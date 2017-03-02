@@ -420,6 +420,9 @@
     <BundleResource Include="Resources\logo_215w.png" />
     <BundleResource Include="Resources\logo_215w%402x.png" />
     <BundleResource Include="Resources\logo_215w%403x.png" />
+    <BundleResource Include="Resources\icon_profile_large.png" />
+    <BundleResource Include="Resources\icon_profile_large%402x.png" />
+    <BundleResource Include="Resources\icon_profile_large%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">

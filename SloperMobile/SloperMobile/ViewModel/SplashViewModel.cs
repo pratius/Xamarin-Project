@@ -119,7 +119,7 @@ namespace SloperMobile.ViewModel
         #region Methods
         private async void ExecuteOnProcced(object obj)
         {
-            if (CommandText == "Continue")
+            if (CommandText == "CONTINUE")
             {
                 OnConditionNavigation?.Invoke("Procced");
             }
@@ -128,24 +128,24 @@ namespace SloperMobile.ViewModel
             {
                 IsDisplayThanksNote = false;
                 IsRunningTasks = true;
-                CommandText = "Cancel";
+                CommandText = "CANCEL";
                 await DownloadUpdates();
-                CommandText = "Continue";
+                CommandText = "CONTINUE";
                 IsRunningTasks = true;
             }
 
-            if (CommandText == "Cancel")
+            if (CommandText == "CANCEL")
             {
                 IsRunningTasks = false;
                 IsDisplayThanksNote = true;
                 CommandText = "Let's Go!";
-                OnConditionNavigation?.Invoke("Cancel");
+                OnConditionNavigation?.Invoke("CANCEL");
             }
         }
 
         private void ExecuteOnCancel(object obj)
         {
-            OnConditionNavigation?.Invoke("Cancel");
+            OnConditionNavigation?.Invoke("CANCEL");
         }
         #endregion
 
@@ -232,7 +232,7 @@ namespace SloperMobile.ViewModel
 
                 if (Convert.ToInt32(CheckForModelObj.sectors_modified) > 0)
                 {
-                    ProgressText = "Loading Sectors , please wait...";
+                    ProgressText = "Loading Sectors, please wait...";
                     SectorObj = await HttpGetSectorUpdates();
 
                     foreach (T_SECTOR sector in SectorObj)

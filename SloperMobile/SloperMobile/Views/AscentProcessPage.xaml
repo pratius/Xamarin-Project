@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" x:Class="SloperMobile.Views.AscentProcessPage" NavigationPage.HasNavigationBar="True" Style="{StaticResource AppBackgroundColor}">
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" x:Class="SloperMobile.Views.AscentProcessPage" NavigationPage.HasNavigationBar="True" BackgroundColor="Black">
 	<CarouselPage.Padding>
 		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
 	</CarouselPage.Padding>
@@ -10,6 +10,10 @@
 	<ContentPage>
 		<UC:AscentDate x:Name="ascDate">
 		</UC:AscentDate>
+	</ContentPage>
+	<ContentPage>
+		<UC:AscentRating x:Name="ascRating">
+		</UC:AscentRating>
 	</ContentPage>
 	<ContentPage>
 		<UC:AscentClimbingAngle x:Name="ascClimbingAngle">
@@ -23,13 +27,9 @@
 		<UC:AscentRouteStyle x:Name="ascRouteStyle">
 		</UC:AscentRouteStyle>
 	</ContentPage>
-	<ContentPage>
-		<UC:AscentRating x:Name="ascRating">
-		</UC:AscentRating>
-	</ContentPage>	
-	<ContentPage>
+	<ContentPage BackgroundColor="Black">
 		<!--<UC:AscentSummary x:Name="ascSummary"></UC:AscentSummary>-->
-		<Grid>
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,20,0" BackgroundColor="Black">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="02" />
 				<RowDefinition Height=".1*" />
@@ -43,11 +43,13 @@
 				<Label Text="!" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
 			</StackLayout>
 			<StackLayout Orientation="Vertical" Grid.Row="2" Spacing="05" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-				<Image Source="{Binding SummaryImage}" IsVisible="{Binding IsDisplaySummaryImg}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />
-				<XLabUC:HybridWebView x:Name="webView" BackgroundColor="White" IsVisible="{Binding IsDisplaySummaryWeb}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />
-				<rating:SfRating x:Name="rating_summary" ItemCount="3" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True" HorizontalOptions="Center" VerticalOptions="Start">
+				<!--<Image Source="{Binding SummaryImage}" IsVisible="{Binding IsDisplaySummaryImg}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />-->
+				<Image Source="{Binding SummaryImage}" IsVisible="true" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0,0,0,30" />
+				<!--<XLabUC:HybridWebView x:Name="webView" BackgroundColor="White" IsVisible="{Binding IsDisplaySummaryWeb}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />-->
+				<XLabUC:HybridWebView x:Name="webView" BackgroundColor="White" IsVisible="false" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />
+				<rating:SfRating x:Name="rating_summary" WidthRequest="85" ItemCount="3" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True" HorizontalOptions="Center" VerticalOptions="Start">
 					<rating:SfRating.RatingSettings>
-						<rating:SfRatingSettings RatedFill="#FF9933" RatedStroke="White" UnRatedStroke="White" />
+						<rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" />
 					</rating:SfRating.RatingSettings>
 				</rating:SfRating>
 				<ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -58,20 +60,20 @@
 						<!--<Grid x:Name="summary_icons"></Grid>-->
 					</StackLayout>
 				</ScrollView>
-				<Label Text="share your send" TextColor="White" Grid.Row="1" FontSize="Micro" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+				<!--				<Label Text="share your send" TextColor="White" Grid.Row="1" FontSize="Micro" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
 				<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
 					<Image Margin="03" Source="facebook_logo" Aspect="AspectFit" />
 					<Image Margin="03" Source="twitter_logo_shape" Aspect="AspectFit" />
 					<Image Margin="03" Source="instagram_symbol" Aspect="AspectFit" />
 					<Image Margin="03" Source="google_plus_logo" Aspect="AspectFit" />
-				</StackLayout>
+				</StackLayout>-->
+				<Button Margin="0,30,0,0" Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}" IsEnabled="{Binding IsButtonInable}" WidthRequest="100" />
 				<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
 					<ActivityIndicator IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="10" HeightRequest="10" Color="White">
 					</ActivityIndicator>
 					<Label Text="{Binding ProgressMsg}" TextColor="White" FontSize="Micro" IsVisible="{Binding IsDisplayMessage}">
 					</Label>
 				</StackLayout>
-				<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="1" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}" IsEnabled="{Binding IsButtonInable}" />
 			</StackLayout>
 		</Grid>
 	</ContentPage>

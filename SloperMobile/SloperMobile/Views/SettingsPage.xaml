@@ -1,40 +1,24 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SloperMobile.Views.SettingsPage" Style="{StaticResource AppBackgroundColor}" NavigationPage.HasNavigationBar="False"   xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
-             ControlTemplate="{StaticResource PageTemplateFooter}">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.Views.SettingsPage" Style="{StaticResource AppBackgroundColor}" NavigationPage.HasNavigationBar="False" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" ControlTemplate="{StaticResource PageTemplateFooter}">
 	<ContentPage.Padding>
-    	<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
-	</ContentPage.Padding>	
-  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="02"/>
-      <ColumnDefinition Width="*"/>
-      <ColumnDefinition Width="02"/>
-    </Grid.ColumnDefinitions>
-
-    <Image Source="ic_profile" WidthRequest="175" HeightRequest="175" Grid.Column="1" Grid.Row="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,30"/>
-    <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
-      <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="10"/>
-          <RowDefinition Height="10"/>
-          <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="5" Margin="0,30">
-          <Button Text="Log Out" Command="{Binding LogOutCommand}" Style="{StaticResource GeneralButtonStyle}"/>
-        </StackLayout>
-        <StackLayout Orientation="Vertical" Grid.Row="1" Grid.RowSpan="3"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-          <Label  Text="You are Logged in as"  Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"/>
-          <Label  Text="{Binding DisplayName}"  Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
-      </Grid>
-    </StackLayout>
-    <UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="30"/>
-  </Grid>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+	</ContentPage.Padding>
+	<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5,0,5,0">
+		<UC:HeaderUC HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" />
+		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="35,0,35,0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="50*" />
+				<RowDefinition Height="30*" />
+				<RowDefinition Height="20*" />
+			</Grid.RowDefinitions>
+			<Image Grid.Row="0" Source="icon_profile_large" HorizontalOptions="Center" VerticalOptions="Center" Scale="0.75" />
+			<StackLayout Grid.Row="1" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+				<Label Text="You are logged in as:" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand" />
+				<Label Text="{Binding DisplayName}" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand" />
+			</StackLayout>
+			<StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Fill">
+				<Button BorderRadius="3" Text="LOGOUT" Command="{Binding LogOutCommand}" Style="{StaticResource GeneralButtonStyle}" HorizontalOptions="FillAndExpand" />
+			</StackLayout>
+		</Grid>
+	</StackLayout>
 </ContentPage>

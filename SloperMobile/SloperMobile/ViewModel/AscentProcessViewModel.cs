@@ -38,8 +38,8 @@ namespace SloperMobile.ViewModel
         private bool isdisplaysummaryimg = false;
         private bool isdisplaysummaryweb = true;
 
-        private string commandtext = "Submit";
-        private string progressmsg = "sending...";
+        private string commandtext = "Log Ascent";
+        private string progressmsg = "Sending, please wait...";
 
         private string Slab = "";
         private string Vertical = "";
@@ -627,7 +627,7 @@ namespace SloperMobile.ViewModel
 
         private async void ExecuteOnSummary(object obj)
         {
-            if (CommandText == "Submit")
+            if (CommandText == "Log Ascent")
             {
                 IsRunningTasks = true;
                 IsDisplayMessage = true;
@@ -729,7 +729,7 @@ namespace SloperMobile.ViewModel
             {
                 IsRunningTasks = false;
                 IsDisplayMessage = false;
-                await _navigation.PushAsync(new HomePage());
+                await _navigation.PushAsync(new MapPage());
             }
 
         }
@@ -802,6 +802,77 @@ namespace SloperMobile.ViewModel
             }
             return resource;
         }
+
+        public string GetSummarySteepnessResourceName(string steep)
+        {
+            string resource = "icon_steepness_1_slab_border_80x80";
+            switch (steep)
+            {
+                case "1":
+                    resource = "icon_steepness_1_slab_border_80x80";
+                    break;
+                case "2":
+                    resource = "icon_steepness_2_vertical_border_80x80";
+                    break;
+                case "4":
+                    resource = "icon_steepness_4_overhanging_border_80x80";
+                    break;
+                case "8":
+                    resource = "icon_steepness_8_roof_border_80x80";
+                    break;
+            }
+            return resource;
+        }
+
+        public string GetSummaryHoldTypeResourceName(string hold)
+        {
+            string resource = "icon_hold_type_1_slopers_border_80x80";
+            switch (hold)
+            {
+                case "1":
+                    resource = "icon_hold_type_1_slopers_border_80x80";
+                    break;
+                case "2":
+                    resource = "icon_hold_type_2_crimps_border_80x80";
+                    break;
+                case "4":
+                    resource = "icon_hold_type_4_jugs_border_80x80";
+                    break;
+                case "8":
+                    resource = "icon_hold_type_8_pockets_border_80x80";
+                    break;
+            }
+            return resource;
+        }
+
+        public string GetSummaryRouteStyleResourceName(string route)
+        {
+            string resource = "icon_route_style_1_technical_border_80x80";
+            switch (route)
+            {
+                case "1":
+                    resource = "icon_route_style_1_technical_border_80x80";
+                    break;
+                case "2":
+                    resource = "icon_route_style_2_sequential_border_80x80";
+                    break;
+                case "4":
+                    resource = "icon_route_style_4_powerful_border_80x80";
+                    break;
+                case "8":
+                    resource = "icon_route_style_8_sustained_border_80x80";
+                    break;
+                case "16":
+                    resource = "icon_route_style_16_one_move_border_80x80";
+                    break;
+                case "all":
+                    resource = "icon_route_style_32_everything_border_80x80";
+                    break;
+            }
+            return resource;
+        }
+
+
 
 
         private static byte[] ReadStreamByte(Stream input)

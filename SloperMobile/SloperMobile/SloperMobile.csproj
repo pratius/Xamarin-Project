@@ -200,31 +200,23 @@
     <Compile Include="Views\TopoSectorPage.xaml.cs">
       <DependentUpon>TopoSectorPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\AscentRating.xaml %28copy%29.cs">
-      <DependentUpon>AscentRating %28copy%29.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\AscentClimbingAngle.xaml %28copy%29.cs">
-      <DependentUpon>AscentClimbingAngle %28copy%29.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\AscentRating %28copy%29.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\AscentClimbingAngle %28copy%29.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
+    <None Include="Resources\drawable-hdpi\icon_profile_large.png" />
+    <None Include="Resources\drawable-ldpi\icon_profile_large.png" />
+    <None Include="Resources\drawable-mdpi\icon_profile_large.png" />
+    <None Include="Resources\drawable-xhdpi\icon_profile_large.png" />
+    <None Include="Resources\drawable-xxhdpi\icon_profile_large.png" />
+    <None Include="Resources\drawable-xxxhdpi\icon_profile_large.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">

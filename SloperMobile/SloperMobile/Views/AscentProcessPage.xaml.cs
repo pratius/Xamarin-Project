@@ -58,7 +58,7 @@ namespace SloperMobile.Views
                     string[] arr1 = a.Split(',');
                     foreach (string sa in arr1)
                     {
-                        iconsource.Add(AscentProcessVM.GetAngleResourceName(sa));
+                        iconsource.Add(AscentProcessVM.GetSummarySteepnessResourceName(sa));
                     }
                     gridrowcount += arr1.Count();
                 }
@@ -67,7 +67,7 @@ namespace SloperMobile.Views
                     string[] arr2 = b.Split(',');
                     foreach (string sb in arr2)
                     {
-                        iconsource.Add(AscentProcessVM.GetHoldResourceName(sb));
+                        iconsource.Add(AscentProcessVM.GetSummaryHoldTypeResourceName(sb));
                     }
                     gridrowcount += arr2.Count();
                 }
@@ -76,7 +76,7 @@ namespace SloperMobile.Views
                     string[] arr3 = c.Split(',');
                     foreach (string sc in arr3)
                     {
-                        iconsource.Add(AscentProcessVM.GetRouteResourceName(sc));
+                        iconsource.Add(AscentProcessVM.GetSummaryRouteStyleResourceName(sc));
                     }
                     gridrowcount += arr3.Count();
                 }
