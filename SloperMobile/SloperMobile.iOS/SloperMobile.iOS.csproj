@@ -94,6 +94,7 @@
     <CodesignKey>iPhone Developer: steve@sbx.ca (5BWJV25VDE)</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomListView.cs" />
     <Compile Include="DependancyObjects\SQLite_iOS.cs" />
     <Compile Include="HybridWebViewRenderers.cs" />
     <Compile Include="Main.cs" />

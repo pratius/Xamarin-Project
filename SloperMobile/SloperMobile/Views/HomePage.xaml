@@ -2,54 +2,60 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SloperMobile.Views.HomePage" Style="{StaticResource AppBackgroundColor}">
-	<ContentPage.Padding>
-    	<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
-	</ContentPage.Padding>
-  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20,20,20,20">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="50*" />
-      <RowDefinition Height="20*" />
-      <RowDefinition Height="1" />
-      <RowDefinition Height="20*" />
-	  <RowDefinition Height="10*" />
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="1*"/>
-      <ColumnDefinition Width="1"/>
-      <ColumnDefinition Width="1*"/>
-    </Grid.ColumnDefinitions>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+    </ContentPage.Padding>
+    <CarouselPage.BackgroundColor>
+        <OnPlatform x:TypeArguments="Color"
+                            Android="#151515"
+                            iOS="#151515"></OnPlatform>
+    </CarouselPage.BackgroundColor>
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
 
-    <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" BackgroundColor="#191919" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
-    <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#191919" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
+            <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" BackgroundColor="#191919" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
+            <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#191919" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
 
-    <Grid Grid.ColumnSpan="3" ColumnSpacing="0" VerticalOptions="Center" HorizontalOptions="Center">
-      <Image Source="logo_215w" VerticalOptions="Center" HorizontalOptions="Center"/>
-    </Grid>
+            <Grid Grid.ColumnSpan="3" ColumnSpacing="0" VerticalOptions="Center" HorizontalOptions="Center">
+                <Image Source="logo_215w" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Grid>
 
-    <Grid Grid.Row="1" Grid.Column="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-      <Grid.GestureRecognizers>
-        <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="MapPage"/>
-      </Grid.GestureRecognizers>
-      <Image Aspect="AspectFit" Source="icon_climbing_map" VerticalOptions="Center" HorizontalOptions="Center"/>
-    </Grid>
-		
-	<Grid  Grid.Row="1" Grid.Column="2" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-      <Grid.GestureRecognizers>
-        <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="SendsPage"/>
-      </Grid.GestureRecognizers>
-      <Image Aspect="AspectFit" Source="icon_sends" VerticalOptions="Center" HorizontalOptions="Center"/>
-    </Grid>
+            <Grid Grid.Row="1" Grid.Column="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="MapPage"/>
+                </Grid.GestureRecognizers>
+                <Image Aspect="AspectFit" Source="icon_climbing_map" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Grid>
 
-    <Grid  Grid.Row="3" Grid.Column="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-      <!--
+            <Grid  Grid.Row="1" Grid.Column="2" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="SendsPage"/>
+                </Grid.GestureRecognizers>
+                <Image Aspect="AspectFit" Source="icon_sends" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Grid>
+
+            <Grid  Grid.Row="3" Grid.Column="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+                <!--
       add this back in once we have somewhere to go
       	<Grid.GestureRecognizers>
               <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="ClimbingDaysPage"/>
       	</Grid.GestureRecognizers>
       -->
 
-      <RelativeLayout>
-        <Image Aspect="AspectFit" Source="icon_climbing_days" VerticalOptions="Center" HorizontalOptions="Center"
+                <RelativeLayout>
+                    <Image Aspect="AspectFit" Source="icon_climbing_days" VerticalOptions="Center" HorizontalOptions="Center"
             x:Name="climbBox"
             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
             Property=Height,Factor=.15,Constant=0}"
@@ -57,7 +63,7 @@
             Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
             RelativeLayout.HeightConstraint="{ConstraintExpression
             Type=RelativeToParent,Property=Height,Factor=.65,Constant=0}" />
-        <Label x:Name="climb_year" TextColor="Black" Text="{Binding Path=ClimbingYear}" FontSize="Micro"
+                    <Label x:Name="climb_year" TextColor="Black" Text="{Binding Path=ClimbingYear}" FontSize="Micro"
             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
             ElementName=climbBox,Property=Y,Factor=1,Constant=7}"
             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
@@ -66,7 +72,7 @@
             Type=RelativeToParent,Property=Width,Factor=.5,Constant=0}"
             RelativeLayout.HeightConstraint="{ConstraintExpression
             Type=RelativeToParent,Property=Height,Factor=.5,Constant=0}" />
-        <Label x:Name="climb_days" TextColor="White" Text="{Binding Path=ClimbDaysCount}" FontSize="Medium"
+                    <Label x:Name="climb_days" TextColor="White" Text="{Binding Path=ClimbDaysCount}" FontSize="Medium"
             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
             ElementName=climbBox,Property=Y,Factor=1,Constant=30}"
             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
@@ -75,18 +81,19 @@
             Type=RelativeToParent,Property=Width,Factor=.5,Constant=0}"
             RelativeLayout.HeightConstraint="{ConstraintExpression
             Type=RelativeToParent,Property=Height,Factor=.5,Constant=0}" />
-        
-      </RelativeLayout>
-      <!--<Image Aspect="AspectFit" Source="icon_climbing_days" VerticalOptions="Center" HorizontalOptions="Center"/>-->
-    </Grid>
-		
-	<Grid  Grid.Row="3" Grid.Column="2" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-      <Grid.GestureRecognizers>
-        <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="NewsPage"/>
-      </Grid.GestureRecognizers>
-      <Image Aspect="AspectFit" Source="icon_news" VerticalOptions="Center" HorizontalOptions="Center"/>
-	</Grid>
-		
-  </Grid>
+
+                </RelativeLayout>
+                <!--<Image Aspect="AspectFit" Source="icon_climbing_days" VerticalOptions="Center" HorizontalOptions="Center"/>-->
+            </Grid>
+
+            <Grid  Grid.Row="3" Grid.Column="2" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="NewsPage"/>
+                </Grid.GestureRecognizers>
+                <Image Aspect="AspectFit" Source="icon_news" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
 
 </ContentPage>
