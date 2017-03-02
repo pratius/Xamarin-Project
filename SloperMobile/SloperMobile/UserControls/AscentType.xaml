@@ -55,13 +55,13 @@
 		</Frame>
 		<Frame x:Name="ProjectBurn" Grid.Row="5" Grid.Column="0" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
 			<Frame.GestureRecognizers>
-				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="ProjectBurn"/>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Project"/>
 			</Frame.GestureRecognizers>
 			<Label Text="Project Burn"  Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center"/>
 		</Frame>
 		<Frame x:Name="OneHang" Grid.Row="5" Grid.Column="2" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
 			<Frame.GestureRecognizers>
-				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="OneHang"/>
+				<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="One hang"/>
 			</Frame.GestureRecognizers>
 			<Label Text="One Hang" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center"/>
 		</Frame>

@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
-             HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="30,30,30,30" BackgroundColor="Black"
-             x:Class="SloperMobile.UserControls.AscentRating">
-  <Label Text="Rate the climb!"  TextColor="White" FontSize="28" HorizontalOptions="Center"/>
-  <Label/>
-  <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-
-    <rating:SfRating x:Name="rating" ItemCount="3" ItemSize="30" Precision="Standard"
-                            Value="{Binding SendRating, Mode=TwoWay}"
-                            HorizontalOptions="End" VerticalOptions="Start">
-      <rating:SfRating.RatingSettings>
-        <rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="White" UnRatedStroke="White" />
-      </rating:SfRating.RatingSettings>
-    </rating:SfRating>
-
-  </StackLayout>
-  <Editor x:Name="rate_comment" Text="{Binding CommentText,Mode=TwoWay}" HeightRequest="100" Style="{StaticResource GeneralEditorStyle}"></Editor>
-  <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-    <Image Source="Camera" HeightRequest="90" WidthRequest="90">
-      <Image.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding CameraClickCommand}"/>
-      </Image.GestureRecognizers>
-    </Image>
-    <Label BackgroundColor="White"/>
-    <Image Source="Video.png" HeightRequest="90" WidthRequest="90"/>
-    <Label/>
-    <Image Source="Comment" HeightRequest="90" WidthRequest="90"/>
-  </StackLayout>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" x:Class="SloperMobile.UserControls.AscentRating">
+	<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,20,0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="20*" />
+			<RowDefinition Height="10*" />
+			<RowDefinition Height="10*" />
+			<RowDefinition Height="10*" />
+			<RowDefinition Height="10*" />
+			<RowDefinition Height="20*" />
+			<RowDefinition Height="20*" />
+		</Grid.RowDefinitions>
+		<Label Grid.Row="0" Text="Rate the climb!" TextColor="White" FontSize="24" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
+		<rating:SfRating Grid.Row="1" x:Name="rating" WidthRequest="85" ItemCount="3" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" VerticalOptions="Start" HorizontalOptions="Center">
+			<rating:SfRating.RatingSettings>
+				<rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" UnRatedStrokeWidth="1" RatedStrokeWidth="1" HorizontalOptions="Center" />
+			</rating:SfRating.RatingSettings>
+		</rating:SfRating>
+		<Label Grid.Row="2" Text="Attach a photo" TextColor="White" FontSize="20" HorizontalOptions="Center" VerticalOptions="End" />
+		<Image Grid.Row="3" Source="icon_photo_44w" HorizontalOptions="Center" VerticalOptions="Start">
+			<Image.GestureRecognizers>
+				<TapGestureRecognizer Command="{Binding CameraClickCommand}" />
+			</Image.GestureRecognizers>
+		</Image>
+		<Label Grid.Row="4" Text="Comments" TextColor="White" FontSize="20" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
+		<Editor Grid.Row="5" x:Name="rate_comment" Text="{Binding CommentText,Mode=TwoWay}" HeightRequest="100" VerticalOptions="Start" Style="{StaticResource GeneralEditorStyle}" />
+	</Grid>
 </StackLayout>
