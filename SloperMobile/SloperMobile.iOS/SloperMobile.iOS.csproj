@@ -13,7 +13,8 @@
     <AssemblyName>SloperMobileiOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ReleaseVersion>v100</ReleaseVersion>
+    <ReleaseVersion>v105</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -93,6 +94,7 @@
     <CodesignKey>iPhone Developer: steve@sbx.ca (5BWJV25VDE)</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomListView.cs" />
     <Compile Include="DependancyObjects\SQLite_iOS.cs" />
     <Compile Include="HybridWebViewRenderers.cs" />
     <Compile Include="Main.cs" />
@@ -423,6 +425,9 @@
     <BundleResource Include="Resources\icon_profile_large.png" />
     <BundleResource Include="Resources\icon_profile_large%402x.png" />
     <BundleResource Include="Resources\icon_profile_large%403x.png" />
+    <BundleResource Include="Resources\scenic_shot_portrait.png" />
+    <BundleResource Include="Resources\scenic_shot_portrait%402x.png" />
+    <BundleResource Include="Resources\scenic_shot_portrait%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

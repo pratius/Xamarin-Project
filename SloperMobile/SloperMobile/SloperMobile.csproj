@@ -212,12 +212,6 @@
     <None Include="app.config" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
-    <None Include="Resources\drawable-hdpi\icon_profile_large.png" />
-    <None Include="Resources\drawable-ldpi\icon_profile_large.png" />
-    <None Include="Resources\drawable-mdpi\icon_profile_large.png" />
-    <None Include="Resources\drawable-xhdpi\icon_profile_large.png" />
-    <None Include="Resources\drawable-xxhdpi\icon_profile_large.png" />
-    <None Include="Resources\drawable-xxxhdpi\icon_profile_large.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">
@@ -380,15 +374,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Home-Climbing-Days.svg" />
-    <Content Include="Resources\Home-Climbing-Map.svg" />
-    <Content Include="Resources\Home-Logo.svg" />
-    <Content Include="Resources\Home-News.svg" />
-    <Content Include="Resources\Home-Profile.svg" />
-    <Content Include="Resources\Home-Pyramid.svg" />
-    <Content Include="Resources\Home-Sends.svg" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="UserControls\FooterUC.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -515,6 +500,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

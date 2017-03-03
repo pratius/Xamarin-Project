@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.UserControls.SendsUC">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -54,7 +54,7 @@
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding route_name}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 <Label Grid.Row="0" Grid.Column="2" Text="{Binding Tech_Grade_Description}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 <Label Grid.Row="0" Grid.Column="3" Text="{Binding Ascent_Type_Description}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-								<BoxView Grid.Row="1" Grid.ColumnSpan="4" BackgroundColor="#191919" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+								<BoxView Grid.Row="1" Grid.ColumnSpan="4" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
                             </Grid>
 						</ViewCell>
                     </DataTemplate>

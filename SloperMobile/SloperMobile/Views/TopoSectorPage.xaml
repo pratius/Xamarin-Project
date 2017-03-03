@@ -4,9 +4,9 @@
               xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
               x:Class="SloperMobile.Views.TopoSectorPage"
               NavigationPage.HasNavigationBar="True" Style="{StaticResource AppBackgroundColor}">
-	<ContentPage.Padding>
+<!--	<ContentPage.Padding>
     	<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
-	</ContentPage.Padding>		
+	</ContentPage.Padding>		-->
   <!--<ContentPage>
     <StackLayout Grid.Column="1" Grid.Row="3" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
       <Button Text="GO"  Margin="01" Style="{StaticResource GeneralButtonStyle}" Command="{Binding GoCommand}" />

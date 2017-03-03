@@ -23,8 +23,8 @@
 			<Label Text="the climbing?" TextColor="White" FontSize="24" HorizontalTextAlignment="Center"/>
 		</StackLayout>
 
-	    <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" BackgroundColor="#191919" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
-	    <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#191919" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
+	    <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" BackgroundColor="#676767" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
+	    <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
 
 		<Frame x:Name="Slab" Grid.Row="1" Grid.Column="0" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 			<Frame.GestureRecognizers>

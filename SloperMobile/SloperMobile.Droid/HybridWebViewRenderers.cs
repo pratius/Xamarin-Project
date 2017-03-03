@@ -25,9 +25,10 @@ namespace SloperMobile.Droid
         {
             if (Control != null)
             {
-                //Control.Settings.UseWideViewPort = true;
+                Control.Settings.UseWideViewPort = true;
                 Control.Settings.BuiltInZoomControls = true;
-                Control.Settings.DisplayZoomControls = true;
+                Control.Settings.DisplayZoomControls = false;
+                //Control.Settings.DefaultZoom = 0.7;
             }
             base.OnElementPropertyChanged(sender, e);
         }

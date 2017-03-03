@@ -11,7 +11,7 @@
 			<RowDefinition Height="20*" />
 		</Grid.RowDefinitions>
 		<Label Grid.Row="0" Text="Rate the climb!" TextColor="White" FontSize="24" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
-		<rating:SfRating Grid.Row="1" x:Name="rating" WidthRequest="85" ItemCount="3" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" VerticalOptions="Start" HorizontalOptions="Center">
+		<rating:SfRating Grid.Row="1" x:Name="rating" WidthRequest="145" ItemCount="5" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" VerticalOptions="Start" HorizontalOptions="Center">
 			<rating:SfRating.RatingSettings>
 				<rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" UnRatedStrokeWidth="1" RatedStrokeWidth="1" HorizontalOptions="Center" />
 			</rating:SfRating.RatingSettings>
