@@ -911,6 +911,12 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon_profile_large.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_profile_large.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_profile_large.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\scenic_shot_portrait.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\scenic_shot_portrait.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\scenic_shot_portrait.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\scenic_shot_portrait.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\scenic_shot_portrait.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\scenic_shot_portrait.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">

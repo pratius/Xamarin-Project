@@ -5,13 +5,8 @@
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
     </ContentPage.Padding>
-    <CarouselPage.BackgroundColor>
-        <OnPlatform x:TypeArguments="Color"
-                            Android="#151515"
-                            iOS="#151515"></OnPlatform>
-    </CarouselPage.BackgroundColor>
-    <ContentPage.Content>
-        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0">
+	<ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0" Margin="20,0,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50*" />
                 <RowDefinition Height="20*" />
@@ -25,8 +20,8 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" BackgroundColor="#191919" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
-            <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#191919" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
+            <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" BackgroundColor="#676767" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
+            <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
 
             <Grid Grid.ColumnSpan="3" ColumnSpacing="0" VerticalOptions="Center" HorizontalOptions="Center">
                 <Image Source="logo_215w" VerticalOptions="Center" HorizontalOptions="Center"/>

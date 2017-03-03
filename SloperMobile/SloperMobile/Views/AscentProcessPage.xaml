@@ -47,7 +47,7 @@
 				<Image Source="{Binding SummaryImage}" IsVisible="true" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0,0,0,30" />
 				<!--<XLabUC:HybridWebView x:Name="webView" BackgroundColor="White" IsVisible="{Binding IsDisplaySummaryWeb}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />-->
 				<XLabUC:HybridWebView x:Name="webView" BackgroundColor="White" IsVisible="false" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />
-				<rating:SfRating x:Name="rating_summary" WidthRequest="85" ItemCount="3" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True" HorizontalOptions="Center" VerticalOptions="Start">
+				<rating:SfRating x:Name="rating_summary" WidthRequest="145" ItemCount="5" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True" HorizontalOptions="Center" VerticalOptions="Start">
 					<rating:SfRating.RatingSettings>
 						<rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" />
 					</rating:SfRating.RatingSettings>

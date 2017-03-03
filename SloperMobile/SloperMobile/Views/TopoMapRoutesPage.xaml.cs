@@ -32,6 +32,9 @@ namespace SloperMobile.Views
                 {
                     MapRouteVM.LoadRouteData(routeId, listData);
                     MapRouteVM.IsPopupShow = true;
+                    // load the scenic shot if there are no topos available
+                    webView.IsVisible = false;
+                    this.BackgroundImage = "scenic_shot_portrait";
                 }
                 MapRouteVM.OnConditionNavigation = OnPageNavigation;
                 MapRouteVM.IsRunningTasks = true;
@@ -94,7 +97,7 @@ namespace SloperMobile.Views
                 if (_routeId > 0)
                 {
                     MapRouteVM.LoadRouteData(_routeId, listData);
-                    MapRouteVM.IsPopupHide = true;
+                    MapRouteVM.IsPopupHide = false;
                     webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (Cache.CurrentScreenHeight), _routeId, true);
                 }
             }
