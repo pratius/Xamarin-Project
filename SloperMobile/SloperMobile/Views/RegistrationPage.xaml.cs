@@ -23,7 +23,7 @@ namespace SloperMobile.Views
 
         private async void LoginViewModel_OnLoginClick()
         {
-            await Navigation.PushAsync(new LoginPage());
+            await Navigation.PushAsync(new MenuNavigationPage());
         }
 
         private async void OnLogin(object sender, EventArgs e)

@@ -10,6 +10,8 @@ using XLabs.Serialization;
 using XLabs.Serialization.JsonNET;
 using XLabs.Forms.Controls;
 using XLabs.Platform.Device;
+using Acr.UserDialogs;
+
 namespace SloperMobile.Droid
 {
     [Activity(Label = "SloperMobile", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -32,7 +34,7 @@ namespace SloperMobile.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             ImageCircleRenderer.Init();
-
+            UserDialogs.Init(this);
 
             LoadApplication(new App());
             CrashManager.Register(this, AppSetting.HockeyAppId);

@@ -28,6 +28,8 @@ namespace SloperMobile.DataBase
             dbConn.CreateTable<TASCENT_TYPE>();
             dbConn.CreateTable<TTECH_GRADE>();
             dbConn.CreateTable<T_GRADE>();
+            dbConn.CreateTable<T_BUCKET>();
+
             if (dbConn.Table<TASCENT_TYPE>().Count() == 0)
             {
                 string ascent_types = "Onsight,Flash,Redpoint,Repeat,One hang,Project";
@@ -65,7 +67,26 @@ namespace SloperMobile.DataBase
                 }
             }
 
+            if (dbConn.Table<T_BUCKET>().Count() == 0)
+            {
+                string grade_type_id = "1,1,1,1,1,7,7,7,7,7,15,15,15,15,15,19,19,19,19,19";
+                string[] grd_typ_id = grade_type_id.Split(',');
 
+                string grade_bucket_id = "1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5";
+                string[] grd_bkt_id = grade_bucket_id.Split(',');
+
+                string bucket_name = "< 5 ,5+ - 6a+,6b - 7a,7a+ - 7c+,8a >,< HS,VS - E1,E2 - E4,E5 - E6,E7 >,< 5.9,10a - 10d,11a - 11d,12a - 12d,13a >,< 5.9,10a - 10d,11a - 11d,12a - 12d,13a >";
+                string[] bkt_name = bucket_name.Split(',');
+
+                for (int i = 0; i < grd_typ_id.Length; i++)
+                {
+                    T_BUCKET tblObj = new T_BUCKET();
+                    tblObj.grade_type_id = grd_typ_id[i];
+                    tblObj.grade_bucket_id = grd_bkt_id[i];
+                    tblObj.bucket_name = bkt_name[i];
+                    dbConn.Insert(tblObj);
+                }
+            }
 
         }
         //============================= LAST_UPDATE ============================
@@ -327,6 +348,26 @@ namespace SloperMobile.DataBase
         {
             var item = from tg in dbConn.Table<TTECH_GRADE>() where tg.grade_type_id == grade_typeid select tg.tech_grade;
             return item.ToList();
+        }
+
+        public List<GradeId> GetGradeTypeIdByCragId(string cragid)
+        {
+            //var item = (from tr in dbConn.Table<T_ROUTE>() join ts in dbConn.Table<T_SECTOR>() 
+            //            on tr.sector_id equals ts.sector_id where ts.crag_id==cragid select tr.grade_type_id).Distinct();
+
+            var item = dbConn.Query<GradeId>("SELECT distinct T_ROUTE.grade_type_id FROM T_ROUTE JOIN T_SECTOR ON T_ROUTE.sector_id = T_SECTOR.sector_id WHERE T_SECTOR.crag_id = ?", cragid);
+            return item;
+        }
+
+        public List<GradeId> GetGradeTypeIdBySectorId(string sectorid)
+        {
+            var item = dbConn.Query <GradeId>("SELECT distinct grade_type_id  FROM T_ROUTE  WHERE sector_id = ?", sectorid);
+            return item;
+        }
+
+        public List<string> GetBucketNameByGradeTypeId(string gradetypeid)
+        {
+            return dbConn.Table<T_BUCKET>().Where(x => x.grade_type_id == gradetypeid).OrderBy(x => x.grade_bucket_id).Select(x => x.bucket_name).ToList<string>();
         }
 
         #endregion

@@ -159,8 +159,33 @@ namespace SloperMobile.ViewModel
                     {
 
                         await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
-                        DisposeObject();
-                        OnPageNavigation?.Invoke();
+                        
+                        HttpClientHelper apilogin = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
+                        LoginReq.u = RegistrationReq.UserName;
+                        LoginReq.p = RegistrationReq.Password;
+                        var loginjson = JsonConvert.SerializeObject(LoginReq);
+                        var logresponse = await apilogin.Post<LoginResponse>(loginjson);
+                        if (logresponse != null)
+                        {
+                            if (logresponse.accessToken != null && logresponse.renewalToken != null)
+                            {
+                                Settings.AccessTokenSettings = logresponse.accessToken;
+                                Settings.RenewalTokenSettings = logresponse.renewalToken;
+                                Settings.DisplayNameSettings = logresponse.displayName;
+                                var climbdays = await HttpGetClimbdays();
+                                if (climbdays != null)
+                                {
+                                    Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
+                                }
+                                OnPageNavigation?.Invoke();
+                                DisposeObject();
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
+                            }
+                        }
+                        
                     }
                     else
                     {

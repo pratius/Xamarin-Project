@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.Views.RegistrationPage" Style="{StaticResource AppBackgroundColor}">
-	<ContentPage.Padding>
-		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
-	</ContentPage.Padding>
-	<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="40,0,40,0">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="30*" />
-			<RowDefinition Height="50*" />
-			<RowDefinition Height="20*" />
-		</Grid.RowDefinitions>
-		<Image Grid.Row="0" Source="logo_170w" VerticalOptions="Center" HorizontalOptions="Center" />
-		<StackLayout Grid.Row="1" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Fill" Spacing="20">
-			<Entry Text="{Binding RegistrationReq.FirstName}" Placeholder="First Name" Style="{StaticResource GeneralTxtStyle}" />
-			<Entry Text="{Binding RegistrationReq.LastName}" Placeholder="Last Name" Style="{StaticResource GeneralTxtStyle}" />
-			<Entry x:Name="txtlogin" Text="{Binding RegistrationReq.UserName}" Placeholder="Email" Style="{StaticResource GeneralTxtStyle}" />
-			<Entry x:Name="txtPassWord" Text="{Binding RegistrationReq.Password}" IsPassword="True" Placeholder="Password" Style="{StaticResource GeneralTxtStyle}" />
-			<Entry x:Name="txtConfirmPassWord" Text="{Binding ConfirmPassword}" IsPassword="True" Placeholder="Confirm Password" Style="{StaticResource GeneralTxtStyle}" />
-			<Button BorderRadius="0" Text="CREATE ACCOUNT" Command="{Binding RegistrationCommand}" Style="{StaticResource GeneralButtonStyle}" />
-		</StackLayout>
-		<Label Grid.Row="2" Text="Oops, I already have an account!" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center">
-			<Label.GestureRecognizers>
-				<TapGestureRecognizer Tapped="OnLogin" />
-			</Label.GestureRecognizers>
-		</Label>
-		<ActivityIndicator Grid.RowSpan="3" Color="White" IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-	</Grid>
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+  </ContentPage.Padding>
+  <ScrollView Orientation="Vertical">
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="40,0,40,0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="30*" />
+        <RowDefinition Height="50*" />
+        <RowDefinition Height="20*" />
+      </Grid.RowDefinitions>
+      <Image Grid.Row="0" Source="logo_170w" VerticalOptions="Center" HorizontalOptions="Center" />
+      <StackLayout Grid.Row="1" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Fill" Spacing="20">
+        <Entry Text="{Binding RegistrationReq.FirstName}" Placeholder="First Name" Style="{StaticResource GeneralTxtStyle}" />
+        <Entry Text="{Binding RegistrationReq.LastName}" Placeholder="Last Name" Style="{StaticResource GeneralTxtStyle}" />
+        <Entry x:Name="txtlogin" Text="{Binding RegistrationReq.UserName}" Placeholder="Email" Style="{StaticResource GeneralTxtStyle}" />
+        <Entry x:Name="txtPassWord" Text="{Binding RegistrationReq.Password}" IsPassword="True" Placeholder="Password" Style="{StaticResource GeneralTxtStyle}" />
+        <Entry x:Name="txtConfirmPassWord" Text="{Binding ConfirmPassword}" IsPassword="True" Placeholder="Confirm Password" Style="{StaticResource GeneralTxtStyle}" />
+        <Button BorderRadius="0" Text="CREATE ACCOUNT" Command="{Binding RegistrationCommand}" Style="{StaticResource GeneralButtonStyle}" />
+      </StackLayout>
+      <Label Grid.Row="2" Text="Oops, I already have an account!" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center">
+        <Label.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnLogin" />
+        </Label.GestureRecognizers>
+      </Label>
+      <ActivityIndicator Grid.RowSpan="3" Color="White" IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+    </Grid>
+  </ScrollView>
 </ContentPage>

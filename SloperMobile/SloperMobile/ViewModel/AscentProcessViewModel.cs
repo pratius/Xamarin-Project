@@ -15,6 +15,7 @@ using Xamarin.Forms;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System.IO;
+using Acr.UserDialogs;
 
 namespace SloperMobile.ViewModel
 {
@@ -80,7 +81,7 @@ namespace SloperMobile.ViewModel
             SendRatingCommand = new DelegateCommand(ExecuteOnRating);
             SendSummaryCommand = new DelegateCommand(ExecuteOnSummary);
             CameraClickCommand = new DelegateCommand(ExecuteOnCameraClick);
-            //GalleryClickCommand = new DelegateCommand(ExecuteOnGalleryClick);
+            CommentClickCommand = new DelegateCommand(ExecuteOnCommentClick);
             var grades = App.DAUtil.GetTtechGrades(routeData.grade_type_id);
             AscentGrades = grades;
             if (grades.Count > 0)
@@ -271,7 +272,7 @@ namespace SloperMobile.ViewModel
         public DelegateCommand SendSummaryCommand { get; set; }
 
         public DelegateCommand CameraClickCommand { get; set; }
-        //public DelegateCommand GalleryClickCommand { get; set; }
+        public DelegateCommand CommentClickCommand { get; set; }
         #endregion
 
         private void ExecuteOnSendType(object obj)
@@ -608,22 +609,25 @@ namespace SloperMobile.ViewModel
             }
         }
 
-        //private async void ExecuteOnGalleryClick(object obj)
-        //{
-        //    await CrossMedia.Current.Initialize();
-        //    if (!CrossMedia.Current.IsPickPhotoSupported)
-        //    {
-        //        await Application.Current.MainPage.DisplayAlert("No Gallery", "Picking a photo is not supported.", "OK");
-        //        return;
-        //    }
-        //    var file = await CrossMedia.Current.PickPhotoAsync();
-        //    if (file == null)
-        //    {
-        //        return;
-        //    }
-        //    SummaryImage = ImageSource.FromStream(() => file.GetStream());
-        //    CameraImage = file.GetStream();
-        //}
+        private async void ExecuteOnCommentClick(object obj)
+        {
+            PromptResult result = await UserDialogs.Instance.PromptAsync(new PromptConfig
+            {
+                Title = "Comment",
+                InputType = InputType.Name,
+                Message = "Please write your experience here",
+                Text= CommentText,
+                MaxLength = 250,
+                Placeholder = "type here",
+                OkText = "Ok",
+                IsCancellable = true,
+                CancelText = "Cancel"
+            });
+            if(result.Ok)
+            {
+                CommentText = result.Text;
+            }
+        }
 
         private async void ExecuteOnSummary(object obj)
         {
@@ -724,6 +728,7 @@ namespace SloperMobile.ViewModel
                 }
                 CommandText = "Close";
                 IsButtonInable = true;
+                return;
             }
             else
             {

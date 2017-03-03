@@ -37,6 +37,13 @@ namespace SloperMobile.ViewModel
             set { currentsec = value; OnPropertyChanged(); }
         }
 
+        private List<BucketLegends> legendsdata;
+        public List<BucketLegends> LegendsData
+        {
+            get { return legendsdata; }
+            set { legendsdata = value; OnPropertyChanged(); }
+        }
+
         #region DelegateCommand
 
         public DelegateCommand TapSectorCommand { get; set; }
@@ -52,6 +59,8 @@ namespace SloperMobile.ViewModel
                 PageHeaderText = SelectedSector.SectorName;
                 PageSubHeaderText = currentCrag.crag_name;
                 SectorImage = SelectedSector.SectorImage;
+                LegendsData=LoadLegendsBucket();
+
                 TapSectorCommand = new DelegateCommand(TapOnSectorImage);
                 var routes = App.DAUtil.GetRoutesBySectorId(SelectedSector.SectorId);
                 RoutesData = new List<RouteData>();
@@ -170,6 +179,37 @@ namespace SloperMobile.ViewModel
                     break;
             }
             return resource;
+        }
+
+        private List<BucketLegends> LoadLegendsBucket()
+        {
+            try
+            {
+                List<BucketLegends> bucketlist = new List<BucketLegends>();
+                List<GradeId> gradetyp_id = new List<GradeId>();
+                List<string> bucketname = new List<string>();
+                gradetyp_id = App.DAUtil.GetGradeTypeIdBySectorId(CurrentSector.SectorId);
+                if (gradetyp_id == null) return bucketlist;
+                foreach (GradeId grdtypid in gradetyp_id)
+                {
+                    bucketname = App.DAUtil.GetBucketNameByGradeTypeId(grdtypid.grade_type_id);
+                    if (bucketname != null && bucketname.Count == 5)
+                    {
+                        BucketLegends bktObj = new BucketLegends();
+                        bktObj.BucketName1 = bucketname[0];
+                        bktObj.BucketName2 = bucketname[1];
+                        bktObj.BucketName3 = bucketname[2];
+                        bktObj.BucketName4 = bucketname[3];
+                        bktObj.BucketName5 = bucketname[4];
+                        bucketlist.Add(bktObj);
+                    }
+                }
+                return bucketlist;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 
