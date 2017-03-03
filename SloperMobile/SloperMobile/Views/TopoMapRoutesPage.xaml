@@ -103,7 +103,7 @@
 					<Image Source="{Binding TopRouteStyle_54}" WidthRequest="54" HeightRequest="54" />
 					<Image Source="{Binding TopAngle_54}" WidthRequest="54" HeightRequest="54" />
 				</StackLayout>
-				<Grid Grid.Row="4" VerticalOptions="Start" HorizontalOptions="Center">
+				<Grid Grid.Row="4" VerticalOptions="Start" HorizontalOptions="Center" ColumnSpacing="20">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="1*" />
 						<ColumnDefinition Width="1*" />
