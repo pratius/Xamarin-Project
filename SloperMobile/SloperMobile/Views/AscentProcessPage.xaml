@@ -34,8 +34,7 @@
 				<RowDefinition Height="02" />
 				<RowDefinition Height=".1*" />
 				<RowDefinition Height=".7*" />
-				<RowDefinition Height=".1*" />
-				<RowDefinition Height="02" />
+				<RowDefinition Height="100" />
 			</Grid.RowDefinitions>
 			<StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
 				<Label Text="AWESOME" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
@@ -67,7 +66,9 @@
 					<Image Margin="03" Source="instagram_symbol" Aspect="AspectFit" />
 					<Image Margin="03" Source="google_plus_logo" Aspect="AspectFit" />
 				</StackLayout>-->
-				<Button Margin="0,30,0,0" Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}" IsEnabled="{Binding IsButtonInable}" WidthRequest="100" />
+			</StackLayout>
+			<StackLayout Grid.Row="3" Margin="0,30,0,0" VerticalOptions="Start">
+				<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}" IsEnabled="{Binding IsButtonInable}" WidthRequest="100" />
 				<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
 					<ActivityIndicator IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="10" HeightRequest="10" Color="White">
 					</ActivityIndicator>
