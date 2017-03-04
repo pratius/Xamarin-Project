@@ -48,6 +48,14 @@ namespace SloperMobile.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        private int legendheight=0;
+        public int LegendsHeight
+        {
+            get { return legendheight; }
+            set { legendheight = value;OnPropertyChanged(); }
+        }
+
         private List<BucketLegends> legendsdata;
         public List<BucketLegends> LegendsData
         {
@@ -158,6 +166,7 @@ namespace SloperMobile.ViewModel
                         bktObj.BucketName4 = bucketname[3];
                         bktObj.BucketName5 = bucketname[4];
                         bucketlist.Add(bktObj);
+                        LegendsHeight += 10;
                     }
                 }
                 return bucketlist;

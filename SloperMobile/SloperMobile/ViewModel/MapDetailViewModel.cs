@@ -44,6 +44,13 @@ namespace SloperMobile.ViewModel
             set { legendsdata = value; OnPropertyChanged(); }
         }
 
+        private int legendheight = 0;
+        public int LegendsHeight
+        {
+            get { return legendheight; }
+            set { legendheight = value; OnPropertyChanged(); }
+        }
+
         #region DelegateCommand
 
         public DelegateCommand TapSectorCommand { get; set; }
@@ -202,6 +209,7 @@ namespace SloperMobile.ViewModel
                         bktObj.BucketName4 = bucketname[3];
                         bktObj.BucketName5 = bucketname[4];
                         bucketlist.Add(bktObj);
+                        LegendsHeight += 30;
                     }
                 }
                 return bucketlist;

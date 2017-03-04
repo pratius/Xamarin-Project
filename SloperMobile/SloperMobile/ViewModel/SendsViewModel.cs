@@ -54,7 +54,7 @@ namespace SloperMobile.ViewModel
         public int Projects
         {
             get { return projects; }
-            set { projects = value; }
+            set { projects = value; OnPropertyChanged(); }
         }
 
 
@@ -122,7 +122,7 @@ namespace SloperMobile.ViewModel
 
         private void SetChartValue()
         {
-            int _onsight = 0, _redpoint = 0;
+            int _onsight = 0, _redpoint = 0,_project = 0;
             if (SendsList.Count > 0)
             {
                 foreach (var item in SendsList)
@@ -132,10 +132,11 @@ namespace SloperMobile.ViewModel
                     else if (item.Ascent_Type_Id == 3)
                         _redpoint++;
                     else if (item.Ascent_Type_Id == 6)
-                        Projects++;
+                        _project++;
                 }
                 Onsight = (int)Math.Round((double)(100 * _onsight) / SendsList.Count);
                 Redpoint = (int)Math.Round((double)(100 * _redpoint) / SendsList.Count);
+                Projects = _project;
             }
         }
 

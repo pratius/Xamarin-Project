@@ -58,6 +58,12 @@
     <DebugSymbols>True</DebugSymbols>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <AndroidCreatePackagePerAbi>True</AndroidCreatePackagePerAbi>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <BundleAssemblies>False</BundleAssemblies>
+    <AotAssemblies>False</AotAssemblies>
+    <EnableLLVM>False</EnableLLVM>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableProguard>False</EnableProguard>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
