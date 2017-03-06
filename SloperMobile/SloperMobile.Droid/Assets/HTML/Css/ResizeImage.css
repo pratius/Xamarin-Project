@@ -112,9 +112,10 @@
 #point-type-selector-type-close {
     background-image: url(../img/grey-close-button.png);
 }
+.pc{ z-index: 5001 !important;}
 .point-highlighterhide {
     background-color: transparent;
-    border: none;
+    border:none;
     border-radius: 5px;
     position: absolute;
     top: 50px;
@@ -123,6 +124,7 @@
     height: 16px;
     z-index: 5000; /* one above the topo Image but below the display and drawing canvas surfaces */
     box-sizing: border-box;
+
     /* TODO: crosshair background image */
 }
 #arrowleft { 

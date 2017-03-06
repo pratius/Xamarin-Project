@@ -186,6 +186,10 @@
             var initialPoint = point;
             if (initialPoint !== null) {
                 var highlighter = $("<span>").attr("id", "p" + index).addClass('point-highlighterhide p' + index + pointcnt);
+                if (index == 0)
+                {
+                    $(highlighter).addClass("pc");
+                }
                 var x = '' + (initialPoint.x - 15) + 'px';
                 var y = '' + (initialPoint.y - 15) + 'px';
                 highlighter.css('top', y).css('left', x).fadeIn(100)
@@ -193,8 +197,11 @@
 
                 highlighter.attr("data-x", (initialPoint.x - 15)).attr("data-y", (initialPoint.y - 15)).attr("routeId", routeId);
                 highlighter.on('click', function (e) {
-                    if (e.currentTarget.className.indexOf('p0') > -1)
+                   
+                    // if (e.currentTarget.className.indexOf('p0') > -1)
+                    if (e.currentTarget.id.indexOf('p0') > -1) {
                         routePointClick(parseInt(e.currentTarget.attributes[4].value));
+                    }
 
                 });
 
@@ -394,7 +401,7 @@
             ctx.beginPath();
 
             // draw diamond shape of half badgeSize around the centre point
-            var offSet = (badgeSize / 2);
+            var offSet = (badgeSize);
             p.y -= offSet; ctx.moveTo(p.x, p.y);
             p.x += offSet; p.y += offSet; ctx.lineTo(p.x, p.y);
             p.x -= offSet; p.y += offSet; ctx.lineTo(p.x, p.y);
@@ -405,12 +412,12 @@
             ctx.stroke();
 
             //some polishing here to center/center the label
-            var labelFontSize = 9.5;
-            if (label.length > 1) { labelFontSize = 9.0; }
+            var labelFontSize = 15.5;
+            if (label.length > 1) { labelFontSize = 15.0; }
             ctx.font = "" + labelFontSize + "px Arial";
             ctx.textAlign = "center";
             ctx.fillStyle = outlineColour;
-            p.y += (labelFontSize + (badgeSize / 5));
+            p.y += (labelFontSize + (badgeSize/2));
             ctx.fillText(label, p.x, p.y);
             //ctx.fillText("1", p.x, p.y);
 
