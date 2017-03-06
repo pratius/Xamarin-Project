@@ -19,7 +19,7 @@
     </Image>
     <!-- ROUTE LEGENDS STARTS -->
 
-    <Controls:InfiniteListView  x:Name="lstViewlegends" BackgroundColor="Black" SeparatorVisibility="None" HeightRequest="30"
+    <Controls:InfiniteListView  x:Name="lstViewlegends" BackgroundColor="Black" SeparatorVisibility="None" HeightRequest="{Binding LegendsHeight}"
                             HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding LegendsData}">
       <Controls:InfiniteListView.Footer>
         <Label/>
@@ -44,7 +44,7 @@
                 <Label Text="{Binding BucketName5}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="#FD7400"/>
               </StackLayout>
               <!-- SEPARATOR -->
-              <BoxView Grid.Row="2" Grid.ColumnSpan="3" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+              <!--<BoxView Grid.Row="2" Grid.ColumnSpan="3" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />-->
               <!-- END SEPARATOR -->
             </Grid>
           </ViewCell>
