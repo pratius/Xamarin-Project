@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SloperMobile", "SloperMobile\SloperMobile\SloperMobile.csproj", "{B8FBADC5-375B-4A91-8B8E-4152CD63812D}"
 EndProject
@@ -177,8 +177,8 @@ Global
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|Any CPU.ActiveCfg = Debug|iPhone
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|Any CPU.Deploy.0 = Debug|iPhone
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|ARM.ActiveCfg = Debug|iPhone
-		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhone.Build.0 = Debug|iPhone
+		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhone.ActiveCfg = Debug|iPhoneSimulator
+		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhone.Build.0 = Debug|iPhoneSimulator
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|x64.ActiveCfg = Debug|iPhone

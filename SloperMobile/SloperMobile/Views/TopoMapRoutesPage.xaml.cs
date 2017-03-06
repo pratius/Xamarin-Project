@@ -34,6 +34,7 @@ namespace SloperMobile.Views
                     MapRouteVM.IsPopupShow = true;
                     // load the scenic shot if there are no topos available
                     webView.IsVisible = false;
+                    MapRouteVM.IsHideSwipeUp = false;
                     this.BackgroundImage = "scenic_shot_portrait";
                 }
                 MapRouteVM.OnConditionNavigation = OnPageNavigation;
@@ -97,13 +98,13 @@ namespace SloperMobile.Views
                 if (_routeId > 0)
                 {
                     MapRouteVM.LoadRouteData(_routeId, listData);
-                    MapRouteVM.IsPopupHide = false;
+                    MapRouteVM.IsPopupHide = true;
                     webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (Cache.CurrentScreenHeight), _routeId, true);
                 }
             }
             else
             {
-                webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, "11840", (Cache.CurrentScreenHeight));
+                webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, _routeId, (Cache.CurrentScreenHeight));
             }
             MapRouteVM.IsRunningTasks = false;
         }
@@ -122,6 +123,8 @@ namespace SloperMobile.Views
         private void OnSwipeUp(object sender, EventArgs e)
         {
             MapRouteVM.IsPopupHide = false;
+            if(_routeId<=0)
+            webView.CallJsFunction("initDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight);
 
         }
     }

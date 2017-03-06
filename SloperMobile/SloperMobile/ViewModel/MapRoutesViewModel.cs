@@ -32,6 +32,12 @@ namespace SloperMobile.ViewModel
             get { return isPopupHide; }
             set { isPopupHide = value; OnPropertyChanged(); }
         }
+        bool hideSwipeUp=true;
+        public bool IsHideSwipeUp
+        {
+            get { return hideSwipeUp; }
+            set { hideSwipeUp = value; OnPropertyChanged(); }
+        }
 
         private bool isPopupShow;
 

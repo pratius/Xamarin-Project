@@ -29,9 +29,9 @@
             var height = wheight;
             _staticAnnotationData = annotationData;
             _staticData = topoData;
-
+            $('#display-canvas').fadeTo(100, 1);
             $("#mbimage").css('display', 'none');
-            var imgdata = jQuery.parseJSON(_staticData);
+            var imgdata = jQuery.parseJSON(_staticData);                        
             getAnnoation();
             resizeCanvas(imgdata[0], height);
 
@@ -43,7 +43,7 @@
             clearAll("display-canvas");
             _staticAnnotationData = annotationData;
             _staticData = topoData;
-
+           
             var imgdata = jQuery.parseJSON(_staticData);
 
             getAnnoation();
@@ -68,11 +68,11 @@
                 }
             }
             //get single route data using routeId
-            if (routeId != null && routeId > 0) {
+            if (routeId != null && routeId > 0) {               
                 var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
-                var Newdata = routeDrawingData;
+                var Newdata = routeDrawingData;                
                 drawLine("drawing-canvas", Newdata.line, 0, 0, 0);
-                var pointLength = Newdata.line.points.length;
+                var pointLength = Newdata.line.points.length;                
 
                 $(Newdata.line.points).each(function (index, point) {
                     makeDrawingPointTemplateElement(point, index, Newdata.line.pointsText, 0, 0, Newdata.line.pointsDirection, true, Newdata.line.style.color, 0, pointLength, Newdata.id)
@@ -143,7 +143,7 @@
 
                 $('#topoimg')[0].src = data.image.data;
                 $('#topoimg').attr("data-height", data.image.height);
-
+                
                 $('#display-canvas')[0].height = data.image.height;
                 $('#display-canvas')[0].width = data.image.width;
 
@@ -168,7 +168,7 @@
         }
 
         function drawingInfoForRoute(routeId, drawingData) {
-            var routeDrawingdata = $.grep(drawingData, function (routeDrawing, index) {
+            var routeDrawingdata = $.grep(drawingData, function (routeDrawing, index) {                
                 return (routeId === parseInt(routeDrawing.id));
             });
             if (routeDrawingdata !== null && routeDrawingdata.length > 0) return routeDrawingdata[0];
@@ -186,6 +186,10 @@
             var initialPoint = point;
             if (initialPoint !== null) {
                 var highlighter = $("<span>").attr("id", "p" + index).addClass('point-highlighterhide p' + index + pointcnt);
+                if (index == 0)
+                {
+                    $(highlighter).addClass("pc");
+                }
                 var x = '' + (initialPoint.x - 15) + 'px';
                 var y = '' + (initialPoint.y - 15) + 'px';
                 highlighter.css('top', y).css('left', x).fadeIn(100)
@@ -193,8 +197,11 @@
 
                 highlighter.attr("data-x", (initialPoint.x - 15)).attr("data-y", (initialPoint.y - 15)).attr("routeId", routeId);
                 highlighter.on('click', function (e) {
-                    if (e.currentTarget.className.indexOf('p0') > -1)
+                   
+                    // if (e.currentTarget.className.indexOf('p0') > -1)
+                    if (e.currentTarget.id.indexOf('p0') > -1) {
                         routePointClick(parseInt(e.currentTarget.attributes[4].value));
+                    }
 
                 });
 
@@ -230,7 +237,7 @@
                 } else {
                     ratio = height / parseInt(imageheight);
                 }
-
+                
                 width = imagewidth * ratio;
             }
             else {
@@ -394,7 +401,7 @@
             ctx.beginPath();
 
             // draw diamond shape of half badgeSize around the centre point
-            var offSet = (badgeSize / 2);
+            var offSet = (badgeSize);
             p.y -= offSet; ctx.moveTo(p.x, p.y);
             p.x += offSet; p.y += offSet; ctx.lineTo(p.x, p.y);
             p.x -= offSet; p.y += offSet; ctx.lineTo(p.x, p.y);
@@ -405,12 +412,12 @@
             ctx.stroke();
 
             //some polishing here to center/center the label
-            var labelFontSize = 9.5;
-            if (label.length > 1) { labelFontSize = 9.0; }
+            var labelFontSize = 15.5;
+            if (label.length > 1) { labelFontSize = 15.0; }
             ctx.font = "" + labelFontSize + "px Arial";
             ctx.textAlign = "center";
             ctx.fillStyle = outlineColour;
-            p.y += (labelFontSize + (badgeSize / 5));
+            p.y += (labelFontSize + (badgeSize/2));
             ctx.fillText(label, p.x, p.y);
             //ctx.fillText("1", p.x, p.y);
 
@@ -574,8 +581,8 @@
     </script>
 </head>
 <body style="background-color:black;">
-    <div class="surface-holder" style="background-color:black;" >
-        <div id="draw-surface-container" style="position: relative !important; z-index: 1; background-color:black;">
+    <div class="surface-holder">
+        <div id="draw-surface-container" style="position: relative !important; z-index: 1;">
 
             <!-- annotation images -->
             <img src="sample-line.png" id="annotation-type-0" style="display:none;" />

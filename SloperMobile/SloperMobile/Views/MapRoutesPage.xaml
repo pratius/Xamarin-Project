@@ -134,7 +134,7 @@
 
             </Grid>
 
-            <Image Source="arrowLeftWhite" Rotation="90" Grid.Row="2" Grid.Column="1" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+            <Image Source="arrowLeftWhite" Rotation="90" IsVisible="{Binding IsHideSwipeUp}" Grid.Row="2" Grid.Column="1" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding HidePopupCommand}"/>
                 </Image.GestureRecognizers>

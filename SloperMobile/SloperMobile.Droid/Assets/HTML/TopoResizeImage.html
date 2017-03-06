@@ -29,7 +29,7 @@
             var height = wheight;
             _staticAnnotationData = annotationData;
             _staticData = topoData;
-
+            $('#display-canvas').fadeTo(100, 1);
             $("#mbimage").css('display', 'none');
             var imgdata = jQuery.parseJSON(_staticData);                        
             getAnnoation();
