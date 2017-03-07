@@ -28,8 +28,7 @@
     <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>27597f16-5d0f-4bb5-bf42-8b4e50fe47fc</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -98,6 +97,7 @@
   <ItemGroup>
     <Compile Include="CustomListView.cs" />
     <Compile Include="DependancyObjects\SQLite_iOS.cs" />
+    <Compile Include="GestureFrameRenderer.cs" />
     <Compile Include="HybridWebViewRenderers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

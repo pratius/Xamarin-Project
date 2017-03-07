@@ -109,23 +109,22 @@ namespace SloperMobile.Views
             MapRouteVM.IsRunningTasks = false;
         }
 
-        private void SwipeableImage_SwipedDown(object sender, EventArgs e)
+
+        private void OnSwipeUpPopup(object sender, EventArgs e)
+        {
+            MapRouteVM.HidePopupCommand.Execute(null);
+        }
+
+        private void OnSwipeDown(object sender, EventArgs e)
         {
             MapRouteVM.ShowPopupCommand.Execute(null);
         }
 
-        private void SwipeableImage_SwipedUp(object sender, EventArgs e)
-        {
-            MapRouteVM.HidePopupCommand.Execute(null);
-
-        }
-
-        private void OnSwipeUp(object sender, EventArgs e)
+        private void OnSwipeUpHidePopup(object sender, EventArgs e)
         {
             MapRouteVM.IsPopupHide = false;
-            if(_routeId<=0)
-            webView.CallJsFunction("initDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight);
-
+            if (_routeId <= 0)
+                webView.CallJsFunction("initDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight);
         }
     }
 }
