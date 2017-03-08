@@ -115,16 +115,18 @@
 .pc{ z-index: 5001 !important;}
 .point-highlighterhide {
     background-color: transparent;
-    border:none;
+    border:none; /*2px solid red !important;*/
     border-radius: 5px;
     position: absolute;
     top: 50px;
     left: 50px;
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     z-index: 5000; /* one above the topo Image but below the display and drawing canvas surfaces */
     box-sizing: border-box;
-
+    transform: rotate(45.2deg);
+     -ms-transform: rotate(45.2deg); /* IE 9 */
+    -webkit-transform: rotate(45.2deg); /* Chrome, Safari, Opera */
     /* TODO: crosshair background image */
 }
 #arrowleft { 

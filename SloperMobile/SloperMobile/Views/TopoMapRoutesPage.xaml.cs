@@ -98,7 +98,9 @@ namespace SloperMobile.Views
                 if (_routeId > 0)
                 {
                     MapRouteVM.LoadRouteData(_routeId, listData);
-                    MapRouteVM.IsPopupHide = true;
+                    if (listData != string.Empty)
+                        MapRouteVM.IsPopupHide = true;
+
                     webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (Cache.CurrentScreenHeight), _routeId, true);
                 }
             }
