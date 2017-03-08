@@ -212,7 +212,7 @@ namespace SloperMobile.ViewModel
                         LegendsHeight += 30;
                     }
                 }
-                return bucketlist;
+                return bucketlist.Distinct(new BucketLegends.Comparer()).ToList();
             }
             catch (Exception ex)
             {

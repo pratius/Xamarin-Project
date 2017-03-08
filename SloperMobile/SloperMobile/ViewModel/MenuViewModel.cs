@@ -5,6 +5,7 @@ using SloperMobile.Views;
 using SloperMobile.Common.Constants;
 using System.Linq;
 using SloperMobile.Common.Command;
+using Xamarin.Forms;
 
 namespace SloperMobile.ViewModel
 {

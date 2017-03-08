@@ -101,15 +101,22 @@ namespace SloperMobile.ViewModel
         }
         private async void OnPagePrepration(string TabName)
         {
-            if (TabName == "SENDS")
+            try
             {
-                PageHeaderText = "PROFILE - SENDS";
-                await InvokeServiceGetAscentData();
+                if (TabName == "SENDS")
+                {
+                    PageHeaderText = "PROFILE - SENDS";
+                    await InvokeServiceGetAscentData();
+                }
+                else
+                {
+                    PageHeaderText = "PROFILE - TICK LIST";
+                    await InvokeServiceGetTickListData();
+                }
             }
-            else
+            catch(Exception ex)
             {
-                PageHeaderText = "PROFILE - TICK LIST";
-                await InvokeServiceGetTickListData();
+                throw ex; 
             }
         }
 
@@ -143,18 +150,24 @@ namespace SloperMobile.ViewModel
         #region Service Methods
         private async Task InvokeServiceGetAscentData()
         {
-            HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_GetAscent_AppData, Settings.AccessTokenSettings);
-            SendsDTO sendsobj = new SendsDTO();
-            sendsobj.start_date = "20160101";
-            sendsobj.end_date = "20300101";
-            string sendsjson = JsonConvert.SerializeObject(sendsobj);
-            var response = await apicall.Post<List<Send>>(sendsjson);
-            if (response.Count > 0)
+            try
             {
-                SendsList = new ObservableCollection<Send>(response);
-                SetChartValue();
+                HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_GetAscent_AppData, Settings.AccessTokenSettings);
+                SendsDTO sendsobj = new SendsDTO();
+                sendsobj.start_date = "20160101";
+                sendsobj.end_date = "20300101";
+                string sendsjson = JsonConvert.SerializeObject(sendsobj);
+                var response = await apicall.Post<List<Send>>(sendsjson);
+                if (response.Count > 0)
+                {
+                    SendsList = new ObservableCollection<Send>(response);
+                    SetChartValue();
+                }
             }
-
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         private async Task InvokeServiceGetTickListData()
         {

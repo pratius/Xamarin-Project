@@ -67,11 +67,11 @@
             Type=RelativeToParent,Property=Width,Factor=.5,Constant=0}"
             RelativeLayout.HeightConstraint="{ConstraintExpression
             Type=RelativeToParent,Property=Height,Factor=.5,Constant=0}" />
-                    <Label x:Name="climb_days" TextColor="White" Text="{Binding Path=ClimbDaysCount}" FontSize="Medium"
+                    <Label x:Name="climb_days" TextColor="White" Text="{Binding Path=ClimbDaysCount}" FontSize="Medium" HorizontalTextAlignment="Center"
             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-            ElementName=climbBox,Property=Y,Factor=1,Constant=30}"
+            ElementName=climbBox,Property=Y,Factor=1,Constant=25}"
             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
-            ElementName=climbBox,Property=X,Factor=1,Constant=30}"
+            ElementName=climbBox,Property=X,Factor=.6,Constant=10}"
             RelativeLayout.WidthConstraint="{ConstraintExpression
             Type=RelativeToParent,Property=Width,Factor=.5,Constant=0}"
             RelativeLayout.HeightConstraint="{ConstraintExpression

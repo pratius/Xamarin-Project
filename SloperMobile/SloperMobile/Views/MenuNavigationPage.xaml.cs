@@ -34,6 +34,11 @@ namespace SloperMobile.Views
                     {
                         Settings.SelectedCragSettings= item.ItemId;
                     }
+                    if(item.TargetType==typeof(HomePage))
+                    {
+                        Device.OpenUri(new Uri("http://www.sloperclimbing.com"));
+                    }
+
                     Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
                     masterMenuPage.ListView.SelectedItem = null;
                     IsPresented = false;

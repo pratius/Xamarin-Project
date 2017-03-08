@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.UserControls.TickListsUC">
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
+             x:Class="SloperMobile.UserControls.TickListsUC">
   <ContentView.Resources>
     <ResourceDictionary>
       <Style x:Key="HederLabelStyle" TargetType="Label">
@@ -30,10 +33,10 @@
         <Label Grid.Row="0" Grid.Column="2" Text="GRADE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
       </Grid>
       <BoxView Grid.Row="1" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
-      <ListView x:Name="lstView" ItemsSource="{Binding TickListsList}" Grid.Row="2" BackgroundColor="Black" SeparatorVisibility="None">
-		<ListView.Footer>
+      <Controls:InfiniteListView x:Name="lstView" ItemsSource="{Binding TickListsList}" Grid.Row="2" BackgroundColor="Black" SeparatorVisibility="None">
+        <Controls:InfiniteListView.Footer>
             <Label/>
-        </ListView.Footer>
+        </Controls:InfiniteListView.Footer>
 		<ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
@@ -57,7 +60,7 @@
             </ViewCell>
           </DataTemplate>
         </ListView.ItemTemplate>
-      </ListView>
+      </Controls:InfiniteListView>
     </Grid>
   </ContentView.Content>
 </ContentView>
