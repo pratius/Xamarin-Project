@@ -29,7 +29,7 @@
             var height = wheight;
             _staticAnnotationData = annotationData;
             _staticData = topoData;
-
+            $('#display-canvas').fadeTo(100, 1);
             $("#mbimage").css('display', 'none');
             var imgdata = jQuery.parseJSON(_staticData);                        
             getAnnoation();
@@ -59,7 +59,7 @@
             if (isSingleLine == true) {
                 //code to draw line and points on image
                 for (var i = 0; i < data.drawing.length; i++) {
-                    drawLine("display-canvas", data.drawing[i].line, 0, 0, 0);
+                    drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket);
                     var pointLength = data.drawing[i].line.points.length;
 
                     $(data.drawing[i].line.points).each(function (index, point) {
@@ -71,7 +71,7 @@
             if (routeId != null && routeId > 0) {               
                 var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
                 var Newdata = routeDrawingData;                
-                drawLine("drawing-canvas", Newdata.line, 0, 0, 0);
+                drawLine("drawing-canvas", Newdata.line, 0, 0, Newdata.gradeBucket);
                 var pointLength = Newdata.line.points.length;                
 
                 $(Newdata.line.points).each(function (index, point) {
@@ -111,7 +111,7 @@
                 if (routeId != null && routeId > 0) {
                     var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
                     var Newdata = routeDrawingData;
-                    drawLine("display-canvas", Newdata.line, 0, 0, 0);
+                    drawLine("display-canvas", Newdata.line, 0, 0, Newdata.gradeBucket);
                     var pointLength = Newdata.line.points.length;
 
                     $(Newdata.line.points).each(function (index, point) {
@@ -153,7 +153,7 @@
 
                 //code to draw line and points on image
                 for (var i = 0; i < data.drawing.length; i++) {
-                    drawLine("display-canvas", data.drawing[i].line, 0, 0, 0);
+                    drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket);
                     var pointLength = data.drawing[i].line.points.length;
 
                     $(data.drawing[i].line.points).each(function (index, point) {
@@ -186,6 +186,10 @@
             var initialPoint = point;
             if (initialPoint !== null) {
                 var highlighter = $("<span>").attr("id", "p" + index).addClass('point-highlighterhide p' + index + pointcnt);
+                if (index == 0)
+                {
+                    $(highlighter).addClass("pc");
+                }
                 var x = '' + (initialPoint.x - 15) + 'px';
                 var y = '' + (initialPoint.y - 15) + 'px';
                 highlighter.css('top', y).css('left', x).fadeIn(100)
@@ -193,8 +197,11 @@
 
                 highlighter.attr("data-x", (initialPoint.x - 15)).attr("data-y", (initialPoint.y - 15)).attr("routeId", routeId);
                 highlighter.on('click', function (e) {
-                    if (e.currentTarget.className.indexOf('p0') > -1)
+                   
+                    // if (e.currentTarget.className.indexOf('p0') > -1)
+                    if (e.currentTarget.id.indexOf('p0') > -1) {
                         routePointClick(parseInt(e.currentTarget.attributes[4].value));
+                    }
 
                 });
 
@@ -271,7 +278,7 @@
             });
         }
 
-        function drawLine(canvasDiv, line, next_startxpoint, next_endxpoint) {
+        function drawLine(canvasDiv, line, next_startxpoint, next_endxpoint, gradeBucket) {
 
             if (line.points.length <= 0) { return false; }
 
@@ -301,7 +308,7 @@
             var startPoint = linePoints[0];
             var drawPoint = startPoint;
             var markerPoint = -1;
-
+            var marketFillcolor = getGradeBucketHex(gradeBucket);
             //TODO: Remove duplication for solid/dashed line drawing
             if (line.style.type == 'solid') {
                 ctx.moveTo(startPoint.x, startPoint.y);
@@ -346,7 +353,7 @@
                     line.marker.fillColor = line.style.color;
 
                 // sandeep
-                drawRouteMarker(canvasDiv, drawPoint.x, drawPoint.y, line.marker.label, line.marker.fillColor, line.marker.foreColor, line.marker.shadow);
+                drawRouteMarker(canvasDiv, drawPoint.x, drawPoint.y, line.marker.label, marketFillcolor, line.marker.foreColor, line.marker.shadow);
             }
 
             // Add any extra route annotations (lower-off, belay etc)
@@ -364,7 +371,7 @@
                             line.marker.fillColor = line.style.color;
 
                         // sandeep
-                        drawRouteMarker(canvasDiv, annotation.x, annotation.y, line.marker.label, line.marker.fillColor, line.marker.foreColor, line.marker.shadow);
+                        drawRouteMarker(canvasDiv, annotation.x, annotation.y, line.marker.label, marketFillcolor, line.marker.foreColor, line.marker.shadow);
                         //drawRouteMarker(canvasDiv, annotation.x, annotation.y, "", line.marker.fillColor, line.marker.foreColor, line.marker.shadow);
                     }
                 }
@@ -394,7 +401,7 @@
             ctx.beginPath();
 
             // draw diamond shape of half badgeSize around the centre point
-            var offSet = (badgeSize / 2);
+            var offSet = (badgeSize);
             p.y -= offSet; ctx.moveTo(p.x, p.y);
             p.x += offSet; p.y += offSet; ctx.lineTo(p.x, p.y);
             p.x -= offSet; p.y += offSet; ctx.lineTo(p.x, p.y);
@@ -405,12 +412,12 @@
             ctx.stroke();
 
             //some polishing here to center/center the label
-            var labelFontSize = 9.5;
-            if (label.length > 1) { labelFontSize = 9.0; }
+            var labelFontSize = 15.5;
+            if (label.length > 1) { labelFontSize = 15.0; }
             ctx.font = "" + labelFontSize + "px Arial";
             ctx.textAlign = "center";
             ctx.fillStyle = outlineColour;
-            p.y += (labelFontSize + (badgeSize / 5));
+            p.y += (labelFontSize + (badgeSize/2));
             ctx.fillText(label, p.x, p.y);
             //ctx.fillText("1", p.x, p.y);
 
@@ -570,7 +577,24 @@
 
             ctx.fillStyle = fillStyle;
         }
-
+        function  getGradeBucketHex(grade_bucket_id)
+        {
+            switch (grade_bucket_id)
+            {
+                    case "1":
+                return "#036177";
+                        case "2":
+                return "#1f8a70";
+                        case "3":
+                return "#91a537";
+                        case "4":
+                return "#b49800";
+                        case "5":
+                return "#fd7400";
+                        default:
+                return "#cccccc";
+            }
+        }
     </script>
 </head>
 <body style="background-color:black;">
