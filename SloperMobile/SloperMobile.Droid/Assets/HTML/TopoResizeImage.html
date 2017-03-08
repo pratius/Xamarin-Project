@@ -193,7 +193,7 @@
                 var x = '' + (initialPoint.x - 15) + 'px';
                 var y = '' + (initialPoint.y - 15) + 'px';
                 highlighter.css('top', y).css('left', x).fadeIn(100)
-
+                //$('#point-highlighterhide').css('top', y).css('left', x).fadeIn(100)
 
                 highlighter.attr("data-x", (initialPoint.x - 15)).attr("data-y", (initialPoint.y - 15)).attr("routeId", routeId);
                 highlighter.on('click', function (e) {
@@ -266,7 +266,7 @@
                     if ($(".p" + index + i)[0].className.indexOf('p0') > -1 && (parseInt($(".p" + index + i).attr('routeid'))) == routeId) {
                         $("#mbimage").scrollLeft(((parseInt($(".p" + index + i).attr('data-x'))) * ratio));
                     }
-                    $(".p" + index + i).css('top', ((parseInt($(".p" + index + i).attr('data-y'))) * ratio)).css('left', ((parseInt($(".p" + index + i).attr('data-x'))) * ratio)).fadeIn(100);
+                    $(".p" + index + i).css('top', (((parseInt($(".p" + index + i).attr('data-y')))+ 5) * ratio)).css('left', (((parseInt($(".p" + index + i).attr('data-x')))+ 5) * ratio)).fadeIn(100);
                 });
             }
         }
