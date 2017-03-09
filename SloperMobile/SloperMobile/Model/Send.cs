@@ -51,6 +51,8 @@ namespace SloperMobile.Model
         public string Ascent_Type_Description { get; set; }
         public string Tech_Grade_Description { get; set; }
         public string route_name { get; set; }
+        public long sector_id { get; set; }
+        
     }
 
     public class SendsDTO
