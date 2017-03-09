@@ -123,6 +123,7 @@
     </Compile>
     <Compile Include="ViewModel\ApiHandler.cs" />
     <Compile Include="ViewModel\AscentProcessViewModel.cs" />
+    <Compile Include="ViewModel\AscentSummaryModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CheckForUpdatesViewModel.cs" />
     <Compile Include="ViewModel\ClimbingDaysViewModel.cs" />
@@ -143,6 +144,9 @@
     <Compile Include="ViewModel\MenuViewModel.cs" />
     <Compile Include="Views\AscentProcessPage.xaml.cs">
       <DependentUpon>AscentProcessPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AscentSummaryPage.xaml.cs">
+      <DependentUpon>AscentSummaryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CheckForUpdatesPage.xaml.cs">
       <DependentUpon>CheckForUpdatesPage.xaml</DependentUpon>
@@ -504,6 +508,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AscentSummaryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
