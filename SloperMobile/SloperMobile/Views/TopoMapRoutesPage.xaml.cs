@@ -11,7 +11,7 @@ namespace SloperMobile.Views
     public partial class TopoMapRoutesPage : ContentPage
     {
         public MapListModel _CurrentSector { get; set; }
-        private ViewModel.TopoMapRoutesViewModel MapRouteVM;
+        private ViewModel.TopoMapRoutesViewModel TopoMapRouteVM;
         public string staticAnnotationData = "[{\"AnnotationName\": \"Open Text (left)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Open Text (right)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (white)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (black)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Line\",\"AnnotationType\": 0,\"ImageName\":\"sample-line.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Badge\",\"AnnotationType\": 1,\"ImageName\":\"sample-route-badge.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\":\"Belay Point\",\"AnnotationType\": 2,\"ImageName\":\"sample-belay.png\",\"XCentreOffset\": -15,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Left\",\"AnnotationType\": 3,\"ImageName\":\"sample-lower-off-left.png\",\"XCentreOffset\": -22,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Right\",\"AnnotationType\": 4,\"ImageName\":\"sample-lower-off-right.png\",\"XCentreOffset\": -8,\"YCentreOffset\":-15},{\"AnnotationName\": \"Grade Label (left)\",\"AnnotationType\": 5,\"ImageName\":\"sample-grade-label-left.png\",\"XCentreOffset\": -5,\"YCentreOffset\":0},{\"AnnotationName\": \"Grade Label (right)\",\"AnnotationType\": 6,\"ImageName\":\"sample-grade-label-right.png\",\"XCentreOffset\": 5,\"YCentreOffset\":0},{\"AnnotationName\": \"Line Break\",\"AnnotationType\": 7,\"ImageName\":\"sample-route-line-break.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Cross Point\",\"AnnotationType\": 8,\"ImageName\":\"x-mark-32.png\",\"XCentreOffset\": -50,\"YCentreOffset\":-50},{\"AnnotationName\": \"Text Add\",\"AnnotationType\": 9,\"ImageName\":\"tl-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextAdd\",\"AnnotationType\": 10,\"ImageName\":\"tr-icon.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 11,\"ImageName\":\"tlcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 12,\"ImageName\":\"trcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveLeft\",\"AnnotationType\": 13,\"ImageName\":\"move_left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveRight\",\"AnnotationType\": 14,\"ImageName\":\"move_right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"icon-arrow\",\"AnnotationType\": 15,\"ImageName\":\"icon-arrow.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"cross dark black\",\"AnnotationType\": 16,\"ImageName\":\"cross_black.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-left\",\"AnnotationType\": 17,\"ImageName\":\"sample-lower-off-black-left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-right\",\"AnnotationType\": 18,\"ImageName\":\"sample-lower-off-black-right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0}]";
         string listData = string.Empty;
         int _routeId = 0;
@@ -25,35 +25,35 @@ namespace SloperMobile.Views
                 _routeId = routeId;
                 NavigationPage.SetHasNavigationBar(this, false);
                 Title = CurrentSector.SectorName;
-                MapRouteVM = new ViewModel.TopoMapRoutesViewModel(CurrentSector, Navigation);
+                TopoMapRouteVM = new ViewModel.TopoMapRoutesViewModel(CurrentSector, Navigation);
 
-                BindingContext = MapRouteVM;
+                BindingContext = TopoMapRouteVM;
                 if (listData == string.Empty)
                 {
-                    MapRouteVM.LoadRouteData(routeId, listData);
-                    MapRouteVM.IsPopupShow = true;
+                    TopoMapRouteVM.LoadRouteData(routeId, listData);
+                    TopoMapRouteVM.IsPopupShow = true;
                     // load the scenic shot if there are no topos available
                     webView.IsVisible = false;
-                    MapRouteVM.IsHideSwipeUp = false;
+                    TopoMapRouteVM.IsHideSwipeUp = false;
                     this.BackgroundImage = "scenic_shot_portrait";
                 }
-                MapRouteVM.OnConditionNavigation = OnPageNavigation;
-                MapRouteVM.IsRunningTasks = true;
+                TopoMapRouteVM.OnConditionNavigation = OnPageNavigation;
+                TopoMapRouteVM.IsRunningTasks = true;
                 this.webView.RegisterCallback("dataCallback", t =>
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    MapRouteVM.LoadRouteData(t, listData);
-                    MapRouteVM.IsPopupHide = true;
+                    TopoMapRouteVM.LoadRouteData(t, listData);
+                    TopoMapRouteVM.IsPopupHide = true;
                     var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
                     webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight, Convert.ToInt32(t), true);
                 }));
             }
             catch (Exception ex)
             {
-                MapRouteVM.IsRunningTasks = false;
+                TopoMapRouteVM.IsRunningTasks = false;
                 throw ex;
             }
-            MapRouteVM.IsRunningTasks = false;
+            TopoMapRouteVM.IsRunningTasks = false;
         }
         private async void OnPageNavigation(object obj)
         {
@@ -83,7 +83,7 @@ namespace SloperMobile.Views
         private void OnLoadFinished(object sender, EventArgs args)
         {
             bool IsRouteClicked = false;
-            MapRouteVM.IsRunningTasks = true;
+            TopoMapRouteVM.IsRunningTasks = true;
             staticAnnotationData = "[{\"AnnotationName\": \"Open Text (left)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Open Text (right)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (white)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (black)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Line\",\"AnnotationType\": 0,\"ImageName\":\"sample-line.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Badge\",\"AnnotationType\": 1,\"ImageName\":\"sample-route-badge.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\":\"Belay Point\",\"AnnotationType\": 2,\"ImageName\":\"sample-belay.png\",\"XCentreOffset\": -15,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Left\",\"AnnotationType\": 3,\"ImageName\":\"sample-lower-off-left.png\",\"XCentreOffset\": -22,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Right\",\"AnnotationType\": 4,\"ImageName\":\"sample-lower-off-right.png\",\"XCentreOffset\": -8,\"YCentreOffset\":-15},{\"AnnotationName\": \"Grade Label (left)\",\"AnnotationType\": 5,\"ImageName\":\"sample-grade-label-left.png\",\"XCentreOffset\": -5,\"YCentreOffset\":0},{\"AnnotationName\": \"Grade Label (right)\",\"AnnotationType\": 6,\"ImageName\":\"sample-grade-label-right.png\",\"XCentreOffset\": 5,\"YCentreOffset\":0},{\"AnnotationName\": \"Line Break\",\"AnnotationType\": 7,\"ImageName\":\"sample-route-line-break.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Cross Point\",\"AnnotationType\": 8,\"ImageName\":\"x-mark-32.png\",\"XCentreOffset\": -50,\"YCentreOffset\":-50},{\"AnnotationName\": \"Text Add\",\"AnnotationType\": 9,\"ImageName\":\"tl-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextAdd\",\"AnnotationType\": 10,\"ImageName\":\"tr-icon.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 11,\"ImageName\":\"tlcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 12,\"ImageName\":\"trcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveLeft\",\"AnnotationType\": 13,\"ImageName\":\"move_left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveRight\",\"AnnotationType\": 14,\"ImageName\":\"move_right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"icon-arrow\",\"AnnotationType\": 15,\"ImageName\":\"icon-arrow.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"cross dark black\",\"AnnotationType\": 16,\"ImageName\":\"cross_black.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-left\",\"AnnotationType\": 17,\"ImageName\":\"sample-lower-off-black-left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-right\",\"AnnotationType\": 18,\"ImageName\":\"sample-lower-off-black-right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0}]";
 
             // Added by sandeep
@@ -97,9 +97,9 @@ namespace SloperMobile.Views
                 webView.CallJsFunction("initDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight);
                 if (_routeId > 0)
                 {
-                    MapRouteVM.LoadRouteData(_routeId, listData);
+                    TopoMapRouteVM.LoadRouteData(_routeId, listData);
                     if (listData != string.Empty)
-                        MapRouteVM.IsPopupHide = true;
+                        TopoMapRouteVM.IsPopupHide = true;
 
                     webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (Cache.CurrentScreenHeight), _routeId, true);
                 }
@@ -108,23 +108,23 @@ namespace SloperMobile.Views
             {
                 webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, _routeId, (Cache.CurrentScreenHeight));
             }
-            MapRouteVM.IsRunningTasks = false;
+            TopoMapRouteVM.IsRunningTasks = false;
         }
 
 
         private void OnSwipeUpPopup(object sender, EventArgs e)
         {
-            MapRouteVM.HidePopupCommand.Execute(null);
+            TopoMapRouteVM.HidePopupCommand.Execute(null);
         }
 
         private void OnSwipeDown(object sender, EventArgs e)
         {
-            MapRouteVM.ShowPopupCommand.Execute(null);
+            TopoMapRouteVM.ShowPopupCommand.Execute(null);
         }
 
         private void OnSwipeUpHidePopup(object sender, EventArgs e)
         {
-            MapRouteVM.IsPopupHide = false;
+            TopoMapRouteVM.IsPopupHide = false;
             if (_routeId <= 0)
                 webView.CallJsFunction("initDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight);
         }

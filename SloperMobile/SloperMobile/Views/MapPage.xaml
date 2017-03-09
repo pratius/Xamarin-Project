@@ -15,7 +15,6 @@
       <Grid.RowDefinitions>
         <RowDefinition Height="auto"/>
         <RowDefinition Height="*"/>
-        <RowDefinition Height="auto"/>
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
@@ -56,9 +55,9 @@
           </DataTemplate>
         </ListView.ItemTemplate>
       </Controls:InfiniteListView>
-      <BoxView Grid.Row="2" BackgroundColor="#676767" HeightRequest="2" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+      
       <!-- BUCKET LEGENDS  END-->
-      <Controls:InfiniteListView  x:Name="lstSectorView" Grid.Row="3" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="true" Margin="0,-200,0,0"
+      <Controls:InfiniteListView  x:Name="lstSectorView" Grid.Row="2" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="true" Margin="0,-200,0,0"
                                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding SectorImageList}" SelectedItem="{Binding SelectedSector}" LoadMoreCommand="{Binding LoadMoreSector}">
         <Controls:InfiniteListView.Footer>
           <Label/>

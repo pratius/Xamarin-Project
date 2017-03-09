@@ -42,6 +42,7 @@ namespace SloperMobile.Common.Helpers
                     var renewaltoken = await ExtendToken<LoginResponse>(renewjson);
                     Settings.AccessTokenSettings = renewaltoken.accessToken;
                     Settings.RenewalTokenSettings = renewaltoken.renewalToken;
+                    httpClient.DefaultRequestHeaders.Clear();
                     httpClient.DefaultRequestHeaders.Accept.Clear();
                     httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + renewaltoken.accessToken);
