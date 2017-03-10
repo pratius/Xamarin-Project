@@ -94,19 +94,40 @@ namespace SloperMobile.Views
             if (!IsRouteClicked)
             {
                 //webView.CallJsFunction("initDrawing", staticAnnotationData, listData, (device.Display.Height));
-                webView.CallJsFunction("initDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight);
+                if (Device.OS == TargetPlatform.Android)
+                {
+                    webView.CallJsFunction("initDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight);
+                }
+                else
+                {
+                    webView.CallJsFunction("initDrawing", staticAnnotationData, listData, Cache.CurrentScreenHeight);
+                }
                 if (_routeId > 0)
                 {
                     TopoMapRouteVM.LoadRouteData(_routeId, listData);
                     if (listData != string.Empty)
                         TopoMapRouteVM.IsPopupHide = true;
 
-                    webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (Cache.CurrentScreenHeight), _routeId, true);
+                    if (Device.OS == TargetPlatform.Android)
+                    {
+                        webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (Cache.CurrentScreenHeight), _routeId, true);                        
+                    }
+                    else
+                    {
+                        webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (Cache.CurrentScreenHeight), _routeId, true);
+                    }
                 }
             }
             else
             {
-                webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, _routeId, (Cache.CurrentScreenHeight));
+                if (Device.OS == TargetPlatform.Android)
+                {
+                    webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, _routeId, (Cache.CurrentScreenHeight));                   
+                }
+                else
+                {
+                    webView.CallJsFunction("initRouteDrawing", staticAnnotationData, listData, _routeId, (Cache.CurrentScreenHeight));
+                }
             }
             TopoMapRouteVM.IsRunningTasks = false;
         }
@@ -114,7 +135,10 @@ namespace SloperMobile.Views
 
         private void OnSwipeUpPopup(object sender, EventArgs e)
         {
-            TopoMapRouteVM.HidePopupCommand.Execute(null);
+            if (listData != string.Empty)
+            { 
+                TopoMapRouteVM.HidePopupCommand.Execute(null);
+            }
         }
 
         private void OnSwipeDown(object sender, EventArgs e)

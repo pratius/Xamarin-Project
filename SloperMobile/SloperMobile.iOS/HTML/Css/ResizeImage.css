@@ -115,7 +115,7 @@
 /*.pc{ z-index: 5001 !important; border:1px solid green !important;}*/
 .point-highlighterhide {
     background-color: transparent;
-    border:none; /*2px solid red !important;*/
+    border:none;/*2px solid red !important;*/
     border-radius: 5px;
     position: absolute;
     top: 50px;

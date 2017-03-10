@@ -227,7 +227,14 @@ namespace SloperMobile.Views
                 webView.CallJsFunction("initDrawing", staticAnnotationData, "[" + topoimg + "]", webView.HeightRequest);
                 if (Convert.ToInt32(_routeid) > 0)
                 {
-                    webView.CallJsFunction("initReDrawing", staticAnnotationData, "[" + topoimg + "]", (webView.HeightRequest), Convert.ToInt32(_routeid), true);
+                    if (Device.OS == TargetPlatform.Android)
+                    {
+                        webView.CallJsFunction("initReDrawing", staticAnnotationData, "[" + topoimg + "]", (webView.HeightRequest), Convert.ToInt32(_routeid), true);
+                    }
+                    else
+                    {
+                        webView.CallJsFunction("initReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), true);
+                    }
                 }
                 
                  var ratio = webView.HeightRequest / Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.height));

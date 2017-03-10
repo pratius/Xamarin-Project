@@ -115,8 +115,8 @@
 .pc{ z-index: 5001 !important;}
 .point-highlighterhide {
     background-color: transparent;
-    border:none; /*2px solid red !important;*/
-    border-radius: 5px;
+    border: none;/*2px solid red !important;*/
+    border-radius: 1px;
     position: absolute;
     top: 50px;
     left: 50px;
