@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Acr.UserDialogs;
+using Newtonsoft.Json;
 using SloperMobile.Common.Command;
 using SloperMobile.Common.Constants;
 using SloperMobile.Common.Helpers;
@@ -101,43 +102,50 @@ namespace SloperMobile.ViewModel
                     }
                 }
 
-                if (!IsRunningTasks)
+                //IsRunningTasks = true;
+                UserDialogs.Instance.ShowLoading("please wait..", MaskType.Black);
+                HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
+                var loginjson = JsonConvert.SerializeObject(LoginReq);
+                var response = await apicall.Post<LoginResponse>(loginjson);
+                if (response != null)
                 {
-                    IsRunningTasks = true;
-                    HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
-                    var loginjson = JsonConvert.SerializeObject(LoginReq);
-                    var response = await apicall.Post<LoginResponse>(loginjson);
-                    if (response != null)
+                    if (response.accessToken != null && response.renewalToken != null)
                     {
-                        if (response.accessToken != null && response.renewalToken != null)
+                        Settings.AccessTokenSettings = response.accessToken;
+                        Settings.RenewalTokenSettings = response.renewalToken;
+                        Settings.DisplayNameSettings = response.displayName;
+                        var climbdays = await HttpGetClimbdays();
+                        if (climbdays != null)
                         {
-                            Settings.AccessTokenSettings = response.accessToken;
-                            Settings.RenewalTokenSettings = response.renewalToken;
-                            Settings.DisplayNameSettings = response.displayName;
-                            var climbdays = await HttpGetClimbdays();
-                            if (climbdays != null)
-                            {
-                                Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
-                            }
-                            OnPageNavigation?.Invoke();
-                            DisposeObject();
+                            Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
                         }
-                        else
-                        {
-                            await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
-                        }
+                        OnPageNavigation?.Invoke();
+                        DisposeObject();
+                        UserDialogs.Instance.HideLoading();
+                        return;
                     }
                     else
                     {
+                        UserDialogs.Instance.HideLoading();
                         await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
+                        return;
                     }
                 }
-                IsRunningTasks = false;
+                else
+                {
+                    UserDialogs.Instance.HideLoading();
+                    await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
+                    return;
+                }
+
+                //IsRunningTasks = false;
             }
             catch (Exception)
             {
-                IsRunningTasks = false;
+                //IsRunningTasks = false;
+                UserDialogs.Instance.HideLoading();
                 await Application.Current.MainPage.DisplayAlert("Login Failure", "Incorrect username/password. Please try again.", "OK");
+                return;
             }
         }
 
@@ -145,9 +153,11 @@ namespace SloperMobile.ViewModel
         {
             var isValidate = await IsRegistrationValidation();
 
-            if (!IsRunningTasks && isValidate)
+            //if (!IsRunningTasks && isValidate)
+            if (isValidate)
             {
-                IsRunningTasks = true;
+                UserDialogs.Instance.ShowLoading("please wait..", MaskType.Black);
+                //IsRunningTasks = true;
                 HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_User_Register, string.Empty);
                 RegistrationReq.Email = RegistrationReq.UserName;
                 RegistrationReq.DisplayName = RegistrationReq.FirstName + " " + RegistrationReq.LastName;
@@ -158,8 +168,8 @@ namespace SloperMobile.ViewModel
                     if (!string.IsNullOrEmpty(response.successful) && response.successful == "true")
                     {
 
-                        await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
-                        
+                        //await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
+
                         HttpClientHelper apilogin = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
                         LoginReq.u = RegistrationReq.UserName;
                         LoginReq.p = RegistrationReq.Password;
@@ -179,25 +189,33 @@ namespace SloperMobile.ViewModel
                                 }
                                 OnPageNavigation?.Invoke();
                                 DisposeObject();
+                                UserDialogs.Instance.HideLoading();
+                                return;
                             }
                             else
                             {
+                                UserDialogs.Instance.HideLoading();
                                 await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
+                                return;
                             }
                         }
-                        
+
                     }
                     else
                     {
+                        UserDialogs.Instance.HideLoading();
                         await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
+                        return;
                     }
                 }
                 else
                 {
+                    UserDialogs.Instance.HideLoading();
                     await Application.Current.MainPage.DisplayAlert("Registration", AppConstant.REGISTRATION_FAILURE, "OK");
+                    return;
                 }
             }
-            IsRunningTasks = false;
+            //IsRunningTasks = false;
         }
 
         private async Task<bool> IsRegistrationValidation()

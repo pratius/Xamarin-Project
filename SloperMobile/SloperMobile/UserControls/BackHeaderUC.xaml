@@ -31,8 +31,8 @@
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
     <StackLayout Orientation="Vertical" Spacing="0">
-      <!--<Label Style="{StaticResource lblTopHeader}" Text="{Binding Path=PageHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center" />
-      <Label Style="{StaticResource lblsubTopHeader}" Text="{Binding Path=PageSubHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center"/>-->
+      <Label Style="{StaticResource lblTopHeader}" Text="{Binding Path=PageHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center" />
+      <Label Style="{StaticResource lblsubTopHeader}" Text="{Binding Path=PageSubHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center"/>
     </StackLayout>
     <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
       <Image Source="arrowLeftWhite" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" Aspect="AspectFit">
