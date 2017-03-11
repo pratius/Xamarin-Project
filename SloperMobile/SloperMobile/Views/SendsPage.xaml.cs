@@ -63,6 +63,7 @@ namespace SloperMobile.Views
             }
         }
 
+        
         private void Handle_ValueChanged(object sender, EventArgs e)
         {
             try
