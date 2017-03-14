@@ -16,20 +16,20 @@
 				<rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" UnRatedStrokeWidth="1" RatedStrokeWidth="1" HorizontalOptions="Center" />
 			</rating:SfRating.RatingSettings>
 		</rating:SfRating>
-		<Label Grid.Row="2" Text="Attach a photo" TextColor="White" FontSize="20" HorizontalOptions="Center" VerticalOptions="End" />
+		<!--<Label Grid.Row="2" Text="Attach a photo" TextColor="White" FontSize="20" HorizontalOptions="Center" VerticalOptions="End" />
 		<Image Grid.Row="3" Source="icon_photo_44w" HorizontalOptions="Center" VerticalOptions="Start">
 			<Image.GestureRecognizers>
 				<TapGestureRecognizer Command="{Binding CameraClickCommand}" />
 			</Image.GestureRecognizers>
-		</Image>
-		<Label Grid.Row="4" Text="Comments" TextColor="White" FontSize="20" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
+		</Image>-->
+		<Label Grid.Row="2" Text="Comments" TextColor="White" FontSize="20" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
 
-    <Image Grid.Row="5" Source="icon_comment_44w" HorizontalOptions="Center" VerticalOptions="Start">
+    <Image Grid.Row="3" Source="icon_comment_44w" HorizontalOptions="Center" VerticalOptions="Start">
       <Image.GestureRecognizers>
         <TapGestureRecognizer Command="{Binding CommentClickCommand}" />
       </Image.GestureRecognizers>
     </Image>
-    <Label Grid.Row="5" Text="{Binding CommentText,Mode=TwoWay}" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
+    <Label Grid.Row="3" Text="{Binding CommentText,Mode=TwoWay}" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
 		<!--<Editor Grid.Row="5" x:Name="rate_comment" Text="{Binding CommentText,Mode=TwoWay}" HeightRequest="100" VerticalOptions="Start" Style="{StaticResource GeneralEditorStyle}" />-->
 	</Grid>
 </StackLayout>
