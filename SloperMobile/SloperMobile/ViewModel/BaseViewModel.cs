@@ -28,7 +28,7 @@ namespace SloperMobile.ViewModel
 
         public string PageHeaderText
         {
-            get { return pageHeaderText; }
+            get { return pageHeaderText.ToUpper(); }
             set { pageHeaderText = value; OnPropertyChanged(); }
         }
 

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="SloperMobile.UserControls.BackHeaderUC">
@@ -34,7 +34,7 @@
       <Label Style="{StaticResource lblTopHeader}" Text="{Binding Path=PageHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center" />
       <Label Style="{StaticResource lblsubTopHeader}" Text="{Binding Path=PageSubHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center"/>
     </StackLayout>
-    <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+    <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
       <Image Source="arrowLeftWhite" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" Aspect="AspectFit">
         <Image.GestureRecognizers>
           <TapGestureRecognizer Tapped="OnBackTapped"/>

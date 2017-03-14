@@ -105,15 +105,17 @@ namespace SloperMobile.ViewModel
             {
                 if (TabName == "SENDS")
                 {
-                    PageHeaderText = "PROFILE - SENDS";
-                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("please wait..");
+                    PageHeaderText = "PROFILE";
+                    PageSubHeaderText = "Sends";
+                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
                     await InvokeServiceGetAscentData();
                     Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
                 else
                 {
-                    PageHeaderText = "PROFILE - TICK LIST";
-                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("please wait..");
+                    PageHeaderText = "PROFILE";
+                    PageSubHeaderText = "Tick List";
+                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
                     await InvokeServiceGetTickListData();
                     Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }

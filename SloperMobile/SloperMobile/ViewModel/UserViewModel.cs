@@ -1,4 +1,4 @@
-﻿using Acr.UserDialogs;
+using Acr.UserDialogs;
 using Newtonsoft.Json;
 using SloperMobile.Common.Command;
 using SloperMobile.Common.Constants;
@@ -103,7 +103,7 @@ namespace SloperMobile.ViewModel
                 }
 
                 //IsRunningTasks = true;
-                UserDialogs.Instance.ShowLoading("please wait..", MaskType.Black);
+                UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
                 HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
                 var loginjson = JsonConvert.SerializeObject(LoginReq);
                 var response = await apicall.Post<LoginResponse>(loginjson);
@@ -156,7 +156,7 @@ namespace SloperMobile.ViewModel
             //if (!IsRunningTasks && isValidate)
             if (isValidate)
             {
-                UserDialogs.Instance.ShowLoading("please wait..", MaskType.Black);
+                UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
                 //IsRunningTasks = true;
                 HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_User_Register, string.Empty);
                 RegistrationReq.Email = RegistrationReq.UserName;
