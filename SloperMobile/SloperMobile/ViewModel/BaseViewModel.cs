@@ -40,6 +40,14 @@ namespace SloperMobile.ViewModel
             set { pagesubHeaderText = value; OnPropertyChanged(); }
         }
 
+        private string headerTitleText;
+
+        public string HeaderTitleText
+        {
+            get { return headerTitleText.ToUpper(); }
+            set { headerTitleText = value; OnPropertyChanged(); }
+        }
+
         public Action DisplayMessage;
         public Action OnPageNavigation;
         public Action<object> OnConditionNavigation;

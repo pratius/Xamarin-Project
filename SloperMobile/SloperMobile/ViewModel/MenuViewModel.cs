@@ -62,7 +62,7 @@ namespace SloperMobile.ViewModel
             {
                 var menuDetails = App.DAUtil.GetCragList();
                 MenuList = new ObservableCollection<MasterPageItem>();
-                
+
                 foreach (var item in menuDetails)
                 {
                     MenuList.Add(new MasterPageItem
@@ -91,7 +91,7 @@ namespace SloperMobile.ViewModel
 
                     Title = "ABOUT THIS APP",
                     IconSource = "",
-                    TargetType = typeof(HomePage),
+                    TargetType = typeof(TermsPage),
                 });
                 MenuList.Add(new MasterPageItem
                 {

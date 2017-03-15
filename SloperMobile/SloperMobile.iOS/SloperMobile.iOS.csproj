@@ -77,7 +77,7 @@
     <BuildIpa>True</BuildIpa>
     <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>f923247b-80ab-4c27-9ccc-4b99508d24cc</CodesignProvision>
+    <CodesignProvision>99ef704f-6e22-4377-b035-806444fc056d</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>none</DebugType>
