@@ -2,6 +2,7 @@
 <html>
 <head>
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta charset="utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="Js/canvas.dashedLine.js"></script>
@@ -232,6 +233,7 @@
 
                 var imageheight = $('#topoimg')[0].height;
                 var imagewidth = $('#topoimg')[0].width;
+                
                 if (parseInt($('#topoimg').attr("data-height")) != parseInt($('#topoimg')[0].height)) {
                     ratio = height / parseInt($('#topoimg').attr("data-height"));
                 } else {
@@ -244,22 +246,26 @@
                 height = wheight;
                 var imageheight = $('#topoimg')[0].height;
                 var imagewidth = $('#topoimg')[0].width;
+                $('.bg-img').css('height', '563px');
+                $('.bg-img').css('width', '625px');
                 if (parseInt($('#topoimg').attr("data-height")) != parseInt($('#topoimg')[0].height)) {
                     ratio = height / parseInt($('#topoimg').attr("data-height"));
                 } else {
                     ratio = height / parseInt(imageheight);
                 }
-                width = imagewidth * ratio;
+                width = imagewidth * ratio; //1440;
             }
 
-            // $(canvas).width(width);
+            
+           // $(canvas).width(width);
             $(canvas).height(height);
 
-            // $(drawingcanvas).width(width);
+            //$(drawingcanvas).width(width);
             $(drawingcanvas).height(height);
 
-            // $(imageid).width(width);
+           // $(imageid).width(width);
             $(imageid).height(height);
+            //$('#draw-surface-container > span').css('display','block'); 
 
             for (var i = 0; i < points.length; i++) {
                 $(points[i].line.points).each(function (index, point) {
@@ -597,9 +603,9 @@
         }
     </script>
 </head>
-<body style="background-color:black;">
+<body style="background-color:black; overflow:hidden;">
     <div class="surface-holder">
-        <div id="draw-surface-container" style="position: relative !important; z-index: 1;">
+        <div id="draw-surface-container" style="position: relative;display:block;width:100%;">
 
             <!-- annotation images -->
             <img src="sample-line.png" id="annotation-type-0" style="display:none;" />
@@ -622,10 +628,12 @@
             <img src="sample-lower-off-black-left.png" id="annotation-type-17" style="display:none;" />
             <img src="sample-lower-off-black-right.png" id="annotation-type-18" style="display:none;" />
             <!-- annotation images end -->
-            <div id="mbimage" style="overflow-x:scroll; height:100%;">
-                <img id="topoimg" style="position:absolute;height:100%;" />
-                <canvas id="display-canvas" style="position:absolute;"></canvas>
-                <canvas id="drawing-canvas" style="position:absolute;"></canvas>
+            <div id="mbimage" style="overflow-x:scroll; height:100%; position:relative;">
+                <div class="bg-img" style="overflow:hidden;">
+                    <img id="topoimg" style="width:625px;position:absolute;" />
+                    <canvas id="display-canvas" style="position:absolute;"></canvas>
+                    <canvas id="drawing-canvas" style="position:absolute;"></canvas>
+                </div>
             </div>
 
             <div id="point-type-selector" style="display: none;">

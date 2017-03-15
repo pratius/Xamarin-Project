@@ -67,7 +67,7 @@ namespace SloperMobile.Views
 
         public double GetHeight(Double _height)
         {
-            if (Device.OS != TargetPlatform.Android)
+            if (Device.OS == TargetPlatform.iOS)
             {
                 switch (Convert.ToInt32(_height))
                 {
@@ -86,22 +86,9 @@ namespace SloperMobile.Views
                 }
             }
             else
-            {
-                switch (Convert.ToInt32(height))
-                {
-                    case 1184:
-                        _height = _height - 725; //slopetTest
-                        break;
-                        //case 2208:
-                        //    _height = _height - 700; //iPhone6Plus and iPhone7Plus and iphone 6s plus
-                        //    break;
-                        //case 1136:
-                        //    _height = _height + 290; //iPhone5 and iPhone5s and iPhone SE
-                        //    break;
-                        //case 2048:
-                        //    _height = _height - 900; //iPas Air 2 and iPad Air 
-                        //    break;
-                }
+            {              
+                        var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
+                  _height = (_height / device.Display.Scale) - 120;               
             }
             return _height;
         }

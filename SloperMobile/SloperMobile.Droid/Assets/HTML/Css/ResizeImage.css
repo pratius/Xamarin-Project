@@ -1,4 +1,5 @@
-﻿ #point-type-selector div.point-type-selector-type {
+﻿html, body{margin:0px;padding:0px;}
+ #point-type-selector div.point-type-selector-type {
         position: relative;
         height: 30px;
         width: 30px;
@@ -10,7 +11,9 @@
         background-repeat: no-repeat;
         background-origin: content-box;
     }
-
+ #draw-surface-container > span {
+	display: none !important;
+}
 .point-type-0, #point-type-selector-type-0 {
     background-image: url(../img/sample-line.png);
 }
@@ -136,3 +139,4 @@
 }
 #arrowleft:hover{cursor:pointer;}
 #mbimage{ overflow:hidden;}
+body{margin:0px;padding:0px;width:100%;height:100%;}
