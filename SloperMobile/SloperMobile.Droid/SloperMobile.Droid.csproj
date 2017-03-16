@@ -263,6 +263,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomGestureListener.cs" />
+    <Compile Include="CustomMasterDetailRenderer.cs" />
     <Compile Include="CustomProgressBar.cs" />
     <Compile Include="DependancyObjects\SQLite_Android.cs" />
     <Compile Include="GestureFrameRenderer.cs" />
