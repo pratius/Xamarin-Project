@@ -14,7 +14,7 @@
 			<ColumnDefinition Width="00" />
 		</Grid.ColumnDefinitions>
 		<Grid Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-			<Controls:HybridWebViewCustom x:Name="webView" BackgroundColor="Black"   />
+			<Controls:HybridWebViewCustom x:Name="webView" BackgroundColor="Black" />
 		</Grid>
 		<!--    <StackLayout  Grid.Column="1" HeightRequest="40"
                   HorizontalOptions="FillAndExpand">

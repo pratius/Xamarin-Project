@@ -19,13 +19,13 @@ using System.ComponentModel;
 [assembly: ExportRenderer(typeof(HybridWebViewCustom), typeof(HybridWebViewRenderers))]
 namespace SloperMobile.Droid
 {
-    public class HybridWebViewRenderers :HybridWebViewRenderer
+    public class HybridWebViewRenderers : HybridWebViewRenderer
     {
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (Control != null)
             {
-                Control.Settings.UseWideViewPort = true;
+                //Control.Settings.UseWideViewPort = true;
                 Control.Settings.BuiltInZoomControls = true;
                 Control.Settings.DisplayZoomControls = false;
                 //Control.Settings.DefaultZoom = 0.7;
@@ -33,6 +33,6 @@ namespace SloperMobile.Droid
             base.OnElementPropertyChanged(sender, e);
         }
 
-     
+
     }
 }

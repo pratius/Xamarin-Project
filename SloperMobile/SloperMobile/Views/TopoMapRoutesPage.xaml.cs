@@ -5,8 +5,8 @@ using XLabs.Platform.Device;
 using System.IO;
 using System.Net.Http;
 using SloperMobile.Common.Constants;
-using UIKit;
-using Foundation;
+//using UIKit;
+//using Foundation;
 
 namespace SloperMobile.Views
 {
@@ -86,9 +86,9 @@ namespace SloperMobile.Views
                 }
             }
             else
-            {              
-                        var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-                  _height = (_height / device.Display.Scale) - 120;               
+            {
+                var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
+                _height = (_height / device.Display.Scale) - 120;
             }
             return _height;
         }
