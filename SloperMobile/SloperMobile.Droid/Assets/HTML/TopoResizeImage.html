@@ -35,8 +35,8 @@
 
             $("#mbimage").css('display', 'block');
         }
-
-        function initReDrawing(annotationData, topoData, wheight, routeId, isSingleLine) {
+        
+        function initAscentReDrawing(annotationData, topoData, wheight, routeId, isSingleLine, isAscentCreate) {
             clearAll("drawing-canvas");
             clearAll("display-canvas");
             _staticAnnotationData = annotationData;
@@ -45,19 +45,31 @@
             var imgdata = jQuery.parseJSON(_staticData);
 
             getAnnoation();
-            ReDrawLine(imgdata[0], routeId, isSingleLine, wheight);
+            ReAscentDrawLine(imgdata[0], routeId, isSingleLine, wheight, isAscentCreate);
+        }
+
+        function initReDrawing(annotationData, topoData, wheight, routeId, isSingleLine, isAscentCreate) {
+            clearAll("drawing-canvas");
+            clearAll("display-canvas");            
+            _staticAnnotationData = annotationData;
+            _staticData = topoData;
+
+            var imgdata = jQuery.parseJSON(_staticData);
+
+            getAnnoation();
+            ReDrawLine(imgdata[0], routeId, isSingleLine, wheight, isAscentCreate);
         }
         function clearAll(canvasDiv) {
             var drawCanvas = document.getElementById(canvasDiv);
             var ctx = drawCanvas.getContext("2d");
             ctx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
         }
-        function ReDrawLine(data, routeId, isSingleLine, wheight) {
+        function ReAscentDrawLine(data, routeId, isSingleLine, wheight, isAscentCreate) {
             $(".point-highlighterhide").remove();
-            if (isSingleLine == true) {
+            if (isSingleLine == true && isAscentCreate == false) {
                 //code to draw line and points on image
                 for (var i = 0; i < data.drawing.length; i++) {
-                    drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket);
+                    drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket, false);
                     var pointLength = data.drawing[i].line.points.length;
 
                     $(data.drawing[i].line.points).each(function (index, point) {
@@ -69,13 +81,41 @@
             if (routeId != null && routeId > 0) {
                 var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
                 var Newdata = routeDrawingData;
-                drawLine("drawing-canvas", Newdata.line, 0, 0, Newdata.gradeBucket);
+                drawLine("drawing-canvas", Newdata.line, 0, 0, Newdata.gradeBucket, isAscentCreate);
                 var pointLength = Newdata.line.points.length;
 
                 $(Newdata.line.points).each(function (index, point) {
                     makeDrawingPointTemplateElement(point, index, Newdata.line.pointsText, 0, 0, Newdata.line.pointsDirection, true, Newdata.line.style.color, 0, pointLength, Newdata.id)
                 });
-                $('#display-canvas').fadeTo(500, 0.2);                
+                $("#display-canvas").fadeTo(500, 0.2);
+            }
+            resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing, wheight, routeId);
+        }
+
+        function ReDrawLine(data, routeId, isSingleLine, wheight, isAscentCreate) {
+            $(".point-highlighterhide").remove();
+            if (isSingleLine == true && isAscentCreate == true) {
+                //code to draw line and points on image
+                for (var i = 0; i < data.drawing.length; i++) {
+                    drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket, false);
+                    var pointLength = data.drawing[i].line.points.length;
+
+                    $(data.drawing[i].line.points).each(function (index, point) {
+                        makeDrawingPointTemplateElement(point, index, data.drawing[i].line.pointsText, 0, 0, data.drawing[i].line.pointsDirection, true, data.drawing[i].line.style.color, i, pointLength, data.drawing[i].id)
+                    });
+                }
+            }
+            //get single route data using routeId
+            if (routeId != null && routeId > 0) {
+                var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
+                var Newdata = routeDrawingData;
+                drawLine("drawing-canvas", Newdata.line, 0, 0, Newdata.gradeBucket, isAscentCreate);
+                var pointLength = Newdata.line.points.length;
+
+                $(Newdata.line.points).each(function (index, point) {
+                    makeDrawingPointTemplateElement(point, index, Newdata.line.pointsText, 0, 0, Newdata.line.pointsDirection, true, Newdata.line.style.color, 0, pointLength, Newdata.id)
+                });
+               $("#display-canvas").fadeTo(500, 0.2);                               
             }
              resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing,wheight,routeId);            
         }
@@ -109,7 +149,7 @@
                 if (routeId != null && routeId > 0) {
                     var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
                     var Newdata = routeDrawingData;
-                    drawLine("display-canvas", Newdata.line, 0, 0, Newdata.gradeBucket);
+                    drawLine("display-canvas", Newdata.line, 0, 0, Newdata.gradeBucket,false);
                     var pointLength = Newdata.line.points.length;
 
                     $(Newdata.line.points).each(function (index, point) {
@@ -150,7 +190,7 @@
 
                 //code to draw line and points on image
                 for (var i = 0; i < data.drawing.length; i++) {
-                    drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket);
+                    drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket,false);
                     var pointLength = data.drawing[i].line.points.length;
 
                     $(data.drawing[i].line.points).each(function (index, point) {
@@ -276,7 +316,7 @@
             });
         }
 
-        function drawLine(canvasDiv, line, next_startxpoint, next_endxpoint, gradeBucket) {
+        function drawLine(canvasDiv, line, next_startxpoint, next_endxpoint, gradeBucket, isAscentCreate) {
 
             if (line.points.length <= 0) { return false; }
 
@@ -287,7 +327,9 @@
                 is_dark_checked = line.style.is_dark_checked.toString().toLowerCase();
 
             ctx.strokeStyle = line.style.color;
-            ctx.lineWidth = line.style.width;
+            if (isAscentCreate == true) { ctx.lineWidth = 10; } else {
+                ctx.lineWidth = line.style.width;
+            }
             ctx.shadowOffsetX = line.style.shadow.offsetX;
             ctx.shadowOffsetY = line.style.shadow.offsetY;
             ctx.shadowBlur = line.style.shadow.blur;
@@ -351,7 +393,7 @@
                     line.marker.fillColor = line.style.color;
 
                 // sandeep
-                drawRouteMarker(canvasDiv, drawPoint.x, drawPoint.y, line.marker.label, marketFillcolor, line.marker.foreColor, line.marker.shadow);
+                drawRouteMarker(canvasDiv, drawPoint.x, drawPoint.y, line.marker.label, marketFillcolor, line.marker.foreColor, line.marker.shadow, isAscentCreate);
             }
 
             // Add any extra route annotations (lower-off, belay etc)
@@ -369,14 +411,14 @@
                             line.marker.fillColor = line.style.color;
 
                         // sandeep
-                        drawRouteMarker(canvasDiv, annotation.x, annotation.y, line.marker.label, marketFillcolor, line.marker.foreColor, line.marker.shadow);
+                        drawRouteMarker(canvasDiv, annotation.x, annotation.y, line.marker.label, marketFillcolor, line.marker.foreColor, line.marker.shadow, isAscentCreate);
                         //drawRouteMarker(canvasDiv, annotation.x, annotation.y, "", line.marker.fillColor, line.marker.foreColor, line.marker.shadow);
                     }
                 }
             }
         }
-        function drawRouteMarker(canvasDiv, xIn, yIn, label, fillColour, outlineColour, useShadow) {
-            //TODO: change to DIV element so that we can add Bootstrap:FuelUX:Placard functionality to the route badge
+        function drawRouteMarker(canvasDiv, xIn, yIn, label, fillColour, outlineColour, useShadow, isAscentCreate) {
+            //TODO: change to DIV element so that we can add Bootstrap:FuelUX:Placard functionality to the route badge            
             var badgeSize = 22;
             var p = { x: 0, y: 0 };
             p.x = parseInt(xIn);
@@ -411,12 +453,19 @@
 
             //some polishing here to center/center the label
             var labelFontSize = 15.5;
-            if (label.length > 1) { labelFontSize = 15.0; }
+            if (label.length > 1) {
+                if (isAscentCreate == true) { label = "" } else {
+                    label = "";                    
+                }
+                labelFontSize = 15.0;
+            }
             ctx.font = "" + labelFontSize + "px Arial";
             ctx.textAlign = "center";
             ctx.fillStyle = outlineColour;
-            p.y += (labelFontSize + (badgeSize/2));
-            ctx.fillText(label, p.x, p.y);
+            p.y += (labelFontSize + (badgeSize / 2));
+            if (isAscentCreate == true) { ctx.fillText("", p.x, p.y); } else {
+                ctx.fillText(label, p.x, p.y);
+            }
             //ctx.fillText("1", p.x, p.y);
 
             // reset context shadow colour in case we over-rode it
