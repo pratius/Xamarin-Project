@@ -327,7 +327,7 @@
                 is_dark_checked = line.style.is_dark_checked.toString().toLowerCase();
 
             ctx.strokeStyle = line.style.color;
-            if (isAscentCreate == true) { ctx.lineWidth = 10; } else {
+            if (isAscentCreate == true) { ctx.lineWidth = 3; } else {
                 ctx.lineWidth = line.style.width;
             }
             ctx.shadowOffsetX = line.style.shadow.offsetX;
@@ -436,7 +436,7 @@
 
             ctx.strokeStyle = outlineColour;
             ctx.fillStyle = fillColour;
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 2;
             if (!useShadow) { ctx.shadowColor = 'transparent'; }
             ctx.beginPath();
 
@@ -455,7 +455,7 @@
             var labelFontSize = 15.5;
             if (label.length > 1) {
                 if (isAscentCreate == true) { label = "" } else {
-                    label = "";                    
+//                    label = "";                    
                 }
                 labelFontSize = 15.0;
             }
@@ -486,7 +486,7 @@
 
             ctx.strokeStyle = '#ffffff';
             ctx.fillStyle = lineColor.length > 0 ? lineColor : '#dd0000';   // line colour or default red.
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 2;
 
             var routePoint, annotationXOffset = 0, annotationYOffset = 0;
 
