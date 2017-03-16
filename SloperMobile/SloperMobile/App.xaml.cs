@@ -81,27 +81,8 @@ namespace SloperMobile
                 }
                 else
                 {
-					//MainPage = new NavigationPage(new MenuNavigationPage());
-					//removed by Steve replaced with code below - 2017-02-15
-
-					MainPage = new MenuNavigationPage();
-
-                    //HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login_Extend, Settings.AccessTokenSettings);
-                    //ExtendURL extnobj = new ExtendURL();
-                    //extnobj.rtoken = Settings.RenewalTokenSettings;
-                    //var extnjson = JsonConvert.SerializeObject(extnobj);
-                    //var response = await apicall.Post<LoginResponse>(extnjson);
-                    //if (response != null)
-                    //{
-                    //    Settings.AccessTokenSettings = response.accessToken;
-                    //    Settings.RenewalTokenSettings = response.renewalToken;
-                    //    Settings.DisplayNameSettings = response.displayName;
-                    //    MainPage = new NavigationPage(new HomePage());
-                    //}
-                    //else
-                    //    MainPage = new NavigationPage(new LoginPage());
+                    MainPage = new NavigationPage(new MenuNavigationPage());
                 }
-
             }
             else
             {
