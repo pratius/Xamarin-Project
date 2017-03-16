@@ -5,11 +5,8 @@
     <meta charset="utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="Js/canvas.dashedLine.js"></script>
-    <script src="Js/jquery.mousewheel.js"></script>
-    <script src="Js/jquery.panzoom.js"></script>
-    <script src="Js/jquery.bxslider.js"></script>
-    <link rel="stylesheet" type="text/css" href="Css/ResizeImage.css">
-    <link rel="stylesheet" type="text/css" href="Css/jquery.bxslider.css">
+    <script src="Js/jquery.mousewheel.js"></script>    
+    <link rel="stylesheet" type="text/css" href="Css/ResizeImage.css">    
 
     <script type="text/javascript">
         var container = null;
@@ -266,7 +263,7 @@
                     if ($(".p" + index + i)[0].className.indexOf('p0') > -1 && (parseInt($(".p" + index + i).attr('routeid'))) == routeId) {
                         $("#mbimage").scrollLeft(((parseInt($(".p" + index + i).attr('data-x'))) * ratio));
                     }
-                    $(".p" + index + i).css('top', (((parseInt($(".p" + index + i).attr('data-y'))) + 6) * ratio)).css('left', (((parseInt($(".p" + index + i).attr('data-x')))+ 4) * ratio)).fadeIn(100);
+                    $(".p" + index + i).css('top', (((parseInt($(".p" + index + i).attr('data-y'))) + 4) * ratio)).css('left', (((parseInt($(".p" + index + i).attr('data-x')))+ 2) * ratio)).fadeIn(100);
                 });
             }
         }

@@ -12,7 +12,7 @@
         background-origin: content-box;
     }
  #draw-surface-container > span {
-	display: none !important;
+	/*display: none !important;*/
 }
 .point-type-0, #point-type-selector-type-0 {
     background-image: url(../img/sample-line.png);
@@ -120,9 +120,7 @@
     background-color: transparent;
     border: none;/*2px solid red !important;*/
     border-radius: 1px;
-    position: absolute;
-    top: 50px;
-    left: 50px;
+    position: absolute;    
     width: 15px;
     height: 15px;
     z-index: 5000; /* one above the topo Image but below the display and drawing canvas surfaces */
