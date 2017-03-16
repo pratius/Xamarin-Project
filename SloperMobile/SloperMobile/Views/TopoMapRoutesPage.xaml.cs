@@ -50,7 +50,7 @@ namespace SloperMobile.Views
                     var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
                     height = device.Display.Height;
                     newHeight = GetHeight(height);
-                    webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, newHeight, Convert.ToInt32(t), true);
+                    webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, newHeight, Convert.ToInt32(t), true,false);
                 }));
             }
             catch (Exception ex)
@@ -143,11 +143,11 @@ namespace SloperMobile.Views
 
                     if (Device.OS == TargetPlatform.Android)
                     {
-                        webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (newHeight), _routeId, true);
+                        webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (newHeight), _routeId, true,false);
                     }
                     else
                     {
-                        webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (newHeight), _routeId, true);
+                        webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (newHeight), _routeId, true,false);
                     }
                 }
             }
