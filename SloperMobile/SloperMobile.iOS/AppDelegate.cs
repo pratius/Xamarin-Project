@@ -42,11 +42,12 @@ namespace SloperMobile.iOS
             Resolver.SetResolver(container.GetResolver());
             global::Xamarin.Forms.Forms.Init();
             ImageCircleRenderer.Init();
-            Cache.CurrentScreenHeight = (int)((int)(UIScreen.MainScreen.Bounds.Height*(int)UIScreen.MainScreen.Scale)* 2);
+            Cache.CurrentScreenHeight = (int)((int)(UIScreen.MainScreen.Bounds.Height * (int)UIScreen.MainScreen.Scale) * 2);
             LoadApplication(new App());
             var manager = BITHockeyManager.SharedHockeyManager;
-            manager.Configure(AppSetting.HockeyAppId);
+            manager.Configure(AppSetting.HockeyAppId_iOS);
             manager.StartManager();
+            manager.Authenticator.AuthenticateInstallation();
             new SfGaugeRenderer();
             new SfRatingRenderer();
             return base.FinishedLaunching(app, options);

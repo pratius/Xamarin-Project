@@ -24,7 +24,7 @@ namespace SloperMobile.Droid
 
             base.OnCreate(bundle);
             //take screen height -40 for top nav and 40 for bottom nav
-            Cache.CurrentScreenHeight = (int)((Resources.DisplayMetrics.HeightPixels) / Resources.DisplayMetrics.Density)-80;
+            Cache.CurrentScreenHeight = (int)((Resources.DisplayMetrics.HeightPixels) / Resources.DisplayMetrics.Density) - 80;
             var container = new SimpleContainer();
 
             container.Register<IJsonSerializer, JsonSerializer>();
@@ -37,9 +37,9 @@ namespace SloperMobile.Droid
             UserDialogs.Init(this);
 
             LoadApplication(new App());
-            CrashManager.Register(this, AppSetting.HockeyAppId);
+            CrashManager.Register(this, AppSetting.HockeyAppId_Droid);
             //// in your main activity OnCreate-method add:
-            MetricsManager.Register(this, Application, AppSetting.HockeyAppId);
+            MetricsManager.Register(this, Application, AppSetting.HockeyAppId_Droid);
         }
     }
 }
