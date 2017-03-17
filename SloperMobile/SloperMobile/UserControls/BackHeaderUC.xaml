@@ -23,7 +23,7 @@
     </ResourceDictionary>
   </ContentView.Resources>
 
-  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" BackgroundColor="Transparent">
+  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" BackgroundColor="Black">
     <Grid.RowDefinitions>
       <RowDefinition Height="40"/>
     </Grid.RowDefinitions>
