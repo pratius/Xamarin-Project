@@ -3,7 +3,7 @@
 	<ContentPage.Padding>
 		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
 	</ContentPage.Padding>
-	<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
+	<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" >
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
 			<RowDefinition Height="*" />
@@ -30,7 +30,7 @@
 					</Grid.ColumnDefinitions>
 					<Grid.RowDefinitions>
 						<RowDefinition Height=".1*" />
-						<RowDefinition Height=".7*" />
+						<RowDefinition Height=".2*" />
 						<RowDefinition Height=".1*" />
 					</Grid.RowDefinitions>
 					<Grid Grid.Column="1" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
@@ -40,8 +40,15 @@
 							<RowDefinition Height="15" />
 							<RowDefinition Height="auto" />
 						</Grid.RowDefinitions>
-						<StackLayout Orientation="Vertical" HorizontalOptions="Center">
-							<Label Grid.Row="0" Text="{Binding RouteName,Mode=TwoWay}" TextColor="#FA7200" FontSize="Medium" VerticalOptions="FillAndExpand" HorizontalOptions="Center" />
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                            <Image Source="arrowLeftWhite" Rotation="90" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,-60,0,0">
+                            <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding HideSmallPopupCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+							<Label Grid.Row="1" Text="{Binding RouteName,Mode=TwoWay}" TextColor="#FA7200" FontSize="Medium" VerticalOptions="FillAndExpand" HorizontalOptions="Center" />
 							<!--<Label Grid.Row="1" Text="{Binding RouteInfo,Mode=TwoWay}" TextColor="White" FontSize="Small" LineBreakMode="WordWrap" WidthRequest="300" VerticalOptions="Center" HorizontalOptions="Center" />-->
 						</StackLayout>
 						<Grid Grid.Row="2" HorizontalOptions="Center" WidthRequest="95">
@@ -60,7 +67,7 @@
 							<Image Source="{Binding TopAngle_20}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20" />
 						</StackLayout>
 					</Grid>
-					<Image Source="arrowLeftWhite" Rotation="270" Grid.Column="1" Grid.Row="2" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,0,0,5">
+					<Image Source="arrowLeftWhite" Rotation="270" Grid.Column="1" Grid.Row="2" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0">
 						<Image.GestureRecognizers>
 							<TapGestureRecognizer Command="{Binding ShowPopupCommand}" />
 						</Image.GestureRecognizers>

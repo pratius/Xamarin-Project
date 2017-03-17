@@ -178,6 +178,7 @@ namespace SloperMobile.ViewModel
             SendCommand = new DelegateCommand(ExecuteOnSends);
             HidePopupCommand = new DelegateCommand(ExecuteOnHidePopup);
             ShowPopupCommand = new DelegateCommand(ExecuteOnShowPopup);
+            HideSmallPopupCommand = new DelegateCommand(ExecuteOnHideSmallPopup);
             IsPopupHide = false;
             try
             {
@@ -271,11 +272,18 @@ namespace SloperMobile.ViewModel
             IsPopupShow = true;
             IsPopupHide = false;
         }
+        private void ExecuteOnHideSmallPopup(object obj)
+        {                       
+            IsPopupHide = true;
+        }
+        
 
         public DelegateCommand TickListCommand { get; set; }
         public DelegateCommand SendCommand { get; set; }
         public DelegateCommand HidePopupCommand { get; set; }
         public DelegateCommand ShowPopupCommand { get; set; }
+        public DelegateCommand HideSmallPopupCommand { get; set; }
+        
 
         private string GetTopAngleResourceName(string angle)
         {

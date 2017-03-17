@@ -37,8 +37,8 @@ namespace SloperMobile.Views
                     TopoMapRouteVM.IsPopupShow = true;
                     // load the scenic shot if there are no topos available
                     webView.IsVisible = false;
-                    TopoMapRouteVM.IsHideSwipeUp = false;
-                    this.BackgroundImage = "scenic_shot_portrait";
+                    TopoMapRouteVM.IsHideSwipeUp = false;                    
+                    this.BackgroundImage = "scenic_shot_portrait";                                                                               
                 }
                 TopoMapRouteVM.OnConditionNavigation = OnPageNavigation;
                 TopoMapRouteVM.IsRunningTasks = true;
@@ -72,16 +72,16 @@ namespace SloperMobile.Views
                 switch (Convert.ToInt32(_height))
                 {
                     case 1334:
-                        _height = _height + 150; //iphone 6 and iphone 7 and iphone 6s
+                        _height = _height + 200; //iphone 6 and iphone 7 and iphone 6s
                         break;
                     case 2208:
-                        _height = _height - 700; //iPhone6Plus and iPhone7Plus and iphone 6s plus
+                        _height = _height - 580; //iPhone6Plus and iPhone7Plus and iphone 6s plus
                         break;
                     case 1136:
-                        _height = _height + 290; //iPhone5 and iPhone5s and iPhone SE
+                        _height = _height + 350; //iPhone5 and iPhone5s and iPhone SE
                         break;
                     case 2048:
-                        _height = _height - 900; //iPas Air 2 and iPad Air 
+                        _height = _height - 840; //iPas Air 2 and iPad Air 
                         break;
                 }
             }
