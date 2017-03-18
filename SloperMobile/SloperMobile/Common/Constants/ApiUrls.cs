@@ -9,7 +9,7 @@ namespace SloperMobile.Common.Constants
 {
     public class ApiUrls
     {
-        public const string Base_Url = "http://sloper.slicksystems.ca:8080/DesktopModules/";
+        public const string Base_Url = "http://www.sloperclimbing.com/DesktopModules/";
         public const string Url_Login = Base_Url + "JwtAuth/API/mobile/login";
         public const string Url_Login_Extend = Base_Url + "JwtAuth/API/mobile/extendtoken";
         public const string Url_User_Register = Base_Url + "SloperPlatform/API/v2/SloperUser/Register";
