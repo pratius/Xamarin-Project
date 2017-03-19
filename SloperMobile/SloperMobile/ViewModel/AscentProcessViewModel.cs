@@ -726,7 +726,7 @@ namespace SloperMobile.ViewModel
                     ProgressMsg = "Please try again!";
                     IsRunningTasks = false;
                 }
-                CommandText = "Close";
+                CommandText = "Continue";
                 IsButtonInable = true;
                 return;
             }

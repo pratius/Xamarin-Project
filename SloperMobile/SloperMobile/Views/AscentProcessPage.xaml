@@ -70,8 +70,8 @@
 					<Image Margin="03" Source="google_plus_logo" Aspect="AspectFit" />
 				</StackLayout>-->
 			</StackLayout>
-			<StackLayout Grid.Row="3" Margin="0,30,0,0" VerticalOptions="Start">
-				<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}" IsEnabled="{Binding IsButtonInable}" WidthRequest="100" />
+			<StackLayout Grid.Row="3" Margin="0,30,0,0" VerticalOptions="Start" HorizontalOptions="Fill">
+				<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" HorizontalOptions="Fill" VerticalOptions="StartAndExpand" Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}" IsEnabled="{Binding IsButtonInable}" WidthRequest="100" />
 				<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
 					<ActivityIndicator IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="10" HeightRequest="10" Color="White">
 					</ActivityIndicator>

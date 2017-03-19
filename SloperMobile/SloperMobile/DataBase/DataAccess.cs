@@ -316,8 +316,8 @@ namespace SloperMobile.DataBase
         /// </summary>
         /// <returns></returns>
         public IEnumerable<T_ROUTE> GetRoutesBySectorId(string sectorid)
-        {
-            var item = dbConn.Table<T_ROUTE>().Where(route => route.sector_id == sectorid);
+        {            
+            var item = dbConn.Table<T_ROUTE>().Where(route => route.sector_id == sectorid).OrderBy(x=>x.sort_order);
             return item;
         }
 

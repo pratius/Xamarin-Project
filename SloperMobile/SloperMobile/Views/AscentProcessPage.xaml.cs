@@ -169,6 +169,10 @@ namespace SloperMobile.Views
                 {
                     summary_icons.Children.Add(new Image { Source = ImageSource.FromFile(iconstr),HeightRequest=50,WidthRequest=50 });
                 }
+                if (Device.OS == TargetPlatform.iOS)
+                {
+                    UserDialogs.Instance.HideLoading();
+                }
             }
         }
     }
