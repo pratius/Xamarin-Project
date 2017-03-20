@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SloperMobile.Common.Constants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,9 @@ namespace SloperMobile.UserControls
         }
         private async void OnBackTapped(object sender, EventArgs e)
         {
+            Cache.BackArrowCount = 1;            
             await Navigation.PopAsync().ConfigureAwait(false);
+           
         }
         private async void OnSearch(object sender, EventArgs e)
         {

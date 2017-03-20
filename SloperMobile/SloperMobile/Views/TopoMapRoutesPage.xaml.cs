@@ -182,7 +182,7 @@ namespace SloperMobile.Views
         private void OnSwipeUpHidePopup(object sender, EventArgs e)
         {
             TopoMapRouteVM.IsPopupHide = false;
-            if (_routeId <= 0)
+            if (_routeId > 0)
                 webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight);
         }
     }
