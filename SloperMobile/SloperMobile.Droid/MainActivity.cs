@@ -37,9 +37,9 @@ namespace SloperMobile.Droid
             UserDialogs.Init(this);
 
             LoadApplication(new App());
-            CrashManager.Register(this, AppSetting.HockeyAppId);
+            CrashManager.Register(this, AppSetting.HockeyAppId_Droid);
             //// in your main activity OnCreate-method add:
-            MetricsManager.Register(this, Application, AppSetting.HockeyAppId);
+            MetricsManager.Register(this, Application, AppSetting.HockeyAppId_Droid);
         }
     }
 }
