@@ -359,7 +359,7 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string tech_grade
         { get; set; }
-        public string sort_order
+        public int sort_order
         { get; set; }
         public string grade_bucket_id
         { get; set; }

@@ -616,14 +616,14 @@ namespace SloperMobile.ViewModel
                 Title = "Comment",
                 InputType = InputType.Name,
                 Message = "Please write your experience here",
-                Text= CommentText,
+                Text = CommentText,
                 MaxLength = 250,
                 Placeholder = "type here",
                 OkText = "Ok",
                 IsCancellable = true,
                 CancelText = "Cancel"
             });
-            if(result.Ok)
+            if (result.Ok)
             {
                 CommentText = result.Text;
             }
