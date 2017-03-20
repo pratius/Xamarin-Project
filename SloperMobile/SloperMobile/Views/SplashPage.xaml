@@ -17,10 +17,10 @@
 			</StackLayout>
 			<StackLayout Grid.Row="1" Orientation="Vertical" IsVisible="{Binding IsDisplayThanksNote,Mode=TwoWay}" Padding="40,0,40,0">
 				<Label Text="THANKS FOR DOWNLOADING" Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" FontSize="Medium" />
-				<Label Text="THE SLOPER CLIMBING APP." Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" FontSize="Medium" />
+				<Label Text="THE GRAND VALLEY CLIMBING APP." Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" FontSize="Medium" />
 				<Label Margin="0,30,0,0" Text="The App works offline, but you will need either a Wi-Fi connection or a data plan to download updates and use the maps." Style="{StaticResource GeneralLabelStyle}" FontSize="Micro" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" />
 				<Label Margin="0,10,0,0" Text="If you like the app, please leave us a nice review in the app store!" Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" FontSize="Micro" LineBreakMode="WordWrap" />
-				<Label Margin="0,10,0,0" Text="Sloper Climibing Team" Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" FontSize="Micro" LineBreakMode="WordWrap" />
+				<Label Margin="0,10,0,0" Text="Grand Valley Climibing Team" Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" FontSize="Micro" LineBreakMode="WordWrap" />
 			</StackLayout>
 			<StackLayout Grid.Row="2" Orientation="Vertical" IsVisible="true" Margin="40,0,40,0">
 				<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" Command="{Binding ContinueCommand}" Style="{StaticResource GeneralButtonStyle}" Margin="0,0,0,10" />

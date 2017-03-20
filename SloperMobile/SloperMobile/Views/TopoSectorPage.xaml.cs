@@ -15,7 +15,7 @@ namespace SloperMobile.Views
     public partial class TopoSectorPage : CarouselPage
     {
         public MapListModel _CurrentSector { get; set; }
-        public int _count = 0, _routeId = 0, _eleIndex = 0, _newIndex = 0, _topoIndex = -1;
+        public int _count = 0, _routeId = 0, _eleIndex = 0, _newIndex = 0, _topoIndex = -1, cnt = 0;
         List<int> topoElement = new List<int>();
         List<int> newTopoElement = new List<int>();
         private TopoSectorViewModel topoSectorViewModel;        
@@ -230,10 +230,14 @@ namespace SloperMobile.Views
         protected override void OnCurrentPageChanged()
         {
             base.OnCurrentPageChanged();
-            Cache.SelectedTopoIndex= Children.IndexOf(CurrentPage);
+            Cache.SelectedTopoIndex = Children.IndexOf(CurrentPage);
             if (Device.OS == TargetPlatform.Android)
             {
                 var index = Children.IndexOf(CurrentPage);
+                if (index == -1)
+                {
+                    cnt++;
+                }
                 if (index > 0)
                 {
                     this.SelectedItem = Children[0];
@@ -241,6 +245,56 @@ namespace SloperMobile.Views
                 if (index == 0)
                 {
                     this.SelectedItem = Children[index];
+                }
+                else if (index == -1)
+                {
+                    if (cnt == 1)
+                    {
+                        if (Cache.BackArrowCount != 1)
+                        {
+                            List<int> topoElement = new List<int>();
+                            List<int> newTopoElement = new List<int>();
+                            Navigation.PushAsync(new MapDetailPage(_CurrentSector));
+                            cnt = 0;
+                        }
+                        else
+                        {
+                            Navigation.PopAsync().ConfigureAwait(false);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                var index = Children.IndexOf(CurrentPage);
+                if (index == -1)
+                {
+                    cnt++;
+                }
+                if (index > 0)
+                {
+                    this.SelectedItem = Children[0];
+                }
+                if (index == 0)
+                {
+                    this.SelectedItem = Children[index];
+                }
+                else if (index == -1)
+                {
+                    if (cnt == 1)
+                    {
+                        if (Cache.BackArrowCount != 1)
+                        {
+                            List<int> topoElement = new List<int>();
+                            List<int> newTopoElement = new List<int>();
+                            Navigation.PushAsync(new MapDetailPage(_CurrentSector));
+                            cnt = 0;
+                        }
+                        else
+                        {
+                            Navigation.PopAsync().ConfigureAwait(false);
+                        }
+                    }
                 }
             }
         }

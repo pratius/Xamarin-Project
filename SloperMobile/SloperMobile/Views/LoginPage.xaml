@@ -17,7 +17,7 @@
 			<Button BorderRadius="0" Text="LOGIN" Style="{StaticResource GeneralButtonStyle}" Command="{Binding LoginCommand}" />
 			<!--<Label  Text="FORGOT PASSWORD?" Margin="05"  Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"/>-->
 		</StackLayout>
-		<StackLayout Grid.Row="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+		<StackLayout Grid.Row="2" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
 			<Label Text="or" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand" />
 			<!--<StackLayout Orientation="Horizontal" Spacing="05" HorizontalOptions="StartAndExpand">
                 <Image Margin="03"  Source="facebook_logo" Aspect="AspectFit"/>
@@ -25,7 +25,7 @@
                 <Image Margin="03" Source="instagram_symbol" Aspect="AspectFit"/>
                 <Image Margin="03" Source="google_plus_logo" Aspect="AspectFit"/>
             </StackLayout>-->
-			<Button WidthRequest="300" BorderRadius="0" Text="LOGIN AS GUEST" Style="{StaticResource GeneralButtonStyle}" Margin="05" Command="{Binding LoginCommand}" CommandParameter="Guest" />
+			<Button BorderRadius="0" Text="LOGIN AS GUEST" Style="{StaticResource GeneralButtonStyle}" Margin="05" Command="{Binding LoginCommand}" CommandParameter="Guest" />
 		</StackLayout>
 		<Label Grid.Row="3" Text="Not a member? Sign up today!" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center">
 			<Label.GestureRecognizers>

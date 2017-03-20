@@ -120,9 +120,9 @@ namespace SloperMobile.ViewModel
                     Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw ex; 
+                throw ex;
             }
         }
 
@@ -135,7 +135,7 @@ namespace SloperMobile.ViewModel
 
         private void SetChartValue()
         {
-            int _onsight = 0, _redpoint = 0,_project = 0;
+            int _onsight = 0, _redpoint = 0, _project = 0;
             if (SendsList.Count > 0)
             {
                 foreach (var item in SendsList)
@@ -160,6 +160,7 @@ namespace SloperMobile.ViewModel
             {
                 HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_GetAscent_AppData, Settings.AccessTokenSettings);
                 SendsDTO sendsobj = new SendsDTO();
+                sendsobj.app_id = AppConstant.APP_ID;
                 sendsobj.start_date = "20160101";
                 sendsobj.end_date = "20300101";
                 string sendsjson = JsonConvert.SerializeObject(sendsobj);
@@ -170,7 +171,7 @@ namespace SloperMobile.ViewModel
                     SetChartValue();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -198,7 +199,7 @@ namespace SloperMobile.ViewModel
             catch (Exception ex)
             {
                 throw ex;
-            }           
+            }
         }
         #endregion
 

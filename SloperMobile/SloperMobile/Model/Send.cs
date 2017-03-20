@@ -52,11 +52,12 @@ namespace SloperMobile.Model
         public string Tech_Grade_Description { get; set; }
         public string route_name { get; set; }
         public long sector_id { get; set; }
-        
+
     }
 
     public class SendsDTO
     {
+        public string app_id { get; set; }
         public string start_date { get; set; }
         public string end_date { get; set; }
     }

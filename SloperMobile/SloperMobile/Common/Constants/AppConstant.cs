@@ -9,10 +9,10 @@ namespace SloperMobile.Common.Constants
 {
     public class AppConstant
     {
-        public const string APP_TITLE = "Sloper Mobile";
-        public const string APP_ID = "1";
-        public const string APP_DBNAME = "sloperdb.db3";
-        public const string APP_COMPANY = "Sloper Inc.";
+        public const string APP_TITLE = "Grand Valley Climbing";
+        public const string APP_ID = "26";
+        public const string APP_DBNAME = "slopergvcdb.db3";
+        public const string APP_COMPANY = "Grand Valley Climbing";
 
         public const string EMPTY_STRING = "";
         public const string NETWORK_FAILURE = "No Network Connection found! Please try again.";
@@ -25,8 +25,8 @@ namespace SloperMobile.Common.Constants
         public const string SPF_ACCESSTOKEN = "accessToken";
         public const string SPF_RENEWALTOKEN = "renewalToken";
 
-        public const string Guest_UserId = "sloper.anonymous";
-        public const string Guest_UserPassword = "s.s2016!";
+        public const string Guest_UserId = "gvc.anonymous@sloperclimbing.com";
+        public const string Guest_UserPassword = "s.s2017!";
 
         //MapRoutePage
         public const string RouteType_climbing_Angle = "climbing angle";
@@ -49,7 +49,7 @@ namespace SloperMobile.Common.Constants
         public const string RouteType_Route_Style_Technical_1 = "route_style_1_technical";
         public const string RouteType_Route_Style_Sequential_2 = "route_style_2_sequential";
         public const string RouteType_Route_Style_Powerful_4 = "route_style_4_powerful";
-        public const string RouteType_Route_Style_Sustained_8= "route_style_8_sustained";
+        public const string RouteType_Route_Style_Sustained_8 = "route_style_8_sustained";
         public const string RouteType_Route_Style_One_Move_16 = "route_style_16_one_move";
 
         /// <summary>
