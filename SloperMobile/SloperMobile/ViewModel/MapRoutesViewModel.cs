@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,12 +25,12 @@ namespace SloperMobile.ViewModel
             set { currentImage = value; OnPropertyChanged(); }
         }
 
-        private bool isPopupHide;
+        private bool displayRoutePopupSm;
 
-        public bool IsPopupHide
+        public bool DisplayRoutePopupSm
         {
-            get { return isPopupHide; }
-            set { isPopupHide = value; OnPropertyChanged(); }
+            get { return displayRoutePopupSm; }
+            set { displayRoutePopupSm = value; OnPropertyChanged(); }
         }
         bool hideSwipeUp=true;
         public bool IsHideSwipeUp
@@ -39,12 +39,12 @@ namespace SloperMobile.ViewModel
             set { hideSwipeUp = value; OnPropertyChanged(); }
         }
 
-        private bool isPopupShow;
+        private bool displayRoutePopupLg;
 
-        public bool IsPopupShow
+        public bool DisplayRoutePopupLg
         {
-            get { return isPopupShow; }
-            set { isPopupShow = value; OnPropertyChanged(); }
+            get { return displayRoutePopupLg; }
+            set { displayRoutePopupLg = value; OnPropertyChanged(); }
         }
 
         private string _sectorName;
@@ -147,9 +147,9 @@ namespace SloperMobile.ViewModel
         public MapRoutesViewModel(MapListModel CurrentSector)
         {
             SendCommand = new DelegateCommand(ExecuteOnSends);
-            HidePopupCommand = new DelegateCommand(ExecuteOnHidePopup);
-            ShowPopupCommand = new DelegateCommand(ExecuteOnShowPopup);
-            IsPopupHide = false;
+            HideRoutePopupLgCommand = new DelegateCommand(ExecuteOnHideRoutePopupLgCommand);
+            ShowRoutePopupLgCommand = new DelegateCommand(ExecuteOnShowRoutePopupLgCommand);
+            DisplayRoutePopupSm = false;
             try
             {
                 PageHeaderText = CurrentSector.SectorName;
@@ -212,22 +212,22 @@ namespace SloperMobile.ViewModel
             }
         }
 
-        private void ExecuteOnHidePopup(object obj)
+        private void ExecuteOnHideRoutePopupLgCommand(object obj)
         {
-            IsPopupShow = false;
-            IsPopupHide = true;
+            DisplayRoutePopupLg = false;
+            DisplayRoutePopupSm = true;
         }
 
-        private void ExecuteOnShowPopup(object obj)
+        private void ExecuteOnShowRoutePopupLgCommand(object obj)
         {
-            IsPopupShow = true;
-            IsPopupHide = false;
+            DisplayRoutePopupLg = true;
+            DisplayRoutePopupSm = false;
         }
 
 
         public DelegateCommand SendCommand { get; set; }
-        public DelegateCommand HidePopupCommand { get; set; }
-        public DelegateCommand ShowPopupCommand { get; set; }
+        public DelegateCommand HideRoutePopupLgCommand { get; set; }
+        public DelegateCommand ShowRoutePopupLgCommand { get; set; }
 
         private string GetTopAngleResourceName(string angle)
         {

@@ -129,7 +129,6 @@
     <Compile Include="ViewModel\ClimbingDaysViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\MapDetailViewModel.cs" />
-    <Compile Include="ViewModel\MapRoutesViewModel.cs" />
     <Compile Include="ViewModel\MapViewModel.cs" />
     <Compile Include="ViewModel\NewsViewModel.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
@@ -162,9 +161,6 @@
     </Compile>
     <Compile Include="Views\MapPage.xaml.cs">
       <DependentUpon>MapPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MapRoutesPage.xaml.cs">
-      <DependentUpon>MapRoutesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuNavigationPage.xaml.cs">
       <DependentUpon>MenuNavigationPage.xaml</DependentUpon>
@@ -433,12 +429,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\SplashPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\MapRoutesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

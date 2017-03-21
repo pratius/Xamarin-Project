@@ -18,7 +18,7 @@ namespace SloperMobile.Views
         public int _count = 0, _routeId = 0, _eleIndex = 0, _newIndex = 0, _topoIndex = -1, cnt = 0;
         List<int> topoElement = new List<int>();
         List<int> newTopoElement = new List<int>();
-        private TopoSectorViewModel topoSectorViewModel;        
+        private TopoSectorViewModel topoSectorViewModel;
         public TopoSectorPage(MapListModel CurrentSector, string routeId)
         {
             InitializeComponent();
@@ -76,8 +76,8 @@ namespace SloperMobile.Views
                                 topoElement.Add(i);
                                 TopoMapRoutesPage topopageObj;
                                 var topoimg = JsonConvert.SerializeObject(topoimgages[i]);
-                                topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId);                                
-                                this.Children.Add(topopageObj);                                
+                                topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId);
+                                this.Children.Add(topopageObj);
                             }
                         }
                     }

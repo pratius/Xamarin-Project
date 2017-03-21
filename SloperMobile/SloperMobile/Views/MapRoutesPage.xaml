@@ -24,7 +24,7 @@
             <XLabUC:HybridWebView  x:Name="webView" />
         </Grid>
 
-        <Grid BackgroundColor="#77000000" IsVisible="{Binding IsPopupHide,Mode=TwoWay}" HeightRequest="150"  Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+        <Grid BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupSm,Mode=TwoWay}" HeightRequest="150"  Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="02"/>
                 <ColumnDefinition Width=".5*"/>
@@ -71,7 +71,7 @@
 
             <Image Source="arrowLeftWhite" Rotation="270" Grid.Column="1" Grid.Row="2" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ShowPopupCommand}"/>
+                    <TapGestureRecognizer Command="{Binding ShowRoutePopupLgCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
 
@@ -80,7 +80,7 @@
 
         </Grid>
 
-        <Grid BackgroundColor="#77000000" IsVisible="{Binding IsPopupShow,Mode=TwoWay}" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupLg,Mode=TwoWay}" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="02"/>
                 <ColumnDefinition Width="*"/>
@@ -136,7 +136,7 @@
 
             <Image Source="arrowLeftWhite" Rotation="90" IsVisible="{Binding IsHideSwipeUp}" Grid.Row="2" Grid.Column="1" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding HidePopupCommand}"/>
+                    <TapGestureRecognizer Command="{Binding HideRoutePopupLgCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
 
