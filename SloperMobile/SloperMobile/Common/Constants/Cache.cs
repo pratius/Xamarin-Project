@@ -16,7 +16,7 @@ namespace SloperMobile.Common.Constants
         public static T_CRAG Selected_CRAG { get; set; }
         public static MapListModel SelctedCurrentSector { get; set; }
         public static int SelectedTopoIndex { get; set; }
-        public static int BackArrowCount { get; set; }
+        public static int SendBackArrowCount { get; set; }
         public static int CurrentScreenHeight;
     }
 }

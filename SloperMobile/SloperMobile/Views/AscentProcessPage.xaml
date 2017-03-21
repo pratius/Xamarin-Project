@@ -28,6 +28,7 @@
 		</UC:AscentRouteStyle>
 	</ContentPage>
 	<ContentPage BackgroundColor="Black">
+        <UC:BackHeaderUC HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
 		<!--<UC:AscentSummary x:Name="ascSummary"></UC:AscentSummary>-->
 		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,20,0" BackgroundColor="Black">
 			<Grid.RowDefinitions>
@@ -35,13 +36,19 @@
 				<RowDefinition Height=".1*" />
 				<RowDefinition Height=".7*" />
 				<RowDefinition Height="120" />
-			</Grid.RowDefinitions>
-			<StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-				<Label Text="AWESOME" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="AWESOME" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
 				<Label Text="{Binding SendsTypeName,Mode=TwoWay}" TextColor="#FF9933" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
 				<Label Text="!" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
 			</StackLayout>
-			<StackLayout Orientation="Vertical" Grid.Row="2" Spacing="05" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" Grid.Row="2" Grid.ColumnSpan="3" Spacing="05" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 				<!--<Image Source="{Binding SummaryImage}" IsVisible="{Binding IsDisplaySummaryImg}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />-->
 				<!--<Image Source="{Binding SummaryImage}" IsVisible="true" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0,0,0,30" />-->
 				<!--<XLabUC:HybridWebView x:Name="webView" BackgroundColor="White" IsVisible="{Binding IsDisplaySummaryWeb}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />-->
@@ -59,7 +66,7 @@
 						<!--<Grid x:Name="summary_icons"></Grid>-->
 					</StackLayout>
 				</ScrollView>
-                <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Label x:Name="comment_text" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
                 </StackLayout>
                 <!--				<Label Text="share your send" TextColor="White" Grid.Row="1" FontSize="Micro" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
@@ -70,7 +77,7 @@
 					<Image Margin="03" Source="google_plus_logo" Aspect="AspectFit" />
 				</StackLayout>-->
 			</StackLayout>
-			<StackLayout Grid.Row="3" Margin="0,30,0,0" VerticalOptions="Start" HorizontalOptions="Fill">
+            <StackLayout Grid.Row="3" Grid.ColumnSpan="3" Margin="0,30,0,0" VerticalOptions="Start" HorizontalOptions="Fill">
 				<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" HorizontalOptions="Fill" VerticalOptions="StartAndExpand" Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}" IsEnabled="{Binding IsButtonInable}" WidthRequest="100" />
 				<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
 					<ActivityIndicator IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="10" HeightRequest="10" Color="White">
@@ -79,6 +86,7 @@
 					</Label>
 				</StackLayout>
 			</StackLayout>
+            <Image Grid.Row="4" Grid.Column="0" Source="arrowLeftWhite" VerticalOptions="Center" HorizontalOptions="Center" />
 		</Grid>
 	</ContentPage>
 </CarouselPage>

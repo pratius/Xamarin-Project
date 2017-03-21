@@ -56,7 +56,7 @@ namespace SloperMobile.Views
             var topolistData = App.DAUtil.GetSectorLines(_CurrentSector?.SectorId);
             var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);
             ContentPage newPage = new ContentPage();
-            if (topoimgages.Count == 1)
+            if (topoimgages.Count == 1 || topoimgages.Count == 2)
             {
                 _count = topoimgages.Count;
                 this.Children.Add(newPage);
@@ -141,7 +141,7 @@ namespace SloperMobile.Views
                 this.SelectedItem = this.Children.LastOrDefault();
             }
 
-            if (topoimgages.Count == 1)
+            if (topoimgages.Count == 1 || topoimgages.Count == 2)
             {
                 this.Children.Remove(newPage);
             }
@@ -250,17 +250,12 @@ namespace SloperMobile.Views
                 {
                     if (cnt == 1)
                     {
-                        if (Cache.BackArrowCount != 1)
-                        {
-                            List<int> topoElement = new List<int>();
-                            List<int> newTopoElement = new List<int>();
-                            Navigation.PushAsync(new MapDetailPage(_CurrentSector));
-                            cnt = 0;
-                        }
-                        else
-                        {
-                            Navigation.PopAsync().ConfigureAwait(false);
-                        }
+                        Navigation.PushAsync(new MapDetailPage(_CurrentSector));
+                        cnt = 0;
+                    }
+                    else
+                    {
+                        Navigation.PopAsync().ConfigureAwait(false);
                     }
                 }
             }
@@ -283,17 +278,12 @@ namespace SloperMobile.Views
                 {
                     if (cnt == 1)
                     {
-                        if (Cache.BackArrowCount != 1)
-                        {
-                            List<int> topoElement = new List<int>();
-                            List<int> newTopoElement = new List<int>();
-                            Navigation.PushAsync(new MapDetailPage(_CurrentSector));
-                            cnt = 0;
-                        }
-                        else
-                        {
-                            Navigation.PopAsync().ConfigureAwait(false);
-                        }
+                        Navigation.PushAsync(new MapDetailPage(_CurrentSector));
+                        cnt = 0;
+                    }
+                    else
+                    {
+                        Navigation.PopAsync().ConfigureAwait(false);
                     }
                 }
             }

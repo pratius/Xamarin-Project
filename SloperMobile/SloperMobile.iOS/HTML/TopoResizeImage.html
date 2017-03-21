@@ -44,7 +44,7 @@
             var imgdata = jQuery.parseJSON(_staticData);
 
             getAnnoation();
-            ReDrawLine(imgdata[0], routeId, isSingleLine, wheight, isAscentCreate);
+            ReAscentDrawLine(imgdata[0], routeId, isSingleLine, wheight, isAscentCreate);
         }
 
         function initReDrawing(annotationData, topoData, wheight, routeId, isSingleLine, isAscentCreate) {
@@ -63,9 +63,36 @@
             var ctx = drawCanvas.getContext("2d");
             ctx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
         }
+        function ReAscentDrawLine(data, routeId, isSingleLine, wheight, isAscentCreate) {
+            $(".point-highlighterhide").remove();
+            if (isSingleLine == true && isAscentCreate == false) {
+                //code to draw line and points on image
+                for (var i = 0; i < data.drawing.length; i++) {
+                    drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket, false);
+                    var pointLength = data.drawing[i].line.points.length;
+
+                    $(data.drawing[i].line.points).each(function (index, point) {
+                        makeDrawingPointTemplateElement(point, index, data.drawing[i].line.pointsText, 0, 0, data.drawing[i].line.pointsDirection, true, data.drawing[i].line.style.color, i, pointLength, data.drawing[i].id)
+                    });
+                }
+            }
+            //get single route data using routeId
+            if (routeId != null && routeId > 0) {
+                var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
+                var Newdata = routeDrawingData;
+                drawLine("drawing-canvas", Newdata.line, 0, 0, Newdata.gradeBucket, isAscentCreate);
+                var pointLength = Newdata.line.points.length;
+
+                $(Newdata.line.points).each(function (index, point) {
+                    makeDrawingPointTemplateElement(point, index, Newdata.line.pointsText, 0, 0, Newdata.line.pointsDirection, true, Newdata.line.style.color, 0, pointLength, Newdata.id)
+                });
+                $("#display-canvas").fadeTo(500, 0.2);
+            }
+            resizeImageCanvas("display-canvas", "drawing-canvas", "topoimg", data.drawing, wheight, routeId);
+        }
         function ReDrawLine(data, routeId, isSingleLine, wheight, isAscentCreate) {
             $(".point-highlighterhide").remove();
-            if (isSingleLine == true) {
+            if (isSingleLine == true && isAscentCreate == true) {
                 //code to draw line and points on image
                 for (var i = 0; i < data.drawing.length; i++) {
                     drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket, false);

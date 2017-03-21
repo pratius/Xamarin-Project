@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="Black" x:Class="SloperMobile.UserControls.AscentHoldType">
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="Black" x:Class="SloperMobile.UserControls.AscentHoldType" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile">
+    <UC:BackHeaderUC HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" />
 	<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,20,0">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40*" />
@@ -43,5 +44,7 @@
 			</Frame.GestureRecognizers>
 			<Image Source="icon_hold_type_8_pockets_text_63x94" VerticalOptions="End" HorizontalOptions="Center" />
 		</Frame>
+        <Image Grid.Row="4" Grid.Column="0" Source="arrowLeftWhite" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Image Grid.Row="4" Grid.Column="2" Source="arrowLeftWhite" Rotation="180" VerticalOptions="Center" HorizontalOptions="Center" />
 	</Grid>
 </StackLayout>

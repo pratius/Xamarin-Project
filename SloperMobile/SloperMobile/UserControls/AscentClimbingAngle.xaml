@@ -2,7 +2,8 @@
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SloperMobile.UserControls.AscentClimbingAngle"
-			 BackgroundColor="Black">
+			 BackgroundColor="Black" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile">
+    <UC:BackHeaderUC HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" />
 
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,20,0">
 		<Grid.RowDefinitions>
@@ -50,6 +51,8 @@
 			</Frame.GestureRecognizers>
 			<Image  Source="icon_steepness_8_roof_border_80x80"  VerticalOptions="Center" HorizontalOptions="Center"/>
 		</Frame>
+        <Image Grid.Row="4" Grid.Column="0" Source="arrowLeftWhite" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Image Grid.Row="4" Grid.Column="2" Source="arrowLeftWhite" Rotation="180" VerticalOptions="Center" HorizontalOptions="Center" />
     </Grid>
 
 </StackLayout>

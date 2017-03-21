@@ -206,6 +206,7 @@ namespace SloperMobile.ViewModel
         }
         private void ExecuteOnSends(object obj)
         {
+            Cache.SendBackArrowCount = 1;
             //OnPageNavigation?.Invoke();
             OnConditionNavigation?.Invoke(CurrentRouteID);
         }
