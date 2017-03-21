@@ -21,7 +21,7 @@ namespace SloperMobile.Droid.DependancyObjects
             var path = Path.Combine(documentsPath, sqliteFilename);
             Console.WriteLine(path);
             if (!File.Exists(path)) File.Create(path);
-            var plat = new SQLite.Net.Platform.XamarinAndroid.SQLitePlatformAndroid();
+            var plat = new SQLite.Net.Platform.XamarinAndroid.SQLitePlatformAndroidN();
             var conn = new SQLite.Net.SQLiteConnection(plat, path);
             // Return the database connection 
             return conn;

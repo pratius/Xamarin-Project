@@ -1,4 +1,5 @@
 ﻿using SloperMobile.Common.Enumerators;
+using SloperMobile.Common.Helpers;
 using SloperMobile.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,11 @@ namespace SloperMobile.Views
             NavigationPage.SetHasNavigationBar(this, false);
             HomeVM = new HomeViewModel();
             BindingContext = HomeVM;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            HomeVM.ClimbDaysCount = Settings.ClimbingDaysSettings.ToString();
         }
 
         private async void OnClickSend(object sender, EventArgs e)
