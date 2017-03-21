@@ -16,9 +16,9 @@ namespace SloperMobile.ViewModel
     {
         private readonly INavigation _navigation;
         private List<string> grades;
-        private List<string> listimgs;        
+        private List<string> listimgs;
         private DateTime sendsdate = DateTime.Now.Date;
-        private string sendsgrade;        
+        private string sendsgrade;
         private string sendclimbingstyle;
         private string sendholdtype;
         private string sendroutecharacteristics;
@@ -29,16 +29,16 @@ namespace SloperMobile.ViewModel
 
         private bool isdisplaysummaryimg = false;
         private bool isdisplaysummaryweb = true;
-        
+
         private ImageSource summaryimage;
-        
+
         private T_ROUTE routeData;
 
         private string routeName = "";
         private string sendsTypeName = "";
         private int sendRating = 0;
         private string commandText = "";
-        
+
         private ImageSource topAngle = null;
         private ImageSource topRouteChar = null;
 
@@ -58,7 +58,7 @@ namespace SloperMobile.ViewModel
             get { return sendRating; }
             set { sendRating = value; OnPropertyChanged(); }
         }
-       
+
         public ImageSource TopAngle
         {
             get { return topAngle; }
@@ -120,7 +120,7 @@ namespace SloperMobile.ViewModel
         {
             get { return summaryimage; }
             set { summaryimage = value; OnPropertyChanged(); }
-        }       
+        }
 
         public string RouteId
         {
@@ -135,7 +135,8 @@ namespace SloperMobile.ViewModel
             RouteId = routeid;
             routeData = App.DAUtil.GetRouteDataByRouteID(RouteId);
             PageHeaderText = (routeData.route_name).ToUpper();
-            PageSubHeaderText = "";
+            PageSubHeaderText = Cache.SelctedCurrentSector.SectorName;
+            //PageSubHeaderText = "";
             var grades = App.DAUtil.GetTtechGrades(routeData.grade_type_id);
             AscentGrades = grades;
             if (grades.Count > 0)
@@ -145,7 +146,7 @@ namespace SloperMobile.ViewModel
             _navigation = navigation;
 
             SendsTypeName = send.Ascent_Type_Description;
-            SendRating = send.Rating;                                
-        }              
+            SendRating = send.Rating;
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SloperMobile.Views.AscentSummaryPage"
@@ -19,8 +19,8 @@
                 <RowDefinition Height="100" />
             </Grid.RowDefinitions>
 
-            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label Text="AWESOME" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0">
+                <Label Text="AWESOME " TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
                 <Label Text="{Binding SendsTypeName,Mode=TwoWay}" TextColor="#FF9933" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
                 <Label Text="!" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
             </StackLayout>
@@ -31,7 +31,7 @@
                 <XLabUC:HybridWebView x:Name="webView" BackgroundColor="Black" WidthRequest="300" HeightRequest="300" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" />
                 <rating:SfRating x:Name="rating_summary" WidthRequest="145" ItemCount="5" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True" HorizontalOptions="Center" VerticalOptions="Start">
                     <rating:SfRating.RatingSettings>
-                        <rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" />
+                        <rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" RatedStrokeWidth="1" UnRatedStrokeWidth="1"/>
                     </rating:SfRating.RatingSettings>
                 </rating:SfRating>
                 <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

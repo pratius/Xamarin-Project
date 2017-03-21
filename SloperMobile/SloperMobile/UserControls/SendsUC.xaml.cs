@@ -3,6 +3,7 @@ using SloperMobile.Common.Enumerators;
 using SloperMobile.DataBase;
 using SloperMobile.Model;
 using SloperMobile.Views;
+using SloperMobile.Common.Constants;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,15 +29,16 @@ namespace SloperMobile.UserControls
         {
             try
             {
-                var dataItem = e.Item as Send;                
+                var dataItem = e.Item as Send;
                 foreach (var item in _sectorimageList)
                 {
                     if (item.SectorId == dataItem.sector_id.ToString())
                     {
                         _selectedSector = item;
+                        Cache.SelctedCurrentSector = _selectedSector;
                     }
                 }
-                Navigation.PushAsync(new AscentSummaryPage(dataItem.Route_Id.ToString(), _selectedSector, dataItem)); 
+                Navigation.PushAsync(new AscentSummaryPage(dataItem.Route_Id.ToString(), _selectedSector, dataItem));
             }
             catch (Exception ex)
             {

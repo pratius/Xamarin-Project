@@ -4,6 +4,7 @@ using SloperMobile.Common.Enumerators;
 using SloperMobile.DataBase;
 using SloperMobile.Model;
 using SloperMobile.Views;
+using SloperMobile.Common.Constants;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,7 +19,7 @@ namespace SloperMobile.UserControls
 {
     public partial class TickListsUC : ContentView
     {
-        private MapListModel _selectedSector;        
+        private MapListModel _selectedSector;
         public TickListsUC()
         {
             InitializeComponent();
@@ -35,21 +36,22 @@ namespace SloperMobile.UserControls
                     if (item.SectorId == dataItem.sector_id.ToString())
                     {
                         _selectedSector = item;
+                        Cache.SelctedCurrentSector = _selectedSector;
                     }
-                }  
+                }
                 //loading carousel route setail page when click on ticklist listing route.             
-                 Navigation.PushAsync(new TopoSectorPage(_selectedSector, dataItem.RouteID.ToString()));
+                Navigation.PushAsync(new TopoSectorPage(_selectedSector, dataItem.RouteID.ToString()));
             }
             catch (Exception ex)
             {
                 var error = ex.Message;
             }
-        }       
-      
+        }
+
         private ObservableCollection<MapListModel> _sectorimageList;
 
         public ObservableCollection<MapListModel> SectorImageList
-        {            
+        {
             get { return _sectorimageList ?? (_sectorimageList = new ObservableCollection<MapListModel>()); }
             set { _sectorimageList = value; OnPropertyChanged(); }
         }
@@ -112,7 +114,7 @@ namespace SloperMobile.UserControls
                             }
                             SectorImageList.Add(objSec);
                         }
-                    }                    
+                    }
                 }
             }
             catch (Exception ex)
@@ -157,5 +159,5 @@ namespace SloperMobile.UserControls
             }
             return resource;
         }
-    }    
+    }
 }

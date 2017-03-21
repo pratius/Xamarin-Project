@@ -209,6 +209,9 @@
     <Compile Include="UserControls\HeaderTitleUC.xaml.cs">
       <DependentUpon>HeaderTitleUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\HeaderNoButtonUC.cs">
+      <DependentUpon>HeaderNoButtonUC.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -220,6 +223,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\HeaderTitleUC.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\HeaderNoButtonUC.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

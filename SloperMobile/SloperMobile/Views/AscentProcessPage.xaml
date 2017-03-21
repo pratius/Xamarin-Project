@@ -1,92 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" x:Class="SloperMobile.Views.AscentProcessPage" NavigationPage.HasNavigationBar="True" BackgroundColor="Black">
-	<CarouselPage.Padding>
+	<!--	<CarouselPage.Padding>
 		<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
-	</CarouselPage.Padding>
-	<ContentPage>
+	</CarouselPage.Padding>-->
+	<ContentPage BackgroundColor="Black">
+		<ContentPage.Padding>
+			<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+		</ContentPage.Padding>
 		<UC:AscentType x:Name="ascType">
 		</UC:AscentType>
 	</ContentPage>
-	<ContentPage>
+	<ContentPage BackgroundColor="Black">
+		<ContentPage.Padding>
+			<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+		</ContentPage.Padding>
 		<UC:AscentDate x:Name="ascDate">
 		</UC:AscentDate>
 	</ContentPage>
-	<ContentPage>
+	<ContentPage BackgroundColor="Black">
+		<ContentPage.Padding>
+			<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+		</ContentPage.Padding>
 		<UC:AscentRating x:Name="ascRating">
 		</UC:AscentRating>
 	</ContentPage>
-	<ContentPage>
+	<ContentPage BackgroundColor="Black">
+		<ContentPage.Padding>
+			<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+		</ContentPage.Padding>
 		<UC:AscentClimbingAngle x:Name="ascClimbingAngle">
 		</UC:AscentClimbingAngle>
 	</ContentPage>
-	<ContentPage>
+	<ContentPage BackgroundColor="Black">
+		<ContentPage.Padding>
+			<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+		</ContentPage.Padding>
 		<UC:AscentHoldType x:Name="ascHoldType">
 		</UC:AscentHoldType>
 	</ContentPage>
-	<ContentPage>
+	<ContentPage BackgroundColor="Black">
+		<ContentPage.Padding>
+			<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+		</ContentPage.Padding>
 		<UC:AscentRouteStyle x:Name="ascRouteStyle">
 		</UC:AscentRouteStyle>
 	</ContentPage>
 	<ContentPage BackgroundColor="Black">
-        <UC:BackHeaderUC HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
-		<!--<UC:AscentSummary x:Name="ascSummary"></UC:AscentSummary>-->
-		<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,20,0" BackgroundColor="Black">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="02" />
-				<RowDefinition Height=".1*" />
-				<RowDefinition Height=".7*" />
-				<RowDefinition Height="120" />
-                <RowDefinition Height="50" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Label Text="AWESOME" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
-				<Label Text="{Binding SendsTypeName,Mode=TwoWay}" TextColor="#FF9933" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
-				<Label Text="!" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
-			</StackLayout>
-            <StackLayout Orientation="Vertical" Grid.Row="2" Grid.ColumnSpan="3" Spacing="05" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-				<!--<Image Source="{Binding SummaryImage}" IsVisible="{Binding IsDisplaySummaryImg}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />-->
-				<!--<Image Source="{Binding SummaryImage}" IsVisible="true" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0,0,0,30" />-->
-				<!--<XLabUC:HybridWebView x:Name="webView" BackgroundColor="White" IsVisible="{Binding IsDisplaySummaryWeb}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />-->
-                <XLabUC:HybridWebView x:Name="webView" BackgroundColor="Black"  WidthRequest="300" HeightRequest="300" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
-				<rating:SfRating x:Name="rating_summary" WidthRequest="145" ItemCount="5" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True" HorizontalOptions="Center" VerticalOptions="Start">
-					<rating:SfRating.RatingSettings>
-						<rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" />
-					</rating:SfRating.RatingSettings>
-				</rating:SfRating>
-				<ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-					<StackLayout x:Name="summary_icons" Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
-						<!--<Image Source="{Binding TopAngle,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
+		<ContentPage.Padding>
+			<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+		</ContentPage.Padding>
+		<StackLayout BackgroundColor="Black">
+			<UC:HeaderNoButtonUC HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" />
+			<!--<UC:AscentSummary x:Name="ascSummary"></UC:AscentSummary>-->
+			<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Black" Margin="20,0,20,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="02" />
+					<RowDefinition Height=".1*" />
+					<RowDefinition Height=".7*" />
+					<RowDefinition Height="120" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="1" />
+					<ColumnDefinition Width="1*" />
+				</Grid.ColumnDefinitions>
+				<StackLayout Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0">
+					<Label Text="AWESOME " TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+					<Label Text="{Binding SendsTypeName,Mode=TwoWay}" TextColor="#FF9933" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+					<Label Text="!" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+				</StackLayout>
+				<StackLayout Orientation="Vertical" Grid.Row="2" Grid.ColumnSpan="3" Spacing="05" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+					<!--<Image Source="{Binding SummaryImage}" IsVisible="{Binding IsDisplaySummaryImg}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />-->
+					<!--<Image Source="{Binding SummaryImage}" IsVisible="true" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0,0,0,30" />-->
+					<!--<XLabUC:HybridWebView x:Name="webView" BackgroundColor="White" IsVisible="{Binding IsDisplaySummaryWeb}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />-->
+					<XLabUC:HybridWebView x:Name="webView" BackgroundColor="Black" WidthRequest="300" HeightRequest="300" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+					<rating:SfRating x:Name="rating_summary" WidthRequest="145" ItemCount="5" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True" HorizontalOptions="Center" VerticalOptions="Start">
+						<rating:SfRating.RatingSettings>
+							<rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" />
+						</rating:SfRating.RatingSettings>
+					</rating:SfRating>
+					<ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+						<StackLayout x:Name="summary_icons" Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+							<!--<Image Source="{Binding TopAngle,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
           <Image Source="{Binding TopHold,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
           <Image Source="{Binding TopRouteChar,Mode=TwoWay}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>-->
-						<!--<Grid x:Name="summary_icons"></Grid>-->
+							<!--<Grid x:Name="summary_icons"></Grid>-->
+						</StackLayout>
+					</ScrollView>
+					<StackLayout Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+						<Label x:Name="comment_text" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
 					</StackLayout>
-				</ScrollView>
-                <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Label x:Name="comment_text" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-                </StackLayout>
-                <!--				<Label Text="share your send" TextColor="White" Grid.Row="1" FontSize="Micro" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+					<!--				<Label Text="share your send" TextColor="White" Grid.Row="1" FontSize="Micro" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
 				<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
 					<Image Margin="03" Source="facebook_logo" Aspect="AspectFit" />
 					<Image Margin="03" Source="twitter_logo_shape" Aspect="AspectFit" />
 					<Image Margin="03" Source="instagram_symbol" Aspect="AspectFit" />
 					<Image Margin="03" Source="google_plus_logo" Aspect="AspectFit" />
 				</StackLayout>-->
-			</StackLayout>
-            <StackLayout Grid.Row="3" Grid.ColumnSpan="3" Margin="0,30,0,0" VerticalOptions="Start" HorizontalOptions="Fill">
-				<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" HorizontalOptions="Fill" VerticalOptions="StartAndExpand" Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}" IsEnabled="{Binding IsButtonInable}" WidthRequest="100" />
-				<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
-					<ActivityIndicator IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="10" HeightRequest="10" Color="White">
-					</ActivityIndicator>
-					<Label Text="{Binding ProgressMsg}" TextColor="White" FontSize="Micro" IsVisible="{Binding IsDisplayMessage}">
-					</Label>
 				</StackLayout>
-			</StackLayout>
-            <Image Grid.Row="4" Grid.Column="0" Source="arrowLeftWhite" VerticalOptions="Center" HorizontalOptions="Center" />
-		</Grid>
+				<StackLayout Grid.Row="3" Grid.ColumnSpan="3" Margin="0,30,0,0" VerticalOptions="Start" HorizontalOptions="Fill">
+					<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" HorizontalOptions="Fill" VerticalOptions="StartAndExpand" Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}" IsEnabled="{Binding IsButtonInable}" WidthRequest="100" />
+					<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+						<ActivityIndicator IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="10" HeightRequest="10" Color="White">
+						</ActivityIndicator>
+						<Label Text="{Binding ProgressMsg}" TextColor="White" FontSize="Micro" IsVisible="{Binding IsDisplayMessage}">
+						</Label>
+					</StackLayout>
+				</StackLayout>
+			</Grid>
+		</StackLayout>
 	</ContentPage>
 </CarouselPage>

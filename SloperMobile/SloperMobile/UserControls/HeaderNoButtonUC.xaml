@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="SloperMobile.UserControls.BackHeaderUC">
+             x:Class="SloperMobile.UserControls.HeaderNoButtonUC">
   <ContentView.Resources>
     <ResourceDictionary>
       <!--Top Header Style-->
@@ -34,19 +34,5 @@
       <Label Style="{StaticResource lblTopHeader}" Text="{Binding Path=PageHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center" />
       <Label Style="{StaticResource lblsubTopHeader}" Text="{Binding Path=PageSubHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center"/>
     </StackLayout>
-    <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
-      <Image IsVisible="{Binding DisplayBackButton,Mode=TwoWay}" Source="arrowLeftWhite" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" Aspect="AspectFit">
-        <Image.GestureRecognizers>
-          <TapGestureRecognizer Tapped="OnBackTapped"/>
-        </Image.GestureRecognizers>
-      </Image>
-      <Image Source="Search" IsVisible="False" WidthRequest="30" HeightRequest="30" Aspect="AspectFill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
-        <Image.GestureRecognizers>
-          <TapGestureRecognizer Tapped="OnSearch"/>
-        </Image.GestureRecognizers>
-      </Image>
-
-    </StackLayout>
-
   </Grid>
 </ContentView>

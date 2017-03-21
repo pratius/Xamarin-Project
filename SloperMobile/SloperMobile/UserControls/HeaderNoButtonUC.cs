@@ -10,13 +10,13 @@ using Xamarin.Forms;
 
 namespace SloperMobile.UserControls
 {
-    public partial class BackHeaderUC : ContentView
+    public partial class HeaderNoButtonUC : ContentView
     {
         private MapListModel _selectedSector;
-        public BackHeaderUC()
+        public HeaderNoButtonUC()
         {
             InitializeComponent();
-            displayBackButton = true;
+            displayBackButton = false;
         }
 
         private async void OnBackTapped(object sender, EventArgs e)

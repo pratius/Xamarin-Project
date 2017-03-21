@@ -69,11 +69,11 @@ namespace SloperMobile.ViewModel
         private T_ROUTE routeData;
         public AscentProcessViewModel(INavigation navigation, string routeid)
         {
-            //PageHeaderText = Cache.SelctedCurrentSector?.SectorName;
             SummaryImage = Cache.SelctedCurrentSector?.SectorImage;
             RouteId = routeid;
             routeData = App.DAUtil.GetRouteDataByRouteID(RouteId);
             PageHeaderText = (routeData.route_name).ToUpper();
+            PageSubHeaderText = Cache.SelctedCurrentSector.SectorName;
             SendTypeCommand = new DelegateCommand(ExecuteOnSendType);
             SendTypeHoldCommand = new DelegateCommand(ExecuteOnSendHold);
             SendRouteCharaterCommand = new DelegateCommand(ExecuteOnRouteCharacteristics);
@@ -613,9 +613,9 @@ namespace SloperMobile.ViewModel
         {
             PromptResult result = await UserDialogs.Instance.PromptAsync(new PromptConfig
             {
-                Title = "Comment",
+                Title = "Comments",
                 InputType = InputType.Name,
-                Message = "Please write your experience here",
+                Message = "Give us your thoughts on this climb",
                 Text = CommentText,
                 MaxLength = 250,
                 Placeholder = "type here",
@@ -712,7 +712,8 @@ namespace SloperMobile.ViewModel
                 #endregion
 
                 var response = await HttpSendAscentProcess(ascent);
-                if (response != null && response.id != null)
+                //if (response != null && response.id != null)
+                if (response != null)
                 {
                     if (!string.IsNullOrEmpty(response.climbingDays))
                     {
