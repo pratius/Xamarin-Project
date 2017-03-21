@@ -94,7 +94,7 @@
 
         function ReDrawLine(data, routeId, isSingleLine, wheight, isAscentCreate) {
             $(".point-highlighterhide").remove();
-            if (isSingleLine == true ) {
+            if (isSingleLine == true && isAscentCreate == true) {
                 //code to draw line and points on image
                 for (var i = 0; i < data.drawing.length; i++) {
                     drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket, false);

@@ -34,7 +34,7 @@
 				<RowDefinition Height="02" />
 				<RowDefinition Height=".1*" />
 				<RowDefinition Height=".7*" />
-				<RowDefinition Height="100" />
+				<RowDefinition Height="120" />
 			</Grid.RowDefinitions>
 			<StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
 				<Label Text="AWESOME" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />

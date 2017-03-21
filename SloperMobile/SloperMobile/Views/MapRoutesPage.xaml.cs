@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +29,7 @@ namespace SloperMobile.Views
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     MapRouteVM.LoadRouteData(t);
-                    MapRouteVM.IsPopupHide = true;
+                    MapRouteVM.DisplayRoutePopupSm = true;
                 })
             );
 
@@ -100,12 +100,12 @@ namespace SloperMobile.Views
 
         private void SwipeableImage_SwipedDown(object sender, EventArgs e)
         {
-            MapRouteVM.ShowPopupCommand.Execute(null);
+            MapRouteVM.ShowRoutePopupLgCommand.Execute(null);
         }
 
         private void SwipeableImage_SwipedUp(object sender, EventArgs e)
         {
-            MapRouteVM.HidePopupCommand.Execute(null);
+            MapRouteVM.HideRoutePopupLgCommand.Execute(null);
 
         }
         //private void OnMenuTapped(object sender, EventArgs e)

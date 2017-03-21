@@ -20,7 +20,7 @@
 		<Grid Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 			<Controls:HybridWebViewCustom x:Name="webView" BackgroundColor="Black" />
 		</Grid>
-		<Controls:GestureFrame Grid.Row="1" BackgroundColor="#77000000" IsVisible="{Binding IsPopupHide,Mode=TwoWay}" HeightRequest="150" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" SwipeDown="OnSwipeDown" SwipeTop="OnSwipeUpHidePopup">
+		<Controls:GestureFrame Grid.Row="1" BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupSm,Mode=TwoWay}" HeightRequest="150" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" SwipeDown="OnSwipeDownRoutePopupSm" SwipeTop="OnSwipeTopRoutePopupSm">
 			<Controls:GestureFrame.Content>
 				<Grid>
 					<Grid.ColumnDefinitions>
@@ -35,7 +35,7 @@
 					</Grid.RowDefinitions>
                     <Image Source="arrowLeftWhite" Rotation="90" Grid.Column="1" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnSwipeUpHidePopup" />
+                            <TapGestureRecognizer Tapped="OnSwipeTopRoutePopupSm" />
                         </Image.GestureRecognizers>
                     </Image>					
 					<Grid Grid.Column="1" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
@@ -66,14 +66,14 @@
 					</Grid>
 					<Image Source="arrowLeftWhite" Rotation="270" Grid.Column="1" Grid.Row="2" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0">
 						<Image.GestureRecognizers>
-							<TapGestureRecognizer Command="{Binding ShowPopupCommand}" />
+							<TapGestureRecognizer Command="{Binding ShowRoutePopupLgCommand}" />
 						</Image.GestureRecognizers>
 					</Image>
 					<!--<Controls:SwipeableImage SwipedDown="SwipeableImage_SwipedDown" SwipedUp="OnSwipeUp" Source="GridImage" BackgroundColor="Transparent" Aspect="AspectFill" Grid.ColumnSpan="2" Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />-->
 				</Grid>
 			</Controls:GestureFrame.Content>
 		</Controls:GestureFrame>
-		<Controls:GestureFrame Grid.Row="1" BackgroundColor="#77000000" IsVisible="{Binding IsPopupShow,Mode=TwoWay}" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" SwipeTop="OnSwipeUpPopup">
+		<Controls:GestureFrame Grid.Row="1" BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupLg,Mode=TwoWay}" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" SwipeTop="OnSwipeTopRoutePopupLg">
 			<Controls:GestureFrame.Content>
 				<Grid>
 					<Grid.ColumnDefinitions>
@@ -125,7 +125,7 @@
 					</Grid>
 					<Image Source="arrowLeftWhite" Rotation="90" Grid.Row="2" IsVisible="{Binding IsHideSwipeUp}" Grid.Column="1" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
 						<Image.GestureRecognizers>
-							<TapGestureRecognizer Command="{Binding HidePopupCommand}" />
+							<TapGestureRecognizer Command="{Binding HideRoutePopupLgCommand}" />
 						</Image.GestureRecognizers>
 					</Image>
 				</Grid>
