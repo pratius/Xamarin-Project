@@ -641,42 +641,48 @@ namespace SloperMobile.ViewModel
 
                 ascent.ascent_date = SendsDate;
                 ascent.route_id = RouteId;
-                ascent.ascent_type_id = App.DAUtil.GetAscentTypeIdByName(SendsTypeName);
+                ascent.ascent_type_id = SendsTypeName != null ? App.DAUtil.GetAscentTypeIdByName(SendsTypeName) : "0";
                 ascent.climbing_angle = "";
-                if (SendClimbingStyle.Contains(","))
+                if (SendClimbingStyle != null)
                 {
-                    string[] sarr1 = SendClimbingStyle.Split(',');
-                    int climbbitmask = 0;
-                    foreach (string s in sarr1)
+                    if (SendClimbingStyle.Contains(","))
                     {
-                        climbbitmask += Convert.ToInt32(s);
+                        string[] sarr1 = SendClimbingStyle.Split(',');
+                        int climbbitmask = 0;
+                        foreach (string s in sarr1)
+                        {
+                            climbbitmask += Convert.ToInt32(s);
+                        }
+                        ascent.climbing_angle_value = climbbitmask.ToString();
                     }
-                    ascent.climbing_angle_value = climbbitmask.ToString();
+                    else
+                    {
+                        ascent.climbing_angle_value = SendClimbingStyle;
+                    }
                 }
-                else
-                {
-                    ascent.climbing_angle_value = SendClimbingStyle;
-                }
+                else { ascent.climbing_angle_value = "0"; }
                 ascent.comment = CommentText;
                 ascent.grade_id = routeData.grade_type_id;
                 ascent.hold_type = "";
 
-
-                if (SendHoldType.Contains(","))
+                if (SendHoldType != null)
                 {
-                    string[] sarr2 = SendHoldType.Split(',');
-                    int holdbitmask = 0;
-                    foreach (string s in sarr2)
+                    if (SendHoldType.Contains(","))
                     {
-                        holdbitmask += Convert.ToInt32(s);
+                        string[] sarr2 = SendHoldType.Split(',');
+                        int holdbitmask = 0;
+                        foreach (string s in sarr2)
+                        {
+                            holdbitmask += Convert.ToInt32(s);
+                        }
+                        ascent.hold_type_value = holdbitmask.ToString();
                     }
-                    ascent.hold_type_value = holdbitmask.ToString();
+                    else
+                    {
+                        ascent.hold_type_value = SendHoldType;
+                    }
                 }
-                else
-                {
-                    ascent.hold_type_value = SendHoldType;
-                }
-
+                else { ascent.hold_type_value = "0"; }
                 ascent.ImageData = "";
                 if (CameraImage != null)
                 {
@@ -692,20 +698,24 @@ namespace SloperMobile.ViewModel
                 ascent.rating = SendRating.ToString();
                 ascent.route_style = "";
 
-                if (SendRouteCharacteristics.Contains(","))
+                if (SendRouteCharacteristics != null)
                 {
-                    string[] sarr3 = SendRouteCharacteristics.Split(',');
-                    int routebitmask = 0;
-                    foreach (string s in sarr3)
+                    if (SendRouteCharacteristics.Contains(","))
                     {
-                        routebitmask += Convert.ToInt32(s);
+                        string[] sarr3 = SendRouteCharacteristics.Split(',');
+                        int routebitmask = 0;
+                        foreach (string s in sarr3)
+                        {
+                            routebitmask += Convert.ToInt32(s);
+                        }
+                        ascent.route_style_value = routebitmask.ToString();
                     }
-                    ascent.route_style_value = routebitmask.ToString();
+                    else
+                    {
+                        ascent.route_style_value = SendRouteCharacteristics;
+                    }
                 }
-                else
-                {
-                    ascent.route_style_value = SendRouteCharacteristics;
-                }
+                else { ascent.route_style_value = "0"; }
                 ascent.route_type_id = routeData.route_type_id;
                 ascent.tech_grade_id = App.DAUtil.GetTTechGradeIdByGradeName(routeData.grade_type_id, SendsGrade);
                 ascent.video = "";
