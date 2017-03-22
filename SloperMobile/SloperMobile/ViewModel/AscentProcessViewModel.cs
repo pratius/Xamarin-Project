@@ -719,6 +719,7 @@ namespace SloperMobile.ViewModel
                     {
                         Settings.ClimbingDaysSettings = Convert.ToInt32(response.climbingDays);
                     }
+                    await CheckForUpdatesViewModel.CurrentInstance().OnPageAppearing();
                     ProgressMsg = "Ascent saved successfully.";
                     IsRunningTasks = false;
                 }

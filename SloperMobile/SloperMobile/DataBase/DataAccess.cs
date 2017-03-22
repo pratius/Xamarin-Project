@@ -278,6 +278,11 @@ namespace SloperMobile.DataBase
             //var sector = dbConn.Table<T_TOPO>().Where(sec => sec.sector_id == sectorid);
             return sector.topo_json;
         }
+        public T_TOPO GetSectorTopoBySectorId(string sectorid)
+        {
+            var sector = dbConn.Table<T_TOPO>().FirstOrDefault(sec => sec.sector_id == sectorid);
+            return sector;
+        }
 
         public string GetAscentTypeIdByName(string ascent_name)
         {
@@ -328,6 +333,26 @@ namespace SloperMobile.DataBase
             var item = dbConn.Table<T_ROUTE>().Where(route => route.sector_id == sectorid).OrderBy(x => x.sort_order);
             return item;
         }
+
+
+        /// <summary>
+        /// Get Routes List for Selected Crag
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<T_ROUTE> GetRoutesForSelectedCrag()
+        {
+            if (!string.IsNullOrEmpty(Settings.SelectedCragSettings))
+            {
+                var cragid = Settings.SelectedCragSettings;
+                var item = dbConn.Table<T_ROUTE>().Where(route => route.crag_id == cragid).OrderByDescending(x => x.date_modified);
+                return item;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         /// <summary>
         /// Get Bucket Counts for Selected Sector
