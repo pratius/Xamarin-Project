@@ -1,5 +1,6 @@
 ﻿using SloperMobile.Common.Constants;
 using SloperMobile.Model;
+using SloperMobile.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,12 @@ namespace SloperMobile.UserControls
             if (Cache.SendBackArrowCount == 1)
             {
                 await Navigation.PushAsync(new Views.MapDetailPage(_selectedSector));
+                Cache.SendBackArrowCount = 2;
+            }
+            else if (Cache.SendBackArrowCount == 2)
+            {
+                await Navigation.PushAsync(new MapPage());
+                Cache.SendBackArrowCount = 0;
             }
             else
             {
