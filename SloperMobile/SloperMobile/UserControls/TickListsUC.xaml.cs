@@ -59,7 +59,7 @@ namespace SloperMobile.UserControls
         {
             try
             {
-                var sector_images = App.DAUtil.GetSectorImages(SectorImageList.Count(), 10);
+                var sector_images = App.DAUtil.GetAllSectorImages();
                 foreach (var sector in sector_images)
                 {
                     var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(sector.topo_json);

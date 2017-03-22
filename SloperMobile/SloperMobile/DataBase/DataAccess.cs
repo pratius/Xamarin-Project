@@ -265,10 +265,16 @@ namespace SloperMobile.DataBase
             }
         }
 
+         public IEnumerable<T_TOPO> GetAllSectorImages()
+        {
+            List<string> strid = GetSectorIdForSelectedCrag();
+            var secimglist = (dbConn.Table<T_TOPO>().Where(tp => strid.Contains(tp.sector_id))); 
+            return secimglist;
+        }
         public IEnumerable<T_TOPO> GetSectorImages(int skip, int take)
         {
             List<string> strid = GetSectorIdForSelectedCrag();
-            var secimglist = (dbConn.Table<T_TOPO>().Where(tp => strid.Contains(tp.sector_id))).Skip(skip).Take(take);
+            var secimglist = (dbConn.Table<T_TOPO>().Where(tp => strid.Contains(tp.sector_id))).Skip(skip).Take(take); 
             return secimglist;
         }
 
