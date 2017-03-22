@@ -722,8 +722,8 @@ namespace SloperMobile.ViewModel
                 #endregion
 
                 var response = await HttpSendAscentProcess(ascent);
-                //if (response != null && response.id != null)
-                if (response != null)
+                if (response != null && response.id != null)
+                //if (response != null)
                 {
                     if (!string.IsNullOrEmpty(response.climbingDays))
                     {
