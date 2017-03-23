@@ -25,8 +25,10 @@ namespace SloperMobile.Common.Constants
         public const string SPF_ACCESSTOKEN = "accessToken";
         public const string SPF_RENEWALTOKEN = "renewalToken";
 
-        public const string Guest_UserId = "gvc.anonymous@sloperclimbing.com";
-        public const string Guest_UserPassword = "s.s2017!";
+        //public const string Guest_UserId = "gvc.anonymous@sloperclimbing.com";
+        public const string Guest_UserId = "sloper.anonymous";
+        //public const string Guest_UserPassword = "s.s2017!";
+        public const string Guest_UserPassword = "s.s2016!";
 
         //MapRoutePage
         public const string RouteType_climbing_Angle = "climbing angle";
