@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using SloperMobile.DataBase;
 using SloperMobile.Common.Enumerators;
 using SloperMobile.Common.Helpers;
+using SloperMobile.Common.Constants;
 
 namespace SloperMobile.ViewModel
 {
@@ -142,6 +143,7 @@ namespace SloperMobile.ViewModel
             if (SelectedSector == null)
                 return;
             await _navigation.PushAsync(new Views.MapDetailPage(SelectedSector));
+            Cache.SendBackArrowCount = 2;
         }
 
 

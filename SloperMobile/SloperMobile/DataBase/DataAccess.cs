@@ -125,7 +125,7 @@ namespace SloperMobile.DataBase
         //=================================T_AREA ===============================  
         public int SaveArea(T_AREA aArea)
         {
-            var item = dbConn.Table<T_AREA>().FirstOrDefault(area => area.area_id == aArea.area_id);
+            var item = dbConn.Table<T_AREA>().Where(a => a.is_enabled == true).FirstOrDefault(area => area.area_id == aArea.area_id);
             if (item != null)
             {
                 aArea.id = item.id;
@@ -139,7 +139,7 @@ namespace SloperMobile.DataBase
         //================================T_ROUTE ===============================
         public int SaveRoute(T_ROUTE aRoute)
         {
-            var item = dbConn.Table<T_ROUTE>().FirstOrDefault(route => route.route_id == aRoute.route_id);
+            var item = dbConn.Table<T_ROUTE>().Where(r => r.is_enabled == true).FirstOrDefault(route => route.route_id == aRoute.route_id);
             if (item != null)
             {
                 aRoute.id = item.id;
@@ -153,7 +153,7 @@ namespace SloperMobile.DataBase
         //================================T_SECTOR===============================
         public int SaveSector(T_SECTOR aSector)
         {
-            var item = dbConn.Table<T_SECTOR>().FirstOrDefault(sector => sector.sector_id == aSector.sector_id);
+            var item = dbConn.Table<T_SECTOR>().Where(s => s.is_enabled == true).FirstOrDefault(sector => sector.sector_id == aSector.sector_id);
             if (item != null)
             {
                 aSector.id = item.id;
@@ -168,7 +168,7 @@ namespace SloperMobile.DataBase
         //================================T_CRAG===============================
         public int SaveCrag(T_CRAG aCrag)
         {
-            var item = dbConn.Table<T_CRAG>().FirstOrDefault(crag => crag.crag_id == aCrag.crag_id);
+            var item = dbConn.Table<T_CRAG>().Where(c => c.is_enabled == true).FirstOrDefault(crag => crag.crag_id == aCrag.crag_id);
             if (item != null)
             {
                 aCrag.id = item.id;
@@ -239,7 +239,7 @@ namespace SloperMobile.DataBase
         }
         public T_SECTOR GetSectorDataBySectorID(string secid)
         {
-            var item = dbConn.Table<T_SECTOR>().FirstOrDefault(sector => sector.sector_id == secid);
+            var item = dbConn.Table<T_SECTOR>().Where(s => s.is_enabled == true).FirstOrDefault(sector => sector.sector_id == secid);
             if (item != null)
             {
                 return item;
@@ -255,7 +255,7 @@ namespace SloperMobile.DataBase
             if (!string.IsNullOrEmpty(Settings.SelectedCragSettings))
             {
                 var cragid = Settings.SelectedCragSettings;
-                var item = from ts in dbConn.Table<T_SECTOR>() where ts.crag_id == cragid select ts.sector_id;
+                var item = from ts in dbConn.Table<T_SECTOR>() where ts.crag_id == cragid && ts.is_enabled == true select ts.sector_id;
                 var x = item.Count();
                 return item.ToList();
             }
@@ -308,7 +308,7 @@ namespace SloperMobile.DataBase
 
         public List<T_CRAG> GetCragList()
         {
-            var craglist = dbConn.Table<T_CRAG>().ToList();
+            var craglist = dbConn.Table<T_CRAG>().Where(x => x.is_enabled == true).ToList();
             return craglist;
         }
 
@@ -321,7 +321,7 @@ namespace SloperMobile.DataBase
             if (!string.IsNullOrEmpty(Settings.SelectedCragSettings))
             {
                 var cragid = Settings.SelectedCragSettings;
-                var item = dbConn.Table<T_CRAG>().FirstOrDefault(crag => crag.crag_id == cragid);
+                var item = dbConn.Table<T_CRAG>().Where(c => c.is_enabled == true).FirstOrDefault(crag => crag.crag_id == cragid);
                 return item;
             }
             else
@@ -336,7 +336,7 @@ namespace SloperMobile.DataBase
         /// <returns></returns>
         public IEnumerable<T_ROUTE> GetRoutesBySectorId(string sectorid)
         {
-            var item = dbConn.Table<T_ROUTE>().Where(route => route.sector_id == sectorid).OrderBy(x => x.sort_order);
+            var item = dbConn.Table<T_ROUTE>().Where(route => route.sector_id == sectorid && route.is_enabled == true).OrderBy(x => x.sort_order);
             return item;
         }
 
@@ -350,7 +350,7 @@ namespace SloperMobile.DataBase
             if (!string.IsNullOrEmpty(Settings.SelectedCragSettings))
             {
                 var cragid = Settings.SelectedCragSettings;
-                var item = dbConn.Table<T_ROUTE>().Where(route => route.crag_id == cragid).OrderByDescending(x => x.date_created);
+                var item = dbConn.Table<T_ROUTE>().Where(route => route.crag_id == cragid && route.is_enabled == true).OrderByDescending(x => x.date_created);
                 return item;
             }
             else
@@ -372,7 +372,7 @@ namespace SloperMobile.DataBase
 
         public T_ROUTE GetRouteDataByRouteID(string routeid)
         {
-            var item = dbConn.Table<T_ROUTE>().FirstOrDefault(route => route.route_id == routeid);
+            var item = dbConn.Table<T_ROUTE>().Where(r => r.is_enabled == true).FirstOrDefault(route => route.route_id == routeid);
             if (item != null)
             {
                 return item;

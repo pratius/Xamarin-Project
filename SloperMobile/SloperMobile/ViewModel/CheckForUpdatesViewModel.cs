@@ -54,6 +54,11 @@ namespace SloperMobile.ViewModel
             get
             {
                 string lastupdate = App.DAUtil.GetLastUpdate();
+                //check if lastupdate equal to todays date get ond day back date
+                if (DateTime.Now.ToString("yyyyMMdd") == lastupdate)
+                {
+                    lastupdate = DateTime.Now.AddDays(-1).ToString("yyyyMMdd");
+                }
                 if (string.IsNullOrEmpty(lastupdate))
                 {
                     lastupdate = "20160101";
