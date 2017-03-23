@@ -11,6 +11,7 @@ using SloperMobile.Common.Helpers;
 using Newtonsoft.Json;
 using SloperMobile.Common.Constants;
 using SloperMobile.Model;
+using SloperMobile.MessagingTask;
 
 namespace SloperMobile
 {
@@ -67,8 +68,17 @@ namespace SloperMobile
         protected override void OnResume()
         {
             // Handle when your app resumes
+            try
+            {
+                var message = new StartCheckForUpdatesTask();
+                MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
+                HandleReceivedMessages();
+            }
+            catch
+            {
+                //need to implement network availability.
+            }
         }
-
         void InitializeAppStep1()
         {
             InitializeComponent();
@@ -88,6 +98,15 @@ namespace SloperMobile
             {
                 MainPage = new NavigationPage(new SplashPage());
             }
+        }
+
+        void HandleReceivedMessages()
+        {
+            MessagingCenter.Subscribe<UpdateMessage>(this, "UpdateMessage", message => {
+                Device.BeginInvokeOnMainThread(() => {
+                    Application.Current.MainPage.DisplayAlert("Info",message.Message,"ok");
+                });
+            });
         }
     }
 }

@@ -14,7 +14,9 @@ using XLabs.Serialization;
 using XLabs.Platform.Device;
 using Syncfusion.SfRating.XForms.iOS;
 using XLabs.Serialization.JsonNET;
-
+using Xamarin.Forms;
+using SloperMobile.MessagingTask;
+using SloperMobile.iOS.Services;
 
 namespace SloperMobile.iOS
 {
@@ -31,6 +33,7 @@ namespace SloperMobile.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
+        iOSCheckUpdatesTaskService updateRunningTask;
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             HybridWebViewRenderer.CopyBundleDirectory("HTML");
@@ -50,7 +53,20 @@ namespace SloperMobile.iOS
             manager.Authenticator.AuthenticateInstallation();
             new SfGaugeRenderer();
             new SfRatingRenderer();
+            WireUpCheckUpdateRunningTask();
             return base.FinishedLaunching(app, options);
+        }
+
+        void WireUpCheckUpdateRunningTask()
+        {
+            MessagingCenter.Subscribe<StartCheckForUpdatesTask>(this, "StartCheckForUpdatesTaskMessage", async message => {
+                updateRunningTask = new iOSCheckUpdatesTaskService();
+                await updateRunningTask.Start();
+            });
+
+            MessagingCenter.Subscribe<StopCheckForUpdatesTask>(this, "StopCheckForUpdatesTaskMessage", message => {
+                updateRunningTask.Stop();
+            });
         }
     }
 }

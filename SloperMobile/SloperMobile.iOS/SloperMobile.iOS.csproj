@@ -101,6 +101,7 @@
     <Compile Include="HybridWebViewRenderers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\iOSCheckUpdatesTaskService.cs" />
     <Compile Include="SwipeableIosImageRenderer.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />

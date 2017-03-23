@@ -11,6 +11,10 @@ using XLabs.Serialization.JsonNET;
 using XLabs.Forms.Controls;
 using XLabs.Platform.Device;
 using Acr.UserDialogs;
+using Xamarin.Forms;
+using SloperMobile.MessagingTask;
+using Android.Content;
+using SloperMobile.Droid.Services;
 
 namespace SloperMobile.Droid
 {
@@ -29,7 +33,7 @@ namespace SloperMobile.Droid
 
             container.Register<IJsonSerializer, JsonSerializer>();
             container.Register<IDevice>(AndroidDevice.CurrentDevice);
-
+            Resolver.ResetResolver();
             Resolver.SetResolver(container.GetResolver());
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
@@ -40,6 +44,20 @@ namespace SloperMobile.Droid
             CrashManager.Register(this, AppSetting.HockeyAppId_Droid);
             //// in your main activity OnCreate-method add:
             MetricsManager.Register(this, Application, AppSetting.HockeyAppId_Droid);
+            WireUpCheckUpdateRunningTask();
+        }
+
+        void WireUpCheckUpdateRunningTask()
+        {
+            MessagingCenter.Subscribe<StartCheckForUpdatesTask>(this, "StartCheckForUpdatesTaskMessage", message =>
+            {
+                var intent = new Intent(this, typeof(CheckUpdatesTaskService));
+                StartService(intent);
+            });
+            MessagingCenter.Subscribe<StopCheckForUpdatesTask>(this, "StopCheckForUpdatesTaskMessage", message => {
+                var intent = new Intent(this, typeof(CheckUpdatesTaskService));
+                StopService(intent);
+            });
         }
     }
 }
