@@ -18,6 +18,7 @@ namespace SloperMobile.ViewModel
         public NewsViewModel()
         {
             PageHeaderText = "NEWS";
+            PageSubHeaderText = "Latest Created Routes";
             RouteList = new List<T_ROUTE>();
             RouteList = App.DAUtil.GetRoutesForSelectedCrag().ToList();
         }

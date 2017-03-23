@@ -265,16 +265,16 @@ namespace SloperMobile.DataBase
             }
         }
 
-         public IEnumerable<T_TOPO> GetAllSectorImages()
+        public IEnumerable<T_TOPO> GetAllSectorImages()
         {
             List<string> strid = GetSectorIdForSelectedCrag();
-            var secimglist = (dbConn.Table<T_TOPO>().Where(tp => strid.Contains(tp.sector_id))); 
+            var secimglist = (dbConn.Table<T_TOPO>().Where(tp => strid.Contains(tp.sector_id)));
             return secimglist;
         }
         public IEnumerable<T_TOPO> GetSectorImages(int skip, int take)
         {
             List<string> strid = GetSectorIdForSelectedCrag();
-            var secimglist = (dbConn.Table<T_TOPO>().Where(tp => strid.Contains(tp.sector_id))).Skip(skip).Take(take); 
+            var secimglist = (dbConn.Table<T_TOPO>().Where(tp => strid.Contains(tp.sector_id))).Skip(skip).Take(take);
             return secimglist;
         }
 
@@ -350,7 +350,7 @@ namespace SloperMobile.DataBase
             if (!string.IsNullOrEmpty(Settings.SelectedCragSettings))
             {
                 var cragid = Settings.SelectedCragSettings;
-                var item = dbConn.Table<T_ROUTE>().Where(route => route.crag_id == cragid).OrderByDescending(x => x.date_modified);
+                var item = dbConn.Table<T_ROUTE>().Where(route => route.crag_id == cragid).OrderByDescending(x => x.date_created);
                 return item;
             }
             else

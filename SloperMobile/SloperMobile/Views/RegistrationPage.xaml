@@ -6,8 +6,8 @@
   <ScrollView Orientation="Vertical">
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="40,0,40,0">
       <Grid.RowDefinitions>
-        <RowDefinition Height="30*" />
-        <RowDefinition Height="50*" />
+        <RowDefinition Height="20*" />
+        <RowDefinition Height="70*" />
         <RowDefinition Height="20*" />
       </Grid.RowDefinitions>
       <Image Grid.Row="0" Source="logo_170w" VerticalOptions="Center" HorizontalOptions="Center" />

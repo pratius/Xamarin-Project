@@ -430,6 +430,9 @@
     <BundleResource Include="Resources\scenic_shot_portrait.png" />
     <BundleResource Include="Resources\scenic_shot_portrait%402x.png" />
     <BundleResource Include="Resources\scenic_shot_portrait%403x.png" />
+    <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\logo%402x.png" />
+    <BundleResource Include="Resources\logo%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -586,9 +589,6 @@
     <BundleResource Include="Resources\Menu_button%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\homeProfile.png" />
   </ItemGroup>
   <ItemGroup>
@@ -629,12 +629,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\climbing_map%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\news.png" />

@@ -19,7 +19,8 @@ namespace SloperMobile.ViewModel
         }
         public SettingViewModel()
         {
-            PageHeaderText = "SETTING";
+            PageHeaderText = "SETTINGS";
+            PageSubHeaderText = "User";
             DisplayName = Settings.DisplayNameSettings;
             LogOutCommand = new DelegateCommand(ExecuteOnLogOut);
         }
@@ -34,7 +35,7 @@ namespace SloperMobile.ViewModel
 
         private void ExecuteOnLogOut(object parma)
         {
-           try
+            try
             {
                 Settings.AccessTokenSettings = "";
                 Settings.RenewalTokenSettings = "";

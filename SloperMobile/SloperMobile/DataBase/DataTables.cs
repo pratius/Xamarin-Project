@@ -148,6 +148,8 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string rating
         { get; set; }
+        public DateTime date_created
+        { get; set; }
     }
 
     public class T_SECTOR
