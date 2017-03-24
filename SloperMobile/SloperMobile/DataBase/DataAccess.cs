@@ -125,7 +125,7 @@ namespace SloperMobile.DataBase
         //=================================T_AREA ===============================  
         public int SaveArea(T_AREA aArea)
         {
-            var item = dbConn.Table<T_AREA>().Where(a => a.is_enabled == true).FirstOrDefault(area => area.area_id == aArea.area_id);
+            var item = dbConn.Table<T_AREA>().FirstOrDefault(area => area.area_id == aArea.area_id);
             if (item != null)
             {
                 aArea.id = item.id;
@@ -139,7 +139,7 @@ namespace SloperMobile.DataBase
         //================================T_ROUTE ===============================
         public int SaveRoute(T_ROUTE aRoute)
         {
-            var item = dbConn.Table<T_ROUTE>().Where(r => r.is_enabled == true).FirstOrDefault(route => route.route_id == aRoute.route_id);
+            var item = dbConn.Table<T_ROUTE>().FirstOrDefault(route => route.route_id == aRoute.route_id);
             if (item != null)
             {
                 aRoute.id = item.id;
@@ -153,7 +153,7 @@ namespace SloperMobile.DataBase
         //================================T_SECTOR===============================
         public int SaveSector(T_SECTOR aSector)
         {
-            var item = dbConn.Table<T_SECTOR>().Where(s => s.is_enabled == true).FirstOrDefault(sector => sector.sector_id == aSector.sector_id);
+            var item = dbConn.Table<T_SECTOR>().FirstOrDefault(sector => sector.sector_id == aSector.sector_id);
             if (item != null)
             {
                 aSector.id = item.id;
@@ -168,7 +168,7 @@ namespace SloperMobile.DataBase
         //================================T_CRAG===============================
         public int SaveCrag(T_CRAG aCrag)
         {
-            var item = dbConn.Table<T_CRAG>().Where(c => c.is_enabled == true).FirstOrDefault(crag => crag.crag_id == aCrag.crag_id);
+            var item = dbConn.Table<T_CRAG>().FirstOrDefault(crag => crag.crag_id == aCrag.crag_id);
             if (item != null)
             {
                 aCrag.id = item.id;
@@ -221,7 +221,7 @@ namespace SloperMobile.DataBase
         //================================ Drop and Create Table ================
         public void DropAndCreateTable(Type aTable)
         {
-            if (aTable.GetType() == typeof(T_GRADE))
+            if (aTable.Name == "T_GRADE")
             {
                 dbConn.DropTable<T_GRADE>();
                 dbConn.CreateTable<T_GRADE>();
@@ -400,7 +400,7 @@ namespace SloperMobile.DataBase
 
         public List<GradeId> GetGradeTypeIdBySectorId(string sectorid)
         {
-            var item = dbConn.Query<GradeId>("SELECT distinct grade_type_id  FROM T_ROUTE  WHERE sector_id = ?", sectorid);
+            var item = dbConn.Query<GradeId>("SELECT distinct grade_type_id FROM T_ROUTE  WHERE sector_id = ?", sectorid);
             return item;
         }
 

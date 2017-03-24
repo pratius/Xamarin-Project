@@ -58,6 +58,20 @@ namespace SloperMobile
         protected override void OnStart()
         {
             // Handle when your app starts
+            try
+            {
+                var IsAppinitialized = DAUtil.CheckAppInitialization();
+                if (IsAppinitialized)
+                {
+                    var message = new StartCheckForUpdatesTask();
+                    MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
+                    HandleReceivedMessages();
+                }
+            }
+            catch
+            {
+                //need to implement network availability.
+            }
         }
 
         protected override void OnSleep()
@@ -102,9 +116,11 @@ namespace SloperMobile
 
         void HandleReceivedMessages()
         {
-            MessagingCenter.Subscribe<UpdateMessage>(this, "UpdateMessage", message => {
-                Device.BeginInvokeOnMainThread(() => {
-                    Application.Current.MainPage.DisplayAlert("Info",message.Message,"ok");
+            MessagingCenter.Subscribe<UpdateMessage>(this, "UpdateMessage", message =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Application.Current.MainPage.DisplayAlert("Info", message.Message, "ok");
                 });
             });
         }

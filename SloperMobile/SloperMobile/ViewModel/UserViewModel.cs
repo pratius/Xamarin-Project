@@ -264,7 +264,7 @@ namespace SloperMobile.ViewModel
         #region Service
         private async Task<List<ClimbingDaysModel>> HttpGetClimbdays()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "ascent"), Settings.AccessTokenSettings);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "ascent", true), Settings.AccessTokenSettings);
             var area_response = await apicall.Get<ClimbingDaysModel>();
             return area_response;
         }

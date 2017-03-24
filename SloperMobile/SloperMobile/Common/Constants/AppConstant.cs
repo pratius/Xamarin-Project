@@ -10,7 +10,7 @@ namespace SloperMobile.Common.Constants
     public class AppConstant
     {
         public const string APP_TITLE = "Grand Valley Climbing";
-        public const string APP_ID = "1";
+        public const string APP_ID = "26";
         public const string APP_DBNAME = "slopergvcdb.db3";
         public const string APP_COMPANY = "Grand Valley Climbing";
 
@@ -25,10 +25,10 @@ namespace SloperMobile.Common.Constants
         public const string SPF_ACCESSTOKEN = "accessToken";
         public const string SPF_RENEWALTOKEN = "renewalToken";
 
-        //public const string Guest_UserId = "gvc.anonymous@sloperclimbing.com";
-        public const string Guest_UserId = "sloper.anonymous";
-        //public const string Guest_UserPassword = "s.s2017!";
-        public const string Guest_UserPassword = "s.s2016!";
+        public const string Guest_UserId = "gvc.anonymous@sloperclimbing.com";
+        public const string Guest_UserPassword = "s.s2017!";
+        //public const string Guest_UserId = "sloper.anonymous";
+        //public const string Guest_UserPassword = "s.s2016!";
 
         //MapRoutePage
         public const string RouteType_climbing_Angle = "climbing angle";
