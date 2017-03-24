@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SloperMobile.Views.AscentSummaryPage"
+             xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" 
+             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" 
+             NavigationPage.HasNavigationBar="False" BackgroundColor="Black" >
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
+    </ContentPage.Padding>
+    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,0,5,0">
+        <UC:BackHeaderUC HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" />
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  BackgroundColor="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2" />
+                <RowDefinition Height=".1*" />
+                <RowDefinition Height=".7*" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0">
+                <Label Text="AWESOME " TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                <Label Text="{Binding SendsTypeName,Mode=TwoWay}" TextColor="#FF9933" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                <Label Text="!" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Grid.Row="2" Spacing="05" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <!--<Image Source="{Binding SummaryImage}" IsVisible="{Binding IsDisplaySummaryImg}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />-->
+                <!--<Image Source="{Binding SummaryImage}" IsVisible="true" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0,0,0,30" />-->
+                <!--<XLabUC:HybridWebView x:Name="webView" BackgroundColor="White" IsVisible="{Binding IsDisplaySummaryWeb}" WidthRequest="300" HeightRequest="250" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />-->
+                <XLabUC:HybridWebView x:Name="webView" BackgroundColor="Black" WidthRequest="300" HeightRequest="300" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" />
+                <rating:SfRating x:Name="rating_summary" WidthRequest="145" ItemCount="5" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True" HorizontalOptions="Center" VerticalOptions="Start">
+                    <rating:SfRating.RatingSettings>
+                        <rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" RatedStrokeWidth="1" UnRatedStrokeWidth="1"/>
+                    </rating:SfRating.RatingSettings>
+                </rating:SfRating>
+                <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout x:Name="summary_icons" Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Label x:Name="comment_text" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+                <!--<Label Text="share your send" TextColor="White" Grid.Row="1" FontSize="Micro" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+                    <Image Margin="03" Source="facebook_logo" Aspect="AspectFit" />
+                    <Image Margin="03" Source="twitter_logo_shape" Aspect="AspectFit" />
+                    <Image Margin="03" Source="instagram_symbol" Aspect="AspectFit" />
+                    <Image Margin="03" Source="google_plus_logo" Aspect="AspectFit" />
+                </StackLayout>-->
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>

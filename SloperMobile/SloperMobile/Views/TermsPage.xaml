@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.TermsPage" Style="{StaticResource AppBackgroundColor}" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" ControlTemplate="{StaticResource PageTemplateFooter}">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+	</ContentPage.Padding>
+	<StackLayout>
+		<UC:HeaderUC HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" Padding="5,0,0,0" />
+		<ScrollView VerticalOptions="Start" Padding="10,0,10,0">
+			<StackLayout Spacing="0,0,0,0">
+				<BoxView VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" HeightRequest="1" Color="#676767" />
+				<Label x:Name="lblDisclaimerTitle" VerticalOptions="Fill" HorizontalOptions="Center" VerticalTextAlignment="Center" TextColor="White" FontSize="Medium" HeightRequest="30" />
+				<BoxView VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" HeightRequest="1" Color="#676767" />
+				<Label x:Name="lblDisclaimerContent" VerticalOptions="Start" TextColor="White" FontSize="Small" />
+				<BoxView VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" HeightRequest="1" Color="#676767" />
+				<Label x:Name="lblCopyrightTitle" VerticalOptions="Fill" HorizontalOptions="Center" VerticalTextAlignment="Center" TextColor="White" FontSize="Medium" HeightRequest="30" />
+				<BoxView VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" HeightRequest="1" Color="#676767" />
+				<Label x:Name="lblCopyrightContent" VerticalOptions="Start" TextColor="White" FontSize="Small" />
+				<BoxView VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" HeightRequest="1" Color="#676767" />				
+				<Label x:Name="lblPrivacyTitle" VerticalOptions="Fill" HorizontalOptions="Center" VerticalTextAlignment="Center" TextColor="White" FontSize="Medium" HeightRequest="30" />
+				<BoxView VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" HeightRequest="1" Color="#676767" />
+				<Label x:Name="lblPrivacyContent" VerticalOptions="Start" TextColor="White" FontSize="Small" />
+			</StackLayout>
+		</ScrollView>
+	</StackLayout>
+</ContentPage>

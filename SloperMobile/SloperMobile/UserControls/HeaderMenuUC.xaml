@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.UserControls.HeaderMenuUC">
+    <ContentView.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1"/>
+            </Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1"/>
+            </Grid.ColumnDefinitions>
+			<BoxView BackgroundColor="#3F3F3F" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.ColumnSpan="5"/>
+				<BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0" />
+				<Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="SENDS" TextColor="Black" FontSize="Small" BackgroundColor="#FF8E2D" Grid.Row="1" Grid.Column="1"/>
+				<BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="2" />
+				<Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="TICK LIST" TextColor="White" FontSize="Small" BackgroundColor="#000" Grid.Row="1" Grid.Column="3">
+		            <Label.GestureRecognizers>
+		                <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="ProfilePage"/>
+		            </Label.GestureRecognizers>
+				</Label>
+				<BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="4" />
+			<BoxView BackgroundColor="#3F3F3F" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.ColumnSpan="5"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.UserControls.HeaderMenuUC">
+    <ContentView.Content>
+
+        <Grid VerticalOptions="CenterAndExpand"
+      HorizontalOptions="CenterAndExpand"
+      RowSpacing="0"
+      ColumnSpacing="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1"/>
+            </Grid.RowDefinitions>
+
+            <BoxView BackgroundColor="Gray"
+           HeightRequest="1"
+           HorizontalOptions="FillAndExpand"
+           Grid.Row="0"/>
+            <Grid VerticalOptions="Start" ColumnSpacing="0" Grid.Row="1" BackgroundColor="Black">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".2*"/>
+                </Grid.RowDefinitions>
+
+                <BoxView BackgroundColor="Black"
+             WidthRequest="1" VerticalOptions="FillAndExpand"/>
+                <Grid  Grid.Column="1"  BackgroundColor="Black">
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="POINTS"  TextColor="White"/>
+                </Grid>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="2"/>
+                <Grid Grid.Column="3" BackgroundColor="Black">
+                    <Label Text="RANKING" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                </Grid>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="4"/>
+                <Grid  Grid.Column="5" BackgroundColor="Black">
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="TICK LIST" TextColor="White"/>
+                </Grid>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="6"/>
+
+                <Grid Grid.Column="7" BackgroundColor="#FF8E2D" >
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="SENDS" TextColor="Black"/>
+                </Grid>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="8"/>
+
+                <Grid  Grid.Column="9" BackgroundColor="Black">
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="CALENDAR" TextColor="White"/>
+                </Grid>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="10"/>
+
+                <Grid Grid.Column="11" BackgroundColor="Black">
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="PYRAMID"  TextColor="White"/>
+                </Grid>
+                <BoxView BackgroundColor="Gray"
+             WidthRequest="1"
+             VerticalOptions="FillAndExpand"
+             Grid.Column="12"/>
+            </Grid>
+            <BoxView BackgroundColor="Gray"
+           HeightRequest="1"
+           HorizontalOptions="FillAndExpand"
+           Grid.Row="2"/>
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>
+-->

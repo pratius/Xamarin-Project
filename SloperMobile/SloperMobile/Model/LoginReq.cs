@@ -11,4 +11,9 @@ namespace SloperMobile.Model
         public string u { get; set; }
         public string p { get; set; }
     }
+
+    public class ExtendURL
+    {
+        public string rtoken { get; set; }
+    }
 }

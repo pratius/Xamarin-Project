@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="SloperMobile.UserControls.BackHeaderUC">
+  <ContentView.Resources>
+    <ResourceDictionary>
+      <!--Top Header Style-->
+      <Style x:Key="lblTopHeader" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center"/>
+
+        <!--<Setter Property="FontSize" Value="Large" />-->
+        <Setter Property="TextColor" Value="#FF8E2D" />
+        <Setter Property="Font" Value="Medium"/>
+      </Style>
+      <Style x:Key="lblsubTopHeader" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <!--<Setter Property="FontSize" Value="Small" />-->
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="Font" Value="Small"/>
+      </Style>
+    </ResourceDictionary>
+  </ContentView.Resources>
+
+  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" BackgroundColor="Black">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <StackLayout Orientation="Vertical" Spacing="0">
+      <Label Style="{StaticResource lblTopHeader}" Text="{Binding Path=PageHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center" />
+      <Label Style="{StaticResource lblsubTopHeader}" Text="{Binding Path=PageSubHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center"/>
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+      <Image IsVisible="{Binding DisplayBackButton,Mode=TwoWay}" Source="arrowLeftWhite" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" Aspect="AspectFit">
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnBackTapped"/>
+        </Image.GestureRecognizers>
+      </Image>
+      <Image Source="Search" IsVisible="False" WidthRequest="30" HeightRequest="30" Aspect="AspectFill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnSearch"/>
+        </Image.GestureRecognizers>
+      </Image>
+
+    </StackLayout>
+
+  </Grid>
+</ContentView>

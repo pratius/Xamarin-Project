@@ -10,9 +10,11 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>SloperMobile.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>SloperMobile.iOS</AssemblyName>
+    <AssemblyName>SloperMobileiOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <ReleaseVersion>v2.109</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,6 +28,7 @@
     <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -47,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: steve@sbx.ca (5BWJV25VDE)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
@@ -59,8 +62,9 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>0d77aa26-6c30-497e-8a52-20db17b2de10</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -71,8 +75,9 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignKey>iPhone Developer: steve@sbx.ca (5BWJV25VDE)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>99ef704f-6e22-4377-b035-806444fc056d</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>none</DebugType>
@@ -82,17 +87,22 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
-    <CodesignProvision>Automatic:AppStore</CodesignProvision>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignProvision></CodesignProvision>
+    <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhoneSimulator'">
     <CodesignKey>iPhone Developer: steve@sbx.ca (5BWJV25VDE)</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomListView.cs" />
     <Compile Include="DependancyObjects\SQLite_iOS.cs" />
+    <Compile Include="GestureFrameRenderer.cs" />
+    <Compile Include="HybridWebViewRenderers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\iOSCheckUpdatesTaskService.cs" />
+    <Compile Include="SwipeableIosImageRenderer.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
@@ -102,24 +112,337 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\Icon-60%403x.png" />
     <BundleResource Include="Resources\Icon-76.png" />
     <BundleResource Include="Resources\Icon-76%402x.png" />
     <BundleResource Include="Resources\Icon-Small-40.png" />
-    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <BundleResource Include="Resources\Icon-Small-40%403x.png" />
-    <BundleResource Include="Resources\Icon-Small.png" />
-    <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\Search_old.PNG" />
+    <BundleResource Include="Resources\icon_climbing_days.png" />
+    <BundleResource Include="Resources\icon_climbing_days%402x.png" />
+    <BundleResource Include="Resources\icon_climbing_days%403x.png" />
+    <BundleResource Include="Resources\icon_climbing_map.png" />
+    <BundleResource Include="Resources\icon_climbing_map%402x.png" />
+    <BundleResource Include="Resources\icon_climbing_map%403x.png" />
+    <BundleResource Include="Resources\icon_news.png" />
+    <BundleResource Include="Resources\icon_news%402x.png" />
+    <BundleResource Include="Resources\icon_news%403x.png" />
+    <BundleResource Include="Resources\icon_profile.png" />
+    <BundleResource Include="Resources\icon_profile%402x.png" />
+    <BundleResource Include="Resources\icon_profile%403x.png" />
+    <BundleResource Include="Resources\icon_pyramid.png" />
+    <BundleResource Include="Resources\icon_pyramid%402x.png" />
+    <BundleResource Include="Resources\icon_pyramid%403x.png" />
+    <BundleResource Include="Resources\icon_sends.png" />
+    <BundleResource Include="Resources\icon_sends%402x.png" />
+    <BundleResource Include="Resources\icon_sends%403x.png" />
+    <BundleResource Include="HTML\Dark_annotation.png" />
+    <BundleResource Include="HTML\back-arrow.png" />
+    <BundleResource Include="HTML\cross_black.png" />
+    <BundleResource Include="HTML\grey-close-button.png" />
+    <BundleResource Include="HTML\icon-arrow.png" />
+    <BundleResource Include="HTML\light_annotation.png" />
+    <BundleResource Include="HTML\move_left.png" />
+    <BundleResource Include="HTML\move_right.png" />
+    <BundleResource Include="HTML\sample-belay.png" />
+    <BundleResource Include="HTML\sample-grade-label-left.png" />
+    <BundleResource Include="HTML\sample-grade-label-right.png" />
+    <BundleResource Include="HTML\sample-line.png" />
+    <BundleResource Include="HTML\sample-lower-off-black-left.png" />
+    <BundleResource Include="HTML\sample-lower-off-black-right.png" />
+    <BundleResource Include="HTML\sample-lower-off-left.png" />
+    <BundleResource Include="HTML\sample-lower-off-right.png" />
+    <BundleResource Include="HTML\sample-route-badge.png" />
+    <BundleResource Include="HTML\sample-route-line-break.png" />
+    <BundleResource Include="HTML\tl-icon.png" />
+    <BundleResource Include="HTML\tlcross-icon.png" />
+    <BundleResource Include="HTML\tr-icon.png" />
+    <BundleResource Include="HTML\trcross-icon.png" />
+    <BundleResource Include="HTML\x-mark-32.png" />
+    <BundleResource Include="Resources\navHome%402x.png" />
+    <BundleResource Include="Resources\navHome%403x.png" />
+    <BundleResource Include="Resources\navMap%402x.png" />
+    <BundleResource Include="Resources\navMap%403x.png" />
+    <BundleResource Include="Resources\navNews%402x.png" />
+    <BundleResource Include="Resources\navNews%403x.png" />
+    <BundleResource Include="Resources\navProfile%402x.png" />
+    <BundleResource Include="Resources\navProfile%403x.png" />
+    <BundleResource Include="Resources\navSettings%402x.png" />
+    <BundleResource Include="Resources\navSettings%403x.png" />
+    <BundleResource Include="Resources\icon_gauge_mountains.png" />
+    <BundleResource Include="Resources\icon_gauge_mountains%402x.png" />
+    <BundleResource Include="Resources\icon_gauge_mountains%403x.png" />
+    <BundleResource Include="Resources\steepVertical%402x.png" />
+    <BundleResource Include="Resources\steepVertical%403x.png" />
+    <BundleResource Include="Resources\steepRoof%402x.png" />
+    <BundleResource Include="Resources\steepRoof%403x.png" />
+    <BundleResource Include="Resources\steepOverhanging%402x.png" />
+    <BundleResource Include="Resources\steepOverhanging%403x.png" />
+    <BundleResource Include="Resources\steepSlab%402x.png" />
+    <BundleResource Include="Resources\steepSlab%403x.png" />
+    <BundleResource Include="Resources\icon_arrow_left_12x21.png" />
+    <BundleResource Include="Resources\icon_arrow_left_12x21%402x.png" />
+    <BundleResource Include="Resources\icon_arrow_left_12x21%403x.png" />
+    <BundleResource Include="Resources\icon_arrow_up_30x10.png" />
+    <BundleResource Include="Resources\icon_arrow_up_30x10%402x.png" />
+    <BundleResource Include="Resources\icon_arrow_up_30x10%403x.png" />
+    <BundleResource Include="Resources\icon_comment_44w.png" />
+    <BundleResource Include="Resources\icon_comment_44w%402x.png" />
+    <BundleResource Include="Resources\icon_comment_44w%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_100x100.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_20x20.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_54x54.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_80x80.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_text_58x92.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_text_58x92%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_1_slopers_text_58x92%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_100x100.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_20x20.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_54x54.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_80x80.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_text_41x68.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_text_41x68%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_2_crimps_text_41x68%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_100x100.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_20x20.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_54x54.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_80x80.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_text_58x74.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_text_58x74%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_4_jugs_text_58x74%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_100x100.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_20x20.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_54x54.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_80x80.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_text_63x94.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_text_63x94%402x.png" />
+    <BundleResource Include="Resources\icon_hold_type_8_pockets_text_63x94%403x.png" />
+    <BundleResource Include="Resources\icon_photo_44w.png" />
+    <BundleResource Include="Resources\icon_photo_44w%402x.png" />
+    <BundleResource Include="Resources\icon_photo_44w%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_100x100.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_20x20.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_54x54.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_80x80.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_text_73h.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_text_73h%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_16_one_move_text_73h%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_100x100.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_20x20.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_54x54.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_80x80.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_text_73h.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_text_73h%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_1_technical_text_73h%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_100x100.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_20x20.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_54x54.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_80x80.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_text_73h.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_text_73h%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_2_sequential_text_73h%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_100x100.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_20x20.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_54x54.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_80x80.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_text_73h.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_text_73h%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_32_everything_text_73h%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_100x100.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_20x20.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_54x54.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_80x80.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_text_73h.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_text_73h%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_4_powerful_text_73h%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_100x100.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_20x20.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_54x54.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_80x80.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_text_73h.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_text_73h%402x.png" />
+    <BundleResource Include="Resources\icon_route_style_8_sustained_text_73h%403x.png" />
+    <BundleResource Include="Resources\icon_search_16x16.png" />
+    <BundleResource Include="Resources\icon_search_16x16%402x.png" />
+    <BundleResource Include="Resources\icon_search_16x16%403x.png" />
+    <BundleResource Include="Resources\icon_star_empty_17w.png" />
+    <BundleResource Include="Resources\icon_star_empty_17w%402x.png" />
+    <BundleResource Include="Resources\icon_star_empty_17w%403x.png" />
+    <BundleResource Include="Resources\icon_star_empty_24w.png" />
+    <BundleResource Include="Resources\icon_star_empty_24w%402x.png" />
+    <BundleResource Include="Resources\icon_star_empty_24w%403x.png" />
+    <BundleResource Include="Resources\icon_star_full_17w.png" />
+    <BundleResource Include="Resources\icon_star_full_17w%402x.png" />
+    <BundleResource Include="Resources\icon_star_full_17w%403x.png" />
+    <BundleResource Include="Resources\icon_star_full_24w.png" />
+    <BundleResource Include="Resources\icon_star_full_24w%402x.png" />
+    <BundleResource Include="Resources\icon_star_full_24w%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_100x100.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_20x20.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_54x54.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_80x80.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_1_slab_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_100x100.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_20x20.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_54x54.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_80x80.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_2_vertical_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_100x100.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_20x20.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_54x54.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_80x80.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_4_overhanging_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_100x100.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_100x100%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_100x100%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_20x20.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_20x20%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_20x20%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_54x54.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_54x54%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_54x54%403x.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_80x80.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_80x80%402x.png" />
+    <BundleResource Include="Resources\icon_steepness_8_roof_border_80x80%403x.png" />
+    <BundleResource Include="Resources\icon_video_44w.png" />
+    <BundleResource Include="Resources\icon_video_44w%402x.png" />
+    <BundleResource Include="Resources\icon_video_44w%403x.png" />
+    <BundleResource Include="Resources\logo_170w.png" />
+    <BundleResource Include="Resources\logo_170w%402x.png" />
+    <BundleResource Include="Resources\logo_170w%403x.png" />
+    <BundleResource Include="Resources\logo_215w.png" />
+    <BundleResource Include="Resources\logo_215w%402x.png" />
+    <BundleResource Include="Resources\logo_215w%403x.png" />
+    <BundleResource Include="Resources\icon_profile_large.png" />
+    <BundleResource Include="Resources\icon_profile_large%402x.png" />
+    <BundleResource Include="Resources\icon_profile_large%403x.png" />
+    <BundleResource Include="Resources\scenic_shot_portrait.png" />
+    <BundleResource Include="Resources\scenic_shot_portrait%402x.png" />
+    <BundleResource Include="Resources\scenic_shot_portrait%403x.png" />
+    <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\logo%402x.png" />
+    <BundleResource Include="Resources\logo%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Acr.Support.2.1.0\lib\Xamarin.iOS10\Acr.Support.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Acr.UserDialogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Acr.UserDialogs.6.3.8\lib\Xamarin.iOS10\Acr.UserDialogs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Acr.UserDialogs.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Acr.UserDialogs.6.3.8\lib\Xamarin.iOS10\Acr.UserDialogs.Interface.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="HockeySDK, Version=1.0.6103.22142, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.0\lib\Xamarin.iOS10\HockeySDK.dll</HintPath>
       <Private>True</Private>
@@ -128,8 +451,36 @@
       <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.0\lib\Xamarin.iOS10\HockeySDK.iOSBindings.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.Abstractions, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\Xamarin.iOS10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.iOS, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\Xamarin.iOS10\ImageCircle.Forms.Plugin.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Media, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2\lib\Xamarin.iOS10\Plugin.Media.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Media.Abstractions, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2\lib\Xamarin.iOS10\Plugin.Media.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Settings, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.1.0\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Settings.Abstractions, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.1.0\lib\Xamarin.iOS10\Plugin.Settings.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Splat, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Splat.1.6.2\lib\Xamarin.iOS10\Splat.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -148,6 +499,15 @@
     </Reference>
     <Reference Include="Syncfusion.SfGauge.XForms.iOS">
       <HintPath>..\..\lib\ios-unified\Syncfusion.SfGauge.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfRating.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfRating.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfRating.XForms.iOS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -169,43 +529,74 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="XLabs.Core, Version=2.0.5782.12218, Culture=neutral, PublicKeyToken=d65109b36e5040e4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\XLabs.Core.2.0.5782\lib\Xamarin.iOS10\XLabs.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XLabs.Forms, Version=2.0.5782.12218, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\XLabs.Forms.2.0.5782\lib\Xamarin.iOS10\XLabs.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XLabs.Forms.iOS, Version=2.0.5782.12247, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\XLabs.Forms.2.0.5782\lib\Xamarin.iOS10\XLabs.Forms.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XLabs.Ioc, Version=2.0.5782.12218, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\XLabs.IoC.2.0.5782\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Ioc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XLabs.Platform, Version=2.0.5782.12218, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\XLabs.Platform.2.0.5782\lib\Xamarin.iOS10\XLabs.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XLabs.Platform.iOS, Version=2.0.5782.12247, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\XLabs.Platform.2.0.5782\lib\Xamarin.iOS10\XLabs.Platform.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XLabs.Serialization, Version=2.0.5782.15703, Culture=neutral, PublicKeyToken=d65109b36e5040e4, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\XLabs.Serialization.2.0.5782\lib\Xamarin.iOS10\XLabs.Serialization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XLabs.Serialization.JsonNET, Version=2.0.5782.12228, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\XLabs.Serialization.JSON.2.0.5782\lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.JsonNET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">
-      <Project>{1c7d1ca6-50b4-4681-a3da-d855d3c9569f}</Project>
+      <Project>{B8FBADC5-375B-4A91-8B8E-4152CD63812D}</Project>
       <Name>SloperMobile</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\chartIcon.PNG" />
+  </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Menu_button%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Menu_button.png" />
+    <AndroidResource Include="Resources\Menu_button.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Menu_button%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\logo.png" />
+    <AndroidResource Include="Resources\homeProfile.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\homeProfile.png" />
+    <AndroidResource Include="Resources\homePyramid.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\homePyramid.png" />
+    <AndroidResource Include="Resources\homeSends.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\homeSends.png" />
+    <AndroidResource Include="Resources\homeClimbingDays.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\homeClimbingDays.png" />
+    <AndroidResource Include="Resources\homeClimbingMap.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\homeClimbingMap.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\homeNews.png" />
+    <AndroidResource Include="Resources\homeNews.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="hockeyappios">
@@ -214,7 +605,7 @@
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\climbing_days.png" />
+    <AndroidResource Include="Resources\climbing_days.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\climbing_days%402x.png" />
@@ -223,19 +614,13 @@
     <BundleResource Include="Resources\climbing_days%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\climbing_map.png" />
+    <AndroidResource Include="Resources\climbing_map.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\climbing_map%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\climbing_map%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\news.png" />
@@ -274,14 +659,6 @@
     <BundleResource Include="Resources\send%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="..\SloperMobile\Views\HomePage3.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo_old.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\navHome.png" />
   </ItemGroup>
   <ItemGroup>
@@ -297,13 +674,212 @@
     <BundleResource Include="Resources\navSettings.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\sendsDonutOnsights.png" />
+    <AndroidResource Include="Resources\sendsDonutOnsights.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\sendsDonutProjects.png" />
+    <AndroidResource Include="Resources\sendsDonutProjects.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\sendsDonutRedpoints.png" />
+    <AndroidResource Include="Resources\sendsDonutRedpoints.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\SendsBtnImgs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Arm.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bigImage.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\BodyPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\climImg.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\close.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Comment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\EveryThing.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\facebook_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\google_plus_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Google+.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Hand.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Hand2Pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\HandPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_about_us.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_attachement_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_gym_map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_gym_map_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_news.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_news_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_profile_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\ic_setting_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Instagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\instagram_symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\listimage.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\loader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\main_header_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Map.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\NewBig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\OneMore.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\PowerHand.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Ratting.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Right.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Search.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Sequential.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\SettingOne.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\SettingPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Settings.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Sustained.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Twitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\twitter_logo_shape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Video.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\WhiteStar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\YellowStar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\steepOverhanging.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\steepRoof.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\steepSlab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\steepVertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowLeftWhite.png" />
+    <BundleResource Include="Resources\hold_type_1_slopers.png" />
+    <BundleResource Include="Resources\hold_type_8_pockets.png" />
+    <BundleResource Include="Resources\hold_type_4_jugs.png" />
+    <BundleResource Include="Resources\hold_type_2_crimps.png" />
+    <BundleResource Include="Resources\route_style_everything.png" />
+    <BundleResource Include="Resources\route_style_8_sustained.png" />
+    <BundleResource Include="Resources\route_style_4_powerful.png" />
+    <BundleResource Include="Resources\route_style_2_sequential.png" />
+    <BundleResource Include="Resources\route_style_1_technical.png" />
+    <BundleResource Include="Resources\route_style_16_one_move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\GridImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HTML\TopoResizeImage.html" />
+    <Content Include="HTML\Js\canvas.dashedLine.js" />
+    <Content Include="HTML\Js\jquery.bxslider.js" />
+    <Content Include="HTML\Js\jquery.mousewheel.js" />
+    <Content Include="HTML\Js\jquery.panzoom.js" />
+    <Content Include="HTML\Css\ResizeImage.css" />
+    <Content Include="HTML\Css\jquery.bxslider.css" />
+    <Content Include="HTML\Index.html" />
+    <Content Include="HTML\ResizeImage.html" />
+    <Content Include="HTML\test.html" />
+    <Content Include="HTML\Feed.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\iphone4_1.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\iphone5_1.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\iphone6_1.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\iphone6plus_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

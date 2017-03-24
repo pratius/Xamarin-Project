@@ -18,10 +18,15 @@ namespace SloperMobile.Views
             NavigationPage.SetHasNavigationBar(this, false);
             usrVM = new UserViewModel();
             BindingContext = usrVM;
-            usrVM.PageNavigation = LoginViewModel_OnLoginClick;
+            usrVM.OnPageNavigation = LoginViewModel_OnLoginClick;
         }
 
         private async void LoginViewModel_OnLoginClick()
+        {
+            await Navigation.PushAsync(new MenuNavigationPage());
+        }
+
+        private async void OnLogin(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LoginPage());
         }

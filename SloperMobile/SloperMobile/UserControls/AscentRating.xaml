@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" x:Class="SloperMobile.UserControls.AscentRating" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile">
+	<UC:HeaderNoButtonUC HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" />
+	<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,20,0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*">
+			</RowDefinition>
+			<RowDefinition Height="40">
+			</RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*">
+			</ColumnDefinition>
+			<ColumnDefinition Width="*">
+			</ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="20*" />
+				<RowDefinition Height="10*" />
+				<RowDefinition Height="10*" />
+				<RowDefinition Height="10*" />
+				<RowDefinition Height="10*" />
+				<RowDefinition Height="40*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*" />
+				<ColumnDefinition Width="1*" />
+				<ColumnDefinition Width="1*" />
+			</Grid.ColumnDefinitions>
+			<Label Grid.Row="0" Grid.ColumnSpan="3" Text="Rate the climb!" TextColor="White" FontSize="24" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
+			<rating:SfRating Grid.Row="1" Grid.ColumnSpan="3" x:Name="rating" WidthRequest="145" ItemCount="5" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" VerticalOptions="Start" HorizontalOptions="Center">
+				<rating:SfRating.RatingSettings>
+					<rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" UnRatedStrokeWidth="1" RatedStrokeWidth="1" HorizontalOptions="Center" />
+				</rating:SfRating.RatingSettings>
+			</rating:SfRating>
+			<!--<Label Grid.Row="2" Grid.ColumnSpan="3" Text="Attach a photo" TextColor="White" FontSize="20" HorizontalOptions="Center" VerticalOptions="End" />
+		<Image Grid.Row="3" Source="icon_photo_44w" HorizontalOptions="Center" VerticalOptions="Start">
+			<Image.GestureRecognizers>
+				<TapGestureRecognizer Command="{Binding CameraClickCommand}" />
+			</Image.GestureRecognizers>
+		</Image>-->
+			<Label Grid.Row="2" Grid.ColumnSpan="3" Text="Comments" TextColor="White" FontSize="20" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
+			<Image Grid.Row="3" Grid.ColumnSpan="3" Source="icon_comment_44w" HorizontalOptions="Center" VerticalOptions="Start">
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer Command="{Binding CommentClickCommand}" />
+				</Image.GestureRecognizers>
+			</Image>
+			<Label Grid.Row="4" Grid.ColumnSpan="3" Text="{Binding CommentText,Mode=TwoWay}" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" />
+			<!--<Editor Grid.Row="5" Grid.ColumnSpan="3" x:Name="rate_comment" Text="{Binding CommentText,Mode=TwoWay}" HeightRequest="100" VerticalOptions="Start" Style="{StaticResource GeneralEditorStyle}" />-->
+		</Grid>
+		<Image Grid.Row="1" Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="Center" />
+		<Image Grid.Row="1" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />
+	</Grid>
+</StackLayout>
