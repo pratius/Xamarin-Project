@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.UserControls.FooterUC">
+    <ContentView.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#191919">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="navNews" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="NewsPage"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="navProfile" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="ProfilePage"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="navHome" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="HomePage"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="navMap" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="MapPage"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="navSettings" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="SettingsPage"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>

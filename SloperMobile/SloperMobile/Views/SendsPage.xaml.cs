@@ -1,11 +1,14 @@
 ﻿using SloperMobile.ViewModel;
+using SloperMobile.Model;
 using System;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SloperMobile.DataBase;
+using SloperMobile.Common.Enumerators;
 using Xamarin.Forms;
 
 namespace SloperMobile.Views
@@ -14,7 +17,7 @@ namespace SloperMobile.Views
     {
         #region Properties
 
-        public new event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;             
 
         #region PointerValue
 
@@ -32,69 +35,48 @@ namespace SloperMobile.Views
                         new PropertyChangedEventArgs("PointerValue"));
                 }
             }
-        }
+        }              
 
         #endregion PointerValue
 
         #endregion Properties
-        public SendsPage()
+        public SendsPage(string TabName)
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
-          //  BindingContext = new SendsViewModel();
-            circularGauge.BindingContext = this;
-           // pointer_slider.BindingContext = this;
-
-            #region Conditions
-
-
-
-            //Label Offset
-            if (Device.OS == TargetPlatform.Android)
+            NavigationPage.SetHasNavigationBar(this, false);           
+            BindingContext = new SendsViewModel(TabName);
+            if (TabName == "SENDS")
             {
-                scale.LabelOffset = 0.2;
+                SendsScrollViewer.IsVisible = true;
+                TickListsScrollViewer.IsVisible = false;
+                main_layout.IsVisible = true;
+                Ticklists.IsVisible = false;
+                Sends.IsVisible = true;
             }
             else
             {
-                scale.LabelOffset = 0.1;
+                SendsScrollViewer.IsVisible = false;
+                TickListsScrollViewer.IsVisible = true;
+                main_layout.IsVisible = false;
+                Ticklists.IsVisible = true;
+                Sends.IsVisible = false;
             }
-
-            #region Pointer Slider
-
-            //PointerSlider label FontSize
-            if (Device.OS == TargetPlatform.iOS)
-            {
-                ///pointer_text.FontSize = 15;
-            }
-            else if (Device.OS == TargetPlatform.Android)
-            {
-             //   pointer_text.FontSize = 15;
-            }
-            else
-            {
-               // pointer_text.FontSize = 20;
-            }
-
-            //PointerSlider BackgroundColor
-            if (Device.OS == TargetPlatform.WinPhone)
-            {
-              //  pointer_slider.BackgroundColor = Color.Gray;
-            }
-
-            #endregion Pointer Slider
-
-            #endregion Conditions            
         }
 
-        #region Events
-
-        //main_layout SizeChanged
-        void main_layout_SizeChanged(object sender, EventArgs e)
+        
+        private void Handle_ValueChanged(object sender, EventArgs e)
         {
-            circularGauge.WidthRequest = 330;
-            circularGauge.HeightRequest = 330;
-        }
+            try
+            {
+                //var data = sender as SegmentedControl.FormsPlugin.Abstractions.SegmentedControl;
 
-        #endregion Events
+                //SendVM.ExecuteModeChange(data.SelectedText);
+            }
+
+            catch
+            {
+
+            }
+        }
     }
 }

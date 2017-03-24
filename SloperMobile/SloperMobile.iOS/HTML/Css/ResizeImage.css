@@ -1,0 +1,136 @@
+﻿ #point-type-selector div.point-type-selector-type {
+        position: relative;
+        height: 30px;
+        width: 30px;
+        margin-left: 3px;
+        background-color: transparent;
+        cursor: pointer;
+        float: left;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-origin: content-box;
+    }
+
+.point-type-0, #point-type-selector-type-0 {
+    background-image: url(../img/sample-line.png);
+}
+
+.point-type-8, #point-type-selector-type-8 {
+    background-image: url(../img/x-mark-32.png);
+}
+
+.point-type-16, #point-type-selector-type-16 {
+    background-image: url(../img/cross_black.png);
+}
+
+.point-type-17, #point-type-selector-type-17 {
+    background-image: url(../img/sample-lower-off-black-left.png);
+}
+
+.point-type-18, #point-type-selector-type-18 {
+    background-image: url(../img/sample-lower-off-black-right.png);
+}
+
+#dark_annotation {
+    background-image: url(../img/Dark_annotation.png);
+    height: 30px;
+    width: 434px;
+}
+
+#light_annotation {
+    background-image: url(../img/light_annotation.png);
+    height: 30px;
+    width: 434px;
+}
+
+.btnlight:hover {
+    background-color: #fff;
+}
+
+.point-type-9, #point-type-selector-type-9 {
+    background-image: url(../img/tl-icon.png);
+    display: none;
+}
+
+.point-type-10, #point-type-selector-type-10 {
+    background-image: url(../img/tr-icon.png);
+    display: none;
+}
+
+.point-type-11, #point-type-selector-type-11 {
+    background-image: url(../img/tlcross-icon.png);
+    display: none;
+}
+
+.point-type-12, #point-type-selector-type-12 {
+    background-image: url(../img/trcross-icon.png);
+    display: none;
+}
+
+.point-type-13, #point-type-selector-type-13 {
+    background-image: url(../img/move_left.png);
+    display: none;
+}
+
+.point-type-14, #point-type-selector-type-14 {
+    background-image: url(../img/move_right.png);
+    display: none;
+}
+
+.point-type-15, #point-type-selector-type-15 {
+    background-image: url(../img/icon-arrow.png);
+}
+
+.point-type-1, #point-type-selector-type-1 {
+    background-image: url(../img/sample-route-badge.png);
+}
+
+.point-type-2, #point-type-selector-type-2 {
+    background-image: url(../img/sample-belay.png);
+}
+
+.point-type-3, #point-type-selector-type-3 {
+    background-image: url(../img/sample-lower-off-left.png);
+}
+
+.point-type-4, #point-type-selector-type-4 {
+    background-image: url(../img/sample-lower-off-right.png);
+}
+
+.point-type-5, #point-type-selector-type-5 {
+    background-image: url(../img/sample-grade-label-left.png);
+}
+
+.point-type-6, #point-type-selector-type-6 {
+    background-image: url(../img/sample-grade-label-right.png);
+}
+
+.point-type-7, #point-type-selector-type-7 {
+    background-image: url(../img/sample-route-line-break.png);
+}
+
+#point-type-selector-type-close {
+    background-image: url(../img/grey-close-button.png);
+}
+/*.pc{ z-index: 5001 !important; border:1px solid green !important;}*/
+.point-highlighterhide {
+    background-color: transparent;
+    border:none;/*2px solid red !important;*/
+    border-radius: 5px;
+    position: absolute;    
+    width: 30px;
+    height: 30px;
+    z-index: 5000; /* one above the topo Image but below the display and drawing canvas surfaces */
+    box-sizing: border-box;
+    transform: rotate(46deg);
+     -ms-transform: rotate(46deg); /* IE 9 */
+    -webkit-transform: rotate(46deg); /* Chrome, Safari, Opera */
+    /* TODO: crosshair background image */
+}
+#arrowleft { 
+  top:0px;    
+  z-index:5000;
+  margin-left:10px;  
+}
+#arrowleft:hover{cursor:pointer;}
+#mbimage{ overflow:hidden;}

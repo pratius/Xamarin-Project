@@ -177,8 +177,8 @@ Global
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|Any CPU.ActiveCfg = Debug|iPhone
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|Any CPU.Deploy.0 = Debug|iPhone
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|ARM.ActiveCfg = Debug|iPhone
-		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhone.Build.0 = Debug|iPhone
+		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhone.ActiveCfg = Debug|iPhoneSimulator
+		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhone.Build.0 = Debug|iPhoneSimulator
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{301A5094-3EFC-4910-9CEF-879C7EDFAF4E}.Debug|x64.ActiveCfg = Debug|iPhone
@@ -194,5 +194,55 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = VisualStudio
+		$1.inheritsScope = text/plain
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.IndentSwitchSection = True
+		$2.NewLinesForBracesInProperties = True
+		$2.NewLinesForBracesInAccessors = True
+		$2.NewLinesForBracesInAnonymousMethods = True
+		$2.NewLinesForBracesInControlBlocks = True
+		$2.NewLinesForBracesInAnonymousTypes = True
+		$2.NewLinesForBracesInObjectCollectionArrayInitializers = True
+		$2.NewLinesForBracesInLambdaExpressionBody = True
+		$2.NewLineForElse = True
+		$2.NewLineForCatch = True
+		$2.NewLineForFinally = True
+		$2.NewLineForMembersInObjectInit = True
+		$2.NewLineForMembersInAnonymousTypes = True
+		$2.NewLineForClausesInQuery = True
+		$2.SpacingAfterMethodDeclarationName = False
+		$2.SpaceAfterMethodCallName = False
+		$2.SpaceBeforeOpenSquareBracket = False
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.DotNetNamingPolicy = $3
+		$3.DirectoryNamespaceAssociation = None
+		$3.ResourceNamePolicy = FileFormatDefault
+		$0.StandardHeader = $4
+		$4.Text = 
+		$4.IncludeInNewFiles = True
+		$0.NameConventionPolicy = $5
+		$5.Rules = $6
+		$6.NamingRule = $7
+		$7.Name = Type Parameters
+		$7.AffectedEntity = TypeParameter
+		$7.VisibilityMask = VisibilityMask
+		$7.NamingStyle = PascalCase
+		$7.IncludeInstanceMembers = True
+		$7.IncludeStaticEntities = True
+		$7.RequiredPrefixes = $8
+		$8.String = T
+		$7.RequiredSuffixes = $9
+		$9.String = Exception
+		$0.VersionControlPolicy = $10
+		$10.inheritsSet = Mono
+		version = v100
 	EndGlobalSection
 EndGlobal

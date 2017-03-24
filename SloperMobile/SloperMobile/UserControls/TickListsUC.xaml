@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
+             x:Class="SloperMobile.UserControls.TickListsUC">
+  <ContentView.Resources>
+    <ResourceDictionary>
+      <Style x:Key="HederLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontSize" Value="12"/>
+      </Style>
+      <Style x:Key="ListLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontSize" Value="12"/>
+      </Style>
+    </ResourceDictionary>
+  </ContentView.Resources>
+  <ContentView.Content>
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0" Margin="0,15,0,0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="25" />
+        <RowDefinition Height="1" />
+        <RowDefinition Height="1*" />
+      </Grid.RowDefinitions>
+      <Grid Grid.Row="0" >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="20*"/>
+          <ColumnDefinition Width="60*"/>
+          <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Text="DATE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+        <Label Grid.Row="0" Grid.Column="1" Text="CLIMB" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+        <Label Grid.Row="0" Grid.Column="2" Text="GRADE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+      </Grid>
+      <BoxView Grid.Row="1" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+      <Controls:InfiniteListView x:Name="lstView" ItemsSource="{Binding TickListsList}" Grid.Row="2" BackgroundColor="Black" SeparatorVisibility="None">
+        <Controls:InfiniteListView.Footer>
+            <Label/>
+        </Controls:InfiniteListView.Footer>
+		<ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid >
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="40" />
+                  <RowDefinition Height="1" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="20*"/>
+                  <ColumnDefinition Width="60*"/>
+                  <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="{Binding DateCreated}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding route_name}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="2" Text="{Binding grade_name}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding RouteID}" IsVisible="False" />
+                <Label Text="{Binding sector_id}" IsVisible="False" />
+                <BoxView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+              </Grid>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </Controls:InfiniteListView>
+    </Grid>
+  </ContentView.Content>
+</ContentView>
