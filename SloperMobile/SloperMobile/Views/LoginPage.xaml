@@ -1,50 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SloperMobile.Views.LoginPage" Style="{StaticResource AppBackgroundColor}">
-    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="02"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="02"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="10"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        <Image Source="logo" WidthRequest="175" HeightRequest="175" Grid.Column="1" Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-        <StackLayout Grid.Column="1" Grid.Row="3" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
-            <Entry x:Name="txtlogin" Text="{Binding LoginReq.u,Mode=TwoWay}" Placeholder="Email" Margin="05"  Style="{StaticResource GeneralTxtStyle}"/>
-            <Entry x:Name="txtPassWord" Text="{Binding LoginReq.p,Mode=TwoWay}" IsPassword="True" Margin="05"  Placeholder="Password" Style="{StaticResource GeneralTxtStyle}"/>
-            <Button Text="LOGIN" Style="{StaticResource GeneralButtonStyle}" Margin="05" Command="{Binding LoginCommand}" />
-            <Label  Text="FORGOT PASSWORD?" Margin="05"  Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
-
-        <StackLayout Spacing="05" Grid.Column="1" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Grid.Row="5">
-            <Label Text="Sign in with" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand" />
-            <!--<StackLayout Orientation="Horizontal" Spacing="05" HorizontalOptions="StartAndExpand">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.Views.LoginPage" Style="{StaticResource AppBackgroundColor}">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+	</ContentPage.Padding>
+	<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="40,0,40,0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30*" />
+			<RowDefinition Height="30*" />
+			<RowDefinition Height="20*" />
+			<RowDefinition Height="20*" />
+		</Grid.RowDefinitions>
+		<Image Grid.Row="0" Source="logo_170w" VerticalOptions="Center" HorizontalOptions="Center" />
+		<StackLayout Grid.Row="1" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" Spacing="20">
+			<Entry x:Name="txtlogin" Text="{Binding LoginReq.u,Mode=TwoWay}" Placeholder="Email" Style="{StaticResource GeneralTxtStyle}" />
+			<Entry x:Name="txtPassWord" Text="{Binding LoginReq.p,Mode=TwoWay}" IsPassword="True" Placeholder="Password" Style="{StaticResource GeneralTxtStyle}" />
+			<Button BorderRadius="0" Text="LOGIN" Style="{StaticResource GeneralButtonStyle}" Command="{Binding LoginCommand}" />
+			<!--<Label  Text="FORGOT PASSWORD?" Margin="05"  Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"/>-->
+		</StackLayout>
+		<StackLayout Grid.Row="2" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
+			<Label Text="or" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand" />
+			<!--<StackLayout Orientation="Horizontal" Spacing="05" HorizontalOptions="StartAndExpand">
                 <Image Margin="03"  Source="facebook_logo" Aspect="AspectFit"/>
                 <Image Margin="03" Source="twitter_logo_shape" Aspect="AspectFit"/>
                 <Image Margin="03" Source="instagram_symbol" Aspect="AspectFit"/>
                 <Image Margin="03" Source="google_plus_logo" Aspect="AspectFit"/>
             </StackLayout>-->
-            <Button Text="Guest Login" Style="{StaticResource GeneralButtonStyle}" Margin="05" Command="{Binding LoginCommand}" CommandParameter="Guest" />
-        </StackLayout>
-
-        <Label Grid.Column="1" Text="Not a member? Sign up today!" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Grid.Row="7">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnSignUP"/>
-            </Label.GestureRecognizers>
-        </Label>
-
-        <ActivityIndicator Grid.RowSpan="8" Grid.ColumnSpan="3" Color="White" IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-
-    </Grid>
+			<Button BorderRadius="0" Text="LOGIN AS GUEST" Style="{StaticResource GeneralButtonStyle}" Margin="05" Command="{Binding LoginCommand}" CommandParameter="Guest" />
+		</StackLayout>
+		<Label Grid.Row="3" Text="Not a member? Sign up today!" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center">
+			<Label.GestureRecognizers>
+				<TapGestureRecognizer Tapped="OnSignUP" />
+			</Label.GestureRecognizers>
+		</Label>
+		<ActivityIndicator Grid.RowSpan="4" Color="White" IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+	</Grid>
 </ContentPage>

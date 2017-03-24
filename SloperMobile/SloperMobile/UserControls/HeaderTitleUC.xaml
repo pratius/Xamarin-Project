@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.UserControls.HeaderTitleUC">
+	<ContentView.Content>
+		<BoxView VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" HeightRequest="1" Color="#676767" />
+		<Label x:Name="lblTitle" Text="{Binding Path=HeaderTitleText,Mode=TwoWay}"  VerticalOptions="Fill" HorizontalOptions="Center" VerticalTextAlignment="Center" TextColor="White" FontSize="Medium" HeightRequest="30" />
+		<BoxView VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" HeightRequest="1" Color="#676767" />
+	</ContentView.Content>
+</ContentView>

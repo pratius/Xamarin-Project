@@ -10,272 +10,398 @@ namespace SloperMobile.DataBase
     class DataTables
     {
     }
-    public class LAST_UPDATE
+
+    public class APP_SETTING
     {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
         [PrimaryKey, AutoIncrement]
         public long ID
         { get; set; }
         [NotNull]
         public string UPDATED_DATE
         { get; set; }
-
+        public bool IS_INITIALIZED
+        { get; set; }
     }
+
     public class T_AREA
     {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
         [PrimaryKey, AutoIncrement]
-        public long ID
+        public long id
         { get; set; }
         [NotNull]
-        public long AREA_ID
+        public long area_id
         { get; set; }
-        public int IS_ENABLED
+        public bool is_enabled
         { get; set; }
-        public string AREA_CITY
+        public string area_city
         { get; set; }
-        public string AREA_LATITUDE
+        public string area_latitude
         { get; set; }
-        public string AREA_LONGITUDE
+        public string area_longitude
         { get; set; }
-        public string AREA_MAP_ZOOM
+        public string area_map_zoom
         { get; set; }
-        public string AREA_NAME
+        public string area_name
         { get; set; }
-        public string DETAILED_INFO
+        public string detailed_info
         { get; set; }
-        public string AREA_CRAG_MAP_IMAGE_NAME
+        public string area_crag_map_image_name
         { get; set; }
-        public string AREA_STATIC_MAP
+        public string area_static_map
         { get; set; }
-        public string AREA_CRAG_MAP_NAME
+        public string area_crag_map_name
         { get; set; }
-        public string GENERAL_INFO
+        public string general_info
         { get; set; }
-        public string AREA_CRAG_MAP_IFRAME_SRC
+        public string area_crag_map_iframe_src
         { get; set; }
-        public string VERSION_NUMBER
+        public string version_number
         { get; set; }
-        public string SORT_ORDER
+        public string sort_order
         { get; set; }
     }
+
     public class T_ROUTE
     {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
         [PrimaryKey, AutoIncrement]
-        public long  ID
+        public long id
         { get; set; }
         [NotNull]
 
-        public string  ROUTE_ID
+        public string route_id
         { get; set; }
-        public string  AREA_ID
+        public string area_id
         { get; set; }
-        public string  CRAG_ID
+        public string crag_id
         { get; set; }
-        public string  SECTOR_ID
+        public string sector_id
         { get; set; }
-        public string  IS_ENABLED
+        public bool is_enabled
         { get; set; }
-        public string  EQUIPPER_DATE
+        public string equipper_date
         { get; set; }
-        public string  EQUIPPER_NAME
+        public string equipper_name
         { get; set; }
-        public string  FIRST_ASCENT_DATE
+        public string first_ascent_date
         { get; set; }
-        public string  FIRST_ASCENT_NAME
+        public string first_ascent_name
         { get; set; }
-        public string  GRADE_BUCKET_ID
+        public string grade_bucket_id
         { get; set; }
-        public string  GRADE_NAME
+        public string grade_name
         { get; set; }
-        public string  GRADE_NAME_SORT_ORDER
+        public string grade_name_sort_order
         { get; set; }
-        public string  GRADE_TYPE_ID
+        public string grade_type_id
         { get; set; }
-        public string  RATING_NAME
+        public string rating_name
         { get; set; }
-        public string  ROUTE_TYPE
+        public string route_type
         { get; set; }
-        public string  ROUTE_TYPE_ID
+        public string route_type_id
         { get; set; }
-        public string  TECH_GRADE
+        public string tech_grade
         { get; set; }
-        public string  TECH_GRADE_SORT_ORDER
+        public string tech_grade_sort_order
         { get; set; }
-        public string  START_X
+        public string start_x
         { get; set; }
-        public string  START_Y
+        public string start_y
         { get; set; }
-        public string  ROUTE_LENGTH
+        public string route_length
         { get; set; }
-        public string  ROUTE_NAME
+        public string route_name
         { get; set; }
-        public string  ROUTE_INFO
+        public string route_info
         { get; set; }
-        public string  DATE_MODIFIED
+        public string date_modified
         { get; set; }
-        public string  SORT_ORDER
+        public int sort_order
         { get; set; }
-        public string  GRADED_LIST_ORDER
+        public string graded_list_order
         { get; set; }
-        public string  VERSION_NUMBER
+        public string version_number
+        { get; set; }
+        public string angles
+        { get; set; }
+
+        public string angles_top_1
+        { get; set; }
+        public string hold_type_top_1
+        { get; set; }
+        public string route_style_top_1
+        { get; set; }
+        public string angles_top_2
+        { get; set; }
+        public string hold_type_top_2
+        { get; set; }
+        public string route_style_top_2
+        { get; set; }
+        public string rating
+        { get; set; }
+        public DateTime date_created
         { get; set; }
     }
+
     public class T_SECTOR
     {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
         [PrimaryKey, AutoIncrement]
-        public  long  ID
+        public long id
         { get; set; }
         [NotNull]
-        public  string  SECTOR_ID
+        public string sector_id
         { get; set; }
-        public  string  CRAG_ID
+        public string crag_id
         { get; set; }
-        public  string  DATE_MODIFIED
+        public string date_modified
         { get; set; }
-        public  string  IS_ENABLED
+        public bool is_enabled
         { get; set; }
-        public  string  MAP_ID
+        public string map_id
         { get; set; }
-        public  string  SECTOR_INFO
+        public string sector_info
         { get; set; }
-        public  string  SECTOR_INFO_SHORT
+        public string sector_info_short
         { get; set; }
-        public  string  SECTOR_MAP_RECT_H
+        public string sector_map_rect_h
         { get; set; }
-        public  string  SECTOR_MAP_RECT_W
+        public string sector_map_rect_w
         { get; set; }
-        public  string  SECTOR_MAP_RECT_X
+        public string sector_map_rect_x
         { get; set; }
-        public  string  SECTOR_MAP_RECT_Y
+        public string sector_map_rect_y
         { get; set; }
-        public  string  SECTOR_NAME
+        public string sector_name
         { get; set; }
-        public  string  SORT_ORDER
+        public string sort_order
         { get; set; }
-        public  string  TAP_RECT_IN_PARENT_MAP
+        public string tap_rect_in_parent_map
         { get; set; }
-        public  string  TOPO_NAME
+        public string topo_name
         { get; set; }
-        public  string  TOPO_TYPE_ID
+        public string topo_type_id
         { get; set; }
-        public  string  SCALE
+        public string scale
         { get; set; }
-        public  string  SECTOR_ORIENTATION
+        public string sector_orientation
         { get; set; }
-        public  string  VERSION_NUMBER
+        public string version_number
         { get; set; }
-    }
-    public class T_CRAG
-    {
-        [PrimaryKey,AutoIncrement]
-        public long ID
+        public string latitude
         { get; set; }
-        [NotNull]
-        public string CRAG_ID
+        public string longitude
         { get; set; }
-        public string CRAG_NAME
+        public string angles
         { get; set; }
-        public string WEATHER_PROVIDER_CODE
-        { get; set; }
-        public string WEATHER_PROVIDER_NAME
-        { get; set; }
-        public string AREA_NAME
-        { get; set; }
-        public string CRAG_TYPE
-        { get; set; }
-        public string CRAG_SECTOR_MAP_NAME
-        { get; set; }
-        public string CRAG_GRIDREF
-        { get; set; }
-        public string CRAG_NEAREST_TOWN
-        { get; set; }
-        public string CRAG_IS_FAVOURITE
-        { get; set; }
-        public string CRAG_MAP_ZOOM
-        { get; set; }
-        public string CRAG_MAP_ID
-        { get; set; }
-        public string CRAG_GUIDE_BOOK
-        { get; set; }
-        public string CRAG_PARKING_LONGITUDE
-        { get; set; }
-        public string CRAG_PARKING_LATITUDE
-        { get; set; }
-        public string CRAG_INFO_SHORT
-        { get; set; }
-        public string CRAG_LATITUDE
-        { get; set; }
-        public string CRAG_LONGITUDE
-        { get; set; }
-        public string AREA_ID
-        { get; set; }
-        public string CRAG_ACCESS_INFO
-        { get; set; }
-        public string CRAG_GENERAL_INFO
-        { get; set; }
-        public string CRAG_PARKING_INFO
-        { get; set; }
-        public string DATE_MODIFIED
-        { get; set; }
-        public string TAP_RECT_IN_AREA_MAP
-        { get; set; }
-        public string CLIMBING_ANGLES
-        { get; set; }
-        public string ORIENTATION
-        { get; set; }
-        public string SUN_FROM
-        { get; set; }
-        public string SUN_UNTIL
-        { get; set; }
-        public string WALK_IN_ANGLE
-        { get; set; }
-        public string WALK_IN_MINS
-        { get; set; }
-        public string TRAIL_INFO
-        { get; set; }
-        public string APPROACH_MAP_ID
-        { get; set; }
-        public string APPROACH_MAP_IMAGE_ID
-        { get; set; }
-        public string APPROACH_MAP_IMAGE_NAME
-        { get; set; }
-        public string VERSION_NUMBER
-        { get; set; }
-        public string IS_ENABLED
-        { get; set; }
-        public string CRAG_SORT_ORDER
-        { get; set; }       
-    }
-    public class T_CRAG_SECTOR_MAP
-    {
-        [PrimaryKey, AutoIncrement]
-        public long ID
-        { get; set; }
-        [NotNull]
-        public string CRAG_ID
-        { get; set; }
-        public string NAME
-        { get; set; }
-        public string IMAGEDATA
-        { get; set; }
-        public string HEIGHT
-        { get; set; }
-        public string WIDTH
-        { get; set; }
-        public string SCALE
-        { get; set; }
-    }
-    public class T_TOPO
-    {
-        [PrimaryKey, AutoIncrement]
-        public long   TOPO_ID
-        { get; set; }
-        [NotNull]
-        public string SECTOR_ID
-        { get; set; }
-        public string TOPO_JSON
-        { get; set; }
-        public string UPLOAD_DATE
+        public string angles_top_2
         { get; set; }
     }
 
+    public class T_CRAG
+    {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        [PrimaryKey, AutoIncrement]
+        public long id
+        { get; set; }
+        [NotNull]
+        public string crag_id
+        { get; set; }
+        public string crag_name
+        { get; set; }
+        public string weather_provider_code
+        { get; set; }
+        public string weather_provider_name
+        { get; set; }
+        public string area_name
+        { get; set; }
+        public string crag_type
+        { get; set; }
+        public string crag_sector_map_name
+        { get; set; }
+        public string crag_gridref
+        { get; set; }
+        public string crag_nearest_town
+        { get; set; }
+        public string crag_is_favourite
+        { get; set; }
+        public string crag_map_zoom
+        { get; set; }
+        public string crag_map_id
+        { get; set; }
+        public string crag_guide_book
+        { get; set; }
+        public string crag_parking_longitude
+        { get; set; }
+        public string crag_parking_latitude
+        { get; set; }
+        public string crag_info_short
+        { get; set; }
+        public string crag_latitude
+        { get; set; }
+        public string crag_longitude
+        { get; set; }
+        public string area_id
+        { get; set; }
+        public string crag_access_info
+        { get; set; }
+        public string crag_general_info
+        { get; set; }
+        public string crag_parking_info
+        { get; set; }
+        public string date_modified
+        { get; set; }
+        public string tap_rect_in_area_map
+        { get; set; }
+        public string climbing_angles
+        { get; set; }
+        public string orientation
+        { get; set; }
+        public string sun_from
+        { get; set; }
+        public string sun_until
+        { get; set; }
+        public string walk_in_angle
+        { get; set; }
+        public string walk_in_mins
+        { get; set; }
+        public string trail_info
+        { get; set; }
+        public string approach_map_id
+        { get; set; }
+        public string approach_map_image_id
+        { get; set; }
+        public string approach_map_image_name
+        { get; set; }
+        public string version_number
+        { get; set; }
+        public bool is_enabled
+        { get; set; }
+        public string crag_sort_order
+        { get; set; }
+    }
+
+    public class T_CRAG_SECTOR_MAP
+    {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        [PrimaryKey, AutoIncrement]
+        public long id
+        { get; set; }
+        [NotNull]
+        public string crag_id
+        { get; set; }
+        public string name
+        { get; set; }
+        public string imagedata
+        { get; set; }
+        public string height
+        { get; set; }
+        public string width
+        { get; set; }
+        public string scale
+        { get; set; }
+    }
+
+    public class T_TOPO
+    {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        [PrimaryKey, AutoIncrement]
+        public long topo_id
+        { get; set; }
+        [NotNull]
+        public string sector_id
+        { get; set; }
+        public string topo_json
+        { get; set; }
+        public string upload_date
+        { get; set; }
+    }
+
+    public class TASCENT_TYPE
+    {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        [PrimaryKey, AutoIncrement]
+        public long ascent_type_id
+        { get; set; }
+        public string ascent_type_description
+        { get; set; }
+
+    }
+
+    public class TTECH_GRADE
+    {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        [PrimaryKey, AutoIncrement]
+        public long id
+        { get; set; }
+        public string tech_grade_id
+        { get; set; }
+        public string grade_type_id
+        { get; set; }
+        public string tech_grade
+        { get; set; }
+        public int sort_order
+        { get; set; }
+        public string grade_bucket_id
+        { get; set; }
+    }
+
+    public class T_GRADE
+    {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        [PrimaryKey, AutoIncrement]
+        public long ID
+        { get; set; }
+        [NotNull]
+        public string area_id
+        { get; set; }
+        public string crag_id
+        { get; set; }
+        public string sector_id
+        { get; set; }
+        public string grade_bucket_id
+        { get; set; }
+        public string grade_bucket_id_count
+        { get; set; }
+    }
+
+    public class T_BUCKET
+    {
+        /// <summary>
+        /// Primary Key
+        /// </summary>
+        [PrimaryKey, AutoIncrement]
+        public long ID
+        { get; set; }
+        [NotNull]
+        public string grade_type_id
+        { get; set; }
+        public string grade_bucket_id
+        { get; set; }
+        public string bucket_name
+        { get; set; }
+    }
 }

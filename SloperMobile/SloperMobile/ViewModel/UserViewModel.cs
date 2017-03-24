@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json;
+using Acr.UserDialogs;
+using Newtonsoft.Json;
 using SloperMobile.Common.Command;
 using SloperMobile.Common.Constants;
 using SloperMobile.Common.Helpers;
 using SloperMobile.Model;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -51,6 +53,21 @@ namespace SloperMobile.ViewModel
             set { confirmPassword = value; OnPropertyChanged(); }
         }
 
+        /// <summary>
+        /// Returns app's last updated date.
+        /// </summary>
+        public string AppLastUpdateDate
+        {
+            get
+            {
+                string lastupdate = App.DAUtil.GetLastUpdate();
+                if (string.IsNullOrEmpty(lastupdate))
+                {
+                    lastupdate = "20160101";
+                }
+                return lastupdate;
+            }
+        }
 
         #endregion
 
@@ -63,29 +80,30 @@ namespace SloperMobile.ViewModel
         #region Methods/Functions 
         private async void ExecuteOnLogin(object parma)
         {
-            if (Convert.ToString(parma) == "Guest")
+            try
             {
-                LoginReq.u = AppConstant.Guest_UserId;
-                LoginReq.p = AppConstant.Guest_UserPassword;
-            }
-            if (string.IsNullOrWhiteSpace(LoginReq.u) || string.IsNullOrWhiteSpace(LoginReq.p))
-            {
-                await Application.Current.MainPage.DisplayAlert("Login", "Please enter the Email Id and Password", "OK");
-                return;
-            }
-            if (Convert.ToString(parma) != "Guest")
-            {
-                if (!Helper.IsEmailValid(loginReq.u))
+                if (Convert.ToString(parma) == "Guest")
                 {
-                    await Application.Current.MainPage.DisplayAlert("Login", "Invalid Email Id", "OK");
+                    LoginReq.u = AppConstant.Guest_UserId;
+                    LoginReq.p = AppConstant.Guest_UserPassword;
+                }
+                if (string.IsNullOrWhiteSpace(LoginReq.u) || string.IsNullOrWhiteSpace(LoginReq.p))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Login Error", "Enter both Email and Password.", "OK");
                     return;
                 }
+                if (Convert.ToString(parma) != "Guest")
+                {
+                    //check lowercase username, as they are stored in the database all lowercase.
+                    if (!Helper.IsEmailValid(loginReq.u.ToLower()))
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Login Error", "Account not found, try again.", "OK");
+                        return;
+                    }
+                }
 
-            }
-
-            if (!IsRunningTasks)
-            {
-                IsRunningTasks = true;
+                //IsRunningTasks = true;
+                UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
                 HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
                 var loginjson = JsonConvert.SerializeObject(LoginReq);
                 var response = await apicall.Post<LoginResponse>(loginjson);
@@ -93,30 +111,53 @@ namespace SloperMobile.ViewModel
                 {
                     if (response.accessToken != null && response.renewalToken != null)
                     {
-                        Cache.AccessToken = response.accessToken;
-                        PageNavigation?.Invoke();
+                        Settings.AccessTokenSettings = response.accessToken;
+                        Settings.RenewalTokenSettings = response.renewalToken;
+                        Settings.DisplayNameSettings = response.displayName;
+                        var climbdays = await HttpGetClimbdays();
+                        if (climbdays != null)
+                        {
+                            Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
+                        }
+                        OnPageNavigation?.Invoke();
                         DisposeObject();
+                        UserDialogs.Instance.HideLoading();
+                        return;
                     }
                     else
                     {
+                        UserDialogs.Instance.HideLoading();
                         await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
+                        return;
                     }
                 }
                 else
                 {
+                    UserDialogs.Instance.HideLoading();
                     await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
+                    return;
                 }
+
+                //IsRunningTasks = false;
             }
-            IsRunningTasks = false;
+            catch (Exception)
+            {
+                //IsRunningTasks = false;
+                UserDialogs.Instance.HideLoading();
+                await Application.Current.MainPage.DisplayAlert("Login Failure", "Incorrect username/password. Please try again.", "OK");
+                return;
+            }
         }
 
         private async void ExecuteOnRegistration(object obj)
         {
             var isValidate = await IsRegistrationValidation();
 
-            if (!IsRunningTasks && isValidate)
+            //if (!IsRunningTasks && isValidate)
+            if (isValidate)
             {
-                IsRunningTasks = true;
+                UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
+                //IsRunningTasks = true;
                 HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_User_Register, string.Empty);
                 RegistrationReq.Email = RegistrationReq.UserName;
                 RegistrationReq.DisplayName = RegistrationReq.FirstName + " " + RegistrationReq.LastName;
@@ -127,21 +168,54 @@ namespace SloperMobile.ViewModel
                     if (!string.IsNullOrEmpty(response.successful) && response.successful == "true")
                     {
 
-                        await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
-                        DisposeObject();
-                        PageNavigation?.Invoke();
+                        //await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
+
+                        HttpClientHelper apilogin = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
+                        LoginReq.u = RegistrationReq.UserName;
+                        LoginReq.p = RegistrationReq.Password;
+                        var loginjson = JsonConvert.SerializeObject(LoginReq);
+                        var logresponse = await apilogin.Post<LoginResponse>(loginjson);
+                        if (logresponse != null)
+                        {
+                            if (logresponse.accessToken != null && logresponse.renewalToken != null)
+                            {
+                                Settings.AccessTokenSettings = logresponse.accessToken;
+                                Settings.RenewalTokenSettings = logresponse.renewalToken;
+                                Settings.DisplayNameSettings = logresponse.displayName;
+                                var climbdays = await HttpGetClimbdays();
+                                if (climbdays != null)
+                                {
+                                    Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
+                                }
+                                OnPageNavigation?.Invoke();
+                                DisposeObject();
+                                UserDialogs.Instance.HideLoading();
+                                return;
+                            }
+                            else
+                            {
+                                UserDialogs.Instance.HideLoading();
+                                await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
+                                return;
+                            }
+                        }
+
                     }
                     else
                     {
+                        UserDialogs.Instance.HideLoading();
                         await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
+                        return;
                     }
                 }
                 else
                 {
+                    UserDialogs.Instance.HideLoading();
                     await Application.Current.MainPage.DisplayAlert("Registration", AppConstant.REGISTRATION_FAILURE, "OK");
+                    return;
                 }
             }
-            IsRunningTasks = false;
+            //IsRunningTasks = false;
         }
 
         private async Task<bool> IsRegistrationValidation()
@@ -149,32 +223,32 @@ namespace SloperMobile.ViewModel
 
             if (string.IsNullOrWhiteSpace(RegistrationReq.FirstName))
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Please enter the First Name ", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "First Name required, try again.", "OK");
                 return false;
             }
             else if (string.IsNullOrWhiteSpace(RegistrationReq.LastName))
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Please enter Last Name", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "Last Name required, try again.", "OK");
                 return false;
             }
             else if (string.IsNullOrWhiteSpace(RegistrationReq.UserName))
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Please enter the Email Id", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "Email Address required, try again.", "OK");
                 return false;
             }
-            else if (!Helper.IsEmailValid(RegistrationReq.UserName))
+            else if (!Helper.IsEmailValid(RegistrationReq.UserName.ToLower()))
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Invalid Email Id", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "Email Address already taken.", "OK");
                 return false;
             }
             else if (string.IsNullOrWhiteSpace(RegistrationReq.Password))
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Please enter the Password", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "Password required, try again.", "OK");
                 return false;
             }
             else if (RegistrationReq.Password != ConfirmPassword)
             {
-                await Application.Current.MainPage.DisplayAlert("Registration", "Enter Password is not Matching", "OK");
+                await Application.Current.MainPage.DisplayAlert("Registration Error", "Passwords do not match, try again.", "OK");
                 return false;
             }
             return true;
@@ -187,6 +261,13 @@ namespace SloperMobile.ViewModel
             ConfirmPassword = string.Empty;
         }
         #endregion
-
+        #region Service
+        private async Task<List<ClimbingDaysModel>> HttpGetClimbdays()
+        {
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "ascent", true), Settings.AccessTokenSettings);
+            var area_response = await apicall.Get<ClimbingDaysModel>();
+            return area_response;
+        }
+        #endregion
     }
 }

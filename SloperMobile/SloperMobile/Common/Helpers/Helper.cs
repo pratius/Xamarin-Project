@@ -28,5 +28,11 @@ namespace SloperMobile.Common.Helpers
                 return false;
             }
         }
+
+        public static string GetCurrentDate(string format)
+        {
+            string currentDate = DateTime.Now.Date.ToString(format);
+            return currentDate;
+        }
     }
 }
