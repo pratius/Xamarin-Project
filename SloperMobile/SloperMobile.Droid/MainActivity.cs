@@ -15,12 +15,24 @@ using Xamarin.Forms;
 using SloperMobile.MessagingTask;
 using Android.Content;
 using SloperMobile.Droid.Services;
+using System;
 
 namespace SloperMobile.Droid
 {
     [Activity(Label = "GVC", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        protected override void OnDestroy()
+        {
+            try
+            {
+                base.OnDestroy();
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
