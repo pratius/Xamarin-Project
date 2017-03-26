@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -948,6 +948,8 @@
     <AndroidResource Include="Resources\drawable-xhdpi\scenic_shot_portrait.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\scenic_shot_portrait.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\scenic_shot_portrait.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">

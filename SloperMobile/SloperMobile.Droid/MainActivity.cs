@@ -18,7 +18,7 @@ using SloperMobile.Droid.Services;
 
 namespace SloperMobile.Droid
 {
-    [Activity(Label = "SloperMobile", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "GVC", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -54,7 +54,8 @@ namespace SloperMobile.Droid
                 var intent = new Intent(this, typeof(CheckUpdatesTaskService));
                 StartService(intent);
             });
-            MessagingCenter.Subscribe<StopCheckForUpdatesTask>(this, "StopCheckForUpdatesTaskMessage", message => {
+            MessagingCenter.Subscribe<StopCheckForUpdatesTask>(this, "StopCheckForUpdatesTaskMessage", message =>
+            {
                 var intent = new Intent(this, typeof(CheckUpdatesTaskService));
                 StopService(intent);
             });

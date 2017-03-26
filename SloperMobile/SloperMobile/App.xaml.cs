@@ -21,7 +21,6 @@ namespace SloperMobile
         private static string _selectedcrag;
         public App()
         {
-
             InitializeAppStep1();
         }
 
@@ -57,21 +56,21 @@ namespace SloperMobile
 
         protected override void OnStart()
         {
-            // Handle when your app starts
-            try
-            {
-                var IsAppinitialized = DAUtil.CheckAppInitialization();
-                if (IsAppinitialized)
-                {
-                    var message = new StartCheckForUpdatesTask();
-                    MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
-                    HandleReceivedMessages();
-                }
-            }
-            catch
-            {
-                //need to implement network availability.
-            }
+            //// Handle when your app starts
+            //try
+            //{
+            //    var IsAppinitialized = DAUtil.CheckAppInitialization();
+            //    if (IsAppinitialized)
+            //    {
+            //        var message = new StartCheckForUpdatesTask();
+            //        MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
+            //        HandleReceivedMessages();
+            //    }
+            //}
+            //catch
+            //{
+            //    //need to implement network availability.
+            //}
         }
 
         protected override void OnSleep()
@@ -81,17 +80,21 @@ namespace SloperMobile
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
-            try
-            {
-                var message = new StartCheckForUpdatesTask();
-                MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
-                HandleReceivedMessages();
-            }
-            catch
-            {
-                //need to implement network availability.
-            }
+            //// Handle when your app resumes
+            //try
+            //{
+            //    var IsAppinitialized = DAUtil.CheckAppInitialization();
+            //    if (IsAppinitialized)
+            //    {
+            //        var message = new StartCheckForUpdatesTask();
+            //        MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
+            //        HandleReceivedMessages();
+            //    }
+            //}
+            //catch
+            //{
+            //    //need to implement network availability.
+            //}
         }
         void InitializeAppStep1()
         {

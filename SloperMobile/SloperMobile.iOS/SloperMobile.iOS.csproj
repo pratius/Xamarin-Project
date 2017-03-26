@@ -112,12 +112,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Icon-60%403x.png" />
-    <BundleResource Include="Resources\Icon-76.png" />
-    <BundleResource Include="Resources\Icon-76%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-40.png" />
-    <BundleResource Include="Resources\Icon-Small-40%403x.png" />
-    <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <BundleResource Include="Resources\Search_old.PNG" />
     <BundleResource Include="Resources\icon_climbing_days.png" />
@@ -759,9 +753,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\ic_setting_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Instagram.png" />
