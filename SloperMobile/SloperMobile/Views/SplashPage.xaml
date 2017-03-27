@@ -13,7 +13,7 @@
 			<Image Grid.Row="0" Source="logo_215w" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center" />
 			<StackLayout Grid.Row="1" Orientation="Vertical" VerticalOptions="Center" IsVisible="{Binding IsRunningTasks}">
 				<control:ProgressBar Progress="{Binding ProgressValue,Mode=TwoWay}" Margin="50,0" />
-				<Label Text="{Binding ProgressText,Mode=TwoWay}" Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" />
+				<Label Text="{Binding ProgressText,Mode=TwoWay}" Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
 			</StackLayout>
 			<StackLayout Grid.Row="1" Orientation="Vertical" IsVisible="{Binding IsDisplayThanksNote,Mode=TwoWay}" Padding="40,0,40,0">
 				<Label Text="THANKS FOR DOWNLOADING" Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" FontSize="Medium" />
@@ -23,7 +23,7 @@
 				<Label Margin="0,10,0,0" Text="Grand Valley Climibing Team" Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" FontSize="Micro" LineBreakMode="WordWrap" />
 			</StackLayout>
 			<StackLayout Grid.Row="2" Orientation="Vertical" IsVisible="true" Margin="40,0,40,0">
-				<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" Command="{Binding ContinueCommand}" Style="{StaticResource GeneralButtonStyle}" Margin="0,0,0,10" />
+				<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" Command="{Binding ContinueCommand}" Style="{StaticResource GeneralButtonStyle}" Margin="0,0,0,10" HorizontalOptions="Fill" />
 <!--				<Label Text="By Clicking LET'S GO! you agree to the" Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" FontSize="Micro" LineBreakMode="WordWrap" IsVisible="{Binding IsDisplayThanksNote,Mode=TwoWay}" />
 				<Label Text="Tearms of Use and Privacy Policy" Style="{StaticResource GeneralLabelStyle}" HorizontalTextAlignment="Center" FontSize="Micro" LineBreakMode="WordWrap" IsVisible="{Binding IsDisplayThanksNote,Mode=TwoWay}" />
 -->			</StackLayout>
