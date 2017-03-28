@@ -87,17 +87,43 @@ namespace SloperMobile.ViewModel
                     routeobj.TitleText = route.route_name;
                     routeobj.SubText = route.route_info;
                     routeobj.RouteId = route.route_id;
-
-                    if (!string.IsNullOrEmpty(route.angles_top_2) && route.angles_top_2.Contains(","))
+                    routeobj.Rating = Math.Round(Convert.ToDecimal(route.rating)).ToString();
+                    routeobj.StarImage = ImageSource.FromFile(GetStarImage(Math.Round(Convert.ToDecimal(route.rating)).ToString()));
+                    //if (!string.IsNullOrEmpty(route.angles_top_2) && route.angles_top_2.Contains(","))
+                    //{
+                    //    string[] steeps = route.angles_top_2.Split(',');
+                    //    routeobj.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[0])));
+                    //    routeobj.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[1])));
+                    //}
+                    //else
+                    //{
+                    //    routeobj.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(32));
+                    //    routeobj.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(16));
+                    //    routeobj.Steepness3 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                    //}
+                    if (!string.IsNullOrEmpty(route.angles_top_1) && Convert.ToInt32(route.angles_top_1) > 0)
                     {
-                        string[] steeps = route.angles_top_2.Split(',');
-                        routeobj.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[0])));
-                        routeobj.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[1])));
+                        routeobj.Steepness1 = ImageSource.FromFile(GetTopAngleResourceName(route.angles_top_1) + "_20x20");
                     }
                     else
                     {
-                        routeobj.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(1));
-                        routeobj.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                        routeobj.Steepness1 = ImageSource.FromFile(GetTopAngleResourceName("2") + "_20x20");
+                    }
+                    if (!string.IsNullOrEmpty(route.hold_type_top_1) && Convert.ToInt32(route.hold_type_top_1) > 0)
+                    {
+                        routeobj.Steepness2 = ImageSource.FromFile(GetTopHoldResourceName(route.hold_type_top_1) + "_20x20");
+                    }
+                    else
+                    {
+                        routeobj.Steepness2 = ImageSource.FromFile(GetTopHoldResourceName("4") + "_20x20");
+                    }
+                    if (!string.IsNullOrEmpty(route.route_style_top_1) && Convert.ToInt32(route.route_style_top_1) > 0)
+                    {
+                        routeobj.Steepness3 = ImageSource.FromFile(GetTopRouteStyleResourceName(route.route_style_top_1) + "_20x20");
+                    }
+                    else
+                    {
+                        routeobj.Steepness3 = ImageSource.FromFile(GetTopRouteStyleResourceName("2") + "_20x20");
                     }
                     routeobj.RouteTechGrade = route.tech_grade;
                     if (j > 4)
@@ -162,7 +188,7 @@ namespace SloperMobile.ViewModel
             else if (steep == (int)AppSteepness.Overhanging)
             {
                 steepvalue = AppSteepness.Overhanging;
-            }
+            }            
             else
             {
                 steepvalue = AppSteepness.Roof;
@@ -180,11 +206,108 @@ namespace SloperMobile.ViewModel
                     break;
                 case AppSteepness.Roof:
                     resource = "icon_steepness_8_roof_border_20x20";
-                    break;
+                    break;               
                 default:
                     resource = "icon_steepness_1_slab_border_20x20";
                     break;
             }
+            return resource;
+        }
+
+        private string GetTopAngleResourceName(string angle)
+        {
+            string resource = "icon_steepness_1_slab_border";
+            switch (angle)
+            {
+                case "1":
+                    resource = "icon_steepness_1_slab_border";
+                    break;
+                case "2":
+                    resource = "icon_steepness_2_vertical_border";
+                    break;
+                case "4":
+                    resource = "icon_steepness_4_overhanging_border";
+                    break;
+                case "8":
+                    resource = "icon_steepness_8_roof_border";
+                    break;
+            }
+            return resource;
+        }
+
+        private string GetTopHoldResourceName(string hold)
+        {
+            string resource = "icon_hold_type_1_slopers_border";
+            switch (hold)
+            {
+                case "1":
+                    resource = "icon_hold_type_1_slopers_border";
+                    break;
+                case "2":
+                    resource = "icon_hold_type_2_crimps_border";
+                    break;
+                case "4":
+                    resource = "icon_hold_type_4_jugs_border";
+                    break;
+                case "8":
+                    resource = "icon_hold_type_8_pockets_border";
+                    break;
+            }
+            return resource;
+        }
+
+        private string GetTopRouteStyleResourceName(string route)
+        {
+            string resource = "icon_route_style_1_technical_border";
+            switch (route)
+            {
+                case "1":
+                    resource = "icon_route_style_1_technical_border";
+                    break;
+                case "2":
+                    resource = "icon_route_style_2_sequential_border";
+                    break;
+                case "4":
+                    resource = "icon_route_style_4_powerful_border";
+                    break;
+                case "8":
+                    resource = "icon_route_style_8_sustained_border";
+                    break;
+                case "16":
+                    resource = "icon_route_style_16_one_move_border";
+                    break;
+                case "all":
+                    resource = "icon_route_style_32_everything_border";
+                    break;
+            }
+            return resource;
+        }
+
+        private string GetStarImage(string star)
+        {
+            string resource = "";
+            switch (star)
+            {
+                case "0":
+                    resource = "star0";
+                    break;
+                case "1":
+                    resource = "star1";
+                    break;
+                case "2":
+                    resource = "star2";
+                    break;
+                case "3":
+                    resource = "star3";
+                    break;
+                case "4":
+                    resource = "star4";
+                    break;
+                case "5":
+                    resource = "star5";
+                    break;               
+            }            
+                  
             return resource;
         }
 
@@ -226,8 +349,12 @@ namespace SloperMobile.ViewModel
         public string RouteIndex { get; set; }
         public string TitleText { get; set; }
         public string SubText { get; set; }
+        public string Rating { get; set; }
         public ImageSource Steepness1 { get; set; }
         public ImageSource Steepness2 { get; set; }
+        public ImageSource Steepness3 { get; set; }
+        public ImageSource StarImage { get; set; }
+        
         public string RouteTechGrade { get; set; }
         public string RouteGradeColor { get; set; }
         public string RouteId { get; set; }

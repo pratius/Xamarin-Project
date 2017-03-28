@@ -104,8 +104,8 @@ namespace SloperMobile.ViewModel
                             }
                             else
                             {
-                                objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(1));
-                                objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                                objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                                objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(4));
                             }
                             var tgrades = App.DAUtil.GetBucketCountsBySectorId(tsec.sector_id);
                             if (tgrades != null)
