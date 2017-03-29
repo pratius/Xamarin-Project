@@ -27,9 +27,11 @@ namespace SloperMobile.ViewModel
             _navigation = navigation;
             PageHeaderText = currentCrag.crag_name;
             PageSubHeaderText = currentCrag.area_name;
-            LegendsData=LoadLegendsBucket();
+            LegendsData = LoadLegendsBucket();
             LoadMoreSector = new DelegateCommand(LoadSectorImages);
         }
+
+        #region Properties
         private ObservableCollection<MapListModel> _sectorimageList;
 
         public ObservableCollection<MapListModel> SectorImageList
@@ -50,11 +52,11 @@ namespace SloperMobile.ViewModel
             }
         }
 
-        private int legendheight=0;
+        private int legendheight = 0;
         public int LegendsHeight
         {
             get { return legendheight; }
-            set { legendheight = value;OnPropertyChanged(); }
+            set { legendheight = value; OnPropertyChanged(); }
         }
 
         private List<BucketLegends> legendsdata;
@@ -63,6 +65,8 @@ namespace SloperMobile.ViewModel
             get { return legendsdata; }
             set { legendsdata = value; OnPropertyChanged(); }
         }
+
+        #endregion
 
         #region DelegateCommand
 
@@ -110,21 +114,44 @@ namespace SloperMobile.ViewModel
                             var tgrades = App.DAUtil.GetBucketCountsBySectorId(tsec.sector_id);
                             if (tgrades != null)
                             {
-                                int loopvar = 1;
-                                foreach (T_GRADE tgrd in tgrades)
+                                
+                                objSec.BucketCountTemplate = new DataTemplate(() =>
                                 {
-                                    if (loopvar == 1)
-                                    { objSec.BucketCount1 = tgrd.grade_bucket_id_count.ToString(); }
-                                    if (loopvar == 2)
-                                    { objSec.BucketCount2 = tgrd.grade_bucket_id_count.ToString(); }
-                                    if (loopvar == 3)
-                                    { objSec.BucketCount3 = tgrd.grade_bucket_id_count.ToString(); }
-                                    if (loopvar == 4)
-                                    { objSec.BucketCount4 = tgrd.grade_bucket_id_count.ToString(); }
-                                    if (loopvar == 5)
-                                    { objSec.BucketCount5 = tgrd.grade_bucket_id_count.ToString(); }
-                                    loopvar++;
-                                }
+                                    StackLayout slBucketFrame = new StackLayout();
+                                    slBucketFrame.Orientation = StackOrientation.Horizontal;
+                                    slBucketFrame.HorizontalOptions = LayoutOptions.EndAndExpand;
+                                    slBucketFrame.VerticalOptions = LayoutOptions.Start;
+                                    foreach (T_GRADE tgrd in tgrades)
+                                    {
+                                        Frame countframe = new Frame();
+                                        countframe.HasShadow = false;
+                                        countframe.BackgroundColor = Color.FromHex(GetHexColorCodeByGradeBucketId(Convert.ToInt32(tgrd.grade_bucket_id.ToString())));
+                                        countframe.Padding = 0; countframe.WidthRequest = 25; countframe.HeightRequest = 20;
+                                        Label lblcount = new Label();
+                                        lblcount.Text = tgrd.grade_bucket_id_count.ToString();
+                                        lblcount.HorizontalOptions = LayoutOptions.CenterAndExpand;
+                                        lblcount.VerticalOptions = LayoutOptions.CenterAndExpand;
+                                        lblcount.TextColor =Color.White; lblcount.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                                        countframe.Content = lblcount;
+                                        slBucketFrame.Children.Add(countframe);
+                                    }
+                                    return slBucketFrame;
+                                });
+                                //int loopvar = 1;
+                                //foreach (T_GRADE tgrd in tgrades)
+                                //{
+                                //    if (loopvar == 1)
+                                //    { objSec.BucketCount1 = tgrd.grade_bucket_id_count.ToString(); }
+                                //    if (loopvar == 2)
+                                //    { objSec.BucketCount2 = tgrd.grade_bucket_id_count.ToString(); }
+                                //    if (loopvar == 3)
+                                //    { objSec.BucketCount3 = tgrd.grade_bucket_id_count.ToString(); }
+                                //    if (loopvar == 4)
+                                //    { objSec.BucketCount4 = tgrd.grade_bucket_id_count.ToString(); }
+                                //    if (loopvar == 5)
+                                //    { objSec.BucketCount5 = tgrd.grade_bucket_id_count.ToString(); }
+                                //    loopvar++;
+                                //}
                             }
                             SectorImageList.Add(objSec);
                         }
@@ -159,7 +186,7 @@ namespace SloperMobile.ViewModel
                 foreach (GradeId grdtypid in gradetyp_id)
                 {
                     bucketname = App.DAUtil.GetBucketNameByGradeTypeId(grdtypid.grade_type_id);
-                    if(bucketname!=null && bucketname.Count==5)
+                    if (bucketname != null && bucketname.Count == 5)
                     {
                         BucketLegends bktObj = new BucketLegends();
                         bktObj.BucketName1 = bucketname[0];
@@ -173,7 +200,7 @@ namespace SloperMobile.ViewModel
                 }
                 return bucketlist.Distinct(new BucketLegends.Comparer()).ToList();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -214,6 +241,33 @@ namespace SloperMobile.ViewModel
                     break;
             }
             return resource;
+        }
+
+        private string GetHexColorCodeByGradeBucketId(int id)
+        {
+            string hexcode;
+            switch (id)
+            {
+                case 1:
+                    hexcode = "#036177";
+                    break;
+                case 2:
+                    hexcode = "#1f8a70";
+                    break;
+                case 3:
+                    hexcode = "#91A537";
+                    break;
+                case 4:
+                    hexcode = "#B49800";
+                    break;
+                case 5:
+                    hexcode = "#FD7400";
+                    break;
+                default:
+                    hexcode = "#B9BABD";
+                    break;
+            }
+            return hexcode;
         }
     }
 }
