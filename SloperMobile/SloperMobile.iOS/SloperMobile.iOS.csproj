@@ -855,6 +855,12 @@
     <Content Include="HTML\ResizeImage.html" />
     <Content Include="HTML\test.html" />
     <Content Include="HTML\Feed.html" />
+    <BundleResource Include="Resources\star0.png" />
+    <BundleResource Include="Resources\star1.png" />
+    <BundleResource Include="Resources\star2.png" />
+    <BundleResource Include="Resources\star3.png" />
+    <BundleResource Include="Resources\star4.png" />
+    <BundleResource Include="Resources\star5.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
