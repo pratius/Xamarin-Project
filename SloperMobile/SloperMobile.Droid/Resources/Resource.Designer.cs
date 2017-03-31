@@ -3844,26 +3844,26 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f02005a
 			public const int avd_hide_password = 2130837594;
 			
-			// aapt resource value: 0x7f0201cc
-			public const int avd_hide_password_1 = 2130837964;
+			// aapt resource value: 0x7f0201d2
+			public const int avd_hide_password_1 = 2130837970;
 			
-			// aapt resource value: 0x7f0201cd
-			public const int avd_hide_password_2 = 2130837965;
+			// aapt resource value: 0x7f0201d3
+			public const int avd_hide_password_2 = 2130837971;
 			
-			// aapt resource value: 0x7f0201ce
-			public const int avd_hide_password_3 = 2130837966;
+			// aapt resource value: 0x7f0201d4
+			public const int avd_hide_password_3 = 2130837972;
 			
 			// aapt resource value: 0x7f02005b
 			public const int avd_show_password = 2130837595;
 			
-			// aapt resource value: 0x7f0201cf
-			public const int avd_show_password_1 = 2130837967;
+			// aapt resource value: 0x7f0201d5
+			public const int avd_show_password_1 = 2130837973;
 			
-			// aapt resource value: 0x7f0201d0
-			public const int avd_show_password_2 = 2130837968;
+			// aapt resource value: 0x7f0201d6
+			public const int avd_show_password_2 = 2130837974;
 			
-			// aapt resource value: 0x7f0201d1
-			public const int avd_show_password_3 = 2130837969;
+			// aapt resource value: 0x7f0201d7
+			public const int avd_show_password_3 = 2130837975;
 			
 			// aapt resource value: 0x7f02005c
 			public const int bigImage = 2130837596;
@@ -4846,11 +4846,11 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f0201a2
 			public const int notification_icon_background = 2130837922;
 			
-			// aapt resource value: 0x7f0201ca
-			public const int notification_template_icon_bg = 2130837962;
+			// aapt resource value: 0x7f0201d0
+			public const int notification_template_icon_bg = 2130837968;
 			
-			// aapt resource value: 0x7f0201cb
-			public const int notification_template_icon_low_bg = 2130837963;
+			// aapt resource value: 0x7f0201d1
+			public const int notification_template_icon_low_bg = 2130837969;
 			
 			// aapt resource value: 0x7f0201a3
 			public const int notification_tile_bg = 2130837923;
@@ -4940,34 +4940,52 @@ namespace SloperMobile.Droid
 			public const int Star = 2130837951;
 			
 			// aapt resource value: 0x7f0201c0
-			public const int steepOverhanging = 2130837952;
+			public const int star0 = 2130837952;
 			
 			// aapt resource value: 0x7f0201c1
-			public const int steepRoof = 2130837953;
+			public const int star1 = 2130837953;
 			
 			// aapt resource value: 0x7f0201c2
-			public const int steepSlab = 2130837954;
+			public const int star2 = 2130837954;
 			
 			// aapt resource value: 0x7f0201c3
-			public const int steepVertical = 2130837955;
+			public const int star3 = 2130837955;
 			
 			// aapt resource value: 0x7f0201c4
-			public const int Sustained = 2130837956;
+			public const int star4 = 2130837956;
 			
 			// aapt resource value: 0x7f0201c5
-			public const int Twitter = 2130837957;
+			public const int star5 = 2130837957;
 			
 			// aapt resource value: 0x7f0201c6
-			public const int twitter_logo_shape = 2130837958;
+			public const int steepOverhanging = 2130837958;
 			
 			// aapt resource value: 0x7f0201c7
-			public const int Video = 2130837959;
+			public const int steepRoof = 2130837959;
 			
 			// aapt resource value: 0x7f0201c8
-			public const int WhiteStar = 2130837960;
+			public const int steepSlab = 2130837960;
 			
 			// aapt resource value: 0x7f0201c9
-			public const int YellowStar = 2130837961;
+			public const int steepVertical = 2130837961;
+			
+			// aapt resource value: 0x7f0201ca
+			public const int Sustained = 2130837962;
+			
+			// aapt resource value: 0x7f0201cb
+			public const int Twitter = 2130837963;
+			
+			// aapt resource value: 0x7f0201cc
+			public const int twitter_logo_shape = 2130837964;
+			
+			// aapt resource value: 0x7f0201cd
+			public const int Video = 2130837965;
+			
+			// aapt resource value: 0x7f0201ce
+			public const int WhiteStar = 2130837966;
+			
+			// aapt resource value: 0x7f0201cf
+			public const int YellowStar = 2130837967;
 			
 			static Drawable()
 			{

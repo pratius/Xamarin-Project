@@ -64,6 +64,7 @@ namespace SloperMobile.Views
                         break;
                     case ApplicationActivity.ClimbingDaysPage:
                         await Navigation.PushAsync(new ClimbingDaysPage());
+                        //throw new Exception("Exception Raised by Ravi Explicitly !!!!!!");
                         break;
                     case ApplicationActivity.NewsPage:
                         await Navigation.PushAsync(new NewsPage());

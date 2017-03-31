@@ -111,27 +111,37 @@ namespace SloperMobile.ViewModel
                                 objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(2));
                                 objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(4));
                             }
-                            var tgrades = App.DAUtil.GetBucketCountsBySectorId(tsec.sector_id);
-                            if (tgrades != null)
+                            int totalbuckets = App.DAUtil.GetTotalBucketForApp();
+                            //var tgrades = App.DAUtil.GetBucketCountsBySectorId(tsec.sector_id);
+                            if (totalbuckets != 0)
                             {
-                                
+
                                 objSec.BucketCountTemplate = new DataTemplate(() =>
                                 {
                                     StackLayout slBucketFrame = new StackLayout();
                                     slBucketFrame.Orientation = StackOrientation.Horizontal;
                                     slBucketFrame.HorizontalOptions = LayoutOptions.EndAndExpand;
                                     slBucketFrame.VerticalOptions = LayoutOptions.Start;
-                                    foreach (T_GRADE tgrd in tgrades)
+
+                                    //foreach (T_GRADE tgrd in tgrades)
+                                    for (int i = 1; i <= totalbuckets; i++)
                                     {
                                         Frame countframe = new Frame();
                                         countframe.HasShadow = false;
-                                        countframe.BackgroundColor = Color.FromHex(GetHexColorCodeByGradeBucketId(Convert.ToInt32(tgrd.grade_bucket_id.ToString())));
                                         countframe.Padding = 0; countframe.WidthRequest = 25; countframe.HeightRequest = 20;
+                                        countframe.BackgroundColor = Color.FromHex(GetHexColorCodeByGradeBucketId(i));
                                         Label lblcount = new Label();
-                                        lblcount.Text = tgrd.grade_bucket_id_count.ToString();
+                                        if(App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString())!=null)
+                                        {
+                                            lblcount.Text = App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString());
+                                        }
+                                        else
+                                        {
+                                            lblcount.Text = "0";
+                                        }
                                         lblcount.HorizontalOptions = LayoutOptions.CenterAndExpand;
                                         lblcount.VerticalOptions = LayoutOptions.CenterAndExpand;
-                                        lblcount.TextColor =Color.White; lblcount.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                                        lblcount.TextColor = Color.White; lblcount.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
                                         countframe.Content = lblcount;
                                         slBucketFrame.Children.Add(countframe);
                                     }

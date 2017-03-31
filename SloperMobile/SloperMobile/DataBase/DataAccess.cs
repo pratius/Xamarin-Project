@@ -364,10 +364,10 @@ namespace SloperMobile.DataBase
         /// Get Bucket Counts for Selected Sector
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<T_GRADE> GetBucketCountsBySectorId(string sectorid)
+        public List<T_GRADE> GetBucketCountsBySectorId(string sectorid)
         {
-            var item = dbConn.Table<T_GRADE>().Where(grade => grade.sector_id == sectorid);
-            return item;
+            var item = dbConn.Table<T_GRADE>().Where(grade => grade.sector_id == sectorid).OrderBy(x=>x.grade_bucket_id);
+            return item.ToList();
         }
 
         public T_ROUTE GetRouteDataByRouteID(string routeid)
@@ -409,6 +409,16 @@ namespace SloperMobile.DataBase
             return dbConn.Table<T_BUCKET>().Where(x => x.grade_type_id == gradetypeid).OrderBy(x => x.grade_bucket_id).Select(x => x.bucket_name).ToList<string>();
         }
 
+
+        public int GetTotalBucketForApp()
+        {
+            return dbConn.ExecuteScalar<int>("SELECT Count(grade_type_id) As BucketCount FROM T_BUCKET GROUP BY grade_type_id LIMIT 1");
+        }
+
+        public string GetBucketCountBySectorIdAndGradeBucketId(string sectorid,string grbucketid)
+        {
+            return dbConn.ExecuteScalar<string>("SELECT grade_bucket_id_count FROM T_GRADE WHERE sector_id = ? and grade_bucket_id = ?", sectorid, grbucketid);
+        }
         #endregion
 
     }
