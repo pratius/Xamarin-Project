@@ -53,9 +53,11 @@ namespace SloperMobile.Droid
             UserDialogs.Init(this);
 
             LoadApplication(new App());
-            CrashManager.Register(this, AppSetting.HockeyAppId_Droid);
-            //// in your main activity OnCreate-method add:
+
+            //Add HockeyApp Reporting
+            CrashManager.Register(this, AppSetting.HockeyAppId_Droid, new CrashManagerListenerImp());
             MetricsManager.Register(this, Application, AppSetting.HockeyAppId_Droid);
+
             WireUpCheckUpdateRunningTask();
         }
 
@@ -73,5 +75,14 @@ namespace SloperMobile.Droid
             });
         }
     }
-}
 
+    public class CrashManagerListenerImp : CrashManagerListener
+    {
+        public override bool ShouldAutoUploadCrashes()
+        {
+            base.ShouldAutoUploadCrashes();
+            return true;
+        }
+    }
+
+}
