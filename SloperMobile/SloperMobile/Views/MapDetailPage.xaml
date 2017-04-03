@@ -6,6 +6,7 @@
 			 NavigationPage.HasNavigationBar="False"
 			 xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
              xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
+             xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
 			 ControlTemplate="{StaticResource PageTemplateFooter}">
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
@@ -18,40 +19,7 @@
       </Image.GestureRecognizers>
     </Image>
     <!-- ROUTE LEGENDS STARTS -->
-
-    <Controls:InfiniteListView  x:Name="lstViewlegends" BackgroundColor="Black" SeparatorVisibility="None" HeightRequest="{Binding LegendsHeight}"
-                            HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding LegendsData}">
-      <Controls:InfiniteListView.Footer>
-        <Label/>
-      </Controls:InfiniteListView.Footer>
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <Grid RowSpacing="0" ColumnSpacing="0">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".1*"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width=".1*"/>
-              </Grid.ColumnDefinitions>
-              <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-              </Grid.RowDefinitions>
-              <StackLayout Grid.Row="0" Grid.Column="1" Spacing="15" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Center" >
-                <Label Text="{Binding BucketName1}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="#036177"/>
-                <Label Text="{Binding BucketName2}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="#1f8a70"/>
-                <Label Text="{Binding BucketName3}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="#91A537"/>
-                <Label Text="{Binding BucketName4}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="#B49800"/>
-                <Label Text="{Binding BucketName5}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="#FD7400"/>
-              </StackLayout>
-              <!-- SEPARATOR -->
-              <!--<BoxView Grid.Row="2" Grid.ColumnSpan="3" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />-->
-              <!-- END SEPARATOR -->
-            </Grid>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </Controls:InfiniteListView>
-
+    <XLabUC:ContentControl ContentTemplate="{Binding LegendsDataTemplate}" Margin="0,0,0,0"/>
     <!-- ROUTE LEGENDS END -->
 
     <Controls:InfiniteListView  x:Name="lstView" BackgroundColor="Black" SeparatorVisibility="None" HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding RoutesData}">

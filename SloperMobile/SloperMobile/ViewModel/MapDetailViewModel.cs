@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using SloperMobile.Common.Constants;
 using SloperMobile.DataBase;
 using SloperMobile.Common.Enumerators;
+using SloperMobile.Common.Helpers;
 
 namespace SloperMobile.ViewModel
 {
@@ -37,8 +38,14 @@ namespace SloperMobile.ViewModel
             set { currentsec = value; OnPropertyChanged(); }
         }
 
-        private List<BucketLegends> legendsdata;
-        public List<BucketLegends> LegendsData
+        //private List<BucketLegends> legendsdata;
+        //public List<BucketLegends> LegendsData
+        //{
+        //    get { return legendsdata; }
+        //    set { legendsdata = value; OnPropertyChanged(); }
+        //}
+        private DataTemplate legendsdata;
+        public DataTemplate LegendsDataTemplate
         {
             get { return legendsdata; }
             set { legendsdata = value; OnPropertyChanged(); }
@@ -66,7 +73,7 @@ namespace SloperMobile.ViewModel
                 PageHeaderText = SelectedSector.SectorName;
                 PageSubHeaderText = currentCrag.crag_name;
                 SectorImage = SelectedSector.SectorImage;
-                LegendsData=LoadLegendsBucket();
+                LoadLegendsBucket();
 
                 TapSectorCommand = new DelegateCommand(TapOnSectorImage);
                 var routes = App.DAUtil.GetRoutesBySectorId(SelectedSector.SectorId);
@@ -169,7 +176,7 @@ namespace SloperMobile.ViewModel
                 case "5":
                     return "#fd7400";
                 default:
-                    return "#cccccc";
+                    return "#B9BABD";
             }
         }
 
@@ -311,35 +318,79 @@ namespace SloperMobile.ViewModel
             return resource;
         }
 
-        private List<BucketLegends> LoadLegendsBucket()
+        //private List<BucketLegends> LoadLegendsBucket()
+        //{
+        //    try
+        //    {
+        //        List<BucketLegends> bucketlist = new List<BucketLegends>();
+        //        List<GradeId> gradetyp_id = new List<GradeId>();
+        //        List<string> bucketname = new List<string>();
+        //        gradetyp_id = App.DAUtil.GetGradeTypeIdBySectorId(CurrentSector.SectorId);
+        //        if (gradetyp_id == null) return bucketlist;
+        //        foreach (GradeId grdtypid in gradetyp_id)
+        //        {
+        //            bucketname = App.DAUtil.GetBucketNameByGradeTypeId(grdtypid.grade_type_id);
+        //            if (bucketname != null && bucketname.Count == 5)
+        //            {
+        //                BucketLegends bktObj = new BucketLegends();
+        //                bktObj.BucketName1 = bucketname[0];
+        //                bktObj.BucketName2 = bucketname[1];
+        //                bktObj.BucketName3 = bucketname[2];
+        //                bktObj.BucketName4 = bucketname[3];
+        //                bktObj.BucketName5 = bucketname[4];
+        //                bucketlist.Add(bktObj);
+        //                LegendsHeight += 30;
+        //            }
+        //        }
+        //        return bucketlist.Distinct(new BucketLegends.Comparer()).ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
+
+        private void LoadLegendsBucket()
         {
             try
             {
-                List<BucketLegends> bucketlist = new List<BucketLegends>();
                 List<GradeId> gradetyp_id = new List<GradeId>();
                 List<string> bucketname = new List<string>();
-                gradetyp_id = App.DAUtil.GetGradeTypeIdBySectorId(CurrentSector.SectorId);
-                if (gradetyp_id == null) return bucketlist;
-                foreach (GradeId grdtypid in gradetyp_id)
+                gradetyp_id = App.DAUtil.GetGradeTypeIdByCragId(Settings.SelectedCragSettings);
+                if (gradetyp_id != null)
                 {
-                    bucketname = App.DAUtil.GetBucketNameByGradeTypeId(grdtypid.grade_type_id);
-                    if (bucketname != null && bucketname.Count == 5)
+                    int gr = gradetyp_id.Count;
+                    int gc = App.DAUtil.GetTotalBucketForApp();
+                    Grid grdLegend = new Grid();
+                    for (var i = 0; i < gr; i++)
                     {
-                        BucketLegends bktObj = new BucketLegends();
-                        bktObj.BucketName1 = bucketname[0];
-                        bktObj.BucketName2 = bucketname[1];
-                        bktObj.BucketName3 = bucketname[2];
-                        bktObj.BucketName4 = bucketname[3];
-                        bktObj.BucketName5 = bucketname[4];
-                        bucketlist.Add(bktObj);
-                        LegendsHeight += 30;
+                        grdLegend.RowDefinitions?.Add(new RowDefinition { Height = GridLength.Auto });
                     }
+
+                    for (var i = 0; i < gc; i++)
+                    {
+                        grdLegend.ColumnDefinitions?.Add(new ColumnDefinition { Width = GridLength.Star });
+                    }
+                    for (var r = 0; r < gr; r++)
+                    {
+                        bucketname = App.DAUtil.GetBucketNameByGradeTypeId(gradetyp_id[r].grade_type_id);
+                        if (bucketname != null && bucketname.Count == gc)
+                        {
+                            for (int c = 0; c < gc; c++)
+                            {
+                                grdLegend.Children.Add(new Label { Text = bucketname[c], HorizontalTextAlignment = TextAlignment.Start, TextColor = Color.FromHex(GetGradeBucketHex((c + 1).ToString())) }, c, r);
+                            }
+                        }
+                    }
+                    LegendsDataTemplate = new DataTemplate(() =>
+                    {
+                        return grdLegend;
+                    });
+
                 }
-                return bucketlist.Distinct(new BucketLegends.Comparer()).ToList();
             }
             catch (Exception ex)
             {
-                return null;
             }
         }
     }

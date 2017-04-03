@@ -15,7 +15,7 @@
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -23,42 +23,9 @@
 
             <UC:HeaderUC Grid.Row="0" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" />
             <!-- BUCKET LEGENDS START-->
-
-            <Controls:InfiniteListView  x:Name="lstViewlegends" Grid.Row="1" BackgroundColor="Black" SeparatorVisibility="None" HeightRequest="{Binding LegendsHeight}"
-                                  HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding LegendsData}">
-                <Controls:InfiniteListView.Footer>
-                    <Label/>
-                </Controls:InfiniteListView.Footer>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid RowSpacing="0" ColumnSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width=".1*"/>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width=".1*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="15" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Center" >
-                                    <Label Text="{Binding BucketName1}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="#036177"/>
-                                    <Label Text="{Binding BucketName2}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="#1f8a70"/>
-                                    <Label Text="{Binding BucketName3}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="#91A537"/>
-                                    <Label Text="{Binding BucketName4}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="#B49800"/>
-                                    <Label Text="{Binding BucketName5}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" TextColor="#FD7400"/>
-                                </StackLayout>
-                                <!-- SEPARATOR -->
-                                <!--<BoxView Grid.Row="2" Grid.ColumnSpan="3" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />-->
-                                <!-- END SEPARATOR -->
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </Controls:InfiniteListView>
-
+            <XLabUC:ContentControl Grid.Row="1" ContentTemplate="{Binding LegendsDataTemplate}" Margin="0,0,0,0"/>
             <!-- BUCKET LEGENDS  END-->
-            <Controls:InfiniteListView  x:Name="lstSectorView" Grid.Row="2" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="true" Margin="0,-200,0,0"
+            <Controls:InfiniteListView  x:Name="lstSectorView" Grid.Row="2" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="true" 
                                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding SectorImageList}" SelectedItem="{Binding SelectedSector}" LoadMoreCommand="{Binding LoadMoreSector}">
                 <Controls:InfiniteListView.Footer>
                     <Label/>

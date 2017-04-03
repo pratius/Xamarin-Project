@@ -45,7 +45,6 @@
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <Debugger>.Net (Xamarin)</Debugger>
-    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>

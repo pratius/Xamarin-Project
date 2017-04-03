@@ -27,7 +27,7 @@ namespace SloperMobile.ViewModel
             _navigation = navigation;
             PageHeaderText = currentCrag.crag_name;
             PageSubHeaderText = currentCrag.area_name;
-            LegendsData = LoadLegendsBucket();
+            LoadLegendsBucket();
             LoadMoreSector = new DelegateCommand(LoadSectorImages);
         }
 
@@ -59,8 +59,8 @@ namespace SloperMobile.ViewModel
             set { legendheight = value; OnPropertyChanged(); }
         }
 
-        private List<BucketLegends> legendsdata;
-        public List<BucketLegends> LegendsData
+        private DataTemplate legendsdata;
+        public DataTemplate LegendsDataTemplate
         {
             get { return legendsdata; }
             set { legendsdata = value; OnPropertyChanged(); }
@@ -131,7 +131,7 @@ namespace SloperMobile.ViewModel
                                         countframe.Padding = 0; countframe.WidthRequest = 25; countframe.HeightRequest = 20;
                                         countframe.BackgroundColor = Color.FromHex(GetHexColorCodeByGradeBucketId(i));
                                         Label lblcount = new Label();
-                                        if(App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString())!=null)
+                                        if (App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString()) != null)
                                         {
                                             lblcount.Text = App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString());
                                         }
@@ -184,35 +184,47 @@ namespace SloperMobile.ViewModel
         }
 
 
-        private List<BucketLegends> LoadLegendsBucket()
+        private void LoadLegendsBucket()
         {
             try
             {
-                List<BucketLegends> bucketlist = new List<BucketLegends>();
                 List<GradeId> gradetyp_id = new List<GradeId>();
                 List<string> bucketname = new List<string>();
                 gradetyp_id = App.DAUtil.GetGradeTypeIdByCragId(Settings.SelectedCragSettings);
-                if (gradetyp_id == null) return bucketlist;
-                foreach (GradeId grdtypid in gradetyp_id)
+                if (gradetyp_id != null)
                 {
-                    bucketname = App.DAUtil.GetBucketNameByGradeTypeId(grdtypid.grade_type_id);
-                    if (bucketname != null && bucketname.Count == 5)
+                    int gr = gradetyp_id.Count;
+                    int gc = App.DAUtil.GetTotalBucketForApp();
+                    Grid grdLegend = new Grid();
+                    for (var i = 0; i < gr; i++)
                     {
-                        BucketLegends bktObj = new BucketLegends();
-                        bktObj.BucketName1 = bucketname[0];
-                        bktObj.BucketName2 = bucketname[1];
-                        bktObj.BucketName3 = bucketname[2];
-                        bktObj.BucketName4 = bucketname[3];
-                        bktObj.BucketName5 = bucketname[4];
-                        bucketlist.Add(bktObj);
-                        LegendsHeight += 10;
+                        grdLegend.RowDefinitions?.Add(new RowDefinition { Height = GridLength.Auto });
                     }
+
+                    for (var i = 0; i < gc; i++)
+                    {
+                        grdLegend.ColumnDefinitions?.Add(new ColumnDefinition { Width = GridLength.Star });
+                    }
+                    for (var r = 0; r < gr; r++)
+                    {
+                        bucketname = App.DAUtil.GetBucketNameByGradeTypeId(gradetyp_id[r].grade_type_id);
+                        if (bucketname != null && bucketname.Count == gc)
+                        {
+                            for (int c = 0; c < gc; c++)
+                            {
+                                grdLegend.Children.Add(new Label { Text = bucketname[c], HorizontalTextAlignment = TextAlignment.Start, TextColor = Color.FromHex(GetHexColorCodeByGradeBucketId(c+1)) }, c, r);
+                            }
+                        }
+                    }
+                    LegendsDataTemplate = new DataTemplate(() =>
+                     {
+                         return grdLegend;
+                     });
+
                 }
-                return bucketlist.Distinct(new BucketLegends.Comparer()).ToList();
             }
             catch (Exception ex)
             {
-                return null;
             }
         }
         private string GetSteepnessResourceName(int steep)
