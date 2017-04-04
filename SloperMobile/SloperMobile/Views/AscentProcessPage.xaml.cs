@@ -91,6 +91,7 @@ namespace SloperMobile.Views
         }
         protected override void OnCurrentPageChanged()
         {
+            int isRouteIdFound = -1;
             List<int> topoElement = new List<int>();
             base.OnCurrentPageChanged();
             var index = Children.IndexOf(CurrentPage);
@@ -118,10 +119,17 @@ namespace SloperMobile.Views
                             }
                         }
                     }
-                    var topoimg = JsonConvert.SerializeObject(topoimgages[Cache.SelectedTopoIndex]);
-                    var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-                    webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false,true);
-                    this.webView.LoadFromContent("HTML/TopoResizeImage.html");
+                    if (isRouteIdFound != -1)
+                    {
+                        var topoimg = JsonConvert.SerializeObject(topoimgages[Cache.SelectedTopoIndex]);
+                        var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
+                        webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true);
+                        this.webView.LoadFromContent("HTML/TopoResizeImage.html");
+                    }
+                    else
+                    {
+                        webView.IsVisible = false;                        
+                    }
                 }
                 comment_text.Text = AscentProcessVM.CommentText;
                 summary_icons.Children?.Clear();
