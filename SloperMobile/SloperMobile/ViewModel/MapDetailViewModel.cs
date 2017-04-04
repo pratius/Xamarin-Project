@@ -356,7 +356,7 @@ namespace SloperMobile.ViewModel
             {
                 List<GradeId> gradetyp_id = new List<GradeId>();
                 List<string> bucketname = new List<string>();
-                gradetyp_id = App.DAUtil.GetGradeTypeIdByCragId(Settings.SelectedCragSettings);
+                gradetyp_id = App.DAUtil.GetGradeTypeIdBySectorId(CurrentSector.SectorId);
                 if (gradetyp_id != null)
                 {
                     int gr = gradetyp_id.Count;

@@ -403,5 +403,8 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string bucket_name
         { get; set; }
+        public string hex_code
+        { get; set; }
+        
     }
 }

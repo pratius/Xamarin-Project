@@ -18,6 +18,7 @@ namespace SloperMobile.ViewModel
         private List<T_ROUTE> routeObj;
         private List<T_SECTOR> sectorObj;
         private List<T_GRADE> gradeObj;
+        private List<T_BUCKET> gradebktObj;
         private string displayupdatemessage = "Checking for updates...";
         /// <summary>
         /// Get or set the Check for update class object
@@ -229,6 +230,15 @@ namespace SloperMobile.ViewModel
                     App.DAUtil.SaveGrade(grade);
                 }
 
+
+                DisplayUpdateMessage = "Loading Grades Buckets, please wait...";
+                App.DAUtil.DropAndCreateTable(typeof(T_BUCKET));
+                gradebktObj = await HttpGetGradeBuckets();
+                foreach (T_BUCKET gradebkt in gradebktObj)
+                {
+                    App.DAUtil.SaveGradeBucket(gradebkt);
+                }
+
                 //=====================================================================
                 APP_SETTING updated_date = new APP_SETTING();
                 updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
@@ -291,6 +301,13 @@ namespace SloperMobile.ViewModel
             HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "grade", false), Cache.AccessToken);
             var grade_response = await apicall.Get<T_GRADE>();
             return grade_response;
+        }
+
+        private async Task<List<T_BUCKET>> HttpGetGradeBuckets()
+        {
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetGradeBuckets, AppConstant.APP_ID), Cache.AccessToken);
+            var gradebkt_response = await apicall.Get<T_BUCKET>();
+            return gradebkt_response;
         }
         #endregion
     }

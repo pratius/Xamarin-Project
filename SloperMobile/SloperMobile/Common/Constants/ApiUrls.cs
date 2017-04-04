@@ -9,8 +9,8 @@ namespace SloperMobile.Common.Constants
 {
     public class ApiUrls
     {
-        //public const string Base_Url = "http://sloper.slicksystems.ca:8080/DesktopModules/";
-        public const string Base_Url = "http://www.sloperclimbing.com/DesktopModules/";
+        public const string Base_Url = "http://sloper.slicksystems.ca:8080/DesktopModules/";
+        //public const string Base_Url = "http://www.sloperclimbing.com/DesktopModules/";
 
         public const string Url_Login = Base_Url + "JwtAuth/API/mobile/login";
         public const string Url_Login_Extend = Base_Url + "JwtAuth/API/mobile/extendtoken";
@@ -23,5 +23,6 @@ namespace SloperMobile.Common.Constants
         public const string Url_Tick_List = Base_Url + "SloperPlatform/API/v2/TickList/AddTickList?routeId={0}";
         public const string Url_GetTick_ListData = Base_Url + "SloperPlatform/API/v2/TickList/GetTickList?cragId={0}";
         public const string Url_Isticklist_Route_Present = Base_Url + "SloperPlatform/API/v2/TickList/IsRoutePresent?routeId={0}";
+        public const string Url_GetGradeBuckets = Base_Url + "SloperPlatform/API/v2/M/GetGradesByAppId?appid={0}";
     }
 }

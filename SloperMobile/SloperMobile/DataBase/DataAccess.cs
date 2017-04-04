@@ -75,26 +75,26 @@ namespace SloperMobile.DataBase
                 }
             }
 
-            if (dbConn.Table<T_BUCKET>().Count() == 0)
-            {
-                string grade_type_id = "1,1,1,1,1,3,3,3,3,3,7,7,7,7,7,15,15,15,15,15,17,17,17,17,17,18,18,18,18,18,19,19,19,19,19";
-                string[] grd_typ_id = grade_type_id.Split(',');
+            //if (dbConn.Table<T_BUCKET>().Count() == 0)
+            //{
+            //    string grade_type_id = "1,1,1,1,1,3,3,3,3,3,7,7,7,7,7,15,15,15,15,15,17,17,17,17,17,18,18,18,18,18,19,19,19,19,19";
+            //    string[] grd_typ_id = grade_type_id.Split(',');
 
-                string grade_bucket_id = "1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5";
-                string[] grd_bkt_id = grade_bucket_id.Split(',');
+            //    string grade_bucket_id = "1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5";
+            //    string[] grd_bkt_id = grade_bucket_id.Split(',');
 
-                string bucket_name = "< 5,5+ - 6a+,6b - 7a,7a+ - 7c+,8a >,< V1,V2 - V3 ,V4 - V5,V5 - V8 ,V8 >,< HS,VS - E1,E2 - E4,E5 - E6,E7 >,< 5.9,10a - 10d,11a - 11d,12a - 12d,13a >,1,2 - 3,4 - 5 ,6 - 7 ,8,< 1,2 - 3,4 - 5 ,6 - 7 ,8 >,< 5.9,10a - 10d,11a - 11d,12a - 12d,13a >";
-                string[] bkt_name = bucket_name.Split(',');
+            //    string bucket_name = "< 5,5+ - 6a+,6b - 7a,7a+ - 7c+,8a >,< V1,V2 - V3 ,V4 - V5,V5 - V8 ,V8 >,< HS,VS - E1,E2 - E4,E5 - E6,E7 >,< 5.9,10a - 10d,11a - 11d,12a - 12d,13a >,1,2 - 3,4 - 5 ,6 - 7 ,8,< 1,2 - 3,4 - 5 ,6 - 7 ,8 >,< 5.9,10a - 10d,11a - 11d,12a - 12d,13a >";
+            //    string[] bkt_name = bucket_name.Split(',');
 
-                for (int i = 0; i < grd_typ_id.Length; i++)
-                {
-                    T_BUCKET tblObj = new T_BUCKET();
-                    tblObj.grade_type_id = grd_typ_id[i];
-                    tblObj.grade_bucket_id = grd_bkt_id[i];
-                    tblObj.bucket_name = bkt_name[i];
-                    dbConn.Insert(tblObj);
-                }
-            }
+            //    for (int i = 0; i < grd_typ_id.Length; i++)
+            //    {
+            //        T_BUCKET tblObj = new T_BUCKET();
+            //        tblObj.grade_type_id = grd_typ_id[i];
+            //        tblObj.grade_bucket_id = grd_bkt_id[i];
+            //        tblObj.bucket_name = bkt_name[i];
+            //        dbConn.Insert(tblObj);
+            //    }
+            //}
 
         }
         //============================= LAST_UPDATE ============================
@@ -217,6 +217,12 @@ namespace SloperMobile.DataBase
         {
             return dbConn.Insert(aGrade);
         }
+
+        //================================T_BUCKET=================================
+        public int SaveGradeBucket(T_BUCKET aBucket)
+        {
+            return dbConn.Insert(aBucket);
+        }
         //=======================================================================
         //================================ Drop and Create Table ================
         public void DropAndCreateTable(Type aTable)
@@ -225,6 +231,12 @@ namespace SloperMobile.DataBase
             {
                 dbConn.DropTable<T_GRADE>();
                 dbConn.CreateTable<T_GRADE>();
+            }
+
+            if (aTable.Name == "T_BUCKET")
+            {
+                dbConn.DropTable<T_BUCKET>();
+                dbConn.CreateTable<T_BUCKET>();
             }
         }
         //=======================================================================
