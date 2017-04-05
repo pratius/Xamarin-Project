@@ -212,7 +212,7 @@ namespace SloperMobile.ViewModel
                         {
                             for (int c = 0; c < gc; c++)
                             {
-                                grdLegend.Children.Add(new Label { Text = bucketname[c], HorizontalTextAlignment = TextAlignment.Start, TextColor = Color.FromHex(GetHexColorCodeByGradeBucketId(c+1)) }, c, r);
+                                grdLegend.Children.Add(new Label { Text = bucketname[c], HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(GetHexColorCodeByGradeBucketId(c + 1)) }, c, r);
                             }
                         }
                     }

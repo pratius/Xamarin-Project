@@ -195,7 +195,7 @@ namespace SloperMobile.ViewModel
             else if (steep == (int)AppSteepness.Overhanging)
             {
                 steepvalue = AppSteepness.Overhanging;
-            }            
+            }
             else
             {
                 steepvalue = AppSteepness.Roof;
@@ -213,7 +213,7 @@ namespace SloperMobile.ViewModel
                     break;
                 case AppSteepness.Roof:
                     resource = "icon_steepness_8_roof_border_20x20";
-                    break;               
+                    break;
                 default:
                     resource = "icon_steepness_1_slab_border_20x20";
                     break;
@@ -296,25 +296,25 @@ namespace SloperMobile.ViewModel
             switch (star)
             {
                 case "0":
-                    resource = "star0";
+                    resource = "icon_star0";
                     break;
                 case "1":
-                    resource = "star1";
+                    resource = "icon_star1";
                     break;
                 case "2":
-                    resource = "star2";
+                    resource = "icon_star2";
                     break;
                 case "3":
-                    resource = "star3";
+                    resource = "icon_star3";
                     break;
                 case "4":
-                    resource = "star4";
+                    resource = "icon_star4";
                     break;
                 case "5":
-                    resource = "star5";
-                    break;               
-            }            
-                  
+                    resource = "icon_star5";
+                    break;
+            }
+
             return resource;
         }
 
@@ -378,7 +378,7 @@ namespace SloperMobile.ViewModel
                         {
                             for (int c = 0; c < gc; c++)
                             {
-                                grdLegend.Children.Add(new Label { Text = bucketname[c], HorizontalTextAlignment = TextAlignment.Start, TextColor = Color.FromHex(GetGradeBucketHex((c + 1).ToString())) }, c, r);
+                                grdLegend.Children.Add(new Label { Text = bucketname[c], HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(GetGradeBucketHex((c + 1).ToString())) }, c, r);
                             }
                         }
                     }
@@ -405,10 +405,10 @@ namespace SloperMobile.ViewModel
         public ImageSource Steepness2 { get; set; }
         public ImageSource Steepness3 { get; set; }
         public ImageSource StarImage { get; set; }
-        
+
         public string RouteTechGrade { get; set; }
         public string RouteGradeColor { get; set; }
         public string RouteId { get; set; }
-        
+
     }
 }
