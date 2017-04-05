@@ -113,6 +113,7 @@ namespace SloperMobile.Views
                             {
                                 if (_routeid == topoimgages[i].drawing[j].id)
                                 {
+                                    isRouteIdFound = i;
                                     Cache.SelectedTopoIndex = i;
                                     topoElement.Add(i);                                    
                                 }

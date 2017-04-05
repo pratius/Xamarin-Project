@@ -135,7 +135,9 @@ namespace SloperMobile.ViewModel
             RouteId = routeid;
             routeData = App.DAUtil.GetRouteDataByRouteID(RouteId);
             PageHeaderText = (routeData.route_name).ToUpper();
+            if(Cache.SelctedCurrentSector != null)
             PageSubHeaderText = Cache.SelctedCurrentSector.SectorName;
+
             //PageSubHeaderText = "";
             var grades = App.DAUtil.GetTtechGrades(routeData.grade_type_id);
             AscentGrades = grades;
