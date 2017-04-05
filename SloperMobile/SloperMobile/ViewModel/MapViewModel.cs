@@ -189,7 +189,7 @@ namespace SloperMobile.ViewModel
             try
             {
                 List<GradeId> gradetyp_id = new List<GradeId>();
-                List<string> bucketname = new List<string>();
+                List<T_BUCKET> bucketname = new List<T_BUCKET>();
                 gradetyp_id = App.DAUtil.GetGradeTypeIdByCragId(Settings.SelectedCragSettings);
                 if (gradetyp_id != null)
                 {
@@ -212,7 +212,7 @@ namespace SloperMobile.ViewModel
                         {
                             for (int c = 0; c < gc; c++)
                             {
-                                grdLegend.Children.Add(new Label { Text = bucketname[c], HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(GetHexColorCodeByGradeBucketId(c + 1)) }, c, r);
+                                grdLegend.Children.Add(new Label { Text = bucketname[c].bucket_name, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(bucketname[c].hex_code) }, c, r);
                             }
                         }
                     }

@@ -56,10 +56,11 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <Debugger>Xamarin</Debugger>
     <DebugSymbols>True</DebugSymbols>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -277,7 +278,9 @@
     <Compile Include="Helpers\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <ProguardConfiguration Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -955,6 +958,42 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\scenic_shot_portrait.png" />
     <AndroidResource Include="Resources\drawable-ldpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_star0.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_star1.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_star2.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_star3.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_star4.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_star5.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_star0.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_star1.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_star2.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_star3.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_star4.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_star5.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_star0.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_star1.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_star2.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_star3.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_star4.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_star5.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_star0.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_star1.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_star2.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_star3.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_star4.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_star5.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_star0.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_star1.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_star2.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_star3.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_star4.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_star5.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_star0.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_star1.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_star2.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_star3.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_star4.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_star5.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">

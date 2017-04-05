@@ -416,9 +416,10 @@ namespace SloperMobile.DataBase
             return item;
         }
 
-        public List<string> GetBucketNameByGradeTypeId(string gradetypeid)
+        public List<T_BUCKET> GetBucketNameByGradeTypeId(string gradetypeid)
         {
-            return dbConn.Table<T_BUCKET>().Where(x => x.grade_type_id == gradetypeid).OrderBy(x => x.grade_bucket_id).Select(x => x.bucket_name).ToList<string>();
+            //return dbConn.Table<T_BUCKET>().Where(x => x.grade_type_id == gradetypeid).OrderBy(x => x.grade_bucket_id).Select(x => x.bucket_name).ToList<string>();
+            return dbConn.Table<T_BUCKET>().Where(x => x.grade_type_id == gradetypeid).OrderBy(x => x.grade_bucket_id).ToList();
         }
 
 
