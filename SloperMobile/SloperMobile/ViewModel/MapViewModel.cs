@@ -188,13 +188,11 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-                List<GradeId> gradetyp_id = new List<GradeId>();
-                List<T_BUCKET> bucketname = new List<T_BUCKET>();
-                gradetyp_id = App.DAUtil.GetGradeTypeIdByCragId(Settings.SelectedCragSettings);
-                if (gradetyp_id != null)
+                var leg_buckets = App.DAUtil.GetBucketsByCragID(Settings.SelectedCragSettings);
+                if (leg_buckets != null)
                 {
-                    int gr = gradetyp_id.Count;
                     int gc = App.DAUtil.GetTotalBucketForApp();
+                    int gr = leg_buckets.Count / gc;
                     Grid grdLegend = new Grid();
                     for (var i = 0; i < gr; i++)
                     {
@@ -205,16 +203,19 @@ namespace SloperMobile.ViewModel
                     {
                         grdLegend.ColumnDefinitions?.Add(new ColumnDefinition { Width = GridLength.Star });
                     }
-                    for (var r = 0; r < gr; r++)
+
+                    var batches = leg_buckets.Select((x, i) => new { x, i }).GroupBy(p => (p.i / gc), p => p.x);
+
+                    int r = 0;
+                    foreach (var row in batches)
                     {
-                        bucketname = App.DAUtil.GetBucketNameByGradeTypeId(gradetyp_id[r].grade_type_id);
-                        if (bucketname != null && bucketname.Count == gc)
+                        int c = 0;
+                        foreach (var item in row)
                         {
-                            for (int c = 0; c < gc; c++)
-                            {
-                                grdLegend.Children.Add(new Label { Text = bucketname[c].bucket_name, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(bucketname[c].hex_code) }, c, r);
-                            }
+                            grdLegend.Children.Add(new Label { Text = item.BucketName, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(item.HexColor) }, c, r);
+                            c++;
                         }
+                        r++;
                     }
                     LegendsDataTemplate = new DataTemplate(() =>
                      {

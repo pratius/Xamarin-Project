@@ -401,14 +401,14 @@ namespace SloperMobile.DataBase
             return item.ToList();
         }
 
-        public List<GradeId> GetGradeTypeIdByCragId(string cragid)
-        {
-            //var item = (from tr in dbConn.Table<T_ROUTE>() join ts in dbConn.Table<T_SECTOR>() 
-            //            on tr.sector_id equals ts.sector_id where ts.crag_id==cragid select tr.grade_type_id).Distinct();
+        //public List<GradeId> GetGradeTypeIdByCragId(string cragid)
+        //{
+        //    //var item = (from tr in dbConn.Table<T_ROUTE>() join ts in dbConn.Table<T_SECTOR>() 
+        //    //            on tr.sector_id equals ts.sector_id where ts.crag_id==cragid select tr.grade_type_id).Distinct();
 
-            var item = dbConn.Query<GradeId>("SELECT distinct T_ROUTE.grade_type_id FROM T_ROUTE JOIN T_SECTOR ON T_ROUTE.sector_id = T_SECTOR.sector_id WHERE T_SECTOR.crag_id = ?", cragid);
-            return item;
-        }
+        //    var item = dbConn.Query<GradeId>("SELECT distinct T_ROUTE.grade_type_id FROM T_ROUTE JOIN T_SECTOR ON T_ROUTE.sector_id = T_SECTOR.sector_id WHERE T_SECTOR.crag_id = ?", cragid);
+        //    return item;
+        //}
 
         public List<GradeId> GetGradeTypeIdBySectorId(string sectorid)
         {
@@ -416,12 +416,17 @@ namespace SloperMobile.DataBase
             return item;
         }
 
-        public List<T_BUCKET> GetBucketNameByGradeTypeId(string gradetypeid)
+        public List<Buckets> GetBucketsByCragID(string cragid)
         {
-            //return dbConn.Table<T_BUCKET>().Where(x => x.grade_type_id == gradetypeid).OrderBy(x => x.grade_bucket_id).Select(x => x.bucket_name).ToList<string>();
-            return dbConn.Table<T_BUCKET>().Where(x => x.grade_type_id == gradetypeid).OrderBy(x => x.grade_bucket_id).ToList();
+            var item =dbConn.Query<Buckets>("SELECT DISTINCT bucket_name as BucketName, hex_code as HexColor FROM T_BUCKET WHERE (grade_type_id IN(SELECT DISTINCT T_ROUTE.grade_type_id FROM T_SECTOR INNER JOIN T_ROUTE ON T_SECTOR.sector_id = T_ROUTE.sector_id WHERE(T_SECTOR.crag_id = ?))) ORDER BY grade_bucket_group, grade_bucket_id", cragid);
+            //dbConn.Table<T_BUCKET>().Where(x => x.grade_type_id == gradetypeid).OrderBy(x => x.grade_bucket_id).ToList();
+            return item;
         }
-
+        public List<Buckets> GetBucketsBySectorID(string sectorid)
+        {
+            var item = dbConn.Query<Buckets>("SELECT DISTINCT bucket_name as BucketName, hex_code as HexColor FROM T_BUCKET WHERE (grade_type_id IN(SELECT DISTINCT grade_type_id FROM T_ROUTE WHERE (sector_id = ? ))) ORDER BY grade_bucket_group, grade_bucket_id", sectorid);
+            return item;
+        }
 
         public int GetTotalBucketForApp()
         {

@@ -41,6 +41,13 @@ namespace SloperMobile.Model
             }
         }
     }
+
+
+    public class Buckets
+    {
+        public string BucketName { get; set; }
+        public string HexColor { get; set; }
+    }
     public class GradeId
     {
         public string grade_type_id { get; set; }
