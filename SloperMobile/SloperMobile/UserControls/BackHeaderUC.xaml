@@ -13,7 +13,9 @@
         <Setter Property="TextColor" Value="#FF8E2D" />
         <Setter Property="Font" Value="Medium"/>
       </Style>
-      <Style x:Key="lblsubTopHeader" TargetType="Label">
+            
+        
+            <Style x:Key="lblsubTopHeader" TargetType="Label">
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center"/>
         <!--<Setter Property="FontSize" Value="Small" />-->
@@ -32,7 +34,9 @@
     </Grid.ColumnDefinitions>
     <StackLayout Orientation="Vertical" Spacing="0">
       <Label Style="{StaticResource lblTopHeader}" Text="{Binding Path=PageHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center" />
-      <Label Style="{StaticResource lblsubTopHeader}" Text="{Binding Path=PageSubHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center"/>
+            <!--<Label Style="{StaticResource lblTechGrade}" Text="{Binding Path=PageTechGrade,Mode=TwoWay}" HorizontalTextAlignment="Center" />-->
+
+            <Label Style="{StaticResource lblsubTopHeader}" Text="{Binding Path=PageSubHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center"/>
     </StackLayout>
     <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
       <Image IsVisible="{Binding DisplayBackButton,Mode=TwoWay}" Source="arrowLeftWhite" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" Aspect="AspectFit">

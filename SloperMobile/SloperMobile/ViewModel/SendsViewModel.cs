@@ -8,16 +8,19 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Plugin.Connectivity;
+using Xamarin.Forms;
 namespace SloperMobile.ViewModel
 {
     public class SendsViewModel : BaseViewModel
     {
-        public SendsViewModel(string TabName)
+        private INavigation _navigation;
+        public SendsViewModel(string TabName,INavigation navigation)
         {
+            _navigation = navigation;
             OnPagePrepration(TabName);
         }
-
+        
         private ObservableCollection<Send> sendsList;
         private ObservableCollection<TickList> ticklistsList;
 
@@ -103,23 +106,30 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-                if (TabName == "SENDS")
+                if (CrossConnectivity.Current.IsConnected)
                 {
-                    PageHeaderText = "PROFILE";
-                    PageSubHeaderText = "Sends";
-                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
-                    await InvokeServiceGetAscentData();
-                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                    if (TabName == "SENDS")
+                    {
+                        PageHeaderText = "PROFILE";
+                        PageSubHeaderText = "Sends";
+                        Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+                        await InvokeServiceGetAscentData();
+                        Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                    }
+                    else
+                    {
+                        PageHeaderText = "PROFILE";
+                        PageSubHeaderText = "Tick List";
+                        Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+                        await InvokeServiceGetTickListData();
+                        Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                    }
                 }
                 else
-                {
-                    PageHeaderText = "PROFILE";
-                    PageSubHeaderText = "Tick List";
-                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
-                    await InvokeServiceGetTickListData();
-                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
-                }
+                    await _navigation.PushAsync(new Views.NetworkErrorPage());
             }
+            
+        
             catch (Exception ex)
             {
                 throw ex;

@@ -16,6 +16,7 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System.IO;
 using Acr.UserDialogs;
+using Plugin.Connectivity;
 
 namespace SloperMobile.ViewModel
 {
@@ -25,6 +26,7 @@ namespace SloperMobile.ViewModel
         private List<string> grades;
         private List<string> listimgs;
         private string sendstypename;
+        private string sendscongratswording;
         private DateTime sendsdate = DateTime.Now.Date;
         private string sendsgrade;
         private int sendrating;
@@ -72,8 +74,11 @@ namespace SloperMobile.ViewModel
             SummaryImage = Cache.SelctedCurrentSector?.SectorImage;
             RouteId = routeid;
             routeData = App.DAUtil.GetRouteDataByRouteID(RouteId);
-            PageHeaderText = (routeData.route_name).ToUpper();
-            PageSubHeaderText = Cache.SelctedCurrentSector.SectorName;
+            PageHeaderText = (routeData.route_name).ToUpper() + " " + routeData.tech_grade;
+                    
+         //   PageSubHeaderText = Cache.Selected_CRAG.crag_name + "," + Cache.SelctedCurrentSector.SectorName;
+            PageSubHeaderText =Cache.SelctedCurrentSector.SectorName;
+            // PageTechGrade= routeData.tech_grade;
             SendTypeCommand = new DelegateCommand(ExecuteOnSendType);
             SendTypeHoldCommand = new DelegateCommand(ExecuteOnSendHold);
             SendRouteCharaterCommand = new DelegateCommand(ExecuteOnRouteCharacteristics);
@@ -118,6 +123,13 @@ namespace SloperMobile.ViewModel
             get { return sendstypename; }
             set { sendstypename = value; OnPropertyChanged(); }
         }
+
+        public string SendsCongratsWording
+        {
+            get { return sendscongratswording; }
+            set { sendscongratswording = value; OnPropertyChanged(); }
+        }
+
         public DateTime SendsDate
         {
             get { return sendsdate; }
@@ -277,7 +289,33 @@ namespace SloperMobile.ViewModel
 
         private void ExecuteOnSendType(object obj)
         {
-            SendsTypeName = Convert.ToString(obj);
+           
+                SendsTypeName = Convert.ToString(obj);
+                //SendsCongratsWording = string.Empty;
+                switch (Convert.ToString(obj))
+                {
+                    case "Onsight":
+                        SendsCongratsWording = "Boom! Nice ";
+                        break;
+                    case "Flash!":
+                        SendsCongratsWording = "Cool ";
+                        break;
+                    case "Redpoint!":
+                        SendsCongratsWording = "Awesome ";
+                        break;
+                    case "Repeat!":
+                        SendsCongratsWording = "Good! ";
+                        break;
+                    case "Making Progress!":
+                        SendsCongratsWording = "(Project burn) ";
+                        break;
+                    case "Good Work!":
+                        SendsCongratsWording = "One hang ";
+                        break;
+
+
+                }
+            
         }
 
         private void ExecuteOnRouteCharacteristics(object obj)
@@ -631,123 +669,129 @@ namespace SloperMobile.ViewModel
 
         private async void ExecuteOnSummary(object obj)
         {
-            if (CommandText == "Log Ascent")
+            if (CrossConnectivity.Current.IsConnected)
             {
-                IsRunningTasks = true;
-                IsDisplayMessage = true;
-                IsButtonInable = false;
-                #region Collecting Ascent Data
-                AscentPostModel ascent = new AscentPostModel();
-
-                ascent.ascent_date = SendsDate;
-                ascent.route_id = RouteId;
-                ascent.ascent_type_id = SendsTypeName != null ? App.DAUtil.GetAscentTypeIdByName(SendsTypeName) : "0";
-                ascent.climbing_angle = "";
-                if (SendClimbingStyle != null)
+                if (CommandText == "Log Ascent")
                 {
-                    if (SendClimbingStyle.Contains(","))
+                    IsRunningTasks = true;
+                    IsDisplayMessage = true;
+                    IsButtonInable = false;
+                    #region Collecting Ascent Data
+                    AscentPostModel ascent = new AscentPostModel();
+
+                    ascent.ascent_date = SendsDate;
+                    ascent.route_id = RouteId;
+                    ascent.ascent_type_id = SendsTypeName != null ? App.DAUtil.GetAscentTypeIdByName(SendsTypeName) : "0";
+                    ascent.climbing_angle = "";
+                    if (SendClimbingStyle != null)
                     {
-                        string[] sarr1 = SendClimbingStyle.Split(',');
-                        int climbbitmask = 0;
-                        foreach (string s in sarr1)
+                        if (SendClimbingStyle.Contains(","))
                         {
-                            climbbitmask += Convert.ToInt32(s);
+                            string[] sarr1 = SendClimbingStyle.Split(',');
+                            int climbbitmask = 0;
+                            foreach (string s in sarr1)
+                            {
+                                climbbitmask += Convert.ToInt32(s);
+                            }
+                            ascent.climbing_angle_value = climbbitmask.ToString();
                         }
-                        ascent.climbing_angle_value = climbbitmask.ToString();
+                        else
+                        {
+                            ascent.climbing_angle_value = SendClimbingStyle;
+                        }
+                    }
+                    else { ascent.climbing_angle_value = "0"; }
+                    ascent.comment = CommentText;
+                    ascent.grade_id = routeData.grade_type_id;
+                    ascent.hold_type = "";
+
+                    if (SendHoldType != null)
+                    {
+                        if (SendHoldType.Contains(","))
+                        {
+                            string[] sarr2 = SendHoldType.Split(',');
+                            int holdbitmask = 0;
+                            foreach (string s in sarr2)
+                            {
+                                holdbitmask += Convert.ToInt32(s);
+                            }
+                            ascent.hold_type_value = holdbitmask.ToString();
+                        }
+                        else
+                        {
+                            ascent.hold_type_value = SendHoldType;
+                        }
+                    }
+                    else { ascent.hold_type_value = "0"; }
+                    ascent.ImageData = "";
+                    if (CameraImage != null)
+                    {
+                        //StreamImageSource strmimg = (StreamImageSource)CameraImage;
+                        //System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
+                        //Task<Stream> task = strmimg.Stream(cancellationToken);
+                        //Stream stream = task.Result;
+                        byte[] imageBytes = ReadStreamByte(CameraImage);
+                        ascent.ImageData = Convert.ToBase64String(imageBytes);
+                    }
+                    ascent.ImageName = "";
+                    ascent.photo = "";
+                    ascent.rating = SendRating.ToString();
+                    ascent.route_style = "";
+
+                    if (SendRouteCharacteristics != null)
+                    {
+                        if (SendRouteCharacteristics.Contains(","))
+                        {
+                            string[] sarr3 = SendRouteCharacteristics.Split(',');
+                            int routebitmask = 0;
+                            foreach (string s in sarr3)
+                            {
+                                routebitmask += Convert.ToInt32(s);
+                            }
+                            ascent.route_style_value = routebitmask.ToString();
+                        }
+                        else
+                        {
+                            ascent.route_style_value = SendRouteCharacteristics;
+                        }
+                    }
+                    else { ascent.route_style_value = "0"; }
+                    ascent.route_type_id = routeData.route_type_id;
+                    ascent.tech_grade_id = App.DAUtil.GetTTechGradeIdByGradeName(routeData.grade_type_id, SendsGrade);
+                    ascent.video = "";
+                    #endregion
+
+                    var response = await HttpSendAscentProcess(ascent);
+                    if (response != null && response.id != null)
+                    //if (response != null)
+                    {
+                        if (!string.IsNullOrEmpty(response.climbingDays))
+                        {
+                            Settings.ClimbingDaysSettings = Convert.ToInt32(response.climbingDays);
+                        }
+                        await CheckForUpdatesViewModel.CurrentInstance().OnPageAppearing();
+                        ProgressMsg = "Ascent saved successfully.";
+                        IsRunningTasks = false;
                     }
                     else
                     {
-                        ascent.climbing_angle_value = SendClimbingStyle;
+                        ProgressMsg = "Please try again!";
+                        IsRunningTasks = false;
                     }
-                }
-                else { ascent.climbing_angle_value = "0"; }
-                ascent.comment = CommentText;
-                ascent.grade_id = routeData.grade_type_id;
-                ascent.hold_type = "";
-
-                if (SendHoldType != null)
-                {
-                    if (SendHoldType.Contains(","))
-                    {
-                        string[] sarr2 = SendHoldType.Split(',');
-                        int holdbitmask = 0;
-                        foreach (string s in sarr2)
-                        {
-                            holdbitmask += Convert.ToInt32(s);
-                        }
-                        ascent.hold_type_value = holdbitmask.ToString();
-                    }
-                    else
-                    {
-                        ascent.hold_type_value = SendHoldType;
-                    }
-                }
-                else { ascent.hold_type_value = "0"; }
-                ascent.ImageData = "";
-                if (CameraImage != null)
-                {
-                    //StreamImageSource strmimg = (StreamImageSource)CameraImage;
-                    //System.Threading.CancellationToken cancellationToken = System.Threading.CancellationToken.None;
-                    //Task<Stream> task = strmimg.Stream(cancellationToken);
-                    //Stream stream = task.Result;
-                    byte[] imageBytes = ReadStreamByte(CameraImage);
-                    ascent.ImageData = Convert.ToBase64String(imageBytes);
-                }
-                ascent.ImageName = "";
-                ascent.photo = "";
-                ascent.rating = SendRating.ToString();
-                ascent.route_style = "";
-
-                if (SendRouteCharacteristics != null)
-                {
-                    if (SendRouteCharacteristics.Contains(","))
-                    {
-                        string[] sarr3 = SendRouteCharacteristics.Split(',');
-                        int routebitmask = 0;
-                        foreach (string s in sarr3)
-                        {
-                            routebitmask += Convert.ToInt32(s);
-                        }
-                        ascent.route_style_value = routebitmask.ToString();
-                    }
-                    else
-                    {
-                        ascent.route_style_value = SendRouteCharacteristics;
-                    }
-                }
-                else { ascent.route_style_value = "0"; }
-                ascent.route_type_id = routeData.route_type_id;
-                ascent.tech_grade_id = App.DAUtil.GetTTechGradeIdByGradeName(routeData.grade_type_id, SendsGrade);
-                ascent.video = "";
-                #endregion
-
-                var response = await HttpSendAscentProcess(ascent);
-                if (response != null && response.id != null)
-                //if (response != null)
-                {
-                    if (!string.IsNullOrEmpty(response.climbingDays))
-                    {
-                        Settings.ClimbingDaysSettings = Convert.ToInt32(response.climbingDays);
-                    }
-                    await CheckForUpdatesViewModel.CurrentInstance().OnPageAppearing();
-                    ProgressMsg = "Ascent saved successfully.";
-                    IsRunningTasks = false;
+                    CommandText = "Continue";
+                    IsButtonInable = true;
+                    return;
                 }
                 else
                 {
-                    ProgressMsg = "Please try again!";
                     IsRunningTasks = false;
+                    IsDisplayMessage = false;
+                    await _navigation.PushAsync(new MapPage());
                 }
-                CommandText = "Continue";
-                IsButtonInable = true;
-                return;
             }
             else
-            {
-                IsRunningTasks = false;
-                IsDisplayMessage = false;
-                await _navigation.PushAsync(new MapPage());
-            }
+                await _navigation.PushAsync(new Views.NetworkErrorPage());
+                       
 
         }
 

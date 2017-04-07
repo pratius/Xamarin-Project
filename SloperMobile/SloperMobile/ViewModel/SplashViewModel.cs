@@ -8,13 +8,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Plugin.Connectivity;
+using Xamarin.Forms;
 namespace SloperMobile.ViewModel
 {
     public class SplashViewModel : BaseViewModel
     {
-        public SplashViewModel()
+        public SplashViewModel(INavigation navigation)
         {
+            _navigation = navigation;
             ContinueCommand = new DelegateCommand(ExecuteOnProcced);
             CancelCommand = new DelegateCommand(ExecuteOnCancel);
             IsProccedEnalbe = true;
@@ -22,6 +24,7 @@ namespace SloperMobile.ViewModel
         }
 
         #region Properties
+        private INavigation _navigation;
         private bool isProccedEnalbe;
         private bool is_displaytanksnote;
         private string commandtext = "Let's Go!";
@@ -120,6 +123,7 @@ namespace SloperMobile.ViewModel
         #region Methods
         private async void ExecuteOnProcced(object obj)
         {
+
             if (CommandText == "CONTINUE")
             {
                 OnConditionNavigation?.Invoke("Procced");
@@ -127,12 +131,20 @@ namespace SloperMobile.ViewModel
 
             if (CommandText == "Let's Go!")
             {
-                IsDisplayThanksNote = false;
-                IsRunningTasks = true;
-                CommandText = "CANCEL";
-                await DownloadUpdates();
-                CommandText = "CONTINUE";
-                IsRunningTasks = true;
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    IsDisplayThanksNote = false;
+                    IsRunningTasks = true;
+                    CommandText = "CANCEL";
+
+                    await DownloadUpdates();
+                    CommandText = "CONTINUE";
+                    IsRunningTasks = true;
+                }
+                else
+                    await _navigation.PushAsync(new Views.NetworkErrorPage());
+                    
+                    
             }
 
             if (CommandText == "CANCEL")

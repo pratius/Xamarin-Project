@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using SloperMobile.Common.Constants;
 using SloperMobile.Model;
 using SloperMobile.MessagingTask;
+using Plugin.Connectivity;
 
 namespace SloperMobile
 {
@@ -60,16 +61,21 @@ namespace SloperMobile
             try
             {
                 var IsAppinitialized = DAUtil.CheckAppInitialization();
-                if (IsAppinitialized)
-                {
-                    var message = new StartCheckForUpdatesTask();
-                    MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
-                    HandleReceivedMessages();
-                }
+              
+
+                    if (IsAppinitialized)
+                    {
+                        var message = new StartCheckForUpdatesTask();
+                        MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
+                        HandleReceivedMessages();
+                    }
+               
+                    
             }
             catch
             {
                 //need to implement network availability.
+                Application.Current.MainPage.Navigation.PushAsync(new Views.NetworkErrorPage());
             }
         }
 
@@ -83,38 +89,46 @@ namespace SloperMobile
             // Handle when your app resumes
             try
             {
-                var IsAppinitialized = DAUtil.CheckAppInitialization();
-                if (IsAppinitialized)
+                if (CrossConnectivity.Current.IsConnected)
                 {
-                    var message = new StartCheckForUpdatesTask();
-                    MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
-                    HandleReceivedMessages();
+                    var IsAppinitialized = DAUtil.CheckAppInitialization();
+                    if (IsAppinitialized)
+                    {
+                        var message = new StartCheckForUpdatesTask();
+                        MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
+                        HandleReceivedMessages();
+                    }
                 }
+                else
+                    Application.Current.MainPage.Navigation.PushAsync(new Views.NetworkErrorPage());
             }
             catch
             {
                 //need to implement network availability.
+                Application.Current.MainPage.Navigation.PushAsync(new Views.NetworkErrorPage());
             }
         }
         void InitializeAppStep1()
         {
             InitializeComponent();
-            var IsAppinitialized = DAUtil.CheckAppInitialization();
-            if (IsAppinitialized)
-            {
-                if (string.IsNullOrEmpty(Settings.AccessTokenSettings))
+          
+                var IsAppinitialized = DAUtil.CheckAppInitialization();
+                if (IsAppinitialized)
                 {
-                    MainPage = new NavigationPage(new LoginPage());
+                    if (string.IsNullOrEmpty(Settings.AccessTokenSettings))
+                    {
+                        MainPage = new NavigationPage(new LoginPage());
+                    }
+                    else
+                    {
+                        MainPage = new NavigationPage(new MenuNavigationPage());
+                    }
                 }
                 else
                 {
-                    MainPage = new NavigationPage(new MenuNavigationPage());
+                    MainPage = new NavigationPage(new SplashPage());
                 }
-            }
-            else
-            {
-                MainPage = new NavigationPage(new SplashPage());
-            }
+            
         }
 
         void HandleReceivedMessages()

@@ -8,13 +8,15 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
+using Plugin.Connectivity;
 namespace SloperMobile.ViewModel
 {
     public class UserViewModel : BaseViewModel
     {
-        public UserViewModel()
+        private INavigation _navigation;
+        public UserViewModel(INavigation navigation)
         {
+            _navigation = navigation;
             LoginCommand = new DelegateCommand(ExecuteOnLogin);
             RegistrationCommand = new DelegateCommand(ExecuteOnRegistration);
             LoginReq = new LoginReq();
@@ -82,47 +84,56 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-                if (Convert.ToString(parma) == "Guest")
+                if (CrossConnectivity.Current.IsConnected)
                 {
-                    LoginReq.u = AppConstant.Guest_UserId;
-                    LoginReq.p = AppConstant.Guest_UserPassword;
-                }
-                if (string.IsNullOrWhiteSpace(LoginReq.u) || string.IsNullOrWhiteSpace(LoginReq.p))
-                {
-                    await Application.Current.MainPage.DisplayAlert("Login Error", "Enter both Email and Password.", "OK");
-                    return;
-                }
-                if (Convert.ToString(parma) != "Guest")
-                {
-                    //check lowercase username, as they are stored in the database all lowercase.
-                    if (!Helper.IsEmailValid(loginReq.u.ToLower()))
+                    if (Convert.ToString(parma) == "Guest")
                     {
-                        await Application.Current.MainPage.DisplayAlert("Login Error", "Account not found, try again.", "OK");
+                        LoginReq.u = AppConstant.Guest_UserId;
+                        LoginReq.p = AppConstant.Guest_UserPassword;
+                    }
+                    if (string.IsNullOrWhiteSpace(LoginReq.u) || string.IsNullOrWhiteSpace(LoginReq.p))
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Login Error", "Enter both Email and Password.", "OK");
                         return;
                     }
-                }
-
-                //IsRunningTasks = true;
-                UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
-                HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
-                var loginjson = JsonConvert.SerializeObject(LoginReq);
-                var response = await apicall.Post<LoginResponse>(loginjson);
-                if (response != null)
-                {
-                    if (response.accessToken != null && response.renewalToken != null)
+                    if (Convert.ToString(parma) != "Guest")
                     {
-                        Settings.AccessTokenSettings = response.accessToken;
-                        Settings.RenewalTokenSettings = response.renewalToken;
-                        Settings.DisplayNameSettings = response.displayName;
-                        var climbdays = await HttpGetClimbdays();
-                        if (climbdays != null)
+                        //check lowercase username, as they are stored in the database all lowercase.
+                        if (!Helper.IsEmailValid(loginReq.u.ToLower()))
                         {
-                            Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
+                            await Application.Current.MainPage.DisplayAlert("Login Error", "Account not found, try again.", "OK");
+                            return;
                         }
-                        OnPageNavigation?.Invoke();
-                        DisposeObject();
-                        UserDialogs.Instance.HideLoading();
-                        return;
+                    }
+
+                    //IsRunningTasks = true;
+                    UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
+                    HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
+                    var loginjson = JsonConvert.SerializeObject(LoginReq);
+                    var response = await apicall.Post<LoginResponse>(loginjson);
+                    if (response != null)
+                    {
+                        if (response.accessToken != null && response.renewalToken != null)
+                        {
+                            Settings.AccessTokenSettings = response.accessToken;
+                            Settings.RenewalTokenSettings = response.renewalToken;
+                            Settings.DisplayNameSettings = response.displayName;
+                            var climbdays = await HttpGetClimbdays();
+                            if (climbdays != null)
+                            {
+                                Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
+                            }
+                            OnPageNavigation?.Invoke();
+                            DisposeObject();
+                            UserDialogs.Instance.HideLoading();
+                            return;
+                        }
+                        else
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
+                            return;
+                        }
                     }
                     else
                     {
@@ -130,92 +141,95 @@ namespace SloperMobile.ViewModel
                         await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
                         return;
                     }
+
+                    //IsRunningTasks = false;
                 }
                 else
-                {
-                    UserDialogs.Instance.HideLoading();
-                    await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
-                    return;
-                }
-
-                //IsRunningTasks = false;
+                    await _navigation.PushAsync(new Views.NetworkErrorPage());
             }
             catch (Exception)
             {
                 //IsRunningTasks = false;
                 UserDialogs.Instance.HideLoading();
-                await Application.Current.MainPage.DisplayAlert("Login Failure", "Incorrect username/password. Please try again.", "OK");
+                await _navigation.PushAsync(new Views.NetworkErrorPage());
+                //await Application.Current.MainPage.DisplayAlert("Login Failure", "Incorrect username/password. Please try again.", "OK");
                 return;
             }
         }
 
         private async void ExecuteOnRegistration(object obj)
         {
-            var isValidate = await IsRegistrationValidation();
-
-            //if (!IsRunningTasks && isValidate)
-            if (isValidate)
+            if (CrossConnectivity.Current.IsConnected)
             {
-                UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
-                //IsRunningTasks = true;
-                HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_User_Register, string.Empty);
-                RegistrationReq.Email = RegistrationReq.UserName;
-                RegistrationReq.DisplayName = RegistrationReq.FirstName + " " + RegistrationReq.LastName;
-                var regjson = JsonConvert.SerializeObject(RegistrationReq);
-                var response = await apicall.Post<RgistrationResponse>(regjson);
-                if (response != null)
+                var isValidate = await IsRegistrationValidation();
+
+                //if (!IsRunningTasks && isValidate)
+                if (isValidate)
                 {
-                    if (!string.IsNullOrEmpty(response.successful) && response.successful == "true")
+                    UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
+                    //IsRunningTasks = true;
+                    HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_User_Register, string.Empty);
+                    RegistrationReq.Email = RegistrationReq.UserName;
+                    RegistrationReq.DisplayName = RegistrationReq.FirstName + " " + RegistrationReq.LastName;
+                    var regjson = JsonConvert.SerializeObject(RegistrationReq);
+                    var response = await apicall.Post<RgistrationResponse>(regjson);
+                    if (response != null)
                     {
-
-                        //await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
-
-                        HttpClientHelper apilogin = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
-                        LoginReq.u = RegistrationReq.UserName;
-                        LoginReq.p = RegistrationReq.Password;
-                        var loginjson = JsonConvert.SerializeObject(LoginReq);
-                        var logresponse = await apilogin.Post<LoginResponse>(loginjson);
-                        if (logresponse != null)
+                        if (!string.IsNullOrEmpty(response.successful) && response.successful == "true")
                         {
-                            if (logresponse.accessToken != null && logresponse.renewalToken != null)
-                            {
-                                Settings.AccessTokenSettings = logresponse.accessToken;
-                                Settings.RenewalTokenSettings = logresponse.renewalToken;
-                                Settings.DisplayNameSettings = logresponse.displayName;
-                                var climbdays = await HttpGetClimbdays();
-                                if (climbdays != null)
-                                {
-                                    Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
-                                }
-                                OnPageNavigation?.Invoke();
-                                DisposeObject();
-                                UserDialogs.Instance.HideLoading();
-                                return;
-                            }
-                            else
-                            {
-                                UserDialogs.Instance.HideLoading();
-                                await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
-                                return;
-                            }
-                        }
 
+                            //await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
+
+                            HttpClientHelper apilogin = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
+                            LoginReq.u = RegistrationReq.UserName;
+                            LoginReq.p = RegistrationReq.Password;
+                            var loginjson = JsonConvert.SerializeObject(LoginReq);
+                            var logresponse = await apilogin.Post<LoginResponse>(loginjson);
+                            if (logresponse != null)
+                            {
+                                if (logresponse.accessToken != null && logresponse.renewalToken != null)
+                                {
+                                    Settings.AccessTokenSettings = logresponse.accessToken;
+                                    Settings.RenewalTokenSettings = logresponse.renewalToken;
+                                    Settings.DisplayNameSettings = logresponse.displayName;
+                                    var climbdays = await HttpGetClimbdays();
+                                    if (climbdays != null)
+                                    {
+                                        Settings.ClimbingDaysSettings = Convert.ToInt32(climbdays[0].climbing_days);
+                                    }
+                                    OnPageNavigation?.Invoke();
+                                    DisposeObject();
+                                    UserDialogs.Instance.HideLoading();
+                                    return;
+                                }
+                                else
+                                {
+                                    UserDialogs.Instance.HideLoading();
+                                    await Application.Current.MainPage.DisplayAlert("Login", AppConstant.LOGIN_FAILURE, "OK");
+                                    return;
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            UserDialogs.Instance.HideLoading();
+                            await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
+                            return;
+                        }
                     }
                     else
                     {
                         UserDialogs.Instance.HideLoading();
-                        await Application.Current.MainPage.DisplayAlert("Registration", response.message, "OK");
+                        await Application.Current.MainPage.DisplayAlert("Registration", AppConstant.REGISTRATION_FAILURE, "OK");
                         return;
                     }
                 }
-                else
-                {
-                    UserDialogs.Instance.HideLoading();
-                    await Application.Current.MainPage.DisplayAlert("Registration", AppConstant.REGISTRATION_FAILURE, "OK");
-                    return;
-                }
+
+                //IsRunningTasks = false;
             }
-            //IsRunningTasks = false;
+            else
+                await _navigation.PushAsync(new Views.NetworkErrorPage());
         }
 
         private async Task<bool> IsRegistrationValidation()
