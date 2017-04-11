@@ -46,31 +46,31 @@
             
 			<Frame x:Name="Flash" Grid.Row="1" Grid.Column="2" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
 				<Frame.GestureRecognizers>
-					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Flash!"/>
+					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Flash"/>
 				</Frame.GestureRecognizers>
 				<Label Text="Flash" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center"/>
 			</Frame>
 			<Frame x:Name="Redpoint" Grid.Row="3" Grid.Column="0" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
 				<Frame.GestureRecognizers>
-					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Redpoint!"/>
+					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Redpoint"/>
 				</Frame.GestureRecognizers>
 				<Label Text="Redpoint"  Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center"/>
 			</Frame>
 			<Frame x:Name="Repeat" Grid.Row="3" Grid.Column="2" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
 				<Frame.GestureRecognizers>
-					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Repeat!"/>
+					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Repeat"/>
 				</Frame.GestureRecognizers>
 				<Label Text="Repeat" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center"/>
 			</Frame>
 			<Frame x:Name="ProjectBurn" Grid.Row="5" Grid.Column="0" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
 				<Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Making Progress!"/>
+                    <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Making Progress"/>
 				</Frame.GestureRecognizers>
 				<Label Text="Project Burn"  Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center"/>
 			</Frame>
 			<Frame x:Name="OneHang" Grid.Row="5" Grid.Column="2" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
 				<Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Good Work!"/>
+                    <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Good Work"/>
 				</Frame.GestureRecognizers>
 				<Label Text="One Hang" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center"/>
 			</Frame>

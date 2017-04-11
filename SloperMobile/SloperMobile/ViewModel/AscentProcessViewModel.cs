@@ -69,16 +69,17 @@ namespace SloperMobile.ViewModel
         private ImageSource toproutechar;
         private Stream camera_image;
         private T_ROUTE routeData;
+        private T_CRAG currentCrag;
         public AscentProcessViewModel(INavigation navigation, string routeid)
         {
+            currentCrag = App.DAUtil.GetSelectedCragData();
             SummaryImage = Cache.SelctedCurrentSector?.SectorImage;
             RouteId = routeid;
             routeData = App.DAUtil.GetRouteDataByRouteID(RouteId);
             PageHeaderText = (routeData.route_name).ToUpper() + " " + routeData.tech_grade;
                     
-         //   PageSubHeaderText = Cache.Selected_CRAG.crag_name + "," + Cache.SelctedCurrentSector.SectorName;
-            PageSubHeaderText =Cache.SelctedCurrentSector.SectorName;
-            // PageTechGrade= routeData.tech_grade;
+            PageSubHeaderText = currentCrag.crag_name + ", "+Cache.SelctedCurrentSector.SectorName;
+          
             SendTypeCommand = new DelegateCommand(ExecuteOnSendType);
             SendTypeHoldCommand = new DelegateCommand(ExecuteOnSendHold);
             SendRouteCharaterCommand = new DelegateCommand(ExecuteOnRouteCharacteristics);
@@ -297,20 +298,20 @@ namespace SloperMobile.ViewModel
                     case "Onsight":
                         SendsCongratsWording = "Boom! Nice ";
                         break;
-                    case "Flash!":
+                    case "Flash":
                         SendsCongratsWording = "Cool ";
                         break;
-                    case "Redpoint!":
+                    case "Redpoint":
                         SendsCongratsWording = "Awesome ";
                         break;
-                    case "Repeat!":
-                        SendsCongratsWording = "Good! ";
+                    case "Repeat":
+                        SendsCongratsWording = "Good ";
                         break;
-                    case "Making Progress!":
+                    case "Making Progress":
                         SendsCongratsWording = "(Project burn) ";
                         break;
-                    case "Good Work!":
-                        SendsCongratsWording = "One hang ";
+                    case "Good Work":
+                        SendsCongratsWording = "One-hang! ";
                         break;
 
 

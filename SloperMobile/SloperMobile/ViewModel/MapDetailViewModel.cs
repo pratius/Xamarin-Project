@@ -93,6 +93,8 @@ namespace SloperMobile.ViewModel
                     }
                     routeobj.TitleText = route.route_name;
                     routeobj.SubText = route.route_info;
+                    
+
                     routeobj.RouteId = route.route_id;
                     routeobj.Rating = Math.Round(Convert.ToDecimal(route.rating)).ToString();
                     routeobj.StarImage = ImageSource.FromFile(GetStarImage(Math.Round(Convert.ToDecimal(route.rating)).ToString()));
