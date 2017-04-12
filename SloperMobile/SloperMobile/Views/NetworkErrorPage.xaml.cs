@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Connectivity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -19,9 +20,11 @@ namespace SloperMobile.Views
         public NetworkErrorPage()
         {
             InitializeComponent();
-          
+            CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
+            {
+                //DisplayAlert("Connectivity Changed", "IsConnected: " + args.IsConnected.ToString(), "OK");
+            };
+
         }
     }
-
-  
 }
