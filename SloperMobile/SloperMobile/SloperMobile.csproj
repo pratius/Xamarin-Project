@@ -42,7 +42,6 @@
     <Compile Include="Common\Command\DelegateCommand.cs" />
     <Compile Include="Common\Constants\ApiUrls.cs" />
     <Compile Include="Common\Constants\AppConstant.cs" />
-    <Compile Include="Common\Constants\AppSetting.cs" />
     <Compile Include="Common\Constants\Cache.cs" />
     <Compile Include="Common\Enumerators\Enumerators.cs" />
     <Compile Include="Common\Helpers\Helper.cs" />
@@ -219,6 +218,7 @@
       <DependentUpon>HeaderNoButtonUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Common\Constants\AppSetting.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">

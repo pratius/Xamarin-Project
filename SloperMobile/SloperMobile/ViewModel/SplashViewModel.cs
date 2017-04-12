@@ -143,8 +143,8 @@ namespace SloperMobile.ViewModel
                 }
                 else
                     await _navigation.PushAsync(new Views.NetworkErrorPage());
-                    
-                    
+
+
             }
 
             if (CommandText == "CANCEL")
@@ -322,46 +322,46 @@ namespace SloperMobile.ViewModel
         {
             HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_CheckUpdate_AppData, Cache.AccessToken);
             Dictionary<string, string> dictquery = new Dictionary<string, string>();
-            dictquery.Add("appid", AppConstant.APP_ID);
+            dictquery.Add("appid", AppSetting.APP_ID);
             dictquery.Add("since", AppLastUpdateDate);
             var response = await apicall.Get<CheckForUpdateModel>(dictquery);
             return response;
         }
         private async Task<List<T_AREA>> HttpGetAreaUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "area", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "area", true), Cache.AccessToken);
             var area_response = await apicall.Get<T_AREA>();
             return area_response;
         }
         private async Task<List<CragTemplate>> HttpGetCragUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "crag", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "crag", true), Cache.AccessToken);
             var crag_response = await apicall.Get<CragTemplate>();
             return crag_response;
         }
         private async Task<List<T_ROUTE>> HttpGetRouteUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "route", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "route", true), Cache.AccessToken);
             var route_response = await apicall.Get<T_ROUTE>();
             return route_response;
         }
         private async Task<List<T_SECTOR>> HttpGetSectorUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "sector", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "sector", true), Cache.AccessToken);
             var sector_response = await apicall.Get<T_SECTOR>();
             return sector_response;
         }
 
         private async Task<List<T_GRADE>> HttpGetGradeUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "grade", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "grade", true), Cache.AccessToken);
             var grade_response = await apicall.Get<T_GRADE>();
             return grade_response;
         }
 
         private async Task<List<T_BUCKET>> HttpGetGradeBuckets()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetGradeBuckets, AppConstant.APP_ID), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetGradeBuckets, AppSetting.APP_ID), Cache.AccessToken);
             var gradebkt_response = await apicall.Get<T_BUCKET>();
             return gradebkt_response;
         }

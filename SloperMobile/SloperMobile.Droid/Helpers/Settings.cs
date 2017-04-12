@@ -32,11 +32,11 @@ namespace SloperMobile.Droid.Helpers
     {
       get
       {
-        return AppSettings.GetValueOrDefault<string>(SettingsKey, SettingsDefault);
+        return AppSetting.GetValueOrDefault<string>(SettingsKey, SettingsDefault);
       }
       set
       {
-        AppSettings.AddOrUpdateValue<string>(SettingsKey, value);
+        AppSetting.AddOrUpdateValue<string>(SettingsKey, value);
       }
     }
 

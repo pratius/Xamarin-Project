@@ -88,8 +88,8 @@ namespace SloperMobile.ViewModel
                 {
                     if (Convert.ToString(parma) == "Guest")
                     {
-                        LoginReq.u = AppConstant.Guest_UserId;
-                        LoginReq.p = AppConstant.Guest_UserPassword;
+                        LoginReq.u = AppSetting.Guest_UserId;
+                        LoginReq.p = AppSetting.Guest_UserPassword;
                     }
                     if (string.IsNullOrWhiteSpace(LoginReq.u) || string.IsNullOrWhiteSpace(LoginReq.p))
                     {
@@ -278,7 +278,7 @@ namespace SloperMobile.ViewModel
         #region Service
         private async Task<List<ClimbingDaysModel>> HttpGetClimbdays()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "ascent", true), Settings.AccessTokenSettings);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "ascent", true), Settings.AccessTokenSettings);
             var area_response = await apicall.Get<ClimbingDaysModel>();
             return area_response;
         }

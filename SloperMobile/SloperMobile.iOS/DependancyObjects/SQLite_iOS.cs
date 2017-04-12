@@ -10,7 +10,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(SQLite_iOS))]
 namespace SloperMobile.iOS.DependancyObjects
 {
-   public class SQLite_iOS: ISQLite
+    public class SQLite_iOS : ISQLite
     {
         public SQLite_iOS()
         {
@@ -18,7 +18,7 @@ namespace SloperMobile.iOS.DependancyObjects
         #region ISQLite implementation
         public SQLite.Net.SQLiteConnection GetConnection()
         {
-            var sqliteFilename = AppConstant.APP_DBNAME; 
+            var sqliteFilename = AppSetting.APP_DBNAME;
             string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal); // Documents folder
             string libraryPath = Path.Combine(documentsPath, "..", "Library"); // Library folder
             var path = Path.Combine(libraryPath, sqliteFilename);
