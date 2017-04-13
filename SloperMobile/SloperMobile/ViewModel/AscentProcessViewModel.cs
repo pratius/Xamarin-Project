@@ -124,6 +124,7 @@ namespace SloperMobile.ViewModel
             get { return sendstypename; }
             set { sendstypename = value; OnPropertyChanged(); }
         }
+        
 
         public string SendsCongratsWording
         {
