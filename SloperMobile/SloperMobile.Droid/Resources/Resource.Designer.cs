@@ -3844,8 +3844,26 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f02005a
 			public const int avd_hide_password = 2130837594;
 			
+			// aapt resource value: 0x7f0201d9
+			public const int avd_hide_password_1 = 2130837977;
+			
+			// aapt resource value: 0x7f0201da
+			public const int avd_hide_password_2 = 2130837978;
+			
+			// aapt resource value: 0x7f0201db
+			public const int avd_hide_password_3 = 2130837979;
+			
 			// aapt resource value: 0x7f02005b
 			public const int avd_show_password = 2130837595;
+			
+			// aapt resource value: 0x7f0201dc
+			public const int avd_show_password_1 = 2130837980;
+			
+			// aapt resource value: 0x7f0201dd
+			public const int avd_show_password_2 = 2130837981;
+			
+			// aapt resource value: 0x7f0201de
+			public const int avd_show_password_3 = 2130837982;
 			
 			// aapt resource value: 0x7f02005c
 			public const int bigImage = 2130837596;
@@ -4846,11 +4864,11 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f0201a8
 			public const int notification_icon_background = 2130837928;
 			
-			// aapt resource value: 0x7f0201d6
-			public const int notification_template_icon_bg = 2130837974;
-			
 			// aapt resource value: 0x7f0201d7
-			public const int notification_template_icon_low_bg = 2130837975;
+			public const int notification_template_icon_bg = 2130837975;
+			
+			// aapt resource value: 0x7f0201d8
+			public const int notification_template_icon_low_bg = 2130837976;
 			
 			// aapt resource value: 0x7f0201a9
 			public const int notification_tile_bg = 2130837929;
@@ -4937,55 +4955,58 @@ namespace SloperMobile.Droid
 			public const int Settings = 2130837956;
 			
 			// aapt resource value: 0x7f0201c5
-			public const int Star = 2130837957;
+			public const int splash = 2130837957;
 			
 			// aapt resource value: 0x7f0201c6
-			public const int star0 = 2130837958;
+			public const int Star = 2130837958;
 			
 			// aapt resource value: 0x7f0201c7
-			public const int star1 = 2130837959;
+			public const int star0 = 2130837959;
 			
 			// aapt resource value: 0x7f0201c8
-			public const int star2 = 2130837960;
+			public const int star1 = 2130837960;
 			
 			// aapt resource value: 0x7f0201c9
-			public const int star3 = 2130837961;
+			public const int star2 = 2130837961;
 			
 			// aapt resource value: 0x7f0201ca
-			public const int star4 = 2130837962;
+			public const int star3 = 2130837962;
 			
 			// aapt resource value: 0x7f0201cb
-			public const int star5 = 2130837963;
+			public const int star4 = 2130837963;
 			
 			// aapt resource value: 0x7f0201cc
-			public const int steepOverhanging = 2130837964;
+			public const int star5 = 2130837964;
 			
 			// aapt resource value: 0x7f0201cd
-			public const int steepRoof = 2130837965;
+			public const int steepOverhanging = 2130837965;
 			
 			// aapt resource value: 0x7f0201ce
-			public const int steepSlab = 2130837966;
+			public const int steepRoof = 2130837966;
 			
 			// aapt resource value: 0x7f0201cf
-			public const int steepVertical = 2130837967;
+			public const int steepSlab = 2130837967;
 			
 			// aapt resource value: 0x7f0201d0
-			public const int Sustained = 2130837968;
+			public const int steepVertical = 2130837968;
 			
 			// aapt resource value: 0x7f0201d1
-			public const int Twitter = 2130837969;
+			public const int Sustained = 2130837969;
 			
 			// aapt resource value: 0x7f0201d2
-			public const int twitter_logo_shape = 2130837970;
+			public const int Twitter = 2130837970;
 			
 			// aapt resource value: 0x7f0201d3
-			public const int Video = 2130837971;
+			public const int twitter_logo_shape = 2130837971;
 			
 			// aapt resource value: 0x7f0201d4
-			public const int WhiteStar = 2130837972;
+			public const int Video = 2130837972;
 			
 			// aapt resource value: 0x7f0201d5
-			public const int YellowStar = 2130837973;
+			public const int WhiteStar = 2130837973;
+			
+			// aapt resource value: 0x7f0201d6
+			public const int YellowStar = 2130837974;
 			
 			static Drawable()
 			{
@@ -6457,8 +6478,8 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f0a0174
 			public const int Animation_Design_BottomSheetDialog = 2131362164;
 			
-			// aapt resource value: 0x7f0a0192
-			public const int AppCompatDialogStyle = 2131362194;
+			// aapt resource value: 0x7f0a0193
+			public const int AppCompatDialogStyle = 2131362195;
 			
 			// aapt resource value: 0x7f0a00b6
 			public const int Base_AlertDialog_AppCompat = 2131361974;
@@ -6955,11 +6976,11 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f0a018f
 			public const int HockeyApp_SingleLineInputStyle = 2131362191;
 			
-			// aapt resource value: 0x7f0a0190
-			public const int MainTheme = 2131362192;
-			
 			// aapt resource value: 0x7f0a0191
-			public const int MainTheme_Base = 2131362193;
+			public const int MainTheme = 2131362193;
+			
+			// aapt resource value: 0x7f0a0192
+			public const int MainTheme_Base = 2131362194;
 			
 			// aapt resource value: 0x7f0a0031
 			public const int Platform_AppCompat = 2131361841;
@@ -7362,6 +7383,9 @@ namespace SloperMobile.Droid
 			
 			// aapt resource value: 0x7f0a000a
 			public const int Theme_MediaRouter_LightControlPanel = 2131361802;
+			
+			// aapt resource value: 0x7f0a0190
+			public const int Theme_Splash = 2131362192;
 			
 			// aapt resource value: 0x7f0a0123
 			public const int ThemeOverlay_AppCompat = 2131362083;

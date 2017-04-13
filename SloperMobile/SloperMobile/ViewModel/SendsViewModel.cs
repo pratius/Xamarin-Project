@@ -106,27 +106,22 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-                if (CrossConnectivity.Current.IsConnected)
+                if (TabName == "SENDS")
                 {
-                    if (TabName == "SENDS")
-                    {
-                        PageHeaderText = "PROFILE";
-                        PageSubHeaderText = "Sends";
-                        Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
-                        await InvokeServiceGetAscentData();
-                        Acr.UserDialogs.UserDialogs.Instance.HideLoading();
-                    }
-                    else
-                    {
-                        PageHeaderText = "PROFILE";
-                        PageSubHeaderText = "Tick List";
-                        Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
-                        await InvokeServiceGetTickListData();
-                        Acr.UserDialogs.UserDialogs.Instance.HideLoading();
-                    }
+                    PageHeaderText = "PROFILE";
+                    PageSubHeaderText = "Sends";
+                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+                    await InvokeServiceGetAscentData();
+                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
                 else
-                    await _navigation.PushAsync(new Views.NetworkErrorPage());
+                {
+                    PageHeaderText = "PROFILE";
+                    PageSubHeaderText = "Tick List";
+                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+                    await InvokeServiceGetTickListData();
+                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                }
             }
 
 

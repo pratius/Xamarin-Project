@@ -1,6 +1,7 @@
 ﻿using SloperMobile.Common.Constants;
 using SloperMobile.Common.Interfaces;
 using SloperMobile.iOS.DependancyObjects;
+using SQLite.Net.Interop;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,7 +32,7 @@ namespace SloperMobile.iOS.DependancyObjects
             }
 
             var plat = new SQLite.Net.Platform.XamarinIOS.SQLitePlatformIOS();
-            var conn = new SQLite.Net.SQLiteConnection(plat, path);
+            var conn = new SQLite.Net.SQLiteConnection(plat, path, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.FullMutex, true);
 
             // Return the database connection 
             return conn;

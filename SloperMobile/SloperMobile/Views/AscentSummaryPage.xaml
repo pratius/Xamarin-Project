@@ -18,7 +18,6 @@
                 <RowDefinition Height=".7*" />
                 <RowDefinition Height="100" />
             </Grid.RowDefinitions>
-
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0">
                 <Label Text="AWESOME " TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
                 <Label Text="{Binding SendsTypeName,Mode=TwoWay}" TextColor="#FF9933" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />

@@ -17,6 +17,8 @@ namespace SloperMobile.ViewModel
         public SplashViewModel(INavigation navigation)
         {
             _navigation = navigation;
+            AppTitle = (AppSetting.APP_TITLE).ToUpper();
+            AppCompany = AppSetting.APP_COMPANY;
             ContinueCommand = new DelegateCommand(ExecuteOnProcced);
             CancelCommand = new DelegateCommand(ExecuteOnCancel);
             IsProccedEnalbe = true;
@@ -30,7 +32,8 @@ namespace SloperMobile.ViewModel
         private string commandtext = "Let's Go!";
         private string progresstext = "Initializing App...";
         private string progressvalue = "0";
-
+        private string apptitle;
+        private string appcompany;
 
         private CheckForUpdateModel checkForModelObj;
         private List<T_AREA> areaObj;
@@ -113,6 +116,18 @@ namespace SloperMobile.ViewModel
             set { progressvalue = value; OnPropertyChanged(); }
         }
 
+        public string AppTitle
+        {
+            get { return apptitle; }
+            set { apptitle = value; OnPropertyChanged(); }
+        }
+
+        public string AppCompany
+        {
+            get { return appcompany; }
+            set { appcompany = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         #region Commanding
@@ -143,8 +158,6 @@ namespace SloperMobile.ViewModel
                 }
                 else
                     await _navigation.PushAsync(new Views.NetworkErrorPage());
-
-
             }
 
             if (CommandText == "CANCEL")

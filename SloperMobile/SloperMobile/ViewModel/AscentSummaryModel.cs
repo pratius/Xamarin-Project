@@ -33,6 +33,7 @@ namespace SloperMobile.ViewModel
         private ImageSource summaryimage;
 
         private T_ROUTE routeData;
+        private T_CRAG currentCrag;
 
         private string routeName = "";
         private string sendsTypeName = "";
@@ -131,12 +132,15 @@ namespace SloperMobile.ViewModel
 
         public AscentSummaryModel(INavigation navigation, string routeid, Send send)
         {
+            currentCrag = App.DAUtil.GetSelectedCragData();
             SummaryImage = Cache.SelctedCurrentSector?.SectorImage;
             RouteId = routeid;
             routeData = App.DAUtil.GetRouteDataByRouteID(RouteId);
             PageHeaderText = (routeData.route_name).ToUpper();
-            if(Cache.SelctedCurrentSector != null)
-            PageSubHeaderText = Cache.SelctedCurrentSector.SectorName;
+            if (Cache.SelctedCurrentSector != null)
+
+                PageHeaderText = (routeData.route_name).ToUpper() + " " + routeData.tech_grade;
+            PageSubHeaderText = (currentCrag.crag_name).Trim() + ", " + Cache.SelctedCurrentSector.SectorName;
 
             //PageSubHeaderText = "";
             var grades = App.DAUtil.GetTtechGrades(routeData.grade_type_id);
