@@ -1,7 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SloperMobile.Views.NetworkErrorPage"
-             Title="NetworkErrorPage">
-    <Label Text="You're offline , Please connect to the internet and try again." VerticalOptions="Center" HorizontalOptions="Center" />
+             Title="Network Error"
+			 Style="{StaticResource AppBackgroundColor}">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+	</ContentPage.Padding>
+	<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40*" />
+			<RowDefinition Height="20*" />
+			<RowDefinition Height="20*" />
+		</Grid.RowDefinitions>
+		<Image Grid.Row="0" Source="logo_215w" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center" />
+		<Label Grid.Row="1" Text="You're offline, please connect to the internet and try again." FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" Margin="40" />
+		<Button Grid.Row="2" Clicked="OnContinue" Margin="30" BorderRadius="0" Text="CONTINUE" Style="{StaticResource GeneralButtonStyle}" HorizontalOptions="Fill" VerticalOptions="End" />
+	</Grid>	
 </ContentPage>

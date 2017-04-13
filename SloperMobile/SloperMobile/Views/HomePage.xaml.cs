@@ -15,6 +15,7 @@ namespace SloperMobile.Views
     public partial class HomePage : ContentPage
     {
         private HomeViewModel HomeVM;
+
         public HomePage()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace SloperMobile.Views
             HomeVM = new HomeViewModel();
             BindingContext = HomeVM;
         }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -68,8 +70,7 @@ namespace SloperMobile.Views
                         }
                         else
                         {
-                            //await Navigation.PushAsync(new Views.NetworkErrorPage());
-                            await Navigation.PushModalAsync(new Views.NetworkErrorPage());
+                            await Navigation.PushAsync(new NetworkErrorPage());
                             break;
                         }
                     case ApplicationActivity.ClimbingDaysPage:
@@ -86,8 +87,7 @@ namespace SloperMobile.Views
                 await DisplayAlert("Error", ex.Message, "Ok");
                 throw;
             }
-
-
         }
+
     }
 }

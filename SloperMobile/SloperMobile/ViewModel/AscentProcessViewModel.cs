@@ -76,10 +76,10 @@ namespace SloperMobile.ViewModel
             SummaryImage = Cache.SelctedCurrentSector?.SectorImage;
             RouteId = routeid;
             routeData = App.DAUtil.GetRouteDataByRouteID(RouteId);
+
             PageHeaderText = (routeData.route_name).ToUpper() + " " + routeData.tech_grade;
-                    
-            PageSubHeaderText = currentCrag.crag_name + ", "+Cache.SelctedCurrentSector.SectorName;
-          
+            PageSubHeaderText = (currentCrag.crag_name).Trim() + ", " + Cache.SelctedCurrentSector.SectorName;
+
             SendTypeCommand = new DelegateCommand(ExecuteOnSendType);
             SendTypeHoldCommand = new DelegateCommand(ExecuteOnSendHold);
             SendRouteCharaterCommand = new DelegateCommand(ExecuteOnRouteCharacteristics);
@@ -290,33 +290,31 @@ namespace SloperMobile.ViewModel
 
         private void ExecuteOnSendType(object obj)
         {
-           
-                SendsTypeName = Convert.ToString(obj);
-                //SendsCongratsWording = string.Empty;
-                switch (Convert.ToString(obj))
-                {
-                    case "Onsight":
-                        SendsCongratsWording = "Boom! Nice ";
-                        break;
-                    case "Flash":
-                        SendsCongratsWording = "Cool ";
-                        break;
-                    case "Redpoint":
-                        SendsCongratsWording = "Awesome ";
-                        break;
-                    case "Repeat":
-                        SendsCongratsWording = "Good ";
-                        break;
-                    case "Making Progress":
-                        SendsCongratsWording = "(Project burn) ";
-                        break;
-                    case "Good Work":
-                        SendsCongratsWording = "One-hang! ";
-                        break;
 
+            SendsTypeName = Convert.ToString(obj);
+            //SendsCongratsWording = string.Empty;
+            switch (Convert.ToString(obj))
+            {
+                case "Onsight":
+                    SendsCongratsWording = "Boom! Nice ";
+                    break;
+                case "Flash":
+                    SendsCongratsWording = "Cool ";
+                    break;
+                case "Redpoint":
+                    SendsCongratsWording = "Awesome ";
+                    break;
+                case "Repeat":
+                    SendsCongratsWording = "Good ";
+                    break;
+                case "Making Progress":
+                    SendsCongratsWording = "(Project burn) ";
+                    break;
+                case "Good Work":
+                    SendsCongratsWording = "One hang! ";
+                    break;
+            }
 
-                }
-            
         }
 
         private void ExecuteOnRouteCharacteristics(object obj)
@@ -791,9 +789,7 @@ namespace SloperMobile.ViewModel
                 }
             }
             else
-                await _navigation.PushAsync(new Views.NetworkErrorPage());
-                       
-
+                await _navigation.PushAsync(new NetworkErrorPage());
         }
 
         public string GetAngleResourceName(string steep)

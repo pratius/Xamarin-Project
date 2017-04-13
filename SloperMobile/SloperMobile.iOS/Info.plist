@@ -31,9 +31,9 @@
 	<string>2.0</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
-	<key>CFBundleVersion</key>
-	<string>111</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleVersion</key>
+	<string>113</string>
 </dict>
 </plist>

@@ -17,7 +17,7 @@
 				<Label Text="{Binding DisplayName}" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand" />
 			</StackLayout>
 			<StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Fill">
-				<Button BorderRadius="3" Text="LOGOUT" Command="{Binding LogOutCommand}" Style="{StaticResource GeneralButtonStyle}" HorizontalOptions="FillAndExpand" />
+				<Button BorderRadius="0" Text="LOGOUT" Command="{Binding LogOutCommand}" Style="{StaticResource GeneralButtonStyle}" HorizontalOptions="FillAndExpand" />
 			</StackLayout>
 		</Grid>
 	</StackLayout>

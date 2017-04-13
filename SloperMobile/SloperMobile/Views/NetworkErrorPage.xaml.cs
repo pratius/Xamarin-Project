@@ -13,18 +13,18 @@ using Xamarin.Forms.Xaml;
 
 namespace SloperMobile.Views
 {
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NetworkErrorPage : ContentPage
     {
         public NetworkErrorPage()
         {
             InitializeComponent();
-            CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
-            {
-                //DisplayAlert("Connectivity Changed", "IsConnected: " + args.IsConnected.ToString(), "OK");
-            };
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
 
+        private async void OnContinue(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new HomePage());
         }
     }
 }

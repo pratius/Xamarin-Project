@@ -158,8 +158,6 @@ namespace SloperMobile.ViewModel
                 }
                 else
                     await _navigation.PushAsync(new Views.NetworkErrorPage());
-
-
             }
 
             if (CommandText == "CANCEL")
