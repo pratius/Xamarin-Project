@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using SloperMobile.Droid.DependancyObjects;
 using SloperMobile.Common.Interfaces;
 using SloperMobile.Common.Constants;
+using SQLite.Net.Interop;
 
 [assembly: Dependency(typeof(SQLite_Android))]
 namespace SloperMobile.Droid.DependancyObjects
@@ -22,7 +23,7 @@ namespace SloperMobile.Droid.DependancyObjects
             Console.WriteLine(path);
             if (!File.Exists(path)) File.Create(path);
             var plat = new SQLite.Net.Platform.XamarinAndroid.SQLitePlatformAndroidN();
-            var conn = new SQLite.Net.SQLiteConnection(plat, path);
+            var conn = new SQLite.Net.SQLiteConnection(plat, path, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.FullMutex,true);
             // Return the database connection 
             return conn;
         }

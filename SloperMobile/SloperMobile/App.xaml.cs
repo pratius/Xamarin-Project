@@ -60,16 +60,16 @@ namespace SloperMobile
             // Handle when your app starts
             try
             {
-                var IsAppinitialized = DAUtil.CheckAppInitialization();
-
-
-                if (IsAppinitialized)
+                if (CrossConnectivity.Current.IsConnected)
                 {
-                    var message = new StartCheckForUpdatesTask();
-                    MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
-                    HandleReceivedMessages();
+                    var IsAppinitialized = DAUtil.CheckAppInitialization();
+                    if (IsAppinitialized)
+                    {
+                        var message = new StartCheckForUpdatesTask();
+                        MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
+                        HandleReceivedMessages();
+                    }
                 }
-
 
             }
             catch
@@ -97,10 +97,6 @@ namespace SloperMobile
                     MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
                     HandleReceivedMessages();
                 }
-            }
-            else
-            {
-                Application.Current.MainPage.Navigation.PushAsync(new NetworkErrorPage());
             }
         }
         void InitializeAppStep1()
