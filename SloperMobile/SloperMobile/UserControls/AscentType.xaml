@@ -39,10 +39,11 @@
 
 			<Frame x:Name="Onsight" Grid.Row="1" Grid.Column="0" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
 				<Frame.GestureRecognizers>
-					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand,Mode=TwoWay}" CommandParameter="Onsight"/>
+                    <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand,Mode=TwoWay}" CommandParameter="Onsight"/>
 				</Frame.GestureRecognizers>
 	        <Label Text="Onsight" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center"/>
 			</Frame>
+            
 			<Frame x:Name="Flash" Grid.Row="1" Grid.Column="2" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
 				<Frame.GestureRecognizers>
 					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Flash"/>
@@ -63,13 +64,13 @@
 			</Frame>
 			<Frame x:Name="ProjectBurn" Grid.Row="5" Grid.Column="0" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
 				<Frame.GestureRecognizers>
-					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Project"/>
+                    <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Making Progress"/>
 				</Frame.GestureRecognizers>
 				<Label Text="Project Burn"  Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center"/>
 			</Frame>
 			<Frame x:Name="OneHang" Grid.Row="5" Grid.Column="2" BackgroundColor="Black" VerticalOptions="Fill" HorizontalOptions="Fill">
 				<Frame.GestureRecognizers>
-					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="One hang"/>
+                    <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeCommand}" CommandParameter="Good Work"/>
 				</Frame.GestureRecognizers>
 				<Label Text="One Hang" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center"/>
 			</Frame>

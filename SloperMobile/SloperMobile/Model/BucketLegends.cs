@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace SloperMobile.Model
 {
@@ -13,7 +14,6 @@ namespace SloperMobile.Model
         public string BucketName3 { get; set; }
         public string BucketName4 { get; set; }
         public string BucketName5 { get; set; }
-
 
         public class Comparer : IEqualityComparer<BucketLegends>
         {
@@ -40,6 +40,13 @@ namespace SloperMobile.Model
                 }
             }
         }
+    }
+
+
+    public class Buckets
+    {
+        public string BucketName { get; set; }
+        public string HexColor { get; set; }
     }
     public class GradeId
     {

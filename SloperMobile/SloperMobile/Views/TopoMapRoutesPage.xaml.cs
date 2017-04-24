@@ -34,6 +34,7 @@ namespace SloperMobile.Views
                 // load the scenic shot if there are no topos available
                 if (listData == string.Empty)
                 {
+                    TopoMapRouteVM.OnConditionNavigation = OnPageNavigation;
                     TopoMapRouteVM.LoadRouteData(routeId, listData);
                     TopoMapRouteVM.DisplayRoutePopupLg = true;
 

@@ -403,5 +403,9 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string bucket_name
         { get; set; }
+        public string hex_code
+        { get; set; }
+        public string grade_bucket_group
+        { get; set; }
     }
 }

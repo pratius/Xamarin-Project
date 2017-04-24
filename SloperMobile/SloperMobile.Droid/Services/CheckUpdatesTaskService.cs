@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -36,7 +31,10 @@ namespace SloperMobile.Droid.Services
                     //INVOKE THE SHARED CODE
                     CheckForUpdatesViewModel.CurrentInstance().OnPageAppearing().Wait();
                 }
-                catch (Android.OS.OperationCanceledException)
+                catch (OperationCanceledException)
+                {
+                }
+                catch (System.AggregateException)
                 {
                 }
                 finally

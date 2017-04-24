@@ -8,13 +8,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Plugin.Connectivity;
+using Xamarin.Forms;
 namespace SloperMobile.ViewModel
 {
     public class SplashViewModel : BaseViewModel
     {
-        public SplashViewModel()
+        public SplashViewModel(INavigation navigation)
         {
+            _navigation = navigation;
+            AppTitle = (AppSetting.APP_TITLE).ToUpper();
+            AppCompany = AppSetting.APP_COMPANY;
             ContinueCommand = new DelegateCommand(ExecuteOnProcced);
             CancelCommand = new DelegateCommand(ExecuteOnCancel);
             IsProccedEnalbe = true;
@@ -22,12 +26,14 @@ namespace SloperMobile.ViewModel
         }
 
         #region Properties
+        private INavigation _navigation;
         private bool isProccedEnalbe;
         private bool is_displaytanksnote;
         private string commandtext = "Let's Go!";
         private string progresstext = "Initializing App...";
         private string progressvalue = "0";
-
+        private string apptitle;
+        private string appcompany;
 
         private CheckForUpdateModel checkForModelObj;
         private List<T_AREA> areaObj;
@@ -35,6 +41,7 @@ namespace SloperMobile.ViewModel
         private List<T_ROUTE> routeObj;
         private List<T_SECTOR> sectorObj;
         private List<T_GRADE> gradeObj;
+        private List<T_BUCKET> gradebktObj;
         /// <summary>
         /// Get or set the Check for update class object
         /// </summary>
@@ -109,6 +116,18 @@ namespace SloperMobile.ViewModel
             set { progressvalue = value; OnPropertyChanged(); }
         }
 
+        public string AppTitle
+        {
+            get { return apptitle; }
+            set { apptitle = value; OnPropertyChanged(); }
+        }
+
+        public string AppCompany
+        {
+            get { return appcompany; }
+            set { appcompany = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         #region Commanding
@@ -119,6 +138,7 @@ namespace SloperMobile.ViewModel
         #region Methods
         private async void ExecuteOnProcced(object obj)
         {
+
             if (CommandText == "CONTINUE")
             {
                 OnConditionNavigation?.Invoke("Procced");
@@ -126,12 +146,18 @@ namespace SloperMobile.ViewModel
 
             if (CommandText == "Let's Go!")
             {
-                IsDisplayThanksNote = false;
-                IsRunningTasks = true;
-                CommandText = "CANCEL";
-                await DownloadUpdates();
-                CommandText = "CONTINUE";
-                IsRunningTasks = true;
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    IsDisplayThanksNote = false;
+                    IsRunningTasks = true;
+                    CommandText = "CANCEL";
+
+                    await DownloadUpdates();
+                    CommandText = "CONTINUE";
+                    IsRunningTasks = true;
+                }
+                else
+                    await _navigation.PushAsync(new Views.NetworkErrorPage());
             }
 
             if (CommandText == "CANCEL")
@@ -271,6 +297,17 @@ namespace SloperMobile.ViewModel
                 {
                     App.DAUtil.SaveGrade(grade);
                 }
+                ProgressValue = "0.9";
+
+
+                ProgressText = "Loading Grades Buckets, please wait...";
+                App.DAUtil.DropAndCreateTable(typeof(T_BUCKET));
+                gradebktObj = await HttpGetGradeBuckets();
+                foreach (T_BUCKET gradebkt in gradebktObj)
+                {
+                    App.DAUtil.SaveGradeBucket(gradebkt);
+                }
+
                 ProgressValue = "1";
                 //=====================================================================
                 APP_SETTING updated_date = new APP_SETTING();
@@ -298,41 +335,48 @@ namespace SloperMobile.ViewModel
         {
             HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_CheckUpdate_AppData, Cache.AccessToken);
             Dictionary<string, string> dictquery = new Dictionary<string, string>();
-            dictquery.Add("appid", AppConstant.APP_ID);
+            dictquery.Add("appid", AppSetting.APP_ID);
             dictquery.Add("since", AppLastUpdateDate);
             var response = await apicall.Get<CheckForUpdateModel>(dictquery);
             return response;
         }
         private async Task<List<T_AREA>> HttpGetAreaUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "area", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "area", true), Cache.AccessToken);
             var area_response = await apicall.Get<T_AREA>();
             return area_response;
         }
         private async Task<List<CragTemplate>> HttpGetCragUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "crag", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "crag", true), Cache.AccessToken);
             var crag_response = await apicall.Get<CragTemplate>();
             return crag_response;
         }
         private async Task<List<T_ROUTE>> HttpGetRouteUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "route", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "route", true), Cache.AccessToken);
             var route_response = await apicall.Get<T_ROUTE>();
             return route_response;
         }
         private async Task<List<T_SECTOR>> HttpGetSectorUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "sector", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "sector", true), Cache.AccessToken);
             var sector_response = await apicall.Get<T_SECTOR>();
             return sector_response;
         }
 
         private async Task<List<T_GRADE>> HttpGetGradeUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppConstant.APP_ID, AppLastUpdateDate, "grade", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "grade", true), Cache.AccessToken);
             var grade_response = await apicall.Get<T_GRADE>();
             return grade_response;
+        }
+
+        private async Task<List<T_BUCKET>> HttpGetGradeBuckets()
+        {
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetGradeBuckets, AppSetting.APP_ID), Cache.AccessToken);
+            var gradebkt_response = await apicall.Get<T_BUCKET>();
+            return gradebkt_response;
         }
         #endregion
     }

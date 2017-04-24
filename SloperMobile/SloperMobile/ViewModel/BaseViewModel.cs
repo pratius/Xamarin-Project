@@ -32,6 +32,14 @@ namespace SloperMobile.ViewModel
             set { pageHeaderText = value; OnPropertyChanged(); }
         }
 
+        //private string pageTechGrade;
+
+        //public string PageTechGrade
+        //{
+        //    get { return pageTechGrade.ToUpper(); }
+        //    set { pageTechGrade = value; OnPropertyChanged(); }
+        //}
+
         private string pagesubHeaderText;
 
         public string PageSubHeaderText

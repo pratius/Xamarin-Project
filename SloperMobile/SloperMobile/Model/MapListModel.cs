@@ -21,5 +21,6 @@ namespace SloperMobile.Model
         public string BucketCount3 { get; set; } = "0";
         public string BucketCount4 { get; set; } = "0";
         public string BucketCount5 { get; set; } = "0";
+        public DataTemplate BucketCountTemplate { get; set; }
     }
 }
