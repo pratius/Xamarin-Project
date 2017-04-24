@@ -14,7 +14,7 @@ namespace SloperMobile.Views
         public SplashPage()
         {
             InitializeComponent();
-            var splahVM = new SplashViewModel(); ;
+            var splahVM = new SplashViewModel(Navigation); ;
             BindingContext = splahVM;
             splahVM.OnConditionNavigation = OnPageNavigation;
 

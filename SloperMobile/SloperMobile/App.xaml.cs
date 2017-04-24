@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using SloperMobile.Common.Constants;
 using SloperMobile.Model;
 using SloperMobile.MessagingTask;
+using Plugin.Connectivity;
 
 namespace SloperMobile
 {
@@ -21,7 +22,6 @@ namespace SloperMobile
         private static string _selectedcrag;
         public App()
         {
-
             InitializeAppStep1();
         }
 
@@ -60,17 +60,22 @@ namespace SloperMobile
             // Handle when your app starts
             try
             {
-                var IsAppinitialized = DAUtil.CheckAppInitialization();
-                if (IsAppinitialized)
+                if (CrossConnectivity.Current.IsConnected)
                 {
-                    var message = new StartCheckForUpdatesTask();
-                    MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
-                    HandleReceivedMessages();
+                    var IsAppinitialized = DAUtil.CheckAppInitialization();
+                    if (IsAppinitialized)
+                    {
+                        var message = new StartCheckForUpdatesTask();
+                        MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
+                        HandleReceivedMessages();
+                    }
                 }
+
             }
             catch
             {
                 //need to implement network availability.
+                Application.Current.MainPage.Navigation.PushAsync(new Views.NetworkErrorPage());
             }
         }
 
@@ -82,20 +87,22 @@ namespace SloperMobile
         protected override void OnResume()
         {
             // Handle when your app resumes
-            try
+
+            if (CrossConnectivity.Current.IsConnected)
             {
-                var message = new StartCheckForUpdatesTask();
-                MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
-                HandleReceivedMessages();
-            }
-            catch
-            {
-                //need to implement network availability.
+                var IsAppinitialized = DAUtil.CheckAppInitialization();
+                if (IsAppinitialized)
+                {
+                    var message = new StartCheckForUpdatesTask();
+                    MessagingCenter.Send(message, "StartCheckForUpdatesTaskMessage");
+                    HandleReceivedMessages();
+                }
             }
         }
         void InitializeAppStep1()
         {
             InitializeComponent();
+
             var IsAppinitialized = DAUtil.CheckAppInitialization();
             if (IsAppinitialized)
             {
@@ -112,6 +119,7 @@ namespace SloperMobile
             {
                 MainPage = new NavigationPage(new SplashPage());
             }
+
         }
 
         void HandleReceivedMessages()

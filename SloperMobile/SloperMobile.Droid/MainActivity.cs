@@ -15,12 +15,24 @@ using Xamarin.Forms;
 using SloperMobile.MessagingTask;
 using Android.Content;
 using SloperMobile.Droid.Services;
+using System;
 
 namespace SloperMobile.Droid
 {
-    [Activity(Label = "SloperMobile", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "GVC", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        protected override void OnDestroy()
+        {
+            try
+            {
+                base.OnDestroy();
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -41,9 +53,11 @@ namespace SloperMobile.Droid
             UserDialogs.Init(this);
 
             LoadApplication(new App());
-            CrashManager.Register(this, AppSetting.HockeyAppId_Droid);
-            //// in your main activity OnCreate-method add:
+
+            //Add HockeyApp Reporting
+            CrashManager.Register(this, AppSetting.HockeyAppId_Droid, new CrashManagerListenerImp());
             MetricsManager.Register(this, Application, AppSetting.HockeyAppId_Droid);
+
             WireUpCheckUpdateRunningTask();
         }
 
@@ -54,11 +68,21 @@ namespace SloperMobile.Droid
                 var intent = new Intent(this, typeof(CheckUpdatesTaskService));
                 StartService(intent);
             });
-            MessagingCenter.Subscribe<StopCheckForUpdatesTask>(this, "StopCheckForUpdatesTaskMessage", message => {
+            MessagingCenter.Subscribe<StopCheckForUpdatesTask>(this, "StopCheckForUpdatesTaskMessage", message =>
+            {
                 var intent = new Intent(this, typeof(CheckUpdatesTaskService));
                 StopService(intent);
             });
         }
     }
-}
 
+    public class CrashManagerListenerImp : CrashManagerListener
+    {
+        public override bool ShouldAutoUploadCrashes()
+        {
+            base.ShouldAutoUploadCrashes();
+            return true;
+        }
+    }
+
+}

@@ -8,13 +8,16 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Plugin.Connectivity;
+using Xamarin.Forms;
 namespace SloperMobile.ViewModel
 {
     public class SendsViewModel : BaseViewModel
     {
-        public SendsViewModel(string TabName)
+        private INavigation _navigation;
+        public SendsViewModel(string TabName, INavigation navigation)
         {
+            _navigation = navigation;
             OnPagePrepration(TabName);
         }
 
@@ -120,6 +123,8 @@ namespace SloperMobile.ViewModel
                     Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
             }
+
+
             catch (Exception ex)
             {
                 throw ex;
@@ -160,7 +165,7 @@ namespace SloperMobile.ViewModel
             {
                 HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_GetAscent_AppData, Settings.AccessTokenSettings);
                 SendsDTO sendsobj = new SendsDTO();
-                sendsobj.app_id = AppConstant.APP_ID;
+                sendsobj.app_id = AppSetting.APP_ID;
                 sendsobj.start_date = "20160101";
                 sendsobj.end_date = "20300101";
                 string sendsjson = JsonConvert.SerializeObject(sendsobj);

@@ -44,7 +44,7 @@ namespace SloperMobile.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);           
-            BindingContext = new SendsViewModel(TabName);
+            BindingContext = new SendsViewModel(TabName,Navigation);
             if (TabName == "SENDS")
             {
                 SendsScrollViewer.IsVisible = true;

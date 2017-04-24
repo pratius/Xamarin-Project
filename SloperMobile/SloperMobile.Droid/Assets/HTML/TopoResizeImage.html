@@ -235,11 +235,11 @@
                 highlighter.attr("data-x", (initialPoint.x - 15)).attr("data-y", (initialPoint.y - 15)).attr("routeId", routeId);
                 highlighter.on('click', function (e) {
 
-                     if (e.currentTarget.className.indexOf('p0') > -1){
+                    // if (e.currentTarget.className.indexOf('p0') > -1){
                     //if (e.currentTarget.id.indexOf('p0') > -1) {
                         routePointClick(parseInt(e.currentTarget.attributes[4].value));
-                     } else if (e.currentTarget.className.indexOf('p1') > -1) { routePointClick(parseInt(e.currentTarget.attributes[4].value)); }
-                     else if (e.currentTarget.className.indexOf('p2') > -1) { routePointClick(parseInt(e.currentTarget.attributes[4].value)); }
+                   //  } else if (e.currentTarget.className.indexOf('p1') > -1) { routePointClick(parseInt(e.currentTarget.attributes[4].value)); }
+                    // else if (e.currentTarget.className.indexOf('p2') > -1) { routePointClick(parseInt(e.currentTarget.attributes[4].value)); }
 
                 });
 

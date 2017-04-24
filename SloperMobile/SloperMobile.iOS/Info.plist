@@ -20,22 +20,20 @@
 	<key>MinimumOSVersion</key>
 	<string>6.0</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.sloperclimbing.grandvalleyclimbinggym</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>com.sloperclimbing.x.test</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to the camera to take photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs access to photos.</string>
 	<key>CFBundleName</key>
 	<string>GVC</string>
-	<key>CFBundleVersion</key>
-	<string>109</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2.0</string>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleVersion</key>
+	<string>113</string>
 </dict>
 </plist>

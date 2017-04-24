@@ -39,7 +39,7 @@
 				<Label Text="{Binding ProgressMsg}" TextColor="White" FontSize="Micro" IsVisible="{Binding IsDisplayMessage}">
 				</Label>
 			</StackLayout>
-			<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="1" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}" IsEnabled="{Binding IsButtonInable}" />
+			<Button Text="{Binding CommandText,Mode=TwoWay}" BorderRadius="0" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Command="{Binding SendSummaryCommand,Mode=TwoWay}" Style="{StaticResource GeneralButtonStyle}" IsEnabled="{Binding IsButtonInable}" />
 		</StackLayout>
 	</Grid>
 </StackLayout>

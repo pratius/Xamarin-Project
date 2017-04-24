@@ -47,10 +47,14 @@ namespace SloperMobile.iOS
             ImageCircleRenderer.Init();
             Cache.CurrentScreenHeight = (int)((int)(UIScreen.MainScreen.Bounds.Height * (int)UIScreen.MainScreen.Scale) * 2);
             LoadApplication(new App());
+
+            //Add HockeyApp Reporting
             var manager = BITHockeyManager.SharedHockeyManager;
             manager.Configure(AppSetting.HockeyAppId_iOS);
+            manager.CrashManager.CrashManagerStatus = BITCrashManagerStatus.AutoSend;
             manager.StartManager();
             manager.Authenticator.AuthenticateInstallation();
+
             new SfGaugeRenderer();
             new SfRatingRenderer();
             WireUpCheckUpdateRunningTask();
@@ -59,12 +63,14 @@ namespace SloperMobile.iOS
 
         void WireUpCheckUpdateRunningTask()
         {
-            MessagingCenter.Subscribe<StartCheckForUpdatesTask>(this, "StartCheckForUpdatesTaskMessage", async message => {
+            MessagingCenter.Subscribe<StartCheckForUpdatesTask>(this, "StartCheckForUpdatesTaskMessage", async message =>
+            {
                 updateRunningTask = new iOSCheckUpdatesTaskService();
                 await updateRunningTask.Start();
             });
 
-            MessagingCenter.Subscribe<StopCheckForUpdatesTask>(this, "StopCheckForUpdatesTaskMessage", message => {
+            MessagingCenter.Subscribe<StopCheckForUpdatesTask>(this, "StopCheckForUpdatesTaskMessage", message =>
+            {
                 updateRunningTask.Stop();
             });
         }

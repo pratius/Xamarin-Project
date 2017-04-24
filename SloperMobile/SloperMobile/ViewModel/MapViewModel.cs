@@ -27,9 +27,11 @@ namespace SloperMobile.ViewModel
             _navigation = navigation;
             PageHeaderText = currentCrag.crag_name;
             PageSubHeaderText = currentCrag.area_name;
-            LegendsData=LoadLegendsBucket();
+            LoadLegendsBucket();
             LoadMoreSector = new DelegateCommand(LoadSectorImages);
         }
+
+        #region Properties
         private ObservableCollection<MapListModel> _sectorimageList;
 
         public ObservableCollection<MapListModel> SectorImageList
@@ -50,19 +52,21 @@ namespace SloperMobile.ViewModel
             }
         }
 
-        private int legendheight=0;
+        private int legendheight = 0;
         public int LegendsHeight
         {
             get { return legendheight; }
-            set { legendheight = value;OnPropertyChanged(); }
+            set { legendheight = value; OnPropertyChanged(); }
         }
 
-        private List<BucketLegends> legendsdata;
-        public List<BucketLegends> LegendsData
+        private DataTemplate legendsdata;
+        public DataTemplate LegendsDataTemplate
         {
             get { return legendsdata; }
             set { legendsdata = value; OnPropertyChanged(); }
         }
+
+        #endregion
 
         #region DelegateCommand
 
@@ -104,27 +108,60 @@ namespace SloperMobile.ViewModel
                             }
                             else
                             {
-                                objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(1));
-                                objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                                objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                                objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(4));
                             }
-                            var tgrades = App.DAUtil.GetBucketCountsBySectorId(tsec.sector_id);
-                            if (tgrades != null)
+                            int totalbuckets = App.DAUtil.GetTotalBucketForApp();
+                            //var tgrades = App.DAUtil.GetBucketCountsBySectorId(tsec.sector_id);
+                            if (totalbuckets != 0)
                             {
-                                int loopvar = 1;
-                                foreach (T_GRADE tgrd in tgrades)
+
+                                objSec.BucketCountTemplate = new DataTemplate(() =>
                                 {
-                                    if (loopvar == 1)
-                                    { objSec.BucketCount1 = tgrd.grade_bucket_id_count.ToString(); }
-                                    if (loopvar == 2)
-                                    { objSec.BucketCount2 = tgrd.grade_bucket_id_count.ToString(); }
-                                    if (loopvar == 3)
-                                    { objSec.BucketCount3 = tgrd.grade_bucket_id_count.ToString(); }
-                                    if (loopvar == 4)
-                                    { objSec.BucketCount4 = tgrd.grade_bucket_id_count.ToString(); }
-                                    if (loopvar == 5)
-                                    { objSec.BucketCount5 = tgrd.grade_bucket_id_count.ToString(); }
-                                    loopvar++;
-                                }
+                                    StackLayout slBucketFrame = new StackLayout();
+                                    slBucketFrame.Orientation = StackOrientation.Horizontal;
+                                    slBucketFrame.HorizontalOptions = LayoutOptions.EndAndExpand;
+                                    slBucketFrame.VerticalOptions = LayoutOptions.Start;
+
+                                    //foreach (T_GRADE tgrd in tgrades)
+                                    for (int i = 1; i <= totalbuckets; i++)
+                                    {
+                                        Frame countframe = new Frame();
+                                        countframe.HasShadow = false;
+                                        countframe.Padding = 0; countframe.WidthRequest = 25; countframe.HeightRequest = 20;
+                                        countframe.BackgroundColor = Color.FromHex(GetHexColorCodeByGradeBucketId(i));
+                                        Label lblcount = new Label();
+                                        if (App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString()) != null)
+                                        {
+                                            lblcount.Text = App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString());
+                                        }
+                                        else
+                                        {
+                                            lblcount.Text = "0";
+                                        }
+                                        lblcount.HorizontalOptions = LayoutOptions.CenterAndExpand;
+                                        lblcount.VerticalOptions = LayoutOptions.CenterAndExpand;
+                                        lblcount.TextColor = Color.White; lblcount.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                                        countframe.Content = lblcount;
+                                        slBucketFrame.Children.Add(countframe);
+                                    }
+                                    return slBucketFrame;
+                                });
+                                //int loopvar = 1;
+                                //foreach (T_GRADE tgrd in tgrades)
+                                //{
+                                //    if (loopvar == 1)
+                                //    { objSec.BucketCount1 = tgrd.grade_bucket_id_count.ToString(); }
+                                //    if (loopvar == 2)
+                                //    { objSec.BucketCount2 = tgrd.grade_bucket_id_count.ToString(); }
+                                //    if (loopvar == 3)
+                                //    { objSec.BucketCount3 = tgrd.grade_bucket_id_count.ToString(); }
+                                //    if (loopvar == 4)
+                                //    { objSec.BucketCount4 = tgrd.grade_bucket_id_count.ToString(); }
+                                //    if (loopvar == 5)
+                                //    { objSec.BucketCount5 = tgrd.grade_bucket_id_count.ToString(); }
+                                //    loopvar++;
+                                //}
                             }
                             SectorImageList.Add(objSec);
                         }
@@ -147,35 +184,48 @@ namespace SloperMobile.ViewModel
         }
 
 
-        private List<BucketLegends> LoadLegendsBucket()
+        private void LoadLegendsBucket()
         {
             try
             {
-                List<BucketLegends> bucketlist = new List<BucketLegends>();
-                List<GradeId> gradetyp_id = new List<GradeId>();
-                List<string> bucketname = new List<string>();
-                gradetyp_id = App.DAUtil.GetGradeTypeIdByCragId(Settings.SelectedCragSettings);
-                if (gradetyp_id == null) return bucketlist;
-                foreach (GradeId grdtypid in gradetyp_id)
+                var leg_buckets = App.DAUtil.GetBucketsByCragID(Settings.SelectedCragSettings);
+                if (leg_buckets != null)
                 {
-                    bucketname = App.DAUtil.GetBucketNameByGradeTypeId(grdtypid.grade_type_id);
-                    if(bucketname!=null && bucketname.Count==5)
+                    int gc = App.DAUtil.GetTotalBucketForApp();
+                    int gr = leg_buckets.Count / gc;
+                    Grid grdLegend = new Grid();
+                    for (var i = 0; i < gr; i++)
                     {
-                        BucketLegends bktObj = new BucketLegends();
-                        bktObj.BucketName1 = bucketname[0];
-                        bktObj.BucketName2 = bucketname[1];
-                        bktObj.BucketName3 = bucketname[2];
-                        bktObj.BucketName4 = bucketname[3];
-                        bktObj.BucketName5 = bucketname[4];
-                        bucketlist.Add(bktObj);
-                        LegendsHeight += 10;
+                        grdLegend.RowDefinitions?.Add(new RowDefinition { Height = GridLength.Auto });
                     }
+
+                    for (var i = 0; i < gc; i++)
+                    {
+                        grdLegend.ColumnDefinitions?.Add(new ColumnDefinition { Width = GridLength.Star });
+                    }
+
+                    var batches = leg_buckets.Select((x, i) => new { x, i }).GroupBy(p => (p.i / gc), p => p.x);
+
+                    int r = 0;
+                    foreach (var row in batches)
+                    {
+                        int c = 0;
+                        foreach (var item in row)
+                        {
+                            grdLegend.Children.Add(new Label { Text = item.BucketName, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(item.HexColor) }, c, r);
+                            c++;
+                        }
+                        r++;
+                    }
+                    LegendsDataTemplate = new DataTemplate(() =>
+                     {
+                         return grdLegend;
+                     });
+
                 }
-                return bucketlist.Distinct(new BucketLegends.Comparer()).ToList();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return null;
             }
         }
         private string GetSteepnessResourceName(int steep)
@@ -214,6 +264,33 @@ namespace SloperMobile.ViewModel
                     break;
             }
             return resource;
+        }
+
+        private string GetHexColorCodeByGradeBucketId(int id)
+        {
+            string hexcode;
+            switch (id)
+            {
+                case 1:
+                    hexcode = "#036177";
+                    break;
+                case 2:
+                    hexcode = "#1f8a70";
+                    break;
+                case 3:
+                    hexcode = "#91A537";
+                    break;
+                case 4:
+                    hexcode = "#B49800";
+                    break;
+                case 5:
+                    hexcode = "#FD7400";
+                    break;
+                default:
+                    hexcode = "#B9BABD";
+                    break;
+            }
+            return hexcode;
         }
     }
 }
