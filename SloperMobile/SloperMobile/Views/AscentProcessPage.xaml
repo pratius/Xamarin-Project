@@ -65,7 +65,7 @@
 					<ColumnDefinition Width="1*" />
 				</Grid.ColumnDefinitions>
 				<StackLayout Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0">
-					<Label Text="AWESOME " TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                    <Label Text="{Binding SendsCongratsWording,Mode=TwoWay} " TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
 					<Label Text="{Binding SendsTypeName,Mode=TwoWay}" TextColor="#FF9933" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
 					<Label Text="!" TextColor="White" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
 				</StackLayout>
@@ -76,7 +76,7 @@
 					<XLabUC:HybridWebView x:Name="webView" BackgroundColor="Black" WidthRequest="300" HeightRequest="300" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
 					<rating:SfRating x:Name="rating_summary" WidthRequest="145" ItemCount="5" ItemSize="25" Precision="Standard" Value="{Binding SendRating, Mode=TwoWay}" ReadOnly="True" HorizontalOptions="Center" VerticalOptions="Start">
 						<rating:SfRating.RatingSettings>
-							<rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" />
+							<rating:SfRatingSettings RatedFill="#FF8E2D" RatedStroke="#FF8E2D" UnRatedStroke="White" UnRatedStrokeWidth="1" RatedStrokeWidth="1" />
 						</rating:SfRating.RatingSettings>
 					</rating:SfRating>
 					<ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

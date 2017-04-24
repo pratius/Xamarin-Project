@@ -249,12 +249,36 @@ namespace SloperMobile.ViewModel
                 CragName = routeData.crag_id;
                 RouteInfo = routeData.route_info;
                 Rating = routeData.rating;
-                TopAngle_20 = ImageSource.FromFile(GetTopAngleResourceName(routeData.angles_top_1) + "_20x20");
-                TopAngle_54 = ImageSource.FromFile(GetTopAngleResourceName(routeData.angles_top_1) + "_54x54");
-                TopHold_20 = ImageSource.FromFile(GetTopHoldResourceName(routeData.hold_type_top_1) + "_20x20");
-                TopHold_54 = ImageSource.FromFile(GetTopHoldResourceName(routeData.hold_type_top_1) + "_54x54");
-                TopRouteStyle_20 = ImageSource.FromFile(GetTopRouteStyleResourceName(routeData.route_style_top_1) + "_20x20");
-                TopRouteStyle_54 = ImageSource.FromFile(GetTopRouteStyleResourceName(routeData.route_style_top_1) + "_54x54");
+                if (!string.IsNullOrEmpty(routeData.angles_top_1) && Convert.ToInt32(routeData.angles_top_1) > 0)
+                {
+                    TopAngle_20 = ImageSource.FromFile(GetTopAngleResourceName(routeData.angles_top_1) + "_20x20");
+                    TopAngle_54 = ImageSource.FromFile(GetTopAngleResourceName(routeData.angles_top_1) + "_54x54");
+                }
+                else
+                {
+                    TopAngle_20 = ImageSource.FromFile(GetTopAngleResourceName("2") + "_20x20");
+                    TopAngle_54 = ImageSource.FromFile(GetTopAngleResourceName("2") + "_54x54");
+                }
+                if (!string.IsNullOrEmpty(routeData.hold_type_top_1) && Convert.ToInt32(routeData.hold_type_top_1) > 0)
+                {
+                    TopHold_20 = ImageSource.FromFile(GetTopHoldResourceName(routeData.hold_type_top_1) + "_20x20");
+                    TopHold_54 = ImageSource.FromFile(GetTopHoldResourceName(routeData.hold_type_top_1) + "_54x54");
+                }
+                else
+                {
+                    TopHold_20 = ImageSource.FromFile(GetTopHoldResourceName("4") + "_20x20");
+                    TopHold_54 = ImageSource.FromFile(GetTopHoldResourceName("4") + "_54x54");
+                }
+                if (!string.IsNullOrEmpty(routeData.route_style_top_1) && Convert.ToInt32(routeData.route_style_top_1) > 0)
+                {
+                    TopRouteStyle_20 = ImageSource.FromFile(GetTopRouteStyleResourceName(routeData.route_style_top_1) + "_20x20");
+                    TopRouteStyle_54 = ImageSource.FromFile(GetTopRouteStyleResourceName(routeData.route_style_top_1) + "_54x54");
+                }
+                else
+                {
+                    TopRouteStyle_20 = ImageSource.FromFile(GetTopRouteStyleResourceName("2") + "_20x20");
+                    TopRouteStyle_54 = ImageSource.FromFile(GetTopRouteStyleResourceName("2") + "_54x54");
+                }                                                               
             }
         }
 

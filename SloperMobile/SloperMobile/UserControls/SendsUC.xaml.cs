@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Acr.UserDialogs;
 
 namespace SloperMobile.UserControls
 {
@@ -42,6 +43,7 @@ namespace SloperMobile.UserControls
             }
             catch (Exception ex)
             {
+                UserDialogs.Instance.HideLoading();
                 var error = ex.Message;
             }
         }

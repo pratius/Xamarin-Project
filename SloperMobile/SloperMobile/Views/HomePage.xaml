@@ -5,7 +5,7 @@
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
     </ContentPage.Padding>
-	<ContentPage.Content>
+    <ContentPage.Content>
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0" Margin="20,0,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50*" />
@@ -43,11 +43,11 @@
 
             <Grid  Grid.Row="3" Grid.Column="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
                 <!--
-      add this back in once we have somewhere to go
+      add this back in once we have somewhere to go 
       	<Grid.GestureRecognizers>
               <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="ClimbingDaysPage"/>
-      	</Grid.GestureRecognizers>
-      -->
+      	</Grid.GestureRecognizers> -->
+
 
                 <RelativeLayout>
                     <Image Aspect="AspectFit" Source="icon_climbing_days" VerticalOptions="Center" HorizontalOptions="Center"

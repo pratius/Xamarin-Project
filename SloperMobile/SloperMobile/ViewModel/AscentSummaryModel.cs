@@ -26,13 +26,14 @@ namespace SloperMobile.ViewModel
         private string routeid;
         private bool isenable = true;
         private bool isdisplaymsg;
-
+        private string sendstypetext;
         private bool isdisplaysummaryimg = false;
         private bool isdisplaysummaryweb = true;
 
         private ImageSource summaryimage;
 
         private T_ROUTE routeData;
+        private T_CRAG currentCrag;
 
         private string routeName = "";
         private string sendsTypeName = "";
@@ -128,14 +129,23 @@ namespace SloperMobile.ViewModel
             set { routeid = value; OnPropertyChanged(); }
         }
 
-
+        public string SendsTypeText
+        {
+            get { return sendstypetext; }
+            set { sendstypetext = value; OnPropertyChanged(); }
+        }
         public AscentSummaryModel(INavigation navigation, string routeid, Send send)
         {
+            currentCrag = App.DAUtil.GetSelectedCragData();
             SummaryImage = Cache.SelctedCurrentSector?.SectorImage;
             RouteId = routeid;
             routeData = App.DAUtil.GetRouteDataByRouteID(RouteId);
             PageHeaderText = (routeData.route_name).ToUpper();
-            PageSubHeaderText = Cache.SelctedCurrentSector.SectorName;
+            if (Cache.SelctedCurrentSector != null)
+
+                PageHeaderText = (routeData.route_name).ToUpper() + " " + routeData.tech_grade;
+            PageSubHeaderText = (currentCrag.crag_name).Trim() + ", " + Cache.SelctedCurrentSector.SectorName;
+
             //PageSubHeaderText = "";
             var grades = App.DAUtil.GetTtechGrades(routeData.grade_type_id);
             AscentGrades = grades;
@@ -144,9 +154,59 @@ namespace SloperMobile.ViewModel
                 SendsGrade = routeData.tech_grade; //grades[0];
             }
             _navigation = navigation;
+           
+            SendsTypeName = GetSendTypeWording(send.Ascent_Type_Description);
 
-            SendsTypeName = send.Ascent_Type_Description;
+            if (SendsTypeName == "Boom! Nice ")
+                SendsTypeText = "Onsight";
+
+            if (SendsTypeName == "Cool ")
+                SendsTypeText = "Flash";
+
+            if (SendsTypeName == "Awesome ")
+                SendsTypeText = "Redpoint";
+
+            if (SendsTypeName == "Good ")
+                SendsTypeText = "Repeat";
+
+            if (SendsTypeName == "(Project burn) ")
+                SendsTypeText = "Making Progress";
+
+            if (SendsTypeName == "One-hang! ")
+                SendsTypeText = "Good Work";
+
             SendRating = send.Rating;
+        }
+       
+        private string  GetSendTypeWording(string obj)
+        {
+
+          
+           string SendsCongratsWording = string.Empty;
+            switch (Convert.ToString(obj))
+            {
+                case "Onsight":
+                    SendsCongratsWording = "Boom! Nice ";
+                    break;
+                case "Flash":
+                    SendsCongratsWording = "Cool ";
+                    break;
+                case "Redpoint":
+                    SendsCongratsWording = "Awesome ";
+                    break;
+                case "Repeat":
+                    SendsCongratsWording = "Good ";
+                    break;
+                case "Making Progress":
+                    SendsCongratsWording = "(Project burn) ";
+                    break;
+                case "Good Work":
+                    SendsCongratsWording = "One-hang! ";
+                   
+                    break;
+            }
+            return SendsCongratsWording;
+
         }
     }
 }

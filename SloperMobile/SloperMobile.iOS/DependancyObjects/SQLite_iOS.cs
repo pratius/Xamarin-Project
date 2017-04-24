@@ -1,6 +1,7 @@
 ﻿using SloperMobile.Common.Constants;
 using SloperMobile.Common.Interfaces;
 using SloperMobile.iOS.DependancyObjects;
+using SQLite.Net.Interop;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(SQLite_iOS))]
 namespace SloperMobile.iOS.DependancyObjects
 {
-   public class SQLite_iOS: ISQLite
+    public class SQLite_iOS : ISQLite
     {
         public SQLite_iOS()
         {
@@ -18,7 +19,7 @@ namespace SloperMobile.iOS.DependancyObjects
         #region ISQLite implementation
         public SQLite.Net.SQLiteConnection GetConnection()
         {
-            var sqliteFilename = AppConstant.APP_DBNAME; 
+            var sqliteFilename = AppSetting.APP_DBNAME;
             string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal); // Documents folder
             string libraryPath = Path.Combine(documentsPath, "..", "Library"); // Library folder
             var path = Path.Combine(libraryPath, sqliteFilename);
@@ -31,7 +32,7 @@ namespace SloperMobile.iOS.DependancyObjects
             }
 
             var plat = new SQLite.Net.Platform.XamarinIOS.SQLitePlatformIOS();
-            var conn = new SQLite.Net.SQLiteConnection(plat, path);
+            var conn = new SQLite.Net.SQLiteConnection(plat, path, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.FullMutex, true);
 
             // Return the database connection 
             return conn;

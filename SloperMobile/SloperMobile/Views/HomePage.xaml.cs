@@ -1,4 +1,5 @@
-﻿using SloperMobile.Common.Enumerators;
+﻿using Plugin.Connectivity;
+using SloperMobile.Common.Enumerators;
 using SloperMobile.Common.Helpers;
 using SloperMobile.ViewModel;
 using System;
@@ -14,6 +15,7 @@ namespace SloperMobile.Views
     public partial class HomePage : ContentPage
     {
         private HomeViewModel HomeVM;
+
         public HomePage()
         {
             InitializeComponent();
@@ -21,6 +23,7 @@ namespace SloperMobile.Views
             HomeVM = new HomeViewModel();
             BindingContext = HomeVM;
         }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -60,10 +63,19 @@ namespace SloperMobile.Views
                         await Navigation.PushAsync(new PyramidPage());
                         break;
                     case ApplicationActivity.SendsPage:
-                        await Navigation.PushAsync(new SendsPage("SENDS"));
-                        break;
+                        if (CrossConnectivity.Current.IsConnected)
+                        {
+                            await Navigation.PushAsync(new SendsPage("SENDS"));
+                            break;
+                        }
+                        else
+                        {
+                            await Navigation.PushAsync(new NetworkErrorPage());
+                            break;
+                        }
                     case ApplicationActivity.ClimbingDaysPage:
                         await Navigation.PushAsync(new ClimbingDaysPage());
+                        //throw new Exception("Exception Raised by Ravi Explicitly !!!!!!");
                         break;
                     case ApplicationActivity.NewsPage:
                         await Navigation.PushAsync(new NewsPage());
@@ -75,8 +87,7 @@ namespace SloperMobile.Views
                 await DisplayAlert("Error", ex.Message, "Ok");
                 throw;
             }
-
-
         }
+
     }
 }

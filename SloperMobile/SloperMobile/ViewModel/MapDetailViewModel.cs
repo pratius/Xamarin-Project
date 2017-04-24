@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using SloperMobile.Common.Constants;
 using SloperMobile.DataBase;
 using SloperMobile.Common.Enumerators;
+using SloperMobile.Common.Helpers;
 
 namespace SloperMobile.ViewModel
 {
@@ -37,8 +38,14 @@ namespace SloperMobile.ViewModel
             set { currentsec = value; OnPropertyChanged(); }
         }
 
-        private List<BucketLegends> legendsdata;
-        public List<BucketLegends> LegendsData
+        //private List<BucketLegends> legendsdata;
+        //public List<BucketLegends> LegendsData
+        //{
+        //    get { return legendsdata; }
+        //    set { legendsdata = value; OnPropertyChanged(); }
+        //}
+        private DataTemplate legendsdata;
+        public DataTemplate LegendsDataTemplate
         {
             get { return legendsdata; }
             set { legendsdata = value; OnPropertyChanged(); }
@@ -66,7 +73,7 @@ namespace SloperMobile.ViewModel
                 PageHeaderText = SelectedSector.SectorName;
                 PageSubHeaderText = currentCrag.crag_name;
                 SectorImage = SelectedSector.SectorImage;
-                LegendsData=LoadLegendsBucket();
+                LoadLegendsBucket();
 
                 TapSectorCommand = new DelegateCommand(TapOnSectorImage);
                 var routes = App.DAUtil.GetRoutesBySectorId(SelectedSector.SectorId);
@@ -86,18 +93,46 @@ namespace SloperMobile.ViewModel
                     }
                     routeobj.TitleText = route.route_name;
                     routeobj.SubText = route.route_info;
-                    routeobj.RouteId = route.route_id;
+                    
 
-                    if (!string.IsNullOrEmpty(route.angles_top_2) && route.angles_top_2.Contains(","))
+                    routeobj.RouteId = route.route_id;
+                    routeobj.Rating = Math.Round(Convert.ToDecimal(route.rating)).ToString();
+                    routeobj.StarImage = ImageSource.FromFile(GetStarImage(Math.Round(Convert.ToDecimal(route.rating)).ToString()));
+                    //if (!string.IsNullOrEmpty(route.angles_top_2) && route.angles_top_2.Contains(","))
+                    //{
+                    //    string[] steeps = route.angles_top_2.Split(',');
+                    //    routeobj.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[0])));
+                    //    routeobj.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[1])));
+                    //}
+                    //else
+                    //{
+                    //    routeobj.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(32));
+                    //    routeobj.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(16));
+                    //    routeobj.Steepness3 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                    //}
+                    if (!string.IsNullOrEmpty(route.angles_top_1) && Convert.ToInt32(route.angles_top_1) > 0)
                     {
-                        string[] steeps = route.angles_top_2.Split(',');
-                        routeobj.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[0])));
-                        routeobj.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[1])));
+                        routeobj.Steepness1 = ImageSource.FromFile(GetTopAngleResourceName(route.angles_top_1) + "_20x20");
                     }
                     else
                     {
-                        routeobj.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(1));
-                        routeobj.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                        routeobj.Steepness1 = ImageSource.FromFile(GetTopAngleResourceName("2") + "_20x20");
+                    }
+                    if (!string.IsNullOrEmpty(route.hold_type_top_1) && Convert.ToInt32(route.hold_type_top_1) > 0)
+                    {
+                        routeobj.Steepness2 = ImageSource.FromFile(GetTopHoldResourceName(route.hold_type_top_1) + "_20x20");
+                    }
+                    else
+                    {
+                        routeobj.Steepness2 = ImageSource.FromFile(GetTopHoldResourceName("4") + "_20x20");
+                    }
+                    if (!string.IsNullOrEmpty(route.route_style_top_1) && Convert.ToInt32(route.route_style_top_1) > 0)
+                    {
+                        routeobj.Steepness3 = ImageSource.FromFile(GetTopRouteStyleResourceName(route.route_style_top_1) + "_20x20");
+                    }
+                    else
+                    {
+                        routeobj.Steepness3 = ImageSource.FromFile(GetTopRouteStyleResourceName("2") + "_20x20");
                     }
                     routeobj.RouteTechGrade = route.tech_grade;
                     if (j > 4)
@@ -143,7 +178,7 @@ namespace SloperMobile.ViewModel
                 case "5":
                     return "#fd7400";
                 default:
-                    return "#cccccc";
+                    return "#B9BABD";
             }
         }
 
@@ -188,35 +223,176 @@ namespace SloperMobile.ViewModel
             return resource;
         }
 
-        private List<BucketLegends> LoadLegendsBucket()
+        private string GetTopAngleResourceName(string angle)
+        {
+            string resource = "icon_steepness_1_slab_border";
+            switch (angle)
+            {
+                case "1":
+                    resource = "icon_steepness_1_slab_border";
+                    break;
+                case "2":
+                    resource = "icon_steepness_2_vertical_border";
+                    break;
+                case "4":
+                    resource = "icon_steepness_4_overhanging_border";
+                    break;
+                case "8":
+                    resource = "icon_steepness_8_roof_border";
+                    break;
+            }
+            return resource;
+        }
+
+        private string GetTopHoldResourceName(string hold)
+        {
+            string resource = "icon_hold_type_1_slopers_border";
+            switch (hold)
+            {
+                case "1":
+                    resource = "icon_hold_type_1_slopers_border";
+                    break;
+                case "2":
+                    resource = "icon_hold_type_2_crimps_border";
+                    break;
+                case "4":
+                    resource = "icon_hold_type_4_jugs_border";
+                    break;
+                case "8":
+                    resource = "icon_hold_type_8_pockets_border";
+                    break;
+            }
+            return resource;
+        }
+
+        private string GetTopRouteStyleResourceName(string route)
+        {
+            string resource = "icon_route_style_1_technical_border";
+            switch (route)
+            {
+                case "1":
+                    resource = "icon_route_style_1_technical_border";
+                    break;
+                case "2":
+                    resource = "icon_route_style_2_sequential_border";
+                    break;
+                case "4":
+                    resource = "icon_route_style_4_powerful_border";
+                    break;
+                case "8":
+                    resource = "icon_route_style_8_sustained_border";
+                    break;
+                case "16":
+                    resource = "icon_route_style_16_one_move_border";
+                    break;
+                case "all":
+                    resource = "icon_route_style_32_everything_border";
+                    break;
+            }
+            return resource;
+        }
+
+        private string GetStarImage(string star)
+        {
+            string resource = "";
+            switch (star)
+            {
+                case "0":
+                    resource = "icon_star0";
+                    break;
+                case "1":
+                    resource = "icon_star1";
+                    break;
+                case "2":
+                    resource = "icon_star2";
+                    break;
+                case "3":
+                    resource = "icon_star3";
+                    break;
+                case "4":
+                    resource = "icon_star4";
+                    break;
+                case "5":
+                    resource = "icon_star5";
+                    break;
+            }
+
+            return resource;
+        }
+
+        //private List<BucketLegends> LoadLegendsBucket()
+        //{
+        //    try
+        //    {
+        //        List<BucketLegends> bucketlist = new List<BucketLegends>();
+        //        List<GradeId> gradetyp_id = new List<GradeId>();
+        //        List<string> bucketname = new List<string>();
+        //        gradetyp_id = App.DAUtil.GetGradeTypeIdBySectorId(CurrentSector.SectorId);
+        //        if (gradetyp_id == null) return bucketlist;
+        //        foreach (GradeId grdtypid in gradetyp_id)
+        //        {
+        //            bucketname = App.DAUtil.GetBucketNameByGradeTypeId(grdtypid.grade_type_id);
+        //            if (bucketname != null && bucketname.Count == 5)
+        //            {
+        //                BucketLegends bktObj = new BucketLegends();
+        //                bktObj.BucketName1 = bucketname[0];
+        //                bktObj.BucketName2 = bucketname[1];
+        //                bktObj.BucketName3 = bucketname[2];
+        //                bktObj.BucketName4 = bucketname[3];
+        //                bktObj.BucketName5 = bucketname[4];
+        //                bucketlist.Add(bktObj);
+        //                LegendsHeight += 30;
+        //            }
+        //        }
+        //        return bucketlist.Distinct(new BucketLegends.Comparer()).ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
+
+        private void LoadLegendsBucket()
         {
             try
             {
-                List<BucketLegends> bucketlist = new List<BucketLegends>();
-                List<GradeId> gradetyp_id = new List<GradeId>();
-                List<string> bucketname = new List<string>();
-                gradetyp_id = App.DAUtil.GetGradeTypeIdBySectorId(CurrentSector.SectorId);
-                if (gradetyp_id == null) return bucketlist;
-                foreach (GradeId grdtypid in gradetyp_id)
+                var leg_buckets = App.DAUtil.GetBucketsBySectorID(CurrentSector.SectorId);
+                if (leg_buckets != null)
                 {
-                    bucketname = App.DAUtil.GetBucketNameByGradeTypeId(grdtypid.grade_type_id);
-                    if (bucketname != null && bucketname.Count == 5)
+                    int gc = App.DAUtil.GetTotalBucketForApp();
+                    int gr = leg_buckets.Count / gc;
+                    Grid grdLegend = new Grid();
+                    for (var i = 0; i < gr; i++)
                     {
-                        BucketLegends bktObj = new BucketLegends();
-                        bktObj.BucketName1 = bucketname[0];
-                        bktObj.BucketName2 = bucketname[1];
-                        bktObj.BucketName3 = bucketname[2];
-                        bktObj.BucketName4 = bucketname[3];
-                        bktObj.BucketName5 = bucketname[4];
-                        bucketlist.Add(bktObj);
-                        LegendsHeight += 30;
+                        grdLegend.RowDefinitions?.Add(new RowDefinition { Height = GridLength.Auto });
                     }
+
+                    for (var i = 0; i < gc; i++)
+                    {
+                        grdLegend.ColumnDefinitions?.Add(new ColumnDefinition { Width = GridLength.Star });
+                    }
+
+                    var batches = leg_buckets.Select((x, i) => new { x, i }).GroupBy(p => (p.i / gc), p => p.x);
+
+                    int r = 0, c = 0;
+                    foreach (var row in batches)
+                    {
+                        foreach (var item in row)
+                        {
+                            grdLegend.Children.Add(new Label { Text = item.BucketName, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(item.HexColor) }, c, r);
+                            c++;
+                        }
+                        r++;
+                    }
+                    LegendsDataTemplate = new DataTemplate(() =>
+                    {
+                        return grdLegend;
+                    });
+
                 }
-                return bucketlist.Distinct(new BucketLegends.Comparer()).ToList();
             }
             catch (Exception ex)
             {
-                return null;
             }
         }
     }
@@ -226,11 +402,15 @@ namespace SloperMobile.ViewModel
         public string RouteIndex { get; set; }
         public string TitleText { get; set; }
         public string SubText { get; set; }
+        public string Rating { get; set; }
         public ImageSource Steepness1 { get; set; }
         public ImageSource Steepness2 { get; set; }
+        public ImageSource Steepness3 { get; set; }
+        public ImageSource StarImage { get; set; }
+
         public string RouteTechGrade { get; set; }
         public string RouteGradeColor { get; set; }
         public string RouteId { get; set; }
-        
+
     }
 }
