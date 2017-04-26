@@ -313,7 +313,14 @@ namespace SloperMobile.DataBase
         public string GetTTechGradeIdByGradeName(string grade_id, string grade_name)
         {
             var ttgrade = dbConn.Table<TTECH_GRADE>().FirstOrDefault(ttg => ttg.grade_type_id == grade_id && ttg.tech_grade == grade_name);
-            return ttgrade.tech_grade_id.ToString();
+            if (ttgrade != null)
+            {
+                return ttgrade.tech_grade_id.ToString();
+            }
+            else
+            {
+                return null;
+            }
         }
 
         //------------------------------------------
@@ -378,7 +385,7 @@ namespace SloperMobile.DataBase
         /// <returns></returns>
         public List<T_GRADE> GetBucketCountsBySectorId(string sectorid)
         {
-            var item = dbConn.Table<T_GRADE>().Where(grade => grade.sector_id == sectorid).OrderBy(x=>x.grade_bucket_id);
+            var item = dbConn.Table<T_GRADE>().Where(grade => grade.sector_id == sectorid).OrderBy(x => x.grade_bucket_id);
             return item.ToList();
         }
 
@@ -418,7 +425,7 @@ namespace SloperMobile.DataBase
 
         public List<Buckets> GetBucketsByCragID(string cragid)
         {
-            var item =dbConn.Query<Buckets>("SELECT DISTINCT bucket_name as BucketName, hex_code as HexColor FROM T_BUCKET WHERE (grade_type_id IN(SELECT DISTINCT T_ROUTE.grade_type_id FROM T_SECTOR INNER JOIN T_ROUTE ON T_SECTOR.sector_id = T_ROUTE.sector_id WHERE(T_SECTOR.crag_id = ?))) ORDER BY grade_bucket_group, grade_bucket_id", cragid);
+            var item = dbConn.Query<Buckets>("SELECT DISTINCT bucket_name as BucketName, hex_code as HexColor FROM T_BUCKET WHERE (grade_type_id IN(SELECT DISTINCT T_ROUTE.grade_type_id FROM T_SECTOR INNER JOIN T_ROUTE ON T_SECTOR.sector_id = T_ROUTE.sector_id WHERE(T_SECTOR.crag_id = ?))) ORDER BY grade_bucket_group, grade_bucket_id", cragid);
             //dbConn.Table<T_BUCKET>().Where(x => x.grade_type_id == gradetypeid).OrderBy(x => x.grade_bucket_id).ToList();
             return item;
         }
@@ -433,10 +440,16 @@ namespace SloperMobile.DataBase
             return dbConn.ExecuteScalar<int>("SELECT Count(grade_type_id) As BucketCount FROM T_BUCKET GROUP BY grade_type_id LIMIT 1");
         }
 
-        public string GetBucketCountBySectorIdAndGradeBucketId(string sectorid,string grbucketid)
+        public string GetBucketCountBySectorIdAndGradeBucketId(string sectorid, string grbucketid)
         {
             return dbConn.ExecuteScalar<string>("SELECT grade_bucket_id_count FROM T_GRADE WHERE sector_id = ? and grade_bucket_id = ?", sectorid, grbucketid);
         }
+
+        public string GetBucketHexColorByGradeBucketId(string grbucketid)
+        {
+            return dbConn.ExecuteScalar<string>("SELECT hex_code FROM T_BUCKET Where grade_bucket_id= ? Limit 1", grbucketid);
+        }
+
         #endregion
 
     }

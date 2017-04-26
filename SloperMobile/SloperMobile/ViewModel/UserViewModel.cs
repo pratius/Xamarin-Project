@@ -147,12 +147,12 @@ namespace SloperMobile.ViewModel
                 else
                     await _navigation.PushAsync(new Views.NetworkErrorPage());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 //IsRunningTasks = false;
                 UserDialogs.Instance.HideLoading();
-                await _navigation.PushAsync(new Views.NetworkErrorPage());
-                //await Application.Current.MainPage.DisplayAlert("Login Failure", "Incorrect username/password. Please try again.", "OK");
+                //await _navigation.PushAsync(new Views.NetworkErrorPage());
+                await Application.Current.MainPage.DisplayAlert("Login Failure", "Incorrect username/password. Please try again.", "OK");
                 return;
             }
         }
