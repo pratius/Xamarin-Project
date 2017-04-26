@@ -18,6 +18,7 @@ namespace SloperMobile.Common.Constants
 
         //Company
         public const string APP_TITLE = "GRAND VALLEY CLIMBING";         public const string APP_COMPANY = "Grand Valley Climbing";         public const string APP_DBNAME = "slopergvcdb.db3";
+        public const string APP_LABEL_DROID = "Grand Valley";
 
         //Guest DNN Login
         public const string Guest_UserId = "gvc.anonymous@sloperclimbing.com";         public const string Guest_UserPassword = "s.s2017!";

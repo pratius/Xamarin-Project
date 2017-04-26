@@ -757,7 +757,8 @@ namespace SloperMobile.ViewModel
                     }
                     else { ascent.route_style_value = "0"; }
                     ascent.route_type_id = routeData.route_type_id;
-                    ascent.tech_grade_id = App.DAUtil.GetTTechGradeIdByGradeName(routeData.grade_type_id, SendsGrade);
+                    //ascent.tech_grade_id = App.DAUtil.GetTTechGradeIdByGradeName(routeData.grade_type_id, SendsGrade);
+                    ascent.tech_grade_id = App.DAUtil.GetTTechGradeIdByGradeName(routeData.grade_type_id, SendsGrade) == null ? "0" : App.DAUtil.GetTTechGradeIdByGradeName(routeData.grade_type_id, SendsGrade);
                     ascent.video = "";
                     #endregion
 
