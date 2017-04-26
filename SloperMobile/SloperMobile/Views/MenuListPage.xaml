@@ -20,7 +20,7 @@
                 </Image.GestureRecognizers>
             </Image>
             <StackLayout Orientation="Vertical" Grid.Row="1" >
-                <Image x:Name="ImageLogo" Source="logo" WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand"
+                <Image x:Name="ImageLogo" Source="logo_170w" WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"/>
             </StackLayout>
 

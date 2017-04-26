@@ -271,20 +271,47 @@ namespace SloperMobile.ViewModel
             string hexcode;
             switch (id)
             {
+                //case 1:
+                //    hexcode = "#036177";
+                //    break;
+                //case 2:
+                //    hexcode = "#1f8a70";
+                //    break;
+                //case 3:
+                //    hexcode = "#91A537";
+                //    break;
+                //case 4:
+                //    hexcode = "#B49800";
+                //    break;
+                //case 5:
+                //    hexcode = "#FD7400";
+                //    break;
+                //default:
+                //    hexcode = "#B9BABD";
+                //    break;
                 case 1:
-                    hexcode = "#036177";
+                    hexcode = "#FFFF00";
                     break;
                 case 2:
-                    hexcode = "#1f8a70";
+                    hexcode = "#0000FF";
                     break;
                 case 3:
-                    hexcode = "#91A537";
+                    hexcode = "#800080";
                     break;
                 case 4:
-                    hexcode = "#B49800";
+                    hexcode = "#008000";
                     break;
                 case 5:
-                    hexcode = "#FD7400";
+                    hexcode = "#FF0000";
+                    break;
+                case 6:
+                    hexcode = "#708090";
+                    break;
+                case 7:
+                    hexcode = "#D3D3D3";
+                    break;
+                case 8:
+                    hexcode = "#FFA500";
                     break;
                 default:
                     hexcode = "#B9BABD";
