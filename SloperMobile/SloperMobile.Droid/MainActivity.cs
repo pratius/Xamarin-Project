@@ -19,19 +19,19 @@ using System;
 
 namespace SloperMobile.Droid
 {
-    [Activity(Label = "GVC", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = AppSetting.APP_LABEL_DROID, Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        protected override void OnDestroy()
-        {
-            try
-            {
-                base.OnDestroy();
-            }
-            catch (Exception e)
-            {
-            }
-        }
+        //protected override void OnDestroy()
+        //{
+        //    try
+        //    {
+        //        base.OnDestroy();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //    }
+        //}
 
         protected override void OnCreate(Bundle bundle)
         {

@@ -106,6 +106,7 @@
     {
       "orientation": "portrait",
       "extent": "full-screen",
+      "filename": "iphone4_1.png",
       "size": "320x480",
       "scale": "2x",
       "idiom": "iphone"
@@ -113,6 +114,7 @@
     {
       "orientation": "portrait",
       "extent": "full-screen",
+      "filename": "iphone5_1.png",
       "size": "320x568",
       "subtype": "retina4",
       "scale": "2x",

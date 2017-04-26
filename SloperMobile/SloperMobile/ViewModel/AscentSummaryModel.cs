@@ -49,11 +49,13 @@ namespace SloperMobile.ViewModel
             get { return routeName; }
             set { routeName = value; OnPropertyChanged(); }
         }
+
         public string SendsTypeName
         {
             get { return sendsTypeName; }
             set { sendsTypeName = value; OnPropertyChanged(); }
         }
+
         public int SendRating
         {
             get { return sendRating; }
@@ -65,17 +67,18 @@ namespace SloperMobile.ViewModel
             get { return topAngle; }
             set { topAngle = value; OnPropertyChanged(); }
         }
+
         public ImageSource TopRouteChar
         {
             get { return topRouteChar; }
             set { topRouteChar = value; OnPropertyChanged(); }
         }
+
         public string CommandText
         {
             get { return commandText; }
             set { commandText = value; OnPropertyChanged(); }
         }
-
 
         public List<string> AscentGrades
         {
@@ -89,12 +92,12 @@ namespace SloperMobile.ViewModel
             set { listimgs = value; OnPropertyChanged(); }
         }
 
-
         public DateTime SendsDate
         {
             get { return sendsdate; }
             set { sendsdate = value; OnPropertyChanged(); }
         }
+
         public string SendsGrade
         {
             get { return sendsgrade; }
@@ -106,11 +109,13 @@ namespace SloperMobile.ViewModel
             get { return sendclimbingstyle; }
             set { sendclimbingstyle = value; OnPropertyChanged(); }
         }
+
         public string SendHoldType
         {
             get { return sendholdtype; }
             set { sendholdtype = value; OnPropertyChanged(); }
         }
+
         public string SendRouteCharacteristics
         {
             get { return sendroutecharacteristics; }
@@ -134,6 +139,7 @@ namespace SloperMobile.ViewModel
             get { return sendstypetext; }
             set { sendstypetext = value; OnPropertyChanged(); }
         }
+
         public AscentSummaryModel(INavigation navigation, string routeid, Send send)
         {
             currentCrag = App.DAUtil.GetSelectedCragData();
@@ -154,7 +160,7 @@ namespace SloperMobile.ViewModel
                 SendsGrade = routeData.tech_grade; //grades[0];
             }
             _navigation = navigation;
-           
+
             SendsTypeName = GetSendTypeWording(send.Ascent_Type_Description);
 
             if (SendsTypeName == "Boom! Nice ")
@@ -177,12 +183,10 @@ namespace SloperMobile.ViewModel
 
             SendRating = send.Rating;
         }
-       
-        private string  GetSendTypeWording(string obj)
-        {
 
-          
-           string SendsCongratsWording = string.Empty;
+        private string GetSendTypeWording(string obj)
+        {
+            string SendsCongratsWording = string.Empty;
             switch (Convert.ToString(obj))
             {
                 case "Onsight":
@@ -197,16 +201,14 @@ namespace SloperMobile.ViewModel
                 case "Repeat":
                     SendsCongratsWording = "Good ";
                     break;
-                case "Making Progress":
+                case "Project":
                     SendsCongratsWording = "(Project burn) ";
                     break;
                 case "Good Work":
                     SendsCongratsWording = "One-hang! ";
-                   
                     break;
             }
             return SendsCongratsWording;
-
         }
     }
 }
