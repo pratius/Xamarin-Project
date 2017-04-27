@@ -13,7 +13,7 @@
     <AssemblyName>SloperMobileiOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ReleaseVersion>2.118</ReleaseVersion>
+    <ReleaseVersion>2.120</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -107,14 +107,11 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <ITunesArtwork Include="iTunesArtwork" />
-    <ITunesArtwork Include="iTunesArtwork@2x" />
     <None Include="packages.config" />
     <Compile Include="Helpers\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <BundleResource Include="Resources\Search_old.PNG" />
     <BundleResource Include="Resources\icon_climbing_days.png" />
     <BundleResource Include="Resources\icon_climbing_days%402x.png" />
     <BundleResource Include="Resources\icon_climbing_days%403x.png" />
@@ -169,14 +166,6 @@
     <BundleResource Include="Resources\icon_gauge_mountains.png" />
     <BundleResource Include="Resources\icon_gauge_mountains%402x.png" />
     <BundleResource Include="Resources\icon_gauge_mountains%403x.png" />
-    <BundleResource Include="Resources\steepVertical%402x.png" />
-    <BundleResource Include="Resources\steepVertical%403x.png" />
-    <BundleResource Include="Resources\steepRoof%402x.png" />
-    <BundleResource Include="Resources\steepRoof%403x.png" />
-    <BundleResource Include="Resources\steepOverhanging%402x.png" />
-    <BundleResource Include="Resources\steepOverhanging%403x.png" />
-    <BundleResource Include="Resources\steepSlab%402x.png" />
-    <BundleResource Include="Resources\steepSlab%403x.png" />
     <BundleResource Include="Resources\icon_arrow_left_12x21.png" />
     <BundleResource Include="Resources\icon_arrow_left_12x21%402x.png" />
     <BundleResource Include="Resources\icon_arrow_left_12x21%403x.png" />
@@ -417,9 +406,6 @@
     <BundleResource Include="Resources\scenic_shot_portrait.png" />
     <BundleResource Include="Resources\scenic_shot_portrait%402x.png" />
     <BundleResource Include="Resources\scenic_shot_portrait%403x.png" />
-    <BundleResource Include="Resources\logo.png" />
-    <BundleResource Include="Resources\logo%402x.png" />
-    <BundleResource Include="Resources\logo%403x.png" />
     <BundleResource Include="Resources\icon_star0.png" />
     <BundleResource Include="Resources\icon_star0%402x.png" />
     <BundleResource Include="Resources\icon_star0%403x.png" />
@@ -594,82 +580,10 @@
     <BundleResource Include="Resources\Menu_button%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\homeProfile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\homePyramid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\homeSends.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\homeClimbingDays.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\homeClimbingMap.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\homeNews.png" />
-  </ItemGroup>
-  <ItemGroup>
     <XamarinComponentReference Include="hockeyappios">
       <Visible>False</Visible>
       <Version>4.1.0.3</Version>
     </XamarinComponentReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\climbing_days.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\climbing_days%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\climbing_days%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\climbing_map.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\climbing_map%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\climbing_map%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\news.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\news%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\news%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\profile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\profile%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\profile%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\pyramid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\pyramid%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\pyramid%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\send.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\send%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\send%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\navHome.png" />
@@ -687,188 +601,10 @@
     <BundleResource Include="Resources\navSettings.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\sendsDonutOnsights.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\sendsDonutProjects.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\sendsDonutRedpoints.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\SendsBtnImgs.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Arm.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\bigImage.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\BodyPic.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Camera.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\climImg.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\close.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Comment.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\EveryThing.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Facebook.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\facebook_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\google_plus_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Google+.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Hand.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Hand2Pic.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\HandPic.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\ic_about_us.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\ic_attachement_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\ic_gym_map.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\ic_gym_map_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\ic_news.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\ic_news_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\ic_profile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\ic_profile_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\ic_setting_small.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Instagram.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\instagram_symbol.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\listimage.PNG" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\loader.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\main_header_image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Map.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\NewBig.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\OneMore.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\PowerHand.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Ratting.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Right.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Search.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Sequential.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\SettingOne.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\SettingPic.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Settings.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Star.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Sustained.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Twitter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\twitter_logo_shape.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Video.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\WhiteStar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\YellowStar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\steepOverhanging.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\steepRoof.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\steepSlab.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\steepVertical.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\arrowLeftWhite.png" />
-    <BundleResource Include="Resources\hold_type_1_slopers.png" />
-    <BundleResource Include="Resources\hold_type_8_pockets.png" />
-    <BundleResource Include="Resources\hold_type_4_jugs.png" />
-    <BundleResource Include="Resources\hold_type_2_crimps.png" />
-    <BundleResource Include="Resources\route_style_everything.png" />
-    <BundleResource Include="Resources\route_style_8_sustained.png" />
-    <BundleResource Include="Resources\route_style_4_powerful.png" />
-    <BundleResource Include="Resources\route_style_2_sequential.png" />
-    <BundleResource Include="Resources\route_style_1_technical.png" />
-    <BundleResource Include="Resources\route_style_16_one_move.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\GridImage.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="HTML\TopoResizeImage.html" />
@@ -882,12 +618,6 @@
     <Content Include="HTML\ResizeImage.html" />
     <Content Include="HTML\test.html" />
     <Content Include="HTML\Feed.html" />
-    <BundleResource Include="Resources\star0.png" />
-    <BundleResource Include="Resources\star1.png" />
-    <BundleResource Include="Resources\star2.png" />
-    <BundleResource Include="Resources\star3.png" />
-    <BundleResource Include="Resources\star4.png" />
-    <BundleResource Include="Resources\star5.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

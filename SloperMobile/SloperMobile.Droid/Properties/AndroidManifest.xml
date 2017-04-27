@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.sloperclimbing.grandvalleyclimbinggym" android:versionCode="118" android:versionName="2.118">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.sloperclimbing.bullinachinashop" android:versionCode="120" android:versionName="2.120">
 	<uses-sdk android:minSdkVersion="21" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-	<application android:label="Grand" android:hardwareAccelerated="false" android:largeHeap="true" android:icon="@drawable/icon"></application>
+	<application android:label="Bull in a China Shop" android:hardwareAccelerated="false" android:largeHeap="true" android:icon="@drawable/icon"></application>
 </manifest>
