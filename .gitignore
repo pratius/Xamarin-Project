@@ -281,8 +281,8 @@ __pycache__/
 
 # Sloper Climbing
 *logo*.*
-AndroidManifest.xml
+/AndroidManifest.xml
 Icon-App*.*
 iphone*.png
-Info.plist
-AppSetting.cs
+/Info.plist
+/AppSetting.cs
