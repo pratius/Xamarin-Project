@@ -278,11 +278,3 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/**
 # !tools/packages.config
-
-# Sloper Climbing
-*logo*.*
-/AndroidManifest.xml
-Icon-App*.*
-iphone*.png
-/Info.plist
-/AppSetting.cs
