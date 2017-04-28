@@ -20,7 +20,7 @@
 	<key>MinimumOSVersion</key>
 	<string>6.0</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.sloperclimbing.bullinachinashop</string>
+	<string>com.sloperclimbing.urbanclimb</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to the camera to take photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -31,9 +31,9 @@
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-	<key>CFBundleName</key>
-	<string>Bull App</string>
 	<key>CFBundleVersion</key>
 	<string>120</string>
+	<key>CFBundleName</key>
+	<string>Urban Climb</string>
 </dict>
 </plist>

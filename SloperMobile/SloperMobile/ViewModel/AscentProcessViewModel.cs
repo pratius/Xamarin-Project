@@ -309,7 +309,7 @@ namespace SloperMobile.ViewModel
                     SendsCongratsWording = "Good ";
                     break;
                 case "Making Progress":
-                    SendsCongratsWording = "(Project burn) ";
+                    SendsCongratsWording = "Project burn... ";
                     break;
                 case "Good Work":
                     SendsCongratsWording = "One hang! ";
@@ -681,6 +681,13 @@ namespace SloperMobile.ViewModel
 
                     ascent.ascent_date = SendsDate;
                     ascent.route_id = RouteId;
+
+                    if (SendsTypeName == "Making Progress"){
+                        SendsTypeName = "Project";
+                    }else if (SendsTypeName == "Good Work"){
+                        SendsTypeName = "One hang";
+                    }
+
                     ascent.ascent_type_id = SendsTypeName != null ? App.DAUtil.GetAscentTypeIdByName(SendsTypeName) : "0";
                     ascent.climbing_angle = "";
                     if (SendClimbingStyle != null)
