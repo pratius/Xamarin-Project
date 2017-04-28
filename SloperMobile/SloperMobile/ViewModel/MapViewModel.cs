@@ -130,7 +130,7 @@ namespace SloperMobile.ViewModel
                                         countframe.HasShadow = false;
                                         countframe.Padding = 0; countframe.WidthRequest = 25; countframe.HeightRequest = 20;
                                         //countframe.BackgroundColor = Color.FromHex(GetHexColorCodeByGradeBucketId(i));
-                                        countframe.BackgroundColor = Color.FromHex(App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()));
+                                        countframe.BackgroundColor = Color.FromHex(App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()));
                                         Label lblcount = new Label();
                                         if (App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString()) != null)
                                         {

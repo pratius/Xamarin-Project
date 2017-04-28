@@ -5,6 +5,8 @@ using XLabs.Platform.Device;
 using System.IO;
 using System.Net.Http;
 using SloperMobile.Common.Constants;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 //using UIKit;
 //using Foundation;
 
@@ -13,6 +15,8 @@ namespace SloperMobile.Views
     public partial class TopoMapRoutesPage : ContentPage
     {
         public MapListModel _CurrentSector { get; set; }
+        public List<TopoImageResponse> topoimg = null;
+        public List<Tuple<string, string>> _bucket = new List<Tuple<string, string>>();
         private ViewModel.TopoMapRoutesViewModel TopoMapRouteVM;
         public string staticAnnotationData = "[{\"AnnotationName\": \"Open Text (left)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Open Text (right)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (white)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (black)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Line\",\"AnnotationType\": 0,\"ImageName\":\"sample-line.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Badge\",\"AnnotationType\": 1,\"ImageName\":\"sample-route-badge.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\":\"Belay Point\",\"AnnotationType\": 2,\"ImageName\":\"sample-belay.png\",\"XCentreOffset\": -15,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Left\",\"AnnotationType\": 3,\"ImageName\":\"sample-lower-off-left.png\",\"XCentreOffset\": -22,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Right\",\"AnnotationType\": 4,\"ImageName\":\"sample-lower-off-right.png\",\"XCentreOffset\": -8,\"YCentreOffset\":-15},{\"AnnotationName\": \"Grade Label (left)\",\"AnnotationType\": 5,\"ImageName\":\"sample-grade-label-left.png\",\"XCentreOffset\": -5,\"YCentreOffset\":0},{\"AnnotationName\": \"Grade Label (right)\",\"AnnotationType\": 6,\"ImageName\":\"sample-grade-label-right.png\",\"XCentreOffset\": 5,\"YCentreOffset\":0},{\"AnnotationName\": \"Line Break\",\"AnnotationType\": 7,\"ImageName\":\"sample-route-line-break.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Cross Point\",\"AnnotationType\": 8,\"ImageName\":\"x-mark-32.png\",\"XCentreOffset\": -50,\"YCentreOffset\":-50},{\"AnnotationName\": \"Text Add\",\"AnnotationType\": 9,\"ImageName\":\"tl-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextAdd\",\"AnnotationType\": 10,\"ImageName\":\"tr-icon.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 11,\"ImageName\":\"tlcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 12,\"ImageName\":\"trcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveLeft\",\"AnnotationType\": 13,\"ImageName\":\"move_left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveRight\",\"AnnotationType\": 14,\"ImageName\":\"move_right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"icon-arrow\",\"AnnotationType\": 15,\"ImageName\":\"icon-arrow.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"cross dark black\",\"AnnotationType\": 16,\"ImageName\":\"cross_black.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-left\",\"AnnotationType\": 17,\"ImageName\":\"sample-lower-off-black-left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-right\",\"AnnotationType\": 18,\"ImageName\":\"sample-lower-off-black-right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0}]";
         string listData = string.Empty;
@@ -26,6 +30,7 @@ namespace SloperMobile.Views
                 _CurrentSector = CurrentSector;
                 listData = _lstData;
                 _routeId = routeId;
+                topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
                 NavigationPage.SetHasNavigationBar(this, false);
                 Title = CurrentSector.SectorName;
                 TopoMapRouteVM = new ViewModel.TopoMapRoutesViewModel(CurrentSector, Navigation);
@@ -54,8 +59,18 @@ namespace SloperMobile.Views
                         TopoMapRouteVM.DisplayRoutePopupSm = true;
                         var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
                         height = device.Display.Height;
-                        newHeight = GetHeight(height);
-                        webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, newHeight, Convert.ToInt32(t), true, false);
+                        newHeight = GetHeight(height); _bucket.Clear();
+                        if(topoimg != null)
+                        {
+                            for (int i = 0; i < topoimg[0].drawing.Count; i++)
+                            {
+                                if (t == topoimg[0].drawing[i].id)
+                                {
+                                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
+                                }
+                            }
+                        }
+                        webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, newHeight, Convert.ToInt32(t), true, false, _bucket);
                     }));
                 }
             }
@@ -127,8 +142,14 @@ namespace SloperMobile.Views
             var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
             height = device.Display.Height;
             newHeight = GetHeight(height);
-
-            webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight);
+            if(topoimg != null)
+            {
+                for (int i = 0; i < topoimg[0].drawing.Count; i++)
+                {
+                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
+                }
+            }
+            webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight, _bucket);
 
             // if a route was clicked from the list
             if (_routeId > 0)
@@ -139,7 +160,18 @@ namespace SloperMobile.Views
                 {
                     TopoMapRouteVM.DisplayRoutePopupSm = true;
                 }
-                webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (newHeight), _routeId, true, false);
+                _bucket.Clear();
+                if(topoimg != null)
+                {
+                    for (int i = 0; i < topoimg[0].drawing.Count; i++)
+                    {
+                        if (_routeId.ToString() == topoimg[0].drawing[i].id)
+                        {
+                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
+                        }
+                    }
+                }
+                webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (newHeight), _routeId, true, false, _bucket);
             }
             TopoMapRouteVM.IsRunningTasks = false;
         }
@@ -160,10 +192,19 @@ namespace SloperMobile.Views
         private void OnSwipeTopRoutePopupSm(object sender, EventArgs e)
         {
             TopoMapRouteVM.DisplayRoutePopupSm = false;
+            _bucket.Clear();
+            topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
+            if(topoimg != null)
+            {
+                for (int i = 0; i < topoimg[0].drawing.Count; i++)
+                {
+                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
+                }
+            }
             // if we got to the topo via the map and not the list, redraw all the routes
             if (_routeId <= 0)
             {
-                webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight); ;
+                webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight,_bucket);
             }
         }
     }

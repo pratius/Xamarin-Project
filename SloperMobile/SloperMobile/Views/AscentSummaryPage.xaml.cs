@@ -22,6 +22,7 @@ namespace SloperMobile.Views
     public partial class AscentSummaryPage : ContentPage
     {
         private string _routeid, staticAnnotationData;
+        public List<Tuple<string, string>> _bucket = new List<Tuple<string, string>>();
         private Send _send = null;
         public MapListModel _CurrentSector { get; set; }
         private AscentSummaryModel AscentProcessVM;
@@ -57,8 +58,18 @@ namespace SloperMobile.Views
                 }
             }
             var topoimg = JsonConvert.SerializeObject(topoimgages[Cache.SelectedTopoIndex]);
-            var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-            webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true);
+            var device = XLabs.Ioc.Resolver.Resolve<IDevice>(); _bucket.Clear();
+            if (topoimg != null)
+            {
+                for (int i = 0; i < topoimgages[0].drawing.Count; i++)
+                {
+                    if (_routeid == topoimgages[0].drawing[i].id)
+                    {
+                        _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
+                    }
+                }
+            }
+            webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true, _bucket);
             this.webView.LoadFromContent("HTML/TopoResizeImage.html");
             comment_text.Text = _send.Comment;
             summary_icons.Children?.Clear();
@@ -261,16 +272,31 @@ namespace SloperMobile.Views
             var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
             if (!IsRouteClicked)
             {
-                webView.CallJsFunction("initDrawing", staticAnnotationData, "[" + topoimg + "]", webView.HeightRequest);
+                _bucket.Clear();
+                if (topoimg != null)
+                {
+                    for (int i = 0; i < topoimgages[0].drawing.Count; i++)
+                    {
+                        if (_routeid == topoimgages[0].drawing[i].id)
+                        {
+                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
+                        }
+                        else
+                        {
+                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
+                        }
+                    }
+                }
+                webView.CallJsFunction("initDrawing", staticAnnotationData, "[" + topoimg + "]", webView.HeightRequest, _bucket);
                 if (Convert.ToInt32(_routeid) > 0)
                 {
                     if (Device.OS == TargetPlatform.Android)
                     {
-                        webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (webView.HeightRequest), Convert.ToInt32(_routeid), false, true);
+                        webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (webView.HeightRequest), Convert.ToInt32(_routeid), false, true, _bucket);
                     }
                     else
                     {
-                        webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true);
+                        webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true, _bucket);
                     }
                 }
                 

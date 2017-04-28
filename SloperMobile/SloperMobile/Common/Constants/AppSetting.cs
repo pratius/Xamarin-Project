@@ -8,6 +8,7 @@ namespace SloperMobile.Common.Constants
 {
     public class AppSetting
     {
+        //test
         //API Base URL
         public const string Base_Url = "http://sloper.slicksystems.ca:8080/DesktopModules/";
         public const string APP_ID = "1";
