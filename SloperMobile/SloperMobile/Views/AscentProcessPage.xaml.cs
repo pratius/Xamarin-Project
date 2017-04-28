@@ -80,17 +80,17 @@ namespace SloperMobile.Views
             if (!IsRouteClicked)
             {
                 _bucket.Clear();
-                foreach (var item in topoimgages)
+                if (topoimg != null)
                 {
                     for (int i = 0; i < topoimgages[0].drawing.Count; i++)
                     {
                         if (_routeid == topoimgages[0].drawing[i].id)
                         {
-                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
+                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
                         }
                         else
                         {
-                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
+                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
                         }
                     }
                 }
@@ -140,13 +140,13 @@ namespace SloperMobile.Views
                     {
                         var topoimg = JsonConvert.SerializeObject(topoimgages[Cache.SelectedTopoIndex]);
                         var device = XLabs.Ioc.Resolver.Resolve<IDevice>(); _bucket.Clear();
-                        foreach (var item in topoimgages)
+                        if (topoimg != null)
                         {
                             for (int i = 0; i < topoimgages[0].drawing.Count; i++)
                             {
                                 if (_routeid == topoimgages[0].drawing[i].id)
                                 {
-                                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
+                                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
                                 }
                             }
                         }

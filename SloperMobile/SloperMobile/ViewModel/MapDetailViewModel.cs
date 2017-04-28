@@ -138,7 +138,7 @@ namespace SloperMobile.ViewModel
                     if (j > 4)
                     { j = 0; }
                     //routeobj.RouteGradeColor = GetGradeBucketHex(route.grade_bucket_id);
-                    routeobj.RouteGradeColor = App.DAUtil.GetBucketHexColorByGradeBucketId(route.grade_bucket_id);
+                    routeobj.RouteGradeColor = App.DAUtil.GetBucketHexColorByGradeBucketId(route.grade_bucket_id) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(route.grade_bucket_id);
                     RoutesData.Add(routeobj);
                     i++;
                     j++;

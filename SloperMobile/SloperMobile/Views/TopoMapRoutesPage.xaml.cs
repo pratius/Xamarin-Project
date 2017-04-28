@@ -60,13 +60,13 @@ namespace SloperMobile.Views
                         var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
                         height = device.Display.Height;
                         newHeight = GetHeight(height); _bucket.Clear();
-                        foreach (var item in topoimg)
+                        if(topoimg != null)
                         {
                             for (int i = 0; i < topoimg[0].drawing.Count; i++)
                             {
                                 if (t == topoimg[0].drawing[i].id)
                                 {
-                                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
+                                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
                                 }
                             }
                         }
@@ -142,11 +142,11 @@ namespace SloperMobile.Views
             var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
             height = device.Display.Height;
             newHeight = GetHeight(height);
-            foreach (var item in topoimg)
+            if(topoimg != null)
             {
                 for (int i = 0; i < topoimg[0].drawing.Count; i++)
                 {
-                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
+                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
                 }
             }
             webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight, _bucket);
@@ -161,13 +161,13 @@ namespace SloperMobile.Views
                     TopoMapRouteVM.DisplayRoutePopupSm = true;
                 }
                 _bucket.Clear();
-                foreach (var item in topoimg)
+                if(topoimg != null)
                 {
                     for (int i = 0; i < topoimg[0].drawing.Count; i++)
                     {
                         if (_routeId.ToString() == topoimg[0].drawing[i].id)
                         {
-                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
+                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
                         }
                     }
                 }
@@ -194,11 +194,11 @@ namespace SloperMobile.Views
             TopoMapRouteVM.DisplayRoutePopupSm = false;
             _bucket.Clear();
             topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
-            foreach (var item in topoimg)
+            if(topoimg != null)
             {
                 for (int i = 0; i < topoimg[0].drawing.Count; i++)
                 {
-                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
+                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
                 }
             }
             // if we got to the topo via the map and not the list, redraw all the routes
