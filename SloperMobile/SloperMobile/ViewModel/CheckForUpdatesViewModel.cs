@@ -21,6 +21,7 @@ namespace SloperMobile.ViewModel
         private List<T_SECTOR> sectorObj;
         private List<T_GRADE> gradeObj;
         private List<T_BUCKET> gradebktObj;
+        private List<TTECH_GRADE> ttechgradeObj;
         private string displayupdatemessage = "Checking for updates...";
         /// <summary>
         /// Get or set the Check for update class object
@@ -235,7 +236,7 @@ namespace SloperMobile.ViewModel
                     }
 
 
-                    DisplayUpdateMessage = "Loading Grades Buckets, please wait...";
+                    DisplayUpdateMessage = "Updating Grades Buckets, please wait...";
                     App.DAUtil.DropAndCreateTable(typeof(T_BUCKET));
                     gradebktObj = await HttpGetGradeBuckets();
                     foreach (T_BUCKET gradebkt in gradebktObj)
@@ -243,6 +244,13 @@ namespace SloperMobile.ViewModel
                         App.DAUtil.SaveGradeBucket(gradebkt);
                     }
 
+                    //================= Added by Ravi on 28-Apr-2017=============
+                    DisplayUpdateMessage = "Updating Grades Thoughts, please wait...";
+                    ttechgradeObj = await HttpGetTTechGrade();
+                    foreach (TTECH_GRADE ttgrade in ttechgradeObj)
+                    {
+                        App.DAUtil.SaveTTechGrade(ttgrade);
+                    }
                     //=====================================================================
                     APP_SETTING updated_date = new APP_SETTING();
                     updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
@@ -315,6 +323,14 @@ namespace SloperMobile.ViewModel
             HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetGradeBuckets, AppSetting.APP_ID), Cache.AccessToken);
             var gradebkt_response = await apicall.Get<T_BUCKET>();
             return gradebkt_response;
+        }
+
+        //================= Added by Ravi on 28-Apr-2017=============
+        private async Task<List<TTECH_GRADE>> HttpGetTTechGrade()
+        {
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetTTechGrades, AppSetting.APP_ID), Cache.AccessToken);
+            var ttgrade_response = await apicall.Get<TTECH_GRADE>();
+            return ttgrade_response;
         }
         #endregion
     }

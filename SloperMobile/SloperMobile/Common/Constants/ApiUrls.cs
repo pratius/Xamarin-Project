@@ -21,5 +21,6 @@ namespace SloperMobile.Common.Constants
         public const string Url_GetTick_ListData = AppSetting.Base_Url + "SloperPlatform/API/v2/TickList/GetTickList?cragId={0}";
         public const string Url_Isticklist_Route_Present = AppSetting.Base_Url + "SloperPlatform/API/v2/TickList/IsRoutePresent?routeId={0}";
         public const string Url_GetGradeBuckets = AppSetting.Base_Url + "SloperPlatform/API/v2/M/GetGradesByAppId?appid={0}";
+        public const string Url_GetTTechGrades = AppSetting.Base_Url + "SloperPlatform/API/v2/M/GetTTechGrades?appid={0}";
     }
 }
