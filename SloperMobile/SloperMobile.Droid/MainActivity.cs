@@ -49,6 +49,7 @@ namespace SloperMobile.Droid
             Resolver.SetResolver(container.GetResolver());
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.FormsMaps.Init(this, bundle);
             ImageCircleRenderer.Init();
             UserDialogs.Init(this);
 
