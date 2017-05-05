@@ -22,13 +22,57 @@ namespace SloperMobile.Views
         private AscentProcessViewModel AscentProcessVM;
         public AscentProcessPage(string routeid, MapListModel CurrentSector)
         {
-            _routeid = routeid;
-            _CurrentSector = CurrentSector;
+            var tapImageNext = new TapGestureRecognizer();
+            tapImageNext.Tapped += tapImageNext_Tapped;
+            var tapImagePrev = new TapGestureRecognizer();
+            tapImagePrev.Tapped += tapImagePrev_Tapped;
+            
+           _routeid = routeid;
+           _CurrentSector = CurrentSector;
             InitializeComponent();
+            ascType.ObjImgAcentTypeNxt.GestureRecognizers.Add(tapImageNext);
+
+            ascDate.ObjImgAcentDateNxt.GestureRecognizers.Add(tapImageNext);
+            ascDate.ObjImgAcentDatePrv.GestureRecognizers.Add(tapImagePrev);
+
+            ascRating.ObjImgAcentRatingNxt.GestureRecognizers.Add(tapImageNext);
+            ascRating.ObjImgAcentRatingPrv.GestureRecognizers.Add(tapImagePrev);
+
+            ascClimbingAngle.ObjImgClmAngleNxt.GestureRecognizers.Add(tapImageNext);
+            ascClimbingAngle.ObjImgClmAnglePrv.GestureRecognizers.Add(tapImagePrev);
+
+            ascHoldType.ObjAscentHoldTypeNxt.GestureRecognizers.Add(tapImageNext);
+            ascHoldType.ObjAscentHoldTypePrv.GestureRecognizers.Add(tapImagePrev);
+
+            ascRouteStyle.ObjAscentRouteStyleNxt.GestureRecognizers.Add(tapImageNext);
+            ascRouteStyle.ObjAscentRouteStylePrv.GestureRecognizers.Add(tapImagePrev);
+
+
             AscentProcessVM = new AscentProcessViewModel(Navigation, routeid);
             BindingContext = AscentProcessVM;
             //Title = AscentProcessVM.PageHeaderText;
             NavigationPage.SetHasNavigationBar(this, false);
+        }
+        void tapImageNext_Tapped(object sender, EventArgs e)
+        {
+            var index = Children.IndexOf(CurrentPage);
+            if(index<Children.Count)
+            SelectedItem = Children[index+1];
+           
+            //DisplayAlert("Alert", "This is an image button", "OK");
+        }
+
+        void tapImagePrev_Tapped(object sender, EventArgs e)
+        {
+            var index = Children.IndexOf(CurrentPage);
+            if (index > Children.Count)
+            {
+                SelectedItem = Children[index+1];
+            }
+            if (index < Children.Count)
+                SelectedItem = Children[index - 1];
+
+            //DisplayAlert("Alert", "This is an image button", "OK");
         }
         protected override void OnAppearing()
         {

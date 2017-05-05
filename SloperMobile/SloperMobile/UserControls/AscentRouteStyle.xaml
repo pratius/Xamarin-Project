@@ -73,7 +73,7 @@
 				<Image Source="icon_route_style_32_everything_text_73h" VerticalOptions="Center" HorizontalOptions="Center" />
 			</Frame>
 		</Grid>
-		<Image Grid.Row="1" Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="Center" />
-		<Image Grid.Row="1" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />
+        <Image Grid.Row="1"  x:Name="ImgAscentRouteStylePrv"   Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="Center" />
+        <Image Grid.Row="1"  x:Name="ImgAscentRouteStyleNxt"  Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />
 	</Grid>
 </StackLayout>

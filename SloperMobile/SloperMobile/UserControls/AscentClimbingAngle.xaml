@@ -58,7 +58,7 @@
 				<Image Source="icon_steepness_8_roof_border_80x80" VerticalOptions="Center" HorizontalOptions="Center" />
 			</Frame>
 		</Grid>
-		<Image Grid.Row="1" Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="Center" />
-		<Image Grid.Row="1" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />
+        <Image Grid.Row="1" x:Name="ImgClmAnglePrv" Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="Center" />
+        <Image Grid.Row="1" x:Name="ImgClmAngleNxt" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />
 	</Grid>
 </StackLayout>

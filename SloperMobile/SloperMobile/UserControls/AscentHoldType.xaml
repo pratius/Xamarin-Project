@@ -57,8 +57,8 @@
 				</Frame.GestureRecognizers>
 				<Image Source="icon_hold_type_8_pockets_text_63x94" VerticalOptions="End" HorizontalOptions="Center" />
 			</Frame>
-		</Grid>
-		<Image Grid.Row="1" Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="Center" />
-		<Image Grid.Row="1" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />
+        </Grid>
+        <Image Grid.Row="1" x:Name="ImgAscentHoldTypePrv" Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="Center" />
+        <Image Grid.Row="1"  x:Name="ImgAscentHoldTypeNxt" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />
 	</Grid>
 </StackLayout>

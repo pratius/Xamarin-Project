@@ -8,11 +8,19 @@ using Xamarin.Forms;
 
 namespace SloperMobile.UserControls
 {
+
+    
     public partial class AscentDate : StackLayout
     {
+        public Image ObjImgAcentDatePrv { get { return ImgAcentDatePrv; } }
+        public Image ObjImgAcentDateNxt { get { return ImgAcentDateNxt; } }
         public AscentDate()
         {
             InitializeComponent();
+           
         }
+
+
+
     }
 }

@@ -11,6 +11,7 @@ namespace SloperMobile.UserControls
 {
     public partial class AscentType : StackLayout
     {
+        public Image ObjImgAcentTypeNxt { get { return ImgAcentTypeNxt; } }
         public AscentType()
         {
             InitializeComponent();
