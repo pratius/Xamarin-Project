@@ -11,6 +11,7 @@ namespace SloperMobile.Common.Constants
         //API Base URL
         public const string Base_Url = "http://www.sloperclimbing.com/DesktopModules/";
         public const string APP_ID = "32";
+        public const string APP_TYPE = "indoor";
 
         //HockeyApp
         public const string HockeyAppId_Droid = "5938f69b0fb243bcaf30f9df53975c7d";

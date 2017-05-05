@@ -35,5 +35,9 @@
 	<string>120</string>
 	<key>CFBundleName</key>
 	<string>Urban Climb</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We will use your location.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We are using your location.</string>
 </dict>
 </plist>

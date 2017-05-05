@@ -365,6 +365,8 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string grade_bucket_id
         { get; set; }
+        public string sloper_points
+        { get; set; }
     }
 
     public class T_GRADE
@@ -406,6 +408,18 @@ namespace SloperMobile.DataBase
         public string hex_code
         { get; set; }
         public string grade_bucket_group
+        { get; set; }
+    }
+
+
+    public class TCRAG_IMAGE
+    {
+       [PrimaryKey, AutoIncrement]
+       public long id
+        { get; set; }
+        public string crag_id
+        { get; set; }
+        public string crag_image
         { get; set; }
     }
 }

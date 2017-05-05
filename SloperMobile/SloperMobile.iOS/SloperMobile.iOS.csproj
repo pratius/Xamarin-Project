@@ -491,6 +491,14 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="Xamarin.Forms.Maps, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.Maps.2.3.4.231\lib\Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Maps.iOS, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.Maps.2.3.4.231\lib\Xamarin.iOS10\Xamarin.Forms.Maps.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.iOS" />
     <Reference Include="XLabs.Core, Version=2.0.5782.12218, Culture=neutral, PublicKeyToken=d65109b36e5040e4, processorArchitecture=MSIL">
       <HintPath>..\..\packages\XLabs.Core.2.0.5782\lib\Xamarin.iOS10\XLabs.Core.dll</HintPath>
