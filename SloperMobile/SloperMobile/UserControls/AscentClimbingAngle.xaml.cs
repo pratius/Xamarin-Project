@@ -10,6 +10,8 @@ namespace SloperMobile.UserControls
 {
     public partial class AscentClimbingAngle : StackLayout
     {
+        public Image ObjImgClmAnglePrv { get { return ImgClmAnglePrv; } }
+        public Image ObjImgClmAngleNxt { get { return ImgClmAngleNxt; } }
         public AscentClimbingAngle()
         {
             InitializeComponent();

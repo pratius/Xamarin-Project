@@ -8,8 +8,11 @@ using Xamarin.Forms;
 
 namespace SloperMobile.UserControls
 {
+   
     public partial class AscentRating : StackLayout
     {
+        public Image ObjImgAcentRatingPrv { get { return ImgAscRatingPrv; } }
+        public Image ObjImgAcentRatingNxt { get { return ImgAscRatingNxt; } }
         public AscentRating()
         {
             InitializeComponent();

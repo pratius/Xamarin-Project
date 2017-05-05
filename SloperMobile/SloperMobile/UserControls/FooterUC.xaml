@@ -13,11 +13,13 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="navNews" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
+            <!--<Frame Grid.Column="0" BackgroundColor="White" VerticalOptions="Center" HorizontalOptions="Center">-->
+            <Image Source="navNews"   Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="NewsPage"/>
                 </Image.GestureRecognizers>
             </Image>
+            <!--</Frame>-->
             <Image Source="navProfile" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="ProfilePage"/>
