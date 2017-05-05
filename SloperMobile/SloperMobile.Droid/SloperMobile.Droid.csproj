@@ -39,7 +39,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <Debugger>.Net (Xamarin)</Debugger>
@@ -99,6 +99,14 @@
     </Reference>
     <Reference Include="Plugin.CurrentActivity, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Plugin.CurrentActivity.1.0.1\lib\MonoAndroid10\Plugin.CurrentActivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Geolocator, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\MonoAndroid10\Plugin.Geolocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Geolocator.Abstractions, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\MonoAndroid10\Plugin.Geolocator.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Plugin.Media, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -299,6 +307,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomGestureListener.cs" />
+    <Compile Include="CustomMapRenderer.cs" />
     <Compile Include="CustomMasterDetailRenderer.cs" />
     <Compile Include="CustomProgressBar.cs" />
     <Compile Include="DependancyObjects\SQLite_Android.cs" />
@@ -317,6 +326,14 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <AndroidResource Include="Resources\drawable-hdpi\pin.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\pin.png" />
+    <AndroidResource Include="Resources\layout\MapInfoWindow.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\XamarinMapInfoWindow.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <ProguardConfiguration Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

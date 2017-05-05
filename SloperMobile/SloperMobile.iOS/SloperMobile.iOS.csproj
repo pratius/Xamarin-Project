@@ -96,6 +96,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CustomListView.cs" />
+    <Compile Include="CustomMapRenderer.cs" />
+    <Compile Include="CustomMKAnnotationView.cs" />
     <Compile Include="DependancyObjects\SQLite_iOS.cs" />
     <Compile Include="GestureFrameRenderer.cs" />
     <Compile Include="HybridWebViewRenderers.cs" />
@@ -450,6 +452,14 @@
       <HintPath>..\..\packages\Xam.Plugin.Connectivity.2.3.0\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Plugin.Geolocator, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\Xamarin.iOS10\Plugin.Geolocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Geolocator.Abstractions, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\Xamarin.iOS10\Plugin.Geolocator.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Plugin.Media, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2\lib\Xamarin.iOS10\Plugin.Media.dll</HintPath>
       <Private>True</Private>
@@ -626,6 +636,7 @@
     <Content Include="HTML\ResizeImage.html" />
     <Content Include="HTML\test.html" />
     <Content Include="HTML\Feed.html" />
+    <AndroidResource Include="Resources\pin.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

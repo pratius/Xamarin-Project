@@ -16,6 +16,7 @@ using SloperMobile.MessagingTask;
 using Android.Content;
 using SloperMobile.Droid.Services;
 using System;
+using Plugin.Permissions;
 
 namespace SloperMobile.Droid
 {
@@ -60,6 +61,10 @@ namespace SloperMobile.Droid
             MetricsManager.Register(this, Application, AppSetting.HockeyAppId_Droid);
 
             WireUpCheckUpdateRunningTask();
+        }
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
         void WireUpCheckUpdateRunningTask()
