@@ -307,7 +307,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomGestureListener.cs" />
-    <Compile Include="CustomMapRenderer.cs" />
     <Compile Include="CustomMasterDetailRenderer.cs" />
     <Compile Include="CustomProgressBar.cs" />
     <Compile Include="DependancyObjects\SQLite_Android.cs" />
@@ -326,14 +325,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <AndroidResource Include="Resources\drawable-hdpi\pin.png" />
-    <AndroidResource Include="Resources\drawable-ldpi\pin.png" />
-    <AndroidResource Include="Resources\layout\MapInfoWindow.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\XamarinMapInfoWindow.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <ProguardConfiguration Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

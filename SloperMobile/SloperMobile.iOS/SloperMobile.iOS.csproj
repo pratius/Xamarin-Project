@@ -96,8 +96,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CustomListView.cs" />
-    <Compile Include="CustomMapRenderer.cs" />
-    <Compile Include="CustomMKAnnotationView.cs" />
     <Compile Include="DependancyObjects\SQLite_iOS.cs" />
     <Compile Include="GestureFrameRenderer.cs" />
     <Compile Include="HybridWebViewRenderers.cs" />
@@ -636,7 +634,6 @@
     <Content Include="HTML\ResizeImage.html" />
     <Content Include="HTML\test.html" />
     <Content Include="HTML\Feed.html" />
-    <AndroidResource Include="Resources\pin.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

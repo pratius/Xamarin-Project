@@ -51,8 +51,6 @@
     <Compile Include="Common\Interfaces\ISQLite.cs" />
     <Compile Include="Common\NotifyProperties\NotifyPropertiesChanged.cs" />
     <Compile Include="CustomControls\BindablePicker.cs" />
-    <Compile Include="CustomControls\CustomMap.cs" />
-    <Compile Include="CustomControls\CustomPin.cs" />
     <Compile Include="CustomControls\DoubleExtensions.cs" />
     <Compile Include="CustomControls\GestureFrame.cs" />
     <Compile Include="CustomControls\HybridWebViewCustom.cs" />
