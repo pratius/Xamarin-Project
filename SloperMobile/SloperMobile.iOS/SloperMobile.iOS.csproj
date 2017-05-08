@@ -636,6 +636,15 @@
     <Content Include="HTML\ResizeImage.html" />
     <Content Include="HTML\test.html" />
     <Content Include="HTML\Feed.html" />
+    <BundleResource Include="Resources\icon_pin_crag.png" />
+    <BundleResource Include="Resources\icon_pin_crag%402x.png" />
+    <BundleResource Include="Resources\icon_pin_crag%403x.png" />
+    <BundleResource Include="Resources\icon_pin_crag_current.png" />
+    <BundleResource Include="Resources\icon_pin_crag_current%402x.png" />
+    <BundleResource Include="Resources\icon_pin_crag_current%403x.png" />
+    <BundleResource Include="Resources\icon_pin_device_location.png" />
+    <BundleResource Include="Resources\icon_pin_device_location%402x.png" />
+    <BundleResource Include="Resources\icon_pin_device_location%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

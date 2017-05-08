@@ -54,9 +54,14 @@
     <Compile Include="CustomControls\DoubleExtensions.cs" />
     <Compile Include="CustomControls\GestureFrame.cs" />
     <Compile Include="CustomControls\HybridWebViewCustom.cs" />
+    <Compile Include="CustomControls\iCustomMap.cs" />
+    <Compile Include="CustomControls\iCustomPin.cs" />
     <Compile Include="CustomControls\InfiniteListView.cs" />
+    <Compile Include="CustomControls\MapRoot\XObjectListNotifier.cs" />
+    <Compile Include="CustomControls\MapRoot\XObjectNotifier.cs" />
     <Compile Include="CustomControls\PinchToZoomContainer.cs" />
     <Compile Include="CustomControls\ProgressBar.cs" />
+    <Compile Include="CustomControls\SamplePlace.cs" />
     <Compile Include="CustomControls\SwipeableImage.cs" />
     <Compile Include="DataBase\DataAccess.cs" />
     <Compile Include="DataBase\DataTables.cs" />
@@ -104,6 +109,12 @@
     </Compile>
     <Compile Include="UserControls\BackHeaderUC.xaml.cs">
       <DependentUpon>BackHeaderUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CustomMap\iMapCtrlBound.xaml.cs">
+      <DependentUpon>iMapCtrlBound.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CustomMap\iMapPinInfoCtrl.xaml.cs">
+      <DependentUpon>iMapPinInfoCtrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\FooterUC.xaml.cs">
       <DependentUpon>FooterUC.xaml</DependentUpon>
@@ -557,6 +568,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\CragMapPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\CustomMap\iMapPinInfoCtrl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\CustomMap\iMapCtrlBound.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
