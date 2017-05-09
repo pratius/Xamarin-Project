@@ -30,7 +30,7 @@
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="HomePage"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Image Source="navMap" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center">
+            <Image Source="navSectors" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="MapPage"/>
                 </Image.GestureRecognizers>

@@ -983,6 +983,12 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_home_profile.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_home_sectors.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_home_sends.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\navSectors.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\navSectors.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\navSectors.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\navSectors.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\navSectors.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\navSectors.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">

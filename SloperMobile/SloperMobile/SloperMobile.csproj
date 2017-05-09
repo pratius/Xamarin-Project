@@ -233,6 +233,9 @@
     </Compile>
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Common\Constants\AppSetting.cs" />
+    <Compile Include="Views\SlickTest.xaml.cs">
+      <DependentUpon>SlickTest.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -248,6 +251,9 @@
     <EmbeddedResource Include="UserControls\HeaderNoButtonUC.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SlickTest.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
