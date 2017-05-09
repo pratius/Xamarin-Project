@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.sloperclimbing.urbanclimb" android:versionCode="120" android:versionName="2.120">
 	<uses-sdk android:minSdkVersion="23" />
 	<application android:label="Urban Climb" android:hardwareAccelerated="false" android:largeHeap="true" android:icon="@drawable/icon">
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDlezhB_TB6imlElBbrajrIEnvmdtAhfF8" />
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDJNaoMh4e5cQyQrqeFHlP3r_Avco1AOQ4" />
 		<!--<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDlezhB_TB6imlElBbrajrIEnvmdtAhfF8 " />-->
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 	</application>
