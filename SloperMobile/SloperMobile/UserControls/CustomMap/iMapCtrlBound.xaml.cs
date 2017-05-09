@@ -52,6 +52,8 @@ namespace SloperMobile.UserControls.CustomMap
             SamplePlace sp = new SamplePlace();
             sp.Latitude = userloc.Latitude;
             sp.Longitude = userloc.Longitude;
+            sp.Address = "";
+            sp.Name = "";
             theMap.AddCustomPin(sp.CreateCustomPin("icon_pin_device_location.png"));
             theMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userloc.Latitude, userloc.Longitude), Distance.FromKilometers(2.5)));
             theMap.PropertyChanged += TheMap_PropertyChanged;
