@@ -12,14 +12,12 @@ namespace SloperMobile.CustomControls
     public class SamplePlace : XObjectNotifier
     {
 
-        string _name,
-                        _imageFile;
+        string _name, _imageFile;
         string _address;
-        double _latitude,
-                        _longitude;
+        double _latitude,_longitude;
         string _description;
         bool _isPink = false;
-
+        string _cragid;
 
         public SamplePlace() : base()
         {
@@ -42,7 +40,8 @@ namespace SloperMobile.CustomControls
 
         public string MapPinText
         {
-            get { return "• " + _address + "\n• " + _description; }
+            //get { return "• " + _address + "\n• " + _description; }
+            get { return "• " + _address; }
         }
 
         public string Name
@@ -154,6 +153,18 @@ namespace SloperMobile.CustomControls
 
                 _isPink = value;
                 NotifyPropertyChanged(() => IsPink);
+            }
+        }
+        public string CragId
+        {
+            get { return _cragid; }
+            set
+            {
+                if (value == _cragid)
+                    return;
+
+                _cragid = value;
+                NotifyPropertyChanged(() => _cragid);
             }
         }
     }

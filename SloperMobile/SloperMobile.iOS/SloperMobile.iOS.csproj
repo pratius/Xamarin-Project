@@ -101,6 +101,8 @@
     <Compile Include="HybridWebViewRenderers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="MapRenderers\CustomMKPinAnnotationView.cs" />
+    <Compile Include="MapRenderers\iCustomMapRenderer.cs" />
     <Compile Include="Services\iOSCheckUpdatesTaskService.cs" />
     <Compile Include="SwipeableIosImageRenderer.cs" />
     <None Include="app.config" />

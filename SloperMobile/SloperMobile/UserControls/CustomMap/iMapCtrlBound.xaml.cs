@@ -19,14 +19,15 @@ namespace SloperMobile.UserControls.CustomMap
             InitializeComponent();
             PutCragDataOnMap();
             // show slider only for iOS (useless in WP, not needed in Droid)
-            if (Device.RuntimePlatform == Device.iOS)
+            if (Device.RuntimePlatform != Device.iOS)
             {
                 zoomSlider.IsVisible = false;
                 theMap.SetValue(Grid.RowSpanProperty, 2);
             }
         }
-       async void PutCragDataOnMap()
+       void PutCragDataOnMap()
         {
+            T_CRAG selected_crag=new T_CRAG();
             var crags = App.DAUtil.GetCragList();
             foreach (T_CRAG tcrag in crags)
             {
@@ -34,12 +35,14 @@ namespace SloperMobile.UserControls.CustomMap
                 {
                     SamplePlace p = new SamplePlace(tcrag.crag_name, "scenic_shot_portrait.png", Convert.ToDouble(tcrag.crag_latitude),Convert.ToDouble(tcrag.crag_longitude))
                     {
-                        Address=tcrag.crag_general_info
+                        Address=tcrag.crag_general_info,
+                        CragId=tcrag.crag_id
                     };
                     
                     if(Settings.SelectedCragSettings== tcrag.crag_id)
                     {
                         theMap.AddCustomPin(p.CreateCustomPin("icon_pin_crag_current.png"));
+                        selected_crag = tcrag;
                     }
                     else
                     {
@@ -48,16 +51,11 @@ namespace SloperMobile.UserControls.CustomMap
                     
                 }
             }
-            var userloc = await GetGurrentLocation();
-            SamplePlace sp = new SamplePlace();
-            sp.Latitude = userloc.Latitude;
-            sp.Longitude = userloc.Longitude;
-            sp.Address = "";
-            sp.Name = "";
-            theMap.AddCustomPin(sp.CreateCustomPin("icon_pin_device_location.png"));
-            theMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userloc.Latitude, userloc.Longitude), Distance.FromKilometers(2.5)));
+            if (selected_crag != null)
+            {
+                theMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(Convert.ToDouble(selected_crag.crag_latitude), Convert.ToDouble(selected_crag.crag_longitude)), Distance.FromKilometers(2.5)));
+            }
             theMap.PropertyChanged += TheMap_PropertyChanged;
-
         }
 
         private void TheMap_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

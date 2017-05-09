@@ -1,4 +1,5 @@
-﻿using SloperMobile.CustomControls.MapRoot;
+﻿using SloperMobile.Common.Helpers;
+using SloperMobile.CustomControls.MapRoot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +32,20 @@ namespace SloperMobile.CustomControls
 
         public void RaiseClickEvent()
         {
-            if (Clicked != null)
-                Clicked.Invoke(this, new EventArgs());
+            try
+            {
+                SamplePlace place = this.DataObject as SamplePlace;
+                if (place != null)
+                {
+                    Settings.SelectedCragSettings = place.CragId;
+                    Application.Current.MainPage.Navigation.PushAsync(new Views.MapPage());
+                }
+            }
+            catch
+            {
+            }
+            //if (Clicked != null)
+            //    Clicked.Invoke(this, new EventArgs());
         }
 
 
