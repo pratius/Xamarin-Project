@@ -424,6 +424,24 @@
     <BundleResource Include="Resources\icon_star5.png" />
     <BundleResource Include="Resources\icon_star5%402x.png" />
     <BundleResource Include="Resources\icon_star5%403x.png" />
+    <BundleResource Include="Resources\icon_home_climbing_days.png" />
+    <BundleResource Include="Resources\icon_home_climbing_days%402x.png" />
+    <BundleResource Include="Resources\icon_home_climbing_days%403x.png" />
+    <BundleResource Include="Resources\icon_home_climbing_locations.png" />
+    <BundleResource Include="Resources\icon_home_climbing_locations%402x.png" />
+    <BundleResource Include="Resources\icon_home_climbing_locations%403x.png" />
+    <BundleResource Include="Resources\icon_home_news.png" />
+    <BundleResource Include="Resources\icon_home_news%402x.png" />
+    <BundleResource Include="Resources\icon_home_news%403x.png" />
+    <BundleResource Include="Resources\icon_home_profile.png" />
+    <BundleResource Include="Resources\icon_home_profile%402x.png" />
+    <BundleResource Include="Resources\icon_home_profile%403x.png" />
+    <BundleResource Include="Resources\icon_home_sectors.png" />
+    <BundleResource Include="Resources\icon_home_sectors%402x.png" />
+    <BundleResource Include="Resources\icon_home_sectors%403x.png" />
+    <BundleResource Include="Resources\icon_home_sends.png" />
+    <BundleResource Include="Resources\icon_home_sends%402x.png" />
+    <BundleResource Include="Resources\icon_home_sends%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -564,19 +582,19 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.231\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="Acr.UserDialogs">
-      <HintPath>..\..\packages\Acr.UserDialogs.6.4.0\lib\Xamarin.iOS10\Acr.UserDialogs.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Acr.UserDialogs.Interface">
-      <HintPath>..\..\packages\Acr.UserDialogs.6.4.0\lib\Xamarin.iOS10\Acr.UserDialogs.Interface.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="HockeySDK">
       <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.3\lib\Xamarin.iOS10\HockeySDK.dll</HintPath>
     </Reference>
     <Reference Include="HockeySDK.iOSBindings">
       <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.3\lib\Xamarin.iOS10\HockeySDK.iOSBindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs">
+      <HintPath>..\..\packages\Acr.UserDialogs.6.4.1\lib\Xamarin.iOS10\Acr.UserDialogs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Acr.UserDialogs.Interface">
+      <HintPath>..\..\packages\Acr.UserDialogs.6.4.1\lib\Xamarin.iOS10\Acr.UserDialogs.Interface.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
