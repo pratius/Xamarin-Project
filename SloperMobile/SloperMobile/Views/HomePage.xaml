@@ -7,14 +7,16 @@
     </ContentPage.Padding>
     <ContentPage.Content>
 
-  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0" Margin="20,0,20,0">
+
     <Grid.RowDefinitions>
-      <RowDefinition Height="2*" />
-      <RowDefinition Height="1*" />
-      <RowDefinition Height="1" />
-      <RowDefinition Height="1*" />
-      <RowDefinition Height="1" />
-      <RowDefinition Height="1*" />
+		<RowDefinition Height="35*" />
+		<RowDefinition Height="20*" />
+		<RowDefinition Height="1" />
+		<RowDefinition Height="20*" />
+		<RowDefinition Height="1" />
+		<RowDefinition Height="20*" />
+		<RowDefinition Height="5*" />
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="1*"/>
