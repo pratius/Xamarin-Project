@@ -53,7 +53,7 @@ namespace SloperMobile.Views
             {
                 switch (page)
                 {
-                    case ApplicationActivity.MapPage:
+                    case ApplicationActivity.CragMapPage:
                         //await Navigation.PushAsync(new MapPage());
                         await Navigation.PushAsync(new CragMapPage());
                         break;
@@ -77,6 +77,10 @@ namespace SloperMobile.Views
                     case ApplicationActivity.ClimbingDaysPage:
                         await Navigation.PushAsync(new ClimbingDaysPage());
                         //throw new Exception("Exception Raised by Ravi Explicitly !!!!!!");
+                        break;
+                    case ApplicationActivity.MapPage:
+                        //await Navigation.PushAsync(new MapPage());
+                        await Navigation.PushAsync(new MapPage());
                         break;
                     case ApplicationActivity.NewsPage:
                         await Navigation.PushAsync(new NewsPage());

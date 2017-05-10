@@ -6,41 +6,46 @@
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
     </ContentPage.Padding>
     <ContentPage.Content>
-        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0" Margin="20,0,20,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50*" />
-                <RowDefinition Height="20*" />
-                <RowDefinition Height="1" />
-                <RowDefinition Height="20*" />
-                <RowDefinition Height="10*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
 
-            <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" BackgroundColor="#676767" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
-            <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0" Margin="20,0,20,0">
 
-            <Grid Grid.ColumnSpan="3" ColumnSpacing="0" VerticalOptions="Center" HorizontalOptions="Center">
-                <Image Source="logo_215w" VerticalOptions="Center" HorizontalOptions="Center"/>
-            </Grid>
+    <Grid.RowDefinitions>
+		<RowDefinition Height="35*" />
+		<RowDefinition Height="20*" />
+		<RowDefinition Height="1" />
+		<RowDefinition Height="20*" />
+		<RowDefinition Height="1" />
+		<RowDefinition Height="20*" />
+		<RowDefinition Height="5*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1*"/>
+      <ColumnDefinition Width="1"/>
+      <ColumnDefinition Width="1*"/>
+    </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="1" Grid.Column="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="MapPage"/>
-                </Grid.GestureRecognizers>
-                <Image Aspect="AspectFit" Source="icon_climbing_map" VerticalOptions="Center" HorizontalOptions="Center"/>
-            </Grid>
+    <BoxView Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
+    <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
+    <BoxView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
 
-            <Grid  Grid.Row="1" Grid.Column="2" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="SendsPage"/>
-                </Grid.GestureRecognizers>
-                <Image Aspect="AspectFit" Source="icon_sends" VerticalOptions="Center" HorizontalOptions="Center"/>
-            </Grid>
+    <Grid Grid.ColumnSpan="3" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+      <Image Source="logo_170w" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="150" WidthRequest="150"/>
+    </Grid>
 
+    <Grid Grid.Row="1" Grid.Column="0" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="CragMapPage"/>
+      </Grid.GestureRecognizers>
+      <Image Aspect="Fill" Source="icon_home_climbing_locations" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+    </Grid>
+		
+    <Grid Grid.Row="1" Grid.Column="2" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="ProfilePage"/>
+      </Grid.GestureRecognizers>
+      <Image Aspect="Fill" Source="icon_home_profile" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+    </Grid>
+		
             <Grid  Grid.Row="3" Grid.Column="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
                 <!--
       add this back in once we have somewhere to go 
@@ -50,7 +55,7 @@
 
 
                 <RelativeLayout>
-                    <Image Aspect="AspectFit" Source="icon_climbing_days" VerticalOptions="Center" HorizontalOptions="Center"
+                    <Image Aspect="AspectFit" Source="icon_home_climbing_days" VerticalOptions="Center" HorizontalOptions="Center"
             x:Name="climbBox"
             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
             Property=Height,Factor=.15,Constant=0}"
@@ -81,14 +86,33 @@
                 <!--<Image Aspect="AspectFit" Source="icon_climbing_days" VerticalOptions="Center" HorizontalOptions="Center"/>-->
             </Grid>
 
-            <Grid  Grid.Row="3" Grid.Column="2" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="NewsPage"/>
-                </Grid.GestureRecognizers>
-                <Image Aspect="AspectFit" Source="icon_news" VerticalOptions="Center" HorizontalOptions="Center"/>
-            </Grid>
+    <Grid  Grid.Row="3" Grid.Column="2" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="SendsPage"/>
+      </Grid.GestureRecognizers>
+      <Image Aspect="Fill" Source="icon_home_sends" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+    </Grid>
 
-        </Grid>
+    <Grid  Grid.Row="5" Grid.Column="0" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="MapPage"/>
+      </Grid.GestureRecognizers>
+      <Image Aspect="Fill" Source="icon_home_sectors" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+    </Grid>
+		
+	<Grid  Grid.Row="5" Grid.Column="2" ColumnSpacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+      <Grid.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="NewsPage"/>
+      </Grid.GestureRecognizers>
+      <Image Aspect="Fill" Source="icon_home_news" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+	</Grid>
+		
+  </Grid>
+
+
+
+
+		
     </ContentPage.Content>
 
 </ContentPage>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="SloperMobile.UserControls.CustomMap.iMapPinInfoCtrl"
+             xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+				HeightRequest="84"
+				WidthRequest="120"
+				BackgroundColor="White"
+				Opacity="0.5">
+  <ContentView.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" Padding="0" Spacing="4" >
+            <Image x:Name="imagePin" Source="{Binding ImageFile}" BackgroundColor="White" 
+                   WidthRequest="84" HeightRequest="84" IsOpaque="True" IsVisible="True" Aspect="AspectFill"
+                   HorizontalOptions="StartAndExpand" />
+            <Label x:Name="labelName" HeightRequest="24" TextColor="Black" FontAttributes="Bold" Text="{Binding Name}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" BackgroundColor="White"/>
+            <BoxView HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Start" />
+            <Label x:Name="labelText" HeightRequest="42" TextColor="Blue" FontSize="Small" Text="{Binding MapPinText}" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" BackgroundColor="White" LineBreakMode="WordWrap" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

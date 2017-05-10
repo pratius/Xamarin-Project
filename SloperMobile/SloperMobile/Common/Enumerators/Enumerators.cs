@@ -21,16 +21,16 @@ namespace SloperMobile.Common.Enumerators
         RegistrationPage = 11,
         SearchPage = 12,
         SendsPage = 13,
-        SettingsPage = 14
-
+        SettingsPage = 14,
+        CragMapPage = 15
     }
 
     public enum AppSteepness
     {
-        Slab=1 ,
-        Vertical=2 ,
-        Overhanging= 4,
-        Roof= 8 
+        Slab = 1,
+        Vertical = 2,
+        Overhanging = 4,
+        Roof = 8
     }
 }
 

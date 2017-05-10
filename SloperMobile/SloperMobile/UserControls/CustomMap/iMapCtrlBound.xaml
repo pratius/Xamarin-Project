@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="SloperMobile.UserControls.CustomMap.iMapCtrlBound"
+             xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:local="clr-namespace:SloperMobile.CustomControls">
+    
+    <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="68" />
+        </Grid.RowDefinitions>
+
+        <local:iCustomMap x:Name="theMap" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasZoomEnabled="True" />
+
+        <!-- zoomin / out  -->
+        <Slider x:Name="zoomSlider" Grid.Row="1" HorizontalOptions="FillAndExpand" HeightRequest="42" VerticalOptions="FillAndExpand" />
+    </Grid>
+</ContentView>

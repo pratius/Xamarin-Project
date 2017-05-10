@@ -101,6 +101,8 @@
     <Compile Include="HybridWebViewRenderers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="MapRenderers\CustomMKPinAnnotationView.cs" />
+    <Compile Include="MapRenderers\iCustomMapRenderer.cs" />
     <Compile Include="Services\iOSCheckUpdatesTaskService.cs" />
     <Compile Include="SwipeableIosImageRenderer.cs" />
     <None Include="app.config" />
@@ -424,6 +426,27 @@
     <BundleResource Include="Resources\icon_star5.png" />
     <BundleResource Include="Resources\icon_star5%402x.png" />
     <BundleResource Include="Resources\icon_star5%403x.png" />
+    <BundleResource Include="Resources\icon_home_climbing_days.png" />
+    <BundleResource Include="Resources\icon_home_climbing_days%402x.png" />
+    <BundleResource Include="Resources\icon_home_climbing_days%403x.png" />
+    <BundleResource Include="Resources\icon_home_climbing_locations.png" />
+    <BundleResource Include="Resources\icon_home_climbing_locations%402x.png" />
+    <BundleResource Include="Resources\icon_home_climbing_locations%403x.png" />
+    <BundleResource Include="Resources\icon_home_news.png" />
+    <BundleResource Include="Resources\icon_home_news%402x.png" />
+    <BundleResource Include="Resources\icon_home_news%403x.png" />
+    <BundleResource Include="Resources\icon_home_profile.png" />
+    <BundleResource Include="Resources\icon_home_profile%402x.png" />
+    <BundleResource Include="Resources\icon_home_profile%403x.png" />
+    <BundleResource Include="Resources\icon_home_sectors.png" />
+    <BundleResource Include="Resources\icon_home_sectors%402x.png" />
+    <BundleResource Include="Resources\icon_home_sectors%403x.png" />
+    <BundleResource Include="Resources\icon_home_sends.png" />
+    <BundleResource Include="Resources\icon_home_sends%402x.png" />
+    <BundleResource Include="Resources\icon_home_sends%403x.png" />
+    <BundleResource Include="Resources\navSectors.png" />
+    <BundleResource Include="Resources\navSectors%402x.png" />
+    <BundleResource Include="Resources\navSectors%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -448,6 +471,14 @@
     </Reference>
     <Reference Include="Plugin.Connectivity.Abstractions, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugin.Connectivity.2.3.0\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Geolocator, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\Xamarin.iOS10\Plugin.Geolocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Geolocator.Abstractions, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\Xamarin.iOS10\Plugin.Geolocator.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Plugin.Media, Version=2.6.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -533,23 +564,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Acr.UserDialogs">
-      <HintPath>..\..\packages\Acr.UserDialogs.6.3.10\lib\Xamarin.iOS10\Acr.UserDialogs.dll</HintPath>
-    </Reference>
-    <Reference Include="Acr.UserDialogs.Interface">
-      <HintPath>..\..\packages\Acr.UserDialogs.6.3.10\lib\Xamarin.iOS10\Acr.UserDialogs.Interface.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Settings.Abstractions">
       <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.4\lib\Xamarin.iOS10\Plugin.Settings.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.Settings">
       <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.4\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
-    </Reference>
-    <Reference Include="HockeySDK">
-      <HintPath>..\..\Components\hockeyappios-4.1.0.3\lib\ios-unified\HockeySDK.dll</HintPath>
-    </Reference>
-    <Reference Include="HockeySDK.iOSBindings">
-      <HintPath>..\..\Components\hockeyappios-4.1.0.3\lib\ios-unified\HockeySDK.iOSBindings.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
@@ -567,6 +586,20 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.231\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="HockeySDK">
+      <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.3\lib\Xamarin.iOS10\HockeySDK.dll</HintPath>
+    </Reference>
+    <Reference Include="HockeySDK.iOSBindings">
+      <HintPath>..\..\packages\HockeySDK.Xamarin.4.1.3\lib\Xamarin.iOS10\HockeySDK.iOSBindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs">
+      <HintPath>..\..\packages\Acr.UserDialogs.6.4.1\lib\Xamarin.iOS10\Acr.UserDialogs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Acr.UserDialogs.Interface">
+      <HintPath>..\..\packages\Acr.UserDialogs.6.4.1\lib\Xamarin.iOS10\Acr.UserDialogs.Interface.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -626,6 +659,15 @@
     <Content Include="HTML\ResizeImage.html" />
     <Content Include="HTML\test.html" />
     <Content Include="HTML\Feed.html" />
+    <BundleResource Include="Resources\icon_pin_crag.png" />
+    <BundleResource Include="Resources\icon_pin_crag%402x.png" />
+    <BundleResource Include="Resources\icon_pin_crag%403x.png" />
+    <BundleResource Include="Resources\icon_pin_crag_current.png" />
+    <BundleResource Include="Resources\icon_pin_crag_current%402x.png" />
+    <BundleResource Include="Resources\icon_pin_crag_current%403x.png" />
+    <BundleResource Include="Resources\icon_pin_device_location.png" />
+    <BundleResource Include="Resources\icon_pin_device_location%402x.png" />
+    <BundleResource Include="Resources\icon_pin_device_location%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Plugin.Geolocator;
+using SloperMobile.CustomControls;
+using SloperMobile.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,20 +20,11 @@ namespace SloperMobile.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            //CragMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37, -122), Distance.FromMiles(1)));
-            var map = new Map(
-            MapSpan.FromCenterAndRadius(
-                    new Position(37, -122), Distance.FromMiles(0.3)))
-            {
-                IsShowingUser = true,
-                HeightRequest = 200,
-                WidthRequest = 320,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                MapType = MapType.Street
-            };
-            var stack = new StackLayout { Spacing = 0 };
-            stack.Children.Add(map);
-            Content = stack;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
         }
     }
 }
