@@ -1,26 +1,61 @@
-﻿using SloperMobile.DataBase;
+﻿using Newtonsoft.Json;
+using SloperMobile.DataBase;
+using SloperMobile.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace SloperMobile.ViewModel
 {
     public class NewsViewModel : BaseViewModel
     {
-        private List<T_ROUTE> routelistdata;
-        public List<T_ROUTE> RouteList
+
+        private ObservableCollection<NewsModel> _newsList;
+        public ObservableCollection<NewsModel> NewsList
         {
-            get { return routelistdata; }
-            set { routelistdata = value; OnPropertyChanged(); }
+            get { return _newsList ?? (_newsList = new ObservableCollection<NewsModel>()); }
+            set { _newsList = value; OnPropertyChanged(); }
         }
         public NewsViewModel()
         {
             PageHeaderText = "NEWS";
             PageSubHeaderText = "Latest Created Routes";
-            RouteList = new List<T_ROUTE>();
-            RouteList = App.DAUtil.GetRoutesForSelectedCrag().ToList();
+            var app_news = App.DAUtil.GetAppNews(NewsList.Count(), 10);
+            foreach (NewsModel nm in app_news)
+            {
+                var sec_img = App.DAUtil.GetSectorTopoBySectorId(nm.id);
+                if (sec_img != null)
+                {
+                    var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(sec_img.topo_json);
+                    if (!string.IsNullOrEmpty(topoimg[0].image.data))
+                    {
+                        string strimg64 = topoimg[0].image.data.Split(',')[1];
+                        if (!string.IsNullOrEmpty(strimg64))
+                        {
+                            byte[] imageBytes = Convert.FromBase64String(strimg64);
+                            nm.news_image = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                        }
+                        else
+                        {
+                            nm.news_image = ImageSource.FromFile("scenic_shot_portrait.png");
+                        }
+                    }
+                    else
+                    {
+                        nm.news_image = ImageSource.FromFile("scenic_shot_portrait.png");
+                    }
+                }
+                else
+                {
+                    nm.news_image = ImageSource.FromFile("scenic_shot_portrait.png");
+                }
+                NewsList.Add(nm);
+            }
         }
     }
 }

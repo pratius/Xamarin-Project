@@ -481,6 +481,12 @@ namespace SloperMobile.DataBase
             return dbConn.ExecuteScalar<string>("SELECT hex_code FROM T_BUCKET Where grade_bucket_id= ? Limit 1", grbucketid);
         }
 
+        public List<NewsModel> GetAppNews(int skip,int take)
+        {
+            var item = dbConn.Query<NewsModel>("SELECT  T_SECTOR.sector_id as id, T_ROUTE.date_created as date_created, T_SECTOR.sector_name, COUNT(T_SECTOR.sector_name) as new_route_count,'nr' as news_type FROM T_SECTOR INNER JOIN T_ROUTE ON T_SECTOR.sector_id = T_ROUTE.sector_id GROUP BY T_ROUTE.date_created, T_SECTOR.sector_name, T_SECTOR.sort_order ORDER BY T_ROUTE.date_created DESC, T_SECTOR.sort_order ");
+            var newslist = (item).Skip(skip).Take(take);
+            return newslist.ToList();
+        }        
         #endregion
 
     }
