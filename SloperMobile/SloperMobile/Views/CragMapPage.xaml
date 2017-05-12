@@ -3,14 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:UC="clr-namespace:SloperMobile.UserControls.CustomMap;assembly=SloperMobile"
              xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps.dll"
-              xmlns:local="clr-namespace:SloperMobile.CustomControls"
-             x:Class="SloperMobile.Views.CragMapPage">
-    <!--<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <UC:iMapCtrlBound x:Name="myMapControl" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-    </Grid>-->
+             xmlns:local="clr-namespace:SloperMobile.CustomControls"
+             x:Class="SloperMobile.Views.CragMapPage"
+             ControlTemplate="{StaticResource PageTemplateFooter}">
 
     <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" >
         <Grid.ColumnDefinitions>
@@ -18,12 +13,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition Height="68" />
         </Grid.RowDefinitions>
-
-        <local:iCustomMap x:Name="theMap" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasZoomEnabled="True" />
-
-        <!-- zoomin / out for iOS -->
-        <Slider x:Name="zoomSlider" Grid.Row="1" HorizontalOptions="FillAndExpand" HeightRequest="42" VerticalOptions="FillAndExpand" />
+        <!--<local:iCustomMap x:Name="theMap" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasZoomEnabled="True" />-->
     </Grid>
 </ContentPage>

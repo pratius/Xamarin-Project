@@ -1,4 +1,5 @@
-﻿using SloperMobile.Common.Helpers;
+﻿using SloperMobile.Common.Constants;
+using SloperMobile.Common.Helpers;
 using SloperMobile.CustomControls.MapRoot;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace SloperMobile.CustomControls
             _pinIconAsset = iconAsset;
         }
 
-        public void RaiseClickEvent()
+        public async void RaiseClickEvent()
         {
             try
             {
@@ -38,7 +39,7 @@ namespace SloperMobile.CustomControls
                 if (place != null)
                 {
                     Settings.SelectedCragSettings = place.CragId;
-                    Application.Current.MainPage.Navigation.PushAsync(new Views.CragDetailsPage());
+                    await Application.Current.MainPage.Navigation.PushAsync(new Views.CragDetailsPage());
                 }
             }
             catch
