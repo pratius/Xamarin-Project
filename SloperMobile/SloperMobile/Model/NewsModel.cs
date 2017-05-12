@@ -10,9 +10,11 @@ namespace SloperMobile.Model
     public class NewsModel : BaseModel
     {
         public string id { get; set; }
-        public string date_created { get; set; }
-        public string sector_name { get; set; }
-        public string new_route_count { get; set; }
+        public DateTime date { get; set; }
+        public string title { get; set; }
+        public string sub_title { get; set; }
+        public string count { get; set; }
+        public string message { get; set; }
         public string news_type { get; set; }
         public ImageSource news_image { get; set; } = null;
     }

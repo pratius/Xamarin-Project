@@ -24,7 +24,7 @@ namespace SloperMobile.ViewModel
         public NewsViewModel()
         {
             PageHeaderText = "NEWS";
-            PageSubHeaderText = "Latest Created Routes";
+            PageSubHeaderText = "What's New?";
             var app_news = App.DAUtil.GetAppNews(NewsList.Count(), 10);
             foreach (NewsModel nm in app_news)
             {
