@@ -7,26 +7,29 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace SloperMobile.UserControls
 {
-    public partial class FooterUC : ContentView
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class HeaderMenuPointsUC : ContentView
     {
-        public FooterUC()
+        public HeaderMenuPointsUC()
         {
             InitializeComponent();
         }
-
         private async void OnNavigation(object sender, EventArgs e)
         {
             try
             {
+                Label btn = (Label)sender;
+                var tabtxt = btn.Text.Trim();
                 var arg = e as TappedEventArgs;
                 var param = arg.Parameter as string;
                 if (string.IsNullOrEmpty(param))
                     return;
                 var pageType = (ApplicationActivity)Enum.Parse(typeof(ApplicationActivity), param);
-                await PageNavigation(pageType);
+                await PageNavigation(pageType, tabtxt);
             }
             catch (Exception ex)
             {
@@ -35,35 +38,24 @@ namespace SloperMobile.UserControls
             }
         }
 
-        private async Task PageNavigation(ApplicationActivity page)
+        private async Task PageNavigation(ApplicationActivity page, string tabtxt)
         {
             try
             {
-                switch (page)
+                switch (tabtxt)
                 {
-                    case ApplicationActivity.NewsPage:
-                        await Navigation.PushAsync(new NewsPage());
+                    case "SENDS":
+                        await Navigation.PushAsync(new SendsPage("SENDS"));
                         break;
-                    case ApplicationActivity.ProfilePage:
-                        await Navigation.PushAsync(new SendsPage("POINTS"));
-                        break;
-                    case ApplicationActivity.HomePage:
-                        await Navigation.PushAsync(new HomePage());
-                        break;
-                    case ApplicationActivity.MapPage:
-                        await Navigation.PushAsync(new MapPage());
-                        break;
-                    case ApplicationActivity.SettingsPage:
-                        await Navigation.PushAsync(new SettingsPage());
+                    case "TICK LIST":
+                        await Navigation.PushAsync(new SendsPage("TICKLIST"));
                         break;
                 }
             }
             catch (Exception ex)
             {
-            
+
             }
-
-
         }
     }
 }

@@ -58,7 +58,8 @@ namespace SloperMobile.Views
                         await Navigation.PushAsync(new CragMapPage());
                         break;
                     case ApplicationActivity.ProfilePage:
-                        await Navigation.PushAsync(new ProfilePage());
+                        // await Navigation.PushAsync(new ProfilePage());
+                        await Navigation.PushAsync(new SendsPage("POINTS"));
                         break;
                     case ApplicationActivity.PyramidPage:
                         await Navigation.PushAsync(new PyramidPage());

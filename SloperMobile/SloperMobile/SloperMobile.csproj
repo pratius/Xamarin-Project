@@ -120,6 +120,9 @@
     <Compile Include="UserControls\FooterUC.xaml.cs">
       <DependentUpon>FooterUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\HeaderMenuPointsUC.xaml.cs">
+      <DependentUpon>HeaderMenuPointsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\HeaderMenuTickListUC.xaml.cs">
       <DependentUpon>HeaderMenuTickListUC.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,9 @@
     </Compile>
     <Compile Include="UserControls\HeaderUC.xaml.cs">
       <DependentUpon>HeaderUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PointsUC.xaml.cs">
+      <DependentUpon>PointsUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SendsUC.xaml.cs">
       <DependentUpon>SendsUC.xaml</DependentUpon>
@@ -596,6 +602,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\CragDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\HeaderMenuPointsUC.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\PointsUC.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

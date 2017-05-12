@@ -114,6 +114,14 @@ namespace SloperMobile.ViewModel
                     await InvokeServiceGetAscentData();
                     Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
+                else if (TabName == "POINTS")
+                {
+                    PageHeaderText = "PROFILE";
+                    PageSubHeaderText = "Points";
+                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+                    await InvokeServiceGetAscentData();
+                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                }
                 else
                 {
                     PageHeaderText = "PROFILE";
