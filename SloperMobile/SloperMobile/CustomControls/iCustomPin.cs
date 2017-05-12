@@ -38,7 +38,7 @@ namespace SloperMobile.CustomControls
                 if (place != null)
                 {
                     Settings.SelectedCragSettings = place.CragId;
-                    Application.Current.MainPage.Navigation.PushAsync(new Views.MapPage());
+                    Application.Current.MainPage.Navigation.PushAsync(new Views.CragDetailsPage());
                 }
             }
             catch

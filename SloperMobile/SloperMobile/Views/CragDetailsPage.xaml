@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+             x:Class="SloperMobile.Views.CragDetailsPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+    </ContentPage.Padding>
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="00" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="00" />
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Column="1" HeightRequest="40" HorizontalOptions="FillAndExpand">
+            <UC:BackHeaderUC HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+        <Grid Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Image Source="scenic_shot_portrait" Aspect="AspectFill" />
+        </Grid>
+        
+        <Frame Grid.Row="1" BackgroundColor="#77000000" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Frame.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="02" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="02" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height=".2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height=".1*" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height=".1*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <!--<StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Center" BackgroundColor="Black" Padding="15" Grid.Row="0">
+                                <Label Text="Dummy Text" TextColor="##FA7200" HorizontalOptions="Center" FontSize="Medium" BackgroundColor="Black" />
+                            </StackLayout>
+                            <Label Grid.Row="1" Text="Dummy Text" TextColor="White" HorizontalOptions="Center" FontSize="Medium" />-->
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Frame.Content>
+        </Frame>
+        <UC:FooterUC Grid.Column="1" Grid.Row="2" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />
+    </Grid>
+
+
+</ContentPage>
