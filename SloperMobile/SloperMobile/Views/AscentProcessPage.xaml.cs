@@ -30,20 +30,18 @@ namespace SloperMobile.Views
            _routeid = routeid;
            _CurrentSector = CurrentSector;
             InitializeComponent();
-            ascType.ObjImgAcentTypeNxt.GestureRecognizers.Add(tapImageNext);
 
+            ascType.ObjImgAcentTypeNxt.GestureRecognizers.Add(tapImageNext);
             ascDate.ObjImgAcentDateNxt.GestureRecognizers.Add(tapImageNext);
             ascDate.ObjImgAcentDatePrv.GestureRecognizers.Add(tapImagePrev);
 
             ascRating.ObjImgAcentRatingNxt.GestureRecognizers.Add(tapImageNext);
             ascRating.ObjImgAcentRatingPrv.GestureRecognizers.Add(tapImagePrev);
-
             ascClimbingAngle.ObjImgClmAngleNxt.GestureRecognizers.Add(tapImageNext);
             ascClimbingAngle.ObjImgClmAnglePrv.GestureRecognizers.Add(tapImagePrev);
 
             ascHoldType.ObjAscentHoldTypeNxt.GestureRecognizers.Add(tapImageNext);
             ascHoldType.ObjAscentHoldTypePrv.GestureRecognizers.Add(tapImagePrev);
-
             ascRouteStyle.ObjAscentRouteStyleNxt.GestureRecognizers.Add(tapImageNext);
             ascRouteStyle.ObjAscentRouteStylePrv.GestureRecognizers.Add(tapImagePrev);
 

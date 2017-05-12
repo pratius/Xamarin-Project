@@ -444,6 +444,12 @@
     <BundleResource Include="Resources\icon_home_sends.png" />
     <BundleResource Include="Resources\icon_home_sends%402x.png" />
     <BundleResource Include="Resources\icon_home_sends%403x.png" />
+    <BundleResource Include="Resources\navSectors.png" />
+    <BundleResource Include="Resources\navSectors%402x.png" />
+    <BundleResource Include="Resources\navSectors%403x.png" />
+    <BundleResource Include="Resources\bg_gradient_trans_black.png" />
+    <BundleResource Include="Resources\bg_gradient_trans_black%402x.png" />
+    <BundleResource Include="Resources\bg_gradient_trans_black%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
