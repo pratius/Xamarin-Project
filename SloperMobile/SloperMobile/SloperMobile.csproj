@@ -82,6 +82,7 @@
     <Compile Include="Model\MapRouteImageModel.cs" />
     <Compile Include="Model\MasterPageItem.cs" />
     <Compile Include="Model\NewsModel.cs" />
+    <Compile Include="Model\Point.cs" />
     <Compile Include="Model\RegistrationReq.cs" />
     <Compile Include="Model\RgistrationResponse.cs" />
     <Compile Include="Model\Send.cs" />

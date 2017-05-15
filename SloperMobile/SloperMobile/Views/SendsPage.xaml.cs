@@ -53,6 +53,7 @@ namespace SloperMobile.Views
                 main_layout.IsVisible = true;
                 Ticklists.IsVisible = false;
                 Sends.IsVisible = true;
+                Points.IsVisible = false;
             }
             else if (TabName == "TICKLIST")
             {
@@ -62,8 +63,9 @@ namespace SloperMobile.Views
                 main_layout.IsVisible = false;
                 Ticklists.IsVisible = true;
                 Sends.IsVisible = false;
+                Points.IsVisible = false;
             }
-            else
+            else if (TabName == "POINTS") 
             {
                 SendsScrollViewer.IsVisible = false;
                 TickListsScrollViewer.IsVisible = false;
