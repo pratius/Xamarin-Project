@@ -100,8 +100,8 @@
 				</gauge:SfCircularGauge>
 			</Grid>
 		</StackLayout>
-		<UC:TickListsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" x:Name="Ticklists" />
+		<UC:TickListsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" x:Name="Ticklists" Margin="0,-125,0,0"  />
 		<UC:SendsUC Grid.Column="1" Grid.Row="3" x:Name="Sends" />
-        <UC:PointsUC Grid.Column="1" Grid.Row="3" x:Name="Points" />
+        <UC:PointsUC Grid.Column="1" Grid.Row="3" x:Name="Points" Margin="0,-125,0,0" />
 	</Grid>
 </ContentPage>

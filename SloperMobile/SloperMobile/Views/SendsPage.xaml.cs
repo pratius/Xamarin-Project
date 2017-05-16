@@ -17,7 +17,7 @@ namespace SloperMobile.Views
     {
         #region Properties
 
-        public new event PropertyChangedEventHandler PropertyChanged;             
+        public new event PropertyChangedEventHandler PropertyChanged;
 
         #region PointerValue
 
@@ -35,7 +35,7 @@ namespace SloperMobile.Views
                         new PropertyChangedEventArgs("PointerValue"));
                 }
             }
-        }              
+        }
 
         #endregion PointerValue
 
@@ -43,8 +43,8 @@ namespace SloperMobile.Views
         public SendsPage(string TabName)
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);           
-            BindingContext = new SendsViewModel(TabName,Navigation);
+            NavigationPage.SetHasNavigationBar(this, false);
+            BindingContext = new SendsViewModel(TabName, Navigation);
             if (TabName == "SENDS")
             {
                 SendsScrollViewer.IsVisible = true;
@@ -65,7 +65,7 @@ namespace SloperMobile.Views
                 Sends.IsVisible = false;
                 Points.IsVisible = false;
             }
-            else if (TabName == "POINTS") 
+            else if (TabName == "POINTS")
             {
                 SendsScrollViewer.IsVisible = false;
                 TickListsScrollViewer.IsVisible = false;
@@ -77,7 +77,7 @@ namespace SloperMobile.Views
             }
         }
 
-        
+
         private void Handle_ValueChanged(object sender, EventArgs e)
         {
             try
