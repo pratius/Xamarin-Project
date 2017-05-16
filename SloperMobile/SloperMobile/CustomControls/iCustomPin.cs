@@ -1,4 +1,5 @@
 ﻿using SloperMobile.Common.Constants;
+using SloperMobile.Common.Enumerators;
 using SloperMobile.Common.Helpers;
 using SloperMobile.CustomControls.MapRoot;
 using System;
@@ -39,8 +40,11 @@ namespace SloperMobile.CustomControls
                 if (place != null)
                 {
                     Settings.SelectedCragSettings = place.CragId;
-                    await Application.Current.MainPage.Navigation.PushAsync(new Views.MapPage());
+                    //await Application.Current.MainPage.Navigation.PushAsync(new Views.HomePage("MapPage"));
+                    //await Application.Current.MainPage.Navigation.PushAsync(new Views.MapPage());
+                    await Application.Current.MainPage.Navigation.PushAsync(new Views.CragDetailsPage());
                 }
+                Clicked?.Invoke(this, new EventArgs());
             }
             catch
             {

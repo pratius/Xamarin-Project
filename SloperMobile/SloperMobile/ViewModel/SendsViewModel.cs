@@ -39,6 +39,7 @@ namespace SloperMobile.ViewModel
             set { ticklistsList = value; OnPropertyChanged(); }
         }
 
+        public ObservableCollection<ObservableGroupCollection<string, Model.Point>> PointsGrouped { get; set; }
         public ObservableCollection<Model.Point> PointList
         {
             get { return pointssList; }
@@ -241,7 +242,16 @@ namespace SloperMobile.ViewModel
                 var response = await apicall.Get<Model.Point>();
                 if (response.Count > 0)
                 {
-                    PointList = new ObservableCollection<Model.Point>(response);                    
+                    //PointList = new ObservableCollection<Model.Point>(response);
+
+                    //var groupedData = response.OrderByDescending(e => e.date_climbed).GroupBy(e => e.route_name[0].ToString()).Select(e => new ObservableGroupCollection<string, Model.Point>(e)).ToList();
+
+                    //PointsGrouped = new ObservableCollection<ObservableGroupCollection<string, Model.Point>>(groupedData);
+
+                    var sorted = from point in response  orderby point.date_climbed descending group point by point.date_climbed into pointGroup
+                                 select new ObservableGroupCollection<string, Model.Point>(pointGroup.Key.ToString(), pointGroup);
+                    PointsGrouped = new ObservableCollection<ObservableGroupCollection<string, Model.Point>>(sorted);
+
                     //var res = response.GroupBy(pts => pts.date_climbed).Select(grp => grp.ToList()).ToList();
                     //foreach(List<Model.Point> li in res)
                     //{

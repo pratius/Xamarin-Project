@@ -46,6 +46,7 @@
     <Compile Include="Common\Enumerators\Enumerators.cs" />
     <Compile Include="Common\Helpers\Helper.cs" />
     <Compile Include="Common\Helpers\HttpClientHelper.cs" />
+    <Compile Include="Common\Helpers\ObservableGroupCollection.cs" />
     <Compile Include="Common\Helpers\Settings.cs" />
     <Compile Include="Common\Interfaces\IApplicationDataBase.cs" />
     <Compile Include="Common\Interfaces\ISQLite.cs" />

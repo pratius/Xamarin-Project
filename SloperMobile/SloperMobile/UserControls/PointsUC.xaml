@@ -35,10 +35,12 @@
                 <Label Grid.Row="0" Grid.Column="3" Text="POINTS" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
             </Grid>
             <BoxView Grid.Row="1" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
-            <Controls:InfiniteListView x:Name="lstViewPoint" ItemsSource="{Binding PointList}" Grid.Row="2" BackgroundColor="Black" SeparatorVisibility="None">
-                <Controls:InfiniteListView.Footer>
+            <ListView x:Name="lstViewPoint" ItemsSource="{Binding PointsGrouped}" Grid.Row="2" IsGroupingEnabled = "true" 
+                                       GroupShortNameBinding = "{Binding Key}"  GroupDisplayBinding = "{Binding Key}"  
+                                       BackgroundColor="Black" SeparatorVisibility="None">
+                <ListView.Footer>
                     <Label/>
-                </Controls:InfiniteListView.Footer>
+                </ListView.Footer>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -62,7 +64,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </Controls:InfiniteListView>
+            </ListView>
         </Grid>
     </ContentView.Content>
 </ContentView>
