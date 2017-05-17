@@ -35,9 +35,8 @@
                 <Label Grid.Row="0" Grid.Column="3" Text="POINTS" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
             </Grid>
             <BoxView Grid.Row="1" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
-            <ListView x:Name="lstViewPoint" ItemsSource="{Binding PointsGrouped}" Grid.Row="2" IsGroupingEnabled = "true" 
-                                       GroupShortNameBinding = "{Binding Key}"  GroupDisplayBinding = "{Binding Key}"  
-                                       BackgroundColor="Black" SeparatorVisibility="None">
+
+            <ListView x:Name="lstViewPoint" ItemsSource="{Binding}" Grid.Row="2" IsGroupingEnabled = "true" GroupDisplayBinding = "{Binding Key}" BackgroundColor="Black" SeparatorVisibility="None">
                 <ListView.Footer>
                     <Label/>
                 </ListView.Footer>

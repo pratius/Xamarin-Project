@@ -137,7 +137,7 @@ namespace SloperMobile.ViewModel
                     PageHeaderText = "PROFILE";
                     PageSubHeaderText = "Points";
                     Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
-                    await InvokeServiceGetPointsData();
+                   // await InvokeServiceGetPointsData();
                     Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
                 else
