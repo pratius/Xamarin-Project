@@ -25,7 +25,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <UC:HeaderUC HeightRequest="30" />
-            <Controls:InfiniteListView x:Name="lstnewsView" Grid.Row="1" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding NewsList}">
+            <Controls:InfiniteListView x:Name="lstnewsView" Grid.Row="1" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding NewsList}"  LoadMoreCommand="{Binding LoadMoreNews}">
                 <Controls:InfiniteListView.Footer>
                     <Label />
                 </Controls:InfiniteListView.Footer>
