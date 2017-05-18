@@ -18,7 +18,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>6.0</string>
+	<string>8.0</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.sloperclimbing.x.test</string>
 	<key>NSCameraUsageDescription</key>
@@ -29,11 +29,9 @@
 	<string>GVC</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2.0</string>
-	<key>XSLaunchImageAssets</key>
-	<string>Assets.xcassets/LaunchImage.launchimage</string>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleVersion</key>
 	<string>113</string>
+	<key>CFBundleDisplayName</key>
+	<string></string>
 </dict>
 </plist>
