@@ -17,6 +17,9 @@
 			<ColumnDefinition Width="02" />
 		</Grid.ColumnDefinitions>
 		<UC:HeaderUC Grid.ColumnSpan="3" HeightRequest="30" />
+        <ScrollView Orientation="Horizontal" HeightRequest="40" Grid.Row="1" Grid.Column="1" x:Name="PointScrollViewer">
+            <UC:HeaderMenuPointsUC HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+        </ScrollView>
 		<ScrollView Orientation="Horizontal" HeightRequest="40" Grid.Row="1" Grid.Column="1" x:Name="SendsScrollViewer">
 			<UC:HeaderMenuUC HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
 		</ScrollView>
@@ -97,7 +100,8 @@
 				</gauge:SfCircularGauge>
 			</Grid>
 		</StackLayout>
-		<UC:TickListsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" x:Name="Ticklists" />
-		<UC:SendsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" x:Name="Sends" />
+		<UC:TickListsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" x:Name="Ticklists" Margin="0,-125,0,0"  />
+		<UC:SendsUC Grid.Column="1" Grid.Row="3" x:Name="Sends" />
+        <UC:PointsUC Grid.Column="1" Grid.Row="3" x:Name="Points" Margin="0,-125,0,0" />
 	</Grid>
 </ContentPage>

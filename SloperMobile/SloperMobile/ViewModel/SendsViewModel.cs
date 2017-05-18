@@ -19,10 +19,13 @@ namespace SloperMobile.ViewModel
         {
             _navigation = navigation;
             OnPagePrepration(TabName);
+            //UserPoints = new List<Model.PointList>();
         }
 
         private ObservableCollection<Send> sendsList;
         private ObservableCollection<TickList> ticklistsList;
+        private ObservableCollection<Model.Point> pointssList;
+        //private List<PointList> _userPoint;
 
         public ObservableCollection<Send> SendsList
         {
@@ -35,6 +38,18 @@ namespace SloperMobile.ViewModel
             get { return ticklistsList; }
             set { ticklistsList = value; OnPropertyChanged(); }
         }
+
+        public ObservableCollection<ObservableGroupCollection<string, Model.Point>> PointsGrouped { get; set; }
+        public ObservableCollection<Model.Point> PointList
+        {
+            get { return pointssList; }
+            set { pointssList = value; OnPropertyChanged(); }
+        }
+        //public List<PointList> UserPoints
+        //{
+        //    get { return _userPoint; }
+        //    set { _userPoint = value; OnPropertyChanged(); }
+        //}
 
         private int onsight;
 
@@ -90,6 +105,9 @@ namespace SloperMobile.ViewModel
 
             }
         }
+
+
+
         private string routename;
         public string route_name
         {
@@ -114,6 +132,14 @@ namespace SloperMobile.ViewModel
                     await InvokeServiceGetAscentData();
                     Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
+                else if (TabName == "POINTS")
+                {
+                    PageHeaderText = "PROFILE";
+                    PageSubHeaderText = "Points";
+                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+                   // await InvokeServiceGetPointsData();
+                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                }
                 else
                 {
                     PageHeaderText = "PROFILE";
@@ -127,7 +153,8 @@ namespace SloperMobile.ViewModel
 
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
+                await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
             }
         }
 
@@ -204,6 +231,41 @@ namespace SloperMobile.ViewModel
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private async Task InvokeServiceGetPointsData()
+        {
+            try
+            {
+                HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetUserPoints, AppSetting.APP_ID), Settings.AccessTokenSettings);
+                var response = await apicall.Get<Model.Point>();
+                if (response.Count > 0)
+                {
+                    //PointList = new ObservableCollection<Model.Point>(response);
+
+                    //var groupedData = response.OrderByDescending(e => e.date_climbed).GroupBy(e => e.route_name[0].ToString()).Select(e => new ObservableGroupCollection<string, Model.Point>(e)).ToList();
+
+                    //PointsGrouped = new ObservableCollection<ObservableGroupCollection<string, Model.Point>>(groupedData);
+
+                    var sorted = from point in response  orderby point.date_climbed descending group point by point.date_climbed into pointGroup
+                                 select new ObservableGroupCollection<string, Model.Point>(pointGroup.Key.ToString(), pointGroup);
+                    PointsGrouped = new ObservableCollection<ObservableGroupCollection<string, Model.Point>>(sorted);
+
+                    //var res = response.GroupBy(pts => pts.date_climbed).Select(grp => grp.ToList()).ToList();
+                    //foreach(List<Model.Point> li in res)
+                    //{
+                    //    Model.PointList pl = new Model.PointList();
+                    //    pl.UsersPoint = li;
+                    //    UserPoints.Add(pl);
+                    //}
+
+                }
+            }
+            catch (Exception ex)
+            {
+                //throw ex;
+                await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
             }
         }
         #endregion

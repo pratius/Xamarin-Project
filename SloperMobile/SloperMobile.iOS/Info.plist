@@ -20,24 +20,24 @@
 	<key>MinimumOSVersion</key>
 	<string>6.0</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.sloperclimbing.urbanclimb</string>
+	<string>com.sloperclimbing.elevationplaceclimbinggym</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to the camera to take photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs access to photos.</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.120</string>
+	<string>2.124</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-	<key>CFBundleVersion</key>
-	<string>120</string>
-	<key>CFBundleName</key>
-	<string>Urban Climb</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We will use your location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We are using your location.</string>
+	<key>CFBundleName</key>
+	<string>Elevation Place</string>
+	<key>CFBundleVersion</key>
+	<string>124</string>
 </dict>
 </plist>

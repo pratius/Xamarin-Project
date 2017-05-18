@@ -142,7 +142,10 @@ namespace SloperMobile.Droid.MapRenderers
             iCustomPin customPin = myMap.GetPinAtPosition(new Position(marker.Position.Latitude, marker.Position.Longitude));
 
             if (customPin != null)
+            {
+                marker.HideInfoWindow();
                 customPin.RaiseClickEvent();
+            }
         }
 
         void HandleMarkerClick(object sender, GoogleMap.MarkerClickEventArgs e)

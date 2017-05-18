@@ -116,6 +116,7 @@ namespace SloperMobile.iOS.MapRenderers
                 return;
 
             customPinView = new UIView();
+            /*
             placeImageView = new UIView();
             UIImage img = new UIImage(place.ImageFile);
             UIImageView imgCtrl = new UIImageView(new CGRect(40, 10, 84, 84));
@@ -124,7 +125,7 @@ namespace SloperMobile.iOS.MapRenderers
 
             placeImageView.AddSubview(imgCtrl);
             customPinView.AddSubview(placeImageView);
-
+            */
             customPinView.Frame = new CGRect(0, 0, 200, 84);
             customPinView.Center = new CGPoint(0, -(e.View.Frame.Height + 76)); // 75));
 

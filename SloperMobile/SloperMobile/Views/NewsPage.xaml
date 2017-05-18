@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile" x:Class="SloperMobile.Views.NewsPage" Style="{StaticResource AppBackgroundColor}" NavigationPage.HasNavigationBar="False" ControlTemplate="{StaticResource PageTemplateFooter}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" 
+             xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" 
+             xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile" 
+             x:Class="SloperMobile.Views.NewsPage" 
+             Style="{StaticResource AppBackgroundColor}" 
+             NavigationPage.HasNavigationBar="False" ControlTemplate="{StaticResource PageTemplateFooter}">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
     </ContentPage.Padding>
@@ -25,7 +31,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <UC:HeaderUC HeightRequest="30" />
-            <Controls:InfiniteListView x:Name="lstnewsView" Grid.Row="1" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding NewsList}"  LoadMoreCommand="{Binding LoadMoreNews}">
+            <Controls:InfiniteListView x:Name="lstnewsView" Grid.Row="1" SeparatorVisibility="None" BackgroundColor="Black" ItemTapped="OnItemTapped" 
+                              HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding NewsList}" LoadMoreCommand="{Binding LoadNews}">
                 <Controls:InfiniteListView.Footer>
                     <Label />
                 </Controls:InfiniteListView.Footer>

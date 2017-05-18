@@ -24,7 +24,11 @@ namespace SloperMobile.Common.Constants
         public const string APP_LABEL_DROID = "Bull App";
 
         //Guest DNN Login
-        public const string Guest_UserId = "bull.guest@sloperclimbing.com";
-        public const string Guest_UserPassword = "G'7/[LdYbcC4K^Jr";
+        //public const string Guest_UserId = "bull.guest@sloperclimbing.com";
+        //public const string Guest_UserPassword = "G'7/[LdYbcC4K^Jr";
+
+        //Guest DNN Login
+        public const string Guest_UserId = "sloper.anonymous";
+        public const string Guest_UserPassword = "s.s2016!";
     }
 }

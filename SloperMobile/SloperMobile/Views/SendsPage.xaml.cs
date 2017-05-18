@@ -17,7 +17,7 @@ namespace SloperMobile.Views
     {
         #region Properties
 
-        public new event PropertyChangedEventHandler PropertyChanged;             
+        public new event PropertyChangedEventHandler PropertyChanged;
 
         #region PointerValue
 
@@ -35,7 +35,7 @@ namespace SloperMobile.Views
                         new PropertyChangedEventArgs("PointerValue"));
                 }
             }
-        }              
+        }
 
         #endregion PointerValue
 
@@ -43,27 +43,41 @@ namespace SloperMobile.Views
         public SendsPage(string TabName)
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);           
-            BindingContext = new SendsViewModel(TabName,Navigation);
+            NavigationPage.SetHasNavigationBar(this, false);
+            BindingContext = new SendsViewModel(TabName, Navigation);
             if (TabName == "SENDS")
             {
                 SendsScrollViewer.IsVisible = true;
                 TickListsScrollViewer.IsVisible = false;
+                PointScrollViewer.IsVisible = false;
                 main_layout.IsVisible = true;
                 Ticklists.IsVisible = false;
                 Sends.IsVisible = true;
+                Points.IsVisible = false;
             }
-            else
+            else if (TabName == "TICKLIST")
             {
                 SendsScrollViewer.IsVisible = false;
                 TickListsScrollViewer.IsVisible = true;
+                PointScrollViewer.IsVisible = false;
                 main_layout.IsVisible = false;
                 Ticklists.IsVisible = true;
                 Sends.IsVisible = false;
+                Points.IsVisible = false;
+            }
+            else if (TabName == "POINTS")
+            {
+                SendsScrollViewer.IsVisible = false;
+                TickListsScrollViewer.IsVisible = false;
+                PointScrollViewer.IsVisible = true;
+                main_layout.IsVisible = false;
+                Ticklists.IsVisible = false;
+                Sends.IsVisible = false;
+                Points.IsVisible = true;
             }
         }
 
-        
+
         private void Handle_ValueChanged(object sender, EventArgs e)
         {
             try

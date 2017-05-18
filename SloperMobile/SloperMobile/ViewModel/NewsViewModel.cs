@@ -1,18 +1,16 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SloperMobile.Common.Command;
+using SloperMobile.DataBase;
+using SloperMobile.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using SloperMobile.Common.Command;
-using SloperMobile.Model;
 using Xamarin.Forms;
-using SloperMobile.DataBase;
-using SloperMobile.Common.Enumerators;
-using SloperMobile.Common.Helpers;
-using SloperMobile.Common.Constants;
+
 namespace SloperMobile.ViewModel
 {
     public class NewsViewModel : BaseViewModel
@@ -23,7 +21,6 @@ namespace SloperMobile.ViewModel
         {
             get { return _newsList ?? (_newsList = new ObservableCollection<NewsModel>()); }
             set { _newsList = value; OnPropertyChanged(); }
-
         }
         #region DelegateCommand
 
@@ -34,13 +31,7 @@ namespace SloperMobile.ViewModel
             PageHeaderText = "NEWS";
             PageSubHeaderText = "What's New?";
             LoadMoreNews = new DelegateCommand(LoadNews);
-            LoadNews(LoadMoreNews);
-
-
         }
-
-
-       
 
         private void LoadNews(object obj)
         {

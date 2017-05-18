@@ -198,10 +198,11 @@ Global
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
 		$0.TextStylePolicy = $1
+		$1.scope = text/x-csharp
 		$1.inheritsSet = VisualStudio
 		$1.inheritsScope = text/plain
-		$1.scope = text/x-csharp
 		$0.CSharpFormattingPolicy = $2
+		$2.scope = text/x-csharp
 		$2.IndentSwitchSection = True
 		$2.NewLinesForBracesInProperties = True
 		$2.NewLinesForBracesInAccessors = True
@@ -221,12 +222,10 @@ Global
 		$2.SpaceBeforeOpenSquareBracket = False
 		$2.inheritsSet = Mono
 		$2.inheritsScope = text/x-csharp
-		$2.scope = text/x-csharp
 		$0.DotNetNamingPolicy = $3
 		$3.DirectoryNamespaceAssociation = None
 		$3.ResourceNamePolicy = FileFormatDefault
 		$0.StandardHeader = $4
-		$4.Text = 
 		$4.IncludeInNewFiles = True
 		$0.NameConventionPolicy = $5
 		$5.Rules = $6
@@ -243,6 +242,6 @@ Global
 		$9.String = Exception
 		$0.VersionControlPolicy = $10
 		$10.inheritsSet = Mono
-		version = 2.120
+		version = 2.124
 	EndGlobalSection
 EndGlobal

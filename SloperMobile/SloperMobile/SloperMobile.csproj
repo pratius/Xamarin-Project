@@ -16,7 +16,7 @@
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ReleaseVersion>2.120</ReleaseVersion>
+    <ReleaseVersion>2.124</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +46,7 @@
     <Compile Include="Common\Enumerators\Enumerators.cs" />
     <Compile Include="Common\Helpers\Helper.cs" />
     <Compile Include="Common\Helpers\HttpClientHelper.cs" />
+    <Compile Include="Common\Helpers\ObservableGroupCollection.cs" />
     <Compile Include="Common\Helpers\Settings.cs" />
     <Compile Include="Common\Interfaces\IApplicationDataBase.cs" />
     <Compile Include="Common\Interfaces\ISQLite.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Model\MapRouteImageModel.cs" />
     <Compile Include="Model\MasterPageItem.cs" />
     <Compile Include="Model\NewsModel.cs" />
+    <Compile Include="Model\Point.cs" />
     <Compile Include="Model\RegistrationReq.cs" />
     <Compile Include="Model\RgistrationResponse.cs" />
     <Compile Include="Model\Send.cs" />
@@ -120,6 +122,9 @@
     <Compile Include="UserControls\FooterUC.xaml.cs">
       <DependentUpon>FooterUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\HeaderMenuPointsUC.xaml.cs">
+      <DependentUpon>HeaderMenuPointsUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\HeaderMenuTickListUC.xaml.cs">
       <DependentUpon>HeaderMenuTickListUC.xaml</DependentUpon>
     </Compile>
@@ -128,6 +133,9 @@
     </Compile>
     <Compile Include="UserControls\HeaderUC.xaml.cs">
       <DependentUpon>HeaderUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PointsUC.xaml.cs">
+      <DependentUpon>PointsUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SendsUC.xaml.cs">
       <DependentUpon>SendsUC.xaml</DependentUpon>
@@ -166,6 +174,9 @@
     </Compile>
     <Compile Include="Views\ClimbingDaysPage.xaml.cs">
       <DependentUpon>ClimbingDaysPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CragDetailsPage.xaml.cs">
+      <DependentUpon>CragDetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CragMapPage.xaml.cs">
       <DependentUpon>CragMapPage.xaml</DependentUpon>
@@ -587,6 +598,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UserControls\CustomMap\iMapCtrlBound.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CragDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\HeaderMenuPointsUC.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\PointsUC.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

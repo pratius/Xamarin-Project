@@ -24,19 +24,82 @@ namespace SloperMobile.Views
         {
             InitializeComponent();
             newsVM = new NewsViewModel();
+            SelectedSector = new MapListModel();
             BindingContext = newsVM;
         }
+        public MapListModel SelectedSector
+        {
+            get { return _selectedSector; }
+            set { _selectedSector = value; OnPropertyChanged(); }
+        }
 
-
-        private void OnItemTapped(object sender, ItemTappedEventArgs e)
+        private async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             try
             {
-              //  var dataItem = e.Item as T_ROUTE;
-               // LoadSector(dataItem.sector_id.ToString());
-               // Cache.SelctedCurrentSector = _selectedSector;
-                //loading carousel route setail page when click on ticklist listing route.             
-               //Navigation.PushAsync(new TopoSectorPage(_selectedSector, dataItem.route_id.ToString()));
+                var news = e.Item as NewsModel;
+
+                if (news == null)
+                {
+                    return;
+                }
+                SelectedSector.SectorId = news.id;
+                SelectedSector.SectorImage = news.news_image;
+                T_SECTOR tsec = App.DAUtil.GetSectorDataBySectorID(news.id);
+                SelectedSector.SectorName = tsec.sector_name;
+                string latlong = "";
+                if (!string.IsNullOrEmpty(tsec.latitude) && !string.IsNullOrEmpty(tsec.longitude))
+                {
+                    latlong = tsec.latitude + " / " + tsec.longitude;
+                }
+                SelectedSector.SectorLatLong = latlong;
+                SelectedSector.SectorShortInfo = tsec.sector_info_short;
+                if (!string.IsNullOrEmpty(tsec.angles_top_2) && tsec.angles_top_2.Contains(","))
+                {
+                    string[] steeps = tsec.angles_top_2.Split(',');
+                    SelectedSector.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[0])));
+                    SelectedSector.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[1])));
+                }
+                else
+                {
+                    SelectedSector.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                    SelectedSector.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(4));
+                }
+                int totalbuckets = App.DAUtil.GetTotalBucketForApp();
+                if (totalbuckets != 0)
+                {
+
+                    SelectedSector.BucketCountTemplate = new DataTemplate(() =>
+                    {
+                        StackLayout slBucketFrame = new StackLayout();
+                        slBucketFrame.Orientation = StackOrientation.Horizontal;
+                        slBucketFrame.HorizontalOptions = LayoutOptions.EndAndExpand;
+                        slBucketFrame.VerticalOptions = LayoutOptions.Start;
+                        for (int i = 1; i <= totalbuckets; i++)
+                        {
+                            Frame countframe = new Frame();
+                            countframe.HasShadow = false;
+                            countframe.Padding = 0; countframe.WidthRequest = 25; countframe.HeightRequest = 20;
+                            countframe.BackgroundColor = Color.FromHex(App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()));
+                            Label lblcount = new Label();
+                            if (App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString()) != null)
+                            {
+                                lblcount.Text = App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString());
+                            }
+                            else
+                            {
+                                lblcount.Text = "0";
+                            }
+                            lblcount.HorizontalOptions = LayoutOptions.CenterAndExpand;
+                            lblcount.VerticalOptions = LayoutOptions.CenterAndExpand;
+                            lblcount.TextColor = Color.White; lblcount.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                            countframe.Content = lblcount;
+                            slBucketFrame.Children.Add(countframe);
+                        }
+                        return slBucketFrame;
+                    });
+                }
+                await Navigation.PushAsync(new Views.MapDetailPage(SelectedSector));
             }
             catch (Exception ex)
             {
@@ -46,11 +109,47 @@ namespace SloperMobile.Views
 
         protected override void OnAppearing()
         {
-            //this.webView.LoadFromContent("HTML/Feed.html");
+            newsVM.LoadMoreNews.Execute(null);
             base.OnAppearing();
         }
 
-
+        private string GetSteepnessResourceName(int steep)
+        {
+            string resource = "";
+            AppSteepness steepvalue;
+            if (steep == (int)AppSteepness.Slab)
+            {
+                steepvalue = AppSteepness.Slab;
+            }
+            else if (steep == (int)AppSteepness.Vertical)
+            {
+                steepvalue = AppSteepness.Vertical;
+            }
+            else if (steep == (int)AppSteepness.Overhanging)
+            {
+                steepvalue = AppSteepness.Overhanging;
+            }
+            else
+            {
+                steepvalue = AppSteepness.Roof;
+            }
+            switch (steepvalue)
+            {
+                case AppSteepness.Slab:
+                    resource = "icon_steepness_1_slab_border_20x20.png";
+                    break;
+                case AppSteepness.Vertical:
+                    resource = "icon_steepness_2_vertical_border_20x20.png";
+                    break;
+                case AppSteepness.Overhanging:
+                    resource = "icon_steepness_4_overhanging_border_20x20.png";
+                    break;
+                case AppSteepness.Roof:
+                    resource = "icon_steepness_8_roof_border_20x20.png";
+                    break;
+            }
+            return resource;
+        }
         //private void LoadSector(string secid)
         //{
         //    try
