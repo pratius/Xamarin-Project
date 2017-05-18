@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile" xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" x:Class="SloperMobile.Views.TopoMapRoutesPage" NavigationPage.HasNavigationBar="false" Style="{StaticResource AppBackgroundColor}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:SloperMobile.ViewModel" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile" xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" x:Class="SloperMobile.Views.TopoMapRoutesPage" NavigationPage.HasNavigationBar="false" Style="{StaticResource AppBackgroundColor}">
 	<ContentPage.Padding>
 		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
 	</ContentPage.Padding>
@@ -18,8 +18,18 @@
 			<UC:BackHeaderUC HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
 		</StackLayout>
 		<Grid Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-			<Controls:HybridWebViewCustom x:Name="webView" BackgroundColor="Black" />
-		</Grid>
+            <Controls:HybridWebViewCustom x:Name="webView" BackgroundColor="Black" IsVisible="False"/>
+            <ScrollView Orientation="Horizontal" Padding="0" VerticalOptions="FillAndExpand" x:Name="scrollView">
+                <StackLayout >
+                    <Controls:PinchToZoomContainer>
+                        <Controls:PinchToZoomContainer.Content>
+                            <local:TouchCanvasView x:Name="canvas" Pinch="canvas_Pinch" PaintSurface="OnPaintSample" Touched="OnTouched" IsVisible="True" HeightRequest="400"
+                    WidthRequest="400" BackgroundColor="Black" />
+                        </Controls:PinchToZoomContainer.Content>
+                    </Controls:PinchToZoomContainer>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
 		<Controls:GestureFrame Grid.Row="1" BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupSm,Mode=TwoWay}" HeightRequest="150" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" SwipeDown="OnSwipeDownRoutePopupSm" SwipeTop="OnSwipeTopRoutePopupSm">
 			<Controls:GestureFrame.Content>
 				<Grid>

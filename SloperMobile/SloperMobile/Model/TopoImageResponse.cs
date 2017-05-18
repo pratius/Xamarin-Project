@@ -41,6 +41,7 @@ namespace SloperMobile.Model
     public class topoline
     {
         public List<topopoints> points { get; set; }
+        public List<topopointstext> pointsText { get; set; }
         public topostyle style { get; set; }
         public topomarker marker { get; set; }
     }
@@ -51,12 +52,20 @@ namespace SloperMobile.Model
         public string type { set; get; }
         public string label { set; get; }
     }
+    public class topopointstext
+    {
+        public string point_id { set; get; }
+        public string text_id { set; get; }
+        public string text_value { set; get; }
+        public string isdirection { set; get; }
+    }
     public class topostyle
     {
         public string type { get; set; }
         public string width { get; set; }
         public string color { get; set; }
         public List<int> dashPattern { get; set; }
+        public string is_dark_checked { get; set; }
         public toposhadow shadow { get; set; }
     }
     public class toposhadow

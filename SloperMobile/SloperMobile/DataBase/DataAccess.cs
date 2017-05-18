@@ -437,6 +437,10 @@ namespace SloperMobile.DataBase
         {
             return dbConn.ExecuteScalar<string>("SELECT grade_bucket_id_count FROM T_GRADE WHERE sector_id = ? and grade_bucket_id = ?", sectorid, grbucketid);
         }
+        public string GetBucketHexColorByGradeBucketId(string grbucketid)
+        {
+            return dbConn.ExecuteScalar<string>("SELECT hex_code FROM T_BUCKET Where grade_bucket_id= ? Limit 1", grbucketid);
+        }
         #endregion
 
     }
