@@ -44,6 +44,7 @@
     <Compile Include="Common\Constants\AppConstant.cs" />
     <Compile Include="Common\Constants\Cache.cs" />
     <Compile Include="Common\Enumerators\Enumerators.cs" />
+    <Compile Include="Common\Helpers\GradeNameToColorConverter.cs" />
     <Compile Include="Common\Helpers\Helper.cs" />
     <Compile Include="Common\Helpers\HttpClientHelper.cs" />
     <Compile Include="Common\Helpers\ObservableGroupCollection.cs" />

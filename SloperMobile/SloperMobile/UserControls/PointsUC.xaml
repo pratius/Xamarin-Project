@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SloperMobile.Common.Helpers;assembly=SloperMobile"
              xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
              x:Class="SloperMobile.UserControls.PointsUC">
     <ContentView.Resources>
@@ -13,6 +14,7 @@
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontSize" Value="12"/>
             </Style>
+            <local:GradeNameToColorConverter x:Key="Inverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -36,10 +38,19 @@
             </Grid>
             <BoxView Grid.Row="1" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
 
-            <ListView x:Name="lstViewPoint" ItemsSource="{Binding}" Grid.Row="2" IsGroupingEnabled = "true" GroupDisplayBinding = "{Binding Key}" BackgroundColor="Black" SeparatorVisibility="None">
+            <ListView x:Name="lstViewPoint" ItemsSource="{Binding}" ItemTapped="lstViewPoint_ItemTapped" Grid.Row="2" IsGroupingEnabled = "true" BackgroundColor="Black" SeparatorColor="#FF8E2D" SeparatorVisibility="None">
                 <ListView.Footer>
                     <Label/>
                 </ListView.Footer>
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="15">
+                            <StackLayout VerticalOptions="FillAndExpand" Padding="5" BackgroundColor="Black">
+                                <Label Text="{Binding Key,StringFormat='{0:dd/MM/yyyy}'}" TextColor="White" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -54,11 +65,11 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding date_climbed, StringFormat='{0:MM/dd/yy}'}"  Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <!--<Label Grid.Row="0" Grid.Column="0" Text="{Binding date_climbed, StringFormat='{0:MM/dd/yy}'}"  Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding route_name}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding tech_grade}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding points}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <BoxView Grid.Row="1" Grid.ColumnSpan="4" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding tech_grade}" TextColor="{Binding Path=tech_grade, Converter={StaticResource Inverter}, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding points}" TextColor="{Binding Path=tech_grade, Converter={StaticResource Inverter}, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <BoxView Grid.Row="1" Grid.ColumnSpan="4" BackgroundColor="White" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

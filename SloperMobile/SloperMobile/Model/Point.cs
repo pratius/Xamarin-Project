@@ -15,7 +15,7 @@ namespace SloperMobile.Model
         public DateTime date_climbed
         {
             get { return dateclimbed; }
-            set { dateclimbed = value; }
+            set { dateclimbed =value; }
         }
     }
     public class PointList
