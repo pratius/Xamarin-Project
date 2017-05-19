@@ -24,8 +24,8 @@ namespace SloperMobile.UserControls
             if (response.Result.Count > 0)
             {
                 var sorted = from point in response.Result
-                             orderby point.date_climbed descending
-                             group point by point.date_climbed into pointGroup
+                             orderby Convert.ToDateTime(point.date_climbed) descending
+                             group point by (point.date_climbed) into pointGroup
                              select new ObservableGroupCollection<string, Model.Point>(pointGroup.Key.ToString(), pointGroup);
 
                 var reslist = sorted.ToList();

@@ -38,15 +38,15 @@
             </Grid>
             <BoxView Grid.Row="1" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
 
-            <ListView x:Name="lstViewPoint" ItemsSource="{Binding}" ItemTapped="lstViewPoint_ItemTapped" Grid.Row="2" IsGroupingEnabled = "true" BackgroundColor="Black" SeparatorColor="#FF8E2D" SeparatorVisibility="None">
+            <ListView x:Name="lstViewPoint" ItemsSource="{Binding}" ItemTapped="lstViewPoint_ItemTapped" Grid.Row="2" IsGroupingEnabled = "true" BackgroundColor="Black" SeparatorColor="#FF8E2D" SeparatorVisibility="Default">
                 <ListView.Footer>
                     <Label/>
                 </ListView.Footer>
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
                         <ViewCell Height="15">
-                            <StackLayout VerticalOptions="FillAndExpand" Padding="5" BackgroundColor="#202020">
-                                <Label Text="{Binding Key, StringFormat='{0:MM/dd/yy}'}" TextColor="White" FontSize="Small" VerticalOptions="Center"/>
+                            <StackLayout VerticalOptions="CenterAndExpand" Padding="12" BackgroundColor="#202020">
+                                <Label Text="{Binding Key}" TextColor="White" FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

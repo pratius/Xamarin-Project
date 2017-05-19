@@ -7,13 +7,13 @@
              x:Class="SloperMobile.Views.CragMapPage"
              ControlTemplate="{StaticResource PageTemplateFooter}">
 
-    <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" >
+    <!--<Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <!--<local:iCustomMap x:Name="theMap" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasZoomEnabled="True" />-->
-    </Grid>
+        --><!--<local:iCustomMap x:Name="theMap" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasZoomEnabled="True" />--><!--
+    </Grid>-->
 </ContentPage>
