@@ -197,7 +197,8 @@ namespace SloperMobile.Views
                     }
                     else
                     {
-                        webView.IsVisible = false;                        
+                        webView.IsVisible = false;
+                        _Image.IsVisible = true;
                     }
                 }
                 comment_text.Text = AscentProcessVM.CommentText;
