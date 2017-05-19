@@ -36,7 +36,7 @@
                 <Label Grid.Row="0" Grid.Column="2" Text="GRADE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
                 <Label Grid.Row="0" Grid.Column="3" Text="POINTS" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
             </Grid>
-            <BoxView Grid.Row="1" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+            <BoxView Grid.Row="1" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
 
             <ListView x:Name="lstViewPoint" ItemsSource="{Binding}" ItemTapped="lstViewPoint_ItemTapped" Grid.Row="2" IsGroupingEnabled = "true" BackgroundColor="Black" SeparatorColor="#FF8E2D" SeparatorVisibility="None">
                 <ListView.Footer>
@@ -45,8 +45,8 @@
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
                         <ViewCell Height="15">
-                            <StackLayout VerticalOptions="FillAndExpand" Padding="5" BackgroundColor="Black">
-                                <Label Text="{Binding Key,StringFormat='{0:dd/MM/yyyy}'}" TextColor="White" VerticalOptions="Center"/>
+                            <StackLayout VerticalOptions="FillAndExpand" Padding="5" BackgroundColor="#202020">
+                                <Label Text="{Binding Key, StringFormat='{0:MM/dd/yy}'}" TextColor="White" FontSize="Small" VerticalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -66,10 +66,10 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <!--<Label Grid.Row="0" Grid.Column="0" Text="{Binding date_climbed, StringFormat='{0:MM/dd/yy}'}"  Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding route_name}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding tech_grade}" TextColor="{Binding Path=tech_grade, Converter={StaticResource Inverter}, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding points}" TextColor="{Binding Path=tech_grade, Converter={StaticResource Inverter}, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <BoxView Grid.Row="1" Grid.ColumnSpan="4" BackgroundColor="White" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding route_name}" FontSize="Small" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding tech_grade}" FontSize="Small" TextColor="{Binding Path=tech_grade, Converter={StaticResource Inverter}, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding points}" FontSize="Small" TextColor="{Binding Path=tech_grade, Converter={StaticResource Inverter}, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <BoxView Grid.Row="1" Grid.ColumnSpan="4" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
