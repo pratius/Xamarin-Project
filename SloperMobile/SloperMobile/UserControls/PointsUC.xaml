@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SloperMobile.Common.Helpers;assembly=SloperMobile"
              xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
              x:Class="SloperMobile.UserControls.PointsUC">
     <ContentView.Resources>
@@ -13,13 +14,14 @@
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontSize" Value="12"/>
             </Style>
+            <local:GradeNameToColorConverter x:Key="Inverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0" Margin="0,15,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="25" />
-                <RowDefinition Height="1" />
+				<RowDefinition Height="1" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" >
@@ -29,17 +31,26 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Text="DATE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
-                <Label Grid.Row="0" Grid.Column="1" Text="CLIMB" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+               <!-- <Label Grid.Row="0" Grid.Column="0" Text="DATE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />-->
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="CLIMB" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
                 <Label Grid.Row="0" Grid.Column="2" Text="GRADE" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
                 <Label Grid.Row="0" Grid.Column="3" Text="POINTS" Style="{StaticResource HederLabelStyle}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
             </Grid>
-            <BoxView Grid.Row="1" BackgroundColor="#3F3F3F" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+            <BoxView Grid.Row="1" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
 
-            <ListView x:Name="lstViewPoint" ItemsSource="{Binding}" Grid.Row="2" IsGroupingEnabled = "true" GroupDisplayBinding = "{Binding Key}" BackgroundColor="Black" SeparatorVisibility="None">
+            <ListView x:Name="lstViewPoint" ItemsSource="{Binding}" ItemTapped="lstViewPoint_ItemTapped" Grid.Row="2" IsGroupingEnabled = "true" BackgroundColor="Black" SeparatorColor="#3F3F3F" SeparatorVisibility="Default">
                 <ListView.Footer>
                     <Label/>
                 </ListView.Footer>
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout VerticalOptions="CenterAndExpand" BackgroundColor="#101010" Padding="15" Margin="0">
+                                <Label Text="{Binding Key}" TextColor="White" FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -54,12 +65,12 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding date_climbed, StringFormat='{0:MM/dd/yy}'}"  Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding route_name}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding tech_grade}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding points}" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <BoxView Grid.Row="1" Grid.ColumnSpan="4" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
-                            </Grid>
+                                <!--<Label Grid.Row="0" Grid.Column="0" Text="{Binding date_climbed, StringFormat='{0:MM/dd/yy}'}"  Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
+                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding route_name}" FontSize="Small" Style="{StaticResource ListLabelStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding tech_grade}" FontSize="Small" TextColor="{Binding Path=tech_grade, Converter={StaticResource Inverter}, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding points}" FontSize="Small" TextColor="{Binding Path=tech_grade, Converter={StaticResource Inverter}, Mode=TwoWay}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <!--    <BoxView Grid.Row="1" Grid.ColumnSpan="4" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+                            --></Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

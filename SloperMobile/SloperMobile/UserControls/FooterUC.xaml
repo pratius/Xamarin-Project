@@ -13,33 +13,40 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <!--<Frame Grid.Column="0" BackgroundColor="White" VerticalOptions="Center" HorizontalOptions="Center">-->
-            <Image Source="navNews"   Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
-                <Image.GestureRecognizers>
+            <StackLayout Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="NewsPage"/>
-                </Image.GestureRecognizers>
-            </Image>
-            <!--</Frame>-->
-            <Image Source="navProfile" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
-                <Image.GestureRecognizers>
+                </StackLayout.GestureRecognizers>
+                <Image Source="navNews" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="ProfilePage"/>
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Source="navHome" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
-                <Image.GestureRecognizers>
+                </StackLayout.GestureRecognizers>
+                <Image Source="navProfile" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="2" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="HomePage"/>
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Source="navSectors" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center">
-                <Image.GestureRecognizers>
+                </StackLayout.GestureRecognizers>
+                <Image Source="navHome" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="3" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="MapPage"/>
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Source="navSettings" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center">
-                <Image.GestureRecognizers>
+                </StackLayout.GestureRecognizers>
+                <Image Source="navSectors" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="4" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="SettingsPage"/>
-                </Image.GestureRecognizers>
-            </Image>
+                </StackLayout.GestureRecognizers>
+                <Image Source="navSettings" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,0"/>
+            </StackLayout>
 
         </Grid>
 

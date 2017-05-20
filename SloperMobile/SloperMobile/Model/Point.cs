@@ -12,10 +12,10 @@ namespace SloperMobile.Model
         public string tech_grade { get; set; }
         public long points { get; set; }
         private DateTime dateclimbed;
-        public DateTime date_climbed
+        public string date_climbed
         {
-            get { return dateclimbed; }
-            set { dateclimbed = value; }
+            get { return dateclimbed.ToString("MMM dd,yyyy"); }
+            set { dateclimbed = Convert.ToDateTime(value); }
         }
     }
     public class PointList
