@@ -27,7 +27,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <ReleaseVersion>2.124</ReleaseVersion>
+    <ReleaseVersion>2.126</ReleaseVersion>
     <AndroidTlsProvider>
     </AndroidTlsProvider>
     <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
