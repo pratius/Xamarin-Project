@@ -20,7 +20,7 @@
 	<key>MinimumOSVersion</key>
 	<string>6.0</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.sloperclimbing.elevationplaceclimbinggym</string>
+	<string>com.sloperclimbing.bullinachinashop</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to the camera to take photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -35,9 +35,9 @@
 	<string>We will use your location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We are using your location.</string>
-	<key>CFBundleName</key>
-	<string>Elevation Place</string>
 	<key>CFBundleVersion</key>
 	<string>126</string>
+	<key>CFBundleName</key>
+	<string>Bull in a China Shop</string>
 </dict>
 </plist>
