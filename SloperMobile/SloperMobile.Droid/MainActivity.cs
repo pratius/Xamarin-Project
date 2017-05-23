@@ -50,7 +50,7 @@ namespace SloperMobile.Droid
             Resolver.SetResolver(container.GetResolver());
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            global::Xamarin.FormsMaps.Init(this, bundle);
+            Xamarin.FormsGoogleMaps.Init(this, bundle); // initialize for Xamarin.Forms.GoogleMaps
             ImageCircleRenderer.Init();
             UserDialogs.Init(this);
 

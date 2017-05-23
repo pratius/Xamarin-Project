@@ -70,7 +70,7 @@ namespace SloperMobile.ViewModel
                         Title = item.crag_name.ToUpper(),
                         ItemId = item.crag_id,
                         IconSource = "",
-                        Contents = item.crag_general_info,
+                        Contents = (AppSetting.APP_TYPE=="indoor")? item.crag_parking_info : item.area_name,
                         TargetType = typeof(MapPage),
                     });
                 }

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+             xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              x:Class="SloperMobile.Views.CragDetailsPage">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
@@ -13,18 +14,18 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="00" />
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="00" />
         </Grid.ColumnDefinitions>
-        <StackLayout Grid.Column="1" HeightRequest="40" HorizontalOptions="FillAndExpand">
+        <StackLayout Grid.Column="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
             <UC:BackHeaderUC HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
         </StackLayout>
-        <Grid Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Image Source="scenic_shot_portrait" Aspect="AspectFill" />
+        <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Image Source="{Binding CragImage}" Aspect="AspectFill" />
         </Grid>
-        
-        <Frame Grid.Row="1" BackgroundColor="#77000000" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+            <Image Source="bg_portrait_half_fade1.png"  Aspect="AspectFill" />
+        </Grid>
+        <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Frame.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -33,30 +34,24 @@
                         <ColumnDefinition Width="02" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height=".2*" />
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height=".1*" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="1" />
-                            <RowDefinition Height=".1*" />
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <!--<StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="Center" BackgroundColor="Black" Padding="15" Grid.Row="0">
-                                <Label Text="Dummy Text" TextColor="##FA7200" HorizontalOptions="Center" FontSize="Medium" BackgroundColor="Black" />
-                            </StackLayout>
-                            <Label Grid.Row="1" Text="Dummy Text" TextColor="White" HorizontalOptions="Center" FontSize="Medium" />-->
-                        </Grid>
-                    </Grid>
+
+                    <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand"  Grid.ColumnSpan="3"  Margin="0,50,0,0">
+                        <XLabUC:ContentControl ContentTemplate="{Binding LegendsDataTemplate}" HorizontalOptions="FillAndExpand"/>
+                        <BoxView BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                        <ScrollView HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding Path=CragDesc}"  TextColor="White" LineBreakMode="WordWrap" HorizontalOptions="Center" FontSize="Micro" />
+                        </ScrollView>
+                        <Button Text="SECTORS" TextColor="White" HorizontalOptions="Center" BackgroundColor="#FF8E2D" BorderColor="White"></Button>
+                    </StackLayout>
                 </Grid>
             </Frame.Content>
         </Frame>
-        <UC:FooterUC Grid.Column="1" Grid.Row="2" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />
+        <UC:FooterUC Grid.Column="0" Grid.Row="2" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />
     </Grid>
-
-
 </ContentPage>

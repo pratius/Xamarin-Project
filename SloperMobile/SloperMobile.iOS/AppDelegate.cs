@@ -44,7 +44,7 @@ namespace SloperMobile.iOS
 
             Resolver.SetResolver(container.GetResolver());
             global::Xamarin.Forms.Forms.Init();
-            global::Xamarin.FormsMaps.Init();
+            Xamarin.FormsGoogleMaps.Init(AppSetting.GoogleApiKey_iOS); // initialize for Xamarin.Forms.GoogleMaps
             ImageCircleRenderer.Init();
             Cache.CurrentScreenHeight = (int)((int)(UIScreen.MainScreen.Bounds.Height * (int)UIScreen.MainScreen.Scale) * 2);
             LoadApplication(new App());

@@ -1,6 +1,6 @@
 ﻿using MapKit;
 using SloperMobile.CustomControls;
-using Xamarin.Forms.Maps;
+//using Xamarin.Forms.Maps;
 
 namespace SloperMobile.iOS.MapRenderers
 {
