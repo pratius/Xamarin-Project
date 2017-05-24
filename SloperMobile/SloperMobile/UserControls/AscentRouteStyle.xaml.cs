@@ -10,8 +10,8 @@ namespace SloperMobile.UserControls
 {
     public partial class AscentRouteStyle : StackLayout
     {
-        public Image ObjAscentRouteStylePrv { get { return ImgAscentRouteStylePrv; } }
-        public Image ObjAscentRouteStyleNxt { get { return ImgAscentRouteStyleNxt; } }
+        public StackLayout ObjAscentRouteStylePrv { get { return ImgAscentRouteStylePrv; } }
+        public StackLayout ObjAscentRouteStyleNxt { get { return ImgAscentRouteStyleNxt; } }
         public AscentRouteStyle()
         {
             InitializeComponent();

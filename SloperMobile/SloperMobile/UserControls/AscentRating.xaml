@@ -49,7 +49,11 @@
 			<Label Grid.Row="4" Grid.ColumnSpan="3" Text="{Binding CommentText,Mode=TwoWay}" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" />
 			<!--<Editor Grid.Row="5" Grid.ColumnSpan="3" x:Name="rate_comment" Text="{Binding CommentText,Mode=TwoWay}" HeightRequest="100" VerticalOptions="Start" Style="{StaticResource GeneralEditorStyle}" />-->
 		</Grid>
-        <Image Grid.Row="1" x:Name="ImgAscRatingPrv" Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="Center" />
-        <Image Grid.Row="1" x:Name="ImgAscRatingNxt" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />
-	</Grid>
+        <StackLayout Orientation="Horizontal" x:Name="ImgAscRatingPrv" Margin="0,0,50,0" Grid.Column="0"  Grid.Row="1">
+            <Image Grid.Row="1"  Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="EndAndExpand" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" x:Name="ImgAscRatingNxt" Margin="50,0,0,0" Grid.Column="1"  Grid.Row="1">
+            <Image Grid.Row="1"  Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start"  HorizontalOptions="StartAndExpand" />
+        </StackLayout>
+    </Grid>
 </StackLayout>

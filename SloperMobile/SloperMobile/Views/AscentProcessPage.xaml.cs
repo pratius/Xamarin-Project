@@ -50,6 +50,11 @@ namespace SloperMobile.Views
             BindingContext = AscentProcessVM;
             //Title = AscentProcessVM.PageHeaderText;
             NavigationPage.SetHasNavigationBar(this, false);
+            //if (AppSetting.APP_TYPE == "indoor")
+            //{
+            //    Children.RemoveAt(3);
+            //}
+
         }
         void tapImageNext_Tapped(object sender, EventArgs e)
         {
