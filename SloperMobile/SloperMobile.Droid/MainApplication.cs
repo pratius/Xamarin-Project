@@ -4,11 +4,13 @@ using Android.App;
 using Android.OS;
 using Android.Runtime;
 using Plugin.CurrentActivity;
+using SloperMobile.Common.Constants;
 
 namespace SloperMobile.Droid
 {
 	//You can specify additional application information in this attribute
     [Application]
+    [MetaData("com.google.android.maps.v2.API_KEY", Value = AppSetting.GoogleApiKey_Droid)]
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
         public MainApplication(IntPtr handle, JniHandleOwnership transer)

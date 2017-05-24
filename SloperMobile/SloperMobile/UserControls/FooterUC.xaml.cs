@@ -53,6 +53,7 @@ namespace SloperMobile.UserControls
                         break;
                     case ApplicationActivity.SettingsPage:
                         await Navigation.PushAsync(new SettingsPage());
+                        //await Navigation.PushAsync(new CragDetailsPage());
                         break;
                 }
             }

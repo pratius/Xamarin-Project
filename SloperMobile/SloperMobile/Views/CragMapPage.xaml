@@ -2,18 +2,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:UC="clr-namespace:SloperMobile.UserControls.CustomMap;assembly=SloperMobile"
-             xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps.dll"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              xmlns:local="clr-namespace:SloperMobile.CustomControls"
              x:Class="SloperMobile.Views.CragMapPage"
              ControlTemplate="{StaticResource PageTemplateFooter}">
 
-    <!--<Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" >
+    <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition />
         </Grid.RowDefinitions>
-        --><!--<local:iCustomMap x:Name="theMap" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasZoomEnabled="True" />--><!--
-    </Grid>-->
+        <maps:Map x:Name="map"   Grid.Row="0" VerticalOptions="FillAndExpand"/>
+    </Grid>
 </ContentPage>

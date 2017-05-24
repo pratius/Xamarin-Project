@@ -489,6 +489,20 @@ namespace SloperMobile.DataBase
             return newslist.ToList();
            // return item.ToList();
         }
+
+
+        public TCRAG_IMAGE GetScenicImageForCrag(string cragid)
+        {
+            var item = dbConn.Table<TCRAG_IMAGE>().Where(tci => tci.crag_id == cragid).FirstOrDefault();
+            if (item != null)
+            {
+                return item;
+            }
+            else
+            {
+                return null;
+            }
+        }
         #endregion
 
     }
