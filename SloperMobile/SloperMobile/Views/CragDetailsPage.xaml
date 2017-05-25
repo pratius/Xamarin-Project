@@ -37,17 +37,21 @@
                         <RowDefinition Height="100" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand"  Grid.ColumnSpan="3"  Margin="0,50,0,0">
                         <XLabUC:ContentControl ContentTemplate="{Binding LegendsDataTemplate}" HorizontalOptions="FillAndExpand"/>
                         <BoxView BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
                     </StackLayout>
-                    <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <StackLayout x:Name="crag_icons" Orientation="Horizontal" Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand" Spacing="25" Grid.ColumnSpan="3"  Margin="0,0,0,0">
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                        <BoxView BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
                         <ScrollView HorizontalOptions="CenterAndExpand">
                             <Label Text="{Binding Path=CragDesc}"  TextColor="White" LineBreakMode="WordWrap" HorizontalOptions="Center" FontSize="Micro" />
                         </ScrollView>
-                        <Button Text="SECTORS" TextColor="White" HorizontalOptions="Center" BackgroundColor="#FF8E2D" BorderColor="White"></Button>
+                        <Button Text="SECTORS" TextColor="White" HorizontalOptions="Center" BackgroundColor="#FF8E2D" BorderColor="White" Clicked="Sector_Clicked"></Button>
                     </StackLayout>
                 </Grid>
             </Frame.Content>

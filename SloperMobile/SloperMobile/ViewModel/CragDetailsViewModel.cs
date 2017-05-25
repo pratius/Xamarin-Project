@@ -1,4 +1,5 @@
-﻿using SloperMobile.Common.Helpers;
+﻿using SloperMobile.Common.Command;
+using SloperMobile.Common.Helpers;
 using SloperMobile.DataBase;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,8 @@ namespace SloperMobile.ViewModel
             set { legendsdata = value; OnPropertyChanged(); }
         }
         #endregion
+
+       
         #region Methods
         private void LoadLegendsBucket()
         {
@@ -96,6 +99,12 @@ namespace SloperMobile.ViewModel
             catch (Exception ex)
             {
             }
+        }
+        
+        
+        private void LoadGraphData()
+        {
+            int totalbuckets = App.DAUtil.GetTotalBucketForApp();
         }
         #endregion
     }

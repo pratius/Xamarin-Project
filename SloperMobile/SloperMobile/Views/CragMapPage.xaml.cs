@@ -26,25 +26,25 @@ namespace SloperMobile.Views
 
         protected override async void OnAppearing()
         {
-
             var crags = App.DAUtil.GetCragList();
             foreach (T_CRAG tcrag in crags)
             {
                 if (!string.IsNullOrEmpty(tcrag.crag_latitude) && !string.IsNullOrEmpty(tcrag.crag_longitude))
                 {
                     //BitmapDescriptor pinIcon;
-                    //if (!string.IsNullOrEmpty(Settings.SelectedCragSettings)&& Settings.SelectedCragSettings== tcrag.crag_id)
+                    //string filename = "";
+                    //if (!string.IsNullOrEmpty(Settings.SelectedCragSettings) && Settings.SelectedCragSettings == tcrag.crag_id)
                     //{
                     //    var assembly = typeof(CragMapPage).GetTypeInfo().Assembly;
-                    //    var file = "icon_pin_crag_current";
-                    //    var stream = assembly.GetManifestResourceStream($"SloperMobile.{file}");
+                    //    filename = "icon_pin_crag_current.png";
+                    //    var stream = assembly.GetManifestResourceStream($"SloperMobile.CustomControls.MapRoot.Pins.{filename}");
                     //    pinIcon = BitmapDescriptorFactory.FromStream(stream);
                     //}
                     //else
                     //{
-                    //    var assembly = typeof(CragMapPage).GetTypeInfo().Assembly;
-                    //    var file = "icon_pin_crag";
-                    //    var stream = assembly.GetManifestResourceStream($"SloperMobile.{file}");
+                    //    var assembly = typeof(SloperMobile.Views.CragMapPage).GetTypeInfo().Assembly;
+                    //    filename = "icon_pin_crag.png";
+                    //    var stream = assembly.GetManifestResourceStream($"SloperMobile.CustomControls.MapRoot.Pins.{filename}");
                     //    pinIcon = BitmapDescriptorFactory.FromStream(stream);
                     //}
                     map.Pins.Add(new Pin
@@ -53,15 +53,16 @@ namespace SloperMobile.Views
                         Position = new Position(Convert.ToDouble(tcrag.crag_latitude), Convert.ToDouble(tcrag.crag_longitude)),
                         Label = tcrag.crag_name,
                         Address =(AppSetting.APP_TYPE=="indoor")? tcrag.crag_parking_info : tcrag.area_name,
-                        Tag = tcrag.crag_id
+                        Tag = tcrag.crag_id,
+                        Icon = (Settings.SelectedCragSettings == tcrag.crag_id)?BitmapDescriptorFactory.DefaultMarker(Color.SkyBlue): BitmapDescriptorFactory.DefaultMarker(Color.Gray)
                     });
                 }
             }
-            //var userloc = await GetGurrentLocation();
-            //if (userloc != null)
-            //{
-            //    map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userloc.Latitude, userloc.Longitude), Distance.FromMiles(0.3)), true);
-            //}
+            var userloc = await GetGurrentLocation();
+            if (userloc != null)
+            {
+                map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userloc.Latitude, userloc.Longitude), Distance.FromMiles(0.3)), true);
+            }
             map.InfoWindowClicked += Map_InfoWindowClicked;
             base.OnAppearing();
         }

@@ -135,6 +135,7 @@ namespace SloperMobile.ViewModel
                             
                             tcrag.crag_id = crag.crag_id;
                             tcrag.crag_name = crag.crag_name;
+                            tcrag.season = crag.season;
                             tcrag.weather_provider_code = crag.weather_provider_code;
                             tcrag.weather_provider_name = crag.weather_provider_name;
                             tcrag.area_name = crag.area_name;
@@ -181,8 +182,10 @@ namespace SloperMobile.ViewModel
                             if(!string.IsNullOrEmpty(crag.crag_image))
                             {
                                 TCRAG_IMAGE tci = new TCRAG_IMAGE();
-                                tci.crag_id= crag.crag_id;
+                                tci.crag_id = crag.crag_id;
                                 tci.crag_image = crag.crag_image;
+                                tci.crag_landscape_image = crag.crag_landscape_image;
+                                tci.crag_portrait_image = crag.crag_portrait_image;
                                 App.DAUtil.SaveTCragImage(tci);
                             }
                             App.DAUtil.SaveCrag(tcrag);

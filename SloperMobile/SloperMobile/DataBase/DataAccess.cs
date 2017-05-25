@@ -503,6 +503,13 @@ namespace SloperMobile.DataBase
                 return null;
             }
         }
+
+        public List<string> GetRouteTypesByCragID(string cragid)
+        {
+            var item = (from tr in dbConn.Table<T_ROUTE>() where tr.crag_id == cragid && tr.is_enabled == true orderby tr.route_type select tr.route_type).Distinct() ;
+            return item.ToList();
+        }
+
         #endregion
 
     }
