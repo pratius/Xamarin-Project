@@ -10,6 +10,9 @@ namespace SloperMobile.Model
     {
         public string crag_name { get; set; }
         public string crag_image { get; set; }
+        public string crag_portrait_image { get; set; }
+        public string crag_landscape_image { get; set; }
+        public string season { get; set; }
         public string weather_provider_code { get; set; }
         public string weather_provider_name { get; set; }
         public string area_name { get; set; }

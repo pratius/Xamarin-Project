@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SloperMobile.Common.Command;
+using SloperMobile.Common.Constants;
 using SloperMobile.DataBase;
 using SloperMobile.Model;
 using System;
@@ -54,17 +55,29 @@ namespace SloperMobile.ViewModel
                             }
                             else
                             {
-                                nm.news_image = ImageSource.FromFile("scenic_shot_portrait.png");
+                                if (AppSetting.APP_TYPE == "indoor")
+                                {
+                                    nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_indoor.png");
+                                }
+                                else { nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_outdoor.png"); }
                             }
                         }
                         else
                         {
-                            nm.news_image = ImageSource.FromFile("scenic_shot_portrait.png");
+                            if (AppSetting.APP_TYPE == "indoor")
+                            {
+                                nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_indoor.png");
+                            }
+                            else { nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_outdoor.png"); }
                         }
                     }
                     else
                     {
-                        nm.news_image = ImageSource.FromFile("scenic_shot_portrait.png");
+                        if (AppSetting.APP_TYPE == "indoor")
+                        {
+                            nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_indoor.png");
+                        }
+                        else { nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_outdoor.png"); }
                     }
                     NewsList.Add(nm);
                 }

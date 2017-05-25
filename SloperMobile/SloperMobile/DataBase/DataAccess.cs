@@ -30,6 +30,8 @@ namespace SloperMobile.DataBase
             dbConn.CreateTable<T_GRADE>();
             dbConn.CreateTable<T_BUCKET>();
             dbConn.CreateTable<TCRAG_IMAGE>();
+            dbConn.CreateTable<TCRAG_PORTRAIT_IMAGE>();
+            dbConn.CreateTable<TCRAG_LANDSCAPE_IMAGE>();
 
             if (dbConn.Table<TASCENT_TYPE>().Count() == 0)
             {
@@ -245,6 +247,34 @@ namespace SloperMobile.DataBase
         public int SaveTCragImage(TCRAG_IMAGE acragimg)
         {
             var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == acragimg.crag_id);
+            if (item != null)
+            {
+                acragimg.id = item.id;
+                return dbConn.Update(acragimg);
+            }
+            else
+            {
+                return dbConn.Insert(acragimg);
+            }
+        }
+        //================= Added by Sandeep on 23-May-2017=============
+        public int SaveTCragPortraitImage(TCRAG_PORTRAIT_IMAGE acragimg)
+        {
+            var item = dbConn.Table<TCRAG_PORTRAIT_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == acragimg.crag_id);
+            if (item != null)
+            {
+                acragimg.id = item.id;
+                return dbConn.Update(acragimg);
+            }
+            else
+            {
+                return dbConn.Insert(acragimg);
+            }
+        }
+        //================= Added by Sandeep on 23-May-2017=============
+        public int SaveTCragLandscapeImage(TCRAG_LANDSCAPE_IMAGE acragimg)
+        {
+            var item = dbConn.Table<TCRAG_LANDSCAPE_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == acragimg.crag_id);
             if (item != null)
             {
                 acragimg.id = item.id;

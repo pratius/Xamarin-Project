@@ -150,6 +150,8 @@ namespace SloperMobile.DataBase
         { get; set; }
         public DateTime date_created
         { get; set; }
+        public DateTime route_set_date
+        { get; set; }
     }
 
     public class T_SECTOR
@@ -225,6 +227,8 @@ namespace SloperMobile.DataBase
         public string weather_provider_code
         { get; set; }
         public string weather_provider_name
+        { get; set; }
+        public string season
         { get; set; }
         public string area_name
         { get; set; }
@@ -420,6 +424,26 @@ namespace SloperMobile.DataBase
         public string crag_id
         { get; set; }
         public string crag_image
+        { get; set; }
+    }
+    public class TCRAG_PORTRAIT_IMAGE
+    {
+        [PrimaryKey, AutoIncrement]
+        public long id
+        { get; set; }
+        public string crag_id
+        { get; set; }
+        public string crag_portrait_image
+        { get; set; }
+    }
+    public class TCRAG_LANDSCAPE_IMAGE
+    {
+        [PrimaryKey, AutoIncrement]
+        public long id
+        { get; set; }
+        public string crag_id
+        { get; set; }
+        public string crag_landscape_image
         { get; set; }
     }
 }
