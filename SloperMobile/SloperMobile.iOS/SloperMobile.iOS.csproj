@@ -682,6 +682,12 @@
     <BundleResource Include="Resources\icon_pin_device_location.png" />
     <BundleResource Include="Resources\icon_pin_device_location%402x.png" />
     <BundleResource Include="Resources\icon_pin_device_location%403x.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_indoor.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_indoor%402x.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_indoor%403x.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_outdoor.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_outdoor%402x.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_outdoor%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
