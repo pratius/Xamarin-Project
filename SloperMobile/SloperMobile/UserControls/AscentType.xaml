@@ -75,6 +75,9 @@
 				<Label Text="One Hang" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center"/>
 			</Frame>
 	    </Grid>
-        <Image x:Name="ImgAcentTypeNxt" Grid.Row="1" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />		
-	</Grid>
+
+        <StackLayout Orientation="Horizontal" x:Name="ImgAcentTypeNxt" Margin="0,0,0,0" Grid.Column="1"  Grid.Row="1">
+            <Image  Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />
+        </StackLayout>
+    </Grid>
 </StackLayout >

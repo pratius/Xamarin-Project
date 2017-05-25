@@ -11,8 +11,8 @@ namespace SloperMobile.UserControls
    
     public partial class AscentRating : StackLayout
     {
-        public Image ObjImgAcentRatingPrv { get { return ImgAscRatingPrv; } }
-        public Image ObjImgAcentRatingNxt { get { return ImgAscRatingNxt; } }
+        public StackLayout ObjImgAcentRatingPrv { get { return ImgAscRatingPrv; } }
+        public StackLayout ObjImgAcentRatingNxt { get { return ImgAscRatingNxt; } }
         public AscentRating()
         {
             InitializeComponent();

@@ -39,7 +39,12 @@
                 <Controls:BindablePicker ItemsSource="{Binding Path=AscentGrades}" SelectedItem="{Binding Path=SendsGrade,Mode=TwoWay}" BackgroundColor="White" WidthRequest="120" HorizontalOptions="CenterAndExpand" />
             </StackLayout>
         </Grid>
-        <Image Grid.Row="1" x:Name="ImgAcentDatePrv" Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="Center"/>
-       <Image Grid.Row="1"  x:Name="ImgAcentDateNxt" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />
-	</Grid>
+        <StackLayout Orientation="Horizontal" x:Name="ImgAcentDatePrv" Margin="0,0,50,0" Grid.Column="0"  Grid.Row="1">
+            <Image Grid.Row="1"  Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal" x:Name="ImgAcentDateNxt" Margin="50,0,0,0" Grid.Column="1"  Grid.Row="1">
+            <Image Grid.Row="1" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="StartAndExpand"  />
+        </StackLayout>
+    </Grid>
 </StackLayout>
