@@ -19,7 +19,7 @@
       </Image.GestureRecognizers>
     </Image>
     <!-- ROUTE LEGENDS STARTS -->
-    <XLabUC:ContentControl ContentTemplate="{Binding LegendsDataTemplate}" Margin="0,0,0,0"/>
+        <XLabUC:ContentControl ContentTemplate="{Binding LegendsDataTemplate}" Margin="0,0,0,0" HorizontalOptions="FillAndExpand"/>
     <!-- ROUTE LEGENDS END -->
 
     <Controls:InfiniteListView  x:Name="lstView" BackgroundColor="Black" SeparatorVisibility="None" HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding RoutesData}">

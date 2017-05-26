@@ -224,6 +224,8 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string crag_name
         { get; set; }
+        public string season
+        { get; set; }
         public string weather_provider_code
         { get; set; }
         public string weather_provider_name

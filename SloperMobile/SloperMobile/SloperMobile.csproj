@@ -250,6 +250,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_crag.png" />
+    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_crag_current.png" />
+    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_device_location.png" />
     <EmbeddedResource Include="Views\TermsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -268,9 +271,6 @@
     <None Include="app.config" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
-    <None Include="CustomControls\MapRoot\Pins\icon_pin_crag.png" />
-    <None Include="CustomControls\MapRoot\Pins\icon_pin_crag_current.png" />
-    <None Include="CustomControls\MapRoot\Pins\icon_pin_device_location.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">
@@ -569,7 +569,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CustomControls\MapRoot\Pins\" />
     <Folder Include="Resources\" />
     <Folder Include="UserControls\CustomMap\" />
   </ItemGroup>

@@ -404,7 +404,7 @@ namespace SloperMobile.ViewModel
                     {
                         foreach (var item in row)
                         {
-                            grdLegend.Children.Add(new Label { Text = item.BucketName, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(item.HexColor) }, c, r);
+                            grdLegend.Children.Add(new Label { Text = item.BucketName.Replace(" ",string.Empty),HorizontalOptions=LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(item.HexColor) }, c, r);
                             c++;
                         }
                         r++;
