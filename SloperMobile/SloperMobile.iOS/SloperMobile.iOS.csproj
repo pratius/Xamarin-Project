@@ -457,6 +457,39 @@
     <BundleResource Include="Resources\bg_gradient_trans_black%403x.png" />
     <BundleResource Include="iTunesArtwork%401x.png" />
     <BundleResource Include="iTunesArtwork%403x.png" />
+    <BundleResource Include="Resources\bg_portrait_half_fade1.png" />
+    <BundleResource Include="Resources\bg_portrait_half_fade1%402x.png" />
+    <BundleResource Include="Resources\bg_portrait_half_fade1%403x.png" />
+    <BundleResource Include="Resources\icon_route_type_bouldering.png" />
+    <BundleResource Include="Resources\icon_route_type_bouldering%402x.png" />
+    <BundleResource Include="Resources\icon_route_type_bouldering%403x.png" />
+    <BundleResource Include="Resources\icon_route_type_sport.png" />
+    <BundleResource Include="Resources\icon_route_type_sport%402x.png" />
+    <BundleResource Include="Resources\icon_route_type_sport%403x.png" />
+    <BundleResource Include="Resources\icon_route_type_traditional.png" />
+    <BundleResource Include="Resources\icon_route_type_traditional%402x.png" />
+    <BundleResource Include="Resources\icon_route_type_traditional%403x.png" />
+    <BundleResource Include="Resources\icon_season.png" />
+    <BundleResource Include="Resources\icon_season%402x.png" />
+    <BundleResource Include="Resources\icon_season%403x.png" />
+    <BundleResource Include="Resources\default_sloper_indoor_landscape.png" />
+    <BundleResource Include="Resources\default_sloper_indoor_landscape%402x.png" />
+    <BundleResource Include="Resources\default_sloper_indoor_landscape%403x.png" />
+    <BundleResource Include="Resources\default_sloper_indoor_portrait.png" />
+    <BundleResource Include="Resources\default_sloper_indoor_portrait%402x.png" />
+    <BundleResource Include="Resources\default_sloper_indoor_portrait%403x.png" />
+    <BundleResource Include="Resources\default_sloper_indoor_square.png" />
+    <BundleResource Include="Resources\default_sloper_indoor_square%402x.png" />
+    <BundleResource Include="Resources\default_sloper_indoor_square%403x.png" />
+    <BundleResource Include="Resources\default_sloper_outdoor_landscape.png" />
+    <BundleResource Include="Resources\default_sloper_outdoor_landscape%402x.png" />
+    <BundleResource Include="Resources\default_sloper_outdoor_landscape%403x.png" />
+    <BundleResource Include="Resources\default_sloper_outdoor_portrait.png" />
+    <BundleResource Include="Resources\default_sloper_outdoor_portrait%402x.png" />
+    <BundleResource Include="Resources\default_sloper_outdoor_portrait%403x.png" />
+    <BundleResource Include="Resources\default_sloper_outdoor_square.png" />
+    <BundleResource Include="Resources\default_sloper_outdoor_square%402x.png" />
+    <BundleResource Include="Resources\default_sloper_outdoor_square%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -682,21 +715,12 @@
     <BundleResource Include="Resources\icon_pin_device_location.png" />
     <BundleResource Include="Resources\icon_pin_device_location%402x.png" />
     <BundleResource Include="Resources\icon_pin_device_location%403x.png" />
-    <BundleResource Include="Resources\bg_portrait_half_fade1%403x.png" />
-    <BundleResource Include="Resources\bg_portrait_half_fade1.png" />
-    <BundleResource Include="Resources\bg_portrait_half_fade1%402x.png" />
-    <BundleResource Include="Resources\icon_route_type_sport.png" />
-    <BundleResource Include="Resources\icon_route_type_sport%402x.png" />
-    <BundleResource Include="Resources\icon_route_type_sport%403x.png" />
-    <BundleResource Include="Resources\icon_route_type_traditional.png" />
-    <BundleResource Include="Resources\icon_route_type_traditional%402x.png" />
-    <BundleResource Include="Resources\icon_route_type_traditional%403x.png" />
-    <BundleResource Include="Resources\icon_season.png" />
-    <BundleResource Include="Resources\icon_season%402x.png" />
-    <BundleResource Include="Resources\icon_season%403x.png" />
-    <BundleResource Include="Resources\icon_route_type_bouldering.png" />
-    <BundleResource Include="Resources\icon_route_type_bouldering%402x.png" />
-    <BundleResource Include="Resources\icon_route_type_bouldering%403x.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_indoor.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_indoor%402x.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_indoor%403x.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_outdoor.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_outdoor%402x.png" />
+    <BundleResource Include="Resources\default_sloper_portrait_image_outdoor%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

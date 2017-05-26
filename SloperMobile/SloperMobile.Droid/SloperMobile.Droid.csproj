@@ -45,13 +45,6 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <Debugger>.Net (Xamarin)</Debugger>
     <AndroidEnableMultipleDex>true</AndroidEnableMultipleDex>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <BundleAssemblies>False</BundleAssemblies>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-    <AotAssemblies>False</AotAssemblies>
-    <EnableLLVM>False</EnableLLVM>
-    <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
-    <EnableProguard>False</EnableProguard>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -989,6 +982,66 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_home_profile.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_home_sectors.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_home_sends.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_route_type_bouldering.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_route_type_sport.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_route_type_traditional.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_season.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_route_type_bouldering.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_route_type_sport.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_route_type_traditional.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\icon_season.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_route_type_bouldering.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_route_type_sport.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_route_type_traditional.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_season.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_route_type_bouldering.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_route_type_sport.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_route_type_traditional.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_season.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_route_type_bouldering.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_route_type_sport.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_route_type_traditional.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_season.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_route_type_bouldering.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_route_type_sport.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_route_type_traditional.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_season.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\default_sloper_indoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\default_sloper_indoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\default_sloper_indoor_square.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\default_sloper_outdoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\default_sloper_outdoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\default_sloper_outdoor_square.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\default_sloper_indoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\default_sloper_indoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\default_sloper_indoor_square.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\default_sloper_outdoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\default_sloper_outdoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\default_sloper_outdoor_square.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\default_sloper_indoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\default_sloper_indoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\default_sloper_indoor_square.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\default_sloper_outdoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\default_sloper_outdoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\default_sloper_outdoor_square.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\default_sloper_indoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\default_sloper_indoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\default_sloper_indoor_square.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\default_sloper_outdoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\default_sloper_outdoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\default_sloper_outdoor_square.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\default_sloper_indoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\default_sloper_indoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\default_sloper_indoor_square.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\default_sloper_outdoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\default_sloper_outdoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\default_sloper_outdoor_square.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\default_sloper_indoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\default_sloper_indoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\default_sloper_indoor_square.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\default_sloper_outdoor_landscape.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\default_sloper_outdoor_portrait.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\default_sloper_outdoor_square.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">
@@ -1304,76 +1357,40 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\bg_portrait_half_fade1.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_route_type_bouldering.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\default_sloper_portrait_image_indoor.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_route_type_sport.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\default_sloper_portrait_image_outdoor.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_route_type_traditional.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\default_sloper_portrait_image_indoor.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_season.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\default_sloper_portrait_image_outdoor.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-ldpi\icon_route_type_bouldering.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\default_sloper_portrait_image_indoor.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-ldpi\icon_route_type_sport.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\default_sloper_portrait_image_outdoor.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-ldpi\icon_route_type_traditional.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\default_sloper_portrait_image_indoor.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-ldpi\icon_season.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\default_sloper_portrait_image_outdoor.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_route_type_bouldering.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\default_sloper_portrait_image_indoor.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_route_type_sport.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\default_sloper_portrait_image_outdoor.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_route_type_traditional.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\default_sloper_portrait_image_indoor.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_season.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_route_type_bouldering.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_route_type_sport.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_route_type_traditional.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_season.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_route_type_bouldering.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_route_type_sport.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_route_type_traditional.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_season.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_route_type_bouldering.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_route_type_sport.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_route_type_traditional.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_season.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\default_sloper_portrait_image_outdoor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Mono.Data.Sqlite.Portable.1.0.3.5\tools\Mono.Data.Sqlite.Portable.targets" Condition="Exists('..\..\packages\Mono.Data.Sqlite.Portable.1.0.3.5\tools\Mono.Data.Sqlite.Portable.targets')" />
