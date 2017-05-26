@@ -1,20 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
-             xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
-             x:Class="SloperMobile.Views.CragDetailsPage">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" x:Class="SloperMobile.Views.CragDetailsPage">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
     </ContentPage.Padding>
-    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" >
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackLayout Grid.Column="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
             <UC:BackHeaderUC HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
@@ -23,39 +19,45 @@
             <Image Source="{Binding CragImage}" Aspect="AspectFill" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
-            <Image Source="bg_portrait_half_fade1.png"  Aspect="AspectFill" />
+            <Image Source="bg_portrait_half_fade1.png" Aspect="AspectFill" />
         </Grid>
         <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Frame.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="02" />
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="02" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-
-                    <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand"  Grid.ColumnSpan="3"  Margin="0,50,0,0">
-                        <XLabUC:ContentControl ContentTemplate="{Binding LegendsDataTemplate}" HorizontalOptions="FillAndExpand"/>
-                        <BoxView BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+                    <StackLayout Grid.Row="0" Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="End">
+                        <XLabUC:ContentControl ContentTemplate="{Binding LegendsDataTemplate}" HorizontalOptions="Fill" />
                     </StackLayout>
-                    <StackLayout x:Name="crag_icons" Orientation="Horizontal" Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand" Spacing="25" Grid.ColumnSpan="3"  Margin="0,0,0,0">
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-                        <BoxView BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
-                        <ScrollView HorizontalOptions="CenterAndExpand">
-                            <Label Text="{Binding Path=CragDesc}"  TextColor="White" LineBreakMode="WordWrap" HorizontalOptions="Center" FontSize="Micro" />
+                    <BoxView Grid.Row="1" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" x:Name="crag_icons" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Center" Spacing="25" Margin="0,5,0,5">
+                        </StackLayout>
+                        <BoxView Grid.Row="1" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+                        <ScrollView Grid.Row="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0,5,0,5">
+                            <Label Text="{Binding Path=CragDesc}" TextColor="White" LineBreakMode="WordWrap" HorizontalOptions="Center" FontSize="Micro" />
                         </ScrollView>
-                        <Button Text="SECTORS" TextColor="White" HorizontalOptions="Center" BackgroundColor="#FF8E2D" BorderColor="White" Clicked="Sector_Clicked"></Button>
-                    </StackLayout>
+                        <Button Grid.Row="3" Text="SECTORS" TextColor="White" BorderRadius="0" HorizontalOptions="Center" WidthRequest="100" VerticalOptions="End" Style="{StaticResource GeneralButtonStyle}" Clicked="Sector_Clicked">
+                        </Button>
+                    </Grid>
                 </Grid>
             </Frame.Content>
         </Frame>
-        <UC:FooterUC Grid.Column="0" Grid.Row="2" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />
+        <UC:FooterUC Grid.Column="0" Grid.Row="2" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" />
     </Grid>
 </ContentPage>

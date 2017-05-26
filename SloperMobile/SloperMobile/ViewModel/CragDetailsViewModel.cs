@@ -1,6 +1,7 @@
 ﻿using SloperMobile.Common.Command;
 using SloperMobile.Common.Helpers;
 using SloperMobile.DataBase;
+using SloperMobile.Common.Constants;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +30,12 @@ namespace SloperMobile.ViewModel
             }
             else
             {
-                CragImage = ImageSource.FromFile("scenic_shot_portrait");
+                if(AppSetting.APP_TYPE == "indoor"){
+                    CragImage = ImageSource.FromFile("default_sloper_indoor_square");
+                }else{
+                    CragImage = ImageSource.FromFile("default_sloper_outdoor_square");
+                }
+
             }
         }
 
