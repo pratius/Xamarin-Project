@@ -66,6 +66,10 @@ namespace SloperMobile.Views
                     });
                 }
             }
+            var moveto = map.Pins.Where(p => p.Tag.ToString() == Settings.SelectedCragSettings).FirstOrDefault().Position;
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(moveto.Latitude, moveto.Longitude), Distance.FromMiles(0.3)), true);
+            map.InfoWindowClicked += Map_InfoWindowClicked;
+
             var userloc = await GetGurrentLocation();
             if (userloc != null)
             {
@@ -77,18 +81,12 @@ namespace SloperMobile.Views
                     Type = PinType.Place,
                     Position = new Position(userloc.Latitude, userloc.Longitude),
                     Label = "",
-                    Address="",
-                    Tag="",
+                    Address = "",
+                    Tag = "",
                     Icon = BitmapDescriptorFactory.FromStream(user_icon_stream)
                 });
-                map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userloc.Latitude, userloc.Longitude), Distance.FromMiles(0.3)), true);
+                //map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userloc.Latitude, userloc.Longitude), Distance.FromMiles(0.3)), true);
             }
-            else
-            {
-                var moveto=map.Pins.Where(p => p.Tag.ToString() == Settings.SelectedCragSettings).FirstOrDefault().Position;
-                map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(moveto.Latitude, moveto.Longitude), Distance.FromMiles(0.3)), true);
-            }
-            map.InfoWindowClicked += Map_InfoWindowClicked;
             base.OnAppearing();
         }
 
@@ -119,7 +117,7 @@ namespace SloperMobile.Views
                 else
                     return null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
