@@ -96,7 +96,7 @@ namespace SloperMobile.Views
                     {
                         if (item != null)
                         {
-                            string _strimg64 = topoimgages[0].image.data.Split(',')[1];
+                            string _strimg64 = item.crag_portrait_image.Split(',')[1];
                             if (!string.IsNullOrEmpty(_strimg64))
                             {
                                 byte[] imageBytes = Convert.FromBase64String(_strimg64);
