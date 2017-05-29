@@ -19,10 +19,16 @@ namespace SloperMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CragMapPage : ContentPage
     {
+        string user_loc_img_name = "";
+        Assembly appassembly;
+        System.IO.Stream user_icon_stream;
         public CragMapPage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            appassembly = typeof(App).GetTypeInfo().Assembly;
+            user_loc_img_name = "icon_pin_device_location.png";
+            user_icon_stream = appassembly.GetManifestResourceStream($"SloperMobile.CustomControls.MapRoot.Pins.{user_loc_img_name}");
         }
 
         protected override async void OnAppearing()
@@ -63,9 +69,9 @@ namespace SloperMobile.Views
             var userloc = await GetGurrentLocation();
             if (userloc != null)
             {
-                var assembly = typeof(App).GetTypeInfo().Assembly;
-                string filename = "icon_pin_device_location.png.png";
-                var stream = assembly.GetManifestResourceStream($"SloperMobile.CustomControls.MapRoot.Pins.{filename}");
+                //var assembly = typeof(App).GetTypeInfo().Assembly;
+                //user_loc_img_name = "icon_pin_device_location.png";
+                //var stream = appassembly.GetManifestResourceStream($"SloperMobile.CustomControls.MapRoot.Pins.{user_loc_img_name}");
                 map.Pins.Add(new Pin
                 {
                     Type = PinType.Place,
@@ -73,8 +79,7 @@ namespace SloperMobile.Views
                     Label = "",
                     Address="",
                     Tag="",
-                    Flat = true,
-                    Icon = BitmapDescriptorFactory.FromStream(stream)
+                    Icon = BitmapDescriptorFactory.FromStream(user_icon_stream)
                 });
                 map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userloc.Latitude, userloc.Longitude), Distance.FromMiles(0.3)), true);
             }
@@ -104,17 +109,17 @@ namespace SloperMobile.Views
         {
             try
             {
-                CancellationTokenSource ctsrc = new CancellationTokenSource(2500);
+                CancellationTokenSource ctsrc = new CancellationTokenSource(2000);
                 var locator = CrossGeolocator.Current;
                 locator.DesiredAccuracy = 50;
-                var position = await locator.GetPositionAsync(timeoutMilliseconds: 25000);
-                //var position = await locator.GetPositionAsync(2500, ctsrc.Token);
+                //var position = await locator.GetPositionAsync(timeoutMilliseconds: 5000);
+                var position = await locator.GetPositionAsync(2000, ctsrc.Token);
                 if (position != null)
                     return position;
                 else
                     return null;
             }
-            catch
+            catch(Exception ex)
             {
                 return null;
             }
