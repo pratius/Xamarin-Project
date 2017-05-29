@@ -87,9 +87,38 @@ namespace SloperMobile.Views
             }
             else
             {
-                //if Crag Scenic Action Portrait Shot (spceific to gym) present                         
-                var item = dbConn.Table<TCRAG_PORTRAIT_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                if (item != null)
+                //if no topo image then load default sector image
+                var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
+                var _topoimgages = JsonConvert.SerializeObject(topoimgages[Cache.SelectedTopoIndex]);
+                if (_topoimgages != null)
+                {
+                    if (topoimgages[0].image.name == "No_Image.jpg")
+                    {
+                        if (item != null)
+                        {
+                            string _strimg64 = item.crag_portrait_image.Split(',')[1];
+                            if (!string.IsNullOrEmpty(_strimg64))
+                            {
+                                byte[] imageBytes = Convert.FromBase64String(_strimg64);
+                                _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                _Image.IsVisible = true;
+                                webView.IsVisible = false;
+                            }
+                        }
+                        else
+                        {
+                            //other wise show default                                
+                            if (AppSetting.APP_TYPE == "indoor")
+                            {
+                                _Image.Source = ImageSource.FromFile("default_sloper_portrait_image_indoor");
+                            }
+                            else { _Image.Source = ImageSource.FromFile("default_sloper_portrait_image_outdoor"); }
+                            _Image.IsVisible = true;
+                            webView.IsVisible = false;
+                        }
+                    }
+                }
+                else if (item != null) //if no topo , no sector image then load Crag Scenic Action Portrait Shot (spceific to gym)                                                  
                 {
                     string strimg64 = item.crag_portrait_image.Split(',')[1];
                     if (!string.IsNullOrEmpty(strimg64))

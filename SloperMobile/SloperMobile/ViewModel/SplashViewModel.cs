@@ -260,23 +260,7 @@ namespace SloperMobile.ViewModel
                             tci.crag_landscape_image = crag.crag_landscape_image;
                             tci.crag_portrait_image = crag.crag_portrait_image;
                             App.DAUtil.SaveTCragImage(tci);
-                        }
-                        //Added by Sandeep on 23-May-2017
-                        if (!string.IsNullOrEmpty(crag.crag_portrait_image))
-                        {
-                            TCRAG_PORTRAIT_IMAGE tcpi = new TCRAG_PORTRAIT_IMAGE();
-                            tcpi.crag_id = crag.crag_id;
-                            tcpi.crag_portrait_image = crag.crag_portrait_image;
-                            App.DAUtil.SaveTCragPortraitImage(tcpi);
-                        }
-                        //Added by Sandeep on 23-May-2017
-                        if (!string.IsNullOrEmpty(crag.crag_landscape_image))
-                        {
-                            TCRAG_LANDSCAPE_IMAGE tcli = new TCRAG_LANDSCAPE_IMAGE();
-                            tcli.crag_id = crag.crag_id;
-                            tcli.crag_landscape_image = crag.crag_image;
-                            App.DAUtil.SaveTCragLandscapeImage(tcli);
-                        }
+                        }                        
                         App.DAUtil.SaveCrag(tcrag);
                         App.DAUtil.SaveCragSectorMap(tcs_map);
 

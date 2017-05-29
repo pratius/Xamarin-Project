@@ -47,12 +47,12 @@ namespace SloperMobile.ViewModel
             set { displayRoutePopupLg = value; OnPropertyChanged(); }
         }
 
-        //bool hideSwipeUp = true;
-        //public bool IsHideSwipeUp
-        //{
-        //    get { return hideSwipeUp; }
-        //    set { hideSwipeUp = value; OnPropertyChanged(); }
-        //}
+        bool hideSwipeUp = true;
+        public bool IsHideSwipeUp
+        {
+            get { return hideSwipeUp; }
+            set { hideSwipeUp = value; OnPropertyChanged(); }
+        }
 
         private string _sectorName;
 

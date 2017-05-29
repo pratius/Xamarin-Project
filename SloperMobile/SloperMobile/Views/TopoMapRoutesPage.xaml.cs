@@ -7,6 +7,11 @@ using System.Net.Http;
 using SloperMobile.Common.Constants;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using SQLite.Net;
+using SloperMobile.Common.Interfaces;
+using SloperMobile.DataBase;
+using System.Linq;
+using SloperMobile.Common.Helpers;
 //using UIKit;
 //using Foundation;
 
@@ -14,6 +19,7 @@ namespace SloperMobile.Views
 {
     public partial class TopoMapRoutesPage : ContentPage
     {
+        SQLiteConnection dbConn;
         public MapListModel _CurrentSector { get; set; }
         public List<TopoImageResponse> topoimg = null;
         public List<Tuple<string, string>> _bucket = new List<Tuple<string, string>>();
@@ -27,6 +33,7 @@ namespace SloperMobile.Views
             try
             {
                 InitializeComponent();
+                dbConn = DependencyService.Get<ISQLite>().GetConnection();
                 _CurrentSector = CurrentSector;
                 listData = _lstData;
                 _routeId = routeId;
@@ -44,14 +51,35 @@ namespace SloperMobile.Views
                     TopoMapRouteVM.DisplayRoutePopupLg = true;
 
                     webView.IsVisible = false;
-                    //                    TopoMapRouteVM.IsHideSwipeUp = false;
-                    if (AppSetting.APP_TYPE == "indoor")
+                    TopoMapRouteVM.IsHideSwipeUp = false;
+                    var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
+                    if (CurrentSector != null)
                     {
-                        this.BackgroundImage = "default_sloper_portrait_image_indoor";
+                        _Image.Source = CurrentSector.SectorImage;
+                        //_Image.HeightRequest = XLabs.Ioc.Resolver.Resolve<IDevice>().Display.Height;
+                        _Image.IsVisible = true;
+                    }
+                    else if (item != null)
+                    {
+                        string strimg64 = item.crag_portrait_image.Split(',')[1];
+                        if (!string.IsNullOrEmpty(strimg64))
+                        {
+                            byte[] imageBytes = Convert.FromBase64String(strimg64);
+                            _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                            _Image.IsVisible = true;
+                        }
                     }
                     else
                     {
-                        this.BackgroundImage = "default_sloper_portrait_image_outdoor";
+                        if (AppSetting.APP_TYPE == "indoor")
+                        {
+                            this.BackgroundImage = "default_sloper_portrait_image_indoor";
+                        }
+                        else
+                        {
+                            this.BackgroundImage = "default_sloper_portrait_image_outdoor";
+                        }
+                        _Image.IsVisible = false;
                     }
                 }
                 // otherwise load the topos
@@ -76,6 +104,23 @@ namespace SloperMobile.Views
                                     _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
                                 }
                             }
+                        }
+                        if (topoimg[0].image.name == "No_Image.jpg")
+                        {
+                            if (AppSetting.APP_TYPE == "indoor")
+                            {
+                                this.BackgroundImage = "default_sloper_portrait_image_indoor";
+                            }
+                            else
+                            {
+                                this.BackgroundImage = "default_sloper_portrait_image_outdoor";
+                            }
+                            webView.IsVisible = false;
+                            _Image.IsVisible = false;
+                        }
+                        else
+                        {
+                            webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, newHeight, Convert.ToInt32(t), true, false, _bucket);
                         }
                         webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, newHeight, Convert.ToInt32(t), true, false, _bucket);
                     }));
@@ -155,6 +200,36 @@ namespace SloperMobile.Views
                     _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
                 }
             }
+            if (topoimg != null)
+            {
+                if (topoimg[0].image.name == "No_Image.jpg")
+                {
+                    var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
+                    if (item != null)
+                    {
+                        string _strimg64 = item.crag_portrait_image.Split(',')[1];
+                        if (!string.IsNullOrEmpty(_strimg64))
+                        {
+                            byte[] imageBytes = Convert.FromBase64String(_strimg64);
+                            _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                            _Image.IsVisible = true;
+                        }
+                    }
+                    else
+                    {
+                        if (AppSetting.APP_TYPE == "indoor")
+                        {
+                            this.BackgroundImage = "default_sloper_portrait_image_indoor";
+                        }
+                        else
+                        {
+                            this.BackgroundImage = "default_sloper_portrait_image_outdoor";
+                        }
+                        _Image.IsVisible = false;
+                    }
+                    webView.IsVisible = false;
+                }
+            }
             webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight, _bucket);
 
             // if a route was clicked from the list
@@ -194,6 +269,33 @@ namespace SloperMobile.Views
                             _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
                         }
                     }
+                }
+                if (topoimgages[0].image.name == "No_Image.jpg")
+                {
+                    var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
+                    if (item != null)
+                    {
+                        string _strimg64 = item.crag_portrait_image.Split(',')[1];
+                        if (!string.IsNullOrEmpty(_strimg64))
+                        {
+                            byte[] imageBytes = Convert.FromBase64String(_strimg64);
+                            _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                            _Image.IsVisible = true;
+                        }
+                    }
+                    else
+                    {
+                        if (AppSetting.APP_TYPE == "indoor")
+                        {
+                            this.BackgroundImage = "default_sloper_portrait_image_indoor";
+                        }
+                        else
+                        {
+                            this.BackgroundImage = "default_sloper_portrait_image_outdoor";
+                        }
+                        _Image.IsVisible = false;
+                    }
+                    webView.IsVisible = false;
                 }
                 webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (newHeight), _routeId, true, false, _bucket);
             }

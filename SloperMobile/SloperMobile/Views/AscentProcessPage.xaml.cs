@@ -135,7 +135,14 @@ namespace SloperMobile.Views
                 webView.CallJsFunction("initDrawing", staticAnnotationData, "[" + topoimg + "]", webView.HeightRequest, _bucket);
                 if (Convert.ToInt32(_routeid) > 0)
                 {
-                    webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (webView.HeightRequest), Convert.ToInt32(_routeid), false, true, _bucket);
+                    if (Device.OS == TargetPlatform.Android)
+                    {
+                        webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (webView.HeightRequest), Convert.ToInt32(_routeid), false, true, _bucket);
+                    }
+                    else
+                    {
+                        webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true, _bucket);
+                    }
                 }
                 var ratio = webView.HeightRequest / Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.height));
                 var newWidth = Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.width)) * ratio;
@@ -174,10 +181,10 @@ namespace SloperMobile.Views
                             }
                         }
                     }
+                    var device = XLabs.Ioc.Resolver.Resolve<IDevice>(); _bucket.Clear();
                     if (isRouteIdFound != -1)
                     {
-                        var topoimg = JsonConvert.SerializeObject(topoimgages[Cache.SelectedTopoIndex]);
-                        var device = XLabs.Ioc.Resolver.Resolve<IDevice>(); _bucket.Clear();
+                        var topoimg = JsonConvert.SerializeObject(topoimgages[Cache.SelectedTopoIndex]);                        
                         if (topoimg != null)
                         {
                             for (int i = 0; i < topoimgages[0].drawing.Count; i++)
@@ -193,9 +200,41 @@ namespace SloperMobile.Views
                     }
                     else
                     {
-                        //if Crag Scenic Action Portrait Shot (spceific to gym) present                         
-                        var item = dbConn.Table<TCRAG_PORTRAIT_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                        if (item != null)
+                        //if no topo image then load default sector image
+                        var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
+                        if (topoimgages.Count > 0)
+                        {
+                            if (topoimgages[0].image.name == "No_Image.jpg")
+                            {
+                                if (item != null)
+                                {
+                                    string _strimg64 = item.crag_portrait_image.Split(',')[1];
+                                    if (!string.IsNullOrEmpty(_strimg64))
+                                    {
+                                        byte[] imageBytes = Convert.FromBase64String(_strimg64);
+                                        _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                        _Image.IsVisible = true;
+                                        webView.IsVisible = false;
+                                    }
+                                }
+                                else
+                                {
+                                    //other wise show default                                
+                                    if (AppSetting.APP_TYPE == "indoor")
+                                    {
+                                        _Image.Source = ImageSource.FromFile("default_sloper_portrait_image_indoor");
+                                    }
+                                    else { _Image.Source = ImageSource.FromFile("default_sloper_portrait_image_outdoor"); }
+                                    _Image.IsVisible = true;
+                                    webView.IsVisible = false;
+                                }
+                            }
+                            //load image without route
+                            var topoimg = JsonConvert.SerializeObject(topoimgages[0]);
+                            webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true, _bucket);
+                            this.webView.LoadFromContent("HTML/TopoResizeImage.html");
+                        }
+                        else if (item != null) //if no topo , no sector image then load Crag Scenic Action Portrait Shot (spceific to gym)                                                  
                         {
                             string strimg64 = item.crag_portrait_image.Split(',')[1];
                             if (!string.IsNullOrEmpty(strimg64))

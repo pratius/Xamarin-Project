@@ -429,25 +429,5 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string crag_landscape_image
         { get; set; }
-    }
-    public class TCRAG_PORTRAIT_IMAGE
-    {
-        [PrimaryKey, AutoIncrement]
-        public long id
-        { get; set; }
-        public string crag_id
-        { get; set; }
-        public string crag_portrait_image
-        { get; set; }
-    }
-    public class TCRAG_LANDSCAPE_IMAGE
-    {
-        [PrimaryKey, AutoIncrement]
-        public long id
-        { get; set; }
-        public string crag_id
-        { get; set; }
-        public string crag_landscape_image
-        { get; set; }
-    }
+    }    
 }
