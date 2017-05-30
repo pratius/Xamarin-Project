@@ -52,7 +52,7 @@
                         <ScrollView Grid.Row="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0,5,0,5">
                             <Label Text="{Binding Path=CragDesc}" TextColor="White" LineBreakMode="WordWrap" HorizontalOptions="Center" FontSize="Micro" />
                         </ScrollView>
-                        <Button Grid.Row="3" Text="SECTORS" TextColor="White" BorderRadius="0" HorizontalOptions="Center" WidthRequest="100" VerticalOptions="End" Style="{StaticResource GeneralButtonStyle}" Clicked="Sector_Clicked">
+                        <Button Grid.Row="3" Text="SECTORS" TextColor="White" BorderRadius="0" HorizontalOptions="Fill" VerticalOptions="End" Style="{StaticResource GeneralButtonStyle}" Clicked="Sector_Clicked">
                         </Button>
                     </Grid>
                 </Grid>
