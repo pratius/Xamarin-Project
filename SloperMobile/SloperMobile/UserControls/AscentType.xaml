@@ -76,7 +76,7 @@
 			</Frame>
 	    </Grid>
 
-        <StackLayout Orientation="Horizontal" x:Name="ImgAcentTypeNxt" Margin="0,0,0,0" Grid.Column="1"  Grid.Row="1">
+        <StackLayout Orientation="Horizontal" x:Name="ImgAcentTypeNxt" Margin="70,0,0,0" Grid.Column="1"  Grid.Row="1">
             <Image  Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="Center" />
         </StackLayout>
     </Grid>
