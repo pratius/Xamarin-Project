@@ -13,6 +13,7 @@ using Xamarin.Forms.Xaml;
 using SloperMobile.Common.Constants;
 using System.Reflection;
 using System.Threading;
+using System.IO;
 
 namespace SloperMobile.Views
 {
@@ -27,7 +28,14 @@ namespace SloperMobile.Views
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             appassembly = typeof(App).GetTypeInfo().Assembly;
-            user_loc_img_name = "icon_pin_device_location.png";
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                user_loc_img_name = "icon_pin_device_location_droid.png";
+            }
+            else
+            {
+                user_loc_img_name = "icon_pin_device_location_ios.png";
+            }
             user_icon_stream = appassembly.GetManifestResourceStream($"SloperMobile.CustomControls.MapRoot.Pins.{user_loc_img_name}");
         }
 
@@ -43,14 +51,29 @@ namespace SloperMobile.Views
                     if (!string.IsNullOrEmpty(Settings.SelectedCragSettings) && Settings.SelectedCragSettings == tcrag.crag_id)
                     {
                         var assembly = typeof(App).GetTypeInfo().Assembly; //typeof(CragMapPage).GetTypeInfo().Assembly;
-                        filename = "icon_pin_crag_current.png";
+                        if(Device.RuntimePlatform==Device.Android)
+                        {
+                            filename = "icon_pin_crag_current_droid.png";
+                        }
+                        else
+                        {
+                            filename = "icon_pin_crag_current_ios.png";
+                        }
+                        
                         var stream = assembly.GetManifestResourceStream($"SloperMobile.CustomControls.MapRoot.Pins.{filename}");
                         pinIcon = BitmapDescriptorFactory.FromStream(stream);
                     }
                     else
                     {
                         var assembly = typeof(App).GetTypeInfo().Assembly;
-                        filename = "icon_pin_crag.png";
+                        if (Device.RuntimePlatform == Device.Android)
+                        {
+                            filename = "icon_pin_crag_droid.png";
+                        }
+                        else
+                        {
+                            filename = "icon_pin_crag_ios.png";
+                        }
                         var stream = assembly.GetManifestResourceStream($"SloperMobile.CustomControls.MapRoot.Pins.{filename}");
                         pinIcon = BitmapDescriptorFactory.FromStream(stream);
                     }

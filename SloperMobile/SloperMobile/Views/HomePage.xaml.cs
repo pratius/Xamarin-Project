@@ -55,6 +55,7 @@ namespace SloperMobile.Views
                 {
                     case ApplicationActivity.CragMapPage:
                         //await Navigation.PushAsync(new MapPage());
+                        //await Navigation.PopToRootAsync();
                         await Navigation.PushAsync(new CragMapPage());
                         break;
                     case ApplicationActivity.ProfilePage:

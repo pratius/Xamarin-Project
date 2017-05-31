@@ -46,6 +46,7 @@ namespace SloperMobile.UserControls
                         await Navigation.PushAsync(new SendsPage("POINTS"));
                         break;
                     case ApplicationActivity.HomePage:
+                        await Navigation.PopToRootAsync();
                         await Navigation.PushAsync(new HomePage());
                         break;
                     case ApplicationActivity.MapPage:

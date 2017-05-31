@@ -9,7 +9,7 @@ namespace SloperMobile.Common.Constants
     public class AppSetting
     {
         //API Base URL
-        public const string API_VERSION = "v2";
+        public const string API_VERSION = "v170428";
         public const string Base_Url = "http://sloper.slicksystems.ca:8080/DesktopModules/";
         public const string APP_ID = "1";
         public const string APP_TYPE = "indoor";
@@ -20,10 +20,11 @@ namespace SloperMobile.Common.Constants
 
         //Google Map API Key Ravi
         //public const string GoogleApiKey_Droid = "AIzaSyDlezhB_TB6imlElBbrajrIEnvmdtAhfF8";
+        public const string GoogleApiKey_Droid = "AIzaSyASierV3-kHa3WE6R6KGJg556J0CAFcoT8";
         public const string GoogleApiKey_iOS = "AIzaSyDArJKC42cFUb_LThCM-UmY5BhO06BVOD4";
 
         //Google Map API Key Steve
-        public const string GoogleApiKey_Droid = "AIzaSyDJNaoMh4e5cQyQrqeFHlP3r_Avco1AOQ4";
+        //public const string GoogleApiKey_Droid = "AIzaSyDJNaoMh4e5cQyQrqeFHlP3r_Avco1AOQ4";
         //public const string GoogleApiKey_iOS = "AIzaSyBom0uG454iMScJX3v9yQdXM47524qjdIU";
 
         //Company

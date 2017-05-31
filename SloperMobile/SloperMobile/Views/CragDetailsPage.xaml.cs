@@ -29,7 +29,7 @@ namespace SloperMobile.Views
             base.OnAppearing();
             var routes = App.DAUtil.GetRouteTypesByCragID(Settings.SelectedCragSettings);
             List<string> newroutes = new List<string>();
-            if (AppSetting.APP_TYPE == "indoor")
+            if (AppSetting.APP_TYPE != "indoor")
             {
                 newroutes.Add("season");
             }
