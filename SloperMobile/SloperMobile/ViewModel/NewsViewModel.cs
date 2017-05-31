@@ -65,9 +65,9 @@ namespace SloperMobile.ViewModel
                                     //other wise show default                                
                                     if (AppSetting.APP_TYPE == "indoor")
                                     {
-                                        nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_indoor");
+                                        nm.news_image = ImageSource.FromFile("default_sloper_indoor_landscape");
                                     }
-                                    else { nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_outdoor"); }
+                                    else { nm.news_image = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
                                 }
                             }
                             else

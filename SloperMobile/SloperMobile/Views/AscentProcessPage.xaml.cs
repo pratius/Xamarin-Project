@@ -57,10 +57,10 @@ namespace SloperMobile.Views
             BindingContext = AscentProcessVM;
             //Title = AscentProcessVM.PageHeaderText;
             NavigationPage.SetHasNavigationBar(this, false);
-            //if (AppSetting.APP_TYPE == "indoor")
-            //{
-            //    Children.RemoveAt(3);
-            //}
+            if (AppSetting.APP_TYPE == "indoor")
+            {
+                Children.RemoveAt(3);
+            }
 
         }
         void tapImageNext_Tapped(object sender, EventArgs e)
@@ -157,8 +157,9 @@ namespace SloperMobile.Views
             base.OnCurrentPageChanged();
             var index = Children.IndexOf(CurrentPage);
             SelectedItem = Children[index];
-            if (index == 6)
+            if (index == 6 || AppSetting.APP_TYPE == "indoor" && index==5)
             {
+                
                 if (AscentProcessVM.IsDisplaySummaryWeb)
                 {
                     UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
