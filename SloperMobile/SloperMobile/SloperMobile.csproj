@@ -263,6 +263,12 @@
     <EmbeddedResource Include="Views\SlickTest.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_crag_current_droid.png" />
+    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_crag_current_ios.png" />
+    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_crag_droid.png" />
+    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_crag_ios.png" />
+    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_device_location_droid.png" />
+    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_device_location_ios.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -600,20 +606,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_crag_ios.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_crag_current_ios.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_device_location_ios.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_crag_current_droid.png" />
-    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_crag_droid.png" />
-    <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_device_location_droid.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
