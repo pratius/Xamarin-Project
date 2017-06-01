@@ -27,6 +27,7 @@ namespace SloperMobile.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            crag_icons.Children.Clear();
             var routes = App.DAUtil.GetRouteTypesByCragID(Settings.SelectedCragSettings);
             List<string> newroutes = new List<string>();
             if (AppSetting.APP_TYPE != "indoor")
@@ -46,7 +47,7 @@ namespace SloperMobile.Views
                     innerstack.HorizontalOptions = LayoutOptions.Center;
                     innerstack.VerticalOptions = LayoutOptions.EndAndExpand;
                     innerstack.Children.Add(new Image { Source = ImageSource.FromFile(GetIconNameByRouteTypeName(iconstr)), HeightRequest = 50, WidthRequest = 50 });
-                    innerstack.Children.Add(new Label { Text = (iconstr=="season"?App.DAUtil.GetSelectedCragData().season: iconstr), TextColor = Color.White, HorizontalTextAlignment = TextAlignment.Center, FontSize = 10 });
+                    innerstack.Children.Add(new Label { Text = (iconstr == "season" ? App.DAUtil.GetSelectedCragData().season : iconstr), TextColor = Color.White, HorizontalTextAlignment = TextAlignment.Center, FontSize = 10 });
                     crag_icons.Children.Add(innerstack);
                 }
             }
@@ -77,6 +78,11 @@ namespace SloperMobile.Views
         private async void Sector_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Views.MapPage());
+        }
+        private async void OnBackTapped(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync().ConfigureAwait(false);
+            await Navigation.PushAsync(new CragMapPage());
         }
     }
 }

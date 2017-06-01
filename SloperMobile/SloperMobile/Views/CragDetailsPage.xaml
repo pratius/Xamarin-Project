@@ -3,6 +3,30 @@
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
     </ContentPage.Padding>
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <!--Top Header Style-->
+            <Style x:Key="lblTopHeader" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center"/>
+
+                <!--<Setter Property="FontSize" Value="Large" />-->
+                <Setter Property="TextColor" Value="#FF8E2D" />
+                <Setter Property="Font" Value="Medium"/>
+            </Style>
+
+
+            <Style x:Key="lblsubTopHeader" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <!--<Setter Property="FontSize" Value="Small" />-->
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="Font" Value="Small"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -13,7 +37,29 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackLayout Grid.Column="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
-            <UC:BackHeaderUC HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
+            <!--<UC:BackHeaderUC HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />-->
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" BackgroundColor="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Orientation="Horizontal" Margin="0,0,0,0" Grid.Column="0"  Grid.Row="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackTapped"/>
+                    </StackLayout.GestureRecognizers>
+                    <Image Source="arrowLeftWhite" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" Aspect="AspectFit"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" Spacing="0" Grid.Column="1" Grid.Row="0">
+                    <Label Style="{StaticResource lblTopHeader}" Text="{Binding Path=PageHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center" />
+                    <Label Style="{StaticResource lblsubTopHeader}" Text="{Binding Path=PageSubHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>
         </StackLayout>
         <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Image Source="{Binding CragImage}" Aspect="AspectFill" />

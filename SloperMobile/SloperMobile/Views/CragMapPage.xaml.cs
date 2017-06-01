@@ -23,6 +23,7 @@ namespace SloperMobile.Views
         string user_loc_img_name = "";
         Assembly appassembly;
         System.IO.Stream user_icon_stream;
+        List<T_CRAG> tcrags;
         public CragMapPage()
         {
             InitializeComponent();
@@ -37,12 +38,16 @@ namespace SloperMobile.Views
                 user_loc_img_name = "icon_pin_device_location_ios.png";
             }
             user_icon_stream = appassembly.GetManifestResourceStream($"SloperMobile.CustomControls.MapRoot.Pins.{user_loc_img_name}");
+            tcrags = new List<T_CRAG>();
+            tcrags = App.DAUtil.GetCragList();
+            var moveto = tcrags.Where(tc => tc.crag_id.ToString() == Settings.SelectedCragSettings).FirstOrDefault();
+            map.MoveCamera(CameraUpdateFactory.NewPosition(new Position(Convert.ToDouble(moveto.crag_latitude), Convert.ToDouble(moveto.crag_longitude))));
         }
 
         protected override async void OnAppearing()
         {
-            var crags = App.DAUtil.GetCragList();
-            foreach (T_CRAG tcrag in crags)
+            map.Pins.Clear();
+            foreach (T_CRAG tcrag in tcrags)
             {
                 if (!string.IsNullOrEmpty(tcrag.crag_latitude) && !string.IsNullOrEmpty(tcrag.crag_longitude))
                 {
