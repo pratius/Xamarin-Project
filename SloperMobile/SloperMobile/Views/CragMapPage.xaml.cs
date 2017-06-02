@@ -41,7 +41,7 @@ namespace SloperMobile.Views
             tcrags = new List<T_CRAG>();
             tcrags = App.DAUtil.GetCragList();
             var moveto = tcrags.Where(tc => tc.crag_id.ToString() == Settings.SelectedCragSettings).FirstOrDefault();
-            map.MoveCamera(CameraUpdateFactory.NewPosition(new Position(Convert.ToDouble(moveto.crag_latitude), Convert.ToDouble(moveto.crag_longitude))));
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(Convert.ToDouble(moveto.crag_latitude), Convert.ToDouble(moveto.crag_longitude)), Distance.FromMiles(0.3)), true);
         }
 
         protected override async void OnAppearing()
@@ -96,6 +96,7 @@ namespace SloperMobile.Views
             }
             var moveto = map.Pins.Where(p => p.Tag.ToString() == Settings.SelectedCragSettings).FirstOrDefault().Position;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(moveto.Latitude, moveto.Longitude), Distance.FromMiles(0.3)), true);
+            //await map.MoveCamera(CameraUpdateFactory.NewPosition(new Position(moveto.Latitude, moveto.Longitude)));
             map.InfoWindowClicked += Map_InfoWindowClicked;
 
             var userloc = await GetGurrentLocation();
