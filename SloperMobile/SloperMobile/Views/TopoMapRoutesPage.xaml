@@ -106,7 +106,7 @@
 							<Label Grid.Row="1" Text="{Binding RouteInfo,Mode=TwoWay}" TextColor="White" HorizontalOptions="Center" FontSize="Medium" />
 						</Grid>
 						<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Row="1" WidthRequest="145">
-							<rating:SfRating x:Name="rating_detail" HorizontalOptions="Center" ItemCount="5" ItemSize="25" Precision="Exact" ReadOnly="True" Value="{Binding Rating, Mode=TwoWay}">
+                            <rating:SfRating x:Name="rating_detail" IsVisible="{Binding ShowStarRating, Mode=TwoWay}" HorizontalOptions="Center" ItemCount="5" ItemSize="25" Precision="Exact" ReadOnly="True" Value="{Binding Rating, Mode=TwoWay}">
 								<rating:SfRating.RatingSettings>
 									<rating:SfRatingSettings VerticalOptions="StartAndExpand" HorizontalOptions="Center" RatedFill="#FF8E2D" RatedStroke="#FF8E2D" RatedStrokeWidth="1" UnRatedStroke="#FF8E2D" UnRatedStrokeWidth="1" />
 								</rating:SfRating.RatingSettings>

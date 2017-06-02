@@ -58,12 +58,12 @@
 				<Image Source="icon_steepness_8_roof_border_80x80" VerticalOptions="Center" HorizontalOptions="Center" />
 			</Frame>
 		</Grid>
-        <StackLayout Orientation="Horizontal" x:Name="ImgClmAnglePrv" Margin="0,0,70,0" Grid.Column="0"  Grid.Row="1">
-            <Image Grid.Row="1"  Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="EndAndExpand" />
+        <StackLayout Orientation="Horizontal" x:Name="ImgClmAnglePrv" Margin="0,0,0,0" Grid.Column="0"  Grid.Row="1">
+            <Image Grid.Row="1"  Grid.Column="0" Source="arrowLeftWhite" Margin="0,0,70,0"  HeightRequest="20" VerticalOptions="Start" HorizontalOptions="EndAndExpand" />
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal" x:Name="ImgClmAngleNxt" Margin="70,0,0,0" Grid.Column="1"  Grid.Row="1">
-            <Image Grid.Row="1" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="StartAndExpand"  />
+        <StackLayout Orientation="Horizontal" x:Name="ImgClmAngleNxt" Margin="0,0,0,0" Grid.Column="1"  Grid.Row="1">
+            <Image Grid.Row="1" Grid.Column="1" Source="arrowLeftWhite" Margin="0,0,70,0"  HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="StartAndExpand"  />
         </StackLayout>
     </Grid>
 </StackLayout>

@@ -39,12 +39,12 @@
                 <Controls:BindablePicker ItemsSource="{Binding Path=AscentGrades}" SelectedItem="{Binding Path=SendsGrade,Mode=TwoWay}" BackgroundColor="White" WidthRequest="120" HorizontalOptions="CenterAndExpand" />
             </StackLayout>
         </Grid>
-        <StackLayout Orientation="Horizontal" x:Name="ImgAcentDatePrv" Margin="0,0,70,0" Grid.Column="0"  Grid.Row="1">
-            <Image Grid.Row="1"  Grid.Column="0" Source="arrowLeftWhite" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="EndAndExpand"/>
+        <StackLayout Orientation="Horizontal"  x:Name="ImgAcentDatePrv" Margin="0,0,0,0" Grid.Column="0"  Grid.Row="1">
+            <Image Grid.Row="1"  Grid.Column="0" Source="arrowLeftWhite" Margin="0,0,70,0" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="EndAndExpand"/>
         </StackLayout>
-        
-        <StackLayout Orientation="Horizontal" x:Name="ImgAcentDateNxt" Margin="70,0,0,0" Grid.Column="1"  Grid.Row="1">
-            <Image Grid.Row="1" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Rotation="180" VerticalOptions="Start" HorizontalOptions="StartAndExpand"  />
+
+        <StackLayout Orientation="Horizontal"   x:Name="ImgAcentDateNxt" Margin="0,0,0,0" Grid.Column="1"  Grid.Row="1">
+            <Image Grid.Row="1" Grid.Column="1" Source="arrowLeftWhite" HeightRequest="20" Margin="70,0,0,0" Rotation="180" VerticalOptions="Start" HorizontalOptions="StartAndExpand"  />
         </StackLayout>
     </Grid>
 </StackLayout>

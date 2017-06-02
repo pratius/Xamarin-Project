@@ -58,6 +58,10 @@ namespace SloperMobile.ViewModel
             set { legendheight = value; OnPropertyChanged(); }
         }
 
+      
+
+        
+
         #region DelegateCommand
 
         public DelegateCommand TapSectorCommand { get; set; }
@@ -97,7 +101,18 @@ namespace SloperMobile.ViewModel
 
                     routeobj.RouteId = route.route_id;
                     routeobj.Rating = Math.Round(Convert.ToDecimal(route.rating)).ToString();
-                    routeobj.StarImage = ImageSource.FromFile(GetStarImage(Math.Round(Convert.ToDecimal(route.rating)).ToString()));
+                    if (Convert.ToDecimal(route.rating) > 0)
+                    {
+                        routeobj.StarImage = ImageSource.FromFile(GetStarImage(Math.Round(Convert.ToDecimal(route.rating)).ToString()));
+                        //routeobj.IsShowStarCount = true;
+                    }
+                    else
+                    {
+                        routeobj.StarImage = null;
+                       // routeobj.IsShowStarCount = false;
+                    }
+                   
+                   
                     //if (!string.IsNullOrEmpty(route.angles_top_2) && route.angles_top_2.Contains(","))
                     //{
                     //    string[] steeps = route.angles_top_2.Split(',');
@@ -432,7 +447,8 @@ namespace SloperMobile.ViewModel
         public ImageSource Steepness2 { get; set; }
         public ImageSource Steepness3 { get; set; }
         public ImageSource StarImage { get; set; }
-
+        public bool IsShowStarCount = false;
+       
         public string RouteTechGrade { get; set; }
         public string RouteGradeColor { get; set; }
         public string RouteId { get; set; }
