@@ -41,7 +41,7 @@ namespace SloperMobile.Views
             tcrags = new List<T_CRAG>();
             tcrags = App.DAUtil.GetCragList();
             var moveto = tcrags.Where(tc => tc.crag_id.ToString() == Settings.SelectedCragSettings).FirstOrDefault();
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(Convert.ToDouble(moveto.crag_latitude), Convert.ToDouble(moveto.crag_longitude)), Distance.FromMiles(0.3)), true);
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(Convert.ToDouble(moveto.crag_latitude), Convert.ToDouble(moveto.crag_longitude)), Distance.FromMiles(1)), true);
         }
 
         protected override async void OnAppearing()
@@ -56,7 +56,7 @@ namespace SloperMobile.Views
                     if (!string.IsNullOrEmpty(Settings.SelectedCragSettings) && Settings.SelectedCragSettings == tcrag.crag_id)
                     {
                         var assembly = typeof(App).GetTypeInfo().Assembly; //typeof(CragMapPage).GetTypeInfo().Assembly;
-                        if(Device.RuntimePlatform==Device.Android)
+                        if (Device.RuntimePlatform == Device.Android)
                         {
                             filename = "icon_pin_crag_current_droid.png";
                         }
@@ -64,7 +64,7 @@ namespace SloperMobile.Views
                         {
                             filename = "icon_pin_crag_current_ios.png";
                         }
-                        
+
                         var stream = assembly.GetManifestResourceStream($"SloperMobile.CustomControls.MapRoot.Pins.{filename}");
                         pinIcon = BitmapDescriptorFactory.FromStream(stream);
                     }
@@ -94,9 +94,8 @@ namespace SloperMobile.Views
                     });
                 }
             }
-            var moveto = map.Pins.Where(p => p.Tag.ToString() == Settings.SelectedCragSettings).FirstOrDefault().Position;
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(moveto.Latitude, moveto.Longitude), Distance.FromMiles(0.3)), true);
-            //await map.MoveCamera(CameraUpdateFactory.NewPosition(new Position(moveto.Latitude, moveto.Longitude)));
+            //var moveto = map.Pins.Where(p => p.Tag.ToString() == Settings.SelectedCragSettings).FirstOrDefault().Position;
+            //map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(moveto.Latitude, moveto.Longitude), Distance.FromMiles(0.3)), true);
             map.InfoWindowClicked += Map_InfoWindowClicked;
 
             var userloc = await GetGurrentLocation();
