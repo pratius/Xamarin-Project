@@ -56,9 +56,9 @@
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="*" />
 							</Grid.ColumnDefinitions>
-							<rating:SfRating HorizontalOptions="Center" x:Name="rating" Grid.Row="0" Grid.Column="0" ItemCount="5" ItemSize="15" Precision="Exact" ReadOnly="True" Value="{Binding Rating, Mode=TwoWay}">
+                            <rating:SfRating HorizontalOptions="Center" IsVisible="{Binding ShowStarRating, Mode=TwoWay}"  x:Name="rating" Grid.Row="0" Grid.Column="0" ItemCount="5" ItemSize="15" Precision="Exact" ReadOnly="True" Value="{Binding Rating, Mode=TwoWay}">
 								<rating:SfRating.RatingSettings>
-									<rating:SfRatingSettings RatedFill="#FF8E2D" HorizontalOptions="Center" VerticalOptions="Center" RatedStroke="#FF8E2D" RatedStrokeWidth="1" UnRatedStroke="#FF8E2D" UnRatedStrokeWidth="1" />
+                                    <rating:SfRatingSettings   RatedFill="#FF8E2D" HorizontalOptions="Center" VerticalOptions="Center" RatedStroke="#FF8E2D" RatedStrokeWidth="1" UnRatedStroke="#FF8E2D" UnRatedStrokeWidth="1" />
 								</rating:SfRating.RatingSettings>
 							</rating:SfRating>
 						</Grid>

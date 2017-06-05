@@ -257,7 +257,7 @@ namespace SloperMobile.ViewModel
                 CragName = routeData.crag_id;
                 RouteInfo = routeData.route_info;
                 Rating = routeData.rating;
-                if (Convert.ToInt32(routeData.rating) > 0)
+                if (!string.IsNullOrEmpty(routeData.rating) && routeData.rating !="0")
                 {
                     ShowStarRating = true;
                  }
