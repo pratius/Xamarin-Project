@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:UC="clr-namespace:SloperMobile.UserControls.CustomMap;assembly=SloperMobile"
+             xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
              xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              xmlns:local="clr-namespace:SloperMobile.CustomControls"
              x:Class="SloperMobile.Views.CragMapPage"
@@ -12,8 +12,10 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <maps:Map x:Name="map"   Grid.Row="0"  VerticalOptions="FillAndExpand"/>
+        <UC:BackHeaderUC Grid.Row="0" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" />
+        <maps:Map x:Name="map"   Grid.Row="1"  VerticalOptions="FillAndExpand" Margin="0,0,0,-5"/>
     </Grid>
 </ContentPage>

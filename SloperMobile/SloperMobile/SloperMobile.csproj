@@ -145,6 +145,7 @@
     <Compile Include="ViewModel\CheckForUpdatesViewModel.cs" />
     <Compile Include="ViewModel\ClimbingDaysViewModel.cs" />
     <Compile Include="ViewModel\CragDetailsViewModel.cs" />
+    <Compile Include="ViewModel\CragMapPageViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\MapDetailViewModel.cs" />
     <Compile Include="ViewModel\MapViewModel.cs" />

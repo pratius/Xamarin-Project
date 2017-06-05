@@ -8,71 +8,79 @@
              xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
              xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
 			 ControlTemplate="{StaticResource PageTemplateFooter}">
-  <ContentPage.Padding>
-    <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
-  </ContentPage.Padding>
-  <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5,0,5,0">
-    <UC:BackHeaderUC HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" />
-    <Image Source="{Binding SectorImage}"  WidthRequest="100" Aspect="AspectFill" HeightRequest="180" Margin="0,0,0,5">
-      <Image.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding TapSectorCommand}" CommandParameter="RoutePage"/>
-      </Image.GestureRecognizers>
-    </Image>
-    <!-- ROUTE LEGENDS STARTS -->
-        <XLabUC:ContentControl ContentTemplate="{Binding LegendsDataTemplate}" Margin="0,0,0,0" HorizontalOptions="FillAndExpand"/>
-    <!-- ROUTE LEGENDS END -->
-
-    <Controls:InfiniteListView  x:Name="lstView" BackgroundColor="Black" SeparatorVisibility="None" HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding RoutesData}">
-      <Controls:InfiniteListView.Footer>
-        <Label/>
-      </Controls:InfiniteListView.Footer>
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <Grid RowSpacing="0" ColumnSpacing="0">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-              </Grid.ColumnDefinitions>
-              <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
+    </ContentPage.Padding>
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5,0,5,0">
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+            <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="25"/>
-              </Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <UC:BackHeaderUC Grid.Row="0" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Fill" />
+            <Image Grid.Row="1" Source="{Binding SectorImage}"  WidthRequest="100" Aspect="AspectFill" HeightRequest="180" Margin="0,0,0,5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapSectorCommand}" CommandParameter="RoutePage"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <!-- ROUTE LEGENDS STARTS -->
+            <XLabUC:ContentControl  Grid.Row="2" ContentTemplate="{Binding LegendsDataTemplate}" Margin="0,0,0,0" />
+            <!-- ROUTE LEGENDS END -->
+            <Controls:InfiniteListView  Grid.Row="3" x:Name="lstView" BackgroundColor="Black" SeparatorVisibility="None" HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding RoutesData}">
+                <Controls:InfiniteListView.Footer>
+                    <Label/>
+                </Controls:InfiniteListView.Footer>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid RowSpacing="0" ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
 
-              <!-- ROUTE INDEX AND TITLE -->
-              <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Center" >
-                <Label Text="{Binding RouteId}" IsVisible="False"></Label>
-                <Label Text="{Binding RouteIndex}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="#FF8E2D"/>
-                <Label Text="{Binding TitleText}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
-              </StackLayout>
-              <!-- END ROUTE INDEX AND TITLE -->
+                                <!-- ROUTE INDEX AND TITLE -->
+                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="Center" >
+                                    <Label Text="{Binding RouteId}" IsVisible="False"></Label>
+                                    <Label Text="{Binding RouteIndex}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="#FF8E2D"/>
+                                    <Label Text="{Binding TitleText}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"/>
+                                </StackLayout>
+                                <!-- END ROUTE INDEX AND TITLE -->
 
-							<!-- GRADE AND ROUTE CHARACTERISTICS -->
-                            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
-                                <Image Source="{Binding StarImage}"  WidthRequest="20" HeightRequest="20" HorizontalOptions="Start"  VerticalOptions="Center"/>
-                                <Image Source="{Binding Steepness2}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
-	                            <Image Source="{Binding Steepness3}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
-                                <Image Source="{Binding Steepness1}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
-	                            <Frame HasShadow="false" BackgroundColor="{Binding RouteGradeColor}" Padding="0" WidthRequest="45" HeightRequest="20" >
-	                                <Label Text="{Binding RouteTechGrade}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Small"/>
-	                            </Frame>								
-	                        </StackLayout>
-							<!-- END ROUTE CHARACTERISTICS -->
+                                <!-- GRADE AND ROUTE CHARACTERISTICS -->
+                                <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
+                                    <Image Source="{Binding StarImage}"  WidthRequest="20" HeightRequest="20" HorizontalOptions="Start"  VerticalOptions="Center"/>
+                                    <Image Source="{Binding Steepness2}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
+                                    <Image Source="{Binding Steepness3}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
+                                    <Image Source="{Binding Steepness1}" WidthRequest="20" Aspect="AspectFill" HeightRequest="20"  />
+                                    <Frame HasShadow="false" BackgroundColor="{Binding RouteGradeColor}" Padding="0" WidthRequest="45" HeightRequest="20" >
+                                        <Label Text="{Binding RouteTechGrade}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Small"/>
+                                    </Frame>
+                                </StackLayout>
+                                <!-- END ROUTE CHARACTERISTICS -->
 
-              <!-- ROUTE INFO -->
-              <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
-                <!--<Label Text="{Binding SubText}" TextColor="#95989A" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap" />-->
-              </StackLayout>
-              <!-- END ROUTE INFO -->
+                                <!-- ROUTE INFO -->
+                                <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                                    <!--<Label Text="{Binding SubText}" TextColor="#95989A" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap" />-->
+                                </StackLayout>
+                                <!-- END ROUTE INFO -->
 
-              <!-- SEPARATOR -->
-              <BoxView Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
-              <!-- END SEPARATOR -->
-            </Grid>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </Controls:InfiniteListView>
-  </StackLayout>
+                                <!-- SEPARATOR -->
+                                <BoxView Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                                <!-- END SEPARATOR -->
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </Controls:InfiniteListView>
+        </Grid>
+    </StackLayout>
 </ContentPage>

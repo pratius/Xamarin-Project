@@ -14,6 +14,7 @@ using SloperMobile.Common.Constants;
 using System.Reflection;
 using System.Threading;
 using System.IO;
+using SloperMobile.ViewModel;
 
 namespace SloperMobile.Views
 {
@@ -24,6 +25,7 @@ namespace SloperMobile.Views
         Assembly appassembly;
         System.IO.Stream user_icon_stream;
         List<T_CRAG> tcrags;
+        CragMapPageViewModel cragmapVM;
         public CragMapPage()
         {
             InitializeComponent();
@@ -46,6 +48,8 @@ namespace SloperMobile.Views
 
         protected override async void OnAppearing()
         {
+            cragmapVM = new CragMapPageViewModel();
+            BindingContext = cragmapVM;
             map.Pins.Clear();
             foreach (T_CRAG tcrag in tcrags)
             {

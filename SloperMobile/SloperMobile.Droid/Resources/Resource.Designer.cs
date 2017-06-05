@@ -3958,8 +3958,26 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f020055
 			public const int avd_hide_password = 2130837589;
 			
+			// aapt resource value: 0x7f0201b0
+			public const int avd_hide_password_1 = 2130837936;
+			
+			// aapt resource value: 0x7f0201b1
+			public const int avd_hide_password_2 = 2130837937;
+			
+			// aapt resource value: 0x7f0201b2
+			public const int avd_hide_password_3 = 2130837938;
+			
 			// aapt resource value: 0x7f020056
 			public const int avd_show_password = 2130837590;
+			
+			// aapt resource value: 0x7f0201b3
+			public const int avd_show_password_1 = 2130837939;
+			
+			// aapt resource value: 0x7f0201b4
+			public const int avd_show_password_2 = 2130837940;
+			
+			// aapt resource value: 0x7f0201b5
+			public const int avd_show_password_3 = 2130837941;
 			
 			// aapt resource value: 0x7f020057
 			public const int bg_gradient_trans_black = 2130837591;

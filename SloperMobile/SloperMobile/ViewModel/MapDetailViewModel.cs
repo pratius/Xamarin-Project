@@ -414,12 +414,13 @@ namespace SloperMobile.ViewModel
 
                     var batches = leg_buckets.Select((x, i) => new { x, i }).GroupBy(p => (p.i / gc), p => p.x);
 
-                    int r = 0, c = 0;
+                    int r = 0;
                     foreach (var row in batches)
                     {
+                        int c = 0;
                         foreach (var item in row)
                         {
-                            grdLegend.Children.Add(new Label { Text = item.BucketName.Replace(" ",string.Empty),HorizontalOptions=LayoutOptions.FillAndExpand, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(item.HexColor) }, c, r);
+                            grdLegend.Children.Add(new Label { Text = item.BucketName, HorizontalTextAlignment = TextAlignment.Center, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)), TextColor = Color.FromHex(item.HexColor) }, c, r);
                             c++;
                         }
                         r++;
