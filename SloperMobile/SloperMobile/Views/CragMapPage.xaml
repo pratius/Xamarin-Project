@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:SloperMobile.CustomControls"
              x:Class="SloperMobile.Views.CragMapPage"
              ControlTemplate="{StaticResource PageTemplateFooter}">
-
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+    </ContentPage.Padding>
     <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
