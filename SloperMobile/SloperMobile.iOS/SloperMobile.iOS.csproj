@@ -540,6 +540,15 @@
       <HintPath>..\..\packages\SQLite.Net-PCL.3.1.1\lib\Xamarin.iOS10\SQLite.Net.Platform.XamarinIOS.Unified.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Syncfusion.SfChart.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfChart.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfChart.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfChart.XForms.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.SfGauge.iOS">
       <HintPath>..\..\lib\ios-unified\Syncfusion.SfGauge.iOS.dll</HintPath>
     </Reference>

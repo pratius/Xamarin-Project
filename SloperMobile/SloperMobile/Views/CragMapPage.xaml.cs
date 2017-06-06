@@ -101,7 +101,7 @@ namespace SloperMobile.Views
             //var moveto = map.Pins.Where(p => p.Tag.ToString() == Settings.SelectedCragSettings).FirstOrDefault().Position;
             //map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(moveto.Latitude, moveto.Longitude), Distance.FromMiles(0.3)), true);
             map.InfoWindowClicked += Map_InfoWindowClicked;
-
+            map.SelectedPin = map.Pins.Where(p => p.Tag.ToString() == Settings.SelectedCragSettings).FirstOrDefault();
             var userloc = await GetGurrentLocation();
             if (userloc != null)
             {

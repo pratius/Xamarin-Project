@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using SloperMobile.Model;
 
 namespace SloperMobile.ViewModel
 {
@@ -20,19 +21,24 @@ namespace SloperMobile.ViewModel
             currentCrag = App.DAUtil.GetSelectedCragData();
             PageHeaderText = currentCrag.crag_name;
             PageSubHeaderText = currentCrag.area_name;
+            GraphData = new List<CragDetailModel>();
             LoadLegendsBucket();
+            LoadGraphData();
             CragDesc = currentCrag.crag_general_info;
             var cragimg = App.DAUtil.GetScenicImageForCrag(Settings.SelectedCragSettings);
-            if(cragimg!=null)
+            if (cragimg != null)
             {
                 byte[] imageBytes = Convert.FromBase64String(cragimg.crag_image.Split(',')[1]);
                 CragImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
             }
             else
             {
-                if(AppSetting.APP_TYPE == "indoor"){
+                if (AppSetting.APP_TYPE == "indoor")
+                {
                     CragImage = ImageSource.FromFile("default_sloper_indoor_square");
-                }else{
+                }
+                else
+                {
                     CragImage = ImageSource.FromFile("default_sloper_outdoor_square");
                 }
 
@@ -44,13 +50,13 @@ namespace SloperMobile.ViewModel
         public ImageSource CragImage
         {
             get { return _cragimg; }
-            set { _cragimg = value;OnPropertyChanged(); }
+            set { _cragimg = value; OnPropertyChanged(); }
         }
         private string _cragdesc;
         public string CragDesc
         {
             get { return _cragdesc; }
-            set { _cragdesc = value;OnPropertyChanged(); }
+            set { _cragdesc = value; OnPropertyChanged(); }
         }
         private DataTemplate legendsdata;
         public DataTemplate LegendsDataTemplate
@@ -58,9 +64,17 @@ namespace SloperMobile.ViewModel
             get { return legendsdata; }
             set { legendsdata = value; OnPropertyChanged(); }
         }
+
+        private List<CragDetailModel> _graphdata;
+        public List<CragDetailModel> GraphData
+        {
+            get { return _graphdata; }
+            set { _graphdata = value; OnPropertyChanged(); }
+        }
+        public List<Color> Colors;
         #endregion
 
-       
+
         #region Methods
         private void LoadLegendsBucket()
         {
@@ -106,11 +120,26 @@ namespace SloperMobile.ViewModel
             {
             }
         }
-        
-        
+
+
         private void LoadGraphData()
         {
             int totalbuckets = App.DAUtil.GetTotalBucketForApp();
+            for (int i = 1; i <= totalbuckets; i++)
+            {
+                CragDetailModel objcount = new CragDetailModel();
+                objcount.BucketCount = string.IsNullOrEmpty(App.DAUtil.GetBucketCountByCragIdAndGradeBucketId(currentCrag.crag_id, i.ToString())) ? "0" : App.DAUtil.GetBucketCountByCragIdAndGradeBucketId(currentCrag.crag_id, i.ToString());
+                //objcount.Colors = Color.FromHex(App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()));
+                GraphData.Add(objcount);
+            }
+
+            Colors = new List<Color>(){
+            Color.Red,
+            Color.Gray,
+            Color.Blue,
+            Color.Maroon,
+            Color.Pink,
+            };
         }
         #endregion
     }
