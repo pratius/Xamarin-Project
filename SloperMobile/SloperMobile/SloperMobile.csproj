@@ -16,7 +16,7 @@
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ReleaseVersion>2.127</ReleaseVersion>
+    <ReleaseVersion>2.129</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -76,6 +76,7 @@
     <Compile Include="Model\BucketLegends.cs" />
     <Compile Include="Model\CheckForUpdateModel.cs" />
     <Compile Include="Model\ClimbingDaysModel.cs" />
+    <Compile Include="Model\CragDetailModel.cs" />
     <Compile Include="Model\CragTemplate.cs" />
     <Compile Include="Model\IsRoutePresent.cs" />
     <Compile Include="Model\LoginReq.cs" />
@@ -362,6 +363,9 @@
     <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SQLite.Net-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\..\lib\pcl\Syncfusion.SfChart.XForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfGauge.XForms">
       <HintPath>..\..\lib\pcl\Syncfusion.SfGauge.XForms.dll</HintPath>

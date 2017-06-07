@@ -14,7 +14,7 @@
     <AssemblyName>SloperMobileiOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ReleaseVersion>2.127</ReleaseVersion>
+    <ReleaseVersion>2.129</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -80,7 +80,7 @@
     <BuildIpa>True</BuildIpa>
     <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>ElevationPlace-AdHoc</CodesignProvision>
+    <CodesignProvision>Bull-AdHoc</CodesignProvision>
     <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
@@ -410,9 +410,6 @@
     <BundleResource Include="Resources\icon_profile_large.png" />
     <BundleResource Include="Resources\icon_profile_large%402x.png" />
     <BundleResource Include="Resources\icon_profile_large%403x.png" />
-    <BundleResource Include="Resources\scenic_shot_portrait.png" />
-    <BundleResource Include="Resources\scenic_shot_portrait%402x.png" />
-    <BundleResource Include="Resources\scenic_shot_portrait%403x.png" />
     <BundleResource Include="Resources\icon_star0.png" />
     <BundleResource Include="Resources\icon_star0%402x.png" />
     <BundleResource Include="Resources\icon_star0%403x.png" />
@@ -539,6 +536,15 @@
     <Reference Include="SQLite.Net.Platform.XamarinIOS.Unified, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SQLite.Net-PCL.3.1.1\lib\Xamarin.iOS10\SQLite.Net.Platform.XamarinIOS.Unified.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfChart.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfChart.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.XForms.iOS">
+      <HintPath>..\..\lib\ios-unified\Syncfusion.SfChart.XForms.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfGauge.iOS">
       <HintPath>..\..\lib\ios-unified\Syncfusion.SfGauge.iOS.dll</HintPath>
@@ -712,12 +718,6 @@
     <BundleResource Include="Resources\icon_pin_device_location.png" />
     <BundleResource Include="Resources\icon_pin_device_location%402x.png" />
     <BundleResource Include="Resources\icon_pin_device_location%403x.png" />
-    <BundleResource Include="Resources\default_sloper_portrait_image_indoor.png" />
-    <BundleResource Include="Resources\default_sloper_portrait_image_indoor%402x.png" />
-    <BundleResource Include="Resources\default_sloper_portrait_image_indoor%403x.png" />
-    <BundleResource Include="Resources\default_sloper_portrait_image_outdoor.png" />
-    <BundleResource Include="Resources\default_sloper_portrait_image_outdoor%402x.png" />
-    <BundleResource Include="Resources\default_sloper_portrait_image_outdoor%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

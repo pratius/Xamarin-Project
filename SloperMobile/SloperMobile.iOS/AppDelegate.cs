@@ -17,6 +17,7 @@ using XLabs.Serialization.JsonNET;
 using Xamarin.Forms;
 using SloperMobile.MessagingTask;
 using SloperMobile.iOS.Services;
+using Syncfusion.SfChart.XForms.iOS.Renderers;
 
 namespace SloperMobile.iOS
 {
@@ -55,7 +56,7 @@ namespace SloperMobile.iOS
             manager.CrashManager.CrashManagerStatus = BITCrashManagerStatus.AutoSend;
             manager.StartManager();
             manager.Authenticator.AuthenticateInstallation();
-
+            new SfChartRenderer();
             new SfGaugeRenderer();
             new SfRatingRenderer();
             WireUpCheckUpdateRunningTask();

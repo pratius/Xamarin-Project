@@ -22,7 +22,6 @@ namespace SloperMobile.Views
             NavigationPage.SetHasNavigationBar(this, false);
             cragdetailsVM = new CragDetailsViewModel();
             BindingContext = cragdetailsVM;
-
         }
         protected override void OnAppearing()
         {
