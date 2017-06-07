@@ -150,12 +150,14 @@
     <Compile Include="ViewModel\MapDetailViewModel.cs" />
     <Compile Include="ViewModel\MapViewModel.cs" />
     <Compile Include="ViewModel\NewsViewModel.cs" />
+    <Compile Include="ViewModel\PointsViewModel.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\PyramidViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\SendsViewModel.cs" />
     <Compile Include="ViewModel\SettingViewModel.cs" />
     <Compile Include="ViewModel\SplashViewModel.cs" />
+    <Compile Include="ViewModel\TickListViewModel.cs" />
     <Compile Include="ViewModel\TopoMapRoutesViewModel.cs" />
     <Compile Include="ViewModel\TopoSectorViewModel.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
@@ -202,6 +204,9 @@
     <Compile Include="Views\NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PointsPage.xaml.cs">
+      <DependentUpon>PointsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
@@ -224,6 +229,9 @@
       <DependentUpon>SplashPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\TopoImageResponse.cs" />
+    <Compile Include="Views\TickListPage.xaml.cs">
+      <DependentUpon>TickListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TopoMapRoutesPage.xaml.cs">
       <DependentUpon>TopoMapRoutesPage.xaml</DependentUpon>
     </Compile>
@@ -604,6 +612,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UserControls\PointsUC.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\PointsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\TickListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

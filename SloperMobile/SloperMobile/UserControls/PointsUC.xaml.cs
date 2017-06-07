@@ -18,7 +18,8 @@ namespace SloperMobile.UserControls
         public PointsUC()
         {
             InitializeComponent();
-
+           
+            
             HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetUserPoints, AppSetting.APP_ID), Settings.AccessTokenSettings);
             var response = apicall.Get<Model.Point>();
             if (response.Result.Count > 0)
@@ -47,6 +48,7 @@ namespace SloperMobile.UserControls
                     reslist[i] = obj;
                 }
                 BindingContext = new ObservableCollection<ObservableGroupCollection<string, Model.Point>>(reslist);
+                
             }
         }
 

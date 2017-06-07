@@ -20,13 +20,13 @@
             <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0" />
             <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="POINTS" TextColor="White" FontSize="Small" BackgroundColor="#000" Grid.Row="1" Grid.Column="1">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="ProfilePage"/>
+                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="SendsPage"/>
                 </Label.GestureRecognizers>
             </Label>
             <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="2" />
             <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="SENDS" TextColor="White" FontSize="Small" BackgroundColor="#000" Grid.Row="1" Grid.Column="3">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="ProfilePage"/>
+                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="PointsPage"/>
                 </Label.GestureRecognizers>
             </Label>
             <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="4" />

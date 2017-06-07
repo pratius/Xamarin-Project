@@ -10,21 +10,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Plugin.Connectivity;
 using Xamarin.Forms;
+
 namespace SloperMobile.ViewModel
 {
-    public class SendsViewModel : BaseViewModel
+    public class TickListViewModel : BaseViewModel
     {
-        private INavigation _navigation;
-        public SendsViewModel(string TabName, INavigation navigation)
+       
+        public TickListViewModel()
         {
-            _navigation = navigation;
-            OnPagePrepration(TabName);
+          
+            OnPagePrepration();
             //UserPoints = new List<Model.PointList>();
         }
-
         private ObservableCollection<Send> sendsList;
         private ObservableCollection<TickList> ticklistsList;
-        
+
         //private List<PointList> _userPoint;
 
         public ObservableCollection<Send> SendsList
@@ -39,7 +39,7 @@ namespace SloperMobile.ViewModel
             set { ticklistsList = value; OnPropertyChanged(); }
         }
 
-       
+
         //public List<PointList> UserPoints
         //{
         //    get { return _userPoint; }
@@ -115,34 +115,18 @@ namespace SloperMobile.ViewModel
             get { return gradename; }
             set { gradename = value; OnPropertyChanged(); }
         }
-        private async void OnPagePrepration(string TabName)
+
+        private async void OnPagePrepration()
         {
             try
             {
-                if (TabName == "SENDS")
-                {
-                    PageHeaderText = "PROFILE";
-                    PageSubHeaderText = "Sends";
-                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
-                    await InvokeServiceGetAscentData();
-                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
-                }
-                else if (TabName == "POINTS")
-                {
-                    PageHeaderText = "PROFILE";
-                    PageSubHeaderText = "Points";
-                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
-                   // await InvokeServiceGetPointsData();
-                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
-                }
-                else
-                {
-                    PageHeaderText = "PROFILE";
-                    PageSubHeaderText = "Tick List";
-                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
-                    await InvokeServiceGetTickListData();
-                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
-                }
+
+                PageHeaderText = "PROFILE";
+                PageSubHeaderText = "Tick List";
+                Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+                await InvokeServiceGetTickListData();
+                Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+
             }
 
 
@@ -153,56 +137,6 @@ namespace SloperMobile.ViewModel
             }
         }
 
-
-
-        private void ExecuteOnTabSelection(object obj)
-        {
-
-        }
-
-        private void SetChartValue()
-        {
-            int _onsight = 0, _redpoint = 0, _project = 0;
-            if (SendsList.Count > 0)
-            {
-                foreach (var item in SendsList)
-                {
-                    if (item.Ascent_Type_Id == 1)
-                        _onsight++;
-                    else if (item.Ascent_Type_Id == 3)
-                        _redpoint++;
-                    else if (item.Ascent_Type_Id == 6)
-                        _project++;
-                }
-                Onsight = (int)Math.Round((double)(100 * _onsight) / SendsList.Count);
-                Redpoint = (int)Math.Round((double)(100 * _redpoint) / SendsList.Count);
-                Projects = _project;
-            }
-        }
-
-        #region Service Methods
-        private async Task InvokeServiceGetAscentData()
-        {
-            try
-            {
-                HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_GetAscent_AppData, Settings.AccessTokenSettings);
-                SendsDTO sendsobj = new SendsDTO();
-                sendsobj.app_id = AppSetting.APP_ID;
-                sendsobj.start_date = "20160101";
-                sendsobj.end_date = "20300101";
-                string sendsjson = JsonConvert.SerializeObject(sendsobj);
-                var response = await apicall.Post<List<Send>>(sendsjson);
-                if (response.Count > 0)
-                {
-                    SendsList = new ObservableCollection<Send>(response);
-                    SetChartValue();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
         private async Task InvokeServiceGetTickListData()
         {
             try
@@ -228,10 +162,5 @@ namespace SloperMobile.ViewModel
                 throw ex;
             }
         }
-
-       
-        #endregion
-
-
     }
 }

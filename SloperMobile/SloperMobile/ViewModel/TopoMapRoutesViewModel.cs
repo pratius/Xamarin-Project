@@ -210,7 +210,7 @@ namespace SloperMobile.ViewModel
                 HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_Tick_List, Convert.ToInt64(CurrentRouteID)), Settings.AccessTokenSettings);
                 var tickList_response = await apicall.Get<string>();
             }
-            await _navigation.PushAsync(new SendsPage("TICKLIST"));
+            await _navigation.PushAsync(new TickListPage());
         }
         private void ExecuteOnSends(object obj)
         {

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Acr.UserDialogs;
+using SloperMobile.ViewModel;
 
 namespace SloperMobile.UserControls
 {
@@ -23,6 +24,7 @@ namespace SloperMobile.UserControls
         public SendsUC()
         {
             InitializeComponent();
+          //  BindingContext = new SendsViewModel("SENDS", Navigation);
             LoadSectorImages();
             lstView.ItemTapped += this.OnItemTapped;
         }

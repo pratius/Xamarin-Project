@@ -45,36 +45,7 @@ namespace SloperMobile.Views
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = new SendsViewModel(TabName, Navigation);
-            if (TabName == "SENDS")
-            {
-                SendsScrollViewer.IsVisible = true;
-                TickListsScrollViewer.IsVisible = false;
-                PointScrollViewer.IsVisible = false;
-                main_layout.IsVisible = true;
-                Ticklists.IsVisible = false;
-                Sends.IsVisible = true;
-                Points.IsVisible = false;
-            }
-            else if (TabName == "TICKLIST")
-            {
-                SendsScrollViewer.IsVisible = false;
-                TickListsScrollViewer.IsVisible = true;
-                PointScrollViewer.IsVisible = false;
-                main_layout.IsVisible = false;
-                Ticklists.IsVisible = true;
-                Sends.IsVisible = false;
-                Points.IsVisible = false;
-            }
-            else if (TabName == "POINTS")
-            {
-                SendsScrollViewer.IsVisible = false;
-                TickListsScrollViewer.IsVisible = false;
-                PointScrollViewer.IsVisible = true;
-                main_layout.IsVisible = false;
-                Ticklists.IsVisible = false;
-                Sends.IsVisible = false;
-                Points.IsVisible = true;
-            }
+            
         }
 
 

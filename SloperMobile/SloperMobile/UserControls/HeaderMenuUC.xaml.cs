@@ -43,10 +43,10 @@ namespace SloperMobile.UserControls
                 switch (tabtxt)
                 {
                     case "TICK LIST":
-                        await Navigation.PushAsync(new SendsPage("TICKLIST"));
+                        await Navigation.PushAsync(new TickListPage());
                         break;
                     case "POINTS":
-                        await Navigation.PushAsync(new SendsPage("POINTS"));
+                        await Navigation.PushAsync(new PointsPage());
                         break;
                 }
             }
