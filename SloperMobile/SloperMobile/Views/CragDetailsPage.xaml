@@ -79,21 +79,21 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1*" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="1" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <chart:SfChart Grid.Row="0" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <chart:SfChart Grid.Row="0" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,100,0,0">
                         <chart:SfChart.PrimaryAxis>
-                            <chart:CategoryAxis>
+                            <chart:CategoryAxis ShowMajorGridLines="False" IsVisible="False">
                                 <chart:CategoryAxis.Title>
                                     <chart:ChartAxisTitle Text=""></chart:ChartAxisTitle>
                                 </chart:CategoryAxis.Title>
                             </chart:CategoryAxis>
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
-                            <chart:NumericalAxis>
+                            <chart:NumericalAxis ShowMajorGridLines="False" ShowMinorGridLines="False" IsVisible="False" >
                                 <chart:NumericalAxis.Title>
                                     <chart:ChartAxisTitle Text=""></chart:ChartAxisTitle>
                                 </chart:NumericalAxis.Title>
@@ -101,9 +101,9 @@
                         </chart:SfChart.SecondaryAxis>
                         <chart:SfChart.Series>
                             <chart:ColumnSeries ItemsSource="{Binding GraphData}" XBindingPath="BucketCount" YBindingPath="BucketCount">
-                                <!--<chart:ColumnSeries.ColorModel>
+                                <chart:ColumnSeries.ColorModel>
                                     <chart:ChartColorModel Palette="Metro"/>
-                                </chart:ColumnSeries.ColorModel>-->
+                                </chart:ColumnSeries.ColorModel>
                             </chart:ColumnSeries>
                         </chart:SfChart.Series>
                     </chart:SfChart>
