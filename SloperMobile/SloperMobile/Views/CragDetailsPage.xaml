@@ -66,8 +66,8 @@
                 </StackLayout>
             </Grid>
         </StackLayout>
-        <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Image Source="{Binding CragImage}" Aspect="AspectFill" />
+        <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+            <Image Source="{Binding CragImage}" Aspect="AspectFit" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
             <Image Source="bg_portrait_half_fade1.png" Aspect="AspectFill" />
@@ -84,7 +84,7 @@
                         <RowDefinition Height="1" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <chart:SfChart Grid.Row="0" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,100,0,0">
+                    <chart:SfChart Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="End" Margin="-10,0,-10,-12" HeightRequest="90" Opacity="0.25" >
                         <chart:SfChart.PrimaryAxis>
                             <chart:CategoryAxis ShowMajorGridLines="False" IsVisible="False">
                                 <chart:CategoryAxis.Title>
@@ -100,18 +100,17 @@
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
                         <chart:SfChart.Series>
-                            <chart:ColumnSeries ItemsSource="{Binding GraphData}" XBindingPath="BucketCount" YBindingPath="BucketCount">
-                                <chart:ColumnSeries.ColorModel>
+                            <chart:ColumnSeries ItemsSource="{Binding GraphData}" XBindingPath="BucketCount" YBindingPath="BucketCount" Color="#FF8E2D">
+<!--                                <chart:ColumnSeries.ColorModel>
                                     <chart:ChartColorModel Palette="Metro"/>
-                                </chart:ColumnSeries.ColorModel>
+                                </chart:ColumnSeries.ColorModel>-->
                             </chart:ColumnSeries>
                         </chart:SfChart.Series>
                     </chart:SfChart>
                     <StackLayout Grid.Row="1" Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="End" Margin="0,0,0,0">
-                        <BoxView BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
                         <XLabUC:ContentControl ContentTemplate="{Binding LegendsDataTemplate}" HorizontalOptions="Fill" />
                     </StackLayout>
-                    <BoxView Grid.Row="2" BackgroundColor="#676767" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
+                    <BoxView Grid.Row="2" BackgroundColor="Yellow" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="Fill" />
                     <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />

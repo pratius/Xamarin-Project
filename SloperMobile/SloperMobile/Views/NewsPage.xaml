@@ -31,8 +31,10 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <UC:HeaderUC HeightRequest="30" />
-            <Controls:InfiniteListView x:Name="lstnewsView" Grid.Row="1" SeparatorVisibility="None" BackgroundColor="Black" ItemTapped="OnItemTapped" 
-                              HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding NewsList}" LoadMoreCommand="{Binding LoadMoreNews}">
+            <!--<Controls:InfiniteListView x:Name="lstnewsView" Grid.Row="1" SeparatorVisibility="None" BackgroundColor="Black" ItemTapped="OnItemTapped" HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding NewsList}" LoadMoreCommand="{Binding LoadMoreNews}">
+            Removed until we can get it working 100% - Steve - 2017-06-07
+            -->
+            <Controls:InfiniteListView x:Name="lstnewsView" Grid.Row="1" SeparatorVisibility="None" BackgroundColor="Black" ItemTapped="OnItemTapped" HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding NewsList}">                
                 <Controls:InfiniteListView.Footer>
                     <Label />
                 </Controls:InfiniteListView.Footer>

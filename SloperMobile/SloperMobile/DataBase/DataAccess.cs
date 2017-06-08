@@ -317,7 +317,8 @@ namespace SloperMobile.DataBase
         public IEnumerable<T_TOPO> GetSectorImages(int skip, int take)
         {
             List<string> strid = GetSectorIdForSelectedCrag();
-            var secimglist = (dbConn.Table<T_TOPO>().Where(tp => strid.Contains(tp.sector_id))).Skip(skip).Take(take);
+            //var secimglist = (dbConn.Table<T_TOPO>().Where(tp => strid.Contains(tp.sector_id))).Skip(skip).Take(take);
+            var secimglist = (dbConn.Table<T_TOPO>().Where(tp => strid.Contains(tp.sector_id)));
             return secimglist;
         }
 
@@ -490,11 +491,10 @@ namespace SloperMobile.DataBase
         {
             //var item = dbConn.Query<NewsModel>("SELECT T_SECTOR.sector_id as id, T_ROUTE.date_created as date_created, T_SECTOR.sector_name, COUNT(T_SECTOR.sector_name) as new_route_count,'nr' as news_type FROM T_SECTOR INNER JOIN T_ROUTE ON T_SECTOR.sector_id = T_ROUTE.sector_id GROUP BY T_ROUTE.date_created, T_SECTOR.sector_name, T_SECTOR.sort_order ORDER BY T_ROUTE.date_created DESC, T_SECTOR.sort_order ");
             var item = dbConn.Query<NewsModel>("SELECT T_ROUTE.date_created AS date, T_SECTOR.sector_id AS id, UPPER(T_CRAG.crag_name) as title, UPPER(T_SECTOR.sector_name) as sub_title, COUNT(T_SECTOR.sector_name) AS count, (COUNT(T_SECTOR.sector_name) || ' NEW ' || (CASE WHEN COUNT(T_SECTOR.sector_name) = 1 THEN 'ROUTE' ELSE 'ROUTES' END)) as message, 'newRoutes' AS news_type FROM T_SECTOR INNER JOIN T_ROUTE ON T_SECTOR.sector_id = T_ROUTE.sector_id INNER JOIN T_CRAG ON T_SECTOR.crag_id = T_CRAG.crag_id WHERE T_SECTOR.is_enabled=1 GROUP BY T_ROUTE.date_created, T_SECTOR.sector_id, T_CRAG.crag_name, T_SECTOR.sector_name, T_SECTOR.sort_order ORDER BY date DESC, T_SECTOR.sort_order");
-            var newslist = (item).Skip(skip).Take(take);
-            return newslist.ToList();
-           // return item.ToList();
+            //var newslist = (item).Skip(skip).Take(take);
+           // return newslist.ToList();
+            return item.ToList();
         }
-
 
         public TCRAG_IMAGE GetScenicImageForCrag(string cragid)
         {

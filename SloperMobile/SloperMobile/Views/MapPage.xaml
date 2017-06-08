@@ -25,8 +25,10 @@
             <!-- BUCKET LEGENDS START-->
             <XLabUC:ContentControl Grid.Row="1" ContentTemplate="{Binding LegendsDataTemplate}" Margin="0,0,0,0"/>
             <!-- BUCKET LEGENDS  END-->
-            <Controls:InfiniteListView  x:Name="lstSectorView" Grid.Row="2" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="true" 
-                                  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding SectorImageList}" SelectedItem="{Binding SelectedSector}" LoadMoreCommand="{Binding LoadMoreSector}">
+            <!--<Controls:InfiniteListView  x:Name="lstSectorView" Grid.Row="2" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding SectorImageList}" SelectedItem="{Binding SelectedSector}" LoadMoreCommand="{Binding LoadMoreSector}"> 
+            Removed until we can get it working 100% - Steve - 2017-06-07
+            -->
+            <Controls:InfiniteListView  x:Name="lstSectorView" Grid.Row="2" SeparatorVisibility="None" BackgroundColor="Black" HasUnevenRows="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemsSource="{Binding SectorImageList}" SelectedItem="{Binding SelectedSector}" >
                 <Controls:InfiniteListView.Footer>
                     <Label/>
                 </Controls:InfiniteListView.Footer>

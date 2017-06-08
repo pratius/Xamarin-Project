@@ -86,114 +86,138 @@ namespace SloperMobile.ViewModel
                 {
                     string strimg64 = string.Empty;
                     MapListModel objSec = new MapListModel();
-                    var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(sector.topo_json);
-
-                    if (!string.IsNullOrEmpty(topoimg[0].image.data))
+                    if (!(sector.topo_json == "[]"))
                     {
-                        if (topoimg[0].image.name == "No_Image.jpg")
+                        var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(sector.topo_json);
+                        if (!string.IsNullOrEmpty(topoimg[0].image.data))
                         {
-                            //load Crag Scenic Action Portrait Shot (specific to Gym)
-                            var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                            if (item != null)
+                            if (topoimg[0].image.name == "No_Image.jpg")
                             {
-                                strimg64 = item.crag_landscape_image.Split(',')[1];
+                                //load Crag Scenic Action Portrait Shot (specific to Gym)
+                                var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
+                                if (item != null)
+                                {
+                                    strimg64 = item.crag_landscape_image.Split(',')[1];
+                                }
+                                else
+                                {
+                                    //other wise show default                                
+                                    if (AppSetting.APP_TYPE == "indoor")
+                                    {
+                                        objSec.SectorImage = ImageSource.FromFile("default_sloper_indoor_landscape");
+                                    }
+                                    else { objSec.SectorImage = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
+                                }
                             }
                             else
                             {
-                                //other wise show default                                
-                                if (AppSetting.APP_TYPE == "indoor")
-                                {
-                                    objSec.SectorImage = ImageSource.FromFile("default_sloper_indoor_landscape");
-                                }
-                                else { objSec.SectorImage = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
+                                strimg64 = topoimg[0].image.data.Split(',')[1];
+                            }
+                            if (!string.IsNullOrEmpty(strimg64))
+                            {
+                                byte[] imageBytes = Convert.FromBase64String(strimg64);
+                                objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //load Crag Scenic Action Portrait Shot (specific to Gym)
+                        var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
+                        if (item != null)
+                        {
+                            strimg64 = item.crag_landscape_image.Split(',')[1];
+                            if (!string.IsNullOrEmpty(strimg64))
+                            {
+                                byte[] imageBytes = Convert.FromBase64String(strimg64);
+                                objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
                             }
                         }
                         else
                         {
-                            strimg64 = topoimg[0].image.data.Split(',')[1];
-                        }
-                        if (!string.IsNullOrEmpty(strimg64))
-                        {
-                            byte[] imageBytes = Convert.FromBase64String(strimg64);
-                            objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                        }
-                        objSec.SectorId = sector.sector_id;
-                        T_SECTOR tsec = App.DAUtil.GetSectorDataBySectorID(sector.sector_id);
-                        objSec.SectorName = tsec.sector_name;
-                        string latlong = "";
-                        if (!string.IsNullOrEmpty(tsec.latitude) && !string.IsNullOrEmpty(tsec.longitude))
-                        {
-                            latlong = tsec.latitude + " / " + tsec.longitude;
-                        }
-                        objSec.SectorLatLong = latlong;
-                        objSec.SectorShortInfo = tsec.sector_info_short;
-                        if (!string.IsNullOrEmpty(tsec.angles_top_2) && tsec.angles_top_2.Contains(","))
-                        {
-                            string[] steeps = tsec.angles_top_2.Split(',');
-                            objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[0])));
-                            objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[1])));
-                        }
-                        else
-                        {
-                            objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(2));
-                            objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(4));
-                        }
-                        int totalbuckets = App.DAUtil.GetTotalBucketForApp();
-                        //var tgrades = App.DAUtil.GetBucketCountsBySectorId(tsec.sector_id);
-                        if (totalbuckets != 0)
-                        {
-
-                            objSec.BucketCountTemplate = new DataTemplate(() =>
+                            //other wise show default                                
+                            if (AppSetting.APP_TYPE == "indoor")
                             {
-                                StackLayout slBucketFrame = new StackLayout();
-                                slBucketFrame.Orientation = StackOrientation.Horizontal;
-                                slBucketFrame.HorizontalOptions = LayoutOptions.EndAndExpand;
-                                slBucketFrame.VerticalOptions = LayoutOptions.Start;
-
-                                //foreach (T_GRADE tgrd in tgrades)
-                                for (int i = 1; i <= totalbuckets; i++)
-                                {
-                                    Frame countframe = new Frame();
-                                    countframe.HasShadow = false;
-                                    countframe.Padding = 0; countframe.WidthRequest = 25; countframe.HeightRequest = 20;
-                                    //countframe.BackgroundColor = Color.FromHex(GetHexColorCodeByGradeBucketId(i));
-                                    countframe.BackgroundColor = Color.FromHex(App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()));
-                                    Label lblcount = new Label();
-                                    if (App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString()) != null)
-                                    {
-                                        lblcount.Text = App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString());
-                                    }
-                                    else
-                                    {
-                                        lblcount.Text = "0";
-                                    }
-                                    lblcount.HorizontalOptions = LayoutOptions.CenterAndExpand;
-                                    lblcount.VerticalOptions = LayoutOptions.CenterAndExpand;
-                                    lblcount.TextColor = Color.White; lblcount.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
-                                    countframe.Content = lblcount;
-                                    slBucketFrame.Children.Add(countframe);
-                                }
-                                return slBucketFrame;
-                            });
-                            //int loopvar = 1;
-                            //foreach (T_GRADE tgrd in tgrades)
-                            //{
-                            //    if (loopvar == 1)
-                            //    { objSec.BucketCount1 = tgrd.grade_bucket_id_count.ToString(); }
-                            //    if (loopvar == 2)
-                            //    { objSec.BucketCount2 = tgrd.grade_bucket_id_count.ToString(); }
-                            //    if (loopvar == 3)
-                            //    { objSec.BucketCount3 = tgrd.grade_bucket_id_count.ToString(); }
-                            //    if (loopvar == 4)
-                            //    { objSec.BucketCount4 = tgrd.grade_bucket_id_count.ToString(); }
-                            //    if (loopvar == 5)
-                            //    { objSec.BucketCount5 = tgrd.grade_bucket_id_count.ToString(); }
-                            //    loopvar++;
-                            //}
+                                objSec.SectorImage = ImageSource.FromFile("default_sloper_indoor_landscape");
+                            }
+                            else { objSec.SectorImage = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
                         }
-                        SectorImageList.Add(objSec);
-                        // }
                     }
+                    objSec.SectorId = sector.sector_id;
+                    T_SECTOR tsec = App.DAUtil.GetSectorDataBySectorID(sector.sector_id);
+                    objSec.SectorName = tsec.sector_name;
+                    string latlong = "";
+                    if (!string.IsNullOrEmpty(tsec.latitude) && !string.IsNullOrEmpty(tsec.longitude))
+                    {
+                        latlong = tsec.latitude + " / " + tsec.longitude;
+                    }
+                    objSec.SectorLatLong = latlong;
+                    objSec.SectorShortInfo = tsec.sector_info_short;
+                    if (!string.IsNullOrEmpty(tsec.angles_top_2) && tsec.angles_top_2.Contains(","))
+                    {
+                        string[] steeps = tsec.angles_top_2.Split(',');
+                        objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[0])));
+                        objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(Convert.ToInt32(steeps[1])));
+                    }
+                    else
+                    {
+                        objSec.Steepness1 = ImageSource.FromFile(GetSteepnessResourceName(2));
+                        objSec.Steepness2 = ImageSource.FromFile(GetSteepnessResourceName(4));
+                    }
+                    int totalbuckets = App.DAUtil.GetTotalBucketForApp();
+                    //var tgrades = App.DAUtil.GetBucketCountsBySectorId(tsec.sector_id);
+                    if (totalbuckets != 0)
+                    {
+                        objSec.BucketCountTemplate = new DataTemplate(() =>
+                        {
+                            StackLayout slBucketFrame = new StackLayout();
+                            slBucketFrame.Orientation = StackOrientation.Horizontal;
+                            slBucketFrame.HorizontalOptions = LayoutOptions.EndAndExpand;
+                            slBucketFrame.VerticalOptions = LayoutOptions.Start;
+                            //foreach (T_GRADE tgrd in tgrades)
+                            for (int i = 1; i <= totalbuckets; i++)
+                            {
+                                Frame countframe = new Frame();
+                                countframe.HasShadow = false;
+                                countframe.Padding = 0; countframe.WidthRequest = 25; countframe.HeightRequest = 20;
+                                //countframe.BackgroundColor = Color.FromHex(GetHexColorCodeByGradeBucketId(i));
+                                countframe.BackgroundColor = Color.FromHex(App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()));
+                                Label lblcount = new Label();
+                                if (App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString()) != null)
+                                {
+                                    lblcount.Text = App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString());
+                                }
+                                else
+                                {
+                                    lblcount.Text = "0";
+                                }
+                                lblcount.HorizontalOptions = LayoutOptions.CenterAndExpand;
+                                lblcount.VerticalOptions = LayoutOptions.CenterAndExpand;
+                                lblcount.TextColor = Color.White; lblcount.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                                countframe.Content = lblcount;
+                                slBucketFrame.Children.Add(countframe);
+                            }
+                            return slBucketFrame;
+                        });
+                        //int loopvar = 1;
+                        //foreach (T_GRADE tgrd in tgrades)
+                        //{
+                        //    if (loopvar == 1)
+                        //    { objSec.BucketCount1 = tgrd.grade_bucket_id_count.ToString(); }
+                        //    if (loopvar == 2)
+                        //    { objSec.BucketCount2 = tgrd.grade_bucket_id_count.ToString(); }
+                        //    if (loopvar == 3)
+                        //    { objSec.BucketCount3 = tgrd.grade_bucket_id_count.ToString(); }
+                        //    if (loopvar == 4)
+                        //    { objSec.BucketCount4 = tgrd.grade_bucket_id_count.ToString(); }
+                        //    if (loopvar == 5)
+                        //    { objSec.BucketCount5 = tgrd.grade_bucket_id_count.ToString(); }
+                        //    loopvar++;
+                        //}
+                    }
+                    SectorImageList.Add(objSec);
+                    // }
+                    //  }
                     //====
                 }
             }

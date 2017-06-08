@@ -43,7 +43,7 @@ namespace SloperMobile.Views
             tcrags = new List<T_CRAG>();
             tcrags = App.DAUtil.GetCragList();
             var moveto = tcrags.Where(tc => tc.crag_id.ToString() == Settings.SelectedCragSettings).FirstOrDefault();
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(Convert.ToDouble(moveto.crag_latitude), Convert.ToDouble(moveto.crag_longitude)), Distance.FromMiles(1)), true);
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(Convert.ToDouble(moveto.crag_latitude), Convert.ToDouble(moveto.crag_longitude)), Distance.FromMiles(10)), true);
         }
 
         protected override async void OnAppearing()
