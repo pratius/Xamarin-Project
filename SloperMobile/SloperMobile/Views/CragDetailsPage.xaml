@@ -67,7 +67,7 @@
             </Grid>
         </StackLayout>
         <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
-            <Image Source="{Binding CragImage}" Aspect="AspectFit" />
+            <Image Source="{Binding CragImage}" Aspect="AspectFill" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
             <Image Source="bg_portrait_half_fade1.png" Aspect="AspectFill" />
@@ -84,7 +84,7 @@
                         <RowDefinition Height="1" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <chart:SfChart Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="End" Margin="-12,0,-12,-12" HeightRequest="90" Opacity="0.25" >
+                    <chart:SfChart x:Name="sf_legendGraph" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="Transparent" HeightRequest="90" Opacity = "0.25" >
                         <chart:SfChart.PrimaryAxis>
                             <chart:CategoryAxis ShowMajorGridLines="False" IsVisible="False">
                                 <chart:CategoryAxis.Title>
@@ -100,7 +100,7 @@
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
                         <chart:SfChart.Series>
-                            <chart:ColumnSeries ItemsSource="{Binding GraphData}" XBindingPath="BucketCount" YBindingPath="BucketCount" Color="#FF8E2D">
+                            <chart:ColumnSeries EnableAnimation="True" AnimationDuration="0.8" ItemsSource="{Binding GraphData}" XBindingPath="BucketCount" YBindingPath="BucketCount" Color="#FF8E2D">
 <!--                                <chart:ColumnSeries.ColorModel>
                                     <chart:ChartColorModel Palette="Metro"/>
                                 </chart:ColumnSeries.ColorModel>-->
