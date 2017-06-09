@@ -110,9 +110,9 @@ namespace SloperMobile.Views
                             //other wise show default                                
                             if (AppSetting.APP_TYPE == "indoor")
                             {
-                                _Image.Source = ImageSource.FromFile("default_sloper_portrait_image_indoor");
+                                _Image.Source = ImageSource.FromFile("default_sloper_indoor_portrait");
                             }
-                            else { _Image.Source = ImageSource.FromFile("default_sloper_portrait_image_outdoor"); }
+                            else { _Image.Source = ImageSource.FromFile("default_sloper_outdoor_portrait"); }
                             _Image.IsVisible = true;
                             webView.IsVisible = false;
                         }
@@ -133,8 +133,8 @@ namespace SloperMobile.Views
                 {
                     //other wise show default
                     webView.IsVisible = false;
-                    if (AppSetting.APP_TYPE == "indoor") { _Image.Source = "default_sloper_portrait_image_indoor"; }
-                    else { _Image.Source = "default_sloper_portrait_image_outdoor"; }
+                    if (AppSetting.APP_TYPE == "indoor") { _Image.Source = "default_sloper_indoor_portrait"; }
+                    else { _Image.Source = "default_sloper_outdoor_portrait"; }
                     _Image.IsVisible = true;
                 }
             }

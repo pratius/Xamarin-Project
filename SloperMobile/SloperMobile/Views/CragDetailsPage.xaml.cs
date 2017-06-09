@@ -22,6 +22,14 @@ namespace SloperMobile.Views
             NavigationPage.SetHasNavigationBar(this, false);
             cragdetailsVM = new CragDetailsViewModel();
             BindingContext = cragdetailsVM;
+            if(Device.RuntimePlatform==Device.iOS)
+            {
+                sf_legendGraph.Margin = new Thickness(-12, 0, -12, -12);
+            }
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                sf_legendGraph.Margin = new Thickness(-5, 0, -5, -5);
+            }
         }
         protected override void OnAppearing()
         {

@@ -8,11 +8,20 @@ namespace SloperMobile.Common.Constants
 {
     public class AppSetting
     {
+
         //API Base URL
         public const string API_VERSION = "v170428";
-        public const string Base_Url = "http://sloper.slicksystems.ca:8080/DesktopModules/";
-        public const string APP_ID = "1";
-        public const string APP_TYPE = "indoor";
+        public const string Base_Url = "http://sloperclone.slicksystems.ca:8080/DesktopModules/";
+        public const string APP_ID = "41";
+        public const string APP_TYPE = "outdoor";
+
+
+
+        //API Base URL
+        //public const string API_VERSION = "v170428";
+        //public const string Base_Url = "http://sloper.slicksystems.ca:8080/DesktopModules/";
+        //public const string APP_ID = "1";
+        //public const string APP_TYPE = "indoor";
 
         //HockeyApp
         public const string HockeyAppId_Droid = "c528525a7d654946a5692d82f19a8228";
