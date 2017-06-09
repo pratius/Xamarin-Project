@@ -1,4 +1,4 @@
-using SloperMobile.Model;
+﻿using SloperMobile.Model;
 using System;
 using Xamarin.Forms;
 using XLabs.Platform.Device;
@@ -73,11 +73,11 @@ namespace SloperMobile.Views
                     {
                         if (AppSetting.APP_TYPE == "indoor")
                         {
-                            this.BackgroundImage = "default_sloper_portrait_image_indoor";
+                            this.BackgroundImage = "default_sloper_indoor_portrait";
                         }
                         else
                         {
-                            this.BackgroundImage = "default_sloper_portrait_image_outdoor";
+                            this.BackgroundImage = "default_sloper_outdoor_portrait";
                         }
                         _Image.IsVisible = false;
                     }
@@ -109,11 +109,11 @@ namespace SloperMobile.Views
                         {
                             if (AppSetting.APP_TYPE == "indoor")
                             {
-                                this.BackgroundImage = "default_sloper_portrait_image_indoor";
+                                this.BackgroundImage = "default_sloper_indoor_portrait";
                             }
                             else
                             {
-                                this.BackgroundImage = "default_sloper_portrait_image_outdoor";
+                                this.BackgroundImage = "default_sloper_outdoor_portrait";
                             }
                             webView.IsVisible = false;
                             _Image.IsVisible = false;
@@ -219,11 +219,11 @@ namespace SloperMobile.Views
                     {
                         if (AppSetting.APP_TYPE == "indoor")
                         {
-                            this.BackgroundImage = "default_sloper_portrait_image_indoor";
+                            this.BackgroundImage = "default_sloper_indoor_portrait";
                         }
                         else
                         {
-                            this.BackgroundImage = "default_sloper_portrait_image_outdoor";
+                            this.BackgroundImage = "default_sloper_outdoor_portrait";
                         }
                         _Image.IsVisible = false;
                     }
@@ -287,11 +287,11 @@ namespace SloperMobile.Views
                     {
                         if (AppSetting.APP_TYPE == "indoor")
                         {
-                            this.BackgroundImage = "default_sloper_portrait_image_indoor";
+                            this.BackgroundImage = "default_sloper_indoor_portrait";
                         }
                         else
                         {
-                            this.BackgroundImage = "default_sloper_portrait_image_outdoor";
+                            this.BackgroundImage = "default_sloper_outdoor_portrait";
                         }
                         _Image.IsVisible = false;
                     }

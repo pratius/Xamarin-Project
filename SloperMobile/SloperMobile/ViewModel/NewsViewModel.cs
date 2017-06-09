@@ -54,7 +54,7 @@ namespace SloperMobile.ViewModel
                         {
                             if (topoimg[0].image.name == "No_Image.jpg")
                             {
-                                //load Crag Scenic Action Portrait Shot (specific to Gym)
+                                //load Crag Scenic Action Landscape Shot (specific to Gym)
                                 var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
                                 if (item != null)
                                 {
@@ -62,7 +62,7 @@ namespace SloperMobile.ViewModel
                                 }
                                 else
                                 {
-                                    //other wise show default                                
+                                    //other wise show sloper default                                
                                     if (AppSetting.APP_TYPE == "indoor")
                                     {
                                         nm.news_image = ImageSource.FromFile("default_sloper_indoor_landscape");
@@ -83,27 +83,27 @@ namespace SloperMobile.ViewModel
                             {
                                 if (AppSetting.APP_TYPE == "indoor")
                                 {
-                                    nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_indoor.png");
+                                    nm.news_image = ImageSource.FromFile("default_sloper_indoor_landscape");
                                 }
-                                else { nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_outdoor.png"); }
+                                else { nm.news_image = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
                             }
                         }
                         else
                         {
                             if (AppSetting.APP_TYPE == "indoor")
                             {
-                                nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_indoor.png");
+                                nm.news_image = ImageSource.FromFile("default_sloper_indoor_landscape");
                             }
-                            else { nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_outdoor.png"); }
+                            else { nm.news_image = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
                         }
                     }
                     else
                     {
                         if (AppSetting.APP_TYPE == "indoor")
                         {
-                            nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_indoor.png");
+                            nm.news_image = ImageSource.FromFile("default_sloper_indoor_landscape");
                         }
-                        else { nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_outdoor.png"); }
+                        else { nm.news_image = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
                     }
                     NewsList.Add(nm);
                 }
