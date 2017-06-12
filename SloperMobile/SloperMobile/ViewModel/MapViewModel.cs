@@ -89,59 +89,62 @@ namespace SloperMobile.ViewModel
                     if (!(sector.topo_json == "[]"))
                     {
                         var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(sector.topo_json);
-                        if (!string.IsNullOrEmpty(topoimg[0].image.data))
+                        if (topoimg != null && topoimg.Count > 0)
                         {
-                            if (topoimg[0].image.name == "No_Image.jpg")
+                            for (int i = 0; i < topoimg.Count; i++)
                             {
-                                //load Crag Scenic Action Portrait Shot (specific to Gym)
-                                var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                                if (item != null)
+                                if (!string.IsNullOrEmpty(topoimg[0].image.data))
                                 {
-                                    strimg64 = item.crag_landscape_image.Split(',')[1];
+                                    if (topoimg[0].image.name == "No_Image.jpg")
+                                    {
+                                        objSec.SectorImage = LoadCragAndDefaultImage();
+                                    }
+                                    else
+                                    {
+                                        strimg64 = topoimg[0].image.data.Split(',')[1];
+                                        if (!string.IsNullOrEmpty(strimg64))
+                                        {
+                                            byte[] imageBytes = Convert.FromBase64String(strimg64);
+                                            objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                        }
+                                    }
                                 }
                                 else
                                 {
-                                    //other wise show default                                
-                                    if (AppSetting.APP_TYPE == "indoor")
+                                    if (topoimg.Count == 2)
                                     {
-                                        objSec.SectorImage = ImageSource.FromFile("default_sloper_indoor_landscape");
+                                        if (!string.IsNullOrEmpty(topoimg[1].image.data))
+                                        {
+                                            if (topoimg[1].image.name == "No_Image.jpg")
+                                            {
+                                                objSec.SectorImage = LoadCragAndDefaultImage();
+                                            }
+                                            else
+                                            {
+                                                strimg64 = topoimg[1].image.data.Split(',')[1];
+                                                if (!string.IsNullOrEmpty(strimg64))
+                                                {
+                                                    byte[] imageBytes = Convert.FromBase64String(strimg64);
+                                                    objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                                }
+                                            }
+                                        }
                                     }
-                                    else { objSec.SectorImage = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
+                                    else
+                                    {
+                                        objSec.SectorImage = LoadCragAndDefaultImage();
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                strimg64 = topoimg[0].image.data.Split(',')[1];
-                            }
-                            if (!string.IsNullOrEmpty(strimg64))
-                            {
-                                byte[] imageBytes = Convert.FromBase64String(strimg64);
-                                objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                            }
+                            }                            
+                        }
+                        else
+                        {
+                            objSec.SectorImage = LoadCragAndDefaultImage();
                         }
                     }
                     else
                     {
-                        //load Crag Scenic Action Portrait Shot (specific to Gym)
-                        var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                        if (item != null)
-                        {
-                            strimg64 = item.crag_landscape_image.Split(',')[1];
-                            if (!string.IsNullOrEmpty(strimg64))
-                            {
-                                byte[] imageBytes = Convert.FromBase64String(strimg64);
-                                objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                            }
-                        }
-                        else
-                        {
-                            //other wise show default                                
-                            if (AppSetting.APP_TYPE == "indoor")
-                            {
-                                objSec.SectorImage = ImageSource.FromFile("default_sloper_indoor_landscape");
-                            }
-                            else { objSec.SectorImage = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
-                        }
+                        objSec.SectorImage = LoadCragAndDefaultImage();
                     }
                     objSec.SectorId = sector.sector_id;
                     T_SECTOR tsec = App.DAUtil.GetSectorDataBySectorID(sector.sector_id);
@@ -174,14 +177,14 @@ namespace SloperMobile.ViewModel
                             slBucketFrame.Orientation = StackOrientation.Horizontal;
                             slBucketFrame.HorizontalOptions = LayoutOptions.EndAndExpand;
                             slBucketFrame.VerticalOptions = LayoutOptions.Start;
-                            //foreach (T_GRADE tgrd in tgrades)
-                            for (int i = 1; i <= totalbuckets; i++)
+                        //foreach (T_GRADE tgrd in tgrades)
+                        for (int i = 1; i <= totalbuckets; i++)
                             {
                                 Frame countframe = new Frame();
                                 countframe.HasShadow = false;
                                 countframe.Padding = 0; countframe.WidthRequest = 25; countframe.HeightRequest = 20;
-                                //countframe.BackgroundColor = Color.FromHex(GetHexColorCodeByGradeBucketId(i));
-                                countframe.BackgroundColor = Color.FromHex(App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()));
+                            //countframe.BackgroundColor = Color.FromHex(GetHexColorCodeByGradeBucketId(i));
+                            countframe.BackgroundColor = Color.FromHex(App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()));
                                 Label lblcount = new Label();
                                 if (App.DAUtil.GetBucketCountBySectorIdAndGradeBucketId(tsec.sector_id, i.ToString()) != null)
                                 {
@@ -225,6 +228,33 @@ namespace SloperMobile.ViewModel
             {
                 string strerr = ex.Message;
             }
+        }
+
+        private ImageSource LoadCragAndDefaultImage()
+        {
+            string strimg64 = string.Empty;
+            ImageSource SectorImage = null;
+            //load Crag Scenic Action Portrait Shot (specific to Gym)
+            var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
+            if (item != null)
+            {
+                strimg64 = item.crag_landscape_image.Split(',')[1];
+                if (!string.IsNullOrEmpty(strimg64))
+                {
+                    byte[] imageBytes = Convert.FromBase64String(strimg64);
+                    SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                }
+            }
+            else
+            {
+                //other wise show default                                
+                if (AppSetting.APP_TYPE == "indoor")
+                {
+                    SectorImage = ImageSource.FromFile("default_sloper_indoor_landscape");
+                }
+                else { SectorImage = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
+            }
+            return SectorImage;
         }
 
         private async void GoToSeletedSector()

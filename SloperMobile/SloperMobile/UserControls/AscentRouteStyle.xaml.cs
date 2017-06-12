@@ -89,20 +89,20 @@ namespace SloperMobile.UserControls
             {
                 if (angleframe.BackgroundColor == Color.Black)
                 {
-                    Technical.BackgroundColor = Color.FromHex("#FF8E2D");
-                    Sequential.BackgroundColor = Color.FromHex("#FF8E2D");
-                    Powerful.BackgroundColor = Color.FromHex("#FF8E2D");
-                    Sustained.BackgroundColor = Color.FromHex("#FF8E2D");
-                    Onemove.BackgroundColor = Color.FromHex("#FF8E2D");
+                    //Technical.BackgroundColor = Color.FromHex("#FF8E2D");
+                    //Sequential.BackgroundColor = Color.FromHex("#FF8E2D");
+                    //Powerful.BackgroundColor = Color.FromHex("#FF8E2D");
+                    //Sustained.BackgroundColor = Color.FromHex("#FF8E2D");
+                    //Onemove.BackgroundColor = Color.FromHex("#FF8E2D");
                     Everything.BackgroundColor = Color.FromHex("#FF8E2D");
                 }
                 else
                 {
-                    Technical.BackgroundColor = Color.Black;
-                    Sequential.BackgroundColor = Color.Black;
-                    Powerful.BackgroundColor = Color.Black;
-                    Sustained.BackgroundColor = Color.Black;
-                    Onemove.BackgroundColor = Color.Black;
+                    //Technical.BackgroundColor = Color.Black;
+                    //Sequential.BackgroundColor = Color.Black;
+                    //Powerful.BackgroundColor = Color.Black;
+                    //Sustained.BackgroundColor = Color.Black;
+                    //Onemove.BackgroundColor = Color.Black;
                     Everything.BackgroundColor = Color.Black;
                 }
             }

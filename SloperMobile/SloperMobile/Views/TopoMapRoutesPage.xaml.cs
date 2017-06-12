@@ -1,4 +1,4 @@
-using SloperMobile.Model;
+﻿using SloperMobile.Model;
 using System;
 using Xamarin.Forms;
 using XLabs.Platform.Device;
@@ -33,6 +33,7 @@ namespace SloperMobile.Views
             try
             {
                 InitializeComponent();
+                Cache.SendBackArrowCount = 3;
                 dbConn = DependencyService.Get<ISQLite>().GetConnection();
                 _CurrentSector = CurrentSector;
                 listData = _lstData;
@@ -44,20 +45,22 @@ namespace SloperMobile.Views
 
                 BindingContext = TopoMapRouteVM;
                 // load the scenic shot if there are no topos available
-                if (listData == string.Empty)
+                if (listData == string.Empty || listData == "[]")
                 {
                     TopoMapRouteVM.OnConditionNavigation = OnPageNavigation;
                     TopoMapRouteVM.LoadRouteData(routeId, listData);
-                    TopoMapRouteVM.DisplayRoutePopupLg = true;
-
+                    if (routeId > 0 && (listData == "" || listData == "[]"))
+                    {
+                        TopoMapRouteVM.DisplayRoutePopupLg = true;
+                        TopoMapRouteVM.IsHideSwipeUp = false;
+                    }
                     webView.IsVisible = false;
-                    TopoMapRouteVM.IsHideSwipeUp = false;
                     var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                    if (CurrentSector != null)
+                    if (CurrentSector != null && listData != "")
                     {
                         _Image.Source = CurrentSector.SectorImage;
                         //_Image.HeightRequest = XLabs.Ioc.Resolver.Resolve<IDevice>().Display.Height;
-                        _Image.IsVisible = true;
+                        //_Image.IsVisible = true;
                     }
                     else if (item != null)
                     {
@@ -73,13 +76,15 @@ namespace SloperMobile.Views
                     {
                         if (AppSetting.APP_TYPE == "indoor")
                         {
-                            this.BackgroundImage = "default_sloper_portrait_image_indoor";
+                            //this.BackgroundImage = "default_sloper_indoor_portrait";
+                            _Image.Source = ImageSource.FromFile("default_sloper_indoor_portrait");
                         }
                         else
                         {
-                            this.BackgroundImage = "default_sloper_portrait_image_outdoor";
+                            //this.BackgroundImage = "default_sloper_outdoor_portrait";
+                            _Image.Source = ImageSource.FromFile("default_sloper_outdoor_portrait");
                         }
-                        _Image.IsVisible = false;
+                        _Image.IsVisible = true;
                     }
                 }
                 // otherwise load the topos
@@ -95,7 +100,7 @@ namespace SloperMobile.Views
                         var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
                         height = device.Display.Height;
                         newHeight = GetHeight(height); _bucket.Clear();
-                        if(topoimg != null)
+                        if (topoimg != null && topoimg.Count > 0)
                         {
                             for (int i = 0; i < topoimg[0].drawing.Count; i++)
                             {
@@ -105,24 +110,37 @@ namespace SloperMobile.Views
                                 }
                             }
                         }
-                        if (topoimg[0].image.name == "No_Image.jpg")
+                        if (topoimg != null && topoimg.Count > 0)
                         {
-                            if (AppSetting.APP_TYPE == "indoor")
+                            if (!string.IsNullOrEmpty(topoimg[0].image.data))
                             {
-                                this.BackgroundImage = "default_sloper_portrait_image_indoor";
+                                if (topoimg[0].image.name == "No_Image.jpg")
+                                {
+                                    LoadCragAndDefaultImage();
+                                    webView.IsVisible = false;
+                                    // _Image.IsVisible = false;
+                                }
+                                else
+                                {
+                                    webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, newHeight, Convert.ToInt32(t), true, false, _bucket);
+                                }
                             }
                             else
                             {
-                                this.BackgroundImage = "default_sloper_portrait_image_outdoor";
+                                if (_routeId > 0)
+                                {
+                                    TopoMapRouteVM.DisplayRoutePopupLg = true;
+                                    TopoMapRouteVM.IsHideSwipeUp = false;
+                                }
+                                LoadCragAndDefaultImage();
+                                webView.IsVisible = false;
                             }
-                            webView.IsVisible = false;
-                            _Image.IsVisible = false;
                         }
                         else
                         {
-                            webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, newHeight, Convert.ToInt32(t), true, false, _bucket);
+                            LoadCragAndDefaultImage();
+                            webView.IsVisible = false;
                         }
-                        webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, newHeight, Convert.ToInt32(t), true, false, _bucket);
                     }));
                 }
             }
@@ -186,51 +204,51 @@ namespace SloperMobile.Views
             webView.LoadFinished -= OnLoadFinished;
         }
         private void OnLoadFinished(object sender, EventArgs args)
-        {            
+        {
             TopoMapRouteVM.IsRunningTasks = true;
             staticAnnotationData = "[{\"AnnotationName\": \"Open Text (left)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Open Text (right)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (white)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (black)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Line\",\"AnnotationType\": 0,\"ImageName\":\"sample-line.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Badge\",\"AnnotationType\": 1,\"ImageName\":\"sample-route-badge.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\":\"Belay Point\",\"AnnotationType\": 2,\"ImageName\":\"sample-belay.png\",\"XCentreOffset\": -15,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Left\",\"AnnotationType\": 3,\"ImageName\":\"sample-lower-off-left.png\",\"XCentreOffset\": -22,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Right\",\"AnnotationType\": 4,\"ImageName\":\"sample-lower-off-right.png\",\"XCentreOffset\": -8,\"YCentreOffset\":-15},{\"AnnotationName\": \"Grade Label (left)\",\"AnnotationType\": 5,\"ImageName\":\"sample-grade-label-left.png\",\"XCentreOffset\": -5,\"YCentreOffset\":0},{\"AnnotationName\": \"Grade Label (right)\",\"AnnotationType\": 6,\"ImageName\":\"sample-grade-label-right.png\",\"XCentreOffset\": 5,\"YCentreOffset\":0},{\"AnnotationName\": \"Line Break\",\"AnnotationType\": 7,\"ImageName\":\"sample-route-line-break.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Cross Point\",\"AnnotationType\": 8,\"ImageName\":\"x-mark-32.png\",\"XCentreOffset\": -50,\"YCentreOffset\":-50},{\"AnnotationName\": \"Text Add\",\"AnnotationType\": 9,\"ImageName\":\"tl-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextAdd\",\"AnnotationType\": 10,\"ImageName\":\"tr-icon.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 11,\"ImageName\":\"tlcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 12,\"ImageName\":\"trcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveLeft\",\"AnnotationType\": 13,\"ImageName\":\"move_left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveRight\",\"AnnotationType\": 14,\"ImageName\":\"move_right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"icon-arrow\",\"AnnotationType\": 15,\"ImageName\":\"icon-arrow.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"cross dark black\",\"AnnotationType\": 16,\"ImageName\":\"cross_black.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-left\",\"AnnotationType\": 17,\"ImageName\":\"sample-lower-off-black-left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-right\",\"AnnotationType\": 18,\"ImageName\":\"sample-lower-off-black-right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0}]";
 
             var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
             height = device.Display.Height;
             newHeight = GetHeight(height);
-            if(topoimg != null)
+            if (topoimg != null && topoimg.Count > 0)
             {
                 for (int i = 0; i < topoimg[0].drawing.Count; i++)
                 {
                     _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
                 }
             }
-            if (topoimg != null)
+            if (topoimg != null && topoimg.Count > 0)
             {
-                if (topoimg[0].image.name == "No_Image.jpg")
+                if (!string.IsNullOrEmpty(topoimg[0].image.data))
                 {
-                    var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                    if (item != null)
+                    if (topoimg[0].image.name == "No_Image.jpg")
                     {
-                        string _strimg64 = item.crag_portrait_image.Split(',')[1];
-                        if (!string.IsNullOrEmpty(_strimg64))
-                        {
-                            byte[] imageBytes = Convert.FromBase64String(_strimg64);
-                            _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                            _Image.IsVisible = true;
-                        }
+                        LoadCragAndDefaultImage();
+                        webView.IsVisible = false;
                     }
                     else
                     {
-                        if (AppSetting.APP_TYPE == "indoor")
-                        {
-                            this.BackgroundImage = "default_sloper_portrait_image_indoor";
-                        }
-                        else
-                        {
-                            this.BackgroundImage = "default_sloper_portrait_image_outdoor";
-                        }
-                        _Image.IsVisible = false;
+                        webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight, _bucket);
                     }
+                }
+                else
+                {
+                    if (_routeId > 0)
+                    {
+                        TopoMapRouteVM.DisplayRoutePopupLg = true;
+                        TopoMapRouteVM.IsHideSwipeUp = false;
+                        TopoMapRouteVM.DisplayRoutePopupSm = false;
+                    }
+                    LoadCragAndDefaultImage();
                     webView.IsVisible = false;
                 }
             }
-            webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight, _bucket);
+            else
+            {
+                LoadCragAndDefaultImage();
+                webView.IsVisible = false;
+            }
 
             // if a route was clicked from the list
             if (_routeId > 0)
@@ -255,12 +273,17 @@ namespace SloperMobile.Views
                 }
                 TopoMapRouteVM.LoadRouteData(_routeId, listData);
                 //if the route clicked has a topo, display the small popup
-                if (listData != string.Empty)
+                if (listData != string.Empty && listData != "[]")
                 {
-                    TopoMapRouteVM.DisplayRoutePopupSm = true;
+                    if (topoimgages.Count > 0)
+                    {
+                        if(topoimgages[0].image.data != "")
+                        TopoMapRouteVM.DisplayRoutePopupSm = true;
+
+                    }
                 }
                 _bucket.Clear();
-                if(topoimg != null)
+                if (topoimg != null && topoimg.Count > 0)
                 {
                     for (int i = 0; i < topoimg[0].drawing.Count; i++)
                     {
@@ -270,38 +293,71 @@ namespace SloperMobile.Views
                         }
                     }
                 }
-                if (topoimgages[0].image.name == "No_Image.jpg")
+                if (topoimgages.Count > 0 && topoimgages != null)
                 {
-                    var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                    if (item != null)
+                    if (topoimg != null && topoimg.Count > 0)
                     {
-                        string _strimg64 = item.crag_portrait_image.Split(',')[1];
-                        if (!string.IsNullOrEmpty(_strimg64))
+                        if (!string.IsNullOrEmpty(topoimg[0].image.data))
                         {
-                            byte[] imageBytes = Convert.FromBase64String(_strimg64);
-                            _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                            _Image.IsVisible = true;
+                            if (topoimgages[0].image.name == "No_Image.jpg")
+                            {
+                                LoadCragAndDefaultImage();
+                                webView.IsVisible = false;
+                            }
+                            else
+                            {
+                                webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (newHeight), _routeId, true, false, _bucket);
+                            }
+                        }
+                        else
+                        {
+                            LoadCragAndDefaultImage();
+                            webView.IsVisible = false;
                         }
                     }
                     else
                     {
-                        if (AppSetting.APP_TYPE == "indoor")
-                        {
-                            this.BackgroundImage = "default_sloper_portrait_image_indoor";
-                        }
-                        else
-                        {
-                            this.BackgroundImage = "default_sloper_portrait_image_outdoor";
-                        }
-                        _Image.IsVisible = false;
+                        LoadCragAndDefaultImage();
+                        webView.IsVisible = false;
                     }
+                }
+                else
+                {
+                    LoadCragAndDefaultImage();
                     webView.IsVisible = false;
                 }
-                webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (newHeight), _routeId, true, false, _bucket);
             }
             TopoMapRouteVM.IsRunningTasks = false;
         }
 
+        private void LoadCragAndDefaultImage()
+        {
+            var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
+            if (item != null)
+            {
+                string _strimg64 = item.crag_portrait_image.Split(',')[1];
+                if (!string.IsNullOrEmpty(_strimg64))
+                {
+                    byte[] imageBytes = Convert.FromBase64String(_strimg64);
+                    _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                    _Image.IsVisible = true;
+                }
+            }
+            else
+            {
+                if (AppSetting.APP_TYPE == "indoor")
+                {
+                    //this.BackgroundImage = "default_sloper_indoor_portrait";
+                    _Image.Source = ImageSource.FromFile("default_sloper_indoor_portrait");
+                }
+                else
+                {
+                    // this.BackgroundImage = "default_sloper_outdoor_portrait";
+                    _Image.Source = ImageSource.FromFile("default_sloper_outdoor_portrait");                     
+                }
+                _Image.IsVisible = true;
+            }
+        }
         private void OnSwipeTopRoutePopupLg(object sender, EventArgs e)
         {
             if (listData != string.Empty)
@@ -320,7 +376,7 @@ namespace SloperMobile.Views
             TopoMapRouteVM.DisplayRoutePopupSm = false;
             _bucket.Clear();
             topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
-            if(topoimg != null)
+            if (topoimg != null)
             {
                 for (int i = 0; i < topoimg[0].drawing.Count; i++)
                 {
@@ -330,7 +386,7 @@ namespace SloperMobile.Views
             // if we got to the topo via the map and not the list, redraw all the routes
             if (_routeId <= 0)
             {
-                webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight,_bucket);
+                webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight, _bucket);
             }
         }
     }

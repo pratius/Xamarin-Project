@@ -49,72 +49,100 @@ namespace SloperMobile.ViewModel
                     var sec_img = App.DAUtil.GetSectorTopoBySectorId(nm.id);
                     if (sec_img != null)
                     {
-                        var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(sec_img.topo_json);
-                        if (!string.IsNullOrEmpty(topoimg[0].image.data))
+                        if (!(sec_img.topo_json == "[]"))
                         {
-                            if (topoimg[0].image.name == "No_Image.jpg")
+                            var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(sec_img.topo_json);
+                            if (topoimg != null && topoimg.Count > 0)
                             {
-                                //load Crag Scenic Action Portrait Shot (specific to Gym)
-                                var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                                if (item != null)
+                                for (int i = 0; i < topoimg.Count; i++)
                                 {
-                                    strimg64 = item.crag_landscape_image.Split(',')[1];
-                                }
-                                else
-                                {
-                                    //other wise show default                                
-                                    if (AppSetting.APP_TYPE == "indoor")
+                                    if (!string.IsNullOrEmpty(topoimg[0].image.data))
                                     {
-                                        nm.news_image = ImageSource.FromFile("default_sloper_indoor_landscape");
+                                        if (topoimg[0].image.name == "No_Image.jpg")
+                                        {
+                                            nm.news_image = LoadCragAndDefaultImage();
+                                        }
+                                        else
+                                        {
+                                            strimg64 = topoimg[0].image.data.Split(',')[1];
+                                            if (!string.IsNullOrEmpty(strimg64))
+                                            {
+                                                byte[] imageBytes = Convert.FromBase64String(strimg64);
+                                                nm.news_image = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                            }
+                                        }
                                     }
-                                    else { nm.news_image = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
+                                    else
+                                    {
+                                        if (topoimg.Count == 2)
+                                        {
+                                            if (!string.IsNullOrEmpty(topoimg[1].image.data))
+                                            {
+                                                if (topoimg[1].image.name == "No_Image.jpg")
+                                                {
+                                                    nm.news_image = LoadCragAndDefaultImage();
+                                                }
+                                                else
+                                                {
+                                                    strimg64 = topoimg[1].image.data.Split(',')[1];
+                                                    if (!string.IsNullOrEmpty(strimg64))
+                                                    {
+                                                        byte[] imageBytes = Convert.FromBase64String(strimg64);
+                                                        nm.news_image = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            nm.news_image = LoadCragAndDefaultImage();
+                                        }
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                strimg64 = topoimg[0].image.data.Split(',')[1];
-                            }
-                            if (!string.IsNullOrEmpty(strimg64))
-                            {
-                                byte[] imageBytes = Convert.FromBase64String(strimg64);
-                                nm.news_image = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                            }
-                            else
-                            {
-                                if (AppSetting.APP_TYPE == "indoor")
-                                {
-                                    nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_indoor.png");
-                                }
-                                else { nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_outdoor.png"); }
                             }
                         }
                         else
                         {
-                            if (AppSetting.APP_TYPE == "indoor")
-                            {
-                                nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_indoor.png");
-                            }
-                            else { nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_outdoor.png"); }
+                            nm.news_image = LoadCragAndDefaultImage();
                         }
                     }
                     else
                     {
-                        if (AppSetting.APP_TYPE == "indoor")
-                        {
-                            nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_indoor.png");
-                        }
-                        else { nm.news_image = ImageSource.FromFile("default_sloper_portrait_image_outdoor.png"); }
+                        nm.news_image = LoadCragAndDefaultImage();
                     }
                     NewsList.Add(nm);
                 }
-
-
-
             }
             catch (Exception ex)
             {
                 string strerr = ex.Message;
             }
+        }
+        private ImageSource LoadCragAndDefaultImage()
+        {
+            string strimg64 = string.Empty;
+            ImageSource news_image = null;
+            //load Crag Scenic Action Portrait Shot (specific to Gym)
+            var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
+            if (item != null)
+            {
+                strimg64 = item.crag_landscape_image.Split(',')[1];
+                if (!string.IsNullOrEmpty(strimg64))
+                {
+                    byte[] imageBytes = Convert.FromBase64String(strimg64);
+                    news_image = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                }
+            }
+            else
+            {
+                //other wise show default                                
+                if (AppSetting.APP_TYPE == "indoor")
+                {
+                    news_image = ImageSource.FromFile("default_sloper_indoor_landscape");
+                }
+                else { news_image = ImageSource.FromFile("default_sloper_outdoor_landscape"); }
+            }
+            return news_image;
         }
     }
 }

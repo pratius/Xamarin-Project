@@ -10,6 +10,7 @@ using SloperMobile.Common.Constants;
 using SloperMobile.DataBase;
 using SloperMobile.Common.Enumerators;
 using SloperMobile.Common.Helpers;
+using Newtonsoft.Json;
 
 namespace SloperMobile.ViewModel
 {
@@ -171,7 +172,15 @@ namespace SloperMobile.ViewModel
                 //nav.BarBackgroundColor = Color.Transparent;
                 //nav.HeightRequest = 30;
                 //await _navigation.PushAsync(nav);
-                await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0"));
+                var topolistData = App.DAUtil.GetSectorLines(CurrentSector?.SectorId);
+                var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);
+                if (topoimgages.Count > 0)
+                {
+                    if(topoimgages[0].image.data != "")
+                    await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0"));
+
+                }
+
             }
             catch (Exception ex)
             {

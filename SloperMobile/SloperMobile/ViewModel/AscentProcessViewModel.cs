@@ -53,6 +53,8 @@ namespace SloperMobile.ViewModel
         private string Hold_Crimps = "";
         private string Hold_Jugs = "";
         private string Hold_Pockets = "";
+        private string Hold_Pinches = "";
+        private string Hold_Jams = "";
 
 
         private string Char_Technical = "";
@@ -386,32 +388,46 @@ namespace SloperMobile.ViewModel
                 }
             }
 
-
             if (Convert.ToString(obj) == "all")
             {
                 if (Char_Everything == "")
                 {
                     Char_Everything = "all";
-                    Char_Technical = "1";
-                    Char_Sequential = "2";
-                    Char_Powerful = "4";
-                    Char_Sustained = "8";
-                    Char_Onemove = "16";
                     routes = "all";
                 }
                 else
                 {
-                    Char_Technical = "";
-                    Char_Sequential = "";
-                    Char_Powerful = "";
-                    Char_Sustained = "";
-                    Char_Onemove = "";
                     Char_Everything = "";
+                  
                 }
             }
 
 
-            string[] characteristics = { Char_Technical, Char_Sequential, Char_Powerful, Char_Sustained, Char_Onemove };
+            //if (Convert.ToString(obj) == "all")
+            //{
+            //    if (Char_Everything == "")
+            //    {
+            //        Char_Everything = "all";
+            //        Char_Technical = "1";
+            //        Char_Sequential = "2";
+            //        Char_Powerful = "4";
+            //        Char_Sustained = "8";
+            //        Char_Onemove = "16";
+            //        routes = "all";
+            //    }
+            //    else
+            //    {
+            //        Char_Technical = "";
+            //        Char_Sequential = "";
+            //        Char_Powerful = "";
+            //        Char_Sustained = "";
+            //        Char_Onemove = "";
+            //        Char_Everything = "";
+            //    }
+            //}
+
+
+            string[] characteristics = { Char_Technical, Char_Sequential, Char_Powerful, Char_Sustained, Char_Onemove,Char_Everything };
             foreach (string str in characteristics)
             {
                 if (!string.IsNullOrEmpty(str))
@@ -421,6 +437,7 @@ namespace SloperMobile.ViewModel
                     {
                         routes = str;
                     }
+                   
                 }
             }
             if (!string.IsNullOrEmpty(routecharacteristics))
@@ -490,8 +507,32 @@ namespace SloperMobile.ViewModel
                 }
             }
 
+            if (Convert.ToString(obj) == "16")
+            {
+                if (Hold_Pinches == "")
+                {
+                    Hold_Pinches = "16";
+                }
+                else
+                {
+                    Hold_Pinches = "";
+                }
+            }
+
+            if (Convert.ToString(obj) == "32")
+            {
+                if (Hold_Jams == "")
+                {
+                    Hold_Jams = "32";
+                }
+                else
+                {
+                    Hold_Jams = "";
+                }
+            }
+
             string tophold = "";
-            string[] holdstyles = { Hold_Sloper, Hold_Crimps, Hold_Jugs, Hold_Pockets };
+            string[] holdstyles = { Hold_Sloper, Hold_Crimps, Hold_Jugs, Hold_Pockets, Hold_Pinches, Hold_Jams };
             foreach (string str in holdstyles)
             {
                 if (!string.IsNullOrEmpty(str))
@@ -596,6 +637,7 @@ namespace SloperMobile.ViewModel
         private void ExecuteOnRating(object obj)
         {
         }
+
         private async void ExecuteOnCameraClick(object obj)
         {
             var action = await Application.Current.MainPage.DisplayActionSheet("Choose Ascent Image", "Cancel", null, "Take photo", "Pick a file");
@@ -833,12 +875,20 @@ namespace SloperMobile.ViewModel
                 case "2":
                     resource = "icon_hold_type_2_crimps_text_41x68";
                     break;
+
                 case "4":
                     resource = "icon_hold_type_4_jugs_text_58x74";
                     break;
                 case "8":
                     resource = "icon_hold_type_8_pockets_text_63x94";
                     break;
+                case "16":
+                    resource = "icon_route_style_16_one_move_text_73h";
+                    break;
+                case "32":
+                    resource = "icon_route_style_32_everything_text_73h";
+                    break;
+
             }
             return resource;
         }

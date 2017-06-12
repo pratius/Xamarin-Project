@@ -26,7 +26,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs access to photos.</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.129</string>
+	<string>2.130</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>XSAppIconAssets</key>
@@ -36,7 +36,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We are using your location.</string>
 	<key>CFBundleVersion</key>
-	<string>129</string>
+	<string>130</string>
 	<key>CFBundleName</key>
 	<string>Bull in a China Shop</string>
 </dict>

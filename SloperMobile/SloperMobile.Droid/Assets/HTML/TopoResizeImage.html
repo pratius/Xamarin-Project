@@ -70,7 +70,9 @@
             if (isSingleLine == true && isAscentCreate == false) {
                 //code to draw line and points on image
                 for (var i = 0; i < data.drawing.length; i++) {
-                    marketFillcolor = _bucket[i].Item1;
+                    if (_bucket[i] != undefined)
+                        marketFillcolor = _bucket[i].Item1;
+                    
                     drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket, false);
                     var pointLength = data.drawing[i].line.points.length;
 
@@ -83,7 +85,9 @@
             if (routeId != null && routeId > 0) {
                 var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
                 var Newdata = routeDrawingData;
-                marketFillcolor = _bucket[0].Item1;
+                if (_bucket[0] != undefined)
+                    marketFillcolor = _bucket[0].Item1;
+
                 drawLine("drawing-canvas", Newdata.line, 0, 0, Newdata.gradeBucket, isAscentCreate);
                 var pointLength = Newdata.line.points.length;
 
@@ -100,7 +104,9 @@
             if (isSingleLine == true && isAscentCreate == true) {
                 //code to draw line and points on image
                 for (var i = 0; i < data.drawing.length; i++) {
-                    marketFillcolor = _bucket[i].Item1;
+                    if (_bucket[i] != undefined)
+                        marketFillcolor = _bucket[i].Item1;
+
                     drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket, false);
                     var pointLength = data.drawing[i].line.points.length;
 
@@ -113,7 +119,9 @@
             if (routeId != null && routeId > 0) {
                 var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
                 var Newdata = routeDrawingData;
-                marketFillcolor = _bucket[0].Item1;
+                if (_bucket[0] != undefined)
+                    marketFillcolor = _bucket[0].Item1;
+
                 drawLine("drawing-canvas", Newdata.line, 0, 0, Newdata.gradeBucket, isAscentCreate);
                 var pointLength = Newdata.line.points.length;
 
@@ -154,7 +162,9 @@
                 if (routeId != null && routeId > 0) {
                     var routeDrawingData = drawingInfoForRoute(routeId, data.drawing);
                     var Newdata = routeDrawingData;
-                    marketFillcolor = _bucket[0].Item1;
+                    if (_bucket[0] != undefined)
+                        marketFillcolor = _bucket[0].Item1;
+
                     drawLine("display-canvas", Newdata.line, 0, 0, Newdata.gradeBucket,false);
                     var pointLength = Newdata.line.points.length;
 
@@ -196,7 +206,9 @@
 
                 //code to draw line and points on image
                 for (var i = 0; i < data.drawing.length; i++) {
-                    marketFillcolor = _bucket[i].Item1;
+                    if (_bucket[i] != undefined)
+                        marketFillcolor = _bucket[i].Item1;
+
                     drawLine("display-canvas", data.drawing[i].line, 0, 0, data.drawing[i].gradeBucket,false);
                     var pointLength = data.drawing[i].line.points.length;
 

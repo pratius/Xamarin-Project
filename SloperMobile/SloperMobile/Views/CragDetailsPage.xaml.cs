@@ -28,7 +28,7 @@ namespace SloperMobile.Views
             }
             if (Device.RuntimePlatform == Device.Android)
             {
-                sf_legendGraph.Margin = new Thickness(0, 0, 0, 0);
+                sf_legendGraph.Margin = new Thickness(-5, 0, -5, -5);
             }
         }
         protected override void OnAppearing()

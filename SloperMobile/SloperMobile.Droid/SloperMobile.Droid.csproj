@@ -27,7 +27,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <ReleaseVersion>2.129</ReleaseVersion>
+    <ReleaseVersion>2.130</ReleaseVersion>
     <AndroidTlsProvider>
     </AndroidTlsProvider>
     <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
@@ -908,12 +908,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon_profile_large.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_profile_large.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_profile_large.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\scenic_shot_portrait.png" />
-    <AndroidResource Include="Resources\drawable-ldpi\scenic_shot_portrait.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\scenic_shot_portrait.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\scenic_shot_portrait.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\scenic_shot_portrait.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\scenic_shot_portrait.png" />
     <AndroidResource Include="Resources\drawable-ldpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_star0.png" />
@@ -1366,42 +1360,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\bg_portrait_half_fade1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\default_sloper_portrait_image_indoor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\default_sloper_portrait_image_outdoor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-ldpi\default_sloper_portrait_image_indoor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-ldpi\default_sloper_portrait_image_outdoor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\default_sloper_portrait_image_indoor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\default_sloper_portrait_image_outdoor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\default_sloper_portrait_image_indoor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\default_sloper_portrait_image_outdoor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\default_sloper_portrait_image_indoor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\default_sloper_portrait_image_outdoor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\default_sloper_portrait_image_indoor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\default_sloper_portrait_image_outdoor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Mono.Data.Sqlite.Portable.1.0.3.5\tools\Mono.Data.Sqlite.Portable.targets" Condition="Exists('..\..\packages\Mono.Data.Sqlite.Portable.1.0.3.5\tools\Mono.Data.Sqlite.Portable.targets')" />
