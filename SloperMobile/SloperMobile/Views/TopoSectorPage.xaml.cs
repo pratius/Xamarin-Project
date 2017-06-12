@@ -130,10 +130,27 @@ namespace SloperMobile.Views
                     //load all carousel page with images when click on image
                     foreach (TopoImageResponse topores in topoimgages)
                     {
-                        TopoMapRoutesPage topopageObj;
-                        var topoimg = JsonConvert.SerializeObject(topores);
-                        topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
-                        this.Children.Add(topopageObj);
+                        if (!string.IsNullOrEmpty(topores.image.data)) // topo image
+                        {
+                            TopoMapRoutesPage topopageObj;
+                            var topoimg = JsonConvert.SerializeObject(topores);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
+                            this.Children.Add(topopageObj);
+                        }
+                        else if (!string.IsNullOrEmpty(topores.image.data) && topoimgages.Count == 1)
+                        {
+                            TopoMapRoutesPage topopageObj;
+                            var topoimg = JsonConvert.SerializeObject(topores);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
+                            this.Children.Add(topopageObj);
+                        }
+                        else if (string.IsNullOrEmpty(topores.image.data) && topoimgages.Count == 1) // defaul image
+                        {
+                            TopoMapRoutesPage topopageObj;
+                            var topoimg = JsonConvert.SerializeObject(topores);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
+                            this.Children.Add(topopageObj);
+                        }
                     }
                 }
                 else
@@ -231,10 +248,27 @@ namespace SloperMobile.Views
                     //load all carousel page with images when click on image
                     foreach (TopoImageResponse topores in topoimgages)
                     {
-                        TopoMapRoutesPage topopageObj;
-                        var topoimg = JsonConvert.SerializeObject(topores);
-                        topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
-                        this.Children.Add(topopageObj);
+                        if (!string.IsNullOrEmpty(topores.image.data)) // topo image
+                        {
+                            TopoMapRoutesPage topopageObj;
+                            var topoimg = JsonConvert.SerializeObject(topores);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
+                            this.Children.Add(topopageObj);
+                        }
+                        else if (!string.IsNullOrEmpty(topores.image.data) && topoimgages.Count == 1)
+                        {
+                            TopoMapRoutesPage topopageObj;
+                            var topoimg = JsonConvert.SerializeObject(topores);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
+                            this.Children.Add(topopageObj);
+                        }
+                        else if (string.IsNullOrEmpty(topores.image.data) && topoimgages.Count == 1) // defaul image
+                        {
+                            TopoMapRoutesPage topopageObj;
+                            var topoimg = JsonConvert.SerializeObject(topores);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
+                            this.Children.Add(topopageObj);
+                        }
                     }
                 }
                 else

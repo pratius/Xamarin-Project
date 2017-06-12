@@ -33,6 +33,7 @@ namespace SloperMobile.Views
             try
             {
                 InitializeComponent();
+                Cache.SendBackArrowCount = 3;
                 dbConn = DependencyService.Get<ISQLite>().GetConnection();
                 _CurrentSector = CurrentSector;
                 listData = _lstData;
@@ -59,7 +60,7 @@ namespace SloperMobile.Views
                     {
                         _Image.Source = CurrentSector.SectorImage;
                         //_Image.HeightRequest = XLabs.Ioc.Resolver.Resolve<IDevice>().Display.Height;
-                        _Image.IsVisible = true;
+                        //_Image.IsVisible = true;
                     }
                     else if (item != null)
                     {
@@ -75,13 +76,15 @@ namespace SloperMobile.Views
                     {
                         if (AppSetting.APP_TYPE == "indoor")
                         {
-                            this.BackgroundImage = "default_sloper_indoor_portrait";
+                            //this.BackgroundImage = "default_sloper_indoor_portrait";
+                            _Image.Source = ImageSource.FromFile("default_sloper_indoor_portrait");
                         }
                         else
                         {
-                            this.BackgroundImage = "default_sloper_outdoor_portrait";
+                            //this.BackgroundImage = "default_sloper_outdoor_portrait";
+                            _Image.Source = ImageSource.FromFile("default_sloper_outdoor_portrait");
                         }
-                        _Image.IsVisible = false;
+                        _Image.IsVisible = true;
                     }
                 }
                 // otherwise load the topos
@@ -344,13 +347,15 @@ namespace SloperMobile.Views
             {
                 if (AppSetting.APP_TYPE == "indoor")
                 {
-                    this.BackgroundImage = "default_sloper_indoor_portrait";
+                    //this.BackgroundImage = "default_sloper_indoor_portrait";
+                    _Image.Source = ImageSource.FromFile("default_sloper_indoor_portrait");
                 }
                 else
                 {
-                    this.BackgroundImage = "default_sloper_outdoor_portrait";
+                    // this.BackgroundImage = "default_sloper_outdoor_portrait";
+                    _Image.Source = ImageSource.FromFile("default_sloper_outdoor_portrait");                     
                 }
-                _Image.IsVisible = false;
+                _Image.IsVisible = true;
             }
         }
         private void OnSwipeTopRoutePopupLg(object sender, EventArgs e)

@@ -91,26 +91,51 @@ namespace SloperMobile.ViewModel
                         var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(sector.topo_json);
                         if (topoimg != null && topoimg.Count > 0)
                         {
-                            if (!string.IsNullOrEmpty(topoimg[0].image.data))
+                            for (int i = 0; i < topoimg.Count; i++)
                             {
-                                if (topoimg[0].image.name == "No_Image.jpg")
+                                if (!string.IsNullOrEmpty(topoimg[0].image.data))
                                 {
-                                    objSec.SectorImage = LoadCragAndDefaultImage();
+                                    if (topoimg[0].image.name == "No_Image.jpg")
+                                    {
+                                        objSec.SectorImage = LoadCragAndDefaultImage();
+                                    }
+                                    else
+                                    {
+                                        strimg64 = topoimg[0].image.data.Split(',')[1];
+                                        if (!string.IsNullOrEmpty(strimg64))
+                                        {
+                                            byte[] imageBytes = Convert.FromBase64String(strimg64);
+                                            objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                        }
+                                    }
                                 }
                                 else
                                 {
-                                    strimg64 = topoimg[0].image.data.Split(',')[1];
-                                    if (!string.IsNullOrEmpty(strimg64))
+                                    if (topoimg.Count == 2)
                                     {
-                                        byte[] imageBytes = Convert.FromBase64String(strimg64);
-                                        objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                        if (!string.IsNullOrEmpty(topoimg[1].image.data))
+                                        {
+                                            if (topoimg[1].image.name == "No_Image.jpg")
+                                            {
+                                                objSec.SectorImage = LoadCragAndDefaultImage();
+                                            }
+                                            else
+                                            {
+                                                strimg64 = topoimg[1].image.data.Split(',')[1];
+                                                if (!string.IsNullOrEmpty(strimg64))
+                                                {
+                                                    byte[] imageBytes = Convert.FromBase64String(strimg64);
+                                                    objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        objSec.SectorImage = LoadCragAndDefaultImage();
                                     }
                                 }
-                            }
-                            else
-                            {
-                                objSec.SectorImage = LoadCragAndDefaultImage();
-                            }
+                            }                            
                         }
                         else
                         {

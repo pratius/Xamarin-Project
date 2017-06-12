@@ -23,7 +23,7 @@ namespace SloperMobile.UserControls
         private async void OnBackTapped(object sender, EventArgs e)
         {
             _selectedSector = Cache.SelctedCurrentSector;
-            if (Cache.SendBackArrowCount == 1)
+            if (Cache.SendBackArrowCount == 3)
             {
                 await Navigation.PushAsync(new Views.MapDetailPage(_selectedSector));
                 Cache.SendBackArrowCount = 2;
