@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SloperMobile.Model;
 using Xamarin.Forms;
 using SloperMobile.ViewModel;
+using SloperMobile.Common.Constants;
 
 namespace SloperMobile.Views
 {
@@ -17,6 +18,7 @@ namespace SloperMobile.Views
         {
             _CurrentSector = SelectedSector;
             InitializeComponent();
+            Cache.SendBackArrowCount = 2;
             NavigationPage.SetHasNavigationBar(this, false);
             SectorDetailVM = new ViewModel.MapDetailViewModel(SelectedSector,Navigation);
             BindingContext = SectorDetailVM;
