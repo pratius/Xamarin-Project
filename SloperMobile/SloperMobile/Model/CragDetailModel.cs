@@ -10,6 +10,6 @@ namespace SloperMobile.Model
     public class CragDetailModel:BaseModel
     {
         public string BucketCount { get; set; }
-        //public Color Colors { get; set; }
+        //public Color BarColor { get; set; }
     }
 }

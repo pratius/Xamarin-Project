@@ -10,17 +10,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using SloperMobile.Model;
+using System.Collections.ObjectModel;
 
 namespace SloperMobile.ViewModel
 {
     public class CragDetailsViewModel : BaseViewModel
     {
         private T_CRAG currentCrag;
+        public ObservableCollection<Color> BarColors { get; set; }
         public CragDetailsViewModel()
         {
             currentCrag = App.DAUtil.GetSelectedCragData();
             PageHeaderText = currentCrag.crag_name;
             PageSubHeaderText = currentCrag.area_name;
+            BarColors = new ObservableCollection<Color>();
             GraphData = new List<CragDetailModel>();
             LoadLegendsBucket();
             LoadGraphData();
@@ -71,7 +74,6 @@ namespace SloperMobile.ViewModel
             get { return _graphdata; }
             set { _graphdata = value; OnPropertyChanged(); }
         }
-        public List<Color> Colors;
         #endregion
 
 
@@ -129,17 +131,9 @@ namespace SloperMobile.ViewModel
             {
                 CragDetailModel objcount = new CragDetailModel();
                 objcount.BucketCount = string.IsNullOrEmpty(App.DAUtil.GetBucketCountByCragIdAndGradeBucketId(currentCrag.crag_id, i.ToString())) ? "0" : App.DAUtil.GetBucketCountByCragIdAndGradeBucketId(currentCrag.crag_id, i.ToString());
-                //objcount.Colors = Color.FromHex(App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()));
+                BarColors.Add(Color.FromHex(App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString()) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(i.ToString())));
                 GraphData.Add(objcount);
             }
-
-            Colors = new List<Color>(){
-            Color.Red,
-            Color.Gray,
-            Color.Blue,
-            Color.Maroon,
-            Color.Pink,
-            };
         }
         #endregion
     }

@@ -31,7 +31,7 @@
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
-    
+
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -99,13 +99,16 @@
                                 </chart:NumericalAxis.Title>
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
+
                         <chart:SfChart.Series>
-                            <chart:ColumnSeries EnableAnimation="True" AnimationDuration="0.8" ItemsSource="{Binding GraphData}" XBindingPath="BucketCount" YBindingPath="BucketCount" Color="#FF8E2D">
-<!--                                <chart:ColumnSeries.ColorModel>
-                                    <chart:ChartColorModel Palette="Metro"/>
-                                </chart:ColumnSeries.ColorModel>-->
+                            <chart:ColumnSeries EnableAnimation="True" AnimationDuration="0.8" ItemsSource="{Binding GraphData}" XBindingPath="BucketCount" YBindingPath="BucketCount">
+                                <chart:ColumnSeries.ColorModel>
+                                    <chart:ChartColorModel Palette = "Custom" CustomBrushes="{Binding BarColors}">
+                                    </chart:ChartColorModel>
+                                </chart:ColumnSeries.ColorModel>
                             </chart:ColumnSeries>
                         </chart:SfChart.Series>
+
                     </chart:SfChart>
                     <StackLayout Grid.Row="1" Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="End" Margin="0,0,0,0">
                         <XLabUC:ContentControl ContentTemplate="{Binding LegendsDataTemplate}" HorizontalOptions="Fill" />
