@@ -124,8 +124,11 @@ namespace SloperMobile.Views
                             }
                             else
                             {
-                                TopoMapRouteVM.DisplayRoutePopupLg = true;
-                                TopoMapRouteVM.IsHideSwipeUp = false;
+                                if (_routeId > 0)
+                                {
+                                    TopoMapRouteVM.DisplayRoutePopupLg = true;
+                                    TopoMapRouteVM.IsHideSwipeUp = false;
+                                }
                                 LoadCragAndDefaultImage();
                                 webView.IsVisible = false;
                             }
@@ -228,8 +231,12 @@ namespace SloperMobile.Views
                 }
                 else
                 {
-                    TopoMapRouteVM.DisplayRoutePopupLg = true;
-                    TopoMapRouteVM.IsHideSwipeUp = false;
+                    if (_routeId > 0)
+                    {
+                        TopoMapRouteVM.DisplayRoutePopupLg = true;
+                        TopoMapRouteVM.IsHideSwipeUp = false;
+                        TopoMapRouteVM.DisplayRoutePopupSm = false;
+                    }
                     LoadCragAndDefaultImage();
                     webView.IsVisible = false;
                 }
@@ -265,7 +272,12 @@ namespace SloperMobile.Views
                 //if the route clicked has a topo, display the small popup
                 if (listData != string.Empty && listData != "[]")
                 {
-                    TopoMapRouteVM.DisplayRoutePopupSm = true;
+                    if (topoimgages.Count > 0)
+                    {
+                        if(topoimgages[0].image.data != "")
+                        TopoMapRouteVM.DisplayRoutePopupSm = true;
+
+                    }
                 }
                 _bucket.Clear();
                 if (topoimg != null && topoimg.Count > 0)

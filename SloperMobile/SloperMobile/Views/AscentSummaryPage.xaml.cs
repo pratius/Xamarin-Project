@@ -382,9 +382,12 @@ namespace SloperMobile.Views
                 }
                 if (topoimgages.Count > 0)
                 {
-                    var ratio = webView.HeightRequest / Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.height));
-                    var newWidth = Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.width)) * ratio;
-                    webView.WidthRequest = newWidth;
+                    if (Convert.ToInt32(topoimgages[Cache.SelectedTopoIndex].image.height) > 0)
+                    {
+                        var ratio = webView.HeightRequest / Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.height));
+                        var newWidth = Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.width)) * ratio;
+                        webView.WidthRequest = newWidth;
+                    }
                 }
                 UserDialogs.Instance.HideLoading();
             }

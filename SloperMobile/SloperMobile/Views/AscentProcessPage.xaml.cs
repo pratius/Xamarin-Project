@@ -147,38 +147,15 @@ namespace SloperMobile.Views
                     {
                         webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true, _bucket);
                     }
-                }
-                if (topoimg != null && topoimg != "")
-                {
-                    for (int i = 0; i < topoimgages[0].drawing.Count; i++)
-                    {
-                        if (_routeid == topoimgages[0].drawing[i].id)
-                        {
-                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
-                        }
-                        else
-                        {
-                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
-                        }
-                    }
-                }
-                webView.CallJsFunction("initDrawing", staticAnnotationData, "[" + topoimg + "]", webView.HeightRequest, _bucket);
-                if (Convert.ToInt32(_routeid) > 0)
-                {
-                    if (Device.OS == TargetPlatform.Android)
-                    {
-                        webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (webView.HeightRequest), Convert.ToInt32(_routeid), false, true, _bucket);
-                    }
-                    else
-                    {
-                        webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true, _bucket);
-                    }
-                }
+                }                
                 if (topoimgages.Count > 0)
                 {
-                    var ratio = webView.HeightRequest / Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.height));
-                    var newWidth = Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.width)) * ratio;
-                    webView.WidthRequest = newWidth;
+                    if (Convert.ToInt32(topoimgages[Cache.SelectedTopoIndex].image.height) > 0)
+                    {
+                        var ratio = webView.HeightRequest / Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.height));
+                        var newWidth = Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.width)) * ratio;
+                        webView.WidthRequest = newWidth;
+                    }
                 }
                 UserDialogs.Instance.HideLoading();
             }
