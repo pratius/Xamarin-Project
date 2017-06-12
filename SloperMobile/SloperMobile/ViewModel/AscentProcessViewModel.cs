@@ -388,32 +388,46 @@ namespace SloperMobile.ViewModel
                 }
             }
 
-
             if (Convert.ToString(obj) == "all")
             {
                 if (Char_Everything == "")
                 {
                     Char_Everything = "all";
-                    Char_Technical = "1";
-                    Char_Sequential = "2";
-                    Char_Powerful = "4";
-                    Char_Sustained = "8";
-                    Char_Onemove = "16";
                     routes = "all";
                 }
                 else
                 {
-                    Char_Technical = "";
-                    Char_Sequential = "";
-                    Char_Powerful = "";
-                    Char_Sustained = "";
-                    Char_Onemove = "";
                     Char_Everything = "";
+                  
                 }
             }
 
 
-            string[] characteristics = { Char_Technical, Char_Sequential, Char_Powerful, Char_Sustained, Char_Onemove };
+            //if (Convert.ToString(obj) == "all")
+            //{
+            //    if (Char_Everything == "")
+            //    {
+            //        Char_Everything = "all";
+            //        Char_Technical = "1";
+            //        Char_Sequential = "2";
+            //        Char_Powerful = "4";
+            //        Char_Sustained = "8";
+            //        Char_Onemove = "16";
+            //        routes = "all";
+            //    }
+            //    else
+            //    {
+            //        Char_Technical = "";
+            //        Char_Sequential = "";
+            //        Char_Powerful = "";
+            //        Char_Sustained = "";
+            //        Char_Onemove = "";
+            //        Char_Everything = "";
+            //    }
+            //}
+
+
+            string[] characteristics = { Char_Technical, Char_Sequential, Char_Powerful, Char_Sustained, Char_Onemove,Char_Everything };
             foreach (string str in characteristics)
             {
                 if (!string.IsNullOrEmpty(str))
@@ -423,6 +437,7 @@ namespace SloperMobile.ViewModel
                     {
                         routes = str;
                     }
+                   
                 }
             }
             if (!string.IsNullOrEmpty(routecharacteristics))
@@ -622,6 +637,7 @@ namespace SloperMobile.ViewModel
         private void ExecuteOnRating(object obj)
         {
         }
+
         private async void ExecuteOnCameraClick(object obj)
         {
             var action = await Application.Current.MainPage.DisplayActionSheet("Choose Ascent Image", "Cancel", null, "Take photo", "Pick a file");
