@@ -24,7 +24,7 @@
                AbsoluteLayout.LayoutBounds="3.0, 3.0, 3.0, 3.0"
                AbsoluteLayout.LayoutFlags="All"></Image>
 		</Grid>
-		<Controls:GestureFrame Grid.Row="1" BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupSm,Mode=TwoWay}" HeightRequest="150" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" SwipeDown="OnSwipeDownRoutePopupSm" SwipeTop="OnSwipeTopRoutePopupSm">
+		<Controls:GestureFrame CornerRadius="0" Grid.Row="1" BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupSm,Mode=TwoWay}" HeightRequest="150" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" SwipeDown="OnSwipeDownRoutePopupSm" SwipeTop="OnSwipeTopRoutePopupSm">
 			<Controls:GestureFrame.Content>
 				<Grid>
 					<Grid.ColumnDefinitions>
@@ -77,7 +77,7 @@
 				</Grid>
 			</Controls:GestureFrame.Content>
 		</Controls:GestureFrame>
-		<Controls:GestureFrame Grid.Row="1" BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupLg,Mode=TwoWay}" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" SwipeTop="OnSwipeTopRoutePopupLg">
+		<Controls:GestureFrame CornerRadius="0" Grid.Row="1" BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupLg,Mode=TwoWay}" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" SwipeTop="OnSwipeTopRoutePopupLg">
 			<Controls:GestureFrame.Content>
 				<Grid>
 					<Grid.ColumnDefinitions>
