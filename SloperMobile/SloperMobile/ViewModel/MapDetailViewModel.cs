@@ -59,9 +59,9 @@ namespace SloperMobile.ViewModel
             set { legendheight = value; OnPropertyChanged(); }
         }
 
-      
 
-        
+
+
 
         #region DelegateCommand
 
@@ -110,10 +110,10 @@ namespace SloperMobile.ViewModel
                     else
                     {
                         routeobj.StarImage = null;
-                       // routeobj.IsShowStarCount = false;
+                        // routeobj.IsShowStarCount = false;
                     }
-                   
-                   
+
+
                     //if (!string.IsNullOrEmpty(route.angles_top_2) && route.angles_top_2.Contains(","))
                     //{
                     //    string[] steeps = route.angles_top_2.Split(',');
@@ -176,8 +176,17 @@ namespace SloperMobile.ViewModel
                 var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);
                 if (topoimgages.Count > 0)
                 {
-                    if(topoimgages[0].image.data != "")
-                    await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0"));
+                    if (topoimgages[0].image.data != "")
+                    {
+                        await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0"));
+                    }
+                    else if (topoimgages.Count == 2)
+                    {
+                        if (topoimgages[1].image.data != "")
+                        {
+                            await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0"));
+                        }
+                    }
 
                 }
 
@@ -458,7 +467,7 @@ namespace SloperMobile.ViewModel
         public ImageSource Steepness3 { get; set; }
         public ImageSource StarImage { get; set; }
         public bool IsShowStarCount = false;
-       
+
         public string RouteTechGrade { get; set; }
         public string RouteGradeColor { get; set; }
         public string RouteId { get; set; }
