@@ -68,7 +68,7 @@
 			</Frame>
 			<Frame x:Name="Everything" AutomationId="everything" Grid.Row="5" Grid.Column="2" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 				<Frame.GestureRecognizers>
-					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="all" />
+					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="32" />
 				</Frame.GestureRecognizers>
 				<Image Source="icon_route_style_32_everything_text_73h" VerticalOptions="Center" HorizontalOptions="Center" />
 			</Frame>

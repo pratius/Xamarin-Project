@@ -388,12 +388,12 @@ namespace SloperMobile.ViewModel
                 }
             }
 
-            if (Convert.ToString(obj) == "all")
+            if (Convert.ToString(obj) == "32")
             {
                 if (Char_Everything == "")
                 {
-                    Char_Everything = "all";
-                    routes = "all";
+                    Char_Everything = "32";
+                   // routes = "all";
                 }
                 else
                 {
@@ -433,10 +433,8 @@ namespace SloperMobile.ViewModel
                 if (!string.IsNullOrEmpty(str))
                 {
                     routecharacteristics += str + ",";
-                    if (routes != "all")
-                    {
-                        routes = str;
-                    }
+                       routes = str;
+                    
                    
                 }
             }
@@ -913,7 +911,7 @@ namespace SloperMobile.ViewModel
                 case "16":
                     resource = "icon_route_style_16_one_move_border_80x80";
                     break;
-                case "all":
+                case "32":
                     resource = "icon_route_style_32_everything_border_80x80";
                     break;
             }
@@ -982,7 +980,7 @@ namespace SloperMobile.ViewModel
                 case "16":
                     resource = "icon_route_style_16_one_move_border_80x80";
                     break;
-                case "all":
+                case "32":
                     resource = "icon_route_style_32_everything_border_80x80";
                     break;
             }
