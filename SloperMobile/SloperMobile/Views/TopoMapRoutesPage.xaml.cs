@@ -44,6 +44,7 @@ namespace SloperMobile.Views
                 TopoMapRouteVM = new ViewModel.TopoMapRoutesViewModel(CurrentSector, Navigation);
 
                 BindingContext = TopoMapRouteVM;
+                Cache.GlobalBase64String = null;
                 // load the scenic shot if there are no topos available
                 if (listData == string.Empty || listData == "[]")
                 {
@@ -56,11 +57,14 @@ namespace SloperMobile.Views
                     }
                     webView.IsVisible = false;
                     var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                    if (CurrentSector != null && listData != "")
+                    if (CurrentSector != null && listData == "[]")
                     {
-                        _Image.Source = CurrentSector.SectorImage;
-                        //_Image.HeightRequest = XLabs.Ioc.Resolver.Resolve<IDevice>().Display.Height;
-                        //_Image.IsVisible = true;
+                        if (Cache.IsCragOrDefaultImageCount != 1)
+                        {
+                            _Image.Source = CurrentSector.SectorImage;
+                            Cache.GlobalBase64String = CurrentSector.SectorImage;
+                            _Image.IsVisible = true;
+                        }
                     }
                     else if (item != null)
                     {
@@ -69,7 +73,7 @@ namespace SloperMobile.Views
                         {
                             byte[] imageBytes = Convert.FromBase64String(strimg64);
                             _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                            _Image.IsVisible = true;
+                            _Image.IsVisible = true;                            
                         }
                     }
                     else
@@ -246,8 +250,11 @@ namespace SloperMobile.Views
             }
             else
             {
-                LoadCragAndDefaultImage();
-                webView.IsVisible = false;
+                if (listData != "[]")
+                {
+                    LoadCragAndDefaultImage();
+                    webView.IsVisible = false;
+                }
             }
 
             // if a route was clicked from the list
@@ -277,8 +284,8 @@ namespace SloperMobile.Views
                 {
                     if (topoimgages.Count > 0)
                     {
-                        if(topoimgages[0].image.data != "")
-                        TopoMapRouteVM.DisplayRoutePopupSm = true;
+                        if (topoimgages[0].image.data != "")
+                            TopoMapRouteVM.DisplayRoutePopupSm = true;
 
                     }
                 }
@@ -317,8 +324,11 @@ namespace SloperMobile.Views
                     }
                     else
                     {
-                        LoadCragAndDefaultImage();
-                        webView.IsVisible = false;
+                        if (listData != "[]")
+                        {
+                            LoadCragAndDefaultImage();
+                            webView.IsVisible = false;
+                        }
                     }
                 }
                 else
@@ -353,7 +363,7 @@ namespace SloperMobile.Views
                 else
                 {
                     // this.BackgroundImage = "default_sloper_outdoor_portrait";
-                    _Image.Source = ImageSource.FromFile("default_sloper_outdoor_portrait");                     
+                    _Image.Source = ImageSource.FromFile("default_sloper_outdoor_portrait");
                 }
                 _Image.IsVisible = true;
             }

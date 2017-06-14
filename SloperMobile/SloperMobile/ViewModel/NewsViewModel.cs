@@ -42,6 +42,7 @@ namespace SloperMobile.ViewModel
         {
             try
             {
+                Cache.IsCragOrDefaultImageCount = 0;
                 var app_news = App.DAUtil.GetAppNews(NewsList.Count(), 10);
                 foreach (NewsModel nm in app_news)
                 {
@@ -120,6 +121,7 @@ namespace SloperMobile.ViewModel
         }
         private ImageSource LoadCragAndDefaultImage()
         {
+            Cache.IsCragOrDefaultImageCount = 1;
             string strimg64 = string.Empty;
             ImageSource news_image = null;
             //load Crag Scenic Action Portrait Shot (specific to Gym)
