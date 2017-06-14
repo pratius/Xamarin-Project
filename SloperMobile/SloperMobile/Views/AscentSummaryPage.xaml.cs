@@ -244,7 +244,7 @@ namespace SloperMobile.Views
         }
         public string GetSummarySteepnessResourceName(string steep)
         {
-            string resource = "icon_steepness_1_slab_border_80x80";
+            string resource = "";
             switch (steep)
             {
                 case "1":
@@ -265,7 +265,7 @@ namespace SloperMobile.Views
 
         public string GetSummaryHoldTypeResourceName(string hold)
         {
-            string resource = "icon_hold_type_1_slopers_border_80x80";
+            string resource = "";
             switch (hold)
             {
                 case "1":
@@ -280,13 +280,19 @@ namespace SloperMobile.Views
                 case "8":
                     resource = "icon_hold_type_8_pockets_border_80x80";
                     break;
+                case "16":
+                    resource = "icon_hold_type_16_pinches_border_80x80";
+                    break;
+                case "32":
+                    resource = "icon_hold_type_32_jams_border_80x80";
+                    break;
             }
             return resource;
         }
 
         public string GetSummaryRouteStyleResourceName(string route)
         {
-            string resource = "icon_route_style_1_technical_border_80x80";
+            string resource = "";
             switch (route)
             {
                 case "1":
@@ -304,12 +310,13 @@ namespace SloperMobile.Views
                 case "16":
                     resource = "icon_route_style_16_one_move_border_80x80";
                     break;
-                case "all":
-                    resource = "icon_route_style_32_everything_border_80x80";
+                case "32":
+                    resource = "icon_route_style_32_exposed_border_80x80";
                     break;
             }
             return resource;
         }
+
         protected override void OnAppearing()
         {
             try

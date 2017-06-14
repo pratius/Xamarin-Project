@@ -65,22 +65,19 @@
                 <Image Source="icon_hold_type_8_pockets_text_63x94" VerticalOptions="End" HorizontalOptions="Center" />
             </Frame>
 
-            <Frame x:Name="Onemove" AutomationId="onemove" Grid.Row="5" Grid.Column="0" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Frame Grid.Row="5" Grid.Column="0" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeHoldCommand,Mode=TwoWay}" CommandParameter="16" />
                 </Frame.GestureRecognizers>
-                <Image Source="icon_route_style_16_one_move_text_73h" VerticalOptions="Center" HorizontalOptions="Center" />
+                <Image Source="icon_hold_type_16_pinches_text_73x83" VerticalOptions="Center" HorizontalOptions="Center" />
             </Frame>
 
-            <Frame x:Name="Everything" AutomationId="everything" Grid.Row="5" Grid.Column="2" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Frame Grid.Row="5" Grid.Column="2" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendTypeHoldCommand,Mode=TwoWay}" CommandParameter="32" />
                 </Frame.GestureRecognizers>
-                <Image Source="icon_route_style_32_everything_text_73h" VerticalOptions="Center" HorizontalOptions="Center" />
+                <Image Source="icon_hold_type_32_jams_text_57x86" VerticalOptions="Center" HorizontalOptions="Center" />
             </Frame>
-
-
-
         </Grid>
         <StackLayout Orientation="Horizontal" x:Name="ImgAscentHoldTypePrv" Margin="0,0,0,0" Grid.Column="0"  Grid.Row="1">
             <Image Grid.Row="1"  Grid.Column="0" Source="arrowLeftWhite" Margin="0,0,70,0" HeightRequest="20" VerticalOptions="Start" HorizontalOptions="EndAndExpand" />
