@@ -96,7 +96,15 @@ namespace SloperMobile.Views
                 var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
                 if (topoimgages.Count > 0)
                 {
-                    _topoimgages = JsonConvert.SerializeObject(topoimgages[Cache.SelectedTopoIndex]);
+                    if (topoimgages.Count == 1)
+                    {
+                        _topoimgages = JsonConvert.SerializeObject(topoimgages[0]);
+                    }
+                    else
+                    {
+                        _topoimgages = JsonConvert.SerializeObject(topoimgages[Cache.SelectedTopoIndex]);
+                    }
+
                 }
                 if (_topoimgages != null && _topoimgages != "")
                 {
