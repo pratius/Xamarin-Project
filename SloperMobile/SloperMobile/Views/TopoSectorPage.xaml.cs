@@ -119,6 +119,13 @@ namespace SloperMobile.Views
                 {
                     TopoMapRoutesPage _topopageObj;
                     var topoimg = string.Empty;
+                    if (topoimgages.Count > 0)
+                    {
+                        if (!string.IsNullOrEmpty(topoimgages[0].image.data))
+                        {
+                            Cache.IsCragOrDefaultImageCount = 0;
+                        }
+                    }
                     _topopageObj = new TopoMapRoutesPage(_CurrentSector, topoimg, _routeId);
                     this.Children.Add(_topopageObj);
                 }
@@ -237,6 +244,13 @@ namespace SloperMobile.Views
                 {
                     TopoMapRoutesPage _topopageObj;
                     var topoimg = string.Empty;
+                    if (topoimgages.Count > 0)
+                    {
+                        if (!string.IsNullOrEmpty(topoimgages[0].image.data))
+                        {
+                            Cache.IsCragOrDefaultImageCount = 0;
+                        }
+                    }
                     _topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId);
                     this.Children.Add(_topopageObj);
                 }

@@ -44,25 +44,24 @@ namespace SloperMobile.ViewModel
         private string commandtext = "Log Ascent";
         private string progressmsg = "Sending, please wait...";
 
-        private string Slab = "";
-        private string Vertical = "";
-        private string Overhanging = "";
-        private string Roof = "";
+        private string steepness_slab = "";
+        private string steepness_vertical = "";
+        private string steepness_overhanging = "";
+        private string steepness_roof = "";
 
-        private string Hold_Sloper = "";
-        private string Hold_Crimps = "";
-        private string Hold_Jugs = "";
-        private string Hold_Pockets = "";
-        private string Hold_Pinches = "";
-        private string Hold_Jams = "";
+        private string hold_type_sloper = "";
+        private string hold_type_crimps = "";
+        private string hold_type_jugs = "";
+        private string hold_type_pockets = "";
+        private string hold_type_pinches = "";
+        private string hold_type_jams = "";
 
-
-        private string Char_Technical = "";
-        private string Char_Sequential = "";
-        private string Char_Powerful = "";
-        private string Char_Sustained = "";
-        private string Char_Onemove = "";
-        private string Char_Everything = "";
+        private string route_style_technical = "";
+        private string route_style_sequential = "";
+        private string route_style_powerful = "";
+        private string route_style_sustained = "";
+        private string route_style_one_move = "";
+        private string route_style_exposed = "";
 
         private ImageSource summaryimage;
 
@@ -326,78 +325,78 @@ namespace SloperMobile.ViewModel
             string routes = "";
             if (Convert.ToString(obj) == "1")
             {
-                if (Char_Technical == "")
+                if (route_style_technical == "")
                 {
-                    Char_Technical = "1";
+                    route_style_technical = "1";
                 }
                 else
                 {
-                    Char_Technical = "";
+                    route_style_technical = "";
                 }
             }
 
 
             if (Convert.ToString(obj) == "2")
             {
-                if (Char_Sequential == "")
+                if (route_style_sequential == "")
                 {
-                    Char_Sequential = "2";
+                    route_style_sequential = "2";
                 }
                 else
                 {
-                    Char_Sequential = "";
+                    route_style_sequential = "";
                 }
             }
 
 
             if (Convert.ToString(obj) == "4")
             {
-                if (Char_Powerful == "")
+                if (route_style_powerful == "")
                 {
-                    Char_Powerful = "4";
+                    route_style_powerful = "4";
                 }
                 else
                 {
-                    Char_Powerful = "";
+                    route_style_powerful = "";
                 }
             }
 
 
             if (Convert.ToString(obj) == "8")
             {
-                if (Char_Sustained == "")
+                if (route_style_sustained == "")
                 {
-                    Char_Sustained = "8";
+                    route_style_sustained = "8";
                 }
                 else
                 {
-                    Char_Sustained = "";
+                    route_style_sustained = "";
                 }
             }
 
 
             if (Convert.ToString(obj) == "16")
             {
-                if (Char_Onemove == "")
+                if (route_style_one_move == "")
                 {
-                    Char_Onemove = "16";
+                    route_style_one_move = "16";
                 }
                 else
                 {
-                    Char_Onemove = "";
+                    route_style_one_move = "";
                 }
             }
 
-            if (Convert.ToString(obj) == "all")
+            if (Convert.ToString(obj) == "32")
             {
-                if (Char_Everything == "")
+                if (route_style_exposed == "")
                 {
-                    Char_Everything = "all";
-                    routes = "all";
+                    route_style_exposed = "32";
+                   // routes = "all";
                 }
                 else
                 {
-                    Char_Everything = "";
+                    route_style_exposed = "";
                   
                 }
             }
@@ -405,38 +404,36 @@ namespace SloperMobile.ViewModel
 
             //if (Convert.ToString(obj) == "all")
             //{
-            //    if (Char_Everything == "")
+            //    if (route_style_everything == "")
             //    {
-            //        Char_Everything = "all";
-            //        Char_Technical = "1";
-            //        Char_Sequential = "2";
-            //        Char_Powerful = "4";
-            //        Char_Sustained = "8";
-            //        Char_Onemove = "16";
+            //        route_style_everything = "all";
+            //        route_style_technical = "1";
+            //        route_style_sequential = "2";
+            //        route_style_powerful = "4";
+            //        route_style_sustained = "8";
+            //        route_style_one_move = "16";
             //        routes = "all";
             //    }
             //    else
             //    {
-            //        Char_Technical = "";
-            //        Char_Sequential = "";
-            //        Char_Powerful = "";
-            //        Char_Sustained = "";
-            //        Char_Onemove = "";
-            //        Char_Everything = "";
+            //        route_style_technical = "";
+            //        route_style_sequential = "";
+            //        route_style_powerful = "";
+            //        route_style_sustained = "";
+            //        route_style_one_move = "";
+            //        route_style_everything = "";
             //    }
             //}
 
 
-            string[] characteristics = { Char_Technical, Char_Sequential, Char_Powerful, Char_Sustained, Char_Onemove,Char_Everything };
+            string[] characteristics = { route_style_technical, route_style_sequential, route_style_powerful, route_style_sustained, route_style_one_move,route_style_exposed };
             foreach (string str in characteristics)
             {
                 if (!string.IsNullOrEmpty(str))
                 {
                     routecharacteristics += str + ",";
-                    if (routes != "all")
-                    {
-                        routes = str;
-                    }
+                       routes = str;
+                    
                    
                 }
             }
@@ -458,81 +455,81 @@ namespace SloperMobile.ViewModel
 
             if (Convert.ToString(obj) == "1")
             {
-                if (Hold_Sloper == "")
+                if (hold_type_sloper == "")
                 {
-                    Hold_Sloper = "1";
+                    hold_type_sloper = "1";
                 }
                 else
                 {
-                    Hold_Sloper = "";
+                    hold_type_sloper = "";
                 }
             }
 
 
             if (Convert.ToString(obj) == "2")
             {
-                if (Hold_Crimps == "")
+                if (hold_type_crimps == "")
                 {
-                    Hold_Crimps = "2";
+                    hold_type_crimps = "2";
                 }
                 else
                 {
-                    Hold_Crimps = "";
+                    hold_type_crimps = "";
                 }
             }
 
 
             if (Convert.ToString(obj) == "4")
             {
-                if (Hold_Jugs == "")
+                if (hold_type_jugs == "")
                 {
-                    Hold_Jugs = "4";
+                    hold_type_jugs = "4";
                 }
                 else
                 {
-                    Hold_Jugs = "";
+                    hold_type_jugs = "";
                 }
             }
 
 
             if (Convert.ToString(obj) == "8")
             {
-                if (Hold_Pockets == "")
+                if (hold_type_pockets == "")
                 {
-                    Hold_Pockets = "8";
+                    hold_type_pockets = "8";
                 }
                 else
                 {
-                    Hold_Pockets = "";
+                    hold_type_pockets = "";
                 }
             }
 
             if (Convert.ToString(obj) == "16")
             {
-                if (Hold_Pinches == "")
+                if (hold_type_pinches == "")
                 {
-                    Hold_Pinches = "16";
+                    hold_type_pinches = "16";
                 }
                 else
                 {
-                    Hold_Pinches = "";
+                    hold_type_pinches = "";
                 }
             }
 
             if (Convert.ToString(obj) == "32")
             {
-                if (Hold_Jams == "")
+                if (hold_type_jams == "")
                 {
-                    Hold_Jams = "32";
+                    hold_type_jams = "32";
                 }
                 else
                 {
-                    Hold_Jams = "";
+                    hold_type_jams = "";
                 }
             }
 
             string tophold = "";
-            string[] holdstyles = { Hold_Sloper, Hold_Crimps, Hold_Jugs, Hold_Pockets, Hold_Pinches, Hold_Jams };
+            string[] holdstyles = { hold_type_sloper, hold_type_crimps, hold_type_jugs, hold_type_pockets, hold_type_pinches, hold_type_jams };
             foreach (string str in holdstyles)
             {
                 if (!string.IsNullOrEmpty(str))
@@ -558,57 +555,57 @@ namespace SloperMobile.ViewModel
             var climbingstyles = "";
             if (Convert.ToString(obj) == "1")
             {
-                if (Slab == "")
+                if (steepness_slab == "")
                 {
-                    Slab = "1";
+                    steepness_slab = "1";
                 }
                 else
                 {
-                    Slab = "";
+                    steepness_slab = "";
                 }
             }
 
 
             if (Convert.ToString(obj) == "2")
             {
-                if (Vertical == "")
+                if (steepness_vertical == "")
                 {
-                    Vertical = "2";
+                    steepness_vertical = "2";
                 }
                 else
                 {
-                    Vertical = "";
+                    steepness_vertical = "";
                 }
             }
 
 
             if (Convert.ToString(obj) == "4")
             {
-                if (Overhanging == "")
+                if (steepness_overhanging == "")
                 {
-                    Overhanging = "4";
+                    steepness_overhanging = "4";
                 }
                 else
                 {
-                    Overhanging = "";
+                    steepness_overhanging = "";
                 }
             }
 
 
             if (Convert.ToString(obj) == "8")
             {
-                if (Roof == "")
+                if (steepness_roof == "")
                 {
-                    Roof = "8";
+                    steepness_roof = "8";
                 }
                 else
                 {
-                    Roof = "";
+                    steepness_roof = "";
                 }
             }
 
 
-            string[] climbstyles = { Slab, Vertical, Overhanging, Roof };
+            string[] climbstyles = { steepness_slab, steepness_vertical, steepness_overhanging, steepness_roof };
             string topangle = "";
             foreach (string str in climbstyles)
             {
@@ -845,7 +842,7 @@ namespace SloperMobile.ViewModel
 
         public string GetAngleResourceName(string steep)
         {
-            string resource = "icon_steepness_1_slab_border_80x80";
+            string resource = "";
             switch (steep)
             {
                 case "1":
@@ -866,7 +863,7 @@ namespace SloperMobile.ViewModel
 
         public string GetHoldResourceName(string hold)
         {
-            string resource = "icon_hold_type_1_slopers_text_58x92";
+            string resource = "";
             switch (hold)
             {
                 case "1":
@@ -883,10 +880,10 @@ namespace SloperMobile.ViewModel
                     resource = "icon_hold_type_8_pockets_text_63x94";
                     break;
                 case "16":
-                    resource = "icon_route_style_16_one_move_text_73h";
+                    resource = "icon_hold_type_16_pinches_text_73x83";
                     break;
                 case "32":
-                    resource = "icon_route_style_32_everything_text_73h";
+                    resource = "icon_hold_type_32_jams_text_57x86";
                     break;
 
             }
@@ -895,7 +892,7 @@ namespace SloperMobile.ViewModel
 
         public string GetRouteResourceName(string route)
         {
-            string resource = "icon_route_style_1_technical_border_80x80";
+            string resource = "";
             switch (route)
             {
                 case "1":
@@ -913,8 +910,8 @@ namespace SloperMobile.ViewModel
                 case "16":
                     resource = "icon_route_style_16_one_move_border_80x80";
                     break;
-                case "all":
-                    resource = "icon_route_style_32_everything_border_80x80";
+                case "32":
+                    resource = "icon_route_style_32_exposed_border_80x80";
                     break;
             }
             return resource;
@@ -922,7 +919,7 @@ namespace SloperMobile.ViewModel
 
         public string GetSummarySteepnessResourceName(string steep)
         {
-            string resource = "icon_steepness_1_slab_border_80x80";
+            string resource = "";
             switch (steep)
             {
                 case "1":
@@ -943,7 +940,7 @@ namespace SloperMobile.ViewModel
 
         public string GetSummaryHoldTypeResourceName(string hold)
         {
-            string resource = "icon_hold_type_1_slopers_border_80x80";
+            string resource = "";
             switch (hold)
             {
                 case "1":
@@ -958,13 +955,19 @@ namespace SloperMobile.ViewModel
                 case "8":
                     resource = "icon_hold_type_8_pockets_border_80x80";
                     break;
+                case "16":
+                    resource = "icon_hold_type_16_pinches_border_80x80";
+                    break;
+                case "32":
+                    resource = "icon_hold_type_32_jams_border_80x80";
+                    break;
             }
             return resource;
         }
 
         public string GetSummaryRouteStyleResourceName(string route)
         {
-            string resource = "icon_route_style_1_technical_border_80x80";
+            string resource = "";
             switch (route)
             {
                 case "1":
@@ -982,15 +985,12 @@ namespace SloperMobile.ViewModel
                 case "16":
                     resource = "icon_route_style_16_one_move_border_80x80";
                     break;
-                case "all":
-                    resource = "icon_route_style_32_everything_border_80x80";
+                case "32":
+                    resource = "icon_route_style_32_exposed_border_80x80";
                     break;
             }
             return resource;
         }
-
-
-
 
         private static byte[] ReadStreamByte(Stream input)
         {

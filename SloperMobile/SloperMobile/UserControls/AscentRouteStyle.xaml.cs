@@ -70,8 +70,6 @@ namespace SloperMobile.UserControls
                 }
             }
 
-
-
             if (angleframe.AutomationId == "onemove")
             {
                 if (angleframe.BackgroundColor == Color.Black)
@@ -84,6 +82,17 @@ namespace SloperMobile.UserControls
                 }
             }
 
+            if (angleframe.AutomationId == "exposed")
+            {
+                if (angleframe.BackgroundColor == Color.Black)
+                {
+                    angleframe.BackgroundColor = Color.FromHex("#FF8E2D");
+                }
+                else
+                {
+                    angleframe.BackgroundColor = Color.Black;
+                }
+            }
 
             if (angleframe.AutomationId == "everything")
             {

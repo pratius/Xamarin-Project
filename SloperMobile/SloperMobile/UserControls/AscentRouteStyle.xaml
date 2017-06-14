@@ -40,37 +40,37 @@
 				<Frame.GestureRecognizers>
 					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="1" />
 				</Frame.GestureRecognizers>
-				<Image Source="icon_route_style_1_technical_text_73h" VerticalOptions="Center" HorizontalOptions="Center" />
+				<Image Source="icon_route_style_1_technical_text_80h" VerticalOptions="Center" HorizontalOptions="Center" />
 			</Frame>
 			<Frame x:Name="Sequential" AutomationId="sequential" Grid.Row="1" Grid.Column="2" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 				<Frame.GestureRecognizers>
 					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="2" />
 				</Frame.GestureRecognizers>
-				<Image Source="icon_route_style_2_sequential_text_73h" VerticalOptions="Center" HorizontalOptions="Center" />
+				<Image Source="icon_route_style_2_sequential_text_80h" VerticalOptions="Center" HorizontalOptions="Center" />
 			</Frame>
 			<Frame x:Name="Powerful" AutomationId="powerful" Grid.Row="3" Grid.Column="0" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 				<Frame.GestureRecognizers>
 					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="4" />
 				</Frame.GestureRecognizers>
-				<Image Source="icon_route_style_4_powerful_text_73h" VerticalOptions="Center" HorizontalOptions="Center" />
+				<Image Source="icon_route_style_4_powerful_text_80h" VerticalOptions="Center" HorizontalOptions="Center" />
 			</Frame>
 			<Frame x:Name="Sustained" AutomationId="sustained" Grid.Row="3" Grid.Column="2" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 				<Frame.GestureRecognizers>
 					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="8" />
 				</Frame.GestureRecognizers>
-				<Image Source="icon_route_style_8_sustained_text_73h" VerticalOptions="Center" HorizontalOptions="Center" />
+				<Image Source="icon_route_style_8_sustained_text_80h" VerticalOptions="Center" HorizontalOptions="Center" />
 			</Frame>
 			<Frame x:Name="Onemove" AutomationId="onemove" Grid.Row="5" Grid.Column="0" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 				<Frame.GestureRecognizers>
 					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="16" />
 				</Frame.GestureRecognizers>
-				<Image Source="icon_route_style_16_one_move_text_73h" VerticalOptions="Center" HorizontalOptions="Center" />
+				<Image Source="icon_route_style_16_one_move_text_80h" VerticalOptions="Center" HorizontalOptions="Center" />
 			</Frame>
-			<Frame x:Name="Everything" AutomationId="everything" Grid.Row="5" Grid.Column="2" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<Frame x:Name="Everything" AutomationId="exposed" Grid.Row="5" Grid.Column="2" BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 				<Frame.GestureRecognizers>
-					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="all" />
+					<TapGestureRecognizer Tapped="SetFrameColor" Command="{Binding SendRouteCharaterCommand,Mode=TwoWay}" CommandParameter="32" />
 				</Frame.GestureRecognizers>
-				<Image Source="icon_route_style_32_everything_text_73h" VerticalOptions="Center" HorizontalOptions="Center" />
+				<Image Source="icon_route_style_32_exposed_text_80h" VerticalOptions="Center" HorizontalOptions="Center" />
 			</Frame>
 		</Grid>
         <StackLayout Orientation="Horizontal" x:Name="ImgAscentRouteStylePrv" Margin="0,0,0,0" Grid.Column="0"  Grid.Row="1">

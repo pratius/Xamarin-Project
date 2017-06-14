@@ -18,5 +18,7 @@ namespace SloperMobile.Common.Constants
         public static int SelectedTopoIndex { get; set; }
         public static int SendBackArrowCount { get; set; }
         public static int CurrentScreenHeight;
+        public static ImageSource GlobalBase64String { get; set; }
+        public static int IsCragOrDefaultImageCount { get; set; }
     }
 }

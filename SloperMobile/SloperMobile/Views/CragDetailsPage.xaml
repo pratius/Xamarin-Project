@@ -101,7 +101,7 @@
                         </chart:SfChart.SecondaryAxis>
 
                         <chart:SfChart.Series>
-                            <chart:ColumnSeries EnableAnimation="True" AnimationDuration="0.8" ItemsSource="{Binding GraphData}" XBindingPath="BucketCount" YBindingPath="BucketCount">
+                            <chart:ColumnSeries EnableAnimation="True" AnimationDuration="2" ItemsSource="{Binding GraphData}" XBindingPath="BucketCount" YBindingPath="BucketCount">
                                 <chart:ColumnSeries.ColorModel>
                                     <chart:ChartColorModel Palette = "Custom" CustomBrushes="{Binding BarColors}">
                                     </chart:ChartColorModel>
