@@ -147,7 +147,7 @@ namespace SloperMobile.Views
                     {
                         webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true, _bucket);
                     }
-                }                
+                }
                 if (topoimgages.Count > 0)
                 {
                     if (Convert.ToInt32(topoimgages[Cache.SelectedTopoIndex].image.height) > 0)
@@ -228,7 +228,7 @@ namespace SloperMobile.Views
                     else
                     {
                         if (Cache.GlobalBase64String != null)
-                        {                           
+                        {
                             _Image.Source = Cache.GlobalBase64String;
                             _Image.IsVisible = true; webView.IsVisible = false;
                         }
@@ -244,7 +244,17 @@ namespace SloperMobile.Views
                                     {
                                         LoadCragAndDefaultImage();
                                     }
-                                    else { LoadCragAndDefaultImage(); }
+                                    else
+                                    { //LoadCragAndDefaultImage();
+                                        string _strimg64 = topoimgages[0].image.data.Split(',')[1];
+                                        if (!string.IsNullOrEmpty(_strimg64))
+                                        {
+                                            byte[] imageBytes = Convert.FromBase64String(_strimg64);
+                                            _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                            _Image.IsVisible = true;
+                                            webView.IsVisible = false;
+                                        }
+                                    }
                                 }
                                 else
                                 {

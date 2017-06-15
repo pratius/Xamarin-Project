@@ -114,7 +114,17 @@ namespace SloperMobile.Views
                         {
                             LoadCragAndDefaultImage();
                         }
-                        else { LoadCragAndDefaultImage(); }
+                        else {
+                            //    LoadCragAndDefaultImage();
+                            string _strimg64 = topoimgages[0].image.data.Split(',')[1];
+                            if (!string.IsNullOrEmpty(_strimg64))
+                            {
+                                byte[] imageBytes = Convert.FromBase64String(_strimg64);
+                                _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                _Image.IsVisible = true;
+                                webView.IsVisible = false;
+                            }
+                        }
                     }
                     else
                     {
@@ -246,6 +256,22 @@ namespace SloperMobile.Views
                 {
                     steepnessString += steepnessString.Length > 0 ? ",1" : "1";
                     steepnessInt -= 1;
+                }                
+            }
+            if (steepnessInt > 2 || steepnessInt >= 1)
+            {
+                for (int j = 0; j <= steepnessInt; j++)
+                {
+                    if (steepnessInt >= 2)
+                    {
+                        steepnessString += steepnessString.Length > 0 ? ",2" : "2";
+                        steepnessInt -= 2;
+                    }
+                    else if (steepnessInt >= 1)
+                    {
+                        steepnessString += steepnessString.Length > 0 ? ",1" : "1";
+                        steepnessInt -= 1;
+                    }
                 }
             }
             return steepnessString;
