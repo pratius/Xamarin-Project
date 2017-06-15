@@ -11,8 +11,8 @@ namespace SloperMobile.Common.Constants
 
         //API Base URL
         public const string API_VERSION = "v170428";
-        public const string Base_Url = "http://sloperclone.slicksystems.ca:8080/DesktopModules/";
-        public const string APP_ID = "41";
+        public const string Base_Url = "http://sloper.slicksystems.ca:8080/";
+        public const string APP_ID = "1";
         public const string APP_TYPE = "outdoor";
 
         //API Base URL
