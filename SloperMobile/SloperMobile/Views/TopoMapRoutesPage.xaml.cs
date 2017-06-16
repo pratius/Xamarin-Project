@@ -61,9 +61,25 @@ namespace SloperMobile.Views
                     {
                         if (Cache.IsCragOrDefaultImageCount != 1)
                         {
-                            _Image.Source = CurrentSector.SectorImage;
-                            Cache.GlobalBase64String = CurrentSector.SectorImage;
-                            _Image.IsVisible = true;
+                            var secimglist = dbConn.Table<T_TOPO>().Where(tp => tp.sector_id == CurrentSector.SectorId).ToList();
+                            foreach (var _item in secimglist)
+                            {
+                                if (!(_item.topo_json == "[]"))
+                                {
+                                    var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(_item.topo_json);
+                                    if (!string.IsNullOrEmpty(topoimg[0].image.data))
+                                    {
+                                        string string64 = topoimg[0].image.data.Split(',')[1];
+                                        if (!string.IsNullOrEmpty(string64))
+                                        {
+                                            byte[] imageBytes = Convert.FromBase64String(string64);
+                                            _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                            Cache.GlobalBase64String = _Image.Source;
+                                            _Image.IsVisible = true;
+                                        }
+                                    }
+                                }                                                       
+                            }
                         }
                     }
                     else if (item != null)
@@ -73,7 +89,7 @@ namespace SloperMobile.Views
                         {
                             byte[] imageBytes = Convert.FromBase64String(strimg64);
                             _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                            _Image.IsVisible = true;                            
+                            _Image.IsVisible = true;
                         }
                     }
                     else
@@ -122,8 +138,8 @@ namespace SloperMobile.Views
                                 {
                                     LoadCragAndDefaultImage();
                                     webView.IsVisible = false;
-                                    // _Image.IsVisible = false;
-                                }
+                                // _Image.IsVisible = false;
+                            }
                                 else
                                 {
                                     webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, newHeight, Convert.ToInt32(t), true, false, _bucket);
