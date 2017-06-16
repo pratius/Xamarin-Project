@@ -20,7 +20,7 @@
 		<Grid Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 			<Controls:HybridWebViewCustom x:Name="webView" BackgroundColor="Black" />
             <Image x:Name="_Image" IsVisible="False" BackgroundColor="Black"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                   Aspect="Fill"
+                   Aspect="AspectFill"
                AbsoluteLayout.LayoutBounds="3.0, 3.0, 3.0, 3.0"
                AbsoluteLayout.LayoutFlags="All"></Image>
 		</Grid>
