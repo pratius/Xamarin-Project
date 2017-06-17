@@ -60,7 +60,8 @@ namespace SloperMobile.Droid
             CrashManager.Register(this, AppSetting.HockeyAppId_Droid, new CrashManagerListenerImp());
             MetricsManager.Register(this, Application, AppSetting.HockeyAppId_Droid);
 
-            //WireUpCheckUpdateRunningTask(); -- Removed until working 100% - Steve - 2017-06-07
+            WireUpCheckUpdateRunningTask(); 
+            //-- Removed until working 100% - Steve - 2017-06-07
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
