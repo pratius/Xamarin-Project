@@ -40,11 +40,12 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <Debugger>.Net (Xamarin)</Debugger>
     <AndroidEnableMultipleDex>true</AndroidEnableMultipleDex>
+    <AndroidSupportedAbis />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -132,6 +133,15 @@
     <Reference Include="SQLite.Net.Platform.XamarinAndroidN, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SQLite.Net.Platform.XamarinAndroidN.3.1.1\lib\SQLite.Net.Platform.XamarinAndroidN.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.Android">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.4.0.15\Xamarin\lib\android\Syncfusion.SfCalendar.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.4.0.15\Xamarin\lib\android\Syncfusion.SfCalendar.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms.Android">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.4.0.15\Xamarin\lib\android\Syncfusion.SfCalendar.XForms.Android.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.Android">
       <HintPath>..\..\lib\android\Syncfusion.SfChart.Android.dll</HintPath>

@@ -80,7 +80,8 @@
     <BuildIpa>True</BuildIpa>
     <CodesignKey>iPhone Distribution: Sloper Inc (N3AV7DNTK5)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>
+    </CodesignProvision>
     <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
@@ -590,6 +591,15 @@
     <Reference Include="SQLite.Net.Platform.XamarinIOS.Unified, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SQLite.Net-PCL.3.1.1\lib\Xamarin.iOS10\SQLite.Net.Platform.XamarinIOS.Unified.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.iOS">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.4.0.15\Xamarin\lib\ios-unified\Syncfusion.SfCalendar.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.4.0.15\Xamarin\lib\ios-unified\Syncfusion.SfCalendar.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms.iOS">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.4.0.15\Xamarin\lib\ios-unified\Syncfusion.SfCalendar.XForms.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.iOS">
       <HintPath>..\..\lib\ios-unified\Syncfusion.SfChart.iOS.dll</HintPath>

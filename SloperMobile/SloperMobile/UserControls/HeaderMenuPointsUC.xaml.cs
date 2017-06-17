@@ -51,6 +51,9 @@ namespace SloperMobile.UserControls
                     case "TICK LIST":
                         await Navigation.PushAsync(new TickListPage());
                         break;
+                    case "CALENDAR":
+                        await Navigation.PushAsync(new CalendarPage());
+                        break;
                 }
             }
             catch (Exception ex)

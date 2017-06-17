@@ -100,9 +100,6 @@ namespace SloperMobile.ViewModel
 
             }
         }
-
-
-
         private string routename;
         public string route_name
         {
@@ -152,9 +149,6 @@ namespace SloperMobile.ViewModel
                 await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
             }
         }
-
-
-
         private void ExecuteOnTabSelection(object obj)
         {
 

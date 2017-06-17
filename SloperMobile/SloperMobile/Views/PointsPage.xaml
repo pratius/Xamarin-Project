@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SloperMobile.Views.PointsPage" xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" Style="{StaticResource AppBackgroundColor}" ControlTemplate="{StaticResource PageTemplateFooter}" Title="Sloper" >
+             x:Class="SloperMobile.Views.PointsPage" 
+             xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" 
+             Style="{StaticResource AppBackgroundColor}" 
+             ControlTemplate="{StaticResource PageTemplateFooter}" 
+             Title="Sloper" >
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
     </ContentPage.Padding>

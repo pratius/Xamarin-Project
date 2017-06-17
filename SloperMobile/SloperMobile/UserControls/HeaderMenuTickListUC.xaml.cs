@@ -48,6 +48,9 @@ namespace SloperMobile.UserControls
                     case "POINTS":
                         await Navigation.PushAsync(new PointsPage());
                         break;
+                    case "CALENDAR":
+                        await Navigation.PushAsync(new CalendarPage());
+                        break;
                 }
             }
             catch (Exception ex)

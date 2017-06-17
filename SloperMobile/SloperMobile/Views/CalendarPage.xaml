@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SloperMobile.Views.CalendarPage"
+             xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+             xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             Style="{StaticResource AppBackgroundColor}" 
+             ControlTemplate="{StaticResource PageTemplateFooter}" 
+             Title="Sloper">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+    </ContentPage.Padding>
+
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="5,0" BackgroundColor="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <UC:HeaderUC HeightRequest="30" />
+
+        <ScrollView Orientation="Horizontal" HeightRequest="40" Grid.Row="1" x:Name="CalendarScrollViewer">
+            <UC:HeaderMenuCalendarUC HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+        </ScrollView>
+
+        <calendar:SfCalendar x:Name="calendar" BackgroundColor="Black" SelectionMode="MultiSelection" 
+                             SelectedDates="{Binding SelectedDates,Mode=TwoWay}" Grid.Row="2" />
+
+    </Grid>
+</ContentPage>

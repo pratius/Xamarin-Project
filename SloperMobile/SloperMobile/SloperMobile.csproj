@@ -74,6 +74,7 @@
     <Compile Include="Model\AscentProcessModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\BucketLegends.cs" />
+    <Compile Include="Model\CalendarModel.cs" />
     <Compile Include="Model\CheckForUpdateModel.cs" />
     <Compile Include="Model\ClimbingDaysModel.cs" />
     <Compile Include="Model\CragDetailModel.cs" />
@@ -118,6 +119,9 @@
     <Compile Include="UserControls\FooterUC.xaml.cs">
       <DependentUpon>FooterUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\HeaderMenuCalendarUC.xaml.cs">
+      <DependentUpon>HeaderMenuCalendarUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\HeaderMenuPointsUC.xaml.cs">
       <DependentUpon>HeaderMenuPointsUC.xaml</DependentUpon>
     </Compile>
@@ -143,6 +147,7 @@
     <Compile Include="ViewModel\AscentProcessViewModel.cs" />
     <Compile Include="ViewModel\AscentSummaryModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\CalendarViewModel.cs" />
     <Compile Include="ViewModel\CheckForUpdatesViewModel.cs" />
     <Compile Include="ViewModel\ClimbingDaysViewModel.cs" />
     <Compile Include="ViewModel\CragDetailsViewModel.cs" />
@@ -168,6 +173,9 @@
     </Compile>
     <Compile Include="Views\AscentSummaryPage.xaml.cs">
       <DependentUpon>AscentSummaryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CalendarPage.xaml.cs">
+      <DependentUpon>CalendarPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CheckForUpdatesPage.xaml.cs">
       <DependentUpon>CheckForUpdatesPage.xaml</DependentUpon>
@@ -363,6 +371,9 @@
     <Reference Include="SQLite.Net, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SQLite.Net-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms">
+      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.4.0.15\Xamarin\lib\pcl\Syncfusion.SfCalendar.XForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.XForms">
       <HintPath>..\..\lib\pcl\Syncfusion.SfChart.XForms.dll</HintPath>
@@ -627,6 +638,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\TickListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CalendarPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\HeaderMenuCalendarUC.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
