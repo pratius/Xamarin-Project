@@ -24,8 +24,20 @@
             <UC:HeaderMenuCalendarUC HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
         </ScrollView>
 
-        <calendar:SfCalendar x:Name="calendar" BackgroundColor="Black" SelectionMode="MultiSelection" 
-                             SelectedDates="{Binding SelectedDates,Mode=TwoWay}" Grid.Row="2" />
+        <StackLayout Grid.Row="2" BackgroundColor="Black">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+
+            <Label Text="{Binding HeaderMonth}" TextColor="White" BackgroundColor="Black" FontSize="25" HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"/>
+            <calendar:SfCalendar x:Name="calendar" BackgroundColor="Black" SelectionMode="MultiSelection" HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                             SelectedDates="{Binding SelectedDates,Mode=TwoWay}" HeaderHeight="0" Grid.Row="1" />
+        </StackLayout>
 
     </Grid>
 </ContentPage>

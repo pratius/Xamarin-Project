@@ -17,6 +17,7 @@ namespace SloperMobile.ViewModel
         #region Constructor
         public CalendarViewModel()
         {
+            HeaderMonth = DateTime.Today.ToString("MMMM yyyy").ToUpper();
             CalendarModel = new CalendarModel();
             OnPagePrepration();
         }
@@ -35,6 +36,13 @@ namespace SloperMobile.ViewModel
         {
             get { return _selectedDates; }
             set { _selectedDates = value; OnPropertyChanged(); }
+        }
+
+        private string _headerMonth;
+        public string HeaderMonth
+        {
+            get { return _headerMonth; }
+            set { _headerMonth = value; OnPropertyChanged(); }
         }
         #endregion
 

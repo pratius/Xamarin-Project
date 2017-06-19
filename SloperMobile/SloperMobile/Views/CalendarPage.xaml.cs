@@ -22,21 +22,26 @@ namespace SloperMobile.Views
 
             MonthLabelSettings labelSettings = new MonthLabelSettings();
             labelSettings.BackgroundColor = Color.Black;
+            labelSettings.VerticalOptions = LayoutAlignment.Center;
+            labelSettings.HorizontalOptions = LayoutAlignment.Center;
 
             MonthViewSettings monthViewSettings = new MonthViewSettings();
             monthViewSettings.BorderColor = Color.Black;
             monthViewSettings.CurrentMonthBackgroundColor = Color.Black;
             monthViewSettings.CurrentMonthTextColor = Color.White;
+            monthViewSettings.DisabledTextColor = Color.Black;
+            monthViewSettings.WeekEndTextColor = Color.White;
             monthViewSettings.PreviousMonthBackgroundColor = Color.Black;
-            monthViewSettings.PreviousMonthTextColor = Color.White;
+            //monthViewSettings.PreviousMonthTextColor = Color.Black;
             monthViewSettings.DayHeaderBackgroundColor = Color.Black;
             monthViewSettings.DayHeaderTextColor = Color.White;
             monthViewSettings.HeaderBackgroundColor = Color.Black;
             monthViewSettings.HeaderTextColor = Color.White;
             monthViewSettings.SelectedDayTextColor = Color.White;
-            monthViewSettings.TodayTextColor = Color.FromHex("#FF8E2D");
+            monthViewSettings.TodayTextColor = Color.White;
 
-            monthViewSettings.MonthLabelSettings = labelSettings;
+
+            //monthViewSettings.MonthLabelSettings = labelSettings;
             calendar.MonthViewSettings = monthViewSettings;
         }
     }
