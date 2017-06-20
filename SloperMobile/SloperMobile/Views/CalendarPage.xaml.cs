@@ -1,4 +1,4 @@
-﻿using SloperMobile.ViewModel;
+﻿﻿using SloperMobile.ViewModel;
 using Syncfusion.SfCalendar.XForms;
 using System;
 using System.Collections.Generic;
@@ -22,8 +22,8 @@ namespace SloperMobile.Views
 
             MonthLabelSettings labelSettings = new MonthLabelSettings();
             labelSettings.BackgroundColor = Color.Black;
-            labelSettings.VerticalOptions = LayoutAlignment.Center;
-            labelSettings.HorizontalOptions = LayoutAlignment.Center;
+//            labelSettings.VerticalOptions = LayoutAlignment.Center;
+//            labelSettings.HorizontalOptions = LayoutAlignment.Center;
 
             MonthViewSettings monthViewSettings = new MonthViewSettings();
             monthViewSettings.BorderColor = Color.Black;
