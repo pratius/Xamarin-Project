@@ -22,8 +22,8 @@ namespace SloperMobile.Views
 
             MonthLabelSettings labelSettings = new MonthLabelSettings();
             labelSettings.BackgroundColor = Color.Black;
-            labelSettings.VerticalOptions = LayoutAlignment.Center;
-            labelSettings.HorizontalOptions = LayoutAlignment.Center;
+            //labelSettings.VerticalOptions = LayoutAlignment.Center;
+            //labelSettings.HorizontalOptions = LayoutAlignment.Center;
 
             MonthViewSettings monthViewSettings = new MonthViewSettings();
             monthViewSettings.BorderColor = Color.Black;
