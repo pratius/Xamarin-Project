@@ -372,9 +372,6 @@
       <HintPath>..\..\packages\SQLite.Net-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.SfCalendar.XForms">
-      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\14.4.0.15\Xamarin\lib\pcl\Syncfusion.SfCalendar.XForms.dll</HintPath>
-    </Reference>
     <Reference Include="Syncfusion.SfChart.XForms">
       <HintPath>..\..\lib\pcl\Syncfusion.SfChart.XForms.dll</HintPath>
     </Reference>
@@ -449,6 +446,9 @@
     </Reference>
     <Reference Include="Acr.UserDialogs.Interface">
       <HintPath>..\..\packages\Acr.UserDialogs.6.4.1\lib\portable-net45+wp8+win8+wpa81\Acr.UserDialogs.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfCalendar.XForms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
