@@ -394,9 +394,11 @@ namespace SloperMobile.Views
                             _pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
                             _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
                             _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
+                           
                             //draw annotation
                             DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1));
                         }
+                        TopoMapRouteVM.AllPoints = _points;
                     }
                     else if (_routeId.ToString() == topoimg[0].drawing[j].id)
                     {
@@ -438,8 +440,8 @@ namespace SloperMobile.Views
                             points _pt = new points();
                             _pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
                             _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
-                            _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
-                            
+                            _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));                           
+
                             //draw annotation
                             DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1));
                             if (Device.OS == TargetPlatform.Android)
@@ -483,6 +485,7 @@ namespace SloperMobile.Views
                                 }
                             }
                         }
+                        TopoMapRouteVM.AllPoints = _points;
                     }
                 }
                 if (Device.OS == TargetPlatform.Android)
@@ -548,9 +551,11 @@ namespace SloperMobile.Views
                             _pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
                             _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
                             _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
+                            
                             //draw annotation
                             DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1));
                         }
+                        TopoMapRouteVM.AllPoints = _points;
                     }
                     else if (_routeId.ToString() == topoimg[0].drawing[j].id)
                     {
@@ -593,7 +598,7 @@ namespace SloperMobile.Views
                             points _pt = new points();
                             _pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
                             _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
-                            _newPoints.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
+                            _newPoints.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));                            
                             //draw annotation
                             DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1));
                         }

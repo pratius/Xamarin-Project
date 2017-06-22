@@ -34,13 +34,12 @@
 				HorizontalOptions="FillAndExpand"
 				MaximumZoomScale="5"
 				MinimumZoomScale="1"
-				Orientation="Both"
+				Orientation="Horizontal"
 				VerticalOptions="FillAndExpand">
                         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                             <views:SKCanvasView	
                         x:Name="skCanvasiOS"
-						HorizontalOptions="FillAndExpand"
-						IgnorePixelScaling="True"
+						HorizontalOptions="FillAndExpand"						
 						PaintSurface="OnPaintSample"
 						VerticalOptions="FillAndExpand"/>
                         </StackLayout>
@@ -52,7 +51,7 @@
 				InputTransparent="True"
 				MaximumZoomScale="5"
 				MinimumZoomScale="1"
-				Orientation="Both"
+				Orientation="Horizontal"
 				VerticalOptions="FillAndExpand">
                         <StackLayout
 					HorizontalOptions="FillAndExpand"
@@ -61,8 +60,7 @@
                             <views:SKCanvasView
 						local:Gesture.Tapped="{Binding CanvasTappedCommand}"
                         x:Name="skCanvasAndroid"
-						HorizontalOptions="FillAndExpand"
-						IgnorePixelScaling="True"
+						HorizontalOptions="FillAndExpand"						
 						PaintSurface="OnPaintSample"
 						VerticalOptions="FillAndExpand">
                                 <views:SKCanvasView.GestureRecognizers>

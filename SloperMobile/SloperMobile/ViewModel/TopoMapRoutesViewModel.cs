@@ -34,6 +34,12 @@ namespace SloperMobile.ViewModel
 
         private bool displayRoutePopupSm;
 
+        private List<Tuple<points, int>> _points = new List<Tuple<points, int>>();
+        public List<Tuple<points, int>> AllPoints
+        {
+            get { return _points; }
+            set { _points = value; OnPropertyChanged(); }
+        }
         public bool DisplayRoutePopupSm
         {
             get { return displayRoutePopupSm; }
