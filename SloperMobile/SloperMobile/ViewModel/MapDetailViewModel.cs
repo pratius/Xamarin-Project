@@ -93,7 +93,7 @@ namespace SloperMobile.ViewModel
                     }
                     routeobj.TitleText = route.route_name;
                     routeobj.SubText = route.route_info;
-                    
+
 
                     routeobj.RouteId = route.route_id;
                     routeobj.Rating = Math.Round(Convert.ToDecimal(route.rating)).ToString();
@@ -137,7 +137,8 @@ namespace SloperMobile.ViewModel
                     routeobj.RouteTechGrade = route.tech_grade;
                     if (j > 4)
                     { j = 0; }
-                    routeobj.RouteGradeColor = GetGradeBucketHex(route.grade_bucket_id);
+                    //routeobj.RouteGradeColor = GetGradeBucketHex(route.grade_bucket_id);
+                    routeobj.RouteGradeColor = App.DAUtil.GetBucketHexColorByGradeBucketId(route.grade_bucket_id) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(route.grade_bucket_id);
                     RoutesData.Add(routeobj);
                     i++;
                     j++;
@@ -156,6 +157,7 @@ namespace SloperMobile.ViewModel
                 //nav.HeightRequest = 30;
                 //await _navigation.PushAsync(nav);
                 await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0"));
+                //await _navigation.PushAsync(new Views.Test(CurrentSector));
             }
             catch (Exception ex)
             {
@@ -163,24 +165,48 @@ namespace SloperMobile.ViewModel
             }
         }
 
-        private string GetGradeBucketHex(string grade_bucket_id)
-        {
-            switch (grade_bucket_id)
-            {
-                case "1":
-                    return "#036177";
-                case "2":
-                    return "#1f8a70";
-                case "3":
-                    return "#91a537";
-                case "4":
-                    return "#b49800";
-                case "5":
-                    return "#fd7400";
-                default:
-                    return "#B9BABD";
-            }
-        }
+        //private string GetGradeBucketHex(string grade_bucket_id)
+        //{
+        //    switch (grade_bucket_id)
+        //    {
+        //        //case "1":
+        //        //    return "#036177";
+        //        //case "2":
+        //        //    return "#1f8a70";
+        //        //case "3":
+        //        //    return "#91a537";
+        //        //case "4":
+        //        //    return "#b49800";
+        //        //case "5":
+        //        //    return "#fd7400";
+        //        //case "6":
+        //        //    return "#fd7400";
+        //        //case "7":
+        //        //    return "#fd7400";
+        //        //case "8":
+        //        //    return "#fd7400";
+        //        //default:
+        //        //    return "#B9BABD";
+        //        case "1":
+        //            return "#FFFF00";
+        //        case "2":
+        //            return "#0000FF";
+        //        case "3":
+        //            return "#800080";
+        //        case "4":
+        //            return "#008000";
+        //        case "5":
+        //            return "#FF0000";
+        //        case "6":
+        //            return "#708090";
+        //        case "7":
+        //            return "#D3D3D3";
+        //        case "8":
+        //            return "#FFA500";
+        //        default:
+        //            return "#B9BABD";
+        //    }
+        //}
 
         private string GetSteepnessResourceName(int steep)
         {

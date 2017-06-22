@@ -17,6 +17,7 @@ namespace SloperMobile.Views
     public partial class AscentProcessPage : CarouselPage
     {
         private string _routeid, staticAnnotationData;
+        public List<Tuple<string, string>> _bucket = new List<Tuple<string, string>>();
         public MapListModel _CurrentSector { get; set; }
         private AscentProcessViewModel AscentProcessVM;
         public AscentProcessPage(string routeid, MapListModel CurrentSector)
@@ -77,11 +78,26 @@ namespace SloperMobile.Views
 
             var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
             if (!IsRouteClicked)
-            {                
-                webView.CallJsFunction("initDrawing", staticAnnotationData, "[" + topoimg + "]", webView.HeightRequest);
+            {
+                _bucket.Clear();
+                if (topoimg != null)
+                {
+                    for (int i = 0; i < topoimgages[0].drawing.Count; i++)
+                    {
+                        if (_routeid == topoimgages[0].drawing[i].id)
+                        {
+                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
+                        }
+                        else
+                        {
+                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
+                        }
+                    }
+                }
+                webView.CallJsFunction("initDrawing", staticAnnotationData, "[" + topoimg + "]", webView.HeightRequest, _bucket);
                 if (Convert.ToInt32(_routeid) > 0)
                 {                   
-                    webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (webView.HeightRequest), Convert.ToInt32(_routeid), false,true);
+                    webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (webView.HeightRequest), Convert.ToInt32(_routeid), false,true, _bucket);
                 }
                 var ratio = webView.HeightRequest / Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.height));
                 var newWidth = Convert.ToInt32((topoimgages[Cache.SelectedTopoIndex].image.width)) * ratio;
@@ -111,7 +127,7 @@ namespace SloperMobile.Views
                         {
                             for (int j = 0; j < topoimgages[i].drawing.Count; j++)
                             {
-                                if (_routeid == topoimgages[i].drawing[j].id)
+                                if (_routeid == topoimgages[i].drawing[j].id && topoimgages[i].drawing[j].line.points.Count > 0)
                                 {
                                     isRouteIdFound = i;
                                     Cache.SelectedTopoIndex = i;
@@ -123,13 +139,24 @@ namespace SloperMobile.Views
                     if (isRouteIdFound != -1)
                     {
                         var topoimg = JsonConvert.SerializeObject(topoimgages[Cache.SelectedTopoIndex]);
-                        var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-                        webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true);
+                        var device = XLabs.Ioc.Resolver.Resolve<IDevice>(); _bucket.Clear();
+                        if (topoimg != null)
+                        {
+                            for (int i = 0; i < topoimgages[0].drawing.Count; i++)
+                            {
+                                if (_routeid == topoimgages[0].drawing[i].id)
+                                {
+                                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimgages[0].drawing[i].gradeBucket), topoimgages[0].drawing[i].gradeBucket));
+                                }
+                            }
+                        }
+                        webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true, _bucket);
                         this.webView.LoadFromContent("HTML/TopoResizeImage.html");
                     }
                     else
                     {
-                        webView.IsVisible = false;                        
+                        webView.IsVisible = false;
+                        _Image.IsVisible = true;                                           
                     }
                 }
                 comment_text.Text = AscentProcessVM.CommentText;
@@ -215,6 +242,7 @@ namespace SloperMobile.Views
                 {
                     UserDialogs.Instance.HideLoading();
                 }
+                else { UserDialogs.Instance.HideLoading(); }
             }
         }
     }

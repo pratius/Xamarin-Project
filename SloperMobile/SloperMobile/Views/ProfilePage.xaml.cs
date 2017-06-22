@@ -15,6 +15,7 @@ namespace SloperMobile.Views
         {
             InitializeComponent();
             BindingContext = new ProfileViewModel();
+            Navigation.PushAsync(new SendsPage("POINTS"));
         }
     }
 }

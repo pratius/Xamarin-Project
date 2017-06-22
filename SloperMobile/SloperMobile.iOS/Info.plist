@@ -18,22 +18,20 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>6.0</string>
+	<string>10.3</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.sloperclimbing.x.test</string>
+	<string>com.sloperclimbing.bullinachinashop</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to the camera to take photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs access to photos.</string>
-	<key>CFBundleName</key>
-	<string>GVC</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
-	<key>XSLaunchImageAssets</key>
-	<string>Assets.xcassets/LaunchImage.launchimage</string>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<string>2.120</string>
+	<key>CFBundleName</key>
+	<string>Bull App</string>
 	<key>CFBundleVersion</key>
-	<string>113</string>
+	<string>120</string>
+	<key>CFBundleDisplayName</key>
+	<string></string>
 </dict>
 </plist>

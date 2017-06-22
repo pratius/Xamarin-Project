@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using UIKit;
+using Xamarin.Forms;
 
 namespace SloperMobile.ViewModel
 {
@@ -14,6 +14,7 @@ namespace SloperMobile.ViewModel
     {
         public event Action<SKPoint> Touched;
         public event Action<UIPinchGestureRecognizer> Pinch;
+        //public event Action<MonoTouch.UIKit.UIPinchGestureRecognizer> AndroidPinch;
 
         public virtual void OnTouch(SKPoint point)
         {
@@ -23,10 +24,15 @@ namespace SloperMobile.ViewModel
         {
             Pinch?.Invoke(recognizer);
         }
+        //public virtual void OnAndroidPinchUpdated(MonoTouch.UIKit.UIPinchGestureRecognizer _recognizer)
+        //{
+        //    AndroidPinch?.Invoke(_recognizer);
+        //}
     }
     public interface ITouchCanvasViewController : IViewController
     {
         void OnTouch(SKPoint point);
         void OnPinchUpdated(UIPinchGestureRecognizer recognizer);
+        //void OnAndroidPinchUpdated(MonoTouch.UIKit.UIPinchGestureRecognizer recognizer);
     }
 }

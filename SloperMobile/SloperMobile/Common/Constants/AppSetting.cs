@@ -8,18 +8,20 @@ namespace SloperMobile.Common.Constants
 {
     public class AppSetting
     {
+        //test
         //API Base URL
-        public const string Base_Url = "http://www.sloperclimbing.com/DesktopModules/";
-        public const string APP_ID = "26";
+        public const string Base_Url = "http://sloper.slicksystems.ca:8080/DesktopModules/";
+        public const string APP_ID = "1";
 
         //HockeyApp
-        public const string HockeyAppId_Droid = "dba8f25f7a6e46fbbb417550aad61431";
-        public const string HockeyAppId_iOS = "091478a6166c454f9e59853563e9ab7e";
+        public const string HockeyAppId_Droid = "c528525a7d654946a5692d82f19a8228";
+        public const string HockeyAppId_iOS = "12da4aa9ca2044228df1cca19fd7675d";
 
         //Company
-        public const string APP_TITLE = "GRAND VALLEY CLIMBING";         public const string APP_COMPANY = "Grand Valley Climbing";         public const string APP_DBNAME = "slopergvcdb.db3";
+        public const string APP_TITLE = "BULL IN A CHINA SHOP";         public const string APP_COMPANY = "Bull in a China Shop";         public const string APP_DBNAME = "sloper" + APP_ID + ".db3";
+        public const string APP_LABEL_DROID = "Bull App";
 
         //Guest DNN Login
-        public const string Guest_UserId = "gvc.anonymous@sloperclimbing.com";         public const string Guest_UserPassword = "s.s2017!";
+        public const string Guest_UserId = "bull.guest@sloperclimbing.com";         public const string Guest_UserPassword = "G'7/[LdYbcC4K^Jr";
     }
 }

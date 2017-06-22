@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Acr.UserDialogs;
+using Newtonsoft.Json;
 using SloperMobile.Common.Constants;
 using SloperMobile.Model;
 using SloperMobile.ViewModel;
@@ -35,8 +36,8 @@ namespace SloperMobile.Views
                 this.Children.Clear();
                 topoSectorViewModel.IsRunningTasks = true;
                 if (Device.RuntimePlatform == Device.Android)
-                {
-                    LoadOnlyForDriodApp();
+                {                    
+                    LoadOnlyForDriodApp();                   
                 }
                 else if (Device.RuntimePlatform == Device.iOS)
                 {

@@ -39,7 +39,7 @@ namespace SloperMobile.Model
         public topoline line { get; set; }
     }
     public class topoline
-    {
+    {        
         public List<topopoints> points { get; set; }
         public List<topopointstext> pointsText { get; set; }
         public topostyle style { get; set; }
@@ -65,7 +65,7 @@ namespace SloperMobile.Model
         public string width { get; set; }
         public string color { get; set; }
         public List<int> dashPattern { get; set; }
-        public string is_dark_checked { get; set; }
+        public string is_dark_checked { get; set; } 
         public toposhadow shadow { get; set; }
     }
     public class toposhadow
