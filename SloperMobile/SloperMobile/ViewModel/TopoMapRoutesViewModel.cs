@@ -13,6 +13,7 @@ using SloperMobile.Common.Constants;
 using XLabs.Platform.Device;
 using SloperMobile.Views;
 using SloperMobile.Common.Helpers;
+using SkiaSharp;
 
 namespace SloperMobile.ViewModel
 {
@@ -170,9 +171,30 @@ namespace SloperMobile.ViewModel
         }
 
         public MapListModel _CurrentSector { get; set; }
+        public string _lstData { get; set; }
 
-        public TopoMapRoutesViewModel(MapListModel CurrentSector, INavigation navigation)
+        public Command<Point> CanvasTappedCommand
         {
+            get
+            {
+                return new Command<Point>((p) => OnCanvasTapped(p));
+            }
+        }
+
+        public void OnCanvasTapped(Point p)
+        {
+            // your event handling logic
+            TopoMapRoutesPage tmrp = new TopoMapRoutesPage(_CurrentSector, _lstData, 0);
+            SKPoint point =
+                new SKPoint((float)(p.X),
+                            (float)(p.Y));
+            tmrp.DiamondClick(point);
+        }
+       
+        public TopoMapRoutesViewModel(MapListModel CurrentSector, INavigation navigation, string lstData)
+        {
+            _lstData = lstData;
+            _CurrentSector = CurrentSector;
             _navigation = navigation;
             TickListCommand = new DelegateCommand(ExecuteOnTickList);
             SendCommand = new DelegateCommand(ExecuteOnSends);
@@ -190,8 +212,7 @@ namespace SloperMobile.ViewModel
             {
             }
         }
-
-
+       
         private async void ExecuteOnTickList(object obj)
         {
             //first check if route already present in db or not

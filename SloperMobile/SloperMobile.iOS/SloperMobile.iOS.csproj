@@ -101,9 +101,10 @@
     <Compile Include="HybridWebViewRenderers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\ZoomableScrollViewRenderer.cs" />
     <Compile Include="Services\iOSCheckUpdatesTaskService.cs" />
     <Compile Include="SwipeableIosImageRenderer.cs" />
-    <Compile Include="TouchEffect.cs" />
+    <Compile Include="TapGestureWithPointEffect.cs" />
     <Compile Include="TouchRecognizer.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />

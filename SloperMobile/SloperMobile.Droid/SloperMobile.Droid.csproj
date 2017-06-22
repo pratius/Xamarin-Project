@@ -295,13 +295,14 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Renderers\GridWithGestureRendedrer.cs" />
+    <Compile Include="Renderers\ZoomableScrollViewRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CheckUpdatesTaskService.cs" />
     <Compile Include="SplashActivity.cs" />
     <Compile Include="SwipeableDroidImageRenderer.cs" />
     <Compile Include="Helpers\Settings.cs" />
-    <Compile Include="TouchEffect.cs" />
+    <Compile Include="TapGestureWithPointEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

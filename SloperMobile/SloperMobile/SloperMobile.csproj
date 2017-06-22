@@ -136,6 +136,7 @@
     <Compile Include="ViewModel\CheckForUpdatesViewModel.cs" />
     <Compile Include="ViewModel\ClimbingDaysViewModel.cs" />
     <Compile Include="ViewModel\FingerPaintPolyline.cs" />
+    <Compile Include="ViewModel\Gesture.cs" />
     <Compile Include="ViewModel\GridWithGesture.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\MapDetailViewModel.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="ViewModel\TouchEffect.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
+    <Compile Include="ViewModel\ZoomableScrollView.cs" />
     <Compile Include="Views\AscentProcessPage.xaml.cs">
       <DependentUpon>AscentProcessPage.xaml</DependentUpon>
     </Compile>

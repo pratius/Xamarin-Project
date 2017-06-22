@@ -58,7 +58,7 @@ namespace SloperMobile.Views
                 topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
                 NavigationPage.SetHasNavigationBar(this, false);
                 Title = CurrentSector.SectorName;
-                TopoMapRouteVM = new ViewModel.TopoMapRoutesViewModel(CurrentSector, Navigation);
+                TopoMapRouteVM = new ViewModel.TopoMapRoutesViewModel(CurrentSector, Navigation, listData);
 
                 BindingContext = TopoMapRouteVM;
                 // load the scenic shot if there are no topos available
@@ -117,13 +117,13 @@ namespace SloperMobile.Views
             if (obj == "0")
             {
                 await Task.Yield();
-                await scrollView.ScrollToAsync(0, 0, false);
+               // await scrollView.ScrollToAsync(0, 0, false);
             }
             else
             {
                 double val = (Convert.ToDouble(obj) + 100);
                 await Task.Yield();
-                await scrollView.ScrollToAsync(val, 0, false);
+               // await scrollView.ScrollToAsync(val, 0, false);
             }
         }
 
@@ -478,7 +478,7 @@ namespace SloperMobile.Views
                                         else if (Convert.ToInt32(newval) > 250)
                                         { newval -= 50; }
                                         //scrollView.ScrollToAsync(topoimg[0].drawing[j].line.points.Count > 0 ? Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio / 6) + 20) : 0, 0, true);
-                                        scrollView.ScrollToAsync(topoimg[0].drawing[j].line.points.Count > 0 ? newval : 0, 0, true);
+                                      ////  scrollView.ScrollToAsync(topoimg[0].drawing[j].line.points.Count > 0 ? newval : 0, 0, true);
                                     }
                                 }
                             }
@@ -487,13 +487,13 @@ namespace SloperMobile.Views
                 }
                 if (Device.OS == TargetPlatform.Android)
                 {
-                    skCanvas.HeightRequest = _height;
-                    skCanvas.WidthRequest = (_width / 4) + 80;
+                    skCanvasAndroid.HeightRequest = _height;
+                    skCanvasAndroid.WidthRequest = (_width / 4) + 80;
                 }
                 else
                 {
-                    skCanvas.HeightRequest = _height;
-                    skCanvas.WidthRequest = (_width / 2) - 2;
+                    skCanvasiOS.HeightRequest = _height;
+                    skCanvasiOS.WidthRequest = (_width / 2) - 2;
                 }
                 path.Close();
             }
@@ -601,13 +601,13 @@ namespace SloperMobile.Views
                 }
                 if (Device.OS == TargetPlatform.Android)
                 {
-                    skCanvas.HeightRequest = _height;
-                    skCanvas.WidthRequest = (_width / 4) + 80;
+                    skCanvasAndroid.HeightRequest = _height;
+                    skCanvasAndroid.WidthRequest = (_width / 4) + 80;
                 }
                 else
                 {
-                    skCanvas.HeightRequest = _height;
-                    skCanvas.WidthRequest = (_width / 2) - 2;
+                    skCanvasiOS.HeightRequest = _height;
+                    skCanvasiOS.WidthRequest = (_width / 2) - 2;
                 }
                 path.Close();
             }
@@ -1404,8 +1404,18 @@ namespace SloperMobile.Views
 
         SKPoint ConvertToPixel(Point pt)
         {
-            return new SKPoint((float)(skCanvas.CanvasSize.Width * pt.X / skCanvas.Width),
-                               (float)(skCanvas.CanvasSize.Height * pt.Y / skCanvas.Height));
+            SKPoint _pt;
+            if (Device.OS == TargetPlatform.Android)
+            {
+                _pt= new  SKPoint((float)(skCanvasAndroid.CanvasSize.Width * pt.X / skCanvasAndroid.Width),
+                               (float)(skCanvasAndroid.CanvasSize.Height * pt.Y / skCanvasAndroid.Height));
+            }
+            else
+            {
+                _pt = new SKPoint((float)(skCanvasiOS.CanvasSize.Width * pt.X / skCanvasiOS.Width),
+                                              (float)(skCanvasiOS.CanvasSize.Height * pt.Y / skCanvasiOS.Height));
+            }
+            return _pt;
         }
         public void DiamondClick(SKPoint point)
         {
@@ -1583,7 +1593,7 @@ namespace SloperMobile.Views
             {
                 if (Device.OS == TargetPlatform.iOS)
                 {
-                    scrollView.ScrollToAsync(0, 0, true);
+                   // scrollView.ScrollToAsync(0, 0, true);
                 }
                 else
                 {
