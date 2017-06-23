@@ -58,7 +58,7 @@ namespace SloperMobile.ViewModel
 
     public class GestureEffect : RoutingEffect
     {
-        public GestureEffect() : base("AvalonSoftware.TapGestureWithPointEffect")
+        public GestureEffect() : base("SloperSoftware.TapGestureWithPointEffect")
         {
         }
     }

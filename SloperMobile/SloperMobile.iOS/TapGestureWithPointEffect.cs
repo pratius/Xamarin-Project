@@ -11,7 +11,7 @@ using Xamarin.Forms.Platform.iOS;
 using System.ComponentModel;
 using SloperMobile.ViewModel;
 
-[assembly: ResolutionGroupName("AvalonSoftware")]
+[assembly: ResolutionGroupName("SloperSoftware")]
 [assembly: ExportEffect(typeof(TapGestureWithPointEffect), "TapGestureWithPointEffect")]
 
 namespace SloperMobile.iOS

@@ -10,7 +10,7 @@ using System.ComponentModel;
 using View = Android.Views.View;
 using SloperMobile.ViewModel;
 
-[assembly: ResolutionGroupName("AvalonSoftware")]
+[assembly: ResolutionGroupName("SloperSoftware")]
 [assembly: ExportEffect(typeof(TapGestureWithPointEffect), "TapGestureWithPointEffect")]
 
 namespace SloperMobile.Droid

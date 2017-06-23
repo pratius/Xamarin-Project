@@ -50,7 +50,6 @@ namespace SloperMobile.Views
             try
             {
                 InitializeComponent();
-               // GridWithGesture.PinchAction += PinchGestureRecognizer_PinchUpdated;
                 _CurrentSector = CurrentSector;
                 listData = _lstData;
                 _routeId = routeId;
@@ -59,7 +58,7 @@ namespace SloperMobile.Views
                 NavigationPage.SetHasNavigationBar(this, false);
                 Title = CurrentSector.SectorName;
                 TopoMapRouteVM = new ViewModel.TopoMapRoutesViewModel(CurrentSector, Navigation, listData);
-
+                TopoMapRouteVM.PointTapped += OnPointTapped;
                 BindingContext = TopoMapRouteVM;
                 // load the scenic shot if there are no topos available
                 if (listData == string.Empty)
@@ -107,6 +106,12 @@ namespace SloperMobile.Views
             TopoMapRouteVM.IsRunningTasks = false;
 
         }
+
+        private void OnPointTapped(Point p)
+        {
+            var skPoint = new SKPoint((float)p.X, (float)p.Y);
+        }
+
         private async void OnPageNavigation(object obj)
         {
             await Navigation.PushAsync(new AscentProcessPage(Convert.ToString(obj), _CurrentSector));
