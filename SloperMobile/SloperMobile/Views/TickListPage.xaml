@@ -27,6 +27,7 @@
         </ScrollView>
 
 
-        <UC:TickListsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" x:Name="Ticklists" Margin="0,-125,0,0"  />
+        <UC:TickListsUC Grid.Column="1" Grid.Row="3" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" 
+                        x:Name="Ticklists" Margin="0,-125,0,0"  />
     </Grid>
 </ContentPage>

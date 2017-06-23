@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SloperMobile.Views.CalendarPage"
              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
-             xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             xmlns:calendarSample="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
              Style="{StaticResource AppBackgroundColor}" 
              ControlTemplate="{StaticResource PageTemplateFooter}" 
              Title="Sloper">
@@ -24,20 +24,20 @@
             <UC:HeaderMenuCalendarUC HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
         </ScrollView>
 
-        <StackLayout Grid.Row="2" BackgroundColor="Black">
+        <StackLayout Grid.Row="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <Label x:Name="CalendarHeader" TextColor="White" BackgroundColor="Black" FontSize="25" 
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                <calendarSample:SfCalendar x:Name="calendar" BackgroundColor="Black" ShowHeader="false" Grid.Row="1"
+                                           ViewMode="MonthView" DataSource="{Binding ShowDates,Mode=TwoWay}"
+                                           OnCalendarTapped="SfCalendar_OnOnCalendarTapped"/>
+
             </Grid>
-
-            <Label Text="{Binding HeaderMonth}" TextColor="White" BackgroundColor="Black" FontSize="25" HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="CenterAndExpand"/>
-            <calendar:SfCalendar x:Name="calendar" BackgroundColor="Black" SelectionMode="MultiSelection" HorizontalOptions="CenterAndExpand"
-                                 VerticalOptions="CenterAndExpand"
-                             SelectedDates="{Binding SelectedDates,Mode=TwoWay}" HeaderHeight="0" Grid.Row="1" />
         </StackLayout>
-
     </Grid>
 </ContentPage>

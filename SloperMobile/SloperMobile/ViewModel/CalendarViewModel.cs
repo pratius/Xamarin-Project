@@ -9,6 +9,8 @@ using Newtonsoft.Json;
 using SloperMobile.Common.Constants;
 using SloperMobile.Common.Helpers;
 using SloperMobile.Model;
+using SloperMobile.Common.Command;
+using Syncfusion.SfCalendar.XForms;
 
 namespace SloperMobile.ViewModel
 {
@@ -20,15 +22,23 @@ namespace SloperMobile.ViewModel
             HeaderMonth = DateTime.Today.ToString("MMMM yyyy").ToUpper();
             CalendarModel = new CalendarModel();
             OnPagePrepration();
+            //GetPointCommand = new DelegateCommand(ExecuteBindingPoints);
         }
         #endregion
 
         #region Properties
+        private CalendarEventCollection _showDates;
+        public CalendarEventCollection ShowDates
+        {
+            get { return _showDates; }
+            set { _showDates = value; OnPropertyChanged("ShowDates"); }
+        }
+
         private CalendarModel _calendarModel;
         public CalendarModel CalendarModel
         {
             get { return _calendarModel; }
-            set { _calendarModel = value;OnPropertyChanged(); }
+            set { _calendarModel = value; OnPropertyChanged(); }
         }
 
         private List<DateTime> _selectedDates;
@@ -46,6 +56,10 @@ namespace SloperMobile.ViewModel
         }
         #endregion
 
+        #region Delegate Commands
+        //public DelegateCommand GetPointCommand { get; set; }
+        #endregion
+
         private async void OnPagePrepration()
         {
             try
@@ -54,7 +68,7 @@ namespace SloperMobile.ViewModel
                 PageSubHeaderText = "Calendar";
                 Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
                 await InvokeServiceGetAscentDates();
-                Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                Acr.UserDialogs.UserDialogs.Instance.Loading().Hide();
             }
             catch (Exception ex)
             {
@@ -71,22 +85,41 @@ namespace SloperMobile.ViewModel
                 CalendarModel.end_date = "20300101";
                 string calendarjson = JsonConvert.SerializeObject(CalendarModel);
                 var response = await apicall.Post<CalendarResponse[]>(calendarjson);
-                List<DateTime> localDates = new List<DateTime>();
-                if(response!=null)
+                //List<CalendarInlineEvent> localDates = new List<CalendarInlineEvent>();
+                CalendarEventCollection Collection = new CalendarEventCollection();
+                if (response != null)
                 {
-                    foreach(var singleDate in response)
+                    CalendarInlineEvent events = new CalendarInlineEvent();
+                    foreach (var singleDate in response)
                     {
-                        DateTime dt = Convert.ToDateTime(singleDate.date_climbed);
-                        localDates.Add(dt);
+                        Collection.Add(new CalendarInlineEvent()
+                        {
+                            StartTime = Convert.ToDateTime(singleDate.date_climbed),
+                            EndTime = Convert.ToDateTime(singleDate.date_climbed)
+                        });
+                        ShowDates = Collection;
+                        //DateTime dt = Convert.ToDateTime(singleDate.date_climbed);
+                        //localDates.Add(dt);
                     }
-                    SelectedDates = localDates;
+                    //SelectedDates = localDates;
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
-                Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                Acr.UserDialogs.UserDialogs.Instance.Loading().Hide();
             }
         }
+        //private void ExecuteBindingPoints(object obj)
+        //{
+        //    try
+        //    {
+        //        string selectedDate = obj as string;
+        //        HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetPoints, AppSetting.APP_ID, selectedDate), Settings.AccessTokenSettings);
+
+        //    }
+        //    catch (Exception ex)
+        //    { }
+        //}
     }
 }

@@ -15,12 +15,15 @@ namespace SloperMobile.UserControls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PointsUC : ContentView
     {
-        public PointsUC()
+        public PointsUC(string date)
         {
             InitializeComponent();
-           
-            
-            HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetUserPoints, AppSetting.APP_ID), Settings.AccessTokenSettings);
+            HttpClientHelper apicall;
+            if (string.IsNullOrWhiteSpace(date))
+                apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetUserPoints, AppSetting.APP_ID), Settings.AccessTokenSettings);
+            else
+                apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetPoints, AppSetting.APP_ID, date), Settings.AccessTokenSettings);
+
             var response = apicall.Get<Model.Point>();
             if (response.Result.Count > 0)
             {
@@ -48,7 +51,7 @@ namespace SloperMobile.UserControls
                     reslist[i] = obj;
                 }
                 BindingContext = new ObservableCollection<ObservableGroupCollection<string, Model.Point>>(reslist);
-                
+
             }
         }
 

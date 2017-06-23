@@ -22,7 +22,8 @@ namespace SloperMobile.Common.Constants
         public const string Url_Isticklist_Route_Present = AppSetting.Base_Url + "SloperPlatform/API/" + AppSetting.API_VERSION + "/TickList/IsRoutePresent?routeId={0}";
         public const string Url_GetGradeBuckets = AppSetting.Base_Url + "SloperPlatform/API/" + AppSetting.API_VERSION + "/M/GetGradesByAppId?appid={0}";
         public const string Url_GetTTechGrades = AppSetting.Base_Url + "SloperPlatform/API/" + AppSetting.API_VERSION + "/M/GetTTechGrades?appid={0}";
-        public const string Url_GetUserPoints = AppSetting.Base_Url + "/SloperPlatform/API/" + AppSetting.API_VERSION + "/M/GetPoints?appid={0}";
-        public const string Url_GetAscentDates = AppSetting.Base_Url + "/SloperPlatform/API/" + AppSetting.API_VERSION + "/M/GetAscentDates";
+        public const string Url_GetUserPoints = AppSetting.Base_Url + "/SloperPlatform/API/" + AppSetting.API_VERSION_Point + "/M/GetPoints?appid={0}";
+        public const string Url_GetAscentDates = AppSetting.Base_Url + "/SloperPlatform/API/" + AppSetting.API_VERSION_Point + "/M/GetAscentDates";
+        public const string Url_GetPoints = AppSetting.Base_Url + "SloperPlatform/API/" + AppSetting.API_VERSION_Point + "/M/GetPoints?appid={0}&date_climb={1}";
     }
 }

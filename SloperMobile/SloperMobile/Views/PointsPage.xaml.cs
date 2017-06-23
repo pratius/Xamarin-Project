@@ -13,11 +13,14 @@ namespace SloperMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PointsPage : ContentPage
     {
-        public PointsPage()
+        public PointsPage(string date)
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 
+            UserControls.PointsUC uc = new UserControls.PointsUC(date);
+            uc.Padding = new Thickness(0, -125, 0, 0);
+            MainGrid.Children.Add(uc, 1, 3);
         }
         protected override void OnAppearing()
         {

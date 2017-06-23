@@ -44,7 +44,7 @@ namespace SloperMobile.UserControls
                         await Navigation.PushAsync(new SendsPage("SENDS"));
                         break;
                     case "POINTS":
-                        await Navigation.PushAsync(new PointsPage());
+                        await Navigation.PushAsync(new PointsPage(String.Empty));
                         break;
                     case "TICK LIST":
                         await Navigation.PushAsync(new TickListPage());

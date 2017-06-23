@@ -592,6 +592,18 @@
       <HintPath>..\..\packages\SQLite.Net-PCL.3.1.1\lib\Xamarin.iOS10\SQLite.Net.Platform.XamarinIOS.Unified.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Syncfusion.SfCalendar.iOS, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfCalendar.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfCalendar.XForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.SfCalendar.XForms.iOS, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfCalendar.XForms.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Syncfusion.SfChart.iOS">
       <HintPath>..\..\lib\ios-unified\Syncfusion.SfChart.iOS.dll</HintPath>
     </Reference>
@@ -705,15 +717,6 @@
     </Reference>
     <Reference Include="Acr.UserDialogs.Interface">
       <HintPath>..\..\packages\Acr.UserDialogs.6.4.1\lib\Xamarin.iOS10\Acr.UserDialogs.Interface.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.iOS">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfCalendar.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.XForms">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfCalendar.XForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.XForms.iOS">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfCalendar.XForms.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -61,7 +61,7 @@ namespace SloperMobile.Views
                     case ApplicationActivity.ProfilePage:
                         // await Navigation.PushAsync(new ProfilePage());
                         // await Navigation.PushAsync(new SendsPage("POINTS"));
-                        await Navigation.PushAsync(new PointsPage());
+                        await Navigation.PushAsync(new PointsPage(String.Empty));
                         break;
                     case ApplicationActivity.PyramidPage:
                         await Navigation.PushAsync(new PyramidPage());

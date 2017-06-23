@@ -27,10 +27,7 @@ namespace SloperMobile.ViewModel
             {
                 PageHeaderText = "PROFILE";
                 PageSubHeaderText = "Points";
-
             }
-
-
             catch (Exception ex)
             {
                 //throw ex;
