@@ -278,3 +278,5 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/**
 # !tools/packages.config
+packages
+/SloperMobile/SloperMobile.Droid/Resources/Resource.Designer.cs
