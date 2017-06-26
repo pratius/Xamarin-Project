@@ -38,8 +38,8 @@ namespace SloperMobile.Views
             monthViewSettings.PreviousMonthTextColor = Color.Black;
             monthViewSettings.DayHeaderBackgroundColor = Color.Black;
             monthViewSettings.DayHeaderTextColor = Color.White;
-            monthViewSettings.DateSelectionColor = Color.Silver;
-            monthViewSettings.SelectedDayTextColor = Color.White;
+            //monthViewSettings.DateSelectionColor = Color.Silver;
+            //monthViewSettings.SelectedDayTextColor = Color.White;
             monthViewSettings.TodayTextColor = Color.White;
 
             calendar.MonthViewSettings = monthViewSettings;
@@ -103,10 +103,7 @@ namespace SloperMobile.Views
                     args.View = lbl;
                 }
                 if (count == 42)
-                {
                     count = 0;
-                }
-
             }
         }
         void HandleMonthChangedEventHandler(object sender, MonthChangedEventArgs args)
