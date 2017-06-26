@@ -70,7 +70,7 @@ namespace SloperMobile.Views
                     if (month.Month == args.Date.Month)
                     {
                         lbl = new Label() { Text = str, FontSize = 15, HorizontalTextAlignment = TextAlignment.Center,
-                            VerticalTextAlignment = TextAlignment.Center, TextColor = Color.White };
+                            VerticalTextAlignment = TextAlignment.Center, TextColor = Color.DarkOrange };
                         //lbl1 = new Label() { Text = "_", FontSize = 40, HorizontalTextAlignment = TextAlignment.Center,
                         //    VerticalTextAlignment = TextAlignment.End, TextColor = Color.White };
                     }

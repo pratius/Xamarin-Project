@@ -22,7 +22,6 @@ namespace SloperMobile.ViewModel
             HeaderMonth = DateTime.Today.ToString("MMMM yyyy").ToUpper();
             CalendarModel = new CalendarModel();
             OnPagePrepration();
-            //GetPointCommand = new DelegateCommand(ExecuteBindingPoints);
         }
         #endregion
 
@@ -56,10 +55,6 @@ namespace SloperMobile.ViewModel
         }
         #endregion
 
-        #region Delegate Commands
-        //public DelegateCommand GetPointCommand { get; set; }
-        #endregion
-
         private async void OnPagePrepration()
         {
             try
@@ -85,7 +80,6 @@ namespace SloperMobile.ViewModel
                 CalendarModel.end_date = "20300101";
                 string calendarjson = JsonConvert.SerializeObject(CalendarModel);
                 var response = await apicall.Post<CalendarResponse[]>(calendarjson);
-                //List<CalendarInlineEvent> localDates = new List<CalendarInlineEvent>();
                 CalendarEventCollection Collection = new CalendarEventCollection();
                 if (response != null)
                 {
@@ -98,10 +92,7 @@ namespace SloperMobile.ViewModel
                             EndTime = Convert.ToDateTime(singleDate.date_climbed)
                         });
                         ShowDates = Collection;
-                        //DateTime dt = Convert.ToDateTime(singleDate.date_climbed);
-                        //localDates.Add(dt);
                     }
-                    //SelectedDates = localDates;
                 }
             }
             catch (Exception ex)
@@ -110,16 +101,5 @@ namespace SloperMobile.ViewModel
                 Acr.UserDialogs.UserDialogs.Instance.Loading().Hide();
             }
         }
-        //private void ExecuteBindingPoints(object obj)
-        //{
-        //    try
-        //    {
-        //        string selectedDate = obj as string;
-        //        HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_GetPoints, AppSetting.APP_ID, selectedDate), Settings.AccessTokenSettings);
-
-        //    }
-        //    catch (Exception ex)
-        //    { }
-        //}
     }
 }
