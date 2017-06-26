@@ -1,4 +1,4 @@
-﻿﻿using SloperMobile.ViewModel;
+﻿using SloperMobile.ViewModel;
 using Syncfusion.SfCalendar.XForms;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace SloperMobile.Views
         int count = 0;
         DateTime month = new DateTime();
         //bool isMonthChanged = true;
-        Label lbl;//,lbl1;
+        Label lbl,lbl1;
         private CalendarViewModel _calendarVM;
         public CalendarPage()
         {
@@ -38,15 +38,17 @@ namespace SloperMobile.Views
             monthViewSettings.PreviousMonthTextColor = Color.Black;
             monthViewSettings.DayHeaderBackgroundColor = Color.Black;
             monthViewSettings.DayHeaderTextColor = Color.White;
-            //monthViewSettings.DateSelectionColor = Color.Silver;
-            //monthViewSettings.SelectedDayTextColor = Color.White;
-            monthViewSettings.TodayTextColor = Color.White;
+            monthViewSettings.DateSelectionColor = Color.Black;
+            monthViewSettings.SelectedDayTextColor = Color.White;
+            monthViewSettings.TodayTextColor = Color.Black;
 
             calendar.MonthViewSettings = monthViewSettings;
         }
         void Cal_OnMonthCellLoaded(object sender, MonthCell args)
         {
-            if (Device.RuntimePlatform == "Android")
+            if (Device.RuntimePlatform == Device.iOS)
+                month = args.Date.AddDays(-21);
+            else if (Device.RuntimePlatform == Device.Android)
             {
                 bool call = false;
                 for (int i = 0; i < calendar.DataSource.Count; i++)
@@ -69,10 +71,19 @@ namespace SloperMobile.Views
                 {
                     if (month.Month == args.Date.Month)
                     {
-                        lbl = new Label() { Text = str, FontSize = 15, HorizontalTextAlignment = TextAlignment.Center,
-                            VerticalTextAlignment = TextAlignment.Center, TextColor = Color.DarkOrange };
-                        //lbl1 = new Label() { Text = "_", FontSize = 40, HorizontalTextAlignment = TextAlignment.Center,
-                        //    VerticalTextAlignment = TextAlignment.End, TextColor = Color.White };
+                        lbl = new Label()
+                        {
+                            Text = str,
+                            FontSize = 15,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.Center,
+                            TextColor = Color.DarkOrange
+                        };
+                        lbl1 = new Label()
+                        {
+                            Text = "_",FontSize = 40,HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.End,TextColor = Color.DarkOrange
+                        };
                     }
                     Grid DynamicGrid = new Grid();
                     DynamicGrid.HorizontalOptions = LayoutOptions.Center;
@@ -87,19 +98,31 @@ namespace SloperMobile.Views
                     DynamicGrid.RowDefinitions.Add(gridRow2);
                     DynamicGrid.RowDefinitions.Add(gridRow3);
                     Grid.SetRow(lbl, 1);
-                    //Grid.SetRow(lbl1, 2);
-                    //DynamicGrid.Children.Add(lbl1);
+                    Grid.SetRow(lbl1, 2);
+                    DynamicGrid.Children.Add(lbl1);
                     DynamicGrid.Children.Add(lbl);
                     args.View = DynamicGrid;
                 }
                 else
                 {
                     if (month.Month == args.Date.Month)
-                        lbl = new Label() { Text = str, FontSize = 15, HorizontalTextAlignment = TextAlignment.Center,
-                            VerticalTextAlignment = TextAlignment.Center, TextColor = Color.White };
+                        lbl = new Label()
+                        {
+                            Text = str,
+                            FontSize = 15,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.Center,
+                            TextColor = Color.White
+                        };
                     else
-                        lbl = new Label() { Text = str, FontSize = 15, HorizontalTextAlignment = TextAlignment.Center,
-                            VerticalTextAlignment = TextAlignment.Center, TextColor = Color.Black };
+                        lbl = new Label()
+                        {
+                            Text = str,
+                            FontSize = 15,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.Center,
+                            TextColor = Color.Black
+                        };
                     args.View = lbl;
                 }
                 if (count == 42)
@@ -114,9 +137,9 @@ namespace SloperMobile.Views
         {
             Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
             CalendarEventCollection events = args.Calendar.DataSource;
-            foreach(var singleEvent in events)
+            foreach (var singleEvent in events)
             {
-                if(args.datetime.ToString("yyyy/MM/dd").Equals(singleEvent.StartTime.ToString("yyyy/MM/dd")))
+                if (args.datetime.ToString("yyyy/MM/dd").Equals(singleEvent.StartTime.ToString("yyyy/MM/dd")))
                 {
                     await Navigation.PushAsync(new PointsPage(args.datetime.ToString("yyyyMMdd")));
                     break;

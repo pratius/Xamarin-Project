@@ -89,7 +89,8 @@ namespace SloperMobile.ViewModel
                         Collection.Add(new CalendarInlineEvent()
                         {
                             StartTime = Convert.ToDateTime(singleDate.date_climbed),
-                            EndTime = Convert.ToDateTime(singleDate.date_climbed)
+                            EndTime = Convert.ToDateTime(singleDate.date_climbed),
+                            Color = Color.DarkOrange
                         });
                         ShowDates = Collection;
                     }
