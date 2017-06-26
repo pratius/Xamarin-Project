@@ -17,7 +17,7 @@ namespace SloperMobile.Views
         int count = 0;
         DateTime month = new DateTime();
         //bool isMonthChanged = true;
-        Label lbl,lbl1;
+        Label lbl;//,lbl1;
         private CalendarViewModel _calendarVM;
         public CalendarPage()
         {
@@ -71,8 +71,8 @@ namespace SloperMobile.Views
                     {
                         lbl = new Label() { Text = str, FontSize = 15, HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center, TextColor = Color.White };
-                        lbl1 = new Label() { Text = "_", FontSize = 40, HorizontalTextAlignment = TextAlignment.Center,
-                            VerticalTextAlignment = TextAlignment.End, TextColor = Color.White };
+                        //lbl1 = new Label() { Text = "_", FontSize = 40, HorizontalTextAlignment = TextAlignment.Center,
+                        //    VerticalTextAlignment = TextAlignment.End, TextColor = Color.White };
                     }
                     Grid DynamicGrid = new Grid();
                     DynamicGrid.HorizontalOptions = LayoutOptions.Center;
@@ -87,8 +87,8 @@ namespace SloperMobile.Views
                     DynamicGrid.RowDefinitions.Add(gridRow2);
                     DynamicGrid.RowDefinitions.Add(gridRow3);
                     Grid.SetRow(lbl, 1);
-                    Grid.SetRow(lbl1, 2);
-                    DynamicGrid.Children.Add(lbl1);
+                    //Grid.SetRow(lbl1, 2);
+                    //DynamicGrid.Children.Add(lbl1);
                     DynamicGrid.Children.Add(lbl);
                     args.View = DynamicGrid;
                 }
