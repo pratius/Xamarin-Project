@@ -18,7 +18,7 @@ namespace SloperMobile.Droid
         double currentScale;
         private SKCanvasView canvas;
         ScrollView svMain, svSub;
-        private StackLayout absoluteLayout;
+        private AbsoluteLayout absoluteLayout;
         private DisplayMetrics displayMetrics;
         private ScaleGestureDetector _scaleDetector;
         private float mScale;
@@ -30,7 +30,7 @@ namespace SloperMobile.Droid
             _scaleDetector = new ScaleGestureDetector(Context, this);
             displayMetrics = Context.Resources.DisplayMetrics;
             svMain = ((ScrollView)e.NewElement);
-            absoluteLayout = svMain.Content as StackLayout;
+            absoluteLayout = svMain.Content as AbsoluteLayout;
             canvas = absoluteLayout.Children.FirstOrDefault() as SKCanvasView;
         }
 

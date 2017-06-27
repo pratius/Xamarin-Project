@@ -34,15 +34,17 @@
 				HorizontalOptions="FillAndExpand"
 				MaximumZoomScale="5"
 				MinimumZoomScale="1"
-				Orientation="Horizontal"
+				Orientation="Both"
 				VerticalOptions="FillAndExpand">
-                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <AbsoluteLayout HorizontalOptions="FillAndExpand">
                             <views:SKCanvasView	
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
                         x:Name="skCanvasiOS"
 						HorizontalOptions="FillAndExpand"						
 						PaintSurface="OnPaintSample"
 						VerticalOptions="FillAndExpand"/>
-                        </StackLayout>
+                        </AbsoluteLayout>
                     </local:ZoomableScrollView>
                 </On>
                 <On Platform="Android">
@@ -51,13 +53,16 @@
 				InputTransparent="True"
 				MaximumZoomScale="5"
 				MinimumZoomScale="1"
-				Orientation="Horizontal"
+				Orientation="Both"
 				VerticalOptions="FillAndExpand">
-                        <StackLayout
+                        <AbsoluteLayout
+                            x:Name="AndroidAbsoluteLayout"
 					HorizontalOptions="FillAndExpand"
-					InputTransparent="True"
-					Orientation="Horizontal">
+					InputTransparent="True">
+
                             <views:SKCanvasView
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                AbsoluteLayout.LayoutFlags="All"
 						local:Gesture.Tapped="{Binding CanvasTappedCommand}"
                         x:Name="skCanvasAndroid"
 						HorizontalOptions="FillAndExpand"						
@@ -67,7 +72,7 @@
                                     <PinchGestureRecognizer PinchUpdated="PinchGestureRecognizer_PinchUpdated" />
                                 </views:SKCanvasView.GestureRecognizers>
                             </views:SKCanvasView>
-                        </StackLayout>
+                        </AbsoluteLayout>
                     </local:ZoomableScrollView>
                 </On>
             </OnPlatform>

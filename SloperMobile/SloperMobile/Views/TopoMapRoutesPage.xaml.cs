@@ -104,12 +104,33 @@ namespace SloperMobile.Views
                 throw ex;
             }
             TopoMapRouteVM.IsRunningTasks = false;
+        private void OnPointTapped(PointWithId point)
+        {
+            var nPooint = ConvertToPixel(new Point(point.X, point.Y));
+            var routeId = _points?.FirstOrDefault(item =>
+            {
+                return ((Math.Round(Convert.ToDouble(item.Item1.X) + 7) >= Math.Round(nPooint.X)
+                        && Math.Round(Convert.ToDouble(item.Item1.X) - 7) <= Math.Round(nPooint.X))
+                        && (Math.Round(Convert.ToDouble(item.Item1.Y) + 5) >= Math.Round(nPooint.Y)
+                        && Math.Round(Convert.ToDouble(item.Item1.Y) - 20) <= Math.Round(nPooint.Y)));
+            })?.Item2;
 
+            if (routeId == null)
+            {
+                return;
+            }
+
+            ShowRoute(routeId);
         }
 
-        private void OnPointTapped(Point p)
+        private void ShowRoute(int? routeId)
         {
-            var skPoint = new SKPoint((float)p.X, (float)p.Y);
+            TopoMapRouteVM.LoadRouteData(routeId, listData);
+            TopoMapRouteVM.DisplayRoutePopupSm = true;
+            var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
+            height = device.Display.Height;
+            newHeight = GetHeight(height);
+            _bucket.Clear();
         }
 
         private async void OnPageNavigation(object obj)
@@ -399,10 +420,11 @@ namespace SloperMobile.Views
                             _pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
                             _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
                             _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
-                           
-                            //draw annotation
-                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1));
+
                         }
+
+                        //draw annotation
+                        DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
                         TopoMapRouteVM.AllPoints = _points;
                     }
                     else if (_routeId.ToString() == topoimg[0].drawing[j].id)
@@ -448,7 +470,7 @@ namespace SloperMobile.Views
                             _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));                           
 
                             //draw annotation
-                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1));
+                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
                             if (Device.OS == TargetPlatform.Android)
                             {                                
                                 if (globalWidth > globalHeight)
@@ -557,9 +579,11 @@ namespace SloperMobile.Views
                             _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
                             _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
                             
-                            //draw annotation
-                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1));
+                            
                         }
+
+                        //draw annotation
+                        DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
                         TopoMapRouteVM.AllPoints = _points;
                     }
                     else if (_routeId.ToString() == topoimg[0].drawing[j].id)
@@ -604,9 +628,11 @@ namespace SloperMobile.Views
                             _pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
                             _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
                             _newPoints.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));                            
-                            //draw annotation
-                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1));
+                            _newPoints.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
                         }
+
+                        //draw annotation
+                        DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
                     }
                 }
                 if (Device.OS == TargetPlatform.Android)
@@ -622,7 +648,7 @@ namespace SloperMobile.Views
                 path.Close();
             }
         }
-        public void DrawAnnotation(topoline topoimg, SKCanvas _skCanvas, float ratio, string gradeBucket, int _routecnt)
+        public void DrawAnnotation(topoline topoimg, SKCanvas _skCanvas, float ratio, string gradeBucket, int _routecnt, long id)
         {
             for (int i = 0; i < topoimg.points.Count; i++)
             {
@@ -633,17 +659,29 @@ namespace SloperMobile.Views
                     if (Device.OS == TargetPlatform.Android)
                     {
                         //draw rect at start point                            
-                        // draw these at specific locations                       
-                        var Rect = SKRect.Create(((float.Parse(topoimg.points[i].x)) * ratio) - 30, ((float.Parse(topoimg.points[i].y)) * ratio) - 40, 60, 60);
+                        // draw these at specific locations        
+                        var boxView = new BoxViewWithId(id);
+                        boxView.Color = Color.Black;
 
-                        using (var paint = new SKPaint())
-                        {
-                            SKColor _color = getGradeBucketHex(gradeBucket);
-                            _skCanvas.DrawRect(Rect, new SKPaint() { Color = _color });
-                            //_skCanvas.Save();
-                            // _skCanvas.RotateDegrees(45);                       
-                            // _skCanvas.Restore();                        
-                        }
+                        var parent = skCanvasAndroid.Parent as AbsoluteLayout;
+                        var existInParent = parent.Children.FirstOrDefault(item => item is BoxViewWithId && (item as BoxViewWithId).PointId == id);
+                      
+                            var x = (((float.Parse(topoimg.points[i].x)) * ratio) - 30) / 3.5;
+                            var y = (((float.Parse(topoimg.points[i].y)) * ratio) - 40) / 3.5;
+                            AbsoluteLayout.SetLayoutBounds(boxView, new Rectangle(x, y, 15, 15));
+                            AbsoluteLayout.SetLayoutFlags(boxView, AbsoluteLayoutFlags.None);
+
+                            var tapGesture = new TapGestureRecognizer();
+                            tapGesture.Tapped += (item, eventArgs) =>
+                            {
+                                var boxViewWithId = item as BoxViewWithId;
+                                ShowRoute((int?)boxViewWithId.PointId);
+                            };
+
+                            boxView.GestureRecognizers.Add(tapGesture);
+                            parent.Children.Add(boxView);
+
+
                         using (var paint = new SKPaint())
                         {
                             paint.TextSize = 30.0f;
@@ -660,16 +698,28 @@ namespace SloperMobile.Views
                     {
                         //draw rect at start point                            
                         // draw these at specific locations                       
-                        var Rect = SKRect.Create(((float.Parse(topoimg.points[i].x)) * ratio) - 15, ((float.Parse(topoimg.points[i].y)) * ratio) - 20, 30, 30);
+                        var boxView = new BoxViewWithId(id);
+                        boxView.Color = Color.Black;
 
-                        using (var paint = new SKPaint())
-                        {
-                            SKColor _color = getGradeBucketHex(gradeBucket);
-                            _skCanvas.DrawRect(Rect, new SKPaint() { Color = _color });
-                            //_skCanvas.Save();
-                            // _skCanvas.RotateDegrees(45);                       
-                            // _skCanvas.Restore();                        
-                        }
+                        var parent = skCanvasiOS.Parent as AbsoluteLayout;
+                        var existInParent = parent.Children.FirstOrDefault(item => item is BoxViewWithId && (item as BoxViewWithId).PointId == id);
+                       
+                            var x = (((float.Parse(topoimg.points[i].x)) * ratio) - 15) / 2;
+                            var y = (((float.Parse(topoimg.points[i].y)) * ratio) - 20) / 2;
+                            AbsoluteLayout.SetLayoutBounds(boxView, new Rectangle(x, y, 15, 15));
+                            AbsoluteLayout.SetLayoutFlags(boxView, AbsoluteLayoutFlags.None);
+
+                            var tapGesture = new TapGestureRecognizer();
+                            tapGesture.Tapped += (item, eventArgs) =>
+                            {
+                                var boxViewWithId = item as BoxViewWithId;
+                                ShowRoute((int?)boxViewWithId.PointId);
+                            };
+
+                            boxView.GestureRecognizers.Add(tapGesture);
+                            parent.Children.Add(boxView);
+                       
+                       
                         using (var paint = new SKPaint())
                         {
                             paint.TextSize = 20.0f;

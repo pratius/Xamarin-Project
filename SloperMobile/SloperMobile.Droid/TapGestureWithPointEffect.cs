@@ -9,6 +9,7 @@ using Android.Util;
 using System.ComponentModel;
 using View = Android.Views.View;
 using SloperMobile.ViewModel;
+using SloperMobile.Model;
 
 [assembly: ResolutionGroupName("SloperSoftware")]
 [assembly: ExportEffect(typeof(TapGestureWithPointEffect), "TapGestureWithPointEffect")]
@@ -20,7 +21,7 @@ namespace SloperMobile.Droid
         private ScaleGestureDetector scaleGestureDetector;
         private GestureDetectorCompat gestureRecognizer;
         private readonly InternalGestureDetector tapDetector;
-        private Command<Point> tapWithPositionCommand;
+        private Command<PointWithId> tapWithPositionCommand;
         private DisplayMetrics displayMetrics;
 
         public TapGestureWithPointEffect()
@@ -44,11 +45,11 @@ namespace SloperMobile.Droid
             };
         }
 
-        private Point PxToDp(Point point)
+        private PointWithId PxToDp(Point point)
         {
             point.X = point.X / displayMetrics.Density;
             point.Y = point.Y / displayMetrics.Density;
-            return point;
+            return new PointWithId(point.X, point.Y, 0);
         }
 
         protected override void OnElementPropertyChanged(PropertyChangedEventArgs args)

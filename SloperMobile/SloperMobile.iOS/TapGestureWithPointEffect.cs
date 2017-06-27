@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using System.ComponentModel;
 using SloperMobile.ViewModel;
+using SloperMobile.Model;
 
 [assembly: ResolutionGroupName("SloperSoftware")]
 [assembly: ExportEffect(typeof(TapGestureWithPointEffect), "TapGestureWithPointEffect")]
@@ -19,15 +20,14 @@ namespace SloperMobile.iOS
     internal class TapGestureWithPointEffect : PlatformEffect
     {
         private readonly UITapGestureRecognizer tapDetector;
-        private Command<Point> tapWithPositionCommand;
+        private Command<PointWithId> tapWithPositionCommand;
 
         public TapGestureWithPointEffect()
         {
             tapDetector = CreateTapRecognizer(() => tapWithPositionCommand);
-            ;
         }
 
-        private UITapGestureRecognizer CreateTapRecognizer(Func<Command<Point>> getCommand)
+        private UITapGestureRecognizer CreateTapRecognizer(Func<Command<PointWithId>> getCommand)
         {
             return new UITapGestureRecognizer(() =>
             {
@@ -36,7 +36,7 @@ namespace SloperMobile.iOS
                 {
                     var control = Control ?? Container;
                     var tapPoint = tapDetector.LocationInView(control);
-                    var point = new Point(tapPoint.X, tapPoint.Y);
+                    var point = new PointWithId(tapPoint.X, tapPoint.Y, 0);
 
                     if (handler.CanExecute(point) == true)
                         handler.Execute(point);

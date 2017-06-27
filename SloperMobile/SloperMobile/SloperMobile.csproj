@@ -51,6 +51,7 @@
     <Compile Include="Common\Interfaces\ISQLite.cs" />
     <Compile Include="Common\NotifyProperties\NotifyPropertiesChanged.cs" />
     <Compile Include="CustomControls\BindablePicker.cs" />
+    <Compile Include="CustomControls\BoxViewWithId.cs" />
     <Compile Include="CustomControls\DoubleExtensions.cs" />
     <Compile Include="CustomControls\GestureFrame.cs" />
     <Compile Include="CustomControls\HybridWebViewCustom.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Model\MapListModel.cs" />
     <Compile Include="Model\MapRouteImageModel.cs" />
     <Compile Include="Model\MasterPageItem.cs" />
+    <Compile Include="Model\PointWithId.cs" />
     <Compile Include="Model\RegistrationReq.cs" />
     <Compile Include="Model\RgistrationResponse.cs" />
     <Compile Include="Model\Send.cs" />

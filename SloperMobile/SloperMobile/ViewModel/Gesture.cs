@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SloperMobile.Model;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace SloperMobile.ViewModel
@@ -10,14 +8,14 @@ namespace SloperMobile.ViewModel
     public static class Gesture
     {
         public static readonly BindableProperty TappedProperty = BindableProperty.CreateAttached("Tapped",
-            typeof(Command<Point>), typeof(Gesture), null, propertyChanged: CommandChanged);
+            typeof(Command<PointWithId>), typeof(Gesture), null, propertyChanged: CommandChanged);
 
-        public static Command<Point> GetCommand(BindableObject view)
+        public static Command<PointWithId> GetCommand(BindableObject view)
         {
-            return (Command<Point>)view.GetValue(TappedProperty);
+            return (Command<PointWithId>)view.GetValue(TappedProperty);
         }
 
-        public static void SetTapped(BindableObject view, Command<Point> value)
+        public static void SetTapped(BindableObject view, Command<PointWithId> value)
         {
             view.SetValue(TappedProperty, value);
         }
