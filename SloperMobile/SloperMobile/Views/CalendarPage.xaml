@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SloperMobile.Views.CalendarPage"
@@ -24,14 +24,13 @@
             <UC:HeaderMenuCalendarUC HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
         </ScrollView>
 
-        <StackLayout Grid.Row="2">
+        <StackLayout Grid.Row="2" VerticalOptions="Center">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label x:Name="CalendarHeader" TextColor="White" BackgroundColor="Black" FontSize="25" 
-                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                <Label x:Name="CalendarHeader" TextColor="White" BackgroundColor="Black" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
 
                 <calendarSample:SfCalendar x:Name="calendar" BackgroundColor="Black" ShowHeader="false" Grid.Row="1"
                                            ViewMode="MonthView" DataSource="{Binding ShowDates,Mode=TwoWay}"

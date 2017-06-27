@@ -35,7 +35,7 @@ namespace SloperMobile.Views
             monthViewSettings.CurrentMonthBackgroundColor = Color.Black;
             monthViewSettings.CurrentMonthTextColor = Color.White;
             monthViewSettings.PreviousMonthBackgroundColor = Color.Black;
-            monthViewSettings.PreviousMonthTextColor = Color.Black;
+            monthViewSettings.PreviousMonthTextColor = Color.FromHex("#191919");
             monthViewSettings.DayHeaderBackgroundColor = Color.Black;
             monthViewSettings.DayHeaderTextColor = Color.White;
             monthViewSettings.DateSelectionColor = Color.Black;
