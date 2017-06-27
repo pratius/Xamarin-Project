@@ -82,7 +82,12 @@ namespace SloperMobile.ViewModel
                 string lastupdate = App.DAUtil.GetLastUpdate();
                 if (string.IsNullOrEmpty(lastupdate))
                 {
-                    lastupdate = "20160101";
+                    lastupdate = "20160101000000";
+                }
+                //if the user has an old version of the app, add HH:mm:ss to the string
+                if (lastupdate.Length == 8)
+                {
+                    lastupdate = lastupdate + "000000";
                 }
                 return lastupdate;
             }
@@ -188,7 +193,7 @@ namespace SloperMobile.ViewModel
 
                 if (Convert.ToInt32(CheckForModelObj.areas_modified) > 0)
                 {
-                    ProgressText = "Loading Areas, please wait...";
+                    ProgressText = "Loading Areas...";
                     AreaObj = await HttpGetAreaUpdates();
                     foreach (T_AREA area in AreaObj)
                     {
@@ -198,7 +203,7 @@ namespace SloperMobile.ViewModel
                 }
                 if (Convert.ToInt32(CheckForModelObj.crags_modified) > 0)
                 {
-                    ProgressText = "Loading Crags, please wait...";
+                    ProgressText = "Loading Crags...";
                     CragObj = await HttpGetCragUpdates();
                     foreach (CragTemplate crag in CragObj)
                     {
@@ -260,7 +265,7 @@ namespace SloperMobile.ViewModel
                             tci.crag_landscape_image = crag.crag_landscape_image;
                             tci.crag_portrait_image = crag.crag_portrait_image;
                             App.DAUtil.SaveTCragImage(tci);
-                        }                        
+                        }
                         App.DAUtil.SaveCrag(tcrag);
                         App.DAUtil.SaveCragSectorMap(tcs_map);
 
@@ -270,7 +275,7 @@ namespace SloperMobile.ViewModel
 
                 if (Convert.ToInt32(CheckForModelObj.sectors_modified) > 0)
                 {
-                    ProgressText = "Loading Sectors, please wait...";
+                    ProgressText = "Loading Sectors...";
                     SectorObj = await HttpGetSectorUpdates();
 
                     foreach (T_SECTOR sector in SectorObj)
@@ -292,7 +297,7 @@ namespace SloperMobile.ViewModel
 
                 if (Convert.ToInt32(CheckForModelObj.routes_modified) > 0)
                 {
-                    ProgressText = "Loading Routes, please wait...";
+                    ProgressText = "Loading Routes...";
                     RouteObj = await HttpGetRouteUpdates();
                     foreach (T_ROUTE route in RouteObj)
                     {
@@ -302,7 +307,7 @@ namespace SloperMobile.ViewModel
                 }
                 //==========================Updating GRADE here =======================
 
-                ProgressText = "Loading Grades, please wait...";
+                ProgressText = "Loading Grades...";
                 App.DAUtil.DropAndCreateTable(typeof(T_GRADE));
                 gradeObj = await HttpGetGradeUpdates();
                 foreach (T_GRADE grade in gradeObj)
@@ -310,8 +315,8 @@ namespace SloperMobile.ViewModel
                     App.DAUtil.SaveGrade(grade);
                 }
                 ProgressValue = "0.8";
-                
-                ProgressText = "Loading Grades Buckets, please wait...";
+
+                ProgressText = "Loading Grades Buckets...";
                 App.DAUtil.DropAndCreateTable(typeof(T_BUCKET));
                 gradebktObj = await HttpGetGradeBuckets();
                 foreach (T_BUCKET gradebkt in gradebktObj)
@@ -321,7 +326,7 @@ namespace SloperMobile.ViewModel
 
                 //================= Added by Ravi on 28-Apr-2017=============
                 ProgressValue = "0.9";
-                ProgressText = "Loading Grades Thoughts, please wait...";
+                ProgressText = "Loading Technical Grades...";
                 ttechgradeObj = await HttpGetTTechGrade();
                 foreach (TTECH_GRADE ttgrade in ttechgradeObj)
                 {
@@ -332,7 +337,7 @@ namespace SloperMobile.ViewModel
                 ProgressValue = "1";
                 //=====================================================================
                 APP_SETTING updated_date = new APP_SETTING();
-                updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
+                updated_date.UPDATED_DATE = CheckForModelObj.updated_date;
                 updated_date.IS_INITIALIZED = true;
                 App.DAUtil.SaveLastUpdate(updated_date);
                 ProgressText = "Finished.";
@@ -341,7 +346,7 @@ namespace SloperMobile.ViewModel
             else
             {
                 APP_SETTING updated_date = new APP_SETTING();
-                updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
+                updated_date.UPDATED_DATE = CheckForModelObj.updated_date;
                 App.DAUtil.SaveLastUpdate(updated_date);
                 ProgressText = "Your app is up to date.";
                 IsRunningTasks = false;

@@ -126,7 +126,7 @@ namespace SloperMobile.Views
                             Cache.IsCragOrDefaultImageCount = 0;
                         }
                     }
-                    _topopageObj = new TopoMapRoutesPage(_CurrentSector, topoimg, _routeId);
+                    _topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId);
                     this.Children.Add(_topopageObj);
                 }
             }

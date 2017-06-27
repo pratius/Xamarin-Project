@@ -12,6 +12,7 @@ namespace SloperMobile.Model
         public string crags_modified { get; set; }
         public string sectors_modified { get; set; }
         public string routes_modified { get; set; }
+        public string updated_date { get; set; }
     }
     public class GetConsensusSectorsDTO
     {

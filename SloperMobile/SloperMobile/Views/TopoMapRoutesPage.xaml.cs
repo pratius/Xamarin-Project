@@ -12,6 +12,7 @@ using SloperMobile.Common.Interfaces;
 using SloperMobile.DataBase;
 using System.Linq;
 using SloperMobile.Common.Helpers;
+using Acr.UserDialogs;
 //using UIKit;
 //using Foundation;
 
@@ -57,7 +58,7 @@ namespace SloperMobile.Views
                     }
                     webView.IsVisible = false;
                     var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                    if (CurrentSector != null && listData == "[]")
+                    if (CurrentSector != null && (listData == "[]" || listData == string.Empty))
                     {
                         if (Cache.IsCragOrDefaultImageCount != 1)
                         {

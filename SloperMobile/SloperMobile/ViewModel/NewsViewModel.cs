@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Acr.UserDialogs;
 
 namespace SloperMobile.ViewModel
 {
@@ -32,6 +33,7 @@ namespace SloperMobile.ViewModel
         #endregion
         public NewsViewModel()
         {
+            UserDialogs.Instance.ShowLoading("Loading...", MaskType.Gradient);
             dbConn = DependencyService.Get<ISQLite>().GetConnection();
             PageHeaderText = "NEWS";
             PageSubHeaderText = "What's New?";
@@ -118,6 +120,9 @@ namespace SloperMobile.ViewModel
             {
                 string strerr = ex.Message;
             }
+
+            UserDialogs.Instance.HideLoading();
+
         }
         private ImageSource LoadCragAndDefaultImage()
         {

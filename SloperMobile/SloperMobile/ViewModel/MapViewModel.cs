@@ -15,6 +15,7 @@ using SloperMobile.Common.Helpers;
 using SloperMobile.Common.Constants;
 using SQLite.Net;
 using SloperMobile.Common.Interfaces;
+using Acr.UserDialogs;
 
 namespace SloperMobile.ViewModel
 {
@@ -26,6 +27,7 @@ namespace SloperMobile.ViewModel
         private T_CRAG currentCrag;
         public MapViewModel(INavigation navigation)
         {
+            UserDialogs.Instance.ShowLoading("Loading...", MaskType.Gradient);
             dbConn = DependencyService.Get<ISQLite>().GetConnection();
             currentCrag = App.DAUtil.GetSelectedCragData();
             _navigation = navigation;
@@ -229,6 +231,8 @@ namespace SloperMobile.ViewModel
             {
                 string strerr = ex.Message;
             }
+
+            UserDialogs.Instance.HideLoading();
         }
 
         private ImageSource LoadCragAndDefaultImage()

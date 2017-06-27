@@ -816,8 +816,9 @@ namespace SloperMobile.ViewModel
                         {
                             Settings.ClimbingDaysSettings = Convert.ToInt32(response.climbingDays);
                         }
+
                         // Run CheckForUpdates
-                        await CheckForUpdatesViewModel.CurrentInstance().OnPageAppearing();
+                        //await CheckForUpdatesViewModel.CurrentInstance().OnPageAppearing();
 
                         CheckForUpdatesViewModel chkModel = new CheckForUpdatesViewModel();
                         // CALL GetConsensusSectors

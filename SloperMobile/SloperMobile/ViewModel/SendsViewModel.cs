@@ -128,17 +128,17 @@ namespace SloperMobile.ViewModel
                 {
                     PageHeaderText = "PROFILE";
                     PageSubHeaderText = "Points";
-                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+//                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
                    // await InvokeServiceGetPointsData();
-                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+//                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
                 else
                 {
                     PageHeaderText = "PROFILE";
                     PageSubHeaderText = "Tick List";
-                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+//                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
                     await InvokeServiceGetTickListData();
-                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+//                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
             }
 

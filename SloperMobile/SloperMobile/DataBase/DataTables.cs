@@ -133,7 +133,6 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string angles
         { get; set; }
-
         public string angles_top_1
         { get; set; }
         public string hold_type_top_1
@@ -433,5 +432,21 @@ namespace SloperMobile.DataBase
         { get; set; }
         public string crag_landscape_image
         { get; set; }
-    }    
+    }
+
+    public class ConsensusSectors
+    {
+        public long sector_id { get; set; }
+        public string top2_steepness { get; set; }
+    }
+
+    public class ConsensusRoutes
+    {
+        public long route_id { get; set; }
+        public decimal average_rating { get; set; }
+        public int top1_climbing_style { get; set; }
+        public int top1_hold_type { get; set; }
+        public int top1_steepness { get; set; }
+        public DateTime date_last_climbed { get; set; }
+    }
 }

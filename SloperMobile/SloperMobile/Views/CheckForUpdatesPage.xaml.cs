@@ -19,6 +19,7 @@ namespace SloperMobile.Views
             checkForUpdateVm = new ViewModel.CheckForUpdatesViewModel();
             BindingContext = checkForUpdateVm;
             CheckUpdatedDataFromLocalDB();
+
             string strLastUpdated = App.DAUtil.GetLastUpdate();
 
             if (strLastUpdated.Length == 8)
