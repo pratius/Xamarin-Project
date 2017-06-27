@@ -27,7 +27,6 @@
             <OnPlatform x:TypeArguments="View">
                 <On Platform="iOS">
                     <local:ZoomableScrollView
-				        local:Gesture.Tapped="{Binding CanvasTappedCommand}"
 				        MaximumZoomScale="5"
 				        MinimumZoomScale="1"
 				        Orientation="Both">
@@ -52,8 +51,7 @@
                                     InputTransparent="True">
                             <views:SKCanvasView 
                                         AbsoluteLayout.LayoutBounds="0,0,1,1" 
-                                        AbsoluteLayout.LayoutFlags="All" 
-                                        local:Gesture.Tapped="{Binding CanvasTappedCommand}" 
+                                        AbsoluteLayout.LayoutFlags="All"
                                         x:Name="skCanvasAndroid" 
                                         PaintSurface="OnPaintSample">
                                 <views:SKCanvasView.GestureRecognizers>

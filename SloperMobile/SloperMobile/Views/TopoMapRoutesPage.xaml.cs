@@ -42,7 +42,10 @@ namespace SloperMobile.Views
         int _routeId = 0, _newRouteId = 0;
         float ratio;
 
-        IDevice device;
+        private readonly IDevice device;
+
+        //Is used to eliminate usage of Canvas. Need to figure out why did canvas is not stoping to draw itself
+        private int hasBeingDrawen;
 
         public TopoMapRoutesPage(MapListModel CurrentSector, string _lstData, int routeId)
         {
@@ -65,10 +68,7 @@ namespace SloperMobile.Views
                 {
                     TopoMapRouteVM.OnConditionNavigation = OnPageNavigation;
                     TopoMapRouteVM.LoadRouteData(routeId, listData);
-                    TopoMapRouteVM.DisplayRoutePopupLg = true;
-
-                    //webView.IsVisible = false;
-                    //                    TopoMapRouteVM.IsHideSwipeUp = false;
+                    TopoMapRouteVM.DisplayRoutePopupLg = true;                   
                     this.BackgroundImage = "scenic_shot_portrait";
                 }
                 // otherwise load the topos
@@ -76,26 +76,6 @@ namespace SloperMobile.Views
                 {
                     TopoMapRouteVM.OnConditionNavigation = OnPageNavigation;
                     TopoMapRouteVM.IsRunningTasks = true;
-                    //this.webView.RegisterCallback("dataCallback", t =>
-                    //Device.BeginInvokeOnMainThread(() =>
-                    //{
-                    //    TopoMapRouteVM.LoadRouteData(t, listData);
-                    //    TopoMapRouteVM.DisplayRoutePopupSm = true;
-                    //    var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-                    //    height = device.Display.Height;
-                    //    newHeight = GetHeight(height); _bucket.Clear();
-                    //    if (topoimg != null)
-                    //    {
-                    //        for (int i = 0; i < topoimg[0].drawing.Count; i++)
-                    //        {
-                    //            if (t == topoimg[0].drawing[i].id)
-                    //            {
-                    //                _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
-                    //            }
-                    //        }
-                    //    }
-                    //    //webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, newHeight, Convert.ToInt32(t), true, false, _bucket);
-                    //}));
                 }
             }
             catch(Exception exception)
@@ -157,12 +137,10 @@ namespace SloperMobile.Views
             }
         }
 
-        private bool hasBeeingDrawen;
-
         private void OnPaintSample(object sender, SKPaintSurfaceEventArgs e)
         {
             _points.Clear();
-            if (topoimg == null)
+            if (topoimg == null || hasBeingDrawen > 3)
             {
                 return;
             }
@@ -171,9 +149,7 @@ namespace SloperMobile.Views
             height = (int)(int.Parse(topoimg[0].image.height) * ratio);
             globalHeight = height;
             globalWidth = double.Parse(topoimg[0].image.width) * ratio;
-            //height = device.Display.Height / device.Display.Scale; //(int)(int.Parse(topoimg[0].image.height) * ratio);
-            //globalHeight = height;
-            //globalWidth = device.Display.Width / device.Display.Scale;//double.Parse(topoimg[0].image.width) * ratio;
+
             try
             {
 
@@ -189,8 +165,6 @@ namespace SloperMobile.Views
                 {
                     byte[] imageBytes = Convert.FromBase64String(strimg64);
                     Stream fileStream = new MemoryStream(imageBytes);
-
-                    // clear the canvas / fill with white
                     AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
                     AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
                     iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
@@ -210,13 +184,13 @@ namespace SloperMobile.Views
                 {
                     DrawLine(canvas, _routeId, ratio, (int)height, (int)globalWidth);
                 }
+
+                hasBeingDrawen++;
             }
             catch
             {
                 throw;
             }
-
-            hasBeeingDrawen = true;
         }
 
         private void Redraw()
@@ -1332,37 +1306,7 @@ namespace SloperMobile.Views
             }
             return _height;
         }
-        protected override void OnAppearing()
-        {
-            try
-            {
-                //this.webView.LoadFinished += OnLoadFinished;
-                //this.webView.LoadFromContent("HTML/TopoResizeImage.html");
-                base.OnAppearing();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        private void OnTouchEffectAction(object sender, TouchActionEventArgs args)
-        {
-            List<long> touchIds = new List<long>();
-            Point pt = args.Location;
-            SKPoint point =
-                new SKPoint((float)(pt.X),
-                            (float)(pt.Y));
-
-            switch (args.Type)
-            {
-                case TouchActionType.Pressed:
-                    DiamondClick(point);
-                    break;
-            }
-        }
-
+      
         SKPoint ConvertToPixel(Point pt)
         {
             SKPoint _pt;
@@ -1377,55 +1321,6 @@ namespace SloperMobile.Views
                                               (float)(skCanvasiOS.CanvasSize.Height * pt.Y / skCanvasiOS.Height));
             }
             return _pt;
-        }
-        public void DiamondClick(SKPoint point)
-        {
-            try
-            {
-                var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-                int height = Convert.ToInt32(GetHeight(device.Display.Height));
-                globalHeight = height;
-                var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
-                if (topoimg != null)
-                {
-                    float ratio = (float)(height) / float.Parse(topoimg[0].image.height);
-
-                    float width = float.Parse(topoimg[0].image.width) * ratio;
-                    globalWidth = width;
-                    if (Device.OS == TargetPlatform.Android)
-                    {
-                        foreach (var item in _points)
-                        {
-                            if ((Math.Round(Convert.ToDouble(item.Item1.X / 3.5) + 7) >= Math.Round(point.X) && Math.Round(Convert.ToDouble(item.Item1.X / 3.5) - 7) <= Math.Round(point.X)) && (Math.Round(Convert.ToDouble(item.Item1.Y / 3.5) + 5) >= Math.Round(point.Y) && Math.Round(Convert.ToDouble(item.Item1.Y / 3.5) - 10) <= Math.Round(point.Y)))
-                            {
-                                TopoMapRouteVM.LoadRouteData(item.Item2, listData);
-                                TopoMapRouteVM.DisplayRoutePopupSm = true;
-                                _routeId = item.Item2;
-                                _newRouteId = item.Item2;
-                                Redraw();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        foreach (var item in _points)
-                        {
-                            if ((Math.Round(Convert.ToDouble(item.Item1.X / 2) + 8) >= Math.Round(point.X) && Math.Round(Convert.ToDouble(item.Item1.X / 2) - 8) <= Math.Round(point.X)) && (Math.Round(Convert.ToDouble(item.Item1.Y / 2) + 4) >= Math.Round(point.Y) && Math.Round(Convert.ToDouble(item.Item1.Y / 2) - 10) <= Math.Round(point.Y)))
-                            {
-                                TopoMapRouteVM.LoadRouteData(item.Item2, listData);
-                                TopoMapRouteVM.DisplayRoutePopupSm = true;
-                                _routeId = item.Item2;
-                                _newRouteId = item.Item2;
-                                Redraw();
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
         }
 
         private void PinchGestureRecognizer_PinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
@@ -1477,52 +1372,6 @@ namespace SloperMobile.Views
             }
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            //webView.LoadFinished -= OnLoadFinished;
-        }
-        private void OnLoadFinished(object sender, EventArgs args)
-        {
-            TopoMapRouteVM.IsRunningTasks = true;
-            staticAnnotationData = "[{\"AnnotationName\": \"Open Text (left)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Open Text (right)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (white)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (black)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Line\",\"AnnotationType\": 0,\"ImageName\":\"sample-line.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Badge\",\"AnnotationType\": 1,\"ImageName\":\"sample-route-badge.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\":\"Belay Point\",\"AnnotationType\": 2,\"ImageName\":\"sample-belay.png\",\"XCentreOffset\": -15,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Left\",\"AnnotationType\": 3,\"ImageName\":\"sample-lower-off-left.png\",\"XCentreOffset\": -22,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Right\",\"AnnotationType\": 4,\"ImageName\":\"sample-lower-off-right.png\",\"XCentreOffset\": -8,\"YCentreOffset\":-15},{\"AnnotationName\": \"Grade Label (left)\",\"AnnotationType\": 5,\"ImageName\":\"sample-grade-label-left.png\",\"XCentreOffset\": -5,\"YCentreOffset\":0},{\"AnnotationName\": \"Grade Label (right)\",\"AnnotationType\": 6,\"ImageName\":\"sample-grade-label-right.png\",\"XCentreOffset\": 5,\"YCentreOffset\":0},{\"AnnotationName\": \"Line Break\",\"AnnotationType\": 7,\"ImageName\":\"sample-route-line-break.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Cross Point\",\"AnnotationType\": 8,\"ImageName\":\"x-mark-32.png\",\"XCentreOffset\": -50,\"YCentreOffset\":-50},{\"AnnotationName\": \"Text Add\",\"AnnotationType\": 9,\"ImageName\":\"tl-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextAdd\",\"AnnotationType\": 10,\"ImageName\":\"tr-icon.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 11,\"ImageName\":\"tlcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 12,\"ImageName\":\"trcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveLeft\",\"AnnotationType\": 13,\"ImageName\":\"move_left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveRight\",\"AnnotationType\": 14,\"ImageName\":\"move_right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"icon-arrow\",\"AnnotationType\": 15,\"ImageName\":\"icon-arrow.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"cross dark black\",\"AnnotationType\": 16,\"ImageName\":\"cross_black.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-left\",\"AnnotationType\": 17,\"ImageName\":\"sample-lower-off-black-left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-right\",\"AnnotationType\": 18,\"ImageName\":\"sample-lower-off-black-right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0}]";
-
-            var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-            height = device.Display.Height;
-            newHeight = GetHeight(height);
-            if (topoimg != null)
-            {
-                for (int i = 0; i < topoimg[0].drawing.Count; i++)
-                {
-                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
-                }
-            }
-          //  webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight, _bucket);
-
-            // if a route was clicked from the list
-            if (_routeId > 0)
-            {
-                TopoMapRouteVM.LoadRouteData(_routeId, listData);
-                //if the route clicked has a topo, display the small popup
-                if (listData != string.Empty)
-                {
-                    TopoMapRouteVM.DisplayRoutePopupSm = true;
-                }
-                _bucket.Clear();
-                if (topoimg != null)
-                {
-                    for (int i = 0; i < topoimg[0].drawing.Count; i++)
-                    {
-                        if (_routeId.ToString() == topoimg[0].drawing[i].id)
-                        {
-                            _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
-                        }
-                    }
-                }
-               // webView.CallJsFunction("initReDrawing", staticAnnotationData, listData, (newHeight), _routeId, true, false, _bucket);
-            }
-            TopoMapRouteVM.IsRunningTasks = false;
-        }
 
         private void OnSwipeTopRoutePopupLg(object sender, EventArgs e)
         {
@@ -1562,7 +1411,7 @@ namespace SloperMobile.Views
                 }
                 // webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight,_bucket);
                 _routeId = 0;
-                Redraw();
+                Redraw(); /*skCanvasAndroid.InvalidateSurface()*///
             }
         }
     }
