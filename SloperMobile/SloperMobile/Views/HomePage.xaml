@@ -47,11 +47,11 @@
     </Grid>
 		
             <Grid  Grid.Row="3" Grid.Column="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-                <!--
-      add this back in once we have somewhere to go 
-      	<Grid.GestureRecognizers>
-              <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="ClimbingDaysPage"/>
-      	</Grid.GestureRecognizers> -->
+
+                <!--add this back in once we have somewhere to go -->
+                <Grid.GestureRecognizers>
+                      <TapGestureRecognizer Tapped="OnClickSend" CommandParameter="CalendarPage"/>
+                </Grid.GestureRecognizers> 
 
 
                 <RelativeLayout>

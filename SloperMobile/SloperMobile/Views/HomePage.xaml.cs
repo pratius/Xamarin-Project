@@ -77,8 +77,8 @@ namespace SloperMobile.Views
                             await Navigation.PushAsync(new NetworkErrorPage());
                             break;
                         }
-                    case ApplicationActivity.ClimbingDaysPage:
-                        await Navigation.PushAsync(new ClimbingDaysPage());
+                    case ApplicationActivity.CalendarPage:
+                        await Navigation.PushAsync(new CalendarPage());
                         //throw new Exception("Exception Raised by Ravi Explicitly !!!!!!");
                         break;
                     case ApplicationActivity.MapPage:
