@@ -2,9 +2,9 @@
 
 namespace SloperMobile.CustomControls
 {
-    public class BoxViewWithId : BoxView
+    public class LabelWithId : Label
     {
-        public BoxViewWithId(long id)
+        public LabelWithId(long id)
         {
             PointId = id;
         }
