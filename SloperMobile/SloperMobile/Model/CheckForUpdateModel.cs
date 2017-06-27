@@ -13,4 +13,15 @@ namespace SloperMobile.Model
         public string sectors_modified { get; set; }
         public string routes_modified { get; set; }
     }
+    public class GetConsensusSectorsDTO
+    {
+        public string app_id { get; set; }
+        public string app_date_last_updated { get; set; }
+    }
+
+    public class GetConsensusRoutesDTO
+    {
+        public string app_id { get; set; }
+        public string app_date_last_updated { get; set; }
+    }
 }

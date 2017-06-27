@@ -12,8 +12,9 @@
 		<Image Grid.Row="0" Source="logo_215w" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center" />
 		<StackLayout Grid.Row="1" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
 			<Label x:Name="txtUpdate" Text="{Binding DisplayUpdateMessage,Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource GeneralLabelStyle}" />
-			<ActivityIndicator x:Name="progressbar" IsVisible="true" IsRunning="{Binding IsRunningTasks}" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White">
-			</ActivityIndicator>
+			<!--<ActivityIndicator x:Name="progressbar" IsVisible="true" IsRunning="{Binding IsRunningTasks}" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White">
+			</ActivityIndicator>-->
 		</StackLayout>
+        <Label x:Name="lblLastUpdated" FontSize="Small" Text="{Binding LastUpdatedMsg, Mode=OneWay}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" TextColor="#ccc" />
 	</Grid>
 </ContentPage>

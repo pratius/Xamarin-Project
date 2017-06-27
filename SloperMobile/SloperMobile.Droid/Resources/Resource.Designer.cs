@@ -3456,11 +3456,11 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f090015
 			public const int abc_text_size_title_material_toolbar = 2131296277;
 			
-			// aapt resource value: 0x7f09009b
-			public const int activity_horizontal_margin = 2131296411;
+			// aapt resource value: 0x7f09009f
+			public const int activity_horizontal_margin = 2131296415;
 			
-			// aapt resource value: 0x7f09009c
-			public const int activity_vertical_margin = 2131296412;
+			// aapt resource value: 0x7f0900a0
+			public const int activity_vertical_margin = 2131296416;
 			
 			// aapt resource value: 0x7f090000
 			public const int calendar_day_headers_paddingbottom = 2131296256;
@@ -3486,11 +3486,11 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f090010
 			public const int cardview_default_radius = 2131296272;
 			
-			// aapt resource value: 0x7f09009d
-			public const int date_text_size = 2131296413;
+			// aapt resource value: 0x7f0900a1
+			public const int date_text_size = 2131296417;
 			
-			// aapt resource value: 0x7f09009e
-			public const int date_text_tab_size = 2131296414;
+			// aapt resource value: 0x7f0900a2
+			public const int date_text_tab_size = 2131296418;
 			
 			// aapt resource value: 0x7f09007b
 			public const int design_appbar_elevation = 2131296379;
@@ -3612,6 +3612,12 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f090060
 			public const int disabled_alpha_material_light = 2131296352;
 			
+			// aapt resource value: 0x7f09009b
+			public const int drag_offset = 2131296411;
+			
+			// aapt resource value: 0x7f09009c
+			public const int fastswipe_offset = 2131296412;
+			
 			// aapt resource value: 0x7f090061
 			public const int highlight_alpha_material_colored = 2131296353;
 			
@@ -3633,6 +3639,9 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f090067
 			public const int hint_pressed_alpha_material_light = 2131296359;
 			
+			// aapt resource value: 0x7f09009d
+			public const int init_offset = 2131296413;
+			
 			// aapt resource value: 0x7f090005
 			public const int item_touch_helper_max_drag_scroll_per_frame = 2131296261;
 			
@@ -3642,17 +3651,17 @@ namespace SloperMobile.Droid
 			// aapt resource value: 0x7f090007
 			public const int item_touch_helper_swipe_escape_velocity = 2131296263;
 			
-			// aapt resource value: 0x7f09009f
-			public const int month_row_size = 2131296415;
+			// aapt resource value: 0x7f0900a3
+			public const int month_row_size = 2131296419;
 			
-			// aapt resource value: 0x7f0900a0
-			public const int month_row_tab_size = 2131296416;
+			// aapt resource value: 0x7f0900a4
+			public const int month_row_tab_size = 2131296420;
 			
-			// aapt resource value: 0x7f0900a1
-			public const int month_text_size = 2131296417;
+			// aapt resource value: 0x7f0900a5
+			public const int month_text_size = 2131296421;
 			
-			// aapt resource value: 0x7f0900a2
-			public const int month_text_tab_size = 2131296418;
+			// aapt resource value: 0x7f0900a6
+			public const int month_text_tab_size = 2131296422;
 			
 			// aapt resource value: 0x7f090008
 			public const int mr_controller_volume_group_list_item_height = 2131296264;
@@ -3722,6 +3731,9 @@ namespace SloperMobile.Droid
 			
 			// aapt resource value: 0x7f09009a
 			public const int pading_top = 2131296410;
+			
+			// aapt resource value: 0x7f09009e
+			public const int slowdrag_offset = 2131296414;
 			
 			static Dimension()
 			{
@@ -6138,121 +6150,124 @@ namespace SloperMobile.Droid
 			public const int hockeyapp_view_feedback_message = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int layout_rating = 2130903095;
+			public const int layout_carousel = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int loading = 2130903096;
+			public const int layout_rating = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int loadingimage = 2130903097;
+			public const int loading = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int loadingprogress = 2130903098;
+			public const int loadingimage = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int month = 2130903099;
+			public const int loadingprogress = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int month_tile = 2130903100;
+			public const int month = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int month_view = 2130903101;
+			public const int month_tile = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int mr_chooser_dialog = 2130903102;
+			public const int month_view = 2130903102;
 			
 			// aapt resource value: 0x7f03003f
-			public const int mr_chooser_list_item = 2130903103;
+			public const int mr_chooser_dialog = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int mr_controller_material_dialog_b = 2130903104;
+			public const int mr_chooser_list_item = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public const int mr_controller_volume_item = 2130903105;
+			public const int mr_controller_material_dialog_b = 2130903105;
 			
 			// aapt resource value: 0x7f030042
-			public const int mr_playback_control = 2130903106;
+			public const int mr_controller_volume_item = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int mr_volume_control = 2130903107;
+			public const int mr_playback_control = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int notification_action = 2130903108;
+			public const int mr_volume_control = 2130903108;
 			
 			// aapt resource value: 0x7f030045
-			public const int notification_action_tombstone = 2130903109;
+			public const int notification_action = 2130903109;
 			
 			// aapt resource value: 0x7f030046
-			public const int notification_media_action = 2130903110;
+			public const int notification_action_tombstone = 2130903110;
 			
 			// aapt resource value: 0x7f030047
-			public const int notification_media_cancel_action = 2130903111;
+			public const int notification_media_action = 2130903111;
 			
 			// aapt resource value: 0x7f030048
-			public const int notification_template_big_media = 2130903112;
+			public const int notification_media_cancel_action = 2130903112;
 			
 			// aapt resource value: 0x7f030049
-			public const int notification_template_big_media_custom = 2130903113;
+			public const int notification_template_big_media = 2130903113;
 			
 			// aapt resource value: 0x7f03004a
-			public const int notification_template_big_media_narrow = 2130903114;
+			public const int notification_template_big_media_custom = 2130903114;
 			
 			// aapt resource value: 0x7f03004b
-			public const int notification_template_big_media_narrow_custom = 2130903115;
+			public const int notification_template_big_media_narrow = 2130903115;
 			
 			// aapt resource value: 0x7f03004c
-			public const int notification_template_custom_big = 2130903116;
+			public const int notification_template_big_media_narrow_custom = 2130903116;
 			
 			// aapt resource value: 0x7f03004d
-			public const int notification_template_icon_group = 2130903117;
+			public const int notification_template_custom_big = 2130903117;
 			
 			// aapt resource value: 0x7f03004e
-			public const int notification_template_lines_media = 2130903118;
+			public const int notification_template_icon_group = 2130903118;
 			
 			// aapt resource value: 0x7f03004f
-			public const int notification_template_media = 2130903119;
+			public const int notification_template_lines_media = 2130903119;
 			
 			// aapt resource value: 0x7f030050
-			public const int notification_template_media_custom = 2130903120;
+			public const int notification_template_media = 2130903120;
 			
 			// aapt resource value: 0x7f030051
-			public const int notification_template_part_chronometer = 2130903121;
+			public const int notification_template_media_custom = 2130903121;
 			
 			// aapt resource value: 0x7f030052
-			public const int notification_template_part_time = 2130903122;
+			public const int notification_template_part_chronometer = 2130903122;
 			
 			// aapt resource value: 0x7f030053
-			public const int range_navigator_layout = 2130903123;
+			public const int notification_template_part_time = 2130903123;
 			
 			// aapt resource value: 0x7f030054
-			public const int schedule_header = 2130903124;
+			public const int range_navigator_layout = 2130903124;
 			
 			// aapt resource value: 0x7f030055
-			public const int schedule_layout = 2130903125;
+			public const int schedule_header = 2130903125;
 			
 			// aapt resource value: 0x7f030056
-			public const int select_dialog_item_material = 2130903126;
+			public const int schedule_layout = 2130903126;
 			
 			// aapt resource value: 0x7f030057
-			public const int select_dialog_multichoice_material = 2130903127;
+			public const int select_dialog_item_material = 2130903127;
 			
 			// aapt resource value: 0x7f030058
-			public const int select_dialog_singlechoice_material = 2130903128;
+			public const int select_dialog_multichoice_material = 2130903128;
 			
 			// aapt resource value: 0x7f030059
-			public const int selection_popup = 2130903129;
+			public const int select_dialog_singlechoice_material = 2130903129;
 			
 			// aapt resource value: 0x7f03005a
-			public const int support_simple_spinner_dropdown_item = 2130903130;
+			public const int selection_popup = 2130903130;
 			
 			// aapt resource value: 0x7f03005b
-			public const int Tabbar = 2130903131;
+			public const int support_simple_spinner_dropdown_item = 2130903131;
 			
 			// aapt resource value: 0x7f03005c
-			public const int Toolbar = 2130903132;
+			public const int Tabbar = 2130903132;
 			
 			// aapt resource value: 0x7f03005d
-			public const int week = 2130903133;
+			public const int Toolbar = 2130903133;
+			
+			// aapt resource value: 0x7f03005e
+			public const int week = 2130903134;
 			
 			static Layout()
 			{
@@ -6365,6 +6380,9 @@ namespace SloperMobile.Droid
 			
 			// aapt resource value: 0x7f07003f
 			public const int abc_toolbar_collapse_description = 2131165247;
+			
+			// aapt resource value: 0x7f07005a
+			public const int app_name = 2131165274;
 			
 			// aapt resource value: 0x7f07004e
 			public const int appbar_scrolling_view_behavior = 2131165262;
@@ -6758,9 +6776,6 @@ namespace SloperMobile.Droid
 			
 			// aapt resource value: 0x7f070040
 			public const int search_menu_title = 2131165248;
-			
-			// aapt resource value: 0x7f07005a
-			public const int sfcalendar_inlineviewnoappointmenttext = 2131165274;
 			
 			// aapt resource value: 0x7f070041
 			public const int status_bar_notification_info_overflow = 2131165249;

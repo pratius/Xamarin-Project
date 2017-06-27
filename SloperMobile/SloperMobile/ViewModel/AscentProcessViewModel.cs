@@ -816,7 +816,41 @@ namespace SloperMobile.ViewModel
                         {
                             Settings.ClimbingDaysSettings = Convert.ToInt32(response.climbingDays);
                         }
+                        // Run CheckForUpdates
                         await CheckForUpdatesViewModel.CurrentInstance().OnPageAppearing();
+
+                        CheckForUpdatesViewModel chkModel = new CheckForUpdatesViewModel();
+                        // CALL GetConsensusSectors
+                        //================= Added by Sandeep on 23-Jun-2017=============                                            
+                        chkModel.consensusSectorsObj = await chkModel.HttpGetConsensusSectors();
+                        foreach (T_SECTOR tsector in chkModel.consensusSectorsObj)
+                        {
+                            T_SECTOR objT_Sector = App.DAUtil.GetSectorDataBySectorID(tsector.sector_id.ToString());
+                            if (objT_Sector != null)
+                            {
+                                objT_Sector.top2_steepness = tsector.top2_steepness;
+                                App.DAUtil.SaveSector(objT_Sector);
+                            }
+                        }
+                        //=====================================================================
+
+                        // CALL GetConsensusRoutes
+                        //================= Added by Sandeep on 23-Jun-2017=============                    
+                        chkModel.consensusRoutesObj = await chkModel.HttpGetConsensusRoutes();
+                        foreach (T_ROUTE troute in chkModel.consensusRoutesObj)
+                        {
+                            T_ROUTE objT_Route = App.DAUtil.GetRouteDataByRouteID(troute.route_id.ToString());
+                            if (objT_Route != null)
+                            {
+                                objT_Route.route_style_top_1 = troute.route_style_top_1;
+                                objT_Route.hold_type_top_1 = troute.hold_type_top_1;
+                                objT_Route.angles_top_1 = troute.angles_top_1;
+                                objT_Route.rating = troute.rating;
+                                App.DAUtil.SaveRoute(objT_Route);
+                            }
+                        }
+                        //=====================================================================
+
                         ProgressMsg = "Ascent saved successfully.";
                         IsRunningTasks = false;
                     }

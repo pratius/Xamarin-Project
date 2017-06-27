@@ -25,5 +25,7 @@ namespace SloperMobile.Common.Constants
         public const string Url_GetUserPoints = AppSetting.Base_Url + "/SloperPlatform/API/" + AppSetting.API_VERSION_Point + "/M/GetPoints?appid={0}";
         public const string Url_GetAscentDates = AppSetting.Base_Url + "/SloperPlatform/API/" + AppSetting.API_VERSION_Point + "/M/GetAscentDates";
         public const string Url_GetPoints = AppSetting.Base_Url + "SloperPlatform/API/" + AppSetting.API_VERSION_Point + "/M/GetPoints?appid={0}&date_climb={1}";
+        public const string Url_GetConsensusSectors = AppSetting.Base_Url + "SloperPlatform/API/" + AppSetting.API_VERSION + "/M/GetConsensusSectors";
+        public const string Url_GetConsensusRoutes = AppSetting.Base_Url + "SloperPlatform/API/" + AppSetting.API_VERSION + "/M/GetConsensusRoutes";
     }
 }

@@ -69,13 +69,20 @@ namespace SloperMobile.Views
                                     var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(_item.topo_json);
                                     if (!string.IsNullOrEmpty(topoimg[0].image.data))
                                     {
-                                        string string64 = topoimg[0].image.data.Split(',')[1];
-                                        if (!string.IsNullOrEmpty(string64))
+                                        if (topoimg[0].image.name == "No_Image.jpg")
                                         {
-                                            byte[] imageBytes = Convert.FromBase64String(string64);
-                                            _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                                            Cache.GlobalBase64String = _Image.Source;
-                                            _Image.IsVisible = true;
+                                            LoadCragAndDefaultImage();
+                                        }
+                                        else
+                                        {
+                                            string string64 = topoimg[0].image.data.Split(',')[1];
+                                            if (!string.IsNullOrEmpty(string64))
+                                            {
+                                                byte[] imageBytes = Convert.FromBase64String(string64);
+                                                _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                                Cache.GlobalBase64String = _Image.Source;
+                                                _Image.IsVisible = true;
+                                            }
                                         }
                                     }
                                 }                                                       

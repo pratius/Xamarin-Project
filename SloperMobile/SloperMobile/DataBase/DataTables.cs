@@ -152,6 +152,8 @@ namespace SloperMobile.DataBase
         { get; set; }
         public DateTime route_set_date
         { get; set; }
+        public string date_last_climbed
+        { get; set; }
     }
 
     public class T_SECTOR
@@ -208,6 +210,8 @@ namespace SloperMobile.DataBase
         public string angles
         { get; set; }
         public string angles_top_2
+        { get; set; }
+        public string top2_steepness
         { get; set; }
     }
 
