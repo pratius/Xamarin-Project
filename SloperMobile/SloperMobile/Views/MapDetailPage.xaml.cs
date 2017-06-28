@@ -29,7 +29,7 @@ namespace SloperMobile.Views
             try
             {
                 var dataItem = e.Item as RouteData;
-                Navigation.PushAsync(new TopoSectorPage(_CurrentSector, dataItem.RouteId));
+                Navigation.PushAsync(new TopoSectorPage(_CurrentSector, dataItem.RouteId, Convert.ToInt32(dataItem.RouteIndex),null));
             }
             catch (Exception ex)
             {
