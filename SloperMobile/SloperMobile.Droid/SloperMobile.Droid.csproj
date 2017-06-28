@@ -740,7 +740,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_2_crimps_border_20x20.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_2_crimps_border_54x54.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_2_crimps_border_80x80.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_2_crimps_text_41x68.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_4_jugs_border_100x100.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_4_jugs_border_20x20.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_4_jugs_border_54x54.png" />
@@ -812,7 +811,6 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_2_crimps_border_20x20.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_2_crimps_border_54x54.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_2_crimps_border_80x80.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_2_crimps_text_41x68.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_4_jugs_border_100x100.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_4_jugs_border_20x20.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_4_jugs_border_54x54.png" />
@@ -1139,6 +1137,8 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_32_jams_text_57x86.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_4_jugs_text_41x68.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_4_jugs_text_41x68.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_2_crimps_text_41x68.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_2_crimps_text_41x68.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">
