@@ -4,8 +4,8 @@
             x:Class="SloperMobile.Views.CalendarPage"
             xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
             xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+            Style="{StaticResource AppBackgroundColor}" 
             ControlTemplate="{StaticResource PageTemplateFooter}"
-            BackgroundColor="Black"
             Title="Sloper">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
@@ -20,14 +20,17 @@
         <ScrollView Orientation="Horizontal" HeightRequest="40" Grid.Row="1" x:Name="CalendarScrollViewer">
             <UC:HeaderMenuCalendarUC HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
         </ScrollView>
-        <StackLayout Grid.Row="2" VerticalOptions="Center">
+        <StackLayout Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Label x:Name="CalendarHeader" TextColor="White" BackgroundColor="Black" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
-                <calendar:SfCalendar x:Name="calendar" ShowHeader="false" Grid.Row="1" ViewMode="MonthView" DataSource="{Binding ShowDates,Mode=TwoWay}" ShowInlineEvents="False" OnCalendarTapped="SfCalendar_OnOnCalendarTapped" />
+                <Label x:Name="CalendarHeader" TextColor="White" BackgroundColor="Black" FontSize="Large" 
+                       HorizontalOptions="Center" VerticalOptions="Center" />
+                <calendar:SfCalendar x:Name="calendar" ShowHeader="false" Grid.Row="1" ViewMode="MonthView" 
+                                     DataSource="{Binding ShowDates,Mode=TwoWay}" ShowInlineEvents="False" 
+                                     OnCalendarTapped="SfCalendar_OnOnCalendarTapped" />
             </Grid>
         </StackLayout>
     </Grid>
