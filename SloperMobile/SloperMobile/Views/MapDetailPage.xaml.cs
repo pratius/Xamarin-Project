@@ -22,7 +22,7 @@ namespace SloperMobile.Views
             NavigationPage.SetHasNavigationBar(this, false);
             SectorDetailVM = new ViewModel.MapDetailViewModel(SelectedSector,Navigation);
             BindingContext = SectorDetailVM;
-            lstView.ItemTapped += this.OnItemTapped;
+            lstView.ItemTapped += this.OnItemTapped;            
         }
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -35,6 +35,12 @@ namespace SloperMobile.Views
             {
                 var error = ex.Message;
             }
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var data = SectorDetailVM;
+
         }
     }
     
