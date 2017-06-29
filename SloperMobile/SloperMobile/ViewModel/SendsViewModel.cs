@@ -120,7 +120,7 @@ namespace SloperMobile.ViewModel
                 {
                     PageHeaderText = "PROFILE";
                     PageSubHeaderText = "Sends";
-                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...",Acr.UserDialogs.MaskType.Black);
                     await InvokeServiceGetAscentData();
                     Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }

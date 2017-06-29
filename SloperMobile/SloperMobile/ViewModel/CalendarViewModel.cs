@@ -59,10 +59,13 @@ namespace SloperMobile.ViewModel
         {
             try
             {
+                Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...", Acr.UserDialogs.MaskType.Black);
+
                 PageHeaderText = "PROFILE";
                 PageSubHeaderText = "Calendar";
-                Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+
                 await InvokeServiceGetAscentDates();
+
                 Acr.UserDialogs.UserDialogs.Instance.Loading().Hide();
             }
             catch (Exception ex)

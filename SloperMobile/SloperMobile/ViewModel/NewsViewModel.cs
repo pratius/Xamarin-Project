@@ -33,7 +33,7 @@ namespace SloperMobile.ViewModel
         #endregion
         public NewsViewModel()
         {
-            UserDialogs.Instance.ShowLoading("Loading...", MaskType.Gradient);
+            UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
             dbConn = DependencyService.Get<ISQLite>().GetConnection();
             PageHeaderText = "NEWS";
             PageSubHeaderText = "What's New?";

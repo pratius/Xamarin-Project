@@ -27,7 +27,7 @@ namespace SloperMobile.ViewModel
         private T_CRAG currentCrag;
         public MapViewModel(INavigation navigation)
         {
-            UserDialogs.Instance.ShowLoading("Loading...", MaskType.Gradient);
+            UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
             dbConn = DependencyService.Get<ISQLite>().GetConnection();
             currentCrag = App.DAUtil.GetSelectedCragData();
             _navigation = navigation;

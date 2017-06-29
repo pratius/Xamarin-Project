@@ -123,7 +123,7 @@ namespace SloperMobile.ViewModel
 
                 PageHeaderText = "PROFILE";
                 PageSubHeaderText = "Tick List";
-                Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+                Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...",Acr.UserDialogs.MaskType.Black);
                 await InvokeServiceGetTickListData();
                 Acr.UserDialogs.UserDialogs.Instance.HideLoading();
 

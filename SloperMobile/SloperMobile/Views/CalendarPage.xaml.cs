@@ -14,13 +14,13 @@ namespace SloperMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CalendarPage : ContentPage
     {
-        int count = 0;
+        int i = 0;
         DateTime month = new DateTime();
-        //bool isMonthChanged = true;
-        Label lbl,lbl1;
+        Label lblDateText, lblAppointment;
         private CalendarViewModel _calendarVM;
         public CalendarPage()
         {
+            //Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             _calendarVM = new CalendarViewModel();
@@ -31,7 +31,9 @@ namespace SloperMobile.Views
             calendar.OnMonthCellLoaded += Cal_OnMonthCellLoaded;
 
             MonthViewSettings monthViewSettings = new MonthViewSettings();
+
             monthViewSettings.BorderColor = Color.Black;
+            monthViewSettings.TodayTextColor = Color.DarkOrange;
             monthViewSettings.CurrentMonthBackgroundColor = Color.Black;
             monthViewSettings.CurrentMonthTextColor = Color.White;
             monthViewSettings.PreviousMonthBackgroundColor = Color.Black;
@@ -40,9 +42,10 @@ namespace SloperMobile.Views
             monthViewSettings.DayHeaderTextColor = Color.White;
             monthViewSettings.DateSelectionColor = Color.Black;
             monthViewSettings.SelectedDayTextColor = Color.White;
-            monthViewSettings.TodayTextColor = Color.Black;
 
             calendar.MonthViewSettings = monthViewSettings;
+
+            //Acr.UserDialogs.UserDialogs.Instance.Loading().Hide();
         }
         void Cal_OnMonthCellLoaded(object sender, MonthCell args)
         {
@@ -61,52 +64,43 @@ namespace SloperMobile.Views
                         call = true;
                     }
                 }
-                count++;
+                i++;
                 string str = args.Date.ToString("dd");
-                if (count == 1)
-                {
+                if (i == 1)
                     month = args.Date.AddDays(21);
-                }
                 if (call)
                 {
                     if (month.Month == args.Date.Month)
                     {
-                        lbl = new Label()
+                        lblDateText = new Label()
                         {
                             Text = str,
                             FontSize = 15,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
-                            TextColor = Color.DarkOrange
+                            TextColor = Color.White,
+                            Margin = new Thickness(0, 20, 0, 0)
                         };
-                        lbl1 = new Label()
+                        lblAppointment = new Label()
                         {
-                            Text = "_",FontSize = 40,HorizontalTextAlignment = TextAlignment.Center,
-                            VerticalTextAlignment = TextAlignment.End,TextColor = Color.DarkOrange
+                            Text = "_",
+                            FontSize = 40,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.End,
+                            TextColor = Color.DarkOrange,
                         };
                     }
                     Grid DynamicGrid = new Grid();
-                    DynamicGrid.HorizontalOptions = LayoutOptions.Center;
-                    DynamicGrid.VerticalOptions = LayoutOptions.Center;
-                    RowDefinition gridRow1 = new RowDefinition();
-                    gridRow1.Height = new GridLength(29);
-                    RowDefinition gridRow2 = new RowDefinition();
-                    gridRow2.Height = new GridLength(20);
-                    RowDefinition gridRow3 = new RowDefinition();
-                    gridRow3.Height = new GridLength(20);
-                    DynamicGrid.RowDefinitions.Add(gridRow1);
-                    DynamicGrid.RowDefinitions.Add(gridRow2);
-                    DynamicGrid.RowDefinitions.Add(gridRow3);
-                    Grid.SetRow(lbl, 1);
-                    Grid.SetRow(lbl1, 2);
-                    DynamicGrid.Children.Add(lbl1);
-                    DynamicGrid.Children.Add(lbl);
+                    DynamicGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+                    DynamicGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(0.3, GridUnitType.Star) });
+                    DynamicGrid.Children.Add(lblDateText, 0, 0);
+                    DynamicGrid.Children.Add(lblAppointment, 0, 1);
                     args.View = DynamicGrid;
                 }
                 else
                 {
                     if (month.Month == args.Date.Month)
-                        lbl = new Label()
+                        lblDateText = new Label()
                         {
                             Text = str,
                             FontSize = 15,
@@ -115,19 +109,20 @@ namespace SloperMobile.Views
                             TextColor = Color.White
                         };
                     else
-                        lbl = new Label()
+                        lblDateText = new Label()
                         {
                             Text = str,
                             FontSize = 15,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
-                            TextColor = Color.Black
+                            TextColor = Color.FromHex("191919")
                         };
-                    args.View = lbl;
+                    args.View = lblDateText;
                 }
-                if (count == 42)
-                    count = 0;
+                if (i == 42)
+                    i = 0;
             }
+
         }
         void HandleMonthChangedEventHandler(object sender, MonthChangedEventArgs args)
         {
@@ -135,17 +130,19 @@ namespace SloperMobile.Views
         }
         private async void SfCalendar_OnOnCalendarTapped(object sender, CalendarTappedEventArgs args)
         {
-            Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+            //Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
             CalendarEventCollection events = args.Calendar.DataSource;
-            foreach (var singleEvent in events)
-            {
-                if (args.datetime.ToString("yyyy/MM/dd").Equals(singleEvent.StartTime.ToString("yyyy/MM/dd")))
+            if (events != null){
+                foreach (var singleEvent in events)
                 {
-                    await Navigation.PushAsync(new PointsPage(args.datetime.ToString("yyyyMMdd")));
-                    break;
-                }
+                    if (args.datetime.ToString("yyyy/MM/dd").Equals(singleEvent.StartTime.ToString("yyyy/MM/dd")))
+                    {
+                        await Navigation.PushAsync(new PointsPage(args.datetime.ToString("yyyyMMdd")));
+                        break;
+                    }
+                }    
             }
-            Acr.UserDialogs.UserDialogs.Instance.Loading().Hide();
+            //Acr.UserDialogs.UserDialogs.Instance.Loading().Hide();
         }
     }
 }

@@ -128,7 +128,7 @@ namespace SloperMobile.ViewModel
                 CheckForModelObj = await HttpGetCheckForUpdates();
                 if (CheckForModelObj != null && Convert.ToInt32(CheckForModelObj.areas_modified) + Convert.ToInt32(CheckForModelObj.crags_modified) + Convert.ToInt32(CheckForModelObj.routes_modified) + Convert.ToInt32(CheckForModelObj.sectors_modified) > 0)
                 {
-                    UserDialogs.Instance.ShowLoading("Updates Found!", MaskType.Gradient);
+                    UserDialogs.Instance.ShowLoading("Updates Found!", MaskType.Black);
 
                     //DisplayUpdateMessage = "Updates are available, downloading now.\n\nplease wait...";
 

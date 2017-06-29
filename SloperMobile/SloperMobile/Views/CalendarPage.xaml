@@ -1,41 +1,33 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SloperMobile.Views.CalendarPage"
-             xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
-             xmlns:calendarSample="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
-             Style="{StaticResource AppBackgroundColor}" 
-             ControlTemplate="{StaticResource PageTemplateFooter}" 
-             Title="Sloper">
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="SloperMobile.Views.CalendarPage"
+            xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+            xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+            ControlTemplate="{StaticResource PageTemplateFooter}"
+            BackgroundColor="Black"
+            Title="Sloper">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
     </ContentPage.Padding>
-
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="5,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
         <UC:HeaderUC HeightRequest="30" />
-
         <ScrollView Orientation="Horizontal" HeightRequest="40" Grid.Row="1" x:Name="CalendarScrollViewer">
             <UC:HeaderMenuCalendarUC HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
         </ScrollView>
-
         <StackLayout Grid.Row="2" VerticalOptions="Center">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Label x:Name="CalendarHeader" TextColor="White" BackgroundColor="Black" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
-
-                <calendarSample:SfCalendar x:Name="calendar" BackgroundColor="Black" ShowHeader="false" Grid.Row="1"
-                                           ViewMode="MonthView" DataSource="{Binding ShowDates,Mode=TwoWay}"
-                                           OnCalendarTapped="SfCalendar_OnOnCalendarTapped"/>
-
+                <Label x:Name="CalendarHeader" TextColor="White" BackgroundColor="Black" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
+                <calendar:SfCalendar x:Name="calendar" ShowHeader="false" Grid.Row="1" ViewMode="MonthView" DataSource="{Binding ShowDates,Mode=TwoWay}" ShowInlineEvents="False" OnCalendarTapped="SfCalendar_OnOnCalendarTapped" />
             </Grid>
         </StackLayout>
     </Grid>
