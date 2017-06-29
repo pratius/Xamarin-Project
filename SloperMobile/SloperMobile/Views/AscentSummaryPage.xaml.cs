@@ -406,7 +406,7 @@ namespace SloperMobile.Views
                 }
                 if (topoimg != "")
                 {
-                    webView.CallJsFunction("initDrawing", staticAnnotationData, "[" + topoimg + "]", webView.HeightRequest, _bucket);
+                    webView.CallJsFunction("initDrawing", staticAnnotationData, "[" + topoimg + "]", webView.HeightRequest, _bucket,0,"");
                 }
 
                 if (Convert.ToInt32(_routeid) > 0)

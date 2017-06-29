@@ -100,7 +100,7 @@ namespace SloperMobile.ViewModel
                     RouteId _rId = new RouteId();
                      _rId.routeId = route.route_id == null ? Convert.ToInt32(0) : Convert.ToInt32(route.route_id);
                     _routelist.Add(_rId);
-                    routeobj.TitleText = Truncate((route.route_name), 20);                                        
+                    routeobj.TitleText = route.route_name;// Truncate((route.route_name), 20);                                        
                     routeobj.SubText = route.route_info;
 
 
