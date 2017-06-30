@@ -20,7 +20,7 @@
         <ScrollView Orientation="Horizontal" HeightRequest="40" Grid.Row="1" x:Name="CalendarScrollViewer">
             <UC:HeaderMenuCalendarUC HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
         </ScrollView>
-        <StackLayout Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <StackLayout Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Fill">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />

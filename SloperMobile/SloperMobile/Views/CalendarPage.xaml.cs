@@ -40,7 +40,7 @@ namespace SloperMobile.Views
             monthViewSettings.DayHeaderBackgroundColor = Color.Black;
             monthViewSettings.DayHeaderTextColor = Color.White;
             monthViewSettings.DateSelectionColor = Color.Black;
-            monthViewSettings.TodayTextColor = Color.Black;
+            monthViewSettings.TodayTextColor = Color.FromHex("#FF8E2D");
             monthViewSettings.SelectedDayTextColor = Color.White;
 
             calendar.MonthViewSettings = monthViewSettings;
