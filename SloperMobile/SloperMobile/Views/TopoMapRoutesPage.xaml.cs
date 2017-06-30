@@ -41,6 +41,7 @@ namespace SloperMobile.Views
         Double height, newHeight, globalHeight, globalWidth;
         int _routeId = 0, _newRouteId = 0;
         float ratio;
+        int diamondsCount;
 
         private readonly IDevice device;
 
@@ -77,6 +78,19 @@ namespace SloperMobile.Views
                     TopoMapRouteVM.OnConditionNavigation = OnPageNavigation;
                     TopoMapRouteVM.IsRunningTasks = true;
                 }
+
+                var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
+                height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                ratio = (float)height / float.Parse(topoimg[0].image.height);
+                globalHeight = height;
+                globalWidth = double.Parse(topoimg[0].image.width) * ratio;
+
+                AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+                iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+
             }
             catch(Exception exception)
             {
@@ -136,24 +150,17 @@ namespace SloperMobile.Views
                // await scrollView.ScrollToAsync(val, 0, false);
             }
         }
+        
 
         private void OnPaintSample(object sender, SKPaintSurfaceEventArgs e)
         {
             _points.Clear();
-            if (topoimg == null || hasBeingDrawen > 3)
-            {
-                return;
-            }
-
-            ratio = (device.Display.Height) / float.Parse(topoimg[0].image.height);
-            height = (int)(int.Parse(topoimg[0].image.height) * ratio);
-            globalHeight = height;
-            globalWidth = double.Parse(topoimg[0].image.width) * ratio;
 
             try
             {
 
                 var canvas = e.Surface.Canvas;
+                canvas.Clear();
                 if (string.IsNullOrEmpty(topoimg[0].image.data))
                 {
                     return;
@@ -164,25 +171,66 @@ namespace SloperMobile.Views
                 if (!string.IsNullOrEmpty(strimg64))
                 {
                     byte[] imageBytes = Convert.FromBase64String(strimg64);
-                    Stream fileStream = new MemoryStream(imageBytes);
-                    AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
-                    AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
-                    iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
-                    iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
-
-                    // decode the bitmap from the stream
-                    using (var stream = new SKManagedStream(fileStream))
-                    using (var bitmap = SKBitmap.Decode(stream))
-                    using (var paint = new SKPaint())
+                    using (var fileStream = new MemoryStream(imageBytes))
                     {
-                        canvas.DrawBitmap(bitmap, SKRect.Create((float)globalWidth, (float)height), paint);
+                        ZoomableScrollView parent;
+                        if (Device.RuntimePlatform == Device.Android)
+                        {
+                            parent = skCanvasAndroid.Parent.Parent as ZoomableScrollView;
+                        }
+                        else
+                        {
+                            parent = skCanvasiOS.Parent.Parent as ZoomableScrollView;
+                        }
+
+                        if (hasBeingDrawen < 3)
+                        {
+                            var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                            ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
+                            height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                            ratio = (float)height / float.Parse(topoimg[0].image.height);
+                            globalHeight = height;
+                            globalWidth = double.Parse(topoimg[0].image.width) * ratio;
+
+                            AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                            AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+                            iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                            iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+                        }
+
+                        // decode the bitmap from the stream
+                        using (var stream = new SKManagedStream(fileStream))
+                        using (var bitmap = SKBitmap.Decode(stream))
+                        using (var paint = new SKPaint())
+                        {
+                            //skCanvasAndroid.TranslationY = 40 * parent.ScaleFactor;
+                            canvas.DrawBitmap(bitmap, SKRect.Create((float)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
+                            AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
+                            AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
+                            ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
+
+                            if (parent.IsScalingDown || parent.IsScalingUp)
+                            {
+                                try
+                                {
+                                    for (int i = 0; i < diamondsCount; i++)
+                                    {
+                                        AndroidAbsoluteLayout.Children.RemoveAt(i + 1);
+                                    }                                    
+                                }
+                                catch (Exception)
+                                {
+
+                                }
+                            }
+                        }
                     }
                 }
 
                 //code to draw line
-                using (new SKAutoCanvasRestore(canvas, false))
+                using (new SKAutoCanvasRestore(canvas, true))
                 {
-                    DrawLine(canvas, _routeId, ratio, (int)height, (int)globalWidth);
+                    DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));
                 }
 
                 hasBeingDrawen++;
@@ -308,6 +356,11 @@ namespace SloperMobile.Views
 
             using (var path = new SKPath())
             {
+                foreach (var item in topoimg[0].drawing)
+                {
+                    diamondsCount += item.line.points.Where(line => line.type == "1").Count();
+                }
+              
                 for (int j = 0; j < topoimg[0].drawing.Count; j++)
                 {
                     if (_routeId == 0)
@@ -560,14 +613,15 @@ namespace SloperMobile.Views
                 path.Close();
             }
         }
-        public void DrawAnnotation(topoline topoimg, SKCanvas _skCanvas, float ratio, string gradeBucket, int _routecnt, long id)
+        public void DrawAnnotation(topoline topoimgTop, SKCanvas _skCanvas, float ratio, string gradeBucket, int _routecnt, long id)
         {
-            for (int i = 0; i < topoimg.points.Count; i++)
+            for (int i = 0; i < topoimgTop.points.Count; i++)
             {
                 string strimg64 = string.Empty;
 
-                if (topoimg.points[i].type == "1")
+                if (topoimgTop.points[i].type == "1")
                 {
+
                     //draw rect at start point                            
                     // draw these at specific locations        
                     var labelWithId = new LabelWithId(id);
@@ -585,14 +639,19 @@ namespace SloperMobile.Views
                     if (Device.RuntimePlatform == Device.Android)
                     {
                         parent = skCanvasAndroid.Parent as AbsoluteLayout;
-                        x = (((float.Parse(topoimg.points[i].x)) * ratio) - 30) / device.Display.Scale;
-                        y = (((float.Parse(topoimg.points[i].y)) * ratio) - 40) / device.Display.Scale;
+                        x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 30) / device.Display.Scale;
+                        y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 40) / device.Display.Scale;
                     }
                     else
                     {
                         parent = skCanvasiOS.Parent as AbsoluteLayout;
-                        x = (((float.Parse(topoimg.points[i].x)) * ratio) - 15) / device.Display.Scale;
-                        y = (((float.Parse(topoimg.points[i].y)) * ratio) - 20) / device.Display.Scale;
+                        x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 15) / device.Display.Scale;
+                        y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 20) / device.Display.Scale;
+                    }
+
+                    if (topoimg[0].drawing.Count < parent.Children.Where(item => item is LabelWithId).Count())
+                    {
+                        continue;
                     }
 
                     AbsoluteLayout.SetLayoutBounds(labelWithId, new Rectangle(x, y, 15, 15));
@@ -608,9 +667,9 @@ namespace SloperMobile.Views
                     labelWithId.GestureRecognizers.Add(tapGesture);
                     parent.Children.Add(labelWithId);
                 }
-                else if (topoimg.points[i].type == "3")
+                else if (topoimgTop.points[i].type == "3")
                 {
-                    if (topoimg.style.is_dark_checked.ToString().ToLower() == "true")
+                    if (topoimgTop.style.is_dark_checked.ToString().ToLower() == "true")
                     {
                         //17
                         if (Device.OS == TargetPlatform.Android)
@@ -631,7 +690,7 @@ namespace SloperMobile.Views
                             using (var bitmap = SKBitmap.Decode(stream))
                             using (var paint = new SKPaint())
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 22, (float.Parse(topoimg.points[i].y) * ratio) - 15, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 22, (float.Parse(topoimgTop.points[i].y) * ratio) - 15, paint);
                             }
                         }
                     }
@@ -655,12 +714,12 @@ namespace SloperMobile.Views
                             using (var bitmap = SKBitmap.Decode(stream))
                             using (var paint = new SKPaint())
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 22, (float.Parse(topoimg.points[i].y) * ratio) - 15, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 22, (float.Parse(topoimgTop.points[i].y) * ratio) - 15, paint);
                             }
                         }
                     }
                 }
-                else if (topoimg.points[i].type == "2")
+                else if (topoimgTop.points[i].type == "2")
                 {
                     if (Device.OS == TargetPlatform.Android)
                     {
@@ -682,18 +741,18 @@ namespace SloperMobile.Views
                         {
                             if (Device.OS == TargetPlatform.Android)
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 30, (float.Parse(topoimg.points[i].y) * ratio) - 18, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 30, (float.Parse(topoimgTop.points[i].y) * ratio) - 18, paint);
                             }
                             else
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 15, (float.Parse(topoimg.points[i].y) * ratio) - 18, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 15, (float.Parse(topoimgTop.points[i].y) * ratio) - 18, paint);
                             }
                         }
                     }
                 }
-                else if (topoimg.points[i].type == "17")
+                else if (topoimgTop.points[i].type == "17")
                 {
-                    if (topoimg.style.is_dark_checked.ToString().ToLower() == "true")
+                    if (topoimgTop.style.is_dark_checked.ToString().ToLower() == "true")
                     {
                         //17
                         if (Device.OS == TargetPlatform.Android)
@@ -714,7 +773,7 @@ namespace SloperMobile.Views
                             using (var bitmap = SKBitmap.Decode(stream))
                             using (var paint = new SKPaint())
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 22, (float.Parse(topoimg.points[i].y) * ratio) - 15, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 22, (float.Parse(topoimgTop.points[i].y) * ratio) - 15, paint);
                             }
                         }
                     }
@@ -738,14 +797,14 @@ namespace SloperMobile.Views
                             using (var bitmap = SKBitmap.Decode(stream))
                             using (var paint = new SKPaint())
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 22, (float.Parse(topoimg.points[i].y) * ratio) - 15, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 22, (float.Parse(topoimgTop.points[i].y) * ratio) - 15, paint);
                             }
                         }
                     }
                 }
-                else if (topoimg.points[i].type == "4")
+                else if (topoimgTop.points[i].type == "4")
                 {
-                    if (topoimg.style.is_dark_checked.ToString().ToLower() == "true")
+                    if (topoimgTop.style.is_dark_checked.ToString().ToLower() == "true")
                     {
                         //18
                         if (Device.OS == TargetPlatform.Android)
@@ -766,7 +825,7 @@ namespace SloperMobile.Views
                             using (var bitmap = SKBitmap.Decode(stream))
                             using (var paint = new SKPaint())
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 8, (float.Parse(topoimg.points[i].y) * ratio) - 14, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 8, (float.Parse(topoimgTop.points[i].y) * ratio) - 14, paint);
                             }
                         }
                     }
@@ -790,14 +849,14 @@ namespace SloperMobile.Views
                             using (var bitmap = SKBitmap.Decode(stream))
                             using (var paint = new SKPaint())
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 8, (float.Parse(topoimg.points[i].y) * ratio) - 14, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 8, (float.Parse(topoimgTop.points[i].y) * ratio) - 14, paint);
                             }
                         }
                     }
                 }
-                else if (topoimg.points[i].type == "18")
+                else if (topoimgTop.points[i].type == "18")
                 {
-                    if (topoimg.style.is_dark_checked.ToString().ToLower() == "true")
+                    if (topoimgTop.style.is_dark_checked.ToString().ToLower() == "true")
                     {
                         // 18
                         if (Device.OS == TargetPlatform.Android)
@@ -818,7 +877,7 @@ namespace SloperMobile.Views
                             using (var bitmap = SKBitmap.Decode(stream))
                             using (var paint = new SKPaint())
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 8, (float.Parse(topoimg.points[i].y) * ratio) - 14, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 8, (float.Parse(topoimgTop.points[i].y) * ratio) - 14, paint);
                             }
                         }
                     }
@@ -842,14 +901,14 @@ namespace SloperMobile.Views
                             using (var bitmap = SKBitmap.Decode(stream))
                             using (var paint = new SKPaint())
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 8, (float.Parse(topoimg.points[i].y) * ratio) - 14, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 8, (float.Parse(topoimgTop.points[i].y) * ratio) - 14, paint);
                             }
                         }
                     }
                 }
-                else if (topoimg.points[i].type == "8")
+                else if (topoimgTop.points[i].type == "8")
                 {
-                    if (topoimg.style.is_dark_checked.ToString().ToLower() == "true")
+                    if (topoimgTop.style.is_dark_checked.ToString().ToLower() == "true")
                     {
                         // 16
                         if (Device.OS == TargetPlatform.Android)
@@ -871,7 +930,7 @@ namespace SloperMobile.Views
                             using (var bitmap = SKBitmap.Decode(stream))
                             using (var paint = new SKPaint())
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 14, (float.Parse(topoimg.points[i].y) * ratio) - 14, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 14, (float.Parse(topoimgTop.points[i].y) * ratio) - 14, paint);
                             }
                         }
                     }
@@ -897,19 +956,19 @@ namespace SloperMobile.Views
                             {
                                 if (Device.OS == TargetPlatform.Android)
                                 {
-                                    _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 26, (float.Parse(topoimg.points[i].y) * ratio) - 26, paint);
+                                    _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 26, (float.Parse(topoimgTop.points[i].y) * ratio) - 26, paint);
                                 }
                                 else
                                 {
-                                    _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 14, (float.Parse(topoimg.points[i].y) * ratio) - 14, paint);
+                                    _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 14, (float.Parse(topoimgTop.points[i].y) * ratio) - 14, paint);
                                 }
                             }
                         }
                     }
                 }
-                else if (topoimg.points[i].type == "16")
+                else if (topoimgTop.points[i].type == "16")
                 {
-                    if (topoimg.style.is_dark_checked.ToString().ToLower() == "true")
+                    if (topoimgTop.style.is_dark_checked.ToString().ToLower() == "true")
                     {
                         //16
                         if (Device.OS == TargetPlatform.Android)
@@ -930,7 +989,7 @@ namespace SloperMobile.Views
                             using (var bitmap = SKBitmap.Decode(stream))
                             using (var paint = new SKPaint())
                             {
-                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 15, (float.Parse(topoimg.points[i].y) * ratio) - 15, paint);
+                                _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 15, (float.Parse(topoimgTop.points[i].y) * ratio) - 15, paint);
                             }
                         }
                     }
@@ -956,22 +1015,22 @@ namespace SloperMobile.Views
                             {
                                 if (Device.OS == TargetPlatform.Android)
                                 {
-                                    _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 28, (float.Parse(topoimg.points[i].y) * ratio) - 28, paint);
+                                    _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 28, (float.Parse(topoimgTop.points[i].y) * ratio) - 28, paint);
                                 }
                                 else
                                 {
-                                    _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 15, (float.Parse(topoimg.points[i].y) * ratio) - 15, paint);
+                                    _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 15, (float.Parse(topoimgTop.points[i].y) * ratio) - 15, paint);
                                 }
                             }
                         }
                     }
                 }
-                else if (topoimg.points[i].type == "5")
+                else if (topoimgTop.points[i].type == "5")
                 {
                     if (Device.OS == TargetPlatform.Android)
                     {
                         // draw these at specific locations                       
-                        var Rect = SKRect.Create(((float.Parse(topoimg.points[i].x)) * ratio) - 140, ((float.Parse(topoimg.points[i].y)) * ratio) - 40, 100, 80);
+                        var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) - 140, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 40, 100, 80);
                         using (var paint = new SKPaint())
                         {
                             _skCanvas.Save();
@@ -980,7 +1039,7 @@ namespace SloperMobile.Views
                     }
                     else
                     {
-                        var Rect = SKRect.Create(((float.Parse(topoimg.points[i].x)) * ratio) - 80, ((float.Parse(topoimg.points[i].y)) * ratio) - 20, 60, 40);
+                        var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) - 80, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 20, 60, 40);
                         using (var paint = new SKPaint())
                         {
                             _skCanvas.Save();
@@ -1005,20 +1064,20 @@ namespace SloperMobile.Views
                         paint.TextAlign = SKTextAlign.Center;
                         if (Device.OS == TargetPlatform.Android)
                         {
-                            _skCanvas.DrawText((topoimg.points[i].label).ToString(), (float.Parse(topoimg.points[i].x) * ratio) - 80, (float.Parse(topoimg.points[i].y) * ratio) + 10, paint);
+                            _skCanvas.DrawText((topoimgTop.points[i].label).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) - 80, (float.Parse(topoimgTop.points[i].y) * ratio) + 10, paint);
                         }
                         else
                         {
-                            _skCanvas.DrawText((topoimg.points[i].label).ToString(), (float.Parse(topoimg.points[i].x) * ratio) - 50, (float.Parse(topoimg.points[i].y) * ratio) + 5, paint);
+                            _skCanvas.DrawText((topoimgTop.points[i].label).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) - 50, (float.Parse(topoimgTop.points[i].y) * ratio) + 5, paint);
                         }
                     }
                 }
-                else if (topoimg.points[i].type == "6")
+                else if (topoimgTop.points[i].type == "6")
                 {
                     if (Device.OS == TargetPlatform.Android)
                     {
                         // draw these at specific locations                       
-                        var Rect = SKRect.Create(((float.Parse(topoimg.points[i].x)) * ratio) + 20, ((float.Parse(topoimg.points[i].y)) * ratio) - 40, 100, 80);
+                        var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) + 20, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 40, 100, 80);
 
                         using (var paint = new SKPaint())
                         {
@@ -1029,7 +1088,7 @@ namespace SloperMobile.Views
                     else
                     {
                         // draw these at specific locations                       
-                        var Rect = SKRect.Create(((float.Parse(topoimg.points[i].x)) * ratio) + 20, ((float.Parse(topoimg.points[i].y)) * ratio) - 20, 60, 40);
+                        var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) + 20, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 20, 60, 40);
 
                         using (var paint = new SKPaint())
                         {
@@ -1054,29 +1113,29 @@ namespace SloperMobile.Views
                         paint.TextAlign = SKTextAlign.Center;
                         if (Device.OS == TargetPlatform.Android)
                         {
-                            _skCanvas.DrawText((topoimg.points[i].label).ToString(), (float.Parse(topoimg.points[i].x) * ratio) + 70, (float.Parse(topoimg.points[i].y) * ratio) + 10, paint);
+                            _skCanvas.DrawText((topoimgTop.points[i].label).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) + 70, (float.Parse(topoimgTop.points[i].y) * ratio) + 10, paint);
                         }
                         else
                         {
-                            _skCanvas.DrawText((topoimg.points[i].label).ToString(), (float.Parse(topoimg.points[i].x) * ratio) + 50, (float.Parse(topoimg.points[i].y) * ratio) + 5, paint);
+                            _skCanvas.DrawText((topoimgTop.points[i].label).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) + 50, (float.Parse(topoimgTop.points[i].y) * ratio) + 5, paint);
                         }
                     }
                 }
 
                 //code to show left and right text
-                for (int j = 0; j < topoimg.pointsText.Count; j++)
+                for (int j = 0; j < topoimgTop.pointsText.Count; j++)
                 {
                     //left side text                
-                    if (topoimg.pointsText[j].point_id.Contains(i.ToString()))
+                    if (topoimgTop.pointsText[j].point_id.Contains(i.ToString()))
                     {
-                        if (topoimg.pointsText[j].text_id.IndexOf("L") > -1)
+                        if (topoimgTop.pointsText[j].text_id.IndexOf("L") > -1)
                         {
-                            if (topoimg.pointsText[j].text_id.Contains(i.ToString()))
+                            if (topoimgTop.pointsText[j].text_id.Contains(i.ToString()))
                             {
                                 if (Device.OS == TargetPlatform.Android)
                                 {
                                     // draw these at specific locations                       
-                                    var Rect = SKRect.Create(((float.Parse(topoimg.points[i].x)) * ratio) - 100, ((float.Parse(topoimg.points[i].y)) * ratio) - 20, 200, 80);
+                                    var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) - 100, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 20, 200, 80);
 
                                     using (var paint = new SKPaint())
                                     {
@@ -1092,13 +1151,13 @@ namespace SloperMobile.Views
                                         paint.StrokeWidth = 3;
                                         paint.TextAlign = SKTextAlign.Center;
 
-                                        _skCanvas.DrawText((topoimg.pointsText[j].text_value).ToString(), (float.Parse(topoimg.points[i].x) * ratio) - 70, (float.Parse(topoimg.points[i].y) * ratio) + 25, paint);
+                                        _skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) - 70, (float.Parse(topoimgTop.points[i].y) * ratio) + 25, paint);
                                     }
                                 }
                                 else
                                 {
                                     // draw these at specific locations                       
-                                    var Rect = SKRect.Create(((float.Parse(topoimg.points[i].x)) * ratio) - 80, ((float.Parse(topoimg.points[i].y)) * ratio) - 20, 60, 40);
+                                    var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) - 80, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 20, 60, 40);
 
                                     using (var paint = new SKPaint())
                                     {
@@ -1114,7 +1173,7 @@ namespace SloperMobile.Views
                                         paint.StrokeWidth = 2;
                                         paint.TextAlign = SKTextAlign.Center;
 
-                                        _skCanvas.DrawText((topoimg.pointsText[j].text_value).ToString(), (float.Parse(topoimg.points[i].x) * ratio) - 50, (float.Parse(topoimg.points[i].y) * ratio) + 5, paint);
+                                        _skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) - 50, (float.Parse(topoimgTop.points[i].y) * ratio) + 5, paint);
                                     }
                                 }
                             }
@@ -1122,16 +1181,16 @@ namespace SloperMobile.Views
                     }
 
                     //right side text                
-                    if (topoimg.pointsText[j].point_id.Contains(i.ToString()))
+                    if (topoimgTop.pointsText[j].point_id.Contains(i.ToString()))
                     {
-                        if (topoimg.pointsText[j].text_id.IndexOf("R") > -1)
+                        if (topoimgTop.pointsText[j].text_id.IndexOf("R") > -1)
                         {
-                            if (topoimg.pointsText[j].text_id.Contains(i.ToString()))
+                            if (topoimgTop.pointsText[j].text_id.Contains(i.ToString()))
                             {
                                 if (Device.OS == TargetPlatform.Android)
                                 {
                                     // draw these at specific locations                       
-                                    var Rect = SKRect.Create(((float.Parse(topoimg.points[i].x)) * ratio) + 50, ((float.Parse(topoimg.points[i].y)) * ratio) - 40, 200, 80);
+                                    var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) + 50, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 40, 200, 80);
 
                                     using (var paint = new SKPaint())
                                     {
@@ -1146,13 +1205,13 @@ namespace SloperMobile.Views
                                         paint.IsStroke = true;
                                         paint.StrokeWidth = 3;
                                         paint.TextAlign = SKTextAlign.Center;
-                                        _skCanvas.DrawText((topoimg.pointsText[j].text_value).ToString(), (float.Parse(topoimg.points[i].x) * ratio) + 150, (float.Parse(topoimg.points[i].y) * ratio) + 15, paint);
+                                        _skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) + 150, (float.Parse(topoimgTop.points[i].y) * ratio) + 15, paint);
                                     }
                                 }
                                 else
                                 {
                                     // draw these at specific locations                       
-                                    var Rect = SKRect.Create(((float.Parse(topoimg.points[i].x)) * ratio) + 20, ((float.Parse(topoimg.points[i].y)) * ratio) - 20, 60, 40);
+                                    var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) + 20, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 20, 60, 40);
 
                                     using (var paint = new SKPaint())
                                     {
@@ -1167,7 +1226,7 @@ namespace SloperMobile.Views
                                         paint.IsStroke = true;
                                         paint.StrokeWidth = 2;
                                         paint.TextAlign = SKTextAlign.Center;
-                                        _skCanvas.DrawText((topoimg.pointsText[j].text_value).ToString(), (float.Parse(topoimg.points[i].x) * ratio) + 50, (float.Parse(topoimg.points[i].y) * ratio) + 5, paint);
+                                        _skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) + 50, (float.Parse(topoimgTop.points[i].y) * ratio) + 5, paint);
                                     }
                                 }
                             }
@@ -1175,17 +1234,17 @@ namespace SloperMobile.Views
                     }
 
                     //showing arrow logic                   
-                    if (topoimg.pointsText[j].point_id.Contains(i.ToString()))
+                    if (topoimgTop.pointsText[j].point_id.Contains(i.ToString()))
                     {
-                        if (topoimg.pointsText[i].isdirection.ToLower() == "true")
+                        if (topoimgTop.pointsText[i].isdirection.ToLower() == "true")
                         {
                             //calculate angle                            
                             points _fpt = new points();
                             points _spt = new points();
-                            _fpt.X = (i + 1) < topoimg.points.Count ? Convert.ToInt32(topoimg.points[i + 1].x) : Convert.ToInt32(topoimg.points[i - 1].x);
-                            _fpt.Y = (i + 1) < topoimg.points.Count ? Convert.ToInt32(topoimg.points[i + 1].y) : Convert.ToInt32(topoimg.points[i - 1].y);
-                            _spt.X = Convert.ToInt32(topoimg.points[i].x);
-                            _spt.Y = Convert.ToInt32(topoimg.points[i].y);
+                            _fpt.X = (i + 1) < topoimgTop.points.Count ? Convert.ToInt32(topoimgTop.points[i + 1].x) : Convert.ToInt32(topoimgTop.points[i - 1].x);
+                            _fpt.Y = (i + 1) < topoimgTop.points.Count ? Convert.ToInt32(topoimgTop.points[i + 1].y) : Convert.ToInt32(topoimgTop.points[i - 1].y);
+                            _spt.X = Convert.ToInt32(topoimgTop.points[i].x);
+                            _spt.Y = Convert.ToInt32(topoimgTop.points[i].y);
 
                             double angleDeg;
                             if (_fpt.Y < _spt.Y)
@@ -1220,11 +1279,11 @@ namespace SloperMobile.Views
                                 {
                                     if (Device.OS == TargetPlatform.Android)
                                     {
-                                        _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 55, (float.Parse(topoimg.points[i].y) * ratio) - 60, paint);
+                                        _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 55, (float.Parse(topoimgTop.points[i].y) * ratio) - 60, paint);
                                     }
                                     else
                                     {
-                                        _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimg.points[i].x) * ratio) - 30, (float.Parse(topoimg.points[i].y) * ratio) - 30, paint);
+                                        _skCanvas.DrawBitmap(bitmap, (float.Parse(topoimgTop.points[i].x) * ratio) - 30, (float.Parse(topoimgTop.points[i].y) * ratio) - 30, paint);
                                     }
                                 }
                             }
@@ -1325,13 +1384,15 @@ namespace SloperMobile.Views
 
         private void PinchGestureRecognizer_PinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
         {
+            var parent = skCanvasAndroid.Parent.Parent as ZoomableScrollView;
+
             if (e.Status == GestureStatus.Started)
             {
                 // Store the current scale factor applied to the wrapped user interface element,
                 // and zero the components for the center point of the translate transform.
-                startScale = Content.Scale;
-                Content.AnchorX = 0;
-                Content.AnchorY = 0;
+                startScale = parent.Scale;
+                parent.AnchorX = 0;
+                parent.AnchorY = 0;
             }
             if (e.Status == GestureStatus.Running)
             {
@@ -1341,34 +1402,34 @@ namespace SloperMobile.Views
 
                 // The ScaleOrigin is in relative coordinates to the wrapped user interface element,
                 // so get the X pixel coordinate.
-                double renderedX = Content.X + xOffset;
+                double renderedX = parent.X + xOffset;
                 double deltaX = renderedX / Width;
-                double deltaWidth = Width / (Content.Width * startScale);
+                double deltaWidth = Width / (parent.Width * startScale);
                 double originX = (e.ScaleOrigin.X - deltaX) * deltaWidth;
 
                 // The ScaleOrigin is in relative coordinates to the wrapped user interface element,
                 // so get the Y pixel coordinate.
-                double renderedY = Content.Y + yOffset;
+                double renderedY = parent.Y + yOffset;
                 double deltaY = renderedY / Height;
-                double deltaHeight = Height / (Content.Height * startScale);
+                double deltaHeight = Height / (parent.Height * startScale);
                 double originY = (e.ScaleOrigin.Y - deltaY) * deltaHeight;
 
                 // Calculate the transformed element pixel coordinates.
-                double targetX = xOffset - (originX * Content.Width) * (currentScale - startScale);
-                double targetY = yOffset - (originY * Content.Height) * (currentScale - startScale);
+                double targetX = xOffset - (originX * parent.Width) * (currentScale - startScale);
+                double targetY = yOffset - (originY * parent.Height) * (currentScale - startScale);
 
                 // Apply translation based on the change in origin.
-                Content.TranslationX = targetX.Clamp(-Content.Width * (currentScale - 1), 0);
-                Content.TranslationY = targetY.Clamp(-Content.Height * (currentScale - 1), 0);
+                parent.TranslationX = targetX.Clamp(-parent.Width * (currentScale - 1), 0);
+                parent.TranslationY = targetY.Clamp(-parent.Height * (currentScale - 1), 0);
 
                 // Apply scale factor.
-                Content.Scale = currentScale;
+                parent.ScaleTo(currentScale);
             }
             if (e.Status == GestureStatus.Completed)
             {
                 // Store the translation delta's of the wrapped user interface element.
-                xOffset = Content.TranslationX;
-                yOffset = Content.TranslationY;
+                xOffset = parent.TranslationX;
+                yOffset = parent.TranslationY;
             }
         }
 

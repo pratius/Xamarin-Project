@@ -11,11 +11,11 @@
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
     </ContentPage.Padding>
-    <Grid RowSpacing="0">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="0.1*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="0.1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="00" />
@@ -23,10 +23,10 @@
             <ColumnDefinition Width="00" />
         </Grid.ColumnDefinitions>
 
-        <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid Grid.Row="1" Grid.Column="1">
             <OnPlatform x:TypeArguments="View">
                 <On Platform="iOS">
-                    <local:ZoomableScrollView
+                    <local:ZoomableScrollView Grid.Column="0" Grid.Row="0"
 				        MaximumZoomScale="5"
 				        MinimumZoomScale="1"
 				        Orientation="Both">
@@ -41,29 +41,25 @@
                     </local:ZoomableScrollView>
                 </On>
                 <On Platform="Android">
-                    <local:ZoomableScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                                                   InputTransparent="True"
+                    <local:ZoomableScrollView Grid.Column="0" Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
                                                       MaximumZoomScale="5"
                                                       MinimumZoomScale="1"
                                                       Orientation="Both">
+
                         <AbsoluteLayout 
-                                    x:Name="AndroidAbsoluteLayout" 
-                                    InputTransparent="True">
+                                    x:Name="AndroidAbsoluteLayout" >
                             <views:SKCanvasView 
-                                        AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                                        AbsoluteLayout.LayoutBounds="0,0.1,1,0.95" 
                                         AbsoluteLayout.LayoutFlags="All"
                                         x:Name="skCanvasAndroid" 
                                         PaintSurface="OnPaintSample">
-                                <views:SKCanvasView.GestureRecognizers>
-                                    <PinchGestureRecognizer PinchUpdated="PinchGestureRecognizer_PinchUpdated" />
-                                </views:SKCanvasView.GestureRecognizers>
                             </views:SKCanvasView>
                         </AbsoluteLayout>
                     </local:ZoomableScrollView>
                 </On>
             </OnPlatform>
-        </StackLayout>
-        <Controls:GestureFrame Grid.Row="1" BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupSm,Mode=TwoWay}" HeightRequest="150" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" SwipeDown="OnSwipeDownRoutePopupSm" SwipeTop="OnSwipeTopRoutePopupSm">
+        </Grid>
+        <Controls:GestureFrame  Grid.Row="1" Grid.Column="1" BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupSm,Mode=TwoWay}" HeightRequest="150" VerticalOptions="Start" HorizontalOptions="FillAndExpand" SwipeDown="OnSwipeDownRoutePopupSm" SwipeTop="OnSwipeTopRoutePopupSm">
             <Controls:GestureFrame.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -116,7 +112,7 @@
                 </Grid>
             </Controls:GestureFrame.Content>
         </Controls:GestureFrame>
-        <Controls:GestureFrame Grid.Row="1" BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupLg,Mode=TwoWay}" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" SwipeTop="OnSwipeTopRoutePopupLg">
+        <Controls:GestureFrame  Grid.Row="1" Grid.Column="1" BackgroundColor="#77000000" IsVisible="{Binding DisplayRoutePopupLg,Mode=TwoWay}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" SwipeTop="OnSwipeTopRoutePopupLg">
             <Controls:GestureFrame.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -176,8 +172,8 @@
         </Controls:GestureFrame>
         <!--		<UC:FooterUC IsVisible="{Binding HideUpArrow,Mode=TwoWay}" Grid.Column="1" Grid.Row="1" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />-->
 
-        <UC:BackHeaderUC Grid.Row="0" Grid.Column="1" HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand"  />
-        <UC:FooterUC Grid.Column="1" Grid.Row="2" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />
+        <UC:BackHeaderUC x:Name="BackHeaderUC"  Grid.Row="0" Grid.Column="1" HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />
+        <UC:FooterUC x:Name="FooterUC"  Grid.Row="2" Grid.Column="1" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />
         <ActivityIndicator Grid.RowSpan="2" Grid.ColumnSpan="2" Color="Black" IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
     </Grid>
 </ContentPage>

@@ -24,6 +24,11 @@ namespace SloperMobile.ViewModel
             set { SetValue(MaximumZoomScaleProperty, value); }
         }
 
+        public bool IsScalingUp { get; set; }
+        public bool IsScalingDown { get; set; }
+
+        public float ScaleFactor { get; set; } = 1;
+
         public static readonly BindableProperty TappedProperty = BindableProperty.CreateAttached("Tapped",
             typeof(Command<Point>), typeof(Gesture), null);
 

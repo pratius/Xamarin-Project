@@ -1,37 +1,47 @@
-﻿using System.Linq;
-using Android.Util;
+﻿using Android.Util;
 using Android.Views;
 using Android.Views.Animations;
 using SkiaSharp.Views.Forms;
 using SloperMobile.Droid;
-using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms;
 using SloperMobile.ViewModel;
+using System.Linq;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(ZoomableScrollView), typeof(ZoomableScrollViewRenderer))]
+
 namespace SloperMobile.Droid
 {
     public class ZoomableScrollViewRenderer : ScrollViewRenderer, ScaleGestureDetector.IOnScaleGestureListener
     {
-        float originalDistanceX, currentdistanceX, originalDistanceY, currentdistanceY; private bool _isScaleProcess = false;
-        bool IsPinching = false;
-        double currentScale;
         private SKCanvasView canvas;
-        ScrollView svMain, svSub;
+        ZoomableScrollView svMain;
         private AbsoluteLayout absoluteLayout;
         private DisplayMetrics displayMetrics;
         private ScaleGestureDetector _scaleDetector;
         private float mScale;
-        private Command<Point> tapWithPositionCommand;
+        private bool _isScaleProcess;
+
+        public ZoomableScrollViewRenderer()
+        {
+            _scaleDetector = new ScaleGestureDetector(Context, this);
+            displayMetrics = Context.Resources.DisplayMetrics;
+        }
 
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {
             base.OnElementChanged(e);
-            _scaleDetector = new ScaleGestureDetector(Context, this);
-            displayMetrics = Context.Resources.DisplayMetrics;
-            svMain = ((ScrollView)e.NewElement);
-            absoluteLayout = svMain.Content as AbsoluteLayout;
-            canvas = absoluteLayout.Children.FirstOrDefault() as SKCanvasView;
+            try
+            {
+                this.VerticalScrollBarEnabled = true;
+                this.HorizontalScrollBarEnabled = true;
+                svMain = ((ZoomableScrollView)e.NewElement);
+                absoluteLayout = svMain.Content as AbsoluteLayout;
+                canvas = absoluteLayout.Children.FirstOrDefault() as SKCanvasView;
+            }
+            catch (System.Exception)
+            {
+            }
         }
 
         public override bool DispatchTouchEvent(Android.Views.MotionEvent e)
@@ -62,34 +72,35 @@ namespace SloperMobile.Droid
 
         public bool OnScale(ScaleGestureDetector detector)
         {
-            float scale = 1 - detector.ScaleFactor;
-
             float prevScale = mScale;
-            mScale += scale;
 
-            if (mScale < 0.1f) // Minimum scale condition:
-                mScale = 0.1f;
-
-            if (mScale > 10f) // Maximum scale condition:
-                mScale = 10f;
-
-            var fromX = 1f / prevScale;
-            var toX = 1f / mScale;
-            var fromY = 1f / prevScale;
-            var toY = 1f / mScale;
-            var pivotX = detector.FocusX;
-            var pivotY = detector.FocusY;
-
-            if (toX < 1 || toY < 1)
+            if (detector.ScaleFactor == 1)
             {
                 return true;
             }
+            else if (detector.ScaleFactor < 1)
+            {
+                svMain.IsScalingDown = true;
+                svMain.IsScalingUp = false;
+                mScale = detector.ScaleFactor;
+            }
+            else if (detector.ScaleFactor > 1)
+            {
+                svMain.IsScalingDown = false;
+                svMain.IsScalingUp = true;
+                mScale = detector.ScaleFactor;
+            }
 
-            var scaleAnimation = new ScaleAnimation(fromX, toX, fromY, toY, pivotX, pivotY);
-            scaleAnimation.Duration = 0;
+            var pivotX = detector.FocusX;
+            var pivotY = detector.FocusY;
+
+            var scaleAnimation = new ScaleAnimation(prevScale, mScale, prevScale, mScale, pivotX, pivotY);
+            scaleAnimation.Duration = 2;
             scaleAnimation.FillAfter = true;
             StartAnimation(scaleAnimation);
-
+           
+            svMain.ScaleFactor = detector.ScaleFactor;
+           
             return true;
         }
 
@@ -100,6 +111,9 @@ namespace SloperMobile.Droid
 
         public void OnScaleEnd(ScaleGestureDetector detector)
         {
+            svMain.ScaleFactor = 1;
+            svMain.IsScalingDown = true;
+            svMain.IsScalingUp = false;
         }
     }
 }
