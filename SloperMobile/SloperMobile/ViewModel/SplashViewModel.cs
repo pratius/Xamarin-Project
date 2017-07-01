@@ -205,6 +205,9 @@ namespace SloperMobile.ViewModel
                 {
                     ProgressText = "Loading Crags...";
                     CragObj = await HttpGetCragUpdates();
+
+                    bool blnFirst = true;
+
                     foreach (CragTemplate crag in CragObj)
                     {
                         T_CRAG tcrag = new T_CRAG();
@@ -269,7 +272,14 @@ namespace SloperMobile.ViewModel
                         App.DAUtil.SaveCrag(tcrag);
                         App.DAUtil.SaveCragSectorMap(tcs_map);
 
+                        //set the default crag as the first in the list of crags
+                        if (blnFirst)
+                        {
+                            Common.Helpers.Settings.SelectedCragSettings = crag.crag_id;
+                            blnFirst = false;
+                        }
                     }
+
                     ProgressValue = "0.3";
                 }
 
