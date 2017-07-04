@@ -25,7 +25,8 @@ namespace SloperMobile.Common.Enumerators
         CragMapPage = 15,
         PointsPage = 16,
         TickListPage = 17,
-        CalendarPage = 18
+        CalendarPage = 18,
+        RankingPage = 19  // For Ranking Page
 
     }
 

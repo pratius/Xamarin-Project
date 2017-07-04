@@ -87,6 +87,7 @@
     <Compile Include="Model\MasterPageItem.cs" />
     <Compile Include="Model\NewsModel.cs" />
     <Compile Include="Model\Point.cs" />
+    <Compile Include="Model\RankingModel.cs" />
     <Compile Include="Model\RegistrationReq.cs" />
     <Compile Include="Model\RgistrationResponse.cs" />
     <Compile Include="Model\Send.cs" />
@@ -125,6 +126,9 @@
     <Compile Include="UserControls\HeaderMenuPointsUC.xaml.cs">
       <DependentUpon>HeaderMenuPointsUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\HeaderMenuRankingUC.xaml.cs">
+      <DependentUpon>HeaderMenuRankingUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\HeaderMenuTickListUC.xaml.cs">
       <DependentUpon>HeaderMenuTickListUC.xaml</DependentUpon>
     </Compile>
@@ -159,6 +163,7 @@
     <Compile Include="ViewModel\PointsViewModel.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\PyramidViewModel.cs" />
+    <Compile Include="ViewModel\RankingViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\SendsViewModel.cs" />
     <Compile Include="ViewModel\SettingViewModel.cs" />
@@ -221,6 +226,9 @@
     </Compile>
     <Compile Include="Views\PyramidPage.xaml.cs">
       <DependentUpon>PyramidPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RankingPage.xaml.cs">
+      <DependentUpon>RankingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
@@ -651,6 +659,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UserControls\HeaderMenuCalendarUC.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\HeaderMenuRankingUC.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\RankingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

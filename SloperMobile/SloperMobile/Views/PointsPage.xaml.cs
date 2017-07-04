@@ -13,20 +13,36 @@ namespace SloperMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PointsPage : ContentPage
     {
+        PointsViewModel pointsVM;
         public PointsPage(string date)
         {
             Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...",Acr.UserDialogs.MaskType.Black);
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            UserControls.PointsUC uc = new UserControls.PointsUC(date);
-            uc.Padding = new Thickness(0, -125, 0, 0);
-            MainGrid.Children.Add(uc, 1, 3);
+            pointsVM = new PointsViewModel(date);
+            //this.BindingContext = pointsVM;
+            //UserControls.PointsUC uc = new UserControls.PointsUC(date);
+            //uc.Padding = new Thickness(0, -125, 0, 0);
+            //MainGrid.Children.Add(uc, 1, 3);
         }
         protected override void OnAppearing()
         {
+            pointsVM.OnPagePrepration();
             base.OnAppearing();
-            BindingContext = new PointsViewModel();
+           
             Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+        }
+
+        private void lstViewPoint_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            // don't do anything if we just de-selected the row
+            if (e.Item == null)
+            {
+                return;
+            }
+            // do something with e.SelectedItem
+            ((ListView)sender).SelectedItem = null;
+            // de-select the row after ripple effect
         }
     }
 }

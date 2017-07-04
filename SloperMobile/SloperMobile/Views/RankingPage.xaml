@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SloperMobile.Views.RankingPage"
+             xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+             xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms" 
+             Style="{StaticResource AppBackgroundColor}" 
+             ControlTemplate="{StaticResource PageTemplateFooter}" 
+             Title="Sloper">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
+    </ContentPage.Padding>
+
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="5,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <UC:HeaderUC HeightRequest="30" />
+
+        <ScrollView Orientation="Horizontal" HeightRequest="40" Grid.Row="1" x:Name="CalendarScrollViewer">
+            <UC:HeaderMenuRankingUC HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+        </ScrollView>
+
+        <StackLayout Grid.Row="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid VerticalOptions="Center" HorizontalOptions="Center" Padding="35">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label TextColor="White" FontSize="Medium" Text="{Binding UserRank}" HorizontalOptions="Center" />
+                        <Label TextColor="White" FontSize="Micro" Text="Ranking" Grid.Row="1" Grid.ColumnSpan="1" HorizontalOptions="Center" />
+                        <Image Grid.Row="2" Grid.Column="1" Source="icon_gauge_mountains" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,8,0,0" />
+                    </StackLayout>
+                    <gauge:SfCircularGauge VerticalOptions="Fill" HorizontalOptions="Fill" Margin="0,0,0,0">
+                        <gauge:SfCircularGauge.Scales>
+                            <gauge:Scale StartValue="0" EndValue="100" StartAngle="135" SweepAngle="270" RimColor="#fff" ShowLabels="False" ShowTicks="False">
+                                <gauge:Scale.RimThickness>
+                                    <OnPlatform x:TypeArguments="x:Double" iOS="20" Android="10" />
+                                </gauge:Scale.RimThickness>
+                                <gauge:Scale.Pointers>
+                                    <gauge:RangePointer Value="{Binding RankPercentage,Mode=TwoWay}" Color="#FF8E2D">
+                                        <gauge:RangePointer.Thickness>
+                                            <OnPlatform x:TypeArguments="x:Double" iOS="20" Android="10" />
+                                        </gauge:RangePointer.Thickness>
+                                    </gauge:RangePointer>
+                                </gauge:Scale.Pointers>
+                            </gauge:Scale>
+                        </gauge:SfCircularGauge.Scales>
+                    </gauge:SfCircularGauge>
+                </Grid>
+
+                <Grid Grid.Row="1" Padding="0,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="RANK" TextColor="White" FontSize="Medium" VerticalTextAlignment="Center" 
+                           VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                    <Label Text="NAME" TextColor="White" FontSize="Medium" VerticalTextAlignment="Center" 
+                                               VerticalOptions="Center" Grid.Column="1" Grid.Row="0"/>
+                    <Label Text="POINTS" TextColor="White" FontSize="Medium" VerticalTextAlignment="Center" Grid.Row="0"
+                           VerticalOptions="Center" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Grid.Column="2"/>
+                    <Label BackgroundColor="#141418" Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                           Grid.Column="0" Grid.ColumnSpan="3"/>
+                </Grid>
+
+                <ListView ItemsSource="{Binding Rankings}" HasUnevenRows="True" SeparatorVisibility="None" 
+                      ItemTapped="OnItemTapped" BackgroundColor="Black" Grid.Row="2" Margin="0,0,10,0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="5">
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.5*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding Rank}" TextColor="{Binding HighlightTextColor}" FontSize="Medium" VerticalTextAlignment="Center" 
+                                                   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding Name}" TextColor="{Binding HighlightTextColor}" FontSize="Medium" VerticalTextAlignment="Center" 
+                                               VerticalOptions="Center" Grid.Column="1"/>
+                                            <Label Text="{Binding Points}" TextColor="{Binding HighlightTextColor}" FontSize="Medium" VerticalTextAlignment="Center" 
+                                                   VerticalOptions="Center" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" 
+                                                   Grid.Column="2"/>
+                                        </Grid>
+                                    </StackLayout>
+                                    <Label BackgroundColor="#101010" HeightRequest="1"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </Grid>
+</ContentPage>
