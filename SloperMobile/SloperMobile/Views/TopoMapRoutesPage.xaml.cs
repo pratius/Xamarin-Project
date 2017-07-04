@@ -20,8 +20,9 @@ namespace SloperMobile.Views
     public partial class TopoMapRoutesPage : ContentPage
     {
         private const string BoxYellowColor = "#b49800";
-        private const int BoxTextFontSize = 8;
+        private const int BoxTextFontSize = 11;
         private ObservableCollection<imgData> _imgData;
+        public List<int> _diamondclickroute = new List<int>();
         public ObservableCollection<imgData> ImageDataList
         {
             get { return _imgData; }
@@ -39,14 +40,15 @@ namespace SloperMobile.Views
         public string staticAnnotationData = "[{\"AnnotationName\": \"Open Text (left)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Open Text (right)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (white)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Anchor (black)\",\"AnnotationType\": 0,\"ImageName\":\"\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Line\",\"AnnotationType\": 0,\"ImageName\":\"sample-line.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Route Badge\",\"AnnotationType\": 1,\"ImageName\":\"sample-route-badge.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\":\"Belay Point\",\"AnnotationType\": 2,\"ImageName\":\"sample-belay.png\",\"XCentreOffset\": -15,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Left\",\"AnnotationType\": 3,\"ImageName\":\"sample-lower-off-left.png\",\"XCentreOffset\": -22,\"YCentreOffset\":-15},{\"AnnotationName\": \"Lower-off Right\",\"AnnotationType\": 4,\"ImageName\":\"sample-lower-off-right.png\",\"XCentreOffset\": -8,\"YCentreOffset\":-15},{\"AnnotationName\": \"Grade Label (left)\",\"AnnotationType\": 5,\"ImageName\":\"sample-grade-label-left.png\",\"XCentreOffset\": -5,\"YCentreOffset\":0},{\"AnnotationName\": \"Grade Label (right)\",\"AnnotationType\": 6,\"ImageName\":\"sample-grade-label-right.png\",\"XCentreOffset\": 5,\"YCentreOffset\":0},{\"AnnotationName\": \"Line Break\",\"AnnotationType\": 7,\"ImageName\":\"sample-route-line-break.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"Cross Point\",\"AnnotationType\": 8,\"ImageName\":\"x-mark-32.png\",\"XCentreOffset\": -50,\"YCentreOffset\":-50},{\"AnnotationName\": \"Text Add\",\"AnnotationType\": 9,\"ImageName\":\"tl-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextAdd\",\"AnnotationType\": 10,\"ImageName\":\"tr-icon.png\",\"XCentreOffset\": -11,\"YCentreOffset\":-11},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 11,\"ImageName\":\"tlcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"TextRemove\",\"AnnotationType\": 12,\"ImageName\":\"trcross-icon.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveLeft\",\"AnnotationType\": 13,\"ImageName\":\"move_left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"MoveRight\",\"AnnotationType\": 14,\"ImageName\":\"move_right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"icon-arrow\",\"AnnotationType\": 15,\"ImageName\":\"icon-arrow.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"cross dark black\",\"AnnotationType\": 16,\"ImageName\":\"cross_black.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-left\",\"AnnotationType\": 17,\"ImageName\":\"sample-lower-off-black-left.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0},{\"AnnotationName\": \"sample-lower-off-black-right\",\"AnnotationType\": 18,\"ImageName\":\"sample-lower-off-black-right.png\",\"XCentreOffset\": 0,\"YCentreOffset\":0}]";
         string listData = string.Empty, _strimg64 = string.Empty;
         Double height, newHeight, globalHeight, globalWidth;
-        int _routeId = 0, _newRouteId = 0;
+        int? _routeId = 0, _newRouteId = 0;
         float ratio;
         int diamondsCount;
+        public bool isDiamondClick = false, isDiamondSingleClick = false;
 
         private readonly IDevice device;
 
         //Is used to eliminate usage of Canvas. Need to figure out why did canvas is not stoping to draw itself
-        private int hasBeingDrawen;
+        private int hasBeingDrawen, hasBeingRedrawing = 0;
 
         public TopoMapRoutesPage(MapListModel CurrentSector, string _lstData, int routeId)
         {
@@ -77,6 +79,11 @@ namespace SloperMobile.Views
                 {
                     TopoMapRouteVM.OnConditionNavigation = OnPageNavigation;
                     TopoMapRouteVM.IsRunningTasks = true;
+                    if (routeId > 0)
+                    {
+                        TopoMapRouteVM.LoadRouteData(routeId, listData);
+                        TopoMapRouteVM.DisplayRoutePopupSm = true;
+                    }
                 }
 
                 var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
@@ -123,12 +130,20 @@ namespace SloperMobile.Views
 
         private void ShowRoute(int? routeId)
         {
+            if (Device.OS == TargetPlatform.iOS)
+                skCanvasiOS.InvalidateSurface();
+
             TopoMapRouteVM.LoadRouteData(routeId, listData);
             TopoMapRouteVM.DisplayRoutePopupSm = true;
             var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
             height = device.Display.Height;
             newHeight = GetHeight(height);
             _bucket.Clear();
+            _routeId = routeId;
+            _newRouteId = routeId;
+            _diamondclickroute.Clear();
+            isDiamondSingleClick = true;
+            Redraw();
         }
 
         private async void OnPageNavigation(object obj)
@@ -158,88 +173,93 @@ namespace SloperMobile.Views
 
             try
             {
-
-                var canvas = e.Surface.Canvas;
-                canvas.Clear();
-                if (string.IsNullOrEmpty(topoimg[0].image.data))
-                {
-                    return;
-                }
-
-                //code to draw image
-                string strimg64 = topoimg[0].image.data.Split(',')[1];
-                if (!string.IsNullOrEmpty(strimg64))
-                {
-                    byte[] imageBytes = Convert.FromBase64String(strimg64);
-                    using (var fileStream = new MemoryStream(imageBytes))
-                    {
-                        ZoomableScrollView parent;
-                        if (Device.RuntimePlatform == Device.Android)
-                        {
-                            parent = skCanvasAndroid.Parent.Parent as ZoomableScrollView;
-                        }
-                        else
-                        {
-                            parent = skCanvasiOS.Parent.Parent as ZoomableScrollView;
-                        }
-
-                        if (hasBeingDrawen < 3)
-                        {
-                            var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-                            ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
-                            height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-                            ratio = (float)height / float.Parse(topoimg[0].image.height);
-                            globalHeight = height;
-                            globalWidth = double.Parse(topoimg[0].image.width) * ratio;
-
-                            AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
-                            AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
-                            iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
-                            iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
-                        }
-
-                        // decode the bitmap from the stream
-                        using (var stream = new SKManagedStream(fileStream))
-                        using (var bitmap = SKBitmap.Decode(stream))
-                        using (var paint = new SKPaint())
-                        {
-                            //skCanvasAndroid.TranslationY = 40 * parent.ScaleFactor;
-                            canvas.DrawBitmap(bitmap, SKRect.Create((float)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
-                            AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
-                            AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
-                            ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
-
-                            if (parent.IsScalingDown || parent.IsScalingUp)
-                            {
-                                try
-                                {
-                                    for (int i = 0; i < diamondsCount; i++)
-                                    {
-                                        AndroidAbsoluteLayout.Children.RemoveAt(i + 1);
-                                    }                                    
-                                }
-                                catch (Exception)
-                                {
-
-                                }
-                            }
-                        }
-                    }
-                }
-
-                //code to draw line
-                using (new SKAutoCanvasRestore(canvas, true))
-                {
-                    DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));
-                }
-
-                hasBeingDrawen++;
+                MainDrawing(e);                
             }
             catch
             {
                 throw;
             }
         }
+
+        private void MainDrawing(SKPaintSurfaceEventArgs e)
+        {
+            var canvas = e.Surface.Canvas;
+            canvas.Clear();
+            if (string.IsNullOrEmpty(topoimg[0].image.data))
+            {
+                return;
+            }
+
+            //code to draw image
+            string strimg64 = topoimg[0].image.data.Split(',')[1];
+            if (!string.IsNullOrEmpty(strimg64))
+            {
+                byte[] imageBytes = Convert.FromBase64String(strimg64);
+                using (var fileStream = new MemoryStream(imageBytes))
+                {
+                    ZoomableScrollView parent;
+                    if (Device.RuntimePlatform == Device.Android)
+                    {
+                        parent = skCanvasAndroid.Parent.Parent as ZoomableScrollView;
+                    }
+                    else
+                    {
+                        parent = skCanvasiOS.Parent.Parent as ZoomableScrollView;
+                    }
+
+                    if (hasBeingDrawen < 3)
+                    {
+                        var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                        ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
+                        height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                        ratio = (float)height / float.Parse(topoimg[0].image.height);
+                        globalHeight = height;
+                        globalWidth = double.Parse(topoimg[0].image.width) * ratio;
+
+                        AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                        AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+                        iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                        iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+                    }
+
+                    // decode the bitmap from the stream
+                    using (var stream = new SKManagedStream(fileStream))
+                    using (var bitmap = SKBitmap.Decode(stream))
+                    using (var paint = new SKPaint())
+                    {
+                        //skCanvasAndroid.TranslationY = 40 * parent.ScaleFactor;
+                        canvas.DrawBitmap(bitmap, SKRect.Create((float)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
+                        AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
+                        AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
+                        ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
+
+                        if (parent.IsScalingDown || parent.IsScalingUp)
+                        {
+                            try
+                            {
+                                for (int i = 0; i < diamondsCount; i++)
+                                {
+                                    AndroidAbsoluteLayout.Children.RemoveAt(i + 1);
+                                }
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            //code to draw line
+            using (new SKAutoCanvasRestore(canvas, true))
+            {
+                DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));
+            }
+
+            hasBeingDrawen++;
+        }
+
 
         private void Redraw()
         {
@@ -249,17 +269,12 @@ namespace SloperMobile.Views
             var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
             if (topoimg != null)
             {
-                if (Device.OS == TargetPlatform.Android)
-                {
-                    height = Convert.ToInt32(GetHeight(device.Display.Height));// - 200;//e.Info.Height;
-                }
-                else
-                {
-                    height = Convert.ToInt32(GetHeight(device.Display.Height));// - 200;
-                }
-                float ratio = (float)(height) / float.Parse(topoimg[0].image.height);
-
-                float width = float.Parse(topoimg[0].image.width) * ratio;//e.Info.Width;            
+                var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
+                height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                ratio = (float)height / float.Parse(topoimg[0].image.height);
+                globalHeight = height;
+                float width = float.Parse(topoimg[0].image.width) * ratio;
 
                 if (Device.OS == TargetPlatform.Android)
                 {
@@ -348,7 +363,7 @@ namespace SloperMobile.Views
             }
         }
 
-        public void DrawLine(SKCanvas _skCanvas, int route, float ratio, int _height, int _width)
+        public void DrawLine(SKCanvas _skCanvas, int? route, float ratio, int _height, int _width)
         {
             var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
             float ptx1 = 0, ptx2 = 0, pty1 = 0, pty2 = 0;
@@ -405,11 +420,9 @@ namespace SloperMobile.Views
                             _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
                             _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
 
-                        }
-
-                        //draw annotation
-                        DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
-                        TopoMapRouteVM.AllPoints = _points;
+                            //draw annotation
+                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
+                        }                                               
                     }
                     else if (_routeId.ToString() == topoimg[0].drawing[j].id)
                     {
@@ -495,8 +508,7 @@ namespace SloperMobile.Views
                                     }
                                 }
                             }
-                        }
-                        TopoMapRouteVM.AllPoints = _points;
+                        }                        
                     }
                 }
 
@@ -504,7 +516,7 @@ namespace SloperMobile.Views
             }
         }
 
-        public void ReDrawLine(SKCanvas _skCanvas, int route, float ratio, int _height, int _width)
+        public void ReDrawLine(SKCanvas _skCanvas, int? route, float ratio, int _height, int _width)
         {
             float ptx1 = 0, ptx2 = 0, pty1 = 0, pty2 = 0;
             var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
@@ -553,13 +565,10 @@ namespace SloperMobile.Views
                             _pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
                             _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
                             _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
-                            
-                            
-                        }
 
-                        //draw annotation
-                        DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
-                        TopoMapRouteVM.AllPoints = _points;
+                            //draw annotation
+                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
+                        }                                               
                     }
                     else if (_routeId.ToString() == topoimg[0].drawing[j].id)
                     {
@@ -624,48 +633,99 @@ namespace SloperMobile.Views
 
                     //draw rect at start point                            
                     // draw these at specific locations        
-                    var labelWithId = new LabelWithId(id);
-                    labelWithId.BackgroundColor = Color.FromHex(BoxYellowColor);
-                    labelWithId.HorizontalTextAlignment = TextAlignment.Center;
-                    labelWithId.VerticalTextAlignment = TextAlignment.Center;
-                    labelWithId.Text = _routecnt.ToString();
-                    labelWithId.TextColor = Color.Black;
-                    labelWithId.FontSize = BoxTextFontSize;
-
-                    AbsoluteLayout parent;
-                    double x = 0;
-                    double y = 0;
-
-                    if (Device.RuntimePlatform == Device.Android)
+                    if (!_diamondclickroute.Contains(Convert.ToInt32(id)))
                     {
-                        parent = skCanvasAndroid.Parent as AbsoluteLayout;
-                        x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 30) / device.Display.Scale;
-                        y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 40) / device.Display.Scale;
+                        _diamondclickroute.Add(Convert.ToInt32(id));
+                        //draw rect at start point                            
+                        // draw these at specific locations   
+                        string _color = getGradeBucketHex(gradeBucket);
+
+                        BoxView boxView = new BoxView
+                        {
+                            Color = Color.FromHex(_color),
+                            HorizontalOptions = LayoutOptions.Center,
+                            VerticalOptions = LayoutOptions.CenterAndExpand,
+                            Rotation = 40,
+                            AutomationId = id.ToString(),
+                        };
+                        BoxView inner_boxView = new BoxView
+                        {
+                            HorizontalOptions = LayoutOptions.Center,
+                            VerticalOptions = LayoutOptions.CenterAndExpand,
+                            BackgroundColor = Color.White,
+                            Color = Color.White,
+                            Rotation = 40
+                        };
+
+                        var labelWithId = new LabelWithId(id);
+                        //labelWithId.BackgroundColor = Color.FromHex(_color); //BoxYellowColor
+                        labelWithId.HorizontalTextAlignment = TextAlignment.Center;
+                        labelWithId.VerticalTextAlignment = TextAlignment.Center;
+                        labelWithId.Text = _routecnt.ToString();
+                        labelWithId.TextColor = Color.White;
+                        labelWithId.FontSize = BoxTextFontSize;
+
+                        AbsoluteLayout parent;
+                        double x = 0;
+                        double y = 0;
+
+                        if (Device.RuntimePlatform == Device.Android)
+                        {
+                            parent = skCanvasAndroid.Parent as AbsoluteLayout;
+                            x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 30) / device.Display.Scale;
+                            y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 40) / device.Display.Scale;
+                        }
+                        else
+                        {
+                            parent = skCanvasiOS.Parent as AbsoluteLayout;
+                            x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 15) / device.Display.Scale;
+                            y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 20) / device.Display.Scale;
+                        }
+                        if (isDiamondSingleClick)
+                        {
+                            for (int c = (parent.Children.Count() - 1); c > 0; c--)
+                            {
+                                if (c > 0)
+                                    parent.Children.RemoveAt(c);
+                            }
+                        }
+
+                        AbsoluteLayout.SetLayoutBounds(inner_boxView, new Rectangle(x - 1, y - 1.2, 20, 20));
+                        AbsoluteLayout.SetLayoutFlags(inner_boxView, AbsoluteLayoutFlags.None);
+
+                        AbsoluteLayout.SetLayoutBounds(boxView, new Rectangle(x, y, 18, 18));
+                        AbsoluteLayout.SetLayoutFlags(boxView, AbsoluteLayoutFlags.None);
+
+                        AbsoluteLayout.SetLayoutBounds(labelWithId, new Rectangle(x, y, 18, 18));
+                        AbsoluteLayout.SetLayoutFlags(labelWithId, AbsoluteLayoutFlags.None);
+
+                        var tapGesture = new TapGestureRecognizer();
+                        tapGesture.Tapped += (item, eventArgs) =>
+                        {
+                            var boxViewWithId = item as LabelWithId;
+                            if (boxViewWithId != null)
+                            {
+                                ShowRoute((int?)boxViewWithId.PointId);
+                                //double Xcoordinate = (globalWidth / 2) - boxViewWithId.X;
+                                if (Device.RuntimePlatform == Device.Android)
+                                {
+                                    androidZoomScroll.ScrollToAsync(boxViewWithId.X, 0, false);
+                                }
+                                else
+                                {
+                                    var xcoordinate = (device.Display.Width / 2) > boxViewWithId.X ? ((device.Display.Width / 2) - boxViewWithId.X) - 30 : boxViewWithId.X - (device.Display.Width / 2);
+                                    iOSZoomScroll.ScrollToAsync(xcoordinate, 0, true);
+                                }
+                            }
+                        };
+
+                        labelWithId.GestureRecognizers.Add(tapGesture);
+                        boxView.GestureRecognizers.Add(tapGesture);
+
+                        parent.Children.Add(inner_boxView);
+                        parent.Children.Add(boxView);
+                        parent.Children.Add(labelWithId);
                     }
-                    else
-                    {
-                        parent = skCanvasiOS.Parent as AbsoluteLayout;
-                        x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 15) / device.Display.Scale;
-                        y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 20) / device.Display.Scale;
-                    }
-
-                    if (topoimg[0].drawing.Count < parent.Children.Where(item => item is LabelWithId).Count())
-                    {
-                        continue;
-                    }
-
-                    AbsoluteLayout.SetLayoutBounds(labelWithId, new Rectangle(x, y, 15, 15));
-                    AbsoluteLayout.SetLayoutFlags(labelWithId, AbsoluteLayoutFlags.None);
-
-                    var tapGesture = new TapGestureRecognizer();
-                    tapGesture.Tapped += (item, eventArgs) =>
-                    {
-                        var boxViewWithId = item as LabelWithId;
-                        ShowRoute((int?)boxViewWithId.PointId);
-                    };
-
-                    labelWithId.GestureRecognizers.Add(tapGesture);
-                    parent.Children.Add(labelWithId);
                 }
                 else if (topoimgTop.points[i].type == "3")
                 {
@@ -1317,24 +1377,25 @@ namespace SloperMobile.Views
             }
             return _color = new SKColor(r, g, b);
         }
-        public SKColor getGradeBucketHex(string grade_bucket_id)
+        public string getGradeBucketHex(string grade_bucket_id)
         {
-            SKColor color = new SKColor();
+            // SKColor color = new SKColor();
+            string color = string.Empty;
             var hexCode = App.DAUtil.GetBucketHexColorByGradeBucketId(grade_bucket_id) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(grade_bucket_id);
             switch (grade_bucket_id)
             {
                 case "1":
-                    return color = new SKColor(3, 97, 119);//"#036177";
+                    return color = "#036177";// new SKColor(3, 97, 119);
                 case "2":
-                    return color = new SKColor(31, 138, 112);//"#1f8a70";
+                    return color = "#1f8a70";//new SKColor(31, 138, 112);
                 case "3":
-                    return color = new SKColor(145, 165, 55);//"#91a537";
+                    return color = "#91a537"; //new SKColor(145, 165, 55);
                 case "4":
-                    return color = new SKColor(180, 152, 0);//"#b49800";
+                    return color = "#b49800";//new SKColor(180, 152, 0);
                 case "5":
-                    return color = new SKColor(253, 116, 0);//"#fd7400";
+                    return color = "#fd7400";//new SKColor(253, 116, 0);
                 default:
-                    return color = new SKColor(204, 204, 204);//"#cccccc";
+                    return color = "#cccccc";//new SKColor(204, 204, 204);
             }
         }
         public double GetHeight(Double _height)
@@ -1462,16 +1523,24 @@ namespace SloperMobile.Views
             // if we got to the topo via the map and not the list, redraw all the routes
             if (_newRouteId <= 0)
             {
-                if (Device.OS == TargetPlatform.iOS)
+                if (Device.RuntimePlatform == Device.Android)
                 {
-                   // scrollView.ScrollToAsync(0, 0, true);
+                    androidZoomScroll.ScrollToAsync(0, 0, false);
                 }
                 else
                 {
-                    OnScroll("0");
+                    iOSZoomScroll.ScrollToAsync(0, 0, true);
                 }
                 // webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight,_bucket);
                 _routeId = 0;
+                hasBeingRedrawing = 0;
+                isDiamondClick = false;
+                isDiamondSingleClick = false;
+                _diamondclickroute.Clear();
+                if (Device.OS == TargetPlatform.iOS)
+                    skCanvasiOS.InvalidateSurface();
+
+                //skCanvasAndroid.InvalidateSurface();
                 Redraw(); /*skCanvasAndroid.InvalidateSurface()*///
             }
         }
