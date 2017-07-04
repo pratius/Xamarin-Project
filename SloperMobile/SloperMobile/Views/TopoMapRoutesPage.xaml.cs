@@ -86,17 +86,17 @@ namespace SloperMobile.Views
                     }
                 }
 
-                //var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-                //ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
-                //height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-                //ratio = (float)height / float.Parse(topoimg[0].image.height);
-                //globalHeight = height;
-                //globalWidth = double.Parse(topoimg[0].image.width) * ratio;
+                var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
+                height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                ratio = (float)height / float.Parse(topoimg[0].image.height);
+                globalHeight = height;
+                globalWidth = double.Parse(topoimg[0].image.width) * ratio;
 
-                //AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
-                //AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
-                //iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
-                //iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+                AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+                iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
 
             }
             catch(Exception exception)
@@ -209,10 +209,10 @@ namespace SloperMobile.Views
 
                     if (hasBeingDrawen < 3)
                     {
-                        var deviceHeight = device.Display.Height - ((1.9 * FooterUC.Height * device.Display.Scale) + (BackHeaderUC.Height * device.Display.Scale) );
+                        var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
                         ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
                         height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-                       // ratio = (float)height / float.Parse(topoimg[0].image.height);
+                        ratio = (float)height / float.Parse(topoimg[0].image.height);
                         globalHeight = height;
                         globalWidth = double.Parse(topoimg[0].image.width) * ratio;
 
@@ -228,11 +228,11 @@ namespace SloperMobile.Views
                     using (var paint = new SKPaint())
                     {
                         //skCanvasAndroid.TranslationY = 40 * parent.ScaleFactor;
-                        canvas.DrawBitmap(bitmap, SKRect.Create((float)(globalWidth), (float)(height)), paint);
-                        // canvas.DrawBitmap(bitmap, SKRect.Create((float)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
-                       // AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
-                       // AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
-                       // ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
+                        canvas.DrawBitmap(bitmap, SKRect.Create((float)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
+                        AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
+                        AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
+                        ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
+
 
                         if (parent.IsScalingDown || parent.IsScalingUp)
                         {
@@ -255,8 +255,8 @@ namespace SloperMobile.Views
             //code to draw line
             using (new SKAutoCanvasRestore(canvas, true))
             {
-                //DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));
-                DrawLine(canvas, _routeId, ratio, Convert.ToInt32(globalHeight), Convert.ToInt32(globalWidth));
+                DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));
+                //DrawLine(canvas, _routeId, ratio, Convert.ToInt32(globalHeight), Convert.ToInt32(globalWidth));
             }
 
             hasBeingDrawen++;
@@ -271,11 +271,11 @@ namespace SloperMobile.Views
             var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
             if (topoimg != null)
             {
-                var deviceHeight = device.Display.Height - (FooterUC.Height) - (BackHeaderUC.Height * device.Display.Scale);
+                var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
                 ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
                 height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
                 ratio = (float)height / float.Parse(topoimg[0].image.height);
-                globalHeight = height;
+                globalHeight = height;                
                 float width = float.Parse(topoimg[0].image.width) * ratio;
 
                 if (Device.OS == TargetPlatform.Android)
