@@ -1,11 +1,6 @@
 ﻿using SloperMobile.ViewModel;
 using Syncfusion.SfCalendar.XForms;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,22 +10,25 @@ namespace SloperMobile.Views
     public partial class CalendarPage : ContentPage
     {
         int i = 0;
-        bool isMonthChanged = true;
         DateTime month = new DateTime();
         Label lblDateText, lblAppointment;
         private CalendarViewModel _calendarVM;
+
         public CalendarPage()
         {
-            //Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
-            InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            InitializeComponent();
+
             _calendarVM = new CalendarViewModel();
             BindingContext = _calendarVM;
 
             CalendarHeader.Text = DateTime.Now.ToString("Y").ToUpper();
-            calendar.MonthChanged += HandleMonthChangedEventHandler;
-            calendar.OnMonthCellLoaded += Cal_OnMonthCellLoaded;
 
+            SetupMonthViewSettings();
+        }
+
+        private void SetupMonthViewSettings()
+        {
             MonthViewSettings monthViewSettings = new MonthViewSettings();
             monthViewSettings.BorderColor = Color.Black;
             monthViewSettings.CurrentMonthBackgroundColor = Color.Black;
@@ -44,9 +42,8 @@ namespace SloperMobile.Views
             monthViewSettings.SelectedDayTextColor = Color.White;
 
             calendar.MonthViewSettings = monthViewSettings;
-
-            //Acr.UserDialogs.UserDialogs.Instance.Loading().Hide();
         }
+
         void Cal_OnMonthCellLoaded(object sender, MonthCell args)
         {
             if (Device.RuntimePlatform == Device.iOS)
@@ -150,10 +147,12 @@ namespace SloperMobile.Views
                     i = 0;
             }
         }
+
         void HandleMonthChangedEventHandler(object sender, MonthChangedEventArgs args)
         {
-            CalendarHeader.Text = args.args.CurrentValue.ToString("Y").ToUpper();
+           CalendarHeader.Text = args.args.CurrentValue.ToString("Y").ToUpper();
         }
+
         private async void SfCalendar_OnOnCalendarTapped(object sender, CalendarTappedEventArgs args)
         {
             //Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");

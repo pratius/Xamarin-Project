@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using Newtonsoft.Json;
-
+﻿using Newtonsoft.Json;
 using SloperMobile.Common.Constants;
 using SloperMobile.Common.Helpers;
 using SloperMobile.Model;
-using SloperMobile.Common.Command;
 using Syncfusion.SfCalendar.XForms;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace SloperMobile.ViewModel
 {
@@ -83,10 +79,9 @@ namespace SloperMobile.ViewModel
                 CalendarModel.end_date = "20300101";
                 string calendarjson = JsonConvert.SerializeObject(CalendarModel);
                 var response = await apicall.Post<CalendarResponse[]>(calendarjson);
-                CalendarEventCollection Collection = new CalendarEventCollection();
+                var Collection = new CalendarEventCollection();
                 if (response != null)
                 {
-                    CalendarInlineEvent events = new CalendarInlineEvent();
                     foreach (var singleDate in response)
                     {
                         Collection.Add(new CalendarInlineEvent()
@@ -95,9 +90,10 @@ namespace SloperMobile.ViewModel
                             EndTime = Convert.ToDateTime(singleDate.date_climbed),
                             Color = Color.DarkOrange
                         });
-                        ShowDates = Collection;
                     }
                 }
+
+                ShowDates = Collection;
             }
             catch (Exception ex)
             {
