@@ -1,17 +1,20 @@
-﻿using System;
+﻿using SloperMobile.Common.Enumerators;
+using SloperMobile.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SloperMobile.Common.Enumerators;
-using SloperMobile.Views;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace SloperMobile.UserControls
 {
-    public partial class HeaderMenuCalendarUC : ContentView
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class HeaderMenuRankingUC : ContentView
     {
-        public HeaderMenuCalendarUC()
+        public HeaderMenuRankingUC()
         {
             InitializeComponent();
         }
@@ -29,10 +32,7 @@ namespace SloperMobile.UserControls
                 await PageNavigation(pageType, tabtxt);
             }
             catch (Exception ex)
-            {
-
-
-            }
+            {}
         }
         private async Task PageNavigation(ApplicationActivity page, string tabtxt)
         {
@@ -40,24 +40,22 @@ namespace SloperMobile.UserControls
             {
                 switch (tabtxt)
                 {
-                    case "SENDS":
-                        await Navigation.PushAsync(new SendsPage("SENDS"));
-                        break;
                     case "POINTS":
                         await Navigation.PushAsync(new PointsPage(String.Empty));
+                        break;
+                    case "SENDS":
+                        await Navigation.PushAsync(new SendsPage("SENDS"));
                         break;
                     case "TICK LIST":
                         await Navigation.PushAsync(new TickListPage());
                         break;
-                    case "RANKING":
-                        await Navigation.PushAsync(new RankingPage());
+                    case "CALENDAR":
+                        await Navigation.PushAsync(new CalendarPage());
                         break;
                 }
             }
             catch (Exception ex)
-            {
-
-            }
+            {}
         }
     }
 }

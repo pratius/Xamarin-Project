@@ -19,32 +19,48 @@
                 <ColumnDefinition Width="1"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1"/>
             </Grid.ColumnDefinitions>
-            <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.ColumnSpan="9"/>
+            <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.ColumnSpan="11"/>
             <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0" />
-            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="POINTS" TextColor="White" FontSize="Small" BackgroundColor="#000" Grid.Row="1" Grid.Column="1">
+            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" 
+                   VerticalOptions="FillAndExpand" Text="RANKING" TextColor="White" FontSize="Small" BackgroundColor="#000" 
+                   Grid.Row="1" Grid.Column="1">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="SendsPage"/>
+                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="RankingPage"/>
                 </Label.GestureRecognizers>
             </Label>
             <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="2" />
-            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="SENDS" TextColor="White" FontSize="Small" BackgroundColor="#000" Grid.Row="1" Grid.Column="3">
+            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand" Text="POINTS" TextColor="White" FontSize="Small" 
+                   BackgroundColor="#000" Grid.Row="1" Grid.Column="3">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="PointsPage"/>
                 </Label.GestureRecognizers>
             </Label>
             <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="4" />
-            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="TICK LIST" TextColor="Black" FontSize="Small" BackgroundColor="#FF8E2D" Grid.Row="1" Grid.Column="5"/>
+            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand" Text="SENDS" TextColor="White" FontSize="Small" 
+                   BackgroundColor="#000" Grid.Row="1" Grid.Column="5">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="SendsPage"/>
+                </Label.GestureRecognizers>
+            </Label>
             <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="6" />
-            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" 
-                   VerticalOptions="FillAndExpand" Text="CALENDAR" TextColor="White" FontSize="Small" BackgroundColor="#000" 
-                   Grid.Row="1" Grid.Column="7">
+            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand" Text="CALENDAR" TextColor="White" FontSize="Small" 
+                   BackgroundColor="#000" Grid.Row="1" Grid.Column="7">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="CalendarPage"/>
                 </Label.GestureRecognizers>
             </Label>
             <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="8" />
-            <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.ColumnSpan="9"/>
+            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand" Text="TICK LIST" TextColor="White" FontSize="Small" 
+                   BackgroundColor="#FF8E2D" Grid.Row="1" Grid.Column="9"/>
+            <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="10" />
+            <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.ColumnSpan="11"/>
         </Grid>
     </ContentView.Content>
 </ContentView>
