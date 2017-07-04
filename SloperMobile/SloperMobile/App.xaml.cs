@@ -107,19 +107,12 @@ namespace SloperMobile
             if (IsAppinitialized)
             {
                 if (string.IsNullOrEmpty(Settings.AccessTokenSettings))
-                {
                     MainPage = new NavigationPage(new LoginPage());
-                }
                 else
-                {
                     MainPage = new NavigationPage(new MenuNavigationPage());
-                }
             }
             else
-            {
                 MainPage = new NavigationPage(new SplashPage());
-            }
-
         }
 
         void HandleReceivedMessages()

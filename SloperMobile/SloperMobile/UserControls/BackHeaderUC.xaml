@@ -6,8 +6,8 @@
         <ResourceDictionary>
             <!--Top Header Style-->
             <Style x:Key="lblTopHeader" TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="Center" />
-                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
 
                 <!--<Setter Property="FontSize" Value="Large" />-->
                 <Setter Property="TextColor" Value="#FF8E2D" />
@@ -16,8 +16,8 @@
 
 
             <Style x:Key="lblsubTopHeader" TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="Center" />
-                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <!--<Setter Property="FontSize" Value="Small" />-->
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="Font" Value="Small"/>
@@ -27,7 +27,7 @@
 
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" BackgroundColor="Black">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
@@ -39,7 +39,8 @@
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnBackTapped"/>
             </StackLayout.GestureRecognizers>
-            <Image IsVisible="{Binding DisplayBackButton,Mode=TwoWay}" Source="arrowLeftWhite" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" Aspect="AspectFit"/>
+            <Image IsVisible="{Binding DisplayBackButton,Mode=TwoWay}" Source="arrowLeftWhite" HeightRequest="25" WidthRequest="25" 
+                   VerticalOptions="Start" Aspect="AspectFit"/>
         </StackLayout>
 
         <StackLayout Orientation="Vertical" Spacing="0" Grid.Column="1" Grid.Row="0">
