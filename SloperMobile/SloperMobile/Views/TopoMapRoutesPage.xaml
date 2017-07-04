@@ -13,9 +13,9 @@
     </ContentPage.Padding>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="00" />
@@ -23,7 +23,7 @@
             <ColumnDefinition Width="00" />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <OnPlatform x:TypeArguments="View">
                 <On Platform="iOS">
                     <local:ZoomableScrollView Grid.Column="0" Grid.Row="0" x:Name="iOSZoomScroll"
@@ -49,7 +49,7 @@
                         <AbsoluteLayout 
                                     x:Name="AndroidAbsoluteLayout" >
                             <views:SKCanvasView 
-                                        AbsoluteLayout.LayoutBounds="0,0.1,1,0.95" 
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1" 
                                         AbsoluteLayout.LayoutFlags="All"
                                         x:Name="skCanvasAndroid" 
                                         PaintSurface="OnPaintSample">
@@ -172,7 +172,7 @@
         </Controls:GestureFrame>
         <!--		<UC:FooterUC IsVisible="{Binding HideUpArrow,Mode=TwoWay}" Grid.Column="1" Grid.Row="1" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />-->
 
-        <UC:BackHeaderUC x:Name="BackHeaderUC"  Grid.Row="0" Grid.Column="1" HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />
+        <UC:BackHeaderUC x:Name="BackHeaderUC"  Grid.Row="0" Grid.Column="1" HeightRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" />
         <UC:FooterUC x:Name="FooterUC"  Grid.Row="2" Grid.Column="1" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />
         <ActivityIndicator Grid.RowSpan="2" Grid.ColumnSpan="2" Color="Black" IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
     </Grid>
