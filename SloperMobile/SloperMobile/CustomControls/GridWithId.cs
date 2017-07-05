@@ -23,8 +23,8 @@ namespace SloperMobile.CustomControls
 			base.OnParentSet();
 			var innerBoxView = new BoxView
 			{
-				HeightRequest = 20,
-				WidthRequest = 20,
+				HeightRequest = 18,
+				WidthRequest = 18,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				BackgroundColor = Color.White,
@@ -34,8 +34,8 @@ namespace SloperMobile.CustomControls
 
 			var boxView = new BoxView
 			{
-				HeightRequest = 18,
-				WidthRequest = 18,
+				HeightRequest = 16,
+				WidthRequest = 16,
 				Color = Color.FromHex(color),
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
