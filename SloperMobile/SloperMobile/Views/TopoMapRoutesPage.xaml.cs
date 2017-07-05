@@ -21,6 +21,7 @@ namespace SloperMobile.Views
 	{
 		private const string BoxYellowColor = "#b49800";
 		private const int BoxTextFontSize = 8;
+		private const int TopBarHeight = 40;
 		private ObservableCollection<imgData> _imgData;
 		public ObservableCollection<imgData> ImageDataList
 		{
@@ -212,7 +213,7 @@ namespace SloperMobile.Views
 
                     if (hasBeingDrawen < 3)
                     {
-                        var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+						var deviceHeight = device.Display.Height - (FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale) - TopBarHeight * device.Display.Scale;
                         ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
                         height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
                         ratio = (float)height / float.Parse(topoimg[0].image.height);
