@@ -64,7 +64,9 @@
                                          ShowInlineEvents="False"
                                          MonthChanged="HandleMonthChangedEventHandler"
                                          OnMonthCellLoaded="Cal_OnMonthCellLoaded"
-                                         OnCalendarTapped="SfCalendar_OnOnCalendarTapped" />
+                                         OnCalendarTapped="SfCalendar_OnOnCalendarTapped"
+										 SelectionChanged="CalendarSelectionChanged"
+										 PropertyChanging="CalendarPropertyChanging"/>
                 </Grid>
             </StackLayout>
         </Grid>

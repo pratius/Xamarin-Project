@@ -9,7 +9,8 @@ namespace SloperMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CalendarPage : ContentPage
     {
-        int i = 0;
+		private const string NotInMonthDayHexColorValue = "#333333";
+		int i = 0;
         DateTime month = new DateTime();
         Label lblDateText, lblAppointment;
         private CalendarViewModel _calendarVM;
@@ -34,7 +35,7 @@ namespace SloperMobile.Views
             monthViewSettings.CurrentMonthBackgroundColor = Color.Black;
             monthViewSettings.CurrentMonthTextColor = Color.White;
             monthViewSettings.PreviousMonthBackgroundColor = Color.Black;
-            monthViewSettings.PreviousMonthTextColor = Color.FromHex("#333333");
+            monthViewSettings.PreviousMonthTextColor = Color.FromHex(NotInMonthDayHexColorValue);
             monthViewSettings.DayHeaderBackgroundColor = Color.Black;
             monthViewSettings.DayHeaderTextColor = Color.White;
             monthViewSettings.DateSelectionColor = Color.Black;
@@ -42,7 +43,8 @@ namespace SloperMobile.Views
             monthViewSettings.SelectedDayTextColor = Color.White;
 
             calendar.MonthViewSettings = monthViewSettings;
-        }
+			calendar.SelectedDate = DateTime.Now;
+		}
 
         void Cal_OnMonthCellLoaded(object sender, MonthCell args)
         {
@@ -95,7 +97,7 @@ namespace SloperMobile.Views
                             FontSize = 15,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
-                            TextColor = Color.FromHex("#333333"),
+                            TextColor = Color.FromHex(NotInMonthDayHexColorValue),
                             Margin = new Thickness(0, 20, 0, 0)
                         };
                         lblAppointment = new Label()
@@ -135,7 +137,7 @@ namespace SloperMobile.Views
                             FontSize = 15,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
-                            TextColor = Color.FromHex("#333333")
+                            TextColor = Color.FromHex(NotInMonthDayHexColorValue)
                         };
 
                     if (DateTime.Today.ToString("MM/dd/yyyy") == args.Date.ToString("MM/dd/yyyy"))
@@ -153,7 +155,42 @@ namespace SloperMobile.Views
            CalendarHeader.Text = args.args.CurrentValue.ToString("Y").ToUpper();
         }
 
-        private async void SfCalendar_OnOnCalendarTapped(object sender, CalendarTappedEventArgs args)
+		private void CalendarSelectionChanged(object sender, SelectionChangedEventArgs args)
+		{
+			if (month.Month != args.Calendar.SelectedDate.Month)
+			{
+				args.Calendar.MonthViewSettings.CurrentMonthBackgroundColor = Color.Black;
+				if (args.Calendar.SelectedDate.Day == DateTime.Now.Day)
+				{
+					//Setting another day to make not today day selected
+					calendar.SelectedDate = calendar.SelectedDate.AddDays(1);
+					args.Calendar.MonthViewSettings.TodayTextColor = Color.FromHex("#FF8E2D");
+				}
+				else
+				{
+					//Setting white text color to days of current month
+					args.Calendar.MonthViewSettings.SelectedDayTextColor = Color.White;
+				}
+			}
+			else
+			{
+				//Setting text color to days not of current month
+				args.Calendar.MonthViewSettings.SelectedDayTextColor = Color.FromHex(NotInMonthDayHexColorValue);
+			}
+		}
+
+		private bool firstTimeTodayDaySelectionChanged;
+
+		private void CalendarPropertyChanging(object sender, PropertyChangingEventArgs e)
+		{
+			if (month.Month != calendar.SelectedDate.Month && calendar.SelectedDate.Day == DateTime.Now.Day)
+			{
+				//Setting another day to make not today day selected
+				calendar.SelectedDate = calendar.SelectedDate.AddDays(1);
+			}
+		}
+
+		private async void SfCalendar_OnOnCalendarTapped(object sender, CalendarTappedEventArgs args)
         {
             //Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
             CalendarEventCollection events = args.Calendar.DataSource;
