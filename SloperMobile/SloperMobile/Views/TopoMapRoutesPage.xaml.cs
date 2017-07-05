@@ -131,23 +131,23 @@ namespace SloperMobile.Views
 			ShowRoute(routeId);
 		}
 
-		private void ShowRoute(int? routeId)
-		{
-			if (Device.OS == TargetPlatform.iOS)
-				skCanvasiOS.InvalidateSurface();
+        private void ShowRoute(int? routeId)
+        {
+            if (Device.OS == TargetPlatform.iOS)
+                skCanvasiOS.InvalidateSurface();
 
-			TopoMapRouteVM.LoadRouteData(routeId, listData);
-			TopoMapRouteVM.DisplayRoutePopupSm = true;
-			var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-			height = device.Display.Height;
-			newHeight = GetHeight(height);
-			_bucket.Clear();
-			_routeId = routeId;
-			_newRouteId = routeId;
-			_diamondclickroute.Clear();
-			isDiamondSingleClick = true;
-			Redraw();
-		}
+            TopoMapRouteVM.LoadRouteData(routeId, listData);
+            TopoMapRouteVM.DisplayRoutePopupSm = true;
+            var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
+            height = device.Display.Height;
+            newHeight = GetHeight(height);
+            _bucket.Clear();
+            _routeId = routeId;
+            _newRouteId = routeId;
+            _diamondclickroute.Clear();
+            isDiamondSingleClick = true;
+            Redraw();
+        }
 
 		private async void OnPageNavigation(object obj)
 		{
@@ -174,121 +174,128 @@ namespace SloperMobile.Views
 		{
 			_points.Clear();
 
-			try
-			{
+            try
+            {
+                MainDrawing(e);                
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
-				var canvas = e.Surface.Canvas;
-				canvas.Clear();
-				if (string.IsNullOrEmpty(topoimg[0].image.data))
-				{
-					return;
-				}
+        private void MainDrawing(SKPaintSurfaceEventArgs e)
+        {
+            var canvas = e.Surface.Canvas;
+            canvas.Clear();
+            if (string.IsNullOrEmpty(topoimg[0].image.data))
+            {
+                return;
+            }
 
-				//code to draw image
-				string strimg64 = topoimg[0].image.data.Split(',')[1];
-				if (!string.IsNullOrEmpty(strimg64))
-				{
-					byte[] imageBytes = Convert.FromBase64String(strimg64);
-					using (var fileStream = new MemoryStream(imageBytes))
-					{
-						ZoomableScrollView parent;
-						if (Device.RuntimePlatform == Device.Android)
-						{
-							parent = skCanvasAndroid.Parent.Parent as ZoomableScrollView;
-						}
-						else
-						{
-							parent = skCanvasiOS.Parent.Parent as ZoomableScrollView;
-						}
+            //code to draw image
+            string strimg64 = topoimg[0].image.data.Split(',')[1];
+            if (!string.IsNullOrEmpty(strimg64))
+            {
+                byte[] imageBytes = Convert.FromBase64String(strimg64);
+                using (var fileStream = new MemoryStream(imageBytes))
+                {
+                    ZoomableScrollView parent;
+                    if (Device.RuntimePlatform == Device.Android)
+                    {
+                        parent = skCanvasAndroid.Parent.Parent as ZoomableScrollView;
+                    }
+                    else
+                    {
+                        parent = skCanvasiOS.Parent.Parent as ZoomableScrollView;
+                    }
 
-						if (hasBeingDrawen < 3)
-						{
-							var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-							ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
-							height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-							ratio = (float)height / float.Parse(topoimg[0].image.height);
-							globalHeight = height;
-							globalWidth = double.Parse(topoimg[0].image.width) * ratio;
+                    if (hasBeingDrawen < 3)
+                    {
+                        var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                        ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
+                        height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                        ratio = (float)height / float.Parse(topoimg[0].image.height);
+                        globalHeight = height;
+                        globalWidth = double.Parse(topoimg[0].image.width) * ratio;
 
-							AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
-							AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
-							iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
-							iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
-						}
+                        AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                        AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+                        iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                        iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+                    }
 
-						// decode the bitmap from the stream
-						using (var stream = new SKManagedStream(fileStream))
-						using (var bitmap = SKBitmap.Decode(stream))
-						using (var paint = new SKPaint())
-						{
-							//skCanvasAndroid.TranslationY = 40 * parent.ScaleFactor;
-							canvas.DrawBitmap(bitmap, SKRect.Create((float)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
-							AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
-							AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
-							ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
+                    // decode the bitmap from the stream
+                    using (var stream = new SKManagedStream(fileStream))
+                    using (var bitmap = SKBitmap.Decode(stream))
+                    using (var paint = new SKPaint())
+                    {
+                        //skCanvasAndroid.TranslationY = 40 * parent.ScaleFactor;
+                        canvas.DrawBitmap(bitmap, SKRect.Create((float)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
+                        AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
+                        AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
+                        ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
 
-							if (parent.IsScalingDown || parent.IsScalingUp)
-							{
-								try
-								{
-									for (int i = 0; i < diamondsCount; i++)
-									{
-										AndroidAbsoluteLayout.Children.RemoveAt(i + 1);
-									}
-								}
-								catch (Exception)
-								{
 
-								}
-							}
-						}
-					}
-				}
+                        if (parent.IsScalingDown || parent.IsScalingUp)
+                        {
+                            try
+                            {
+                                for (int i = 0; i < diamondsCount; i++)
+                                {
+                                    AndroidAbsoluteLayout.Children.RemoveAt(i + 1);
+                                }
+                            }
+                            catch (Exception)
+                            {
 
-				//code to draw line
-				using (new SKAutoCanvasRestore(canvas, true))
-				{
-					DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));
-				}
+                            }
+                        }
+                    }
+                }
+            }
 
-				hasBeingDrawen++;
-			}
-			catch
-			{
-				throw;
-			}
-		}
+            //code to draw line
+            using (new SKAutoCanvasRestore(canvas, true))
+            {
+                DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));
+                //DrawLine(canvas, _routeId, ratio, Convert.ToInt32(globalHeight), Convert.ToInt32(globalWidth));
+            }
 
-		private void Redraw()
-		{
-			// _newPoints.Clear();
-			int height = 0;
-			var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-			var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
-			if (topoimg != null)
-			{
-				var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-				ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
-				height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-				ratio = (float)height / float.Parse(topoimg[0].image.height);
-				globalHeight = height;
-				float width = float.Parse(topoimg[0].image.width) * ratio;
+            hasBeingDrawen++;
+        }
 
-				if (Device.OS == TargetPlatform.Android)
-				{
-					try
-					{
-						using (var surface = SKSurface.Create(Convert.ToInt32(width), height, SKColorType.Rgb565, SKAlphaType.Premul))
-						{
-							SKCanvas canvas = surface.Canvas;
-							//code to draw image
-							if (!string.IsNullOrEmpty(topoimg[0].image.data))
-							{
-								string strimg64 = topoimg[0].image.data.Split(',')[1];
-								if (!string.IsNullOrEmpty(strimg64))
-								{
-									byte[] imageBytes = Convert.FromBase64String(strimg64);
-									Stream fileStream = new MemoryStream(imageBytes);
+
+        private void Redraw()
+        {
+            // _newPoints.Clear();
+            int height = 0;
+            var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
+            var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
+            if (topoimg != null)
+            {
+                var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
+                height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                ratio = (float)height / float.Parse(topoimg[0].image.height);
+                globalHeight = height;                
+                float width = float.Parse(topoimg[0].image.width) * ratio;
+
+                if (Device.OS == TargetPlatform.Android)
+                {
+                    try
+                    {
+                        using (var surface = SKSurface.Create(Convert.ToInt32(width), height, SKColorType.Rgb565, SKAlphaType.Premul))
+                        {
+                            SKCanvas canvas = surface.Canvas;
+                            //code to draw image
+                            if (!string.IsNullOrEmpty(topoimg[0].image.data))
+                            {
+                                string strimg64 = topoimg[0].image.data.Split(',')[1];
+                                if (!string.IsNullOrEmpty(strimg64))
+                                {
+                                    byte[] imageBytes = Convert.FromBase64String(strimg64);
+                                    Stream fileStream = new MemoryStream(imageBytes);
 
 									// clear the canvas / fill with white
 									canvas.DrawColor(SKColors.White);
@@ -361,11 +368,11 @@ namespace SloperMobile.Views
 			}
 		}
 
-		public void DrawLine(SKCanvas _skCanvas, int? route, float ratio, int _height, int _width)
-		{
-			var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-			float ptx1 = 0, ptx2 = 0, pty1 = 0, pty2 = 0;
-			var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
+        public void DrawLine(SKCanvas _skCanvas, int? route, float ratio, int _height, int _width)
+        {
+            var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
+            float ptx1 = 0, ptx2 = 0, pty1 = 0, pty2 = 0;
+            var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
 
 			using (var path = new SKPath())
 			{
@@ -418,205 +425,199 @@ namespace SloperMobile.Views
 							_pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
 							_points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
 
-						}
+                            //draw annotation
+                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
+                        }                                               
+                    }
+                    else if (_routeId.ToString() == topoimg[0].drawing[j].id)
+                    {
+                        for (int k = 0; k < topoimg[0].drawing[j].line.points.Count; k++)
+                        {
+                            ptx1 = float.Parse(topoimg[0].drawing[j].line.points[k].x) * ratio;
+                            pty1 = float.Parse(topoimg[0].drawing[j].line.points[k].y) * ratio;
+                            if (k != (topoimg[0].drawing[j].line.points.Count - 1))
+                            {
+                                ptx2 = float.Parse(topoimg[0].drawing[j].line.points[k + 1].x) * ratio;
+                                pty2 = float.Parse(topoimg[0].drawing[j].line.points[k + 1].y) * ratio;
+                            }
+                            SKColor _color = HexToColor(topoimg[0].drawing[j].line.style.color);
+                            if (Device.OS == TargetPlatform.Android)
+                            {
+                                SKPaint thinLinePaint = new SKPaint
+                                {
+                                    //Style = SKPaintStyle.Stroke,
+                                    Color = _color,
+                                    StrokeWidth = 5,
+                                    PathEffect = SKPathEffect.CreateDash(new float[] { 30, 15, }, 0)
+                                };
+                                //draw line
+                                _skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, thinLinePaint);
+                            }
+                            else
+                            {
+                                SKPaint thinLinePaint = new SKPaint
+                                {
+                                    Style = SKPaintStyle.Stroke,
+                                    Color = _color,
+                                    StrokeWidth = 2,
+                                    PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
+                                };
+                                //draw line
+                                _skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, thinLinePaint);
+                            }
+                            //add all points in list
+                            points _pt = new points();
+                            _pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
+                            _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
+                            _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));                           
 
-						//draw annotation
-						DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
-						//TopoMapRouteVM.AllPoints = _points;
-					}
-					else if (_routeId.ToString() == topoimg[0].drawing[j].id)
-					{
-						for (int k = 0; k < topoimg[0].drawing[j].line.points.Count; k++)
-						{
-							ptx1 = float.Parse(topoimg[0].drawing[j].line.points[k].x) * ratio;
-							pty1 = float.Parse(topoimg[0].drawing[j].line.points[k].y) * ratio;
-							if (k != (topoimg[0].drawing[j].line.points.Count - 1))
-							{
-								ptx2 = float.Parse(topoimg[0].drawing[j].line.points[k + 1].x) * ratio;
-								pty2 = float.Parse(topoimg[0].drawing[j].line.points[k + 1].y) * ratio;
-							}
-							SKColor _color = HexToColor(topoimg[0].drawing[j].line.style.color);
-							if (Device.OS == TargetPlatform.Android)
-							{
-								SKPaint thinLinePaint = new SKPaint
-								{
-									//Style = SKPaintStyle.Stroke,
-									Color = _color,
-									StrokeWidth = 5,
-									PathEffect = SKPathEffect.CreateDash(new float[] { 30, 15, }, 0)
-								};
-								//draw line
-								_skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, thinLinePaint);
-							}
-							else
-							{
-								SKPaint thinLinePaint = new SKPaint
-								{
-									Style = SKPaintStyle.Stroke,
-									Color = _color,
-									StrokeWidth = 2,
-									PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
-								};
-								//draw line
-								_skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, thinLinePaint);
-							}
-							//add all points in list
-							points _pt = new points();
-							_pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
-							_pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
-							_points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
-
-							//draw annotation
-							DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
-							if (Device.OS == TargetPlatform.Android)
-							{
-								if (globalWidth > globalHeight)
-								{
-									double xVal = Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio));
-									if ((device.Display.Width / 2) < xVal)
-									{
-										var newval = (xVal - (device.Display.Width / 2)) - 50;
-										//var xCordinate = topoimg[0].drawing[j].line.points.Count > 0 ? Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio / 10)) : 0;
-										var xCordinate = topoimg[0].drawing[j].line.points.Count > 0 ? newval : 0;
-										OnScroll(xCordinate);
-										// scrollView.ScrollToAsync(topoimg[0].drawing[j].line.points.Count > 0 ? Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio / 20)) : 0, 0, true);
-									}
-								}
-							}
-							else
-							{
-								if (globalWidth > globalHeight)
-								{
-									double xVal = Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio));
-									if ((device.Display.Width / 2) < xVal)
-									{
-										var newval = (xVal - (device.Display.Width / 2));
-										if (Convert.ToInt32(newval) > 50 && Convert.ToInt32(newval) < 100)
-										{
-											newval -= 10;
-										}
-										else if (Convert.ToInt32(newval) > 100 && Convert.ToInt32(newval) < 150)
-										{ newval -= 70; }
-										else if (Convert.ToInt32(newval) > 150 && Convert.ToInt32(newval) < 200)
-										{ newval -= 130; }
-										else if (Convert.ToInt32(newval) > 200 && Convert.ToInt32(newval) < 250)
-										{ newval -= 180; }
-										else if (Convert.ToInt32(newval) > 250)
-										{ newval -= 50; }
-										//scrollView.ScrollToAsync(topoimg[0].drawing[j].line.points.Count > 0 ? Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio / 6) + 20) : 0, 0, true);
-										////  scrollView.ScrollToAsync(topoimg[0].drawing[j].line.points.Count > 0 ? newval : 0, 0, true);
-									}
-								}
-							}
-						}
-						//TopoMapRouteVM.AllPoints = _points;
-					}
-				}
+                            //draw annotation
+                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
+                            if (Device.OS == TargetPlatform.Android)
+                            {                                
+                                if (globalWidth > globalHeight)
+                                {
+                                    double xVal = Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio));                                    
+                                    if ((device.Display.Width/2) < xVal)
+                                    {
+                                        var newval = (xVal - (device.Display.Width / 2)) - 50;
+                                        //var xCordinate = topoimg[0].drawing[j].line.points.Count > 0 ? Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio / 10)) : 0;
+                                        var xCordinate = topoimg[0].drawing[j].line.points.Count > 0 ? newval : 0;
+                                        OnScroll(xCordinate);
+                                        // scrollView.ScrollToAsync(topoimg[0].drawing[j].line.points.Count > 0 ? Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio / 20)) : 0, 0, true);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (globalWidth > globalHeight)
+                                {
+                                    double xVal = Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio));
+                                    if ((device.Display.Width / 2) < xVal)
+                                    {
+                                        var newval = (xVal - (device.Display.Width / 2));
+                                        if (Convert.ToInt32(newval) > 50 && Convert.ToInt32(newval) < 100)
+                                        {
+                                            newval -= 10;
+                                        }
+                                        else if (Convert.ToInt32(newval) > 100 && Convert.ToInt32(newval) < 150)
+                                        { newval -= 70; }
+                                        else if (Convert.ToInt32(newval) > 150 && Convert.ToInt32(newval) < 200)
+                                        { newval -= 130; }
+                                        else if (Convert.ToInt32(newval) > 200 && Convert.ToInt32(newval) < 250)
+                                        { newval -= 180; }
+                                        else if (Convert.ToInt32(newval) > 250)
+                                        { newval -= 50; }
+                                        //scrollView.ScrollToAsync(topoimg[0].drawing[j].line.points.Count > 0 ? Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio / 6) + 20) : 0, 0, true);
+                                      ////  scrollView.ScrollToAsync(topoimg[0].drawing[j].line.points.Count > 0 ? newval : 0, 0, true);
+                                    }
+                                }
+                            }
+                        }                        
+                    }
+                }
 
 				path.Close();
 			}
 		}
 
-		public void ReDrawLine(SKCanvas _skCanvas, int? route, float ratio, int _height, int _width)
-		{
-			float ptx1 = 0, ptx2 = 0, pty1 = 0, pty2 = 0;
-			var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
-			using (var path = new SKPath())
-			{
-				for (int j = 0; j < topoimg[0].drawing.Count; j++)
-				{
-					if (_routeId == 0)
-					{
-						for (int i = 0; i < topoimg[0].drawing[j].line.points.Count; i++)
-						{
-							ptx1 = float.Parse(topoimg[0].drawing[j].line.points[i].x) * ratio;
-							pty1 = float.Parse(topoimg[0].drawing[j].line.points[i].y) * ratio;
-							if (i != (topoimg[0].drawing[j].line.points.Count - 1))
-							{
-								ptx2 = float.Parse(topoimg[0].drawing[j].line.points[i + 1].x) * ratio;
-								pty2 = float.Parse(topoimg[0].drawing[j].line.points[i + 1].y) * ratio;
-							}
-							SKColor _color = HexToColor(topoimg[0].drawing[j].line.style.color);
-							if (Device.OS == TargetPlatform.Android)
-							{
-								SKPaint thinLinePaint = new SKPaint
-								{
-									//Style = SKPaintStyle.Stroke,
-									Color = _color,
-									StrokeWidth = 5,
-									PathEffect = SKPathEffect.CreateDash(new float[] { 30, 15, }, 0)
-								};
-								//draw line
-								_skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, thinLinePaint);
-							}
-							else
-							{
-								SKPaint thinLinePaint = new SKPaint
-								{
-									Style = SKPaintStyle.Stroke,
-									Color = _color,
-									StrokeWidth = 2,
-									PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
-								};
-								//draw line
-								_skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, thinLinePaint);
-							}
-							//add all points in list
-							points _pt = new points();
-							_pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
-							_pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
-							_points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
+        public void ReDrawLine(SKCanvas _skCanvas, int? route, float ratio, int _height, int _width)
+        {
+            float ptx1 = 0, ptx2 = 0, pty1 = 0, pty2 = 0;
+            var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
+            using (var path = new SKPath())
+            {
+                for (int j = 0; j < topoimg[0].drawing.Count; j++)
+                {
+                    if (_routeId == 0)
+                    {
+                        for (int i = 0; i < topoimg[0].drawing[j].line.points.Count; i++)
+                        {
+                            ptx1 = float.Parse(topoimg[0].drawing[j].line.points[i].x) * ratio;
+                            pty1 = float.Parse(topoimg[0].drawing[j].line.points[i].y) * ratio;
+                            if (i != (topoimg[0].drawing[j].line.points.Count - 1))
+                            {
+                                ptx2 = float.Parse(topoimg[0].drawing[j].line.points[i + 1].x) * ratio;
+                                pty2 = float.Parse(topoimg[0].drawing[j].line.points[i + 1].y) * ratio;
+                            }
+                            SKColor _color = HexToColor(topoimg[0].drawing[j].line.style.color);
+                            if (Device.OS == TargetPlatform.Android)
+                            {
+                                SKPaint thinLinePaint = new SKPaint
+                                {
+                                    //Style = SKPaintStyle.Stroke,
+                                    Color = _color,
+                                    StrokeWidth = 5,
+                                    PathEffect = SKPathEffect.CreateDash(new float[] { 30, 15, }, 0)
+                                };
+                                //draw line
+                                _skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, thinLinePaint);
+                            }
+                            else
+                            {
+                                SKPaint thinLinePaint = new SKPaint
+                                {
+                                    Style = SKPaintStyle.Stroke,
+                                    Color = _color,
+                                    StrokeWidth = 2,
+                                    PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
+                                };
+                                //draw line
+                                _skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, thinLinePaint);
+                            }
+                            //add all points in list
+                            points _pt = new points();
+                            _pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
+                            _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
+                            _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
 
-
-						}
-
-						//draw annotation
-						DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
-						//TopoMapRouteVM.AllPoints = _points;
-					}
-					else if (_routeId.ToString() == topoimg[0].drawing[j].id)
-					{
-						_newRouteId = 0;
-						for (int k = 0; k < topoimg[0].drawing[j].line.points.Count; k++)
-						{
-							ptx1 = float.Parse(topoimg[0].drawing[j].line.points[k].x) * ratio;
-							pty1 = float.Parse(topoimg[0].drawing[j].line.points[k].y) * ratio;
-							if (k != (topoimg[0].drawing[j].line.points.Count - 1))
-							{
-								ptx2 = float.Parse(topoimg[0].drawing[j].line.points[k + 1].x) * ratio;
-								pty2 = float.Parse(topoimg[0].drawing[j].line.points[k + 1].y) * ratio;
-							}
-							SKColor _color = HexToColor(topoimg[0].drawing[j].line.style.color);
-							if (Device.OS == TargetPlatform.Android)
-							{
-								SKPaint rethinLinePaint = new SKPaint
-								{
-									//Style = SKPaintStyle.Stroke,
-									Color = SKColors.Transparent,
-									StrokeWidth = 5,
-									PathEffect = SKPathEffect.CreateDash(new float[] { 30, 15, }, 0)
-								};
-								//draw line
-								_skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, rethinLinePaint);
-							}
-							else
-							{
-								SKPaint rethinLinePaint = new SKPaint
-								{
-									// Style = SKPaintStyle.Stroke,
-									Color = SKColors.Transparent,
-									StrokeWidth = 5,
-									PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
-								};
-								//draw line
-								_skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, rethinLinePaint);
-							}
-							//add all points in list
-							points _pt = new points();
-							_pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
-							_pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
-							_newPoints.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
-						}
+                            //draw annotation
+                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
+                        }                                               
+                    }
+                    else if (_routeId.ToString() == topoimg[0].drawing[j].id)
+                    {
+                        _newRouteId = 0;
+                        for (int k = 0; k < topoimg[0].drawing[j].line.points.Count; k++)
+                        {
+                            ptx1 = float.Parse(topoimg[0].drawing[j].line.points[k].x) * ratio;
+                            pty1 = float.Parse(topoimg[0].drawing[j].line.points[k].y) * ratio;
+                            if (k != (topoimg[0].drawing[j].line.points.Count - 1))
+                            {
+                                ptx2 = float.Parse(topoimg[0].drawing[j].line.points[k + 1].x) * ratio;
+                                pty2 = float.Parse(topoimg[0].drawing[j].line.points[k + 1].y) * ratio;
+                            }
+                            SKColor _color = HexToColor(topoimg[0].drawing[j].line.style.color);
+                            if (Device.OS == TargetPlatform.Android)
+                            {
+                                SKPaint rethinLinePaint = new SKPaint
+                                {
+                                    //Style = SKPaintStyle.Stroke,
+                                    Color = SKColors.Transparent,
+                                    StrokeWidth = 5,
+                                    PathEffect = SKPathEffect.CreateDash(new float[] { 30, 15, }, 0)
+                                };
+                                //draw line
+                                _skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, rethinLinePaint);
+                            }
+                            else
+                            {
+                                SKPaint rethinLinePaint = new SKPaint
+                                {
+                                    // Style = SKPaintStyle.Stroke,
+                                    Color = SKColors.Transparent,
+                                    StrokeWidth = 5,
+                                    PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
+                                };
+                                //draw line
+                                _skCanvas.DrawLine(ptx1, pty1, ptx2, pty2, rethinLinePaint);
+                            }
+                            //add all points in list
+                            points _pt = new points();
+                            _pt.X = Convert.ToInt32((ptx1));// (Convert.ToInt32((ptx1 / ratio)) / 2);
+                            _pt.Y = Convert.ToInt32((pty1));//(Convert.ToInt32((pty1 / ratio)) / 2);
+                            _newPoints.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
+                        }
 
 						//draw annotation
 						DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
@@ -1335,94 +1336,95 @@ namespace SloperMobile.Views
 			}
 		}
 
-		public static SKColor HexToColor(string color)
-		{
-			SKColor _color = new SKColor();
-			if (color.StartsWith("#"))
-				color = color.Remove(0, 1);
-			byte r, g, b;
-			if (color.Length == 3)
-			{
-				r = Convert.ToByte(color[0] + "" + color[0], 16);
-				g = Convert.ToByte(color[1] + "" + color[1], 16);
-				b = Convert.ToByte(color[2] + "" + color[2], 16);
-			}
-			else if (color.Length == 6)
-			{
-				r = Convert.ToByte(color[0] + "" + color[1], 16);
-				g = Convert.ToByte(color[2] + "" + color[3], 16);
-				b = Convert.ToByte(color[4] + "" + color[5], 16);
-			}
-			else
-			{
-				throw new ArgumentException("Hex color " + color + " is invalid.");
-			}
-			return _color = new SKColor(r, g, b);
-		}
-		public string getGradeBucketHex(string grade_bucket_id)
-		{
-			string color;
-			var hexCode = App.DAUtil.GetBucketHexColorByGradeBucketId(grade_bucket_id) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(grade_bucket_id);
-			switch (grade_bucket_id)
-			{
-				case "1": return color = "#036177";// new SKColor(3, 97, 119);
-
-				case "2": return color = "#1f8a70";//new SKColor(31, 138, 112);
-
-				case "3": return color = "#91a537"; //new SKColor(145, 165, 55);
-
-				case "4": return color = "#b49800";//new SKColor(180, 152, 0);
-
-				case "5": return color = "#fd7400";//new SKColor(253, 116, 0);
-
-				default: return color = "#cccccc";//new SKColor(204, 204, 204);
-
-			}
-		}
-		public double GetHeight(Double _height)
-		{
-			if (Device.OS == TargetPlatform.iOS)
-			{
-				switch (Convert.ToInt32(_height))
-				{
-					case 1334:
-						_height = _height + 200; //iphone 6 and iphone 7 and iphone 6s
-						break;
-					case 2208:
-						_height = _height - 580; //iPhone6Plus and iPhone7Plus and iphone 6s plus
-						break;
-					case 1136:
-						_height = _height + 350; //iPhone5 and iPhone5s and iPhone SE
-						break;
-					case 2048:
-						_height = _height - 840; //iPas Air 2 and iPad Air 
-						break;
-				}
-			}
-			else
-			{
-				var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
-				//_height = (_height / device.Display.Scale) - 110;
-				_height = (_height / device.Display.Scale) + 1350;
-			}
-			return _height;
-		}
-
-		SKPoint ConvertToPixel(Point pt)
-		{
-			SKPoint _pt;
-			if (Device.OS == TargetPlatform.Android)
-			{
-				_pt = new SKPoint((float)(skCanvasAndroid.CanvasSize.Width * pt.X / skCanvasAndroid.Width),
-							   (float)(skCanvasAndroid.CanvasSize.Height * pt.Y / skCanvasAndroid.Height));
-			}
-			else
-			{
-				_pt = new SKPoint((float)(skCanvasiOS.CanvasSize.Width * pt.X / skCanvasiOS.Width),
-											  (float)(skCanvasiOS.CanvasSize.Height * pt.Y / skCanvasiOS.Height));
-			}
-			return _pt;
-		}
+        public static SKColor HexToColor(string color)
+        {
+            SKColor _color = new SKColor();
+            if (color.StartsWith("#"))
+                color = color.Remove(0, 1);
+            byte r, g, b;
+            if (color.Length == 3)
+            {
+                r = Convert.ToByte(color[0] + "" + color[0], 16);
+                g = Convert.ToByte(color[1] + "" + color[1], 16);
+                b = Convert.ToByte(color[2] + "" + color[2], 16);
+            }
+            else if (color.Length == 6)
+            {
+                r = Convert.ToByte(color[0] + "" + color[1], 16);
+                g = Convert.ToByte(color[2] + "" + color[3], 16);
+                b = Convert.ToByte(color[4] + "" + color[5], 16);
+            }
+            else
+            {
+                throw new ArgumentException("Hex color " + color + " is invalid.");
+            }
+            return _color = new SKColor(r, g, b);
+        }
+        public string getGradeBucketHex(string grade_bucket_id)
+        {
+            // SKColor color = new SKColor();
+            string color = string.Empty;
+            var hexCode = App.DAUtil.GetBucketHexColorByGradeBucketId(grade_bucket_id) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(grade_bucket_id);
+            switch (grade_bucket_id)
+            {
+                case "1":
+                    return color = "#036177";// new SKColor(3, 97, 119);
+                case "2":
+                    return color = "#1f8a70";//new SKColor(31, 138, 112);
+                case "3":
+                    return color = "#91a537"; //new SKColor(145, 165, 55);
+                case "4":
+                    return color = "#b49800";//new SKColor(180, 152, 0);
+                case "5":
+                    return color = "#fd7400";//new SKColor(253, 116, 0);
+                default:
+                    return color = "#cccccc";//new SKColor(204, 204, 204);
+            }
+        }
+        public double GetHeight(Double _height)
+        {
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                switch (Convert.ToInt32(_height))
+                {
+                    case 1334:
+                        _height = _height + 200; //iphone 6 and iphone 7 and iphone 6s
+                        break;
+                    case 2208:
+                        _height = _height - 580; //iPhone6Plus and iPhone7Plus and iphone 6s plus
+                        break;
+                    case 1136:
+                        _height = _height + 350; //iPhone5 and iPhone5s and iPhone SE
+                        break;
+                    case 2048:
+                        _height = _height - 840; //iPas Air 2 and iPad Air 
+                        break;
+                }
+            }
+            else
+            {
+                var device = XLabs.Ioc.Resolver.Resolve<IDevice>();
+                //_height = (_height / device.Display.Scale) - 110;
+                _height = (_height / device.Display.Scale) + 1350;
+            }
+            return _height;
+        }
+      
+        SKPoint ConvertToPixel(Point pt)
+        {
+            SKPoint _pt;
+            if (Device.OS == TargetPlatform.Android)
+            {
+                _pt= new  SKPoint((float)(skCanvasAndroid.CanvasSize.Width * pt.X / skCanvasAndroid.Width),
+                               (float)(skCanvasAndroid.CanvasSize.Height * pt.Y / skCanvasAndroid.Height));
+            }
+            else
+            {
+                _pt = new SKPoint((float)(skCanvasiOS.CanvasSize.Width * pt.X / skCanvasiOS.Width),
+                                              (float)(skCanvasiOS.CanvasSize.Height * pt.Y / skCanvasiOS.Height));
+            }
+            return _pt;
+        }
 
 		private void PinchGestureRecognizer_PinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
 		{
@@ -1489,45 +1491,43 @@ namespace SloperMobile.Views
 			TopoMapRouteVM.ShowRoutePopupLgCommand.Execute(null);
 		}
 
-		private void OnSwipeTopRoutePopupSm(object sender, EventArgs e)
-		{
-			TopoMapRouteVM.DisplayRoutePopupSm = false;
-			_bucket.Clear();
-			topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
-			if (topoimg != null)
-			{
-				for (int i = 0; i < topoimg[0].drawing.Count; i++)
-				{
-					_bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
-				}
-			}
-			// if we got to the topo via the map and not the list, redraw all the routes
-			if (_newRouteId <= 0)
-			{
-				if (Device.RuntimePlatform == Device.Android)
-				{
-					androidZoomScroll.ScrollToAsync(0, 0, false);
-				}
-				else
-				{
-					iOSZoomScroll.ScrollToAsync(0, 0, true);
-				}
+        private void OnSwipeTopRoutePopupSm(object sender, EventArgs e)
+        {
+            TopoMapRouteVM.DisplayRoutePopupSm = false;
+            _bucket.Clear();
+            topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
+            if (topoimg != null)
+            {
+                for (int i = 0; i < topoimg[0].drawing.Count; i++)
+                {
+                    _bucket.Add(new Tuple<string, string>(App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket) == null ? "#cccccc" : App.DAUtil.GetBucketHexColorByGradeBucketId(topoimg[0].drawing[i].gradeBucket), topoimg[0].drawing[i].gradeBucket));
+                }
+            }
+            // if we got to the topo via the map and not the list, redraw all the routes
+            if (_newRouteId <= 0)
+            {
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    androidZoomScroll.ScrollToAsync(0, 0, false);
+                }
+                else
+                {
+                    iOSZoomScroll.ScrollToAsync(0, 0, true);
+                }
+                // webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight,_bucket);
+                _routeId = 0;
+                hasBeingRedrawing = 0;
+                isDiamondClick = false;
+                isDiamondSingleClick = false;
+                _diamondclickroute.Clear();
+                if (Device.OS == TargetPlatform.iOS)
+                    skCanvasiOS.InvalidateSurface();
 
-				_routeId = 0;
-				hasBeingRedrawing = 0;
-				isDiamondClick = false;
-				isDiamondSingleClick = false;
-				_diamondclickroute.Clear();
-				if (Device.RuntimePlatform == Device.iOS)
-				{
-					skCanvasiOS.InvalidateSurface();
-				}
-
-				Redraw();
-			}
-
-		}
-	}
+                //skCanvasAndroid.InvalidateSurface();
+                Redraw(); /*skCanvasAndroid.InvalidateSurface()*///
+            }
+        }
+    }
 }
 public class points
 {
