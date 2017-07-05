@@ -40,7 +40,7 @@
                 <TapGestureRecognizer Tapped="OnBackTapped"/>
             </StackLayout.GestureRecognizers>
             <Image IsVisible="{Binding DisplayBackButton,Mode=TwoWay}" Source="arrowLeftWhite" HeightRequest="25" WidthRequest="25" 
-                   VerticalOptions="Start" Aspect="AspectFit"/>
+                   VerticalOptions="Start" Aspect="AspectFit" Margin="0,5,0,0"/>
         </StackLayout>
 
         <StackLayout Orientation="Vertical" Spacing="0" Grid.Column="1" Grid.Row="0">
