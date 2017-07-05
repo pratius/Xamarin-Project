@@ -20,7 +20,7 @@ namespace SloperMobile.Views
 	public partial class TopoMapRoutesPage : ContentPage
 	{
 		private const string BoxYellowColor = "#b49800";
-		private const int BoxTextFontSize = 8;
+		private const int BoxTextFontSize = 9;
 		private const int TopBarHeight = 40;
 		private ObservableCollection<imgData> _imgData;
 		public ObservableCollection<imgData> ImageDataList
@@ -275,12 +275,17 @@ namespace SloperMobile.Views
             var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
             if (topoimg != null)
             {
-                var deviceHeight = device.Display.Height - (1.7 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
+                var deviceHeight = device.Display.Height - (FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale) - TopBarHeight * device.Display.Scale;
                 ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
                 height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
                 ratio = (float)height / float.Parse(topoimg[0].image.height);
-                globalHeight = height;                
+                globalHeight = height;
                 float width = float.Parse(topoimg[0].image.width) * ratio;
+
+                AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+                iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
 
                 if (Device.OS == TargetPlatform.Android)
                 {
@@ -427,7 +432,7 @@ namespace SloperMobile.Views
 							_points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
 
                             //draw annotation
-                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
+                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id),_routeId);
                         }                                               
                     }
                     else if (_routeId.ToString() == topoimg[0].drawing[j].id)
@@ -473,7 +478,7 @@ namespace SloperMobile.Views
                             _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));                           
 
                             //draw annotation
-                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
+                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id), _routeId);
                             if (Device.OS == TargetPlatform.Android)
                             {                                
                                 if (globalWidth > globalHeight)
@@ -573,7 +578,7 @@ namespace SloperMobile.Views
                             _points.Add(new Tuple<points, int>(_pt, Convert.ToInt32(topoimg[0].drawing[j].id)));
 
                             //draw annotation
-                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
+                            DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id), _routeId);
                         }                                               
                     }
                     else if (_routeId.ToString() == topoimg[0].drawing[j].id)
@@ -621,14 +626,14 @@ namespace SloperMobile.Views
                         }
 
 						//draw annotation
-						DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id));
+						DrawAnnotation(topoimg[0].drawing[j].line, _skCanvas, ratio, topoimg[0].drawing[j].gradeBucket, (j + 1), long.Parse(topoimg[0].drawing[j].id), _routeId);
 					}
 				}
 
 				path.Close();
 			}
 		}
-		public void DrawAnnotation(topoline topoimgTop, SKCanvas _skCanvas, float ratio, string gradeBucket, int _routecnt, long id)
+		public void DrawAnnotation(topoline topoimgTop, SKCanvas _skCanvas, float ratio, string gradeBucket, int _routecnt, long id, int? _routeId)
 		{
 			for (int i = 0; i < topoimgTop.points.Count; i++)
 			{
@@ -636,80 +641,83 @@ namespace SloperMobile.Views
 
 				if (topoimgTop.points[i].type == "1")
 				{
-					_diamondclickroute.Add(Convert.ToInt32(id));
-					//draw rect at start point                            
-					// draw these at specific locations   
-					var color = getGradeBucketHex(gradeBucket);
-					var gridWithId = new GridWithId(id, color, _routecnt.ToString(), BoxTextFontSize);
-					AbsoluteLayout parent;
-					double x = 0;
-					double y = 0;
+                    if (!_diamondclickroute.Contains(Convert.ToInt32(id)))
+                    {
+                        _diamondclickroute.Add(Convert.ToInt32(id));
+                        //draw rect at start point                            
+                        // draw these at specific locations   
+                        var color = getGradeBucketHex(gradeBucket);
+                        var gridWithId = new GridWithId(id, color, _routecnt.ToString(), BoxTextFontSize);
+                        AbsoluteLayout parent;
+                        double x = 0;
+                        double y = 0;
 
-					if (Device.RuntimePlatform == Device.Android)
-					{
-						parent = skCanvasAndroid.Parent as AbsoluteLayout;
-						x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 30) / device.Display.Scale;
-						y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 40) / device.Display.Scale;
-					}
-					else
-					{
-						parent = skCanvasiOS.Parent as AbsoluteLayout;
-						x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 15) / device.Display.Scale;
-						y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 20) / device.Display.Scale;
-					}
+                        if (Device.RuntimePlatform == Device.Android)
+                        {
+                            parent = skCanvasAndroid.Parent as AbsoluteLayout;
+                            x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 30) / device.Display.Scale;
+                            y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 40) / device.Display.Scale;
+                        }
+                        else
+                        {
+                            parent = skCanvasiOS.Parent as AbsoluteLayout;
+                            x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 15) / device.Display.Scale;
+                            y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 20) / device.Display.Scale;
+                        }
 
-					if (isDiamondSingleClick)
-					{
-						for (int c = (parent.Children.Count() - 1); c > 0; c--)
-						{
-							if (c > 0)
-								parent.Children.RemoveAt(c);
-						}
+                        if (isDiamondSingleClick)
+                        {
+                            for (int c = (parent.Children.Count() - 1); c > 0; c--)
+                            {
+                                if (c > 0)
+                                    parent.Children.RemoveAt(c);
+                            }
 
-						isDiamondSingleClick = false;
-					}
+                            //isDiamondSingleClick = false;
+                        }
 
-					if (topoimg[0].drawing.Count < parent.Children.Where(item => item is GridWithId).Count())
-					{
-						continue;
-					}
+                        //if (topoimg[0].drawing.Count < parent.Children.Where(item => item is GridWithId).Count())
+                        //{
+                        //    continue;
+                        //}
 
-					AbsoluteLayout.SetLayoutBounds(gridWithId, new Rectangle(x, y, 18, 18));
-					AbsoluteLayout.SetLayoutFlags(gridWithId, AbsoluteLayoutFlags.None);
+                        AbsoluteLayout.SetLayoutBounds(gridWithId, new Rectangle(x, y, 18, 18));
+                        AbsoluteLayout.SetLayoutFlags(gridWithId, AbsoluteLayoutFlags.None);
 
-					var tapGesture = new TapGestureRecognizer();
-					tapGesture.Tapped += (item, eventArgs) =>
-					{
-						GridWithId grid;
-						if (item is Label || item is BoxView)
-						{
-							grid = (item as View).Parent as GridWithId;
-						}
-						else
-						{
-							grid = item as GridWithId;
-						}
+                        var tapGesture = new TapGestureRecognizer();
+                        tapGesture.Tapped += (item, eventArgs) =>
+                        {
+                            GridWithId grid;
+                            if (item is Label || item is BoxView)
+                            {
+                                grid = (item as View).Parent as GridWithId;
+                            }
+                            else
+                            {
+                                grid = item as GridWithId;
+                            }
 
-						ShowRoute((int?)grid.PointId);
+                            ShowRoute((int?)grid.PointId);
 
-						if (Device.RuntimePlatform == Device.Android)
-						{
-							androidZoomScroll.ScrollToAsync(grid.X - device.Display.Width / 2 / device.Display.Scale, 0, false);
-						}
-						else
-						{
-							var xcoordinate = (device.Display.Width / 2) > grid.X ? ((device.Display.Width / 2) - grid.X) - 30 : grid.X - (device.Display.Width / 2);
-							iOSZoomScroll.ScrollToAsync(xcoordinate, 0, true);
-						}
+                            if (Device.RuntimePlatform == Device.Android)
+                            {
+                               // androidZoomScroll.ScrollToAsync(grid.X - device.Display.Width / 2 / device.Display.Scale, 0, false);
+                            }
+                            else
+                            {
+                                var xcoordinate = (device.Display.Width / 2) > grid.X ? ((device.Display.Width / 2) - grid.X) - 30 : grid.X - (device.Display.Width / 2);
+                               // iOSZoomScroll.ScrollToAsync(xcoordinate, 0, true);
+                            }
 
-					};
+                        };
 
-					parent.Children.Add(gridWithId);
-					gridWithId.GestureRecognizers.Add(tapGesture);
-					foreach (var child in gridWithId.Children)
-					{
-						child.GestureRecognizers.Add(tapGesture);
-					}
+                        parent.Children.Add(gridWithId);
+                        gridWithId.GestureRecognizers.Add(tapGesture);
+                        foreach (var child in gridWithId.Children)
+                        {
+                            child.GestureRecognizers.Add(tapGesture);
+                        }
+                    }
 				}
 				else if (topoimgTop.points[i].type == "3")
 				{
@@ -1169,114 +1177,116 @@ namespace SloperMobile.Views
 				//code to show left and right text
 				for (int j = 0; j < topoimgTop.pointsText.Count; j++)
 				{
-					//left side text                
-					if (topoimgTop.pointsText[j].point_id.Contains(i.ToString()))
-					{
-						if (topoimgTop.pointsText[j].text_id.IndexOf("L") > -1)
-						{
-							if (topoimgTop.pointsText[j].text_id.Contains(i.ToString()))
-							{
-								if (Device.OS == TargetPlatform.Android)
-								{
-									// draw these at specific locations                       
-									var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) - 100, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 20, 200, 80);
+                    if (_routeId > 0)
+                    {
+                        //left side text                
+                        if (topoimgTop.pointsText[j].point_id.Contains(i.ToString()))
+                        {
+                            if (topoimgTop.pointsText[j].text_id.IndexOf("L") > -1)
+                            {
+                                if (topoimgTop.pointsText[j].text_id.Contains(i.ToString()))
+                                {
+                                    if (Device.OS == TargetPlatform.Android)
+                                    {
+                                        // draw these at specific locations                       
+                                        var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) - 300, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 20, 250, 80);
 
-									using (var paint = new SKPaint())
-									{
-										_skCanvas.Save();
-										_skCanvas.DrawRect(Rect, new SKPaint() { Color = SKColors.Black });
-									}
-									using (var paint = new SKPaint())
-									{
-										paint.TextSize = 40.0f;
-										paint.IsAntialias = true;
-										paint.Color = SKColors.White;
-										paint.IsStroke = true;
-										paint.StrokeWidth = 3;
-										paint.TextAlign = SKTextAlign.Center;
+                                        using (var paint = new SKPaint())
+                                        {
+                                            _skCanvas.Save();
+                                            _skCanvas.DrawRect(Rect, new SKPaint() { Color = SKColors.Black });
+                                        }
+                                        using (var paint = new SKPaint())
+                                        {
+                                            paint.TextSize = 40.0f;
+                                            paint.IsAntialias = true;
+                                            paint.Color = SKColors.White;
+                                            paint.IsStroke = true;
+                                            paint.StrokeWidth = 3;
+                                            paint.TextAlign = SKTextAlign.Center;
 
-										_skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) - 70, (float.Parse(topoimgTop.points[i].y) * ratio) + 25, paint);
-									}
-								}
-								else
-								{
-									// draw these at specific locations                       
-									var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) - 80, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 20, 60, 40);
+                                            _skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) - 180, (float.Parse(topoimgTop.points[i].y) * ratio) + 35, paint);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // draw these at specific locations                       
+                                        var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) - 150, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 20, 130, 40);
 
-									using (var paint = new SKPaint())
-									{
-										_skCanvas.Save();
-										_skCanvas.DrawRect(Rect, new SKPaint() { Color = SKColors.Black });
-									}
-									using (var paint = new SKPaint())
-									{
-										paint.TextSize = 20.0f;
-										paint.IsAntialias = true;
-										paint.Color = SKColors.White;
-										paint.IsStroke = true;
-										paint.StrokeWidth = 2;
-										paint.TextAlign = SKTextAlign.Center;
+                                        using (var paint = new SKPaint())
+                                        {
+                                            _skCanvas.Save();
+                                            _skCanvas.DrawRect(Rect, new SKPaint() { Color = SKColors.Black });
+                                        }
+                                        using (var paint = new SKPaint())
+                                        {
+                                            paint.TextSize = 20.0f;
+                                            paint.IsAntialias = true;
+                                            paint.Color = SKColors.White;
+                                            paint.IsStroke = true;
+                                            paint.StrokeWidth = 2;
+                                            paint.TextAlign = SKTextAlign.Center;
 
-										_skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) - 50, (float.Parse(topoimgTop.points[i].y) * ratio) + 5, paint);
-									}
-								}
-							}
-						}
-					}
+                                            _skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) - 80, (float.Parse(topoimgTop.points[i].y) * ratio) + 8, paint);
+                                        }
+                                    }
+                                }
+                            }
+                        }
 
-					//right side text                
-					if (topoimgTop.pointsText[j].point_id.Contains(i.ToString()))
-					{
-						if (topoimgTop.pointsText[j].text_id.IndexOf("R") > -1)
-						{
-							if (topoimgTop.pointsText[j].text_id.Contains(i.ToString()))
-							{
-								if (Device.OS == TargetPlatform.Android)
-								{
-									// draw these at specific locations                       
-									var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) + 50, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 40, 200, 80);
+                        //right side text                
+                        if (topoimgTop.pointsText[j].point_id.Contains(i.ToString()))
+                        {
+                            if (topoimgTop.pointsText[j].text_id.IndexOf("R") > -1)
+                            {
+                                if (topoimgTop.pointsText[j].text_id.Contains(i.ToString()))
+                                {
+                                    if (Device.OS == TargetPlatform.Android)
+                                    {
+                                        // draw these at specific locations                       
+                                        var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) + 50, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 40, 300, 80);
 
-									using (var paint = new SKPaint())
-									{
-										_skCanvas.Save();
-										_skCanvas.DrawRect(Rect, new SKPaint() { Color = SKColors.Black });
-									}
-									using (var paint = new SKPaint())
-									{
-										paint.TextSize = 40.0f;
-										paint.IsAntialias = true;
-										paint.Color = SKColors.White;
-										paint.IsStroke = true;
-										paint.StrokeWidth = 3;
-										paint.TextAlign = SKTextAlign.Center;
-										_skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) + 150, (float.Parse(topoimgTop.points[i].y) * ratio) + 15, paint);
-									}
-								}
-								else
-								{
-									// draw these at specific locations                       
-									var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) + 20, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 20, 60, 40);
+                                        using (var paint = new SKPaint())
+                                        {
+                                            _skCanvas.Save();
+                                            _skCanvas.DrawRect(Rect, new SKPaint() { Color = SKColors.Black });
+                                        }
+                                        using (var paint = new SKPaint())
+                                        {
+                                            paint.TextSize = 40.0f;
+                                            paint.IsAntialias = true;
+                                            paint.Color = SKColors.White;
+                                            paint.IsStroke = true;
+                                            paint.StrokeWidth = 3;
+                                            paint.TextAlign = SKTextAlign.Center;
+                                            _skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) + 200, (float.Parse(topoimgTop.points[i].y) * ratio) + 15, paint);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // draw these at specific locations                       
+                                        var Rect = SKRect.Create(((float.Parse(topoimgTop.points[i].x)) * ratio) + 20, ((float.Parse(topoimgTop.points[i].y)) * ratio) - 20, 155, 40);
 
-									using (var paint = new SKPaint())
-									{
-										_skCanvas.Save();
-										_skCanvas.DrawRect(Rect, new SKPaint() { Color = SKColors.Black });
-									}
-									using (var paint = new SKPaint())
-									{
-										paint.TextSize = 20.0f;
-										paint.IsAntialias = true;
-										paint.Color = SKColors.White;
-										paint.IsStroke = true;
-										paint.StrokeWidth = 2;
-										paint.TextAlign = SKTextAlign.Center;
-										_skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) + 50, (float.Parse(topoimgTop.points[i].y) * ratio) + 5, paint);
-									}
-								}
-							}
-						}
-					}
-
+                                        using (var paint = new SKPaint())
+                                        {
+                                            _skCanvas.Save();
+                                            _skCanvas.DrawRect(Rect, new SKPaint() { Color = SKColors.Black });
+                                        }
+                                        using (var paint = new SKPaint())
+                                        {
+                                            paint.TextSize = 20.0f;
+                                            paint.IsAntialias = true;
+                                            paint.Color = SKColors.White;
+                                            paint.IsStroke = true;
+                                            paint.StrokeWidth = 2;
+                                            paint.TextAlign = SKTextAlign.Center;
+                                            _skCanvas.DrawText((topoimgTop.pointsText[j].text_value).ToString(), (float.Parse(topoimgTop.points[i].x) * ratio) + 100, (float.Parse(topoimgTop.points[i].y) * ratio) + 5, paint);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
 					//showing arrow logic                   
 					if (topoimgTop.pointsText[j].point_id.Contains(i.ToString()))
 					{
@@ -1509,11 +1519,11 @@ namespace SloperMobile.Views
             {
                 if (Device.RuntimePlatform == Device.Android)
                 {
-                    androidZoomScroll.ScrollToAsync(0, 0, false);
+                   // androidZoomScroll.ScrollToAsync(0, 0, false);
                 }
                 else
                 {
-                    iOSZoomScroll.ScrollToAsync(0, 0, true);
+                   // iOSZoomScroll.ScrollToAsync(0, 0, true);
                 }
                 // webView.CallJsFunction("initDrawing", staticAnnotationData, listData, newHeight,_bucket);
                 _routeId = 0;
