@@ -26,11 +26,13 @@
         <Grid Grid.Row="1" Grid.Column="1">
             <OnPlatform x:TypeArguments="View">
                 <On Platform="iOS">
-                    <local:ZoomableScrollView Grid.Column="0" Grid.Row="0"
-				        MaximumZoomScale="5"
-				        MinimumZoomScale="1"
-				        Orientation="Both">
-                        <AbsoluteLayout 
+					<local:ZoomableScrollView Grid.Column="0"
+											  Grid.Row="0"
+											  x:Name="iOSZoomScroll"
+											  MaximumZoomScale="5"
+											  MinimumZoomScale="1"
+											  Orientation="Both">
+						<AbsoluteLayout 
                             x:Name="iOSdAbsoluteLayout">
                             <views:SKCanvasView	
                                 AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -41,12 +43,15 @@
                     </local:ZoomableScrollView>
                 </On>
                 <On Platform="Android">
-                    <local:ZoomableScrollView Grid.Column="0" Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                                                      MaximumZoomScale="5"
-                                                      MinimumZoomScale="1"
-                                                      Orientation="Both">
-
-                        <AbsoluteLayout 
+					<local:ZoomableScrollView Grid.Column="0"
+											  Grid.Row="0"
+											  VerticalOptions="FillAndExpand"
+											  HorizontalOptions="FillAndExpand"
+											  x:Name="androidZoomScroll"
+											  MaximumZoomScale="5"
+											  MinimumZoomScale="1"
+											  Orientation="Both">
+						<AbsoluteLayout 
                                     x:Name="AndroidAbsoluteLayout" >
                             <views:SKCanvasView 
                                         AbsoluteLayout.LayoutBounds="0,0.1,1,0.95" 
