@@ -198,8 +198,7 @@ namespace SloperMobile.Views
             {
                 foreach (var singleEvent in events)
                 {
-                    if (args.datetime.ToString("yyyy/MM/dd").Equals(singleEvent.StartTime.ToString("yyyy/MM/dd"))
-                        && args.datetime.Month == DateTime.Today.Month)
+                    if (args.datetime.ToString("yyyy/MM/dd").Equals(singleEvent.StartTime.ToString("yyyy/MM/dd")))
                     {
                         await Navigation.PushAsync(new PointsPage(args.datetime.ToString("yyyyMMdd")));
                         break;
