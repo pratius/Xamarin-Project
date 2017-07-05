@@ -32,7 +32,7 @@ namespace SloperMobile.UserControls
                 await PageNavigation(pageType, tabtxt);
             }
             catch (Exception ex)
-            {}
+            { }
         }
         private async Task PageNavigation(ApplicationActivity page, string tabtxt)
         {
@@ -55,7 +55,7 @@ namespace SloperMobile.UserControls
                 }
             }
             catch (Exception ex)
-            {}
+            { }
         }
     }
 }

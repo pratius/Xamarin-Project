@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.sloperclimbing.bullinachinashop" android:versionCode="130" android:versionName="2.130">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.sloperclimbing.bullinachinashop" android:versionCode="140" android:versionName="2.140">
 	<uses-sdk android:minSdkVersion="23" />
 	<application android:label="Bull in a China Shop" android:hardwareAccelerated="false" android:largeHeap="true" android:icon="@drawable/icon">
 		<!--<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDlezhB_TB6imlElBbrajrIEnvmdtAhfF8" />

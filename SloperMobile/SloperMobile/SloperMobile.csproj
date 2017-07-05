@@ -16,7 +16,7 @@
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ReleaseVersion>2.130</ReleaseVersion>
+    <ReleaseVersion>2.140</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -87,7 +87,6 @@
     <Compile Include="Model\MasterPageItem.cs" />
     <Compile Include="Model\NewsModel.cs" />
     <Compile Include="Model\Point.cs" />
-    <Compile Include="Model\RankingModel.cs" />
     <Compile Include="Model\RegistrationReq.cs" />
     <Compile Include="Model\RgistrationResponse.cs" />
     <Compile Include="Model\Send.cs" />
@@ -126,9 +125,6 @@
     <Compile Include="UserControls\HeaderMenuPointsUC.xaml.cs">
       <DependentUpon>HeaderMenuPointsUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\HeaderMenuRankingUC.xaml.cs">
-      <DependentUpon>HeaderMenuRankingUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\HeaderMenuTickListUC.xaml.cs">
       <DependentUpon>HeaderMenuTickListUC.xaml</DependentUpon>
     </Compile>
@@ -163,7 +159,6 @@
     <Compile Include="ViewModel\PointsViewModel.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\PyramidViewModel.cs" />
-    <Compile Include="ViewModel\RankingViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\SendsViewModel.cs" />
     <Compile Include="ViewModel\SettingViewModel.cs" />
@@ -227,9 +222,6 @@
     <Compile Include="Views\PyramidPage.xaml.cs">
       <DependentUpon>PyramidPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RankingPage.xaml.cs">
-      <DependentUpon>RankingPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
@@ -270,6 +262,14 @@
     <Compile Include="Views\SlickTest.xaml.cs">
       <DependentUpon>SlickTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\RankingViewModel.cs" />
+    <Compile Include="Model\RankingModel.cs" />
+    <Compile Include="Views\RankingsPage.xaml.cs">
+      <DependentUpon>RankingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\HeaderMenuRankingUC.xaml.cs">
+      <DependentUpon>HeaderMenuRankingUC.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -295,6 +295,12 @@
     <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_crag_ios.png" />
     <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_device_location_droid.png" />
     <EmbeddedResource Include="CustomControls\MapRoot\Pins\icon_pin_device_location_ios.png" />
+    <EmbeddedResource Include="Views\RankingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\HeaderMenuRankingUC.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -659,18 +665,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UserControls\HeaderMenuCalendarUC.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\RankingPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="UserControls\HeaderMenuRankingUC.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
