@@ -35,7 +35,7 @@
 				<Setter Property="BackgroundColor" Value="#FF8E2D" />
 			</Style>
 			<ControlTemplate x:Key="PageTemplateFooter">
-				<StackLayout VerticalOptions="FillAndExpand" Spacing="0">
+				<StackLayout VerticalOptions="FillAndExpand" >
 					<ContentPresenter VerticalOptions="FillAndExpand" />
 					<UC:FooterUC VerticalOptions="End" HorizontalOptions="Fill" HeightRequest="40" />
 				</StackLayout>
