@@ -9,14 +9,17 @@
 			<Grid.RowDefinitions>
 				<RowDefinition Height="50*" />
 				<RowDefinition Height="30*" />
-				<RowDefinition Height="20*" />
+				<RowDefinition Height="30*" />
 			</Grid.RowDefinitions>
 			<Image Grid.Row="0" Source="icon_profile_large" HorizontalOptions="Center" VerticalOptions="Center" Scale="0.75" />
 			<StackLayout Grid.Row="1" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
 				<Label Text="You are logged in as:" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand" />
 				<Label Text="{Binding DisplayName}" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand" />
 			</StackLayout>
-			<StackLayout Orientation="Horizontal" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Fill">
+			<StackLayout Orientation="Vertical" Grid.Row="2" VerticalOptions="StartAndExpand" HorizontalOptions="Fill" 
+                         Spacing="5" Margin="0,0,0,20">
+                <Button BorderRadius="0" Text="CHANGE PASSWORD" Style="{StaticResource GeneralButtonStyle}" 
+                        HorizontalOptions="FillAndExpand" Clicked="Button_Clicked"/>
 				<Button BorderRadius="0" Text="LOGOUT" Command="{Binding LogOutCommand}" Style="{StaticResource GeneralButtonStyle}" HorizontalOptions="FillAndExpand" />
 			</StackLayout>
 		</Grid>

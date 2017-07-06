@@ -59,7 +59,7 @@ namespace SloperMobile.ViewModel
                     var response = apicall.GetResponse<ResetPasswordModel>();
                     if (response != null)
                     {
-                        if(response.Result.message.Equals("success"))
+                        if(response.Result.message.Equals("Message Sent"))
                         {
                             UserDialogs.Instance.Loading().Hide();
                             await Application.Current.MainPage.DisplayAlert(response.Result.message, response.Result.data, "OK");
