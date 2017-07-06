@@ -65,9 +65,6 @@ namespace SloperMobile.Common.Helpers
             }
         }
 
-
-
-
         public async Task<List<T>> Get<T>()
         {
             using (var httpClient = new HttpClient())
@@ -159,6 +156,23 @@ namespace SloperMobile.Common.Helpers
         protected HttpClient NewHttpClient()
         {
             return new HttpClient();
+        }
+
+        public async Task<T> GetResponse<T>()
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var endpoint = _endpoint;
+                var accessToken = _accesstoken;
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                if (accessToken != "")
+                {
+                    httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+                }
+                var response = await httpClient.GetAsync(endpoint, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+                return JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
+            }
         }
     }
 }

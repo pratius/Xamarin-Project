@@ -88,6 +88,7 @@
     <Compile Include="Model\NewsModel.cs" />
     <Compile Include="Model\Point.cs" />
     <Compile Include="Model\RegistrationReq.cs" />
+    <Compile Include="Model\ResetPasswordModel.cs" />
     <Compile Include="Model\RgistrationResponse.cs" />
     <Compile Include="Model\Send.cs" />
     <Compile Include="Model\TickList.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="ViewModel\PointsViewModel.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\PyramidViewModel.cs" />
+    <Compile Include="ViewModel\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\SendsViewModel.cs" />
     <Compile Include="ViewModel\SettingViewModel.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SloperMobile.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,13 @@ namespace SloperMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ResetPasswordPage : ContentPage
     {
+        private ResetPasswordViewModel _resetPasswordVM;
         public ResetPasswordPage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            _resetPasswordVM = new ResetPasswordViewModel(Navigation);
+            BindingContext = _resetPasswordVM;
         }
         private async void OnLoginClick(object sender, EventArgs e)
         {
