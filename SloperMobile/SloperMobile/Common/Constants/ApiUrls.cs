@@ -11,6 +11,7 @@ namespace SloperMobile.Common.Constants
     {
         public const string Url_Login = AppSetting.Base_Url + "JwtAuth/API/mobile/login";
         public const string Url_Login_Extend = AppSetting.Base_Url + "JwtAuth/API/mobile/extendtoken";
+        public const string Url_User_ResetPassword = AppSetting.Base_Url + "SloperPlatform/API/" + AppSetting.API_VERSION + "/SloperUser/ResetPassword?email={0}";
         public const string Url_User_Register = AppSetting.Base_Url + "SloperPlatform/API/" + AppSetting.API_VERSION + "/SloperUser/Register";
         public const string Url_CheckUpdate_AppData = AppSetting.Base_Url + "SloperPlatform/API/" + AppSetting.API_VERSION + "/M/AvailableUpdate";
         public const string Url_GetUpdate_AppData = AppSetting.Base_Url + "SloperPlatform/API/" + AppSetting.API_VERSION + "/M/GetUpdatesByType?appid={0}&since={1}&type={2}&initialize={3}";

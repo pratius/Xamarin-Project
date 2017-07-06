@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.Views.LoginPage" Style="{StaticResource AppBackgroundColor}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SloperMobile.Views.LoginPage"
+             Style="{StaticResource AppBackgroundColor}">
 	<ContentPage.Padding>
 		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
 	</ContentPage.Padding>
@@ -14,22 +17,26 @@
 		<StackLayout Grid.Row="1" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill" Spacing="20">
 			<Entry x:Name="txtlogin" Text="{Binding LoginReq.u,Mode=TwoWay}" Placeholder="Email" Style="{StaticResource GeneralTxtStyle}" />
 			<Entry x:Name="txtPassWord" Text="{Binding LoginReq.p,Mode=TwoWay}" IsPassword="True" Placeholder="Password" Style="{StaticResource GeneralTxtStyle}" />
-			<Button BorderRadius="0" Text="LOGIN" Style="{StaticResource GeneralButtonStyle}" Command="{Binding LoginCommand}" />
-			<!--<Label  Text="FORGOT PASSWORD?" Margin="05"  Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"/>-->
-		</StackLayout>
+            <Button BorderRadius="0" Text="LOGIN" Style="{StaticResource GeneralButtonStyle}" Command="{Binding LoginCommand}" />
+        </StackLayout>
 		<StackLayout Grid.Row="2" VerticalOptions="CenterAndExpand" HorizontalOptions="Fill">
-			<Label Text="or" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand" />
+            <Label Text="FORGOT PASSWORD?" TextColor="White" FontSize="Small" VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnForgotPasswordClick" />
+                </Label.GestureRecognizers>
+            </Label>
+			<!--<Label Text="or" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand" />-->
 			<!--<StackLayout Orientation="Horizontal" Spacing="05" HorizontalOptions="StartAndExpand">
                 <Image Margin="03"  Source="facebook_logo" Aspect="AspectFit"/>
                 <Image Margin="03" Source="twitter_logo_shape" Aspect="AspectFit"/>
                 <Image Margin="03" Source="instagram_symbol" Aspect="AspectFit"/>
                 <Image Margin="03" Source="google_plus_logo" Aspect="AspectFit"/>
             </StackLayout>-->
-			<Button BorderRadius="0" Text="LOGIN AS GUEST" Style="{StaticResource GeneralButtonStyle}" Margin="05" Command="{Binding LoginCommand}" CommandParameter="Guest" />
+			<!--<Button BorderRadius="0" Text="LOGIN AS GUEST" Style="{StaticResource GeneralButtonStyle}" Margin="05" Command="{Binding LoginCommand}" CommandParameter="Guest" />-->
 		</StackLayout>
 		<Label Grid.Row="3" Text="Not a member? Sign up today!" Style="{StaticResource GeneralLabelStyle}" VerticalOptions="Center" HorizontalOptions="Center">
 			<Label.GestureRecognizers>
-				<TapGestureRecognizer Tapped="OnSignUP" />
+                <TapGestureRecognizer Tapped="OnSignUP" />
 			</Label.GestureRecognizers>
 		</Label>
 		<ActivityIndicator Grid.RowSpan="4" Color="White" IsVisible="{Binding IsRunningTasks}" IsRunning="{Binding IsRunningTasks}" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />

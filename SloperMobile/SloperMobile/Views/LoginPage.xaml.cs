@@ -35,5 +35,9 @@ namespace SloperMobile.Views
         {
             await Navigation.PushAsync(new RegistrationPage());
         }
+        private async void OnForgotPasswordClick(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ResetPasswordPage());
+        }
     }
 }
