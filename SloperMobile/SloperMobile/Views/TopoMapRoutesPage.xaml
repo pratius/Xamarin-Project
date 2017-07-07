@@ -11,7 +11,9 @@
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
     </ContentPage.Padding>
-	<Grid RowSpacing="0" x:Name="MainGrid" >
+	<Grid RowSpacing="0"
+		  x:Name="MainGrid"
+		  ColumnSpacing="0">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto" />
 			<RowDefinition />
@@ -72,7 +74,8 @@
 			  BackgroundColor="Black"
 			  Opacity="0.7"
 			  Padding="0,5,0,5"
-			  VerticalOptions="End">
+			  VerticalOptions="End"
+			  InputTransparent="True">
 			<Image Grid.Row="0"
 				   Grid.Column="0"
 				   x:Name="leftArrow"
@@ -80,9 +83,6 @@
 				   HeightRequest="20"
 				   VerticalOptions="Start"
 				   HorizontalOptions="Center">
-				<Image.GestureRecognizers>
-					<TapGestureRecognizer Tapped="LeftArrowTapped" />
-				</Image.GestureRecognizers>
 			</Image>
 			<Image Grid.Row="0"
 				   Grid.Column="1"
@@ -92,14 +92,11 @@
 				   Rotation="180"
 				   VerticalOptions="Start"
 				   HorizontalOptions="Center">
-				<Image.GestureRecognizers>
-					<TapGestureRecognizer Tapped="RightArrowTapped" />
-				</Image.GestureRecognizers>
 			</Image>
 		</Grid>
 		<Controls:GestureFrame  Grid.Row="1"
 								Grid.Column="1"
-			  Grid.RowSpan="2"
+								Grid.RowSpan="2"
 								BackgroundColor="#77000000"
 								IsVisible="{Binding DisplayRoutePopupSm,Mode=TwoWay}"
 								HeightRequest="150"
@@ -207,9 +204,9 @@
 				</Grid>
 			</Controls:GestureFrame.Content>
 		</Controls:GestureFrame>
-			<Controls:GestureFrame  Grid.Row="1"
-									Grid.RowSpan="2"
-									Grid.Column="1"
+		<Controls:GestureFrame  Grid.Row="1"
+								Grid.RowSpan="2"
+								Grid.Column="1"
 								BackgroundColor="#77000000"
 								IsVisible="{Binding DisplayRoutePopupLg,Mode=TwoWay}"
 								VerticalOptions="FillAndExpand"

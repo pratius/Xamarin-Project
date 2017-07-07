@@ -279,20 +279,20 @@ namespace SloperMobile.Views
                             ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
 
 
-                            if (parent.IsScalingDown || parent.IsScalingUp)
-                            {
-                                try
-                                {
-                                    for (int i = 0; i < diamondsCount; i++)
-                                    {
-                                        AndroidAbsoluteLayout.Children.RemoveAt(i + 1);
-                                    }
-                                }
-                                catch (Exception)
-                                {
+                            //if (parent.IsScalingDown || parent.IsScalingUp)
+                            //{
+                            //    try
+                            //    {
+                            //        for (int i = 0; i < diamondsCount; i++)
+                            //        {
+                            //            AndroidAbsoluteLayout.Children.RemoveAt(i + 1);
+                            //        }
+                            //    }
+                            //    catch (Exception)
+                            //    {
 
-                                }
-                            }
+                            //    }
+                            //}
                         }
                     }
                 }
