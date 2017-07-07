@@ -109,23 +109,26 @@ namespace SloperMobile.Droid
 			{
 				prevScale = mScale;
 				mScale = (float)(svMain.InitialHeight / Height) ;
-				var scaleAnimation1 = new ScaleAnimation(prevScale, mScale, prevScale, mScale, firstPivotX, firstPivotY);
-				scaleAnimation1.Duration = 2;
-				scaleAnimation1.FillAfter = true;
-				StartAnimation(scaleAnimation1);
+				AnimatedScaling(prevScale, firstPivotX, firstPivotY);
 				svMain.ScaleFactor = mScale;
 				return true;
 			}
 
-            var scaleAnimation = new ScaleAnimation(prevScale, mScale, prevScale, mScale, pivotX, pivotY);
-            scaleAnimation.Duration = 2;
-            scaleAnimation.FillAfter = true;
-            StartAnimation(scaleAnimation);
-           
-            svMain.ScaleFactor = detector.ScaleFactor;
+
+			AnimatedScaling(prevScale, pivotX, pivotY);
+
+			svMain.ScaleFactor = detector.ScaleFactor;
            
             return true;
         }
+
+		private void AnimatedScaling(float prevScale, float pivotX, float pivotY)
+		{
+			var scaleAnimation = new ScaleAnimation(prevScale, mScale, prevScale, mScale, pivotX, pivotY);
+			scaleAnimation.Duration = 2;
+			scaleAnimation.FillAfter = true;
+			StartAnimation(scaleAnimation);
+		}
 
         public bool OnScaleBegin(ScaleGestureDetector detector)
         {
