@@ -36,7 +36,7 @@ namespace SloperMobile.Views
                 LoadSector(dataItem.sector_id.ToString());
                 Cache.SelctedCurrentSector = _selectedSector;
                 //loading carousel route setail page when click on ticklist listing route.             
-                Navigation.PushAsync(new TopoSectorPage(_selectedSector, dataItem.route_id.ToString()));
+                Navigation.PushAsync(new TopoSectorPage(_selectedSector, dataItem.route_id.ToString(), true));
             }
             catch (Exception ex)
             {

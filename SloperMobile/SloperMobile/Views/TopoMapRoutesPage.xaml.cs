@@ -52,12 +52,13 @@ namespace SloperMobile.Views
 		private readonly IDevice device;
 		private int padeIndex;
 		private IList<TopoMapRoutesPage> itemSource;
-		ZoomableScrollView parent;
+		private ZoomableScrollView parent;
+		private bool singleRoute;
 
 		//Is used to eliminate usage of Canvas. Need to figure out why did canvas is not stoping to draw itself
 		private int hasBeingDrawen, hasBeingRedrawing = 0;
 
-		public TopoMapRoutesPage(MapListModel CurrentSector, string _lstData, int routeId,int padeIndex)
+		public TopoMapRoutesPage(MapListModel CurrentSector, string _lstData, int routeId,int padeIndex, bool singleRoute)
 		{
 			try
 			{
@@ -68,6 +69,7 @@ namespace SloperMobile.Views
 				_routeId = routeId;
 				_newRouteId = _routeId;
 				this.padeIndex = padeIndex;
+				this.singleRoute = singleRoute;
 				topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
 				NavigationPage.SetHasNavigationBar(this, false);
 				Title = CurrentSector.SectorName;
@@ -748,8 +750,15 @@ namespace SloperMobile.Views
 							continue;
 						}
 
-						AbsoluteLayout.SetLayoutBounds(gridWithId, new Rectangle(x, y, 18, 18));
+						var gridBounds = 18;
+
+						AbsoluteLayout.SetLayoutBounds(gridWithId, new Rectangle(x, y, gridBounds, gridBounds));
 						AbsoluteLayout.SetLayoutFlags(gridWithId, AbsoluteLayoutFlags.None);
+
+						if (singleRoute)
+						{
+							CenterRoute(x + gridBounds / 2);
+						}
 
 						var tapGesture = new TapGestureRecognizer();
 						tapGesture.Tapped += (item, eventArgs) =>
@@ -765,16 +774,7 @@ namespace SloperMobile.Views
 							}
 
 							ShowRoute((int?)grid.PointId);
-
-							if (Device.RuntimePlatform == Device.Android)
-							{
-								androidZoomScroll.ScrollToAsync(grid.X - device.Display.Width / device.Display.Scale / 2, 0, false);
-							}
-							else
-							{
-								iOSZoomScroll.ScrollToAsync(grid.X - device.Display.Width / device.Display.Scale / 2, 0, true);
-							}
-
+							CenterRoute(grid.X + grid.Width / 2);
 						};
 
 						parentLayout.Children.Add(gridWithId);
@@ -1420,6 +1420,18 @@ namespace SloperMobile.Views
 						}
 					}
 				}
+			}
+		}
+
+		private void CenterRoute(double X)
+		{
+			if (Device.RuntimePlatform == Device.Android)
+			{
+				androidZoomScroll.ScrollToAsync(X - device.Display.Width / device.Display.Scale / 2, 0, false);
+			}
+			else
+			{
+				iOSZoomScroll.ScrollToAsync(X - device.Display.Width / device.Display.Scale / 2, 0, true);
 			}
 		}
 

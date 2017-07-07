@@ -40,7 +40,7 @@ namespace SloperMobile.UserControls
                     }
                 }
                 //loading carousel route setail page when click on ticklist listing route.             
-                Navigation.PushAsync(new TopoSectorPage(_selectedSector, dataItem.RouteID.ToString()));
+                Navigation.PushAsync(new TopoSectorPage(_selectedSector, dataItem.RouteID.ToString(), true));
             }
             catch (Exception ex)
             {

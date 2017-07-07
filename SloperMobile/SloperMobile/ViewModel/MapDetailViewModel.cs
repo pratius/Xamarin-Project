@@ -156,7 +156,7 @@ namespace SloperMobile.ViewModel
                 //nav.BarBackgroundColor = Color.Transparent;
                 //nav.HeightRequest = 30;
                 //await _navigation.PushAsync(nav);
-                await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0"));
+                await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0", false));
                 //await _navigation.PushAsync(new Views.Test(CurrentSector));
             }
             catch (Exception ex)
