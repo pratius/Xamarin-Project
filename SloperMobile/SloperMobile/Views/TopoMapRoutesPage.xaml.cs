@@ -52,6 +52,7 @@ namespace SloperMobile.Views
 		private readonly IDevice device;
 		private int padeIndex;
 		private IList<TopoMapRoutesPage> itemSource;
+		ZoomableScrollView parent;
 
 		//Is used to eliminate usage of Canvas. Need to figure out why did canvas is not stoping to draw itself
 		private int hasBeingDrawen, hasBeingRedrawing = 0;
@@ -211,6 +212,7 @@ namespace SloperMobile.Views
 				var parent = rightArrow.Parent as Grid;
 				//not to hide, because children will be reordered,but set opacity to 1, now to be visible
 				parent.Opacity = 1;
+				ArrowBoxView.Opacity = 1;
 			}
 
 			if ((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex)
@@ -242,7 +244,6 @@ namespace SloperMobile.Views
                     byte[] imageBytes = Convert.FromBase64String(strimg64);
                     using (var fileStream = new MemoryStream(imageBytes))
                     {
-                        ZoomableScrollView parent;
                         if (Device.RuntimePlatform == Device.Android)
                         {
                             parent = skCanvasAndroid.Parent.Parent as ZoomableScrollView;
@@ -277,23 +278,7 @@ namespace SloperMobile.Views
                             AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
                             AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
                             ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
-
-
-                            //if (parent.IsScalingDown || parent.IsScalingUp)
-                            //{
-                            //    try
-                            //    {
-                            //        for (int i = 0; i < diamondsCount; i++)
-                            //        {
-                            //            AndroidAbsoluteLayout.Children.RemoveAt(i + 1);
-                            //        }
-                            //    }
-                            //    catch (Exception)
-                            //    {
-
-                            //    }
-                            //}
-                        }
+						}
                     }
                 }
 
@@ -700,82 +685,80 @@ namespace SloperMobile.Views
 
 				if (topoimgTop.points[i].type == "1")
 				{
-                    if (!_diamondclickroute.Contains(Convert.ToInt32(id)))
-                    {
-                        _diamondclickroute.Add(Convert.ToInt32(id));
-                        //draw rect at start point                            
-                        // draw these at specific locations   
-                        var color = getGradeBucketHex(gradeBucket);
-                        var gridWithId = new GridWithId(id, color, _routecnt.ToString(), BoxTextFontSize);
-                        AbsoluteLayout parent;
-                        double x = 0;
-                        double y = 0;
+					AbsoluteLayout parentLayout;
+					double x = 0;
+					double y = 0;
 
-                        if (Device.RuntimePlatform == Device.Android)
-                        {
-                            parent = skCanvasAndroid.Parent as AbsoluteLayout;
-                            x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 30) / device.Display.Scale;
-                            y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 40) / device.Display.Scale;
-                        }
-                        else
-                        {
-                            parent = skCanvasiOS.Parent as AbsoluteLayout;
-                            x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 15) / device.Display.Scale;
-                            y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 20) / device.Display.Scale;
-                        }
+					//TODO: FIX! This won't work in case we have more then 2 diamonds on the route
+					if (!_diamondclickroute.Contains(Convert.ToInt32(id)))
+					{
+						_diamondclickroute.Add(Convert.ToInt32(id));
+						var color = getGradeBucketHex(gradeBucket);
+						var gridWithId = new GridWithId(id, color, _routecnt.ToString(), BoxTextFontSize);
+						SetupParentAndCoordinates(topoimgTop, ratio, i, out parentLayout, out x, out y);
 
-                        if (isDiamondSingleClick)
-                        {
-                            for (int c = (parent.Children.Count() - 1); c > 0; c--)
-                            {
-                                if (c > 0)
-                                    parent.Children.RemoveAt(c);
-                            }
+						if (isDiamondSingleClick)
+						{
+							for (int c = (parentLayout.Children.Count() - 1); c > 0; c--)
+							{
+								if (c > 0)
+									parentLayout.Children.RemoveAt(c);
+							}
 
-                            //isDiamondSingleClick = false;
-                        }
+							//isDiamondSingleClick = false;
+						}
 
-                        if (topoimg[0].drawing.Count < parent.Children.Where(item => item is GridWithId).Count())
-                        {
-                            continue;
-                        }
+						if (diamondsCount < parentLayout.Children.Where(item => item is GridWithId).Count())
+						{
+							continue;
+						}
 
-                        AbsoluteLayout.SetLayoutBounds(gridWithId, new Rectangle(x, y, 18, 18));
-                        AbsoluteLayout.SetLayoutFlags(gridWithId, AbsoluteLayoutFlags.None);
+						AbsoluteLayout.SetLayoutBounds(gridWithId, new Rectangle(x, y, 18, 18));
+						AbsoluteLayout.SetLayoutFlags(gridWithId, AbsoluteLayoutFlags.None);
 
-                        var tapGesture = new TapGestureRecognizer();
-                        tapGesture.Tapped += (item, eventArgs) =>
-                        {
-                            GridWithId grid;
-                            if (item is Label || item is BoxView)
-                            {
-                                grid = (item as View).Parent as GridWithId;
-                            }
-                            else
-                            {
-                                grid = item as GridWithId;
-                            }
+						var tapGesture = new TapGestureRecognizer();
+						tapGesture.Tapped += (item, eventArgs) =>
+						{
+							GridWithId grid;
+							if (item is Label || item is BoxView)
+							{
+								grid = (item as View).Parent as GridWithId;
+							}
+							else
+							{
+								grid = item as GridWithId;
+							}
 
-                            ShowRoute((int?)grid.PointId);
+							ShowRoute((int?)grid.PointId);
 
-                            if (Device.RuntimePlatform == Device.Android)
-                            {
-                                androidZoomScroll.ScrollToAsync(grid.X - device.Display.Width / device.Display.Scale / 2, 0, false);
-                            }
-                            else
-                            {
-                                iOSZoomScroll.ScrollToAsync(grid.X - device.Display.Width / device.Display.Scale / 2, 0, true);
+							if (Device.RuntimePlatform == Device.Android)
+							{
+								androidZoomScroll.ScrollToAsync(grid.X - device.Display.Width / device.Display.Scale / 2, 0, false);
+							}
+							else
+							{
+								iOSZoomScroll.ScrollToAsync(grid.X - device.Display.Width / device.Display.Scale / 2, 0, true);
 							}
 
 						};
 
-                        parent.Children.Add(gridWithId);
-                        gridWithId.GestureRecognizers.Add(tapGesture);
-                        foreach (var child in gridWithId.Children)
-                        {
-                            child.GestureRecognizers.Add(tapGesture);
-                        }
-                    }
+						parentLayout.Children.Add(gridWithId);
+						gridWithId.GestureRecognizers.Add(tapGesture);
+						foreach (var child in gridWithId.Children)
+						{
+							child.GestureRecognizers.Add(tapGesture);
+						}
+					}
+					else if (parent.IsScalingUp || parent.IsScalingDown)
+					{
+						SetupParentAndCoordinates(topoimgTop, ratio, i, out parentLayout, out x, out y);
+						var gridsWithId = parentLayout.Children.Where(item => item is GridWithId && (item as GridWithId).PointId == id);
+						foreach (var child in gridsWithId)
+						{
+							AbsoluteLayout.SetLayoutBounds(child, new Rectangle(x, y, 18, 18));
+							AbsoluteLayout.SetLayoutFlags(child, AbsoluteLayoutFlags.None);
+						}
+					}
 				}
 				else if (topoimgTop.points[i].type == "3")
 				{
@@ -1405,7 +1388,23 @@ namespace SloperMobile.Views
 			}
 		}
 
-        public static SKColor HexToColor(string color)
+		private void SetupParentAndCoordinates(topoline topoimgTop, float ratio, int i, out AbsoluteLayout parentLayout, out double x, out double y)
+		{
+			if (Device.RuntimePlatform == Device.Android)
+			{
+				parentLayout = skCanvasAndroid.Parent as AbsoluteLayout;
+				x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 30) / device.Display.Scale;
+				y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 40) / device.Display.Scale;
+			}
+			else
+			{
+				parentLayout = skCanvasiOS.Parent as AbsoluteLayout;
+				x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 15) / device.Display.Scale;
+				y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 20) / device.Display.Scale;
+			}
+		}
+
+		public static SKColor HexToColor(string color)
         {
             SKColor _color = new SKColor();
             if (color.StartsWith("#"))

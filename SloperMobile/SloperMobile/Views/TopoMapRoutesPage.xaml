@@ -69,10 +69,16 @@
 				</On>
 			</OnPlatform>
 		</Grid>
+		<BoxView x:Name="ArrowBoxView"
+				 BackgroundColor="Black"
+				 Opacity="0.3"
+				 Grid.Row="2"
+				 Grid.Column="1"
+				 HeightRequest="30"
+				 InputTransparent="True" />
 		<Grid Grid.Row="2"
 			  Grid.Column="1"
-			  BackgroundColor="Black"
-			  Opacity="0.7"
+			  BackgroundColor="Transparent"
 			  Padding="0,5,0,5"
 			  VerticalOptions="End"
 			  InputTransparent="True">
@@ -350,7 +356,7 @@
 					 HeightRequest="40"
 					 VerticalOptions="EndAndExpand"
 					 HorizontalOptions="FillAndExpand"
-					 Margin="-20,0,-20,-1" />
+					 Margin="0,0,0,0" />
 		<ActivityIndicator Grid.RowSpan="3"
 						   Grid.ColumnSpan="2"
 						   Color="Black"
