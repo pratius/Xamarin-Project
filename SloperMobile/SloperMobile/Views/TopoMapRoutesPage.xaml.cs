@@ -760,20 +760,14 @@ namespace SloperMobile.Views
 
                             if (Device.RuntimePlatform == Device.Android)
                             {
-                                var deviceHeight = device.Display.Height - (FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale) - TopBarHeight * device.Display.Scale;
-                                ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
-                                height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-                                ratio = (float)height / float.Parse(topoimg[0].image.height);
-                                //var _x = (grid.X / ratio)/ ratio;
-                                //androidZoomScroll.ScrollToAsync(_x >= 66 ? _x - (_x - 65): _x, 0, false);
+                                androidZoomScroll.ScrollToAsync(grid.X - device.Display.Width / device.Display.Scale / 2, 0, false);
                             }
                             else
                             {
-                                var xcoordinate = (device.Display.Width / 2) > grid.X ? ((device.Display.Width / 2) - grid.X) - 30 : grid.X - (device.Display.Width / 2);
-                               // iOSZoomScroll.ScrollToAsync(xcoordinate, 0, true);
-                            }
+                                iOSZoomScroll.ScrollToAsync(grid.X - device.Display.Width / device.Display.Scale / 2, 0, true);
+							}
 
-                        };
+						};
 
                         parent.Children.Add(gridWithId);
                         gridWithId.GestureRecognizers.Add(tapGesture);
