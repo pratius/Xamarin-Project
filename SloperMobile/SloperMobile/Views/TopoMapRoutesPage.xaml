@@ -15,7 +15,8 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto" />
 			<RowDefinition />
-            <RowDefinition Height="auto" />
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="auto" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="00" />
@@ -25,6 +26,7 @@
 
 		<Grid Grid.Row="1"
 			  Grid.Column="1"
+			  Grid.RowSpan="2"
 			  VerticalOptions="FillAndExpand"
 			  HorizontalOptions="FillAndExpand">
 			<OnPlatform x:TypeArguments="View">
@@ -65,8 +67,39 @@
 				</On>
 			</OnPlatform>
 		</Grid>
+		<Grid Grid.Row="2"
+			  Grid.Column="1"
+			  BackgroundColor="Black"
+			  Opacity="0.7"
+			  Padding="0,5,0,5"
+			  VerticalOptions="End">
+			<Image Grid.Row="0"
+				   Grid.Column="0"
+				   x:Name="leftArrow"
+				   Source="arrowLeftWhite"
+				   HeightRequest="20"
+				   VerticalOptions="Start"
+				   HorizontalOptions="Center">
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer Tapped="LeftArrowTapped" />
+				</Image.GestureRecognizers>
+			</Image>
+			<Image Grid.Row="0"
+				   Grid.Column="1"
+				   x:Name="rightArrow"
+				   Source="arrowLeftWhite"
+				   HeightRequest="20"
+				   Rotation="180"
+				   VerticalOptions="Start"
+				   HorizontalOptions="Center">
+				<Image.GestureRecognizers>
+					<TapGestureRecognizer Tapped="RightArrowTapped" />
+				</Image.GestureRecognizers>
+			</Image>
+		</Grid>
 		<Controls:GestureFrame  Grid.Row="1"
 								Grid.Column="1"
+			  Grid.RowSpan="2"
 								BackgroundColor="#77000000"
 								IsVisible="{Binding DisplayRoutePopupSm,Mode=TwoWay}"
 								HeightRequest="150"
@@ -174,8 +207,9 @@
 				</Grid>
 			</Controls:GestureFrame.Content>
 		</Controls:GestureFrame>
-		<Controls:GestureFrame  Grid.Row="1"
-								Grid.Column="1"
+			<Controls:GestureFrame  Grid.Row="1"
+									Grid.RowSpan="2"
+									Grid.Column="1"
 								BackgroundColor="#77000000"
 								IsVisible="{Binding DisplayRoutePopupLg,Mode=TwoWay}"
 								VerticalOptions="FillAndExpand"
@@ -314,13 +348,13 @@
 						 BackgroundColor="Black"
 						 Margin="0,0,0,0" />
 		<UC:FooterUC x:Name="FooterUC"
-					 Grid.Row="2"
+					 Grid.Row="3"
 					 Grid.Column="1"
 					 HeightRequest="40"
 					 VerticalOptions="EndAndExpand"
 					 HorizontalOptions="FillAndExpand"
 					 Margin="-20,0,-20,-1" />
-		<ActivityIndicator Grid.RowSpan="2"
+		<ActivityIndicator Grid.RowSpan="3"
 						   Grid.ColumnSpan="2"
 						   Color="Black"
 						   IsVisible="{Binding IsRunningTasks}"

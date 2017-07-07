@@ -7,6 +7,7 @@ using SloperMobile.CustomControls;
 using SloperMobile.Model;
 using SloperMobile.ViewModel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -49,11 +50,13 @@ namespace SloperMobile.Views
 		int diamondsCount;
 
 		private readonly IDevice device;
+		private int padeIndex;
+		private IList<TopoMapRoutesPage> itemSource;
 
 		//Is used to eliminate usage of Canvas. Need to figure out why did canvas is not stoping to draw itself
 		private int hasBeingDrawen, hasBeingRedrawing = 0;
 
-		public TopoMapRoutesPage(MapListModel CurrentSector, string _lstData, int routeId)
+		public TopoMapRoutesPage(MapListModel CurrentSector, string _lstData, int routeId,int padeIndex)
 		{
 			try
 			{
@@ -63,6 +66,7 @@ namespace SloperMobile.Views
 				listData = _lstData;
 				_routeId = routeId;
 				_newRouteId = _routeId;
+				this.padeIndex = padeIndex;
 				topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
 				NavigationPage.SetHasNavigationBar(this, false);
 				Title = CurrentSector.SectorName;
@@ -114,6 +118,7 @@ namespace SloperMobile.Views
                     iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
                     iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
                 }
+				
 
 			}
 			catch (Exception exception)
@@ -198,7 +203,28 @@ namespace SloperMobile.Views
             }
         }
 
-        private void MainDrawing(SKPaintSurfaceEventArgs e)
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			if((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex && padeIndex == 0)
+			{
+				var parent = rightArrow.Parent as Grid;
+				//not to hide, because children will be reordered,but set opacity to 1, now to be visible
+				parent.Opacity = 1;
+			}
+
+			if ((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex)
+			{
+				rightArrow.IsVisible = false;
+			}
+
+			if(padeIndex == 0)
+			{
+				leftArrow.IsVisible = false;
+			}
+		}
+
+		private void MainDrawing(SKPaintSurfaceEventArgs e)
         {
             if (topoimg != null)
             {
@@ -543,7 +569,24 @@ namespace SloperMobile.Views
 			}
 		}
 
-        public void ReDrawLine(SKCanvas _skCanvas, int? route, float ratio, int _height, int _width)
+		private void LeftArrowTapped(object sender, EventArgs e)
+		{
+			SetupCarouselCurrentPage(padeIndex - 1);
+		}
+
+		private void RightArrowTapped(object sender, EventArgs e)
+		{
+			SetupCarouselCurrentPage(padeIndex + 1);
+		}
+
+		private void SetupCarouselCurrentPage(int index)
+		{
+			itemSource = (this?.Parent as TopoSectorPage)?.Children.Cast<TopoMapRoutesPage>().ToList();
+			var newPage = itemSource.ElementAt(index);
+			(this.Parent as TopoSectorPage).CurrentPage = newPage;
+		}
+
+		public void ReDrawLine(SKCanvas _skCanvas, int? route, float ratio, int _height, int _width)
         {
             float ptx1 = 0, ptx2 = 0, pty1 = 0, pty2 = 0;
             var topoimg = JsonConvert.DeserializeObject<List<TopoImageResponse>>(listData);
