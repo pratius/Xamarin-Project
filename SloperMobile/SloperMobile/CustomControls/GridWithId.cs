@@ -29,7 +29,7 @@ namespace SloperMobile.CustomControls
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				BackgroundColor = Color.White,
 				Color = Color.White,
-				Rotation = 40
+				Rotation = 45
 			};
 
 			var boxView = new BoxView
@@ -39,7 +39,7 @@ namespace SloperMobile.CustomControls
 				Color = Color.FromHex(color),
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				Rotation = 40,
+				Rotation = 45,
 				AutomationId = PointId.ToString(),
 			};
 
