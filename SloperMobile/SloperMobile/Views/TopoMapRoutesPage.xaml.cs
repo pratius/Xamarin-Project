@@ -227,71 +227,106 @@ namespace SloperMobile.Views
 		}
 
 		private void MainDrawing(SKPaintSurfaceEventArgs e)
-        {
-            if (topoimg != null)
-            {
-                var canvas = e.Surface.Canvas;
-                canvas.Clear();
-                if (string.IsNullOrEmpty(topoimg[0].image.data))
-                {
-                    return;
-                }
+		{
+			if (topoimg == null)
+			{
+				return;
+			}
 
-                //code to draw image
-                string strimg64 = topoimg[0].image.data.Split(',')[1];
-                if (!string.IsNullOrEmpty(strimg64))
-                {
-                    byte[] imageBytes = Convert.FromBase64String(strimg64);
-                    using (var fileStream = new MemoryStream(imageBytes))
-                    {
-                        if (Device.RuntimePlatform == Device.Android)
-                        {
-                            parent = skCanvasAndroid.Parent.Parent as ZoomableScrollView;
-                        }
-                        else
-                        {
-                            parent = skCanvasiOS.Parent.Parent as ZoomableScrollView;
-                        }
+			if (parent != null)
+			{
+				if (Device.RuntimePlatform == Device.Android)
+				{
+					if (globalHeight > AndroidAbsoluteLayout.Height * device.Display.Scale * parent.ScaleFactor)
+					{
+						AndroidAbsoluteLayout.HeightRequest = globalHeight / device.Display.Scale;
+						AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+						parent.ScaleFactor = 1;
+						parent.Layout(new Rectangle(parent.X, parent.Y, AndroidAbsoluteLayout.WidthRequest, AndroidAbsoluteLayout.HeightRequest));
+					}
+				}
+				else if (globalHeight > iOSdAbsoluteLayout.Height * device.Display.Scale * parent.ScaleFactor)
+				{
 
-                        if (hasBeingDrawen < 3)
-                        {
-                            var deviceHeight = device.Display.Height - (FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale) - TopBarHeight * device.Display.Scale;
-                            ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
-                            height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-                            ratio = (float)height / float.Parse(topoimg[0].image.height);
-                            globalHeight = height;
-                            globalWidth = double.Parse(topoimg[0].image.width) * ratio;
+					iOSdAbsoluteLayout.HeightRequest = globalHeight / device.Display.Scale;
+					iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+					parent.ScaleFactor = 1;
+					parent.Layout(new Rectangle(parent.X, parent.Y, AndroidAbsoluteLayout.WidthRequest, AndroidAbsoluteLayout.HeightRequest));
+				}
+			}
 
-                            AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
-                            AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
-                            iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
-                            iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
-                        }
+			var canvas = e.Surface.Canvas;
+			canvas.Clear();
+			if (string.IsNullOrEmpty(topoimg[0].image.data))
+			{
+				return;
+			}
 
-                        // decode the bitmap from the stream
-                        using (var stream = new SKManagedStream(fileStream))
-                        using (var bitmap = SKBitmap.Decode(stream))
-                        using (var paint = new SKPaint())
-                        {
-                            //skCanvasAndroid.TranslationY = 40 * parent.ScaleFactor;
-                            canvas.DrawBitmap(bitmap, SKRect.Create((float)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
-                            AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
-                            AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
-                            ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
+			//code to draw image
+			string strimg64 = topoimg[0].image.data.Split(',')[1];
+			if (!string.IsNullOrEmpty(strimg64))
+			{
+				byte[] imageBytes = Convert.FromBase64String(strimg64);
+				using (var fileStream = new MemoryStream(imageBytes))
+				{
+					if (Device.RuntimePlatform == Device.Android)
+					{
+						parent = skCanvasAndroid.Parent.Parent as ZoomableScrollView;
+					}
+					else
+					{
+						parent = skCanvasiOS.Parent.Parent as ZoomableScrollView;
+					}
+
+					if (hasBeingDrawen < 3)
+					{
+						var deviceHeight = device.Display.Height - (FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale) - TopBarHeight * device.Display.Scale;
+						ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
+						height = (int)(int.Parse(topoimg[0].image.height) * ratio);
+						ratio = (float)height / float.Parse(topoimg[0].image.height);
+						globalHeight = height;
+						globalWidth = double.Parse(topoimg[0].image.width) * ratio;
+						
+						if(globalWidth < device.Display.Width)
+						{
+							var xPosition = (device.Display.Width - globalWidth) / device.Display.Scale / 2;
+							parent.Layout(new Rectangle(xPosition, parent.Y, parent.Width, parent.Height));
 						}
-                    }
-                }
 
-                //code to draw line
-                using (new SKAutoCanvasRestore(canvas, true))
-                {
-                    DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));
-                    //DrawLine(canvas, _routeId, ratio, Convert.ToInt32(globalHeight), Convert.ToInt32(globalWidth));
-                }
+						parent.InitialHeight = height;
+						AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+						AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+						iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+						iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+					}
 
-                hasBeingDrawen++;
-            }
-        }
+					// decode the bitmap from the stream
+					using (var stream = new SKManagedStream(fileStream))
+					using (var bitmap = SKBitmap.Decode(stream))
+					using (var paint = new SKPaint())
+					{
+						canvas.DrawBitmap(bitmap, SKRect.Create((float)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
+						AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
+						AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
+						if (AndroidAbsoluteLayout.WidthRequest * device.Display.Scale < device.Display.Width)
+						{
+							var xPosition = (device.Display.Width - AndroidAbsoluteLayout.WidthRequest * device.Display.Scale) / device.Display.Scale / 2;
+							parent.Layout(new Rectangle(xPosition, parent.Y, parent.Width, parent.Height));
+						}
+
+						ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
+					}
+				}
+			}
+
+			//code to draw line
+			using (new SKAutoCanvasRestore(canvas, true))
+			{
+				DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));
+			}
+
+			hasBeingDrawen++;
+		}
 
 
         private void Redraw()

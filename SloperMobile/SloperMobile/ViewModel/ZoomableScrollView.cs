@@ -16,7 +16,14 @@ namespace SloperMobile.ViewModel
             get { return (float)GetValue(MinimumZoomScaleProperty); }
             set { SetValue(MinimumZoomScaleProperty, value); }
         }
-        public static readonly BindableProperty MaximumZoomScaleProperty = BindableProperty.Create("MaximumZoomScale", typeof(float), typeof(ZoomableScrollView), default(float));
+
+		public double InitialHeight
+		{
+			get;
+			set;
+		}
+
+		public static readonly BindableProperty MaximumZoomScaleProperty = BindableProperty.Create("MaximumZoomScale", typeof(float), typeof(ZoomableScrollView), default(float));
 
         public float MaximumZoomScale
         {

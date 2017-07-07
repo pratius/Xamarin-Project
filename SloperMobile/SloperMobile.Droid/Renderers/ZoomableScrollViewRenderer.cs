@@ -70,9 +70,20 @@ namespace SloperMobile.Droid
             return base.DispatchTouchEvent(e);
         }
 
+		bool firstScale = true;
+		float firstPivotX;
+		float firstPivotY;
+
         public bool OnScale(ScaleGestureDetector detector)
         {
             float prevScale = mScale;
+
+			if (firstScale)
+			{
+				firstPivotX = detector.FocusX;
+				firstPivotY = detector.FocusY;
+				firstScale = false;
+			}
 
             if (detector.ScaleFactor == 1)
             {
@@ -93,6 +104,18 @@ namespace SloperMobile.Droid
 
             var pivotX = detector.FocusX;
             var pivotY = detector.FocusY;
+
+			if (svMain.InitialHeight > 0 && svMain.InitialHeight > ( mScale * Height))
+			{
+				prevScale = mScale;
+				mScale = (float)(svMain.InitialHeight / Height) ;
+				var scaleAnimation1 = new ScaleAnimation(prevScale, mScale, prevScale, mScale, firstPivotX, firstPivotY);
+				scaleAnimation1.Duration = 2;
+				scaleAnimation1.FillAfter = true;
+				StartAnimation(scaleAnimation1);
+				svMain.ScaleFactor = mScale;
+				return true;
+			}
 
             var scaleAnimation = new ScaleAnimation(prevScale, mScale, prevScale, mScale, pivotX, pivotY);
             scaleAnimation.Duration = 2;

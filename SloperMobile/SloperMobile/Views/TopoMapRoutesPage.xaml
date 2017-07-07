@@ -7,10 +7,14 @@
              xmlns:Controls="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile" 
              xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" 
              x:Class="SloperMobile.Views.TopoMapRoutesPage" 
-             xmlns:views="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" NavigationPage.HasNavigationBar="false" Style="{StaticResource AppBackgroundColor}">
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
-    </ContentPage.Padding>
+             xmlns:views="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+			 NavigationPage.HasNavigationBar="false"
+			 Style="{StaticResource AppBackgroundColor}">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness"
+					iOS="0, 20, 0, 0"
+					Android="0, 0, 0, 0" />
+	</ContentPage.Padding>
 	<Grid RowSpacing="0"
 		  x:Name="MainGrid"
 		  ColumnSpacing="0">
@@ -25,12 +29,13 @@
 			<ColumnDefinition Width="1*" />
 			<ColumnDefinition Width="00" />
 		</Grid.ColumnDefinitions>
-
 		<Grid Grid.Row="1"
 			  Grid.Column="1"
 			  Grid.RowSpan="2"
 			  VerticalOptions="FillAndExpand"
-			  HorizontalOptions="FillAndExpand">
+			  HorizontalOptions="FillAndExpand"
+			  Padding="0"
+			  Margin="0">
 			<OnPlatform x:TypeArguments="View">
 				<On Platform="iOS">
 					<local:ZoomableScrollView Grid.Column="0"
@@ -75,13 +80,15 @@
 				 Grid.Row="2"
 				 Grid.Column="1"
 				 HeightRequest="30"
-				 InputTransparent="True" />
+				 InputTransparent="True"
+				 Margin="0" />
 		<Grid Grid.Row="2"
 			  Grid.Column="1"
 			  BackgroundColor="Transparent"
 			  Padding="0,5,0,5"
 			  VerticalOptions="End"
-			  InputTransparent="True">
+			  InputTransparent="True"
+			  Margin="0">
 			<Image Grid.Row="0"
 				   Grid.Column="0"
 				   x:Name="leftArrow"
@@ -109,7 +116,9 @@
 								VerticalOptions="Start"
 								HorizontalOptions="FillAndExpand"
 								SwipeDown="OnSwipeDownRoutePopupSm"
-								SwipeTop="OnSwipeTopRoutePopupSm">
+								SwipeTop="OnSwipeTopRoutePopupSm"
+								Padding="0"
+								Margin="0">
 			<Controls:GestureFrame.Content>
 				<Grid>
 					<Grid.ColumnDefinitions>
@@ -217,7 +226,9 @@
 								IsVisible="{Binding DisplayRoutePopupLg,Mode=TwoWay}"
 								VerticalOptions="FillAndExpand"
 								HorizontalOptions="FillAndExpand"
-								SwipeTop="OnSwipeTopRoutePopupLg">
+								SwipeTop="OnSwipeTopRoutePopupLg"
+								Padding="0"
+								Margin="0">
 			<Controls:GestureFrame.Content>
 				<Grid>
 					<Grid.ColumnDefinitions>
@@ -340,8 +351,6 @@
 				</Grid>
 			</Controls:GestureFrame.Content>
 		</Controls:GestureFrame>
-		<!--		<UC:FooterUC IsVisible="{Binding HideUpArrow,Mode=TwoWay}" Grid.Column="1" Grid.Row="1" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Margin="-20,0,-20,0" />-->
-
 		<UC:BackHeaderUC x:Name="BackHeaderUC"
 						 Grid.Row="0"
 						 Grid.Column="1"
@@ -349,14 +358,16 @@
 						 VerticalOptions="StartAndExpand"
 						 HorizontalOptions="FillAndExpand"
 						 BackgroundColor="Black"
-						 Margin="0,0,0,0" />
+						 Padding="0"
+						 Margin="0" />
 		<UC:FooterUC x:Name="FooterUC"
 					 Grid.Row="3"
 					 Grid.Column="1"
 					 HeightRequest="40"
 					 VerticalOptions="EndAndExpand"
 					 HorizontalOptions="FillAndExpand"
-					 Margin="0,0,0,0" />
+					 Padding="0"
+					 Margin="0" />
 		<ActivityIndicator Grid.RowSpan="3"
 						   Grid.ColumnSpan="2"
 						   Color="Black"
@@ -365,6 +376,7 @@
 						   WidthRequest="30"
 						   HeightRequest="30"
 						   VerticalOptions="CenterAndExpand"
-						   HorizontalOptions="CenterAndExpand" />
+						   HorizontalOptions="CenterAndExpand"
+						   Margin="0" />
 	</Grid>
 </ContentPage>
