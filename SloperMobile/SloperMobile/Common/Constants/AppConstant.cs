@@ -13,6 +13,7 @@ namespace SloperMobile.Common.Constants
         public const string NETWORK_FAILURE = "No Network Connection found! Please try again.";
         public const string LOGIN_FAILURE = "Login Failed! Please try again.";
         public const string REGISTRATION_FAILURE = "Registration Failed! Please try again.";
+        public const string CHANGEPASSWORD_FAILURE = "Password Change Request Failed! Please try again.";
         public const string UPDATE_FAILURE_MSG = "Your app data is up to date.";
 
         public const string SPF_USER_DISPLAYNAME = "displayName";
