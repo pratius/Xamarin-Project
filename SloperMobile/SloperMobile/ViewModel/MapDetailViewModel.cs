@@ -184,13 +184,13 @@ namespace SloperMobile.ViewModel
                 {
                     if (topoimgages[0].image.data != "")
                     {
-                        await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0",0, _routelist));
+                        await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0", false));
                     }
                     else if (topoimgages.Count == 2)
                     {
                         if (topoimgages[1].image.data != "")
                         {
-                            await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0",0, _routelist));
+                            await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0", false));
                         }
                     }
 

@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
-              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
-              x:Class="SloperMobile.Views.TopoSectorPage"
-              NavigationPage.HasNavigationBar="False" Style="{StaticResource AppBackgroundColor}">
-<!--	<ContentPage.Padding>
-    	<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
-	</ContentPage.Padding>		-->
-  <!--<ContentPage>
-    <StackLayout Grid.Column="1" Grid.Row="3" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
-      <Button Text="GO"  Margin="01" Style="{StaticResource GeneralButtonStyle}" Command="{Binding GoCommand}" />
-    </StackLayout>
-   </ContentPage>-->
+			  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			  xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile"
+			  x:Class="SloperMobile.Views.TopoSectorPage"
+			  NavigationPage.HasNavigationBar="False"
+			  Style="{StaticResource AppBackgroundColor}">
 </CarouselPage >
