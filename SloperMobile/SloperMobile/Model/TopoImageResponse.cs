@@ -9,7 +9,7 @@ namespace SloperMobile.Model
     public class TopoImageResponse
     {
         public topoimage image { get; set; }
-        public List<topodrawing> drawing { get; set; }
+        public IList<topodrawing> drawing { get; set; }
 
     }
 

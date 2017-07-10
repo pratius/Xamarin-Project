@@ -33,215 +33,74 @@ namespace SloperMobile.Views
 			this.singleRoute = singleRoute;
 		}
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
-            try
-            {
+			try
+			{
 				pageIndex = 0;
 				this.Children.Clear();
-                topoSectorViewModel.IsRunningTasks = true;
-                if (Device.RuntimePlatform == Device.Android)
-                {                    
-                    LoadOnlyForDriodApp();                   
-                }
-                else if (Device.RuntimePlatform == Device.iOS)
-                {
-                    LoadOnlyForIOSApp();
-                }
-                topoSectorViewModel.IsRunningTasks = false;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+				topoSectorViewModel.IsRunningTasks = true;
+				InitialiTopoCarouselChildrens();
+				topoSectorViewModel.IsRunningTasks = false;
+			}
+			catch
+			{
+				throw;
+			}
         }
 
-		private async void LoadOnlyForDriodApp()
+		private void InitialiTopoCarouselChildrens()
 		{
 			var topolistData = App.DAUtil.GetSectorLines(CurrentSector?.SectorId);
 			var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);
-			ContentPage newPage = new ContentPage();
-			if (topoimgages.Count == 1 || topoimgages.Count == 2)
-			{
-				_count = topoimgages.Count;
-				this.Children.Add(newPage);
-			}
 			if (routeId > 0)
 			{
-				//first add topo images with match routeid
-				for (int i = 0; i < topoimgages.Count; i++)
+				//Finding all topos with selected route
+				var allToposWithCurrentRoute = topoimgages.Select(item =>
 				{
-					foreach (var item in topoimgages[i].drawing)
+					var drawing = item.drawing.FirstOrDefault(route => Convert.ToInt32(route.id) == routeId);
+					return drawing != null ? new TopoImageResponse
 					{
-						if (topoElement.Count == 0)
-						{
-							if (item.id == routeId.ToString() && item.line.points.Count > 0)
-							{
-								_topoIndex = i;
-								topoElement.Add(i);
-								TopoMapRoutesPage topopageObj;
-								var topoimg = JsonConvert.SerializeObject(topoimgages[i]);
-								topopageObj = new TopoMapRoutesPage(CurrentSector, "[" + topoimg + "]", routeId, pageIndex, singleRoute);
-								this.Children.Add(topopageObj);
-								pageIndex++;
-							}
-						}
-					}
-				}
-				//second add topo images without match routeid
-				if (topoElement.Count > 0)
+						drawing = new topodrawing[] { drawing },
+						image = item.image
+					} : null;
+				}).ToList();
+
+				//Creating pages with specified topos
+				foreach (var topoImage in allToposWithCurrentRoute)
 				{
-					newTopoElement.Add(topoElement[0]);
-					for (int j = (topoElement[0] + 1); j < topoimgages.Count; j++)
+					if (topoImage == null)
 					{
-						if (topoElement.Count > 0)
-						{
-							if (topoElement.Contains(j) == false)
-							{
-								newTopoElement.Add(j);
-								TopoMapRoutesPage topopageObj1;
-								var topoimg = JsonConvert.SerializeObject(topoimgages[j]);
-								topopageObj1 = new TopoMapRoutesPage(CurrentSector, "[" + topoimg + "]", 0, pageIndex, singleRoute);
-								this.Children.Add(topopageObj1);
-								pageIndex++;
-							}
-						}
+						continue;
 					}
-					for (int k = 0; k < topoimgages.Count; k++)
-					{
-						if (newTopoElement.Count > 0)
-						{
-							if (newTopoElement.Contains(k) == false)
-							{
-								TopoMapRoutesPage _topopageObj;
-								var topoimg = JsonConvert.SerializeObject(topoimgages[k]);
-								_topopageObj = new TopoMapRoutesPage(CurrentSector, "[" + topoimg + "]", 0, pageIndex, singleRoute);
-								this.Children.Add(_topopageObj);
-								pageIndex++;
-							}
-						}
-					}
-				}
-				//if routeid not present in topos then show blank page
-				if (_topoIndex == -1)
-				{
-					TopoMapRoutesPage _topopageObj;
-					var topoimg = string.Empty;
-					_topopageObj = new TopoMapRoutesPage(CurrentSector, topoimg, routeId, pageIndex, singleRoute);
-					this.Children.Add(_topopageObj);
-					pageIndex++;
+
+					SetupTopoPage(topoImage);
 				}
 			}
 			else
 			{
 				//load all carousel page with images when click on image
-				foreach (TopoImageResponse topores in topoimgages)
+				foreach (var topores in topoimgages)
 				{
-					TopoMapRoutesPage topopageObj;
-					var topoimg = JsonConvert.SerializeObject(topores);
-					topopageObj = new TopoMapRoutesPage(CurrentSector, "[" + topoimg + "]", 0, pageIndex, singleRoute);
-					this.Children.Add(topopageObj);
-					pageIndex++;
+					SetupTopoPage(topores);
 				}
 			}
-
-			await Task.Delay(250);
+			
 			if (Children.Count > 0)
 			{
 				this.SelectedItem = this.Children.LastOrDefault();
 			}
 
-			if (topoimgages.Count == 1 || topoimgages.Count == 2)
-			{
-				this.Children.Remove(newPage);
-			}
 			base.OnAppearing();
 		}
 
-		private void LoadOnlyForIOSApp()
+		private void SetupTopoPage(TopoImageResponse topoImage)
 		{
-			var topolistData = App.DAUtil.GetSectorLines(CurrentSector?.SectorId);
-			var topoimgages = JsonConvert.DeserializeObject<List<TopoImageResponse>>(topolistData);
-			if (routeId > 0)
-			{
-				//first add topo images with match routeid
-				for (int i = 0; i < topoimgages.Count; i++)
-				{
-					foreach (var item in topoimgages[i].drawing)
-					{
-						if (topoElement.Count == 0)
-						{
-							if (item.id == routeId.ToString() && item.line.points.Count > 0)
-							{
-								_topoIndex = i;
-								topoElement.Add(i);
-								TopoMapRoutesPage topopageObj;
-								var topoimg = JsonConvert.SerializeObject(topoimgages[i]);
-								topopageObj = new TopoMapRoutesPage(CurrentSector, "[" + topoimg + "]", routeId, pageIndex, singleRoute);
-								this.Children.Add(topopageObj);
-								pageIndex++;
-							}
-						}
-					}
-				}
-				//second add topo images without match routeid
-				if (topoElement.Count > 0)
-				{
-					newTopoElement.Add(topoElement[0]);
-					for (int j = (topoElement[0] + 1); j < topoimgages.Count; j++)
-					{
-						if (topoElement.Count > 0)
-						{
-							if (topoElement.Contains(j) == false)
-							{
-								newTopoElement.Add(j);
-								TopoMapRoutesPage topopageObj1;
-								var topoimg = JsonConvert.SerializeObject(topoimgages[j]);
-								topopageObj1 = new TopoMapRoutesPage(CurrentSector, "[" + topoimg + "]", 0, pageIndex, singleRoute);
-								this.Children.Add(topopageObj1);
-								pageIndex++;
-							}
-						}
-					}
-					for (int k = 0; k < topoimgages.Count; k++)
-					{
-						if (newTopoElement.Count > 0)
-						{
-							if (newTopoElement.Contains(k) == false)
-							{
-								TopoMapRoutesPage _topopageObj;
-								var topoimg = JsonConvert.SerializeObject(topoimgages[k]);
-								_topopageObj = new TopoMapRoutesPage(CurrentSector, "[" + topoimg + "]", 0, pageIndex, singleRoute);
-								this.Children.Add(_topopageObj);
-								pageIndex++;
-							}
-						}
-					}
-				}
-				//if routeid not present in topos then show blank page
-				if (_topoIndex == -1)
-				{
-					TopoMapRoutesPage _topopageObj;
-					var topoimg = string.Empty;
-					_topopageObj = new TopoMapRoutesPage(CurrentSector, topoimg, routeId, pageIndex, singleRoute);
-					this.Children.Add(_topopageObj);
-					pageIndex++;
-				}
-			}
-			else
-			{
-				//load all carousel page with images when click on image
-				foreach (TopoImageResponse topores in topoimgages)
-				{
-					TopoMapRoutesPage topopageObj;
-					var topoimg = JsonConvert.SerializeObject(topores);
-					topopageObj = new TopoMapRoutesPage(CurrentSector, "[" + topoimg + "]", 0, pageIndex, singleRoute);
-					this.Children.Add(topopageObj);
-					pageIndex++;
-				}
-			}
-			base.OnAppearing();
+			var topoImageSerialized = JsonConvert.SerializeObject(topoImage);
+			var serializedAsArray = $"[{topoImageSerialized}]";
+			var topoPageObject = new TopoMapRoutesPage(CurrentSector, serializedAsArray, routeId, pageIndex, singleRoute);
+			this.Children.Add(topoPageObject);
+			pageIndex++;
 		}
 
         protected override void OnCurrentPageChanged()

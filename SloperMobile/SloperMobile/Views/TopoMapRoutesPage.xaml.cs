@@ -209,7 +209,7 @@ namespace SloperMobile.Views
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			if((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex && padeIndex == 0)
+			if((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex && padeIndex == 0 || ((this.Parent as TopoSectorPage).Children.Count == 1))
 			{
 				var parent = rightArrow.Parent as Grid;
 				//not to hide, because children will be reordered,but set opacity to 1, now to be visible
