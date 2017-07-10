@@ -20,7 +20,7 @@
 		  ColumnSpacing="0">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto" />
-			<RowDefinition />
+			<RowDefinition Height="*"/>
 			<RowDefinition Height="auto" />
 			<RowDefinition Height="auto" />
 		</Grid.RowDefinitions>
@@ -364,12 +364,14 @@
 					 Grid.Row="3"
 					 Grid.Column="1"
 					 HeightRequest="40"
-					 VerticalOptions="EndAndExpand"
+					 VerticalOptions="End"
 					 HorizontalOptions="FillAndExpand"
 					 Padding="0"
 					 Margin="0" />
-		<ActivityIndicator Grid.RowSpan="3"
-						   Grid.ColumnSpan="2"
+		<ActivityIndicator Grid.Row="0"
+						   Grid.RowSpan="4"
+						   Grid.Column="0"
+						   Grid.ColumnSpan="3"
 						   Color="Black"
 						   IsVisible="{Binding IsRunningTasks}"
 						   IsRunning="{Binding IsRunningTasks}"

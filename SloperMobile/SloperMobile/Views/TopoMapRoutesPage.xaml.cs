@@ -111,8 +111,7 @@ namespace SloperMobile.Views
                 {
                     var deviceHeight = device.Display.Height - (FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale) - TopBarHeight * device.Display.Scale;
                     ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
-                    height = (int)(int.Parse(topoimg[0].image.height) * ratio);// - (1.5 * FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale);
-                    ratio = (float)height / float.Parse(topoimg[0].image.height);
+                    height = deviceHeight;
                     globalHeight = height;
                     globalWidth = double.Parse(topoimg[0].image.width) * ratio;
 
@@ -121,8 +120,6 @@ namespace SloperMobile.Views
                     iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
                     iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
                 }
-				
-
 			}
 			catch (Exception exception)
 			{
@@ -209,12 +206,13 @@ namespace SloperMobile.Views
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			if((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex && padeIndex == 0 || ((this.Parent as TopoSectorPage).Children.Count == 1))
+			if ((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex && padeIndex == 0 || ((this.Parent as TopoSectorPage).Children.Count == 1))
 			{
-				var parent = rightArrow.Parent as Grid;
+				var arrowParent = rightArrow.Parent as Grid;
 				//not to hide, because children will be reordered,but set opacity to 1, now to be visible
-				parent.Opacity = 1;
+				arrowParent.Opacity = 1;
 				ArrowBoxView.Opacity = 1;
+				ArrowBoxView.IsVisible = false;
 			}
 
 			if ((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex)
@@ -284,8 +282,7 @@ namespace SloperMobile.Views
 					{
 						var deviceHeight = device.Display.Height - (FooterUC.Height * device.Display.Scale) - (BackHeaderUC.Height * device.Display.Scale) - TopBarHeight * device.Display.Scale;
 						ratio = (float)deviceHeight / float.Parse(topoimg[0].image.height);
-						height = (int)(int.Parse(topoimg[0].image.height) * ratio);
-						ratio = (float)height / float.Parse(topoimg[0].image.height);
+						height = deviceHeight;
 						globalHeight = height;
 						globalWidth = double.Parse(topoimg[0].image.width) * ratio;
 						
