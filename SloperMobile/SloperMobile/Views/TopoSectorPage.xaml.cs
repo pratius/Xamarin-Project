@@ -1,26 +1,20 @@
-﻿using Acr.UserDialogs;
-using Newtonsoft.Json;
-using SloperMobile.Common.Constants;
+﻿using Newtonsoft.Json;
 using SloperMobile.Model;
 using SloperMobile.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 namespace SloperMobile.Views
 {
-    public partial class TopoSectorPage : CarouselPage
+	public partial class TopoSectorPage : CarouselPage
     {
         public MapListModel CurrentSector { get; set; }
-        public int _count = 0, routeId = 0, _eleIndex = 0, _newIndex = 0, _topoIndex = -1, cnt = 0;
-        List<int> topoElement = new List<int>();
-        List<int> newTopoElement = new List<int>();
         private TopoSectorViewModel topoSectorViewModel;
 		private int pageIndex;
+		public int routeId = 0;
 		private bool singleRoute;
 
         public TopoSectorPage(MapListModel CurrentSector, string routeId, bool singleRoute)
@@ -85,11 +79,6 @@ namespace SloperMobile.Views
 					SetupTopoPage(topores);
 				}
 			}
-			
-			if (Children.Count > 0)
-			{
-				this.SelectedItem = this.Children.LastOrDefault();
-			}
 
 			base.OnAppearing();
 		}
@@ -102,67 +91,5 @@ namespace SloperMobile.Views
 			this.Children.Add(topoPageObject);
 			pageIndex++;
 		}
-
-        protected override void OnCurrentPageChanged()
-        {
-            base.OnCurrentPageChanged();
-            Cache.SelectedTopoIndex = Children.IndexOf(CurrentPage);
-            if (Device.RuntimePlatform ==Device.Android)
-            {
-                var index = Children.IndexOf(CurrentPage);
-                if (index == -1)
-                {
-                    cnt++;
-                }
-                if (index > 0)
-                {
-                    this.SelectedItem = Children[0];
-                }
-                if (index == 0)
-                {
-                    this.SelectedItem = Children[index];
-                }
-                else if (index == -1)
-                {
-                    if (cnt == 1)
-                    {
-                        Navigation.PushAsync(new MapDetailPage(CurrentSector));
-                        cnt = 0;
-                    }
-                    else
-                    {
-                        Navigation.PopAsync().ConfigureAwait(false);
-                    }
-                }
-            }
-            else
-            {
-                var index = Children.IndexOf(CurrentPage);
-                if (index == -1)
-                {
-                    cnt++;
-                }
-                if (index > 0)
-                {
-                    this.SelectedItem = Children[0];
-                }
-                if (index == 0)
-                {
-                    this.SelectedItem = Children[index];
-                }
-                else if (index == -1)
-                {
-                    if (cnt == 1)
-                    {
-                        Navigation.PushAsync(new MapDetailPage(CurrentSector));
-                        cnt = 0;
-                    }
-                    else
-                    {
-                        Navigation.PopAsync().ConfigureAwait(false);
-                    }
-                }
-            }
-        }
     }
 }
