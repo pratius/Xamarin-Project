@@ -1,10 +1,5 @@
-﻿using SloperMobile.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System;
+using SloperMobile.ViewModel;
 using Xamarin.Forms;
 
 namespace SloperMobile.Views
@@ -23,9 +18,11 @@ namespace SloperMobile.Views
         private async void OnPageNavigation(object obj)
         {
             if (Convert.ToString(obj) == "Procced")
-                await Navigation.PushAsync(new LoginPage());
+                 Device.BeginInvokeOnMainThread(() =>
+                                           App.SetMainPage(new LoginPage()));
             else if (Convert.ToString(obj) == "CANCEL")
-                await Navigation.PopAsync();
+                Device.BeginInvokeOnMainThread(() =>
+                                               App.SetMainPage(new SplashPage()));
         }
     }
 }

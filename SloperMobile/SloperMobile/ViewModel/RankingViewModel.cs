@@ -58,7 +58,7 @@ namespace SloperMobile.ViewModel
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
+                //await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
             }
         }
         private async Task InvokeServiceGetAscentDates()
@@ -101,8 +101,8 @@ namespace SloperMobile.ViewModel
             }
             catch (Exception ex)
             {
-                throw ex;
-                Acr.UserDialogs.UserDialogs.Instance.Loading().Hide();
+                //throw ex;
+                //Acr.UserDialogs.UserDialogs.Instance.Loading().Hide();
             }
         }
         #endregion

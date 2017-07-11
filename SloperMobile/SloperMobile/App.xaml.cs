@@ -1,18 +1,11 @@
-﻿using SloperMobile.DataBase;
-using SloperMobile.ViewModel;
-using SloperMobile.Views;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
-using SloperMobile.Common.Helpers;
-using Newtonsoft.Json;
-using SloperMobile.Common.Constants;
-using SloperMobile.Model;
-using SloperMobile.MessagingTask;
 using Plugin.Connectivity;
+using SloperMobile.Common.Helpers;
+using SloperMobile.DataBase;
+using SloperMobile.MessagingTask;
+using SloperMobile.Views;
+using Xamarin.Forms;
 
 namespace SloperMobile
 {
@@ -23,6 +16,10 @@ namespace SloperMobile
         public App()
         {
             InitializeAppStep1();
+            SetMainPage += (page) =>
+            {
+                MainPage = new NavigationPage(page);
+            };
         }
 
         public static string SelectedCrag
@@ -103,12 +100,19 @@ namespace SloperMobile
             if (IsAppinitialized)
             {
                 if (string.IsNullOrEmpty(Settings.AccessTokenSettings))
-                    MainPage = new NavigationPage(new LoginPage());
+                {
+                    MainPage = new LoginPage();
+                }
+
                 else
-                    MainPage = new NavigationPage(new MenuNavigationPage());
+                {
+                    MainPage = new MenuNavigationPage();
+                }
             }
-            else
-                MainPage = new NavigationPage(new SplashPage());
+            else{
+                MainPage = new SplashPage();
+            }
+                
         }
 
         void HandleReceivedMessages()
@@ -121,5 +125,7 @@ namespace SloperMobile
                 });
             });
         }
+
+        public static Action<Page> SetMainPage { get; set; }
     }
 }

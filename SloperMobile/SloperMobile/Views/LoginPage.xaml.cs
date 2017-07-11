@@ -1,10 +1,6 @@
-﻿using SloperMobile.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using SloperMobile.Common.Helpers;
+using SloperMobile.ViewModel;
 using Xamarin.Forms;
 
 namespace SloperMobile.Views
@@ -26,18 +22,22 @@ namespace SloperMobile.Views
             }
         }
 
-        private async void LoginViewModel_OnLoginClick()
+        private void LoginViewModel_OnLoginClick()
         {
-            await Navigation.PushAsync(new MenuNavigationPage());
+            Device.BeginInvokeOnMainThread(() =>
+                                           App.SetMainPage(new MenuNavigationPage()));
         }
 
-        private async void OnSignUP(object sender, EventArgs e)
+        private void OnSignUP(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegistrationPage());
+            Device.BeginInvokeOnMainThread(() =>
+                                           App.SetMainPage(new RegistrationPage()));
         }
-        private async void OnForgotPasswordClick(object sender, EventArgs e)
+
+        private void OnForgotPasswordClick(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ResetPasswordPage());
+            Device.BeginInvokeOnMainThread(() =>
+                                           App.SetMainPage(new ResetPasswordPage()));
         }
     }
 }

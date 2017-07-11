@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using SloperMobile.Views;
+using Xamarin.Forms;
 
 namespace SloperMobile.Common.Helpers
 {
@@ -61,6 +63,13 @@ namespace SloperMobile.Common.Helpers
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Settings.AccessTokenSettings);
                 var response = await httpClient.PostAsync(Constants.ApiUrls.Url_Login_Extend, new StringContent(jsonobject, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+
+                //if our renewal token has expired
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized){
+                    Device.BeginInvokeOnMainThread(() =>
+                                              App.SetMainPage(new LoginPage()));
+                }
+
                 return JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
             }
         }
