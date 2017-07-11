@@ -38,44 +38,44 @@ namespace SloperMobile.Common.Helpers
         {
             get
             {
-                return AppSettings.GetValueOrDefault<string>(DisplayName, DefaultDisplayName);
+                return AppSettings.GetValueOrDefault(DisplayName, DefaultDisplayName);
             }
             set
             {
-                AppSettings.AddOrUpdateValue<string>(DisplayName, value);
+                AppSettings.AddOrUpdateValue(DisplayName, value);
             }
         }
         public static string AccessTokenSettings
         {
             get
             {
-                return AppSettings.GetValueOrDefault<string>(AccessToken, DefaultAccessToken);
+                return AppSettings.GetValueOrDefault(AccessToken, DefaultAccessToken);
             }
             set
             {
-                AppSettings.AddOrUpdateValue<string>(AccessToken, value);
+                AppSettings.AddOrUpdateValue(AccessToken, value);
             }
         }
         public static string RenewalTokenSettings
         {
             get
             {
-                return AppSettings.GetValueOrDefault<string>(RenewalToken, DefaultRenewalToken);
+                return AppSettings.GetValueOrDefault(RenewalToken, DefaultRenewalToken);
             }
             set
             {
-                AppSettings.AddOrUpdateValue<string>(RenewalToken, value);
+                AppSettings.AddOrUpdateValue(RenewalToken, value);
             }
         }
         public static string SelectedCragSettings
         {
             get
             {
-                return AppSettings.GetValueOrDefault<string>(SelectedCrag, DefaultSelectedCrag);
+                return AppSettings.GetValueOrDefault(SelectedCrag, DefaultSelectedCrag);
             }
             set
             {
-                AppSettings.AddOrUpdateValue<string>(SelectedCrag, value);
+                AppSettings.AddOrUpdateValue(SelectedCrag, value);
             }
         }
 
@@ -83,11 +83,11 @@ namespace SloperMobile.Common.Helpers
         {
             get
             {
-                return AppSettings.GetValueOrDefault<int>(ClimbingDays, DefaultClimbingDays);
+                return AppSettings.GetValueOrDefault(ClimbingDays, DefaultClimbingDays);
             }
             set
             {
-                AppSettings.AddOrUpdateValue<int>(ClimbingDays, value);
+                AppSettings.AddOrUpdateValue(ClimbingDays, value);
             }
         }
         #endregion

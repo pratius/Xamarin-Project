@@ -142,8 +142,11 @@ namespace SloperMobile.Views
                 CancellationTokenSource ctsrc = new CancellationTokenSource(2000);
                 var locator = CrossGeolocator.Current;
                 locator.DesiredAccuracy = 50;
+
+                var waitTimeout = TimeSpan.FromTicks(2000);
+
                 //var position = await locator.GetPositionAsync(timeoutMilliseconds: 5000);
-                var position = await locator.GetPositionAsync(2000, ctsrc.Token);
+                var position = await locator.GetPositionAsync(waitTimeout, ctsrc.Token);
                 if (position != null)
                     return position;
                 else

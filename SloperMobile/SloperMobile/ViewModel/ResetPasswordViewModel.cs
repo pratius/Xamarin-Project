@@ -49,12 +49,12 @@ namespace SloperMobile.ViewModel
             {
                 if (CrossConnectivity.Current.IsConnected)
                 {
+                    UserDialogs.Instance.ShowLoading("Please Wait...", MaskType.Black);
                     if (string.IsNullOrWhiteSpace(Email))
                     {
-                        await Application.Current.MainPage.DisplayAlert("Error", "Enter Email.", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Error", "Email can't be empty, please try again.", "OK");
                         return;
                     }
-                    UserDialogs.Instance.ShowLoading("Please Wait...", MaskType.Black);
                     HttpClientHelper apicall = new HttpClientHelper(string.Format(ApiUrls.Url_User_ResetPassword, Email),String.Empty);
                     var response = apicall.GetResponse<ResetPasswordModel>();
                     if (response != null)
@@ -84,7 +84,7 @@ namespace SloperMobile.ViewModel
             catch (Exception ex)
             {
                 UserDialogs.Instance.Loading().Hide();
-                await Application.Current.MainPage.DisplayAlert("Exception", "Please Enter Valid Email.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", "Please Enter Valid Email.", "OK");
                 return;
             }
         }

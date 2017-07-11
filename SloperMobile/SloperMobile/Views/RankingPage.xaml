@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SloperMobile.Views.RankingPage"
@@ -62,56 +62,59 @@
 
         </StackLayout>
 
-        <StackLayout Grid.Row="3" Padding="0,0,10,0">
+        <StackLayout Grid.Row="3" Padding="0,0,0,0">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="31"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="1"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Text="RANK" TextColor="White" FontSize="13" VerticalTextAlignment="Center" 
+                    <Label Text="RANK" TextColor="White" FontSize="Small" VerticalTextAlignment="Center" 
                            VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
-                    <Label Text="NAME" TextColor="White" FontSize="13" VerticalTextAlignment="Center" 
+                    <Label Text="NAME" TextColor="White" FontSize="Small" VerticalTextAlignment="Center" 
                                                VerticalOptions="Center" Grid.Column="1" Grid.Row="0"/>
-                    <Label Text="POINTS" TextColor="White" FontSize="13" VerticalTextAlignment="Center" Grid.Row="0"
-                           VerticalOptions="Center" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Grid.Column="2"/>
-                    <Label BackgroundColor="#141418" Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                    <Label Text="POINTS" TextColor="White" FontSize="Small" VerticalTextAlignment="Center" Grid.Row="0"
+                           VerticalOptions="Center" HorizontalOptions="End" HorizontalTextAlignment="End" Grid.Column="2"/>
+                    <BoxView BackgroundColor="#23231f" Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
                            Grid.Column="0" Grid.ColumnSpan="3"/>
                 </Grid>
-
-                <ListView ItemsSource="{Binding Rankings}" HasUnevenRows="True" SeparatorVisibility="None" 
-                      ItemTapped="OnItemTapped" BackgroundColor="Black" Grid.Row="1">
+                <ListView ItemsSource="{Binding Rankings}" HasUnevenRows="True" SeparatorVisibility="None"
+                      ItemTapped="OnItemTapped" BackgroundColor="Black" Grid.Row="1" Margin="0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Padding="5">
-                                    <StackLayout>
-                                        <Grid>
+                                <StackLayout Padding="0">
+                                    <StackLayout Margin="0">
+                                        <Grid Margin="0" RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="1"/>
+                                            </Grid.RowDefinitions>                                            
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1.5*"/>
-                                                <ColumnDefinition Width="3*"/>
-                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="15*"/>
+                                                <ColumnDefinition Width="70*"/>
+                                                <ColumnDefinition Width="15*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Label Text="{Binding Rank}" TextColor="{Binding HighlightTextColor}" FontSize="13" VerticalTextAlignment="Center" 
-                                                   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
-                                            <Label Text="{Binding Name}" TextColor="{Binding HighlightTextColor}" FontSize="13" VerticalTextAlignment="Center" 
+                                            <Label Text="{Binding Rank}" TextColor="{Binding HighlightTextColor}" FontSize="Small" HeightRequest="30" VerticalTextAlignment="Center" 
+                                                   HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                                            <Label Text="{Binding Name}" TextColor="{Binding HighlightTextColor}" FontSize="Small" VerticalTextAlignment="Center" 
                                                VerticalOptions="Center" Grid.Column="1"/>
-                                            <Label Text="{Binding Points}" TextColor="{Binding HighlightTextColor}" FontSize="13" VerticalTextAlignment="Center" 
-                                                   VerticalOptions="Center" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" 
+                                            <Label Text="{Binding Points}" TextColor="{Binding HighlightTextColor}" FontSize="Small" VerticalTextAlignment="Center" 
+                                                   VerticalOptions="Center" HorizontalOptions="End" HorizontalTextAlignment="End" 
                                                    Grid.Column="2"/>
+                                            <BoxView BackgroundColor="#101010" Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Fill" HeightRequest="1"
+                                                    Grid.Column="0" Grid.ColumnSpan="3" />
                                         </Grid>
                                     </StackLayout>
-                                    <Label BackgroundColor="#101010" HeightRequest="1"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
