@@ -208,20 +208,23 @@ namespace SloperMobile.Views
 			base.OnAppearing();
 			if ((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex && padeIndex == 0 || ((this.Parent as TopoSectorPage).Children.Count == 1))
 			{
-				var arrowParent = rightArrow.Parent as Grid;
+                rightArrow.IsVisible = false;
+                leftArrow.IsVisible = false;
+
 				//not to hide, because children will be reordered,but set opacity to 1, now to be visible
-				arrowParent.Opacity = 1;
-				ArrowBoxView.Opacity = 1;
-				ArrowBoxView.IsVisible = false;
+                ArrowBoxViewLeft.IsVisible = false;
+                ArrowBoxViewRight.IsVisible = false;
 			}
 
 			if ((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex)
-			{
+            {
+                ArrowBoxViewRight.IsVisible = false;
 				rightArrow.IsVisible = false;
 			}
 
 			if(padeIndex == 0)
-			{
+            {
+                ArrowBoxViewLeft.IsVisible = false;
 				leftArrow.IsVisible = false;
 			}
 		}
@@ -297,6 +300,12 @@ namespace SloperMobile.Views
 						AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
 						iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
 						iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+
+                        if(parent != null && parent.RescaleOniOS == null){
+                            parent.RescaleOniOS += () => {
+                                Device.BeginInvokeOnMainThread(skCanvasiOS.InvalidateSurface);
+                            };
+                        }
 					}
 
 					// decode the bitmap from the stream
@@ -304,24 +313,47 @@ namespace SloperMobile.Views
 					using (var bitmap = SKBitmap.Decode(stream))
 					using (var paint = new SKPaint())
 					{
-						canvas.DrawBitmap(bitmap, SKRect.Create((float)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
-						AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
-						AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
-						if (AndroidAbsoluteLayout.WidthRequest * device.Display.Scale < device.Display.Width)
-						{
-							var xPosition = (device.Display.Width - AndroidAbsoluteLayout.WidthRequest * device.Display.Scale) / device.Display.Scale / 2;
-							parent.Layout(new Rectangle(xPosition, parent.Y, parent.Width, parent.Height));
-						}
+                        if (Device.RuntimePlatform == Device.Android)
+                        {
+                            canvas.DrawBitmap(bitmap, SKRect.Create((float)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
+                            AndroidAbsoluteLayout.HeightRequest = AndroidAbsoluteLayout.HeightRequest * parent.ScaleFactor;
+                            AndroidAbsoluteLayout.WidthRequest = AndroidAbsoluteLayout.WidthRequest * parent.ScaleFactor;
+                            if (AndroidAbsoluteLayout.WidthRequest * device.Display.Scale < device.Display.Width)
+                            {
+                                var xPosition = (device.Display.Width - AndroidAbsoluteLayout.WidthRequest * device.Display.Scale) / device.Display.Scale / 2;
+                                parent.Layout(new Rectangle(xPosition, parent.Y, parent.Width, parent.Height));
+                            }
 
-						ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
+                            ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
+                        } else{
+                                canvas.DrawBitmap(bitmap, SKRect.Create((float)(iOSdAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(iOSdAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
+                                iOSdAbsoluteLayout.HeightRequest = iOSdAbsoluteLayout.HeightRequest * parent.ScaleFactor;
+                                iOSdAbsoluteLayout.WidthRequest = iOSdAbsoluteLayout.WidthRequest * parent.ScaleFactor;
+
+
+                            if (iOSdAbsoluteLayout.WidthRequest * device.Display.Scale < device.Display.Width)
+                            {
+                                var xPosition = (device.Display.Width - iOSdAbsoluteLayout.WidthRequest * device.Display.Scale) / device.Display.Scale / 2;
+                                parent.Layout(new Rectangle(xPosition, parent.Y, parent.Width, parent.Height));
+                            }
+
+                            ratio = (float)(iOSdAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
+                        }
 					}
 				}
 			}
 
 			//code to draw line
 			using (new SKAutoCanvasRestore(canvas, true))
-			{
-				DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));
+            {
+                if (Device.RuntimePlatform == Device.Android)
+                {
+
+                    DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));}
+                else
+                {
+                    DrawLine(canvas, _routeId, ratio, (int)(iOSdAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(iOSdAbsoluteLayout.WidthRequest * device.Display.Scale));
+                }
 			}
 
 			hasBeingDrawen++;
@@ -480,7 +512,7 @@ namespace SloperMobile.Views
 								{
 									Style = SKPaintStyle.Stroke,
 									Color = _color,
-									StrokeWidth = 2,
+									StrokeWidth = 2 / ratio,
 									PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
 								};
 								//draw line
@@ -526,7 +558,7 @@ namespace SloperMobile.Views
                                 {
                                     Style = SKPaintStyle.Stroke,
                                     Color = _color,
-                                    StrokeWidth = 2,
+                                    StrokeWidth = 2 / ratio,
                                     PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
                                 };
                                 //draw line
@@ -643,7 +675,7 @@ namespace SloperMobile.Views
                                 {
                                     Style = SKPaintStyle.Stroke,
                                     Color = _color,
-                                    StrokeWidth = 2,
+                                    StrokeWidth = 2 / ratio,
                                     PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
                                 };
                                 //draw line
@@ -690,7 +722,7 @@ namespace SloperMobile.Views
                                 {
                                     // Style = SKPaintStyle.Stroke,
                                     Color = SKColors.Transparent,
-                                    StrokeWidth = 5,
+                                    StrokeWidth = 5 / ratio,
                                     PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
                                 };
                                 //draw line
@@ -1422,13 +1454,27 @@ namespace SloperMobile.Views
 
 		private void CenterRoute(double X)
 		{
-			if (Device.RuntimePlatform == Device.Android)
-			{
-				androidZoomScroll.ScrollToAsync(X - device.Display.Width / device.Display.Scale / 2, 0, false);
-			}
-			else
-			{
-				iOSZoomScroll.ScrollToAsync(X - device.Display.Width / device.Display.Scale / 2, 0, true);
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                androidZoomScroll.ScrollToAsync(X - device.Display.Width / device.Display.Scale / 2, 0, false);
+            }
+            else
+            {
+                var xDistance = X - device.Display.Width / device.Display.Scale / 2;
+                if (xDistance < 0)
+                {
+                    iOSZoomScroll.ScrollToAsync(0, 0, true);
+                    return;
+                }
+
+                if( device.Display.Width / device.Display.Scale >= iOSZoomScroll.ContentSize.Width
+                    && (xDistance * device.Display.Scale - device.Display.Width / device.Display.Scale / 2  < 0)
+                    || ( X + device.Display.Width / device.Display.Scale / 2 > iOSZoomScroll.ContentSize.Width))
+                {
+                    return;
+                }
+
+				iOSZoomScroll.ScrollToAsync(xDistance, 0, true);
 			}
 		}
 

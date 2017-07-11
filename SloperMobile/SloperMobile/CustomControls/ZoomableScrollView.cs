@@ -34,6 +34,8 @@ namespace SloperMobile.ViewModel
         public bool IsScalingUp { get; set; }
         public bool IsScalingDown { get; set; }
 
+        public Action RescaleOniOS { get; set; }
+
         public float ScaleFactor { get; set; } = 1;
     }
 }

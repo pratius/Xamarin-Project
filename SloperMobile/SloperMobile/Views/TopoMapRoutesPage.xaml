@@ -22,16 +22,18 @@
 			<RowDefinition Height="auto" />
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
 			<RowDefinition Height="auto" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="00" />
+			<ColumnDefinition Width="30" />
 			<ColumnDefinition Width="1*" />
-			<ColumnDefinition Width="00" />
+			<ColumnDefinition Width="30" />
 		</Grid.ColumnDefinitions>
 		<Grid Grid.Row="1"
-			  Grid.Column="1"
-			  Grid.RowSpan="2"
+			  Grid.Column="0"
+              Grid.ColumnSpan="3"
+			  Grid.RowSpan="3"
 			  VerticalOptions="FillAndExpand"
 			  HorizontalOptions="FillAndExpand"
 			  Padding="0"
@@ -74,42 +76,45 @@
 				</On>
 			</OnPlatform>
 		</Grid>
-		<BoxView x:Name="ArrowBoxView"
+		<BoxView x:Name="ArrowBoxViewLeft"
 				 BackgroundColor="Black"
-				 Opacity="0.3"
+				 Opacity="0.6"
 				 Grid.Row="2"
-				 Grid.Column="1"
+				 Grid.Column="0"
 				 HeightRequest="30"
 				 InputTransparent="True"
 				 Margin="0" />
-		<Grid Grid.Row="2"
-			  Grid.Column="1"
-			  BackgroundColor="Transparent"
-			  Padding="0,5,0,5"
-			  VerticalOptions="End"
-			  InputTransparent="True"
-			  Margin="0">
-			<Image Grid.Row="0"
-				   Grid.Column="0"
+        <BoxView x:Name="ArrowBoxViewRight"
+                 BackgroundColor="Black"
+                 Opacity="0.6"
+                 Grid.Row="2"
+                 Grid.Column="2"
+                 HeightRequest="30"
+                 InputTransparent="True"
+                 Margin="0" />
+			<Image  Grid.Row="2"
+              Grid.Column="0"
+              InputTransparent="true"
 				   x:Name="leftArrow"
 				   Source="arrowLeftWhite"
 				   HeightRequest="20"
-				   VerticalOptions="Start"
+				   VerticalOptions="Center"
 				   HorizontalOptions="Center">
 			</Image>
-			<Image Grid.Row="0"
-				   Grid.Column="1"
-				   x:Name="rightArrow"
-				   Source="arrowLeftWhite"
-				   HeightRequest="20"
-				   Rotation="180"
-				   VerticalOptions="Start"
-				   HorizontalOptions="Center">
-			</Image>
-		</Grid>
-		<Controls:GestureFrame  Grid.Row="1"
-								Grid.Column="1"
-								Grid.RowSpan="2"
+            <Image Grid.Row="2"
+              Grid.Column="2"
+              InputTransparent="true"
+                   x:Name="rightArrow"
+                   Source="arrowLeftWhite"
+                   HeightRequest="20"
+                   Rotation="180"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center">
+            </Image>
+		<Controls:GestureFrame Grid.Row="1"
+              Grid.Column="0"
+              Grid.ColumnSpan="3"
+              Grid.RowSpan="3"
 								BackgroundColor="#77000000"
 								IsVisible="{Binding DisplayRoutePopupSm,Mode=TwoWay}"
 								HeightRequest="150"
@@ -220,8 +225,9 @@
 			</Controls:GestureFrame.Content>
 		</Controls:GestureFrame>
 		<Controls:GestureFrame  Grid.Row="1"
-								Grid.RowSpan="2"
-								Grid.Column="1"
+              Grid.Column="0"
+              Grid.ColumnSpan="3"
+              Grid.RowSpan="3"
 								BackgroundColor="#77000000"
 								IsVisible="{Binding DisplayRoutePopupLg,Mode=TwoWay}"
 								VerticalOptions="FillAndExpand"
@@ -353,7 +359,8 @@
 		</Controls:GestureFrame>
 		<UC:BackHeaderUC x:Name="BackHeaderUC"
 						 Grid.Row="0"
-						 Grid.Column="1"
+						 Grid.Column="0"
+                         Grid.ColumnSpan="3"
 						 HeightRequest="40"
 						 VerticalOptions="StartAndExpand"
 						 HorizontalOptions="FillAndExpand"
@@ -362,7 +369,8 @@
 						 Margin="0" />
 		<UC:FooterUC x:Name="FooterUC"
 					 Grid.Row="3"
-					 Grid.Column="1"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="3"
 					 HeightRequest="40"
 					 VerticalOptions="End"
 					 HorizontalOptions="FillAndExpand"
