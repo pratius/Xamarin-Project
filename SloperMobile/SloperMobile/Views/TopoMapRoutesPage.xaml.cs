@@ -23,6 +23,7 @@ namespace SloperMobile.Views
 		private const string BoxYellowColor = "#b49800";
 		private const int BoxTextFontSize = 9;
 		private int TopBarHeight = 0;
+        private double GridBounds = 18;
 		private ObservableCollection<imgData> _imgData;
 		public ObservableCollection<imgData> ImageDataList
 		{
@@ -54,11 +55,10 @@ namespace SloperMobile.Views
 		private IList<TopoMapRoutesPage> itemSource;
 		private ZoomableScrollView parent;
 		private bool singleRoute;
+        private int hasBeingDrawen;
+        private int hasBeingRedrawing;
 
-		//Is used to eliminate usage of Canvas. Need to figure out why did canvas is not stoping to draw itself
-		private int hasBeingDrawen, hasBeingRedrawing = 0;
-
-		public TopoMapRoutesPage(MapListModel CurrentSector, string _lstData, int routeId,int padeIndex, bool singleRoute)
+        public TopoMapRoutesPage(MapListModel CurrentSector, string _lstData, int routeId,int padeIndex, bool singleRoute)
 		{
 			try
 			{
@@ -74,9 +74,8 @@ namespace SloperMobile.Views
 				NavigationPage.SetHasNavigationBar(this, false);
 				Title = CurrentSector.SectorName;
 				TopoMapRouteVM = new ViewModel.TopoMapRoutesViewModel(CurrentSector, Navigation, listData);
-				TopoMapRouteVM.PointTapped += OnPointTapped;
 				BindingContext = TopoMapRouteVM;
-                if (Device.OS == TargetPlatform.iOS) {
+                if (Device.RuntimePlatform == Device.iOS) {
                     MainGrid.RowDefinitions[1].Height = GridLength.Star;
                     TopBarHeight = 18;
                 }
@@ -129,30 +128,36 @@ namespace SloperMobile.Views
 
 			TopoMapRouteVM.IsRunningTasks = false;
 		}
+     
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if ((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex && padeIndex == 0 || ((this.Parent as TopoSectorPage).Children.Count == 1))
+            {
+                rightArrow.IsVisible = false;
+                leftArrow.IsVisible = false;
 
-		//TODO: Remove later - it's depricated now
-		private void OnPointTapped(PointWithId point)
-		{
-			var nPooint = ConvertToPixel(new Xamarin.Forms.Point(point.X, point.Y));
-			var routeId = _points?.FirstOrDefault(item =>
-			{
-				return ((Math.Round(Convert.ToDouble(item.Item1.X) + 7) >= Math.Round(nPooint.X)
-						&& Math.Round(Convert.ToDouble(item.Item1.X) - 7) <= Math.Round(nPooint.X))
-						&& (Math.Round(Convert.ToDouble(item.Item1.Y) + 5) >= Math.Round(nPooint.Y)
-						&& Math.Round(Convert.ToDouble(item.Item1.Y) - 20) <= Math.Round(nPooint.Y)));
-			})?.Item2;
+                //not to hide, because children will be reordered,but set opacity to 1, now to be visible
+                ArrowBoxViewLeft.IsVisible = false;
+                ArrowBoxViewRight.IsVisible = false;
+            }
 
-			if (routeId == null)
-			{
-				return;
-			}
+            if ((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex)
+            {
+                ArrowBoxViewRight.IsVisible = false;
+                rightArrow.IsVisible = false;
+            }
 
-			ShowRoute(routeId);
-		}
+            if (padeIndex == 0)
+            {
+                ArrowBoxViewLeft.IsVisible = false;
+                leftArrow.IsVisible = false;
+            }
+        }
 
         private void ShowRoute(int? routeId)
         {
-            if (Device.OS == TargetPlatform.iOS)
+            if (Device.RuntimePlatform == Device.iOS)
                 skCanvasiOS.InvalidateSurface();
 
             TopoMapRouteVM.LoadRouteData(routeId, listData);
@@ -173,22 +178,6 @@ namespace SloperMobile.Views
 			await Navigation.PushAsync(new AscentProcessPage(Convert.ToString(obj), _CurrentSector));
 		}
 
-		private async Task OnScroll(object obj)
-		{
-			if (obj == "0")
-			{
-				await Task.Yield();
-				// await scrollView.ScrollToAsync(0, 0, false);
-			}
-			else
-			{
-				double val = (Convert.ToDouble(obj) + 100);
-				await Task.Yield();
-				// await scrollView.ScrollToAsync(val, 0, false);
-			}
-		}
-
-
 		private void OnPaintSample(object sender, SKPaintSurfaceEventArgs e)
 		{
 			_points.Clear();
@@ -201,33 +190,7 @@ namespace SloperMobile.Views
             {
                 throw;
             }
-        }
-
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
-			if ((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex && padeIndex == 0 || ((this.Parent as TopoSectorPage).Children.Count == 1))
-			{
-                rightArrow.IsVisible = false;
-                leftArrow.IsVisible = false;
-
-				//not to hide, because children will be reordered,but set opacity to 1, now to be visible
-                ArrowBoxViewLeft.IsVisible = false;
-                ArrowBoxViewRight.IsVisible = false;
-			}
-
-			if ((this.Parent as TopoSectorPage).Children.Count() - 1 == padeIndex)
-            {
-                ArrowBoxViewRight.IsVisible = false;
-				rightArrow.IsVisible = false;
-			}
-
-			if(padeIndex == 0)
-            {
-                ArrowBoxViewLeft.IsVisible = false;
-				leftArrow.IsVisible = false;
-			}
-		}
+        }		
 
 		private void MainDrawing(SKPaintSurfaceEventArgs e)
 		{
@@ -247,14 +210,6 @@ namespace SloperMobile.Views
 						parent.ScaleFactor = 1;
 						parent.Layout(new Rectangle(parent.X, parent.Y, AndroidAbsoluteLayout.WidthRequest, AndroidAbsoluteLayout.HeightRequest));
 					}
-				}
-				else if (globalHeight > iOSdAbsoluteLayout.Height * device.Display.Scale * parent.ScaleFactor)
-				{
-
-					iOSdAbsoluteLayout.HeightRequest = globalHeight / device.Display.Scale;
-					iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
-					parent.ScaleFactor = 1;
-					parent.Layout(new Rectangle(parent.X, parent.Y, AndroidAbsoluteLayout.WidthRequest, AndroidAbsoluteLayout.HeightRequest));
 				}
 			}
 
@@ -325,19 +280,12 @@ namespace SloperMobile.Views
                             }
 
                             ratio = (float)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
-                        } else{
-                                canvas.DrawBitmap(bitmap, SKRect.Create((float)(iOSdAbsoluteLayout.WidthRequest * device.Display.Scale * parent.ScaleFactor), (float)(iOSdAbsoluteLayout.HeightRequest * device.Display.Scale * parent.ScaleFactor)), paint);
-                                iOSdAbsoluteLayout.HeightRequest = iOSdAbsoluteLayout.HeightRequest * parent.ScaleFactor;
-                                iOSdAbsoluteLayout.WidthRequest = iOSdAbsoluteLayout.WidthRequest * parent.ScaleFactor;
+                        }
+                        else
+                        {
 
-
-                            if (iOSdAbsoluteLayout.WidthRequest * device.Display.Scale < device.Display.Width)
-                            {
-                                var xPosition = (device.Display.Width - iOSdAbsoluteLayout.WidthRequest * device.Display.Scale) / device.Display.Scale / 2;
-                                parent.Layout(new Rectangle(xPosition, parent.Y, parent.Width, parent.Height));
-                            }
-
-                            ratio = (float)(iOSdAbsoluteLayout.HeightRequest * device.Display.Scale) / float.Parse(topoimg[0].image.height);
+                            canvas.DrawBitmap(bitmap, SKRect.Create((float)(skCanvasiOS.CanvasSize.Width), (float)(skCanvasiOS.CanvasSize.Height)), paint);
+                            ratio = (float)(skCanvasiOS.CanvasSize.Height) / float.Parse(topoimg[0].image.height);
                         }
 					}
 				}
@@ -348,11 +296,10 @@ namespace SloperMobile.Views
             {
                 if (Device.RuntimePlatform == Device.Android)
                 {
-
                     DrawLine(canvas, _routeId, ratio, (int)(AndroidAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(AndroidAbsoluteLayout.WidthRequest * device.Display.Scale));}
                 else
                 {
-                    DrawLine(canvas, _routeId, ratio, (int)(iOSdAbsoluteLayout.HeightRequest * device.Display.Scale), (int)(iOSdAbsoluteLayout.WidthRequest * device.Display.Scale));
+                    DrawLine(canvas, _routeId, ratio, (int)(skCanvasiOS.CanvasSize.Height), (int)(skCanvasiOS.CanvasSize.Width));
                 }
 			}
 
@@ -377,8 +324,8 @@ namespace SloperMobile.Views
 
                 AndroidAbsoluteLayout.HeightRequest = height / device.Display.Scale;
                 AndroidAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
-                iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
-                iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
+                //iOSdAbsoluteLayout.HeightRequest = height / device.Display.Scale;
+                //iOSdAbsoluteLayout.WidthRequest = globalWidth / device.Display.Scale;
 
                 if (Device.OS == TargetPlatform.Android)
                 {
@@ -446,15 +393,25 @@ namespace SloperMobile.Views
 										using (var bitmap = SKBitmap.Decode(stream))
 										using (var paint = new SKPaint())
 										{
-											canvas.DrawBitmap(bitmap, SKRect.Create(width, height), paint);
-										}
+                                            if (hasBeingDrawen < 3)
+                                            {
+                                                canvas.DrawBitmap(bitmap, SKRect.Create((float)(skCanvasiOS.CanvasSize.Width), (float)(skCanvasiOS.CanvasSize.Height - (BackHeaderUC.Height * device.Display.Scale))), paint);
+                                                //iOSdAbsoluteLayout.Layout(new Rectangle(0, 0, skCanvasiOS.CanvasSize.Width / device.Display.Scale, (skCanvasiOS.CanvasSize.Height - (BackHeaderUC.Height * device.Display.Scale)) / device.Display.Scale));
+                                            }
+                                            else
+                                            {
+                                                canvas.DrawBitmap(bitmap, SKRect.Create((float)(skCanvasiOS.CanvasSize.Width), (float)(skCanvasiOS.CanvasSize.Height)), paint);
+                                            }
+
+                                            ratio = (float)(skCanvasiOS.CanvasSize.Height - (BackHeaderUC.Height * device.Display.Scale)) / float.Parse(topoimg[0].image.height);
+                                        }
 									}
 								}
 
 								//code to draw line
 								using (new SKAutoCanvasRestore(canvas, true))
 								{
-									ReDrawLine(canvas, _routeId, ratio, height, Convert.ToInt32(width));
+									ReDrawLine(canvas, _routeId, ratio, (int)(skCanvasiOS.CanvasSize.Height), (int)(skCanvasiOS.CanvasSize.Width));
 								}
 							}
 						}
@@ -509,10 +466,10 @@ namespace SloperMobile.Views
 							else
 							{
 								SKPaint thinLinePaint = new SKPaint
-								{
-									Style = SKPaintStyle.Stroke,
-									Color = _color,
-									StrokeWidth = 2 / ratio,
+                                {
+                                    Style = SKPaintStyle.Stroke,
+                                    Color = _color,
+                                    StrokeWidth = 2 / parent.ScaleFactor,
 									PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
 								};
 								//draw line
@@ -558,7 +515,7 @@ namespace SloperMobile.Views
                                 {
                                     Style = SKPaintStyle.Stroke,
                                     Color = _color,
-                                    StrokeWidth = 2 / ratio,
+                                    StrokeWidth = 2 / parent.ScaleFactor,
                                     PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
                                 };
                                 //draw line
@@ -582,7 +539,6 @@ namespace SloperMobile.Views
                                         var newval = (xVal - (device.Display.Width / 2)) - 50;
                                         //var xCordinate = topoimg[0].drawing[j].line.points.Count > 0 ? Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio / 10)) : 0;
                                         var xCordinate = topoimg[0].drawing[j].line.points.Count > 0 ? newval : 0;
-                                        OnScroll(xCordinate);
                                         // scrollView.ScrollToAsync(topoimg[0].drawing[j].line.points.Count > 0 ? Convert.ToDouble((float.Parse(topoimg[0].drawing[j].line.points[0].x) * ratio / 20)) : 0, 0, true);
                                     }
                                 }
@@ -675,7 +631,7 @@ namespace SloperMobile.Views
                                 {
                                     Style = SKPaintStyle.Stroke,
                                     Color = _color,
-                                    StrokeWidth = 2 / ratio,
+                                    StrokeWidth = 2 / parent.ScaleFactor,
                                     PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
                                 };
                                 //draw line
@@ -710,7 +666,7 @@ namespace SloperMobile.Views
                                 {
                                     //Style = SKPaintStyle.Stroke,
                                     Color = SKColors.Transparent,
-                                    StrokeWidth = 5,
+                                    StrokeWidth = 5 / parent.ScaleFactor,
                                     PathEffect = SKPathEffect.CreateDash(new float[] { 30, 15, }, 0)
                                 };
                                 //draw line
@@ -722,7 +678,7 @@ namespace SloperMobile.Views
                                 {
                                     // Style = SKPaintStyle.Stroke,
                                     Color = SKColors.Transparent,
-                                    StrokeWidth = 5 / ratio,
+                                    StrokeWidth = 5,
                                     PathEffect = SKPathEffect.CreateDash(new float[] { 20, 8 }, 0)
                                 };
                                 //draw line
@@ -760,7 +716,7 @@ namespace SloperMobile.Views
 					{
 						_diamondclickroute.Add(Convert.ToInt32(id));
 						var color = getGradeBucketHex(gradeBucket);
-						var gridWithId = new GridWithId(id, color, _routecnt.ToString(), BoxTextFontSize);
+						var gridWithId = new GridWithId(id, color, _routecnt.ToString(), BoxTextFontSize, GridBounds, GridBounds);
 						SetupParentAndCoordinates(topoimgTop, ratio, i, out parentLayout, out x, out y);
 
 						if (isDiamondSingleClick)
@@ -779,14 +735,12 @@ namespace SloperMobile.Views
 							continue;
 						}
 
-						var gridBounds = 18;
-
-						AbsoluteLayout.SetLayoutBounds(gridWithId, new Rectangle(x, y, gridBounds, gridBounds));
+						AbsoluteLayout.SetLayoutBounds(gridWithId, new Rectangle(x, y, GridBounds, GridBounds));
 						AbsoluteLayout.SetLayoutFlags(gridWithId, AbsoluteLayoutFlags.None);
 
 						if (singleRoute)
 						{
-							CenterRoute(x + gridBounds / 2);
+							CenterRoute(x + GridBounds / 2);
 						}
 
 						var tapGesture = new TapGestureRecognizer();
@@ -817,9 +771,10 @@ namespace SloperMobile.Views
 					{
 						SetupParentAndCoordinates(topoimgTop, ratio, i, out parentLayout, out x, out y);
 						var gridsWithId = parentLayout.Children.Where(item => item is GridWithId && (item as GridWithId).PointId == id);
-						foreach (var child in gridsWithId)
+                        foreach (GridWithId child in gridsWithId)
 						{
-							AbsoluteLayout.SetLayoutBounds(child, new Rectangle(x, y, 18, 18));
+                            child.ChangeBounds((double)parent.ScaleFactor);
+							AbsoluteLayout.SetLayoutBounds(child, new Rectangle(x, y, GridBounds / parent.ScaleFactor, GridBounds / parent.ScaleFactor));
 							AbsoluteLayout.SetLayoutFlags(child, AbsoluteLayoutFlags.None);
 						}
 					}
@@ -1478,21 +1433,21 @@ namespace SloperMobile.Views
 			}
 		}
 
-		private void SetupParentAndCoordinates(topoline topoimgTop, float ratio, int i, out AbsoluteLayout parentLayout, out double x, out double y)
-		{
-			if (Device.RuntimePlatform == Device.Android)
-			{
-				parentLayout = skCanvasAndroid.Parent as AbsoluteLayout;
-				x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 30) / device.Display.Scale;
-				y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 40) / device.Display.Scale;
-			}
-			else
-			{
-				parentLayout = skCanvasiOS.Parent as AbsoluteLayout;
-				x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 15) / device.Display.Scale;
-				y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 20) / device.Display.Scale;
-			}
-		}
+        private void SetupParentAndCoordinates(topoline topoimgTop, float ratio, int i, out AbsoluteLayout parentLayout, out double x, out double y)
+        {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                parentLayout = skCanvasAndroid.Parent as AbsoluteLayout;
+                x = (((float.Parse(topoimgTop.points[i].x)) * ratio) - 30) / device.Display.Scale;
+                y = (((float.Parse(topoimgTop.points[i].y)) * ratio) - 40) / device.Display.Scale;
+            }
+            else
+            {
+                parentLayout = skCanvasiOS.Parent as AbsoluteLayout;
+                x = float.Parse(topoimgTop.points[i].x) / device.Display.Scale * ratio - GridBounds / 2 / parent.ScaleFactor;
+                y = float.Parse(topoimgTop.points[i].y) / device.Display.Scale * ratio - GridBounds / 2 / parent.ScaleFactor;
+            }
+        }
 
 		public static SKColor HexToColor(string color)
         {

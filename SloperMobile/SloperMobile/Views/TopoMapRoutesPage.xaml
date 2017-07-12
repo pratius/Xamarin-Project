@@ -19,11 +19,11 @@
 		  x:Name="MainGrid"
 		  ColumnSpacing="0">
 		<Grid.RowDefinitions>
-			<RowDefinition Height="auto" />
+			<RowDefinition Height="40" />
 			<RowDefinition Height="*"/>
-			<RowDefinition Height="auto" />
+			<RowDefinition Height="40" />
             <RowDefinition Height="*" />
-			<RowDefinition Height="auto" />
+			<RowDefinition Height="40" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="30" />
@@ -34,8 +34,8 @@
 			  Grid.Column="0"
               Grid.ColumnSpan="3"
 			  Grid.RowSpan="3"
-			  VerticalOptions="FillAndExpand"
-			  HorizontalOptions="FillAndExpand"
+			  VerticalOptions="Fill"
+			  HorizontalOptions="Fill"
 			  Padding="0"
 			  Margin="0">
 			<OnPlatform x:TypeArguments="View">
@@ -46,8 +46,8 @@
 											  MaximumZoomScale="5"
 											  MinimumZoomScale="1"
 											  Orientation="Both">
-						<AbsoluteLayout x:Name="iOSdAbsoluteLayout">
-							<views:SKCanvasView
+						<AbsoluteLayout x:Name="iOSdAbsoluteLayout" >
+							<views:SKCanvasView  
 									AbsoluteLayout.LayoutBounds="0,0,1,1"
 												AbsoluteLayout.LayoutFlags="SizeProportional"
 												x:Name="skCanvasiOS"
@@ -368,11 +368,11 @@
 						 Padding="0"
 						 Margin="0" />
 		<UC:FooterUC x:Name="FooterUC"
-					 Grid.Row="3"
+					 Grid.Row="4"
                          Grid.Column="0"
                          Grid.ColumnSpan="3"
 					 HeightRequest="40"
-					 VerticalOptions="End"
+					 VerticalOptions="EndAndExpand"
 					 HorizontalOptions="FillAndExpand"
 					 Padding="0"
 					 Margin="0" />
