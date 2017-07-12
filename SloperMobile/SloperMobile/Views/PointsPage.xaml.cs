@@ -13,18 +13,16 @@ namespace SloperMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PointsPage : ContentPage
     {
-        public PointsPage(string date)
+        public PointsPage()
         {
-            Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...",Acr.UserDialogs.MaskType.Black);
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            UserControls.PointsUC uc = new UserControls.PointsUC(date);
-            uc.Padding = new Thickness(0, -125, 0, 0);
-            MainGrid.Children.Add(uc, 1, 3);
+
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
             BindingContext = new PointsViewModel();
             Acr.UserDialogs.UserDialogs.Instance.HideLoading();
         }

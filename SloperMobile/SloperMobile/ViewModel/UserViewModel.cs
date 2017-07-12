@@ -65,12 +65,7 @@ namespace SloperMobile.ViewModel
                 string lastupdate = App.DAUtil.GetLastUpdate();
                 if (string.IsNullOrEmpty(lastupdate))
                 {
-                    lastupdate = "20160101000000";
-                }
-                //if the user has an old version of the app, add HH:mm:ss to the string
-                if (lastupdate.Length == 8)
-                {
-                    lastupdate = lastupdate + "000000";
+                    lastupdate = "20160101";
                 }
                 return lastupdate;
             }
@@ -112,7 +107,7 @@ namespace SloperMobile.ViewModel
                     }
 
                     //IsRunningTasks = true;
-                    UserDialogs.Instance.ShowLoading("Authenticating...", MaskType.Black);
+                    UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
                     HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_Login, string.Empty);
                     var loginjson = JsonConvert.SerializeObject(LoginReq);
                     var response = await apicall.Post<LoginResponse>(loginjson);
@@ -171,7 +166,7 @@ namespace SloperMobile.ViewModel
                 //if (!IsRunningTasks && isValidate)
                 if (isValidate)
                 {
-                    UserDialogs.Instance.ShowLoading("Registering...", MaskType.Black);
+                    UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
                     //IsRunningTasks = true;
                     HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_User_Register, string.Empty);
                     RegistrationReq.Email = RegistrationReq.UserName;
@@ -283,7 +278,7 @@ namespace SloperMobile.ViewModel
         #region Service
         private async Task<List<ClimbingDaysModel>> HttpGetClimbdays()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "ascent", true), Settings.AccessTokenSettings);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetInitialUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "ascent", true), Settings.AccessTokenSettings);
             var area_response = await apicall.Get<ClimbingDaysModel>();
             return area_response;
         }

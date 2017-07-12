@@ -22,25 +22,19 @@ namespace SloperMobile.Views
             NavigationPage.SetHasNavigationBar(this, false);
             SectorDetailVM = new ViewModel.MapDetailViewModel(SelectedSector,Navigation);
             BindingContext = SectorDetailVM;
-            lstView.ItemTapped += this.OnItemTapped;            
+            lstView.ItemTapped += this.OnItemTapped;
         }
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             try
             {
                 var dataItem = e.Item as RouteData;
-                Navigation.PushAsync(new TopoSectorPage(_CurrentSector, dataItem.RouteId, Convert.ToInt32(dataItem.RouteIndex),null));
+                Navigation.PushAsync(new TopoSectorPage(_CurrentSector, dataItem.RouteId));
             }
             catch (Exception ex)
             {
                 var error = ex.Message;
             }
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            var data = SectorDetailVM;
-
         }
     }
     

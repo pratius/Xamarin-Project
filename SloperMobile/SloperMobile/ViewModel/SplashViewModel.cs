@@ -82,12 +82,7 @@ namespace SloperMobile.ViewModel
                 string lastupdate = App.DAUtil.GetLastUpdate();
                 if (string.IsNullOrEmpty(lastupdate))
                 {
-                    lastupdate = "20160101000000";
-                }
-                //if the user has an old version of the app, add HH:mm:ss to the string
-                if (lastupdate.Length == 8)
-                {
-                    lastupdate = lastupdate + "000000";
+                    lastupdate = "20160101";
                 }
                 return lastupdate;
             }
@@ -187,13 +182,14 @@ namespace SloperMobile.ViewModel
         {
             IsRunningTasks = true;
             CheckForModelObj = await HttpGetCheckForUpdates();
-            if (CheckForModelObj != null && Convert.ToInt32(CheckForModelObj.areas_modified) + Convert.ToInt32(CheckForModelObj.crags_modified) + Convert.ToInt32(CheckForModelObj.routes_modified) + Convert.ToInt32(CheckForModelObj.sectors_modified) > 1)
+            //if (CheckForModelObj != null && Convert.ToInt32(CheckForModelObj.areas_modified) + Convert.ToInt32(CheckForModelObj.crags_modified) + Convert.ToInt32(CheckForModelObj.routes_modified) + Convert.ToInt32(CheckForModelObj.sectors_modified) > 1)
+            if (CheckForModelObj != null)
             {
                 ProgressText = "Initializing App, please wait...";
 
                 if (Convert.ToInt32(CheckForModelObj.areas_modified) > 0)
                 {
-                    ProgressText = "Loading Areas...";
+                    ProgressText = "Loading Areas, please wait...";
                     AreaObj = await HttpGetAreaUpdates();
                     foreach (T_AREA area in AreaObj)
                     {
@@ -203,11 +199,9 @@ namespace SloperMobile.ViewModel
                 }
                 if (Convert.ToInt32(CheckForModelObj.crags_modified) > 0)
                 {
-                    ProgressText = "Loading Crags...";
+                    ProgressValue = "0.3";
+                    ProgressText = "Loading Crags, please wait...";
                     CragObj = await HttpGetCragUpdates();
-
-                    bool blnFirst = true;
-
                     foreach (CragTemplate crag in CragObj)
                     {
                         T_CRAG tcrag = new T_CRAG();
@@ -272,52 +266,45 @@ namespace SloperMobile.ViewModel
                         App.DAUtil.SaveCrag(tcrag);
                         App.DAUtil.SaveCragSectorMap(tcs_map);
 
-                        //set the default crag as the first in the list of crags
-                        if (blnFirst)
-                        {
-                            Common.Helpers.Settings.SelectedCragSettings = crag.crag_id;
-                            blnFirst = false;
-                        }
-                    }
-
-                    ProgressValue = "0.3";
-                }
-
-                if (Convert.ToInt32(CheckForModelObj.sectors_modified) > 0)
-                {
-                    ProgressText = "Loading Sectors...";
-                    SectorObj = await HttpGetSectorUpdates();
-
-                    foreach (T_SECTOR sector in SectorObj)
-                    {
-                        App.DAUtil.SaveSector(sector);
-                        Dictionary<string, string> topodict = new Dictionary<string, string>();
-                        topodict.Add("sectorID", sector.sector_id);
-                        HttpClientHelper apicall = new ApiHandler(ApiUrls.Url_GetUpdate_TopoData, string.Empty);
-                        var topo_response = await apicall.GetJsonString<string>(topodict);
-                        T_TOPO topo = new T_TOPO();
-                        topo.sector_id = sector.sector_id;
-                        topo.topo_json = topo_response;
-                        topo.upload_date = Helper.GetCurrentDate("yyyyMMdd");
-                        App.DAUtil.SaveTopo(topo);
-
                     }
                     ProgressValue = "0.5";
                 }
 
-                if (Convert.ToInt32(CheckForModelObj.routes_modified) > 0)
-                {
-                    ProgressText = "Loading Routes...";
-                    RouteObj = await HttpGetRouteUpdates();
-                    foreach (T_ROUTE route in RouteObj)
-                    {
-                        App.DAUtil.SaveRoute(route);
-                    }
-                    ProgressValue = "0.7";
-                }
+                //if (Convert.ToInt32(CheckForModelObj.sectors_modified) > 0)
+                //{
+                //    ProgressText = "Loading Sectors, please wait...";
+                //    SectorObj = await HttpGetSectorUpdates();
+
+                //    foreach (T_SECTOR sector in SectorObj)
+                //    {
+                //        App.DAUtil.SaveSector(sector);
+                //        Dictionary<string, string> topodict = new Dictionary<string, string>();
+                //        topodict.Add("sectorID", sector.sector_id);
+                //        HttpClientHelper apicall = new ApiHandler(ApiUrls.Url_GetUpdate_TopoData, string.Empty);
+                //        var topo_response = await apicall.GetJsonString<string>(topodict);
+                //        T_TOPO topo = new T_TOPO();
+                //        topo.sector_id = sector.sector_id;
+                //        topo.topo_json = topo_response;
+                //        topo.upload_date = Helper.GetCurrentDate("yyyyMMdd");
+                //        App.DAUtil.SaveTopo(topo);
+
+                //    }
+                //    ProgressValue = "0.5";
+                //}
+
+                //if (Convert.ToInt32(CheckForModelObj.routes_modified) > 0)
+                //{
+                //    ProgressText = "Loading Routes, please wait...";
+                //    RouteObj = await HttpGetRouteUpdates();
+                //    foreach (T_ROUTE route in RouteObj)
+                //    {
+                //        App.DAUtil.SaveRoute(route);
+                //    }
+                //    ProgressValue = "0.7";
+                //}
                 //==========================Updating GRADE here =======================
 
-                ProgressText = "Loading Grades...";
+                ProgressText = "Loading Grades, please wait...";
                 App.DAUtil.DropAndCreateTable(typeof(T_GRADE));
                 gradeObj = await HttpGetGradeUpdates();
                 foreach (T_GRADE grade in gradeObj)
@@ -326,7 +313,7 @@ namespace SloperMobile.ViewModel
                 }
                 ProgressValue = "0.8";
 
-                ProgressText = "Loading Grades Buckets...";
+                ProgressText = "Loading Grades Buckets, please wait...";
                 App.DAUtil.DropAndCreateTable(typeof(T_BUCKET));
                 gradebktObj = await HttpGetGradeBuckets();
                 foreach (T_BUCKET gradebkt in gradebktObj)
@@ -336,7 +323,7 @@ namespace SloperMobile.ViewModel
 
                 //================= Added by Ravi on 28-Apr-2017=============
                 ProgressValue = "0.9";
-                ProgressText = "Loading Technical Grades...";
+                ProgressText = "Loading Grades Thoughts, please wait...";
                 ttechgradeObj = await HttpGetTTechGrade();
                 foreach (TTECH_GRADE ttgrade in ttechgradeObj)
                 {
@@ -347,7 +334,7 @@ namespace SloperMobile.ViewModel
                 ProgressValue = "1";
                 //=====================================================================
                 APP_SETTING updated_date = new APP_SETTING();
-                updated_date.UPDATED_DATE = CheckForModelObj.updated_date;
+                updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
                 updated_date.IS_INITIALIZED = true;
                 App.DAUtil.SaveLastUpdate(updated_date);
                 ProgressText = "Finished.";
@@ -356,7 +343,7 @@ namespace SloperMobile.ViewModel
             else
             {
                 APP_SETTING updated_date = new APP_SETTING();
-                updated_date.UPDATED_DATE = CheckForModelObj.updated_date;
+                updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
                 App.DAUtil.SaveLastUpdate(updated_date);
                 ProgressText = "Your app is up to date.";
                 IsRunningTasks = false;
@@ -378,13 +365,13 @@ namespace SloperMobile.ViewModel
         }
         private async Task<List<T_AREA>> HttpGetAreaUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "area", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetInitialUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "area", true), Cache.AccessToken);
             var area_response = await apicall.Get<T_AREA>();
             return area_response;
         }
         private async Task<List<CragTemplate>> HttpGetCragUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "crag", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetInitialUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "crag", true), Cache.AccessToken);
             var crag_response = await apicall.Get<CragTemplate>();
             return crag_response;
         }
@@ -403,7 +390,7 @@ namespace SloperMobile.ViewModel
 
         private async Task<List<T_GRADE>> HttpGetGradeUpdates()
         {
-            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "grade", true), Cache.AccessToken);
+            HttpClientHelper apicall = new ApiHandler(string.Format(ApiUrls.Url_GetInitialUpdate_AppData, AppSetting.APP_ID, AppLastUpdateDate, "grade", true), Cache.AccessToken);
             var grade_response = await apicall.Get<T_GRADE>();
             return grade_response;
         }

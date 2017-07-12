@@ -100,6 +100,9 @@ namespace SloperMobile.ViewModel
 
             }
         }
+
+
+
         private string routename;
         public string route_name
         {
@@ -120,7 +123,7 @@ namespace SloperMobile.ViewModel
                 {
                     PageHeaderText = "PROFILE";
                     PageSubHeaderText = "Sends";
-                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...",Acr.UserDialogs.MaskType.Black);
+                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
                     await InvokeServiceGetAscentData();
                     Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
@@ -128,17 +131,17 @@ namespace SloperMobile.ViewModel
                 {
                     PageHeaderText = "PROFILE";
                     PageSubHeaderText = "Points";
-//                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
                    // await InvokeServiceGetPointsData();
-//                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
                 else
                 {
                     PageHeaderText = "PROFILE";
                     PageSubHeaderText = "Tick List";
-//                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
+                    Acr.UserDialogs.UserDialogs.Instance.ShowLoading("Loading...");
                     await InvokeServiceGetTickListData();
-//                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                 }
             }
 
@@ -149,6 +152,9 @@ namespace SloperMobile.ViewModel
                 await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
             }
         }
+
+
+
         private void ExecuteOnTabSelection(object obj)
         {
 

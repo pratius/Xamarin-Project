@@ -59,10 +59,9 @@ namespace SloperMobile.Views
                         await Navigation.PushAsync(new CragMapPage());
                         break;
                     case ApplicationActivity.ProfilePage:
-                        await Navigation.PushAsync(new RankingPage());
                         // await Navigation.PushAsync(new ProfilePage());
                         // await Navigation.PushAsync(new SendsPage("POINTS"));
-                        //await Navigation.PushAsync(new PointsPage(String.Empty));
+                        await Navigation.PushAsync(new PointsPage());
                         break;
                     case ApplicationActivity.PyramidPage:
                         await Navigation.PushAsync(new PyramidPage());
@@ -78,8 +77,8 @@ namespace SloperMobile.Views
                             await Navigation.PushAsync(new NetworkErrorPage());
                             break;
                         }
-                    case ApplicationActivity.CalendarPage:
-                        await Navigation.PushAsync(new CalendarPage());
+                    case ApplicationActivity.ClimbingDaysPage:
+                        await Navigation.PushAsync(new ClimbingDaysPage());
                         //throw new Exception("Exception Raised by Ravi Explicitly !!!!!!");
                         break;
                     case ApplicationActivity.MapPage:

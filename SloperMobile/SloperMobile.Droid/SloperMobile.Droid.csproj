@@ -27,7 +27,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <ReleaseVersion>2.140</ReleaseVersion>
+    <ReleaseVersion>2.130</ReleaseVersion>
     <AndroidTlsProvider>
     </AndroidTlsProvider>
     <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
@@ -40,12 +40,11 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <Debugger>.Net (Xamarin)</Debugger>
     <AndroidEnableMultipleDex>true</AndroidEnableMultipleDex>
-    <AndroidSupportedAbis />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -132,18 +131,6 @@
     </Reference>
     <Reference Include="SQLite.Net.Platform.XamarinAndroidN, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SQLite.Net.Platform.XamarinAndroidN.3.1.1\lib\SQLite.Net.Platform.XamarinAndroidN.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.Android, Version=15.2451.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\MonoAndroid10\Syncfusion.SfCalendar.Android.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.XForms, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\MonoAndroid10\Syncfusion.SfCalendar.XForms.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.XForms.Android, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\MonoAndroid10\Syncfusion.SfCalendar.XForms.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Syncfusion.SfChart.Android">
@@ -740,6 +727,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_2_crimps_border_20x20.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_2_crimps_border_54x54.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_2_crimps_border_80x80.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_2_crimps_text_41x68.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_4_jugs_border_100x100.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_4_jugs_border_20x20.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_4_jugs_border_54x54.png" />
@@ -811,6 +799,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_2_crimps_border_20x20.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_2_crimps_border_54x54.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_2_crimps_border_80x80.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_2_crimps_text_41x68.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_4_jugs_border_100x100.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_4_jugs_border_20x20.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_4_jugs_border_54x54.png" />
@@ -1135,10 +1124,6 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_32_jams_border_54x54.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_32_jams_border_80x80.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_32_jams_text_57x86.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_4_jugs_text_41x68.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_4_jugs_text_41x68.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_hold_type_2_crimps_text_41x68.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_hold_type_2_crimps_text_41x68.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SloperMobile\SloperMobile.csproj">
@@ -1452,6 +1437,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\bg_portrait_half_fade1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\icon_crag_download.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Mono.Data.Sqlite.Portable.1.0.3.5\tools\Mono.Data.Sqlite.Portable.targets" Condition="Exists('..\..\packages\Mono.Data.Sqlite.Portable.1.0.3.5\tools\Mono.Data.Sqlite.Portable.targets')" />

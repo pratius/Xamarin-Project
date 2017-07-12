@@ -18,7 +18,6 @@ using Xamarin.Forms;
 using SloperMobile.MessagingTask;
 using SloperMobile.iOS.Services;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
-using Syncfusion.SfCalendar.XForms.iOS;
 
 namespace SloperMobile.iOS
 {
@@ -49,7 +48,6 @@ namespace SloperMobile.iOS
             Xamarin.FormsGoogleMaps.Init(AppSetting.GoogleApiKey_iOS); // initialize for Xamarin.Forms.GoogleMaps
             ImageCircleRenderer.Init();
             Cache.CurrentScreenHeight = (int)((int)(UIScreen.MainScreen.Bounds.Height * (int)UIScreen.MainScreen.Scale) * 2);
-            new SfCalendarRenderer();
             LoadApplication(new App());
 
             //Add HockeyApp Reporting
@@ -61,10 +59,8 @@ namespace SloperMobile.iOS
             new SfChartRenderer();
             new SfGaugeRenderer();
             new SfRatingRenderer();
-
+            //WireUpCheckUpdateRunningTask();
             //removed CheckForUpdates service until it's working 100% properly - Steve - 2017-06-07
-            WireUpCheckUpdateRunningTask();
-
             return base.FinishedLaunching(app, options);
         }
 

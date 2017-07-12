@@ -18,18 +18,14 @@ namespace SloperMobile.Views
         public int _count = 0, _routeId = 0, _eleIndex = 0, _newIndex = 0, _topoIndex = -1, cnt = 0;
         List<int> topoElement = new List<int>();
         List<int> newTopoElement = new List<int>();
-        public int route_Index = 0;
-        public List<RouteId> _routeList = new List<RouteId>();
         private TopoSectorViewModel topoSectorViewModel;
-        public TopoSectorPage(MapListModel CurrentSector, string routeId, int routeIndex, List<RouteId> routeList)
+        public TopoSectorPage(MapListModel CurrentSector, string routeId)
         {
             InitializeComponent();
             topoSectorViewModel = new TopoSectorViewModel();
             BindingContext = topoSectorViewModel;
             _CurrentSector = CurrentSector;
             _routeId = Convert.ToInt32(routeId);
-            _routeList = routeList;
-            route_Index = routeIndex;
         }
 
         protected async override void OnAppearing()
@@ -80,7 +76,7 @@ namespace SloperMobile.Views
                                 topoElement.Add(i);
                                 TopoMapRoutesPage topopageObj;
                                 var topoimg = JsonConvert.SerializeObject(topoimgages[i]);
-                                topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId, route_Index, _routeList);
+                                topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId);
                                 this.Children.Add(topopageObj);
                             }
                         }
@@ -99,7 +95,7 @@ namespace SloperMobile.Views
                                 newTopoElement.Add(j);
                                 TopoMapRoutesPage topopageObj1;
                                 var topoimg = JsonConvert.SerializeObject(topoimgages[j]);
-                                topopageObj1 = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                                topopageObj1 = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                                 this.Children.Add(topopageObj1);
                             }
                         }
@@ -112,7 +108,7 @@ namespace SloperMobile.Views
                             {
                                 TopoMapRoutesPage _topopageObj;
                                 var topoimg = JsonConvert.SerializeObject(topoimgages[k]);
-                                _topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                                _topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                                 this.Children.Add(_topopageObj);
                             }
                         }
@@ -123,14 +119,7 @@ namespace SloperMobile.Views
                 {
                     TopoMapRoutesPage _topopageObj;
                     var topoimg = string.Empty;
-                    if (topoimgages.Count > 0)
-                    {
-                        if (!string.IsNullOrEmpty(topoimgages[0].image.data))
-                        {
-                            Cache.IsCragOrDefaultImageCount = 0;
-                        }
-                    }
-                    _topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId, route_Index, _routeList);
+                    _topopageObj = new TopoMapRoutesPage(_CurrentSector, topoimg, _routeId);
                     this.Children.Add(_topopageObj);
                 }
             }
@@ -145,21 +134,21 @@ namespace SloperMobile.Views
                         {
                             TopoMapRoutesPage topopageObj;
                             var topoimg = JsonConvert.SerializeObject(topores);
-                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                             this.Children.Add(topopageObj);
                         }
                         else if (!string.IsNullOrEmpty(topores.image.data) && topoimgages.Count == 1)
                         {
                             TopoMapRoutesPage topopageObj;
                             var topoimg = JsonConvert.SerializeObject(topores);
-                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                             this.Children.Add(topopageObj);
                         }
                         else if (string.IsNullOrEmpty(topores.image.data) && topoimgages.Count == 1) // defaul image
                         {
                             TopoMapRoutesPage topopageObj;
                             var topoimg = JsonConvert.SerializeObject(topores);
-                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                             this.Children.Add(topopageObj);
                         }
                     }
@@ -168,7 +157,7 @@ namespace SloperMobile.Views
                 {
                     TopoMapRoutesPage topopageObj;
                     string topoimg = string.Empty;
-                    topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                    topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                     this.Children.Add(topopageObj);
                 }
             }
@@ -205,7 +194,7 @@ namespace SloperMobile.Views
                                 topoElement.Add(i);
                                 TopoMapRoutesPage topopageObj;
                                 var topoimg = JsonConvert.SerializeObject(topoimgages[i]);
-                                topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId, route_Index, _routeList);
+                                topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId);
                                 this.Children.Add(topopageObj);
                             }
                         }
@@ -224,7 +213,7 @@ namespace SloperMobile.Views
                                 newTopoElement.Add(j);
                                 TopoMapRoutesPage topopageObj1;
                                 var topoimg = JsonConvert.SerializeObject(topoimgages[j]);
-                                topopageObj1 = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                                topopageObj1 = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                                 this.Children.Add(topopageObj1);
                             }
                         }
@@ -237,7 +226,7 @@ namespace SloperMobile.Views
                             {
                                 TopoMapRoutesPage _topopageObj;
                                 var topoimg = JsonConvert.SerializeObject(topoimgages[k]);
-                                _topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                                _topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                                 this.Children.Add(_topopageObj);
                             }
                         }
@@ -248,14 +237,7 @@ namespace SloperMobile.Views
                 {
                     TopoMapRoutesPage _topopageObj;
                     var topoimg = string.Empty;
-                    if (topoimgages.Count > 0)
-                    {
-                        if (!string.IsNullOrEmpty(topoimgages[0].image.data))
-                        {
-                            Cache.IsCragOrDefaultImageCount = 0;
-                        }
-                    }
-                    _topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId, route_Index, _routeList);
+                    _topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", _routeId);
                     this.Children.Add(_topopageObj);
                 }
             }
@@ -270,21 +252,21 @@ namespace SloperMobile.Views
                         {
                             TopoMapRoutesPage topopageObj;
                             var topoimg = JsonConvert.SerializeObject(topores);
-                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                             this.Children.Add(topopageObj);
                         }
                         else if (!string.IsNullOrEmpty(topores.image.data) && topoimgages.Count == 1)
                         {
                             TopoMapRoutesPage topopageObj;
                             var topoimg = JsonConvert.SerializeObject(topores);
-                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                             this.Children.Add(topopageObj);
                         }
                         else if (string.IsNullOrEmpty(topores.image.data) && topoimgages.Count == 1) // defaul image
                         {
                             TopoMapRoutesPage topopageObj;
                             var topoimg = JsonConvert.SerializeObject(topores);
-                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                            topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                             this.Children.Add(topopageObj);
                         }
                     }
@@ -293,7 +275,7 @@ namespace SloperMobile.Views
                 {
                     TopoMapRoutesPage topopageObj;
                     string topoimg = string.Empty;
-                    topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0, route_Index, _routeList);
+                    topopageObj = new TopoMapRoutesPage(_CurrentSector, "[" + topoimg + "]", 0);
                     this.Children.Add(topopageObj);
                 }
             }
@@ -360,5 +342,5 @@ namespace SloperMobile.Views
                 }
             }
         }
-    }    
+    }
 }

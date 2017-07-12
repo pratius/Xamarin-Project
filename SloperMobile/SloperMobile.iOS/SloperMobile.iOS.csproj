@@ -14,7 +14,7 @@
     <AssemblyName>SloperMobileiOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ReleaseVersion>2.140</ReleaseVersion>
+    <ReleaseVersion>2.130</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -592,18 +592,6 @@
       <HintPath>..\..\packages\SQLite.Net-PCL.3.1.1\lib\Xamarin.iOS10\SQLite.Net.Platform.XamarinIOS.Unified.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Syncfusion.SfCalendar.iOS, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfCalendar.iOS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.XForms, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfCalendar.XForms.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Syncfusion.SfCalendar.XForms.iOS, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Syncfusion.Xamarin.SfCalendar.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfCalendar.XForms.iOS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Syncfusion.SfChart.iOS">
       <HintPath>..\..\lib\ios-unified\Syncfusion.SfChart.iOS.dll</HintPath>
     </Reference>
@@ -785,6 +773,7 @@
     <BundleResource Include="Resources\icon_pin_device_location.png" />
     <BundleResource Include="Resources\icon_pin_device_location%402x.png" />
     <BundleResource Include="Resources\icon_pin_device_location%403x.png" />
+    <BundleResource Include="Resources\icon_crag_download.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

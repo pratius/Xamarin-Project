@@ -30,7 +30,10 @@ namespace SloperMobile.UserControls
                 await PageNavigation(pageType, tabtxt);
             }
             catch (Exception ex)
-            {            }
+            {
+
+
+            }
         }
 
         private async Task PageNavigation(ApplicationActivity page, string tabtxt)
@@ -43,13 +46,7 @@ namespace SloperMobile.UserControls
                         await Navigation.PushAsync(new TickListPage());
                         break;
                     case "POINTS":
-                        await Navigation.PushAsync(new PointsPage(String.Empty));
-                        break;
-                    case "CALENDAR":
-                        await Navigation.PushAsync(new CalendarPage());
-                        break;
-                    case "RANKING":
-                        await Navigation.PushAsync(new RankingPage());
+                        await Navigation.PushAsync(new PointsPage());
                         break;
                 }
             }

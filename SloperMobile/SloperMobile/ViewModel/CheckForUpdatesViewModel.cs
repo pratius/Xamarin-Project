@@ -8,9 +8,6 @@ using SloperMobile.DataBase;
 using SloperMobile.Model;
 using Plugin.Connectivity;
 using Xamarin.Forms;
-using Acr.UserDialogs;
-using Newtonsoft.Json;
-
 namespace SloperMobile.ViewModel
 {
     public class CheckForUpdatesViewModel : BaseViewModel
@@ -25,9 +22,7 @@ namespace SloperMobile.ViewModel
         private List<T_GRADE> gradeObj;
         private List<T_BUCKET> gradebktObj;
         private List<TTECH_GRADE> ttechgradeObj;
-        private string displayupdatemessage = "";
-        //private string displayupdatemessage = "Checking for updates...";
-
+        private string displayupdatemessage = "Checking for updates...";
         /// <summary>
         /// Get or set the Check for update class object
         /// </summary>
@@ -56,16 +51,6 @@ namespace SloperMobile.ViewModel
             get { return sectorObj; }
             set { sectorObj = value; OnPropertyChanged(); }
         }
-        public List<T_SECTOR> consensusSectorsObj
-        {
-            get { return sectorObj; }
-            set { sectorObj = value; OnPropertyChanged(); }
-        }
-        public List<T_ROUTE> consensusRoutesObj
-        {
-            get { return routeObj; }
-            set { routeObj = value; OnPropertyChanged(); }
-        }
         /// <summary>
         /// Returns app's last updated date.
         /// </summary>
@@ -74,14 +59,14 @@ namespace SloperMobile.ViewModel
             get
             {
                 string lastupdate = App.DAUtil.GetLastUpdate();
+                //check if lastupdate equal to todays date get ond day back date
+                if (DateTime.Now.ToString("yyyyMMdd") == lastupdate)
+                {
+                    lastupdate = DateTime.Now.AddDays(-1).ToString("yyyyMMdd");
+                }
                 if (string.IsNullOrEmpty(lastupdate))
                 {
-                    lastupdate = "20160101000000";
-                }
-                //if the user has an old version of the app, add HH:mm:ss to the string
-                if (lastupdate.Length == 8)
-                {
-                    lastupdate = lastupdate + "000000";
+                    lastupdate = "20160101";
                 }
                 return lastupdate;
             }
@@ -126,17 +111,13 @@ namespace SloperMobile.ViewModel
             {
                 IsRunningTasks = true;
                 CheckForModelObj = await HttpGetCheckForUpdates();
-                if (CheckForModelObj != null && Convert.ToInt32(CheckForModelObj.areas_modified) + Convert.ToInt32(CheckForModelObj.crags_modified) + Convert.ToInt32(CheckForModelObj.routes_modified) + Convert.ToInt32(CheckForModelObj.sectors_modified) > 0)
+                if (CheckForModelObj != null && Convert.ToInt32(CheckForModelObj.areas_modified) + Convert.ToInt32(CheckForModelObj.crags_modified) + Convert.ToInt32(CheckForModelObj.routes_modified) + Convert.ToInt32(CheckForModelObj.sectors_modified) > 1)
                 {
-                    UserDialogs.Instance.ShowLoading("Updates Found!", MaskType.Black);
-
-                    //DisplayUpdateMessage = "Updates are available, downloading now.\n\nplease wait...";
+                    DisplayUpdateMessage = "Updates are available, downloading now.\n\nplease wait...";
 
                     if (Convert.ToInt32(CheckForModelObj.areas_modified) > 0)
                     {
-                        //UserDialogs.Instance.ShowLoading("Updating Areas...");
-
-                        //DisplayUpdateMessage = "Updating Areas, please wait...";
+                        DisplayUpdateMessage = "Updating Areas, please wait...";
                         AreaObj = await HttpGetAreaUpdates();
                         foreach (T_AREA area in AreaObj)
                         {
@@ -145,16 +126,13 @@ namespace SloperMobile.ViewModel
                     }
                     if (Convert.ToInt32(CheckForModelObj.crags_modified) > 0)
                     {
-                        //DisplayUpdateMessage = "Updating Crags, please wait...";
-
-                        //UserDialogs.Instance.ShowLoading("Updating Crags...");
-
+                        DisplayUpdateMessage = "Updating Crags, please wait...";
                         CragObj = await HttpGetCragUpdates();
                         foreach (CragTemplate crag in CragObj)
                         {
                             T_CRAG tcrag = new T_CRAG();
                             T_CRAG_SECTOR_MAP tcs_map = new T_CRAG_SECTOR_MAP();
-
+                            
                             tcrag.crag_id = crag.crag_id;
                             tcrag.crag_name = crag.crag_name;
                             tcrag.season = crag.season;
@@ -201,7 +179,7 @@ namespace SloperMobile.ViewModel
                             tcs_map.width = crag.crag_sector_map.width;
                             tcs_map.scale = crag.crag_sector_map.scale;
                             //Added by Ravi on 02-May-2017
-                            if (!string.IsNullOrEmpty(crag.crag_image))
+                            if(!string.IsNullOrEmpty(crag.crag_image))
                             {
                                 TCRAG_IMAGE tci = new TCRAG_IMAGE();
                                 tci.crag_id = crag.crag_id;
@@ -209,7 +187,7 @@ namespace SloperMobile.ViewModel
                                 tci.crag_landscape_image = crag.crag_landscape_image;
                                 tci.crag_portrait_image = crag.crag_portrait_image;
                                 App.DAUtil.SaveTCragImage(tci);
-                            }
+                            }                            
                             App.DAUtil.SaveCrag(tcrag);
                             App.DAUtil.SaveCragSectorMap(tcs_map);
 
@@ -218,9 +196,7 @@ namespace SloperMobile.ViewModel
 
                     if (Convert.ToInt32(CheckForModelObj.sectors_modified) > 0)
                     {
-                        //UserDialogs.Instance.ShowLoading("Updating Sectors...");
-
-                        //DisplayUpdateMessage = "Updating Sectors, please wait...";
+                        DisplayUpdateMessage = "Updating Sectors, please wait...";
                         SectorObj = await HttpGetSectorUpdates();
 
                         foreach (T_SECTOR sector in SectorObj)
@@ -241,9 +217,7 @@ namespace SloperMobile.ViewModel
 
                     if (Convert.ToInt32(CheckForModelObj.routes_modified) > 0)
                     {
-                        //UserDialogs.Instance.ShowLoading("Updating Routes...");
-
-                        //DisplayUpdateMessage = "Updating Routes, please wait...";
+                        DisplayUpdateMessage = "Updating Routes, please wait...";
                         RouteObj = await HttpGetRouteUpdates();
                         foreach (T_ROUTE route in RouteObj)
                         {
@@ -263,9 +237,7 @@ namespace SloperMobile.ViewModel
                     }
                     //==========================Updating GRADE here =======================
 
-                    //UserDialogs.Instance.ShowLoading("Updating Grades...");
-
-                    //DisplayUpdateMessage = "Updating Grades, please wait...";
+                    DisplayUpdateMessage = "Updating Grades, please wait...";
                     App.DAUtil.DropAndCreateTable(typeof(T_GRADE));
                     gradeObj = await HttpGetGradeUpdates();
                     foreach (T_GRADE grade in gradeObj)
@@ -273,9 +245,8 @@ namespace SloperMobile.ViewModel
                         App.DAUtil.SaveGrade(grade);
                     }
 
-                    //UserDialogs.Instance.ShowLoading("Updating Grade Buckets...");
 
-                    //DisplayUpdateMessage = "Updating Grades Buckets, please wait...";
+                    DisplayUpdateMessage = "Updating Grades Buckets, please wait...";
                     App.DAUtil.DropAndCreateTable(typeof(T_BUCKET));
                     gradebktObj = await HttpGetGradeBuckets();
                     foreach (T_BUCKET gradebkt in gradebktObj)
@@ -283,10 +254,8 @@ namespace SloperMobile.ViewModel
                         App.DAUtil.SaveGradeBucket(gradebkt);
                     }
 
-                    //UserDialogs.Instance.ShowLoading("Updating Tech Grades...");
-
                     //================= Added by Ravi on 28-Apr-2017=============
-                    //DisplayUpdateMessage = "Updating Tech Grades, please wait...";
+                    DisplayUpdateMessage = "Updating Grades Thoughts, please wait...";
                     ttechgradeObj = await HttpGetTTechGrade();
                     foreach (TTECH_GRADE ttgrade in ttechgradeObj)
                     {
@@ -294,49 +263,16 @@ namespace SloperMobile.ViewModel
                     }
                     //=====================================================================
                     APP_SETTING updated_date = new APP_SETTING();
-                    updated_date.UPDATED_DATE = CheckForModelObj.updated_date;
+                    updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
                     updated_date.IS_INITIALIZED = true;
                     App.DAUtil.SaveLastUpdate(updated_date);
-                    //DisplayUpdateMessage = "Thanks for updating.";
-
-                    //================= Added by Sandeep on 23-Jun-2017=============                    
-                    consensusSectorsObj = await HttpGetConsensusSectors();
-                    foreach (T_SECTOR tsector in consensusSectorsObj)
-                    {
-                        T_SECTOR objT_Sector = App.DAUtil.GetSectorDataBySectorID(tsector.sector_id.ToString());
-                        if (objT_Sector != null)
-                        {
-                            objT_Sector.top2_steepness = tsector.top2_steepness;
-                            App.DAUtil.SaveSector(objT_Sector);
-                        }
-                    }
-                    //=====================================================================
-
-                    //================= Added by Sandeep on 23-Jun-2017=============                    
-                    consensusRoutesObj = await HttpGetConsensusRoutes();
-                    foreach (T_ROUTE troute in consensusRoutesObj)
-                    {
-                        T_ROUTE objT_Route = App.DAUtil.GetRouteDataByRouteID(troute.route_id.ToString());
-                        if (objT_Route != null)
-                        {
-                            objT_Route.route_style_top_1 = troute.route_style_top_1;
-                            objT_Route.hold_type_top_1 = troute.hold_type_top_1;
-                            objT_Route.angles_top_1 = troute.angles_top_1;
-                            objT_Route.rating = troute.rating;
-                            App.DAUtil.SaveRoute(objT_Route);
-                        }
-                    }
-                    //=====================================================================
-
-                    IsRunningTasks = false;
-
-                    UserDialogs.Instance.HideLoading();
                     DisplayUpdateMessage = "Thanks for updating.";
+                    IsRunningTasks = false;
                 }
                 else
                 {
                     APP_SETTING updated_date = new APP_SETTING();
-                    updated_date.UPDATED_DATE = CheckForModelObj.updated_date;
+                    updated_date.UPDATED_DATE = Helper.GetCurrentDate("yyyyMMdd");
                     App.DAUtil.SaveLastUpdate(updated_date);
                     DisplayUpdateMessage = "Your app is up to date.";
                     IsRunningTasks = false;
@@ -406,30 +342,6 @@ namespace SloperMobile.ViewModel
             var ttgrade_response = await apicall.Get<TTECH_GRADE>();
             return ttgrade_response;
         }
-
-        //================= Added by Sandeep on 23-Jun-2017=============
-        public async Task<List<T_SECTOR>> HttpGetConsensusSectors()
-        {
-            HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_GetConsensusSectors, Settings.AccessTokenSettings);
-            GetConsensusSectorsDTO consensusSectorsobj = new GetConsensusSectorsDTO();
-            consensusSectorsobj.app_id = AppSetting.APP_ID;
-            consensusSectorsobj.app_date_last_updated = App.DAUtil.GetLastUpdate();
-            string consensusSectorsjson = JsonConvert.SerializeObject(consensusSectorsobj);
-            var tsector_response = await apicall.Post<List<T_SECTOR>>(consensusSectorsjson);
-            return tsector_response;
-        }
-        //================= Added by Sandeep on 23-Jun-2017=============
-        public async Task<List<T_ROUTE>> HttpGetConsensusRoutes()
-        {
-            HttpClientHelper apicall = new HttpClientHelper(ApiUrls.Url_GetConsensusRoutes, Settings.AccessTokenSettings);
-            GetConsensusRoutesDTO consensusRoutesobj = new GetConsensusRoutesDTO();
-            consensusRoutesobj.app_id = AppSetting.APP_ID;
-            consensusRoutesobj.app_date_last_updated = App.DAUtil.GetLastUpdate();
-            string consensusRoutesjson = JsonConvert.SerializeObject(consensusRoutesobj);
-            var troute_response = await apicall.Post<List<T_ROUTE>>(consensusRoutesjson);
-            return troute_response;
-        }
-
         #endregion
     }
 }

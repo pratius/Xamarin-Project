@@ -19,7 +19,6 @@ namespace SloperMobile.ViewModel
     {
         private readonly INavigation _navigation;
         private ImageSource sectorImage;
-        public List<RouteId> _routelist = new List<RouteId>();
         private List<RouteData> routedata;
         private MapListModel currentsec;
         private T_CRAG currentCrag;
@@ -97,10 +96,7 @@ namespace SloperMobile.ViewModel
                     {
                         routeobj.RouteIndex = i.ToString();
                     }
-                    RouteId _rId = new RouteId();
-                     _rId.routeId = route.route_id == null ? Convert.ToInt32(0) : Convert.ToInt32(route.route_id);
-                    _routelist.Add(_rId);
-                    routeobj.TitleText = route.route_name;// Truncate((route.route_name), 20);                                        
+                    routeobj.TitleText = route.route_name;
                     routeobj.SubText = route.route_info;
 
 
@@ -164,12 +160,10 @@ namespace SloperMobile.ViewModel
                     j++;
                 }
             }
-            catch(Exception ex)
+            catch
             {
-                throw ex;
             }
         }
-       
         private async void TapOnSectorImage(object obj)
         {
             try
@@ -184,13 +178,13 @@ namespace SloperMobile.ViewModel
                 {
                     if (topoimgages[0].image.data != "")
                     {
-                        await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0",0, _routelist));
+                        await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0"));
                     }
                     else if (topoimgages.Count == 2)
                     {
                         if (topoimgages[1].image.data != "")
                         {
-                            await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0",0, _routelist));
+                            await _navigation.PushAsync(new Views.TopoSectorPage(CurrentSector, "0"));
                         }
                     }
 
@@ -246,10 +240,6 @@ namespace SloperMobile.ViewModel
         //    }
         //}
 
-        private string Truncate(string value, int maxChars)
-        {
-            return value.Length <= maxChars ? value : value.Substring(0, maxChars) + "...";
-        }
         private string GetSteepnessResourceName(int steep)
         {
             string resource = "";
@@ -482,9 +472,5 @@ namespace SloperMobile.ViewModel
         public string RouteGradeColor { get; set; }
         public string RouteId { get; set; }
 
-    }
-    public class RouteId
-    {
-        public int routeId { get; set; }
     }
 }

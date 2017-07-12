@@ -27,6 +27,17 @@ namespace SloperMobile.ViewModel
             GraphData = new List<CragDetailModel>();
             LoadLegendsBucket();
             LoadGraphData();
+            CragName= currentCrag.crag_name.ToUpper(); 
+            IsDisplaySectorButton = false;
+            IsDisplayFadeImage = true;
+            IsDisplayGraphFrame = true;
+            IsDisplayOverlayFrame = false;
+            IsDisplayRemoveCragFrame = false;
+            IsShowDownloading = false;
+            IsShowConfirmation = true;
+            IsShowDownloading = false;
+            IsShowRemoveConfirmation = true;
+            IsShowRemoving = false;
             CragDesc = currentCrag.crag_general_info;
             var cragimg = App.DAUtil.GetScenicImageForCrag(Settings.SelectedCragSettings);
             if (cragimg != null)
@@ -74,6 +85,75 @@ namespace SloperMobile.ViewModel
             get { return _graphdata; }
             set { _graphdata = value; OnPropertyChanged(); }
         }
+        private bool _isdisplaysectorbutton;
+        public bool IsDisplaySectorButton
+        {
+            get { return _isdisplaysectorbutton; }
+            set { _isdisplaysectorbutton = value; OnPropertyChanged(); }
+        }
+        private bool _isdisplayfadeimage;
+        public bool IsDisplayFadeImage
+        {
+            get { return _isdisplayfadeimage; }
+            set { _isdisplayfadeimage = value; OnPropertyChanged(); }
+        }
+
+        private bool _isdisplaygraphframe;
+        public bool IsDisplayGraphFrame
+        {
+            get { return _isdisplaygraphframe; }
+            set { _isdisplaygraphframe = value; OnPropertyChanged(); }
+        }
+
+        private bool _isdisplayoverlayframe;
+        public bool IsDisplayOverlayFrame
+        {
+            get { return _isdisplayoverlayframe; }
+            set { _isdisplayoverlayframe = value; OnPropertyChanged(); }
+        }
+
+        private bool _isshowdownloading;
+        public bool IsShowDownloading
+        {
+            get { return _isshowdownloading; }
+            set { _isshowdownloading = value; OnPropertyChanged(); }
+        }
+        private bool _isshowconfirmation;
+        public bool IsShowConfirmation
+        {
+            get { return _isshowconfirmation; }
+            set { _isshowconfirmation = value; OnPropertyChanged(); }
+        }
+
+        private bool _isdisplayremovecragframe;
+        public bool IsDisplayRemoveCragFrame
+        {
+            get { return _isdisplayremovecragframe; }
+            set { _isdisplayremovecragframe = value; OnPropertyChanged(); }
+        }
+
+
+        private bool _isshowremoveconfirmation;
+        public bool IsShowRemoveConfirmation
+        {
+            get { return _isshowremoveconfirmation; }
+            set { _isshowremoveconfirmation = value; OnPropertyChanged(); }
+        }
+
+        private bool _isshowremoving;
+        public bool IsShowRemoving
+        {
+            get { return _isshowremoving; }
+            set { _isshowremoving = value; OnPropertyChanged(); }
+        }
+
+        private string crag_name;
+        public string CragName
+        {
+            get { return crag_name; }
+            set { crag_name = value;OnPropertyChanged(); }
+        }
+        
         #endregion
 
 

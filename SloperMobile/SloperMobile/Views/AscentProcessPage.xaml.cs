@@ -136,7 +136,7 @@ namespace SloperMobile.Views
                         }
                     }
                 }
-                webView.CallJsFunction("initDrawing", staticAnnotationData, "[" + topoimg + "]", webView.HeightRequest, _bucket,0,"");
+                webView.CallJsFunction("initDrawing", staticAnnotationData, "[" + topoimg + "]", webView.HeightRequest, _bucket);
                 if (Convert.ToInt32(_routeid) > 0)
                 {
                     if (Device.OS == TargetPlatform.Android)
@@ -147,7 +147,7 @@ namespace SloperMobile.Views
                     {
                         webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true, _bucket);
                     }
-                }
+                }                
                 if (topoimgages.Count > 0)
                 {
                     if (Convert.ToInt32(topoimgages[Cache.SelectedTopoIndex].image.height) > 0)
@@ -227,63 +227,45 @@ namespace SloperMobile.Views
                     }
                     else
                     {
-                        if (Cache.GlobalBase64String != null)
+                        //if no topo image then load default sector image
+                        var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
+                        if (topoimgages.Count > 0)
                         {
-                            _Image.Source = Cache.GlobalBase64String;
-                            _Image.IsVisible = true; webView.IsVisible = false;
-                        }
-                        else
-                        {
-                            //if no topo image then load default sector image
-                            var item = dbConn.Table<TCRAG_IMAGE>().FirstOrDefault(tcragimg => tcragimg.crag_id == Settings.SelectedCragSettings);
-                            if (topoimgages.Count > 0)
+                            if (!string.IsNullOrEmpty(topoimgages[0].image.data))
                             {
-                                if (!string.IsNullOrEmpty(topoimgages[0].image.data))
-                                {
-                                    if (topoimgages[0].image.name == "No_Image.jpg")
-                                    {
-                                        LoadCragAndDefaultImage();
-                                    }
-                                    else
-                                    { //LoadCragAndDefaultImage();
-                                        string _strimg64 = topoimgages[0].image.data.Split(',')[1];
-                                        if (!string.IsNullOrEmpty(_strimg64))
-                                        {
-                                            byte[] imageBytes = Convert.FromBase64String(_strimg64);
-                                            _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                                            _Image.IsVisible = true;
-                                            webView.IsVisible = false;
-                                        }
-                                    }
-                                }
-                                else
+                                if (topoimgages[0].image.name == "No_Image.jpg")
                                 {
                                     LoadCragAndDefaultImage();
                                 }
-                                ////load image without route
-                                //var topoimg = JsonConvert.SerializeObject(topoimgages[0]);
-                                //webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true, _bucket);
-                                //this.webView.LoadFromContent("HTML/TopoResizeImage.html");
-                            }
-                            else if (item != null) //if no topo , no sector image then load Crag Scenic Action Portrait Shot (spceific to gym)                                                  
-                            {
-                                string strimg64 = item.crag_portrait_image.Split(',')[1];
-                                if (!string.IsNullOrEmpty(strimg64))
-                                {
-                                    byte[] imageBytes = Convert.FromBase64String(strimg64);
-                                    _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
-                                    _Image.IsVisible = true;
-                                    webView.IsVisible = false;
-                                }
+                                else { LoadCragAndDefaultImage(); }
                             }
                             else
                             {
-                                //other wise show default
-                                webView.IsVisible = false;
-                                if (AppSetting.APP_TYPE == "indoor") { _Image.Source = "default_sloper_indoor_portrait"; }
-                                else { _Image.Source = "default_sloper_outdoor_portrait"; }
-                                _Image.IsVisible = true;
+                                LoadCragAndDefaultImage();
                             }
+                            ////load image without route
+                            //var topoimg = JsonConvert.SerializeObject(topoimgages[0]);
+                            //webView.CallJsFunction("initAscentReDrawing", staticAnnotationData, "[" + topoimg + "]", (device.Display.Height), Convert.ToInt32(_routeid), false, true, _bucket);
+                            //this.webView.LoadFromContent("HTML/TopoResizeImage.html");
+                        }
+                        else if (item != null) //if no topo , no sector image then load Crag Scenic Action Portrait Shot (spceific to gym)                                                  
+                        {
+                            string strimg64 = item.crag_portrait_image.Split(',')[1];
+                            if (!string.IsNullOrEmpty(strimg64))
+                            {
+                                byte[] imageBytes = Convert.FromBase64String(strimg64);
+                                _Image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+                                _Image.IsVisible = true;
+                                webView.IsVisible = false;
+                            }
+                        }
+                        else
+                        {
+                            //other wise show default
+                            webView.IsVisible = false;
+                            if (AppSetting.APP_TYPE == "indoor") { _Image.Source = "default_sloper_indoor_portrait"; }
+                            else { _Image.Source = "default_sloper_outdoor_portrait"; }
+                            _Image.IsVisible = true;
                         }
                     }
                 }

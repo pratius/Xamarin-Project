@@ -14,7 +14,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Acr.UserDialogs;
 
 namespace SloperMobile.ViewModel
 {
@@ -33,7 +32,6 @@ namespace SloperMobile.ViewModel
         #endregion
         public NewsViewModel()
         {
-            UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
             dbConn = DependencyService.Get<ISQLite>().GetConnection();
             PageHeaderText = "NEWS";
             PageSubHeaderText = "What's New?";
@@ -44,7 +42,6 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-                Cache.IsCragOrDefaultImageCount = 0;
                 var app_news = App.DAUtil.GetAppNews(NewsList.Count(), 10);
                 foreach (NewsModel nm in app_news)
                 {
@@ -120,13 +117,9 @@ namespace SloperMobile.ViewModel
             {
                 string strerr = ex.Message;
             }
-
-            UserDialogs.Instance.HideLoading();
-
         }
         private ImageSource LoadCragAndDefaultImage()
         {
-            Cache.IsCragOrDefaultImageCount = 1;
             string strimg64 = string.Empty;
             ImageSource news_image = null;
             //load Crag Scenic Action Portrait Shot (specific to Gym)

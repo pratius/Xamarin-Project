@@ -29,7 +29,7 @@ namespace SloperMobile.DataBase
             dbConn.CreateTable<TTECH_GRADE>();
             dbConn.CreateTable<T_GRADE>();
             dbConn.CreateTable<T_BUCKET>();
-            dbConn.CreateTable<TCRAG_IMAGE>();            
+            dbConn.CreateTable<TCRAG_IMAGE>();
 
             if (dbConn.Table<TASCENT_TYPE>().Count() == 0)
             {
@@ -254,7 +254,7 @@ namespace SloperMobile.DataBase
             {
                 return dbConn.Insert(acragimg);
             }
-        }        
+        }
         //================================ Drop and Create Table ================
         public void DropAndCreateTable(Type aTable)
         {
@@ -492,7 +492,7 @@ namespace SloperMobile.DataBase
             //var item = dbConn.Query<NewsModel>("SELECT T_SECTOR.sector_id as id, T_ROUTE.date_created as date_created, T_SECTOR.sector_name, COUNT(T_SECTOR.sector_name) as new_route_count,'nr' as news_type FROM T_SECTOR INNER JOIN T_ROUTE ON T_SECTOR.sector_id = T_ROUTE.sector_id GROUP BY T_ROUTE.date_created, T_SECTOR.sector_name, T_SECTOR.sort_order ORDER BY T_ROUTE.date_created DESC, T_SECTOR.sort_order ");
             var item = dbConn.Query<NewsModel>("SELECT T_ROUTE.date_created AS date, T_SECTOR.sector_id AS id, UPPER(T_CRAG.crag_name) as title, UPPER(T_SECTOR.sector_name) as sub_title, COUNT(T_SECTOR.sector_name) AS count, (COUNT(T_SECTOR.sector_name) || ' NEW ' || (CASE WHEN COUNT(T_SECTOR.sector_name) = 1 THEN 'ROUTE' ELSE 'ROUTES' END)) as message, 'newRoutes' AS news_type FROM T_SECTOR INNER JOIN T_ROUTE ON T_SECTOR.sector_id = T_ROUTE.sector_id INNER JOIN T_CRAG ON T_SECTOR.crag_id = T_CRAG.crag_id WHERE T_SECTOR.is_enabled=1 GROUP BY T_ROUTE.date_created, T_SECTOR.sector_id, T_CRAG.crag_name, T_SECTOR.sector_name, T_SECTOR.sort_order ORDER BY date DESC, T_SECTOR.sort_order");
             //var newslist = (item).Skip(skip).Take(take);
-           // return newslist.ToList();
+            // return newslist.ToList();
             return item.ToList();
         }
 
@@ -511,10 +511,26 @@ namespace SloperMobile.DataBase
 
         public List<string> GetRouteTypesByCragID(string cragid)
         {
-            var item = (from tr in dbConn.Table<T_ROUTE>() where tr.crag_id == cragid && tr.is_enabled == true orderby tr.route_type select tr.route_type).Distinct() ;
+            var item = (from tr in dbConn.Table<T_ROUTE>() where tr.crag_id == cragid && tr.is_enabled == true orderby tr.route_type select tr.route_type).Distinct();
             return item.ToList();
         }
 
+        public bool CheckCragDataExistsByCragID(string cragid)
+        {
+            var item = (from ts in dbConn.Table<T_SECTOR>() where ts.crag_id == cragid select ts);
+            if (item.ToList().Count > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public void RemoveCragData(string cragid)
+        {
+            dbConn.Execute("DELETE FROM T_BUCKET WHERE (grade_type_id IN(SELECT DISTINCT T_ROUTE.grade_type_id FROM T_SECTOR INNER JOIN T_ROUTE ON T_SECTOR.sector_id = T_ROUTE.sector_id WHERE(T_SECTOR.crag_id = ?)))", cragid);
+            dbConn.Execute("DELETE FROM T_TOPO WHERE sector_id in (SELECT DISTINCT sector_id FROM T_SECTOR WHERE crag_id= ? )", cragid);
+            dbConn.Execute("DELETE FROM T_ROUTE WHERE crag_id= ? ", cragid);
+            dbConn.Execute("DELETE FROM T_SECTOR WHERE crag_id= ? ", cragid);
+        }
         #endregion
 
     }

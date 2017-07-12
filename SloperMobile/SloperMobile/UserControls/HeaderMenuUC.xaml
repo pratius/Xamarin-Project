@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="SloperMobile.UserControls.HeaderMenuUC">
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.UserControls.HeaderMenuUC">
     <ContentView.Content>
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0">
             <Grid.RowDefinitions>
@@ -9,11 +7,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="1"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="1"/>
-                <ColumnDefinition Width="*"/>
+			<Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="1"/>
@@ -22,45 +16,23 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="1"/>
             </Grid.ColumnDefinitions>
-            <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.ColumnSpan="11"/>
+            <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.ColumnSpan="7"/>
             <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0" />
-            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" 
-                   VerticalOptions="FillAndExpand" Text="RANKING" TextColor="White" FontSize="Small" BackgroundColor="#000" 
-                   Grid.Row="1" Grid.Column="1">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="RankingPage"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="2" />
-            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"
-                   VerticalOptions="FillAndExpand" Text="POINTS" TextColor="White" FontSize="Small" 
-                   BackgroundColor="#000" Grid.Row="1" Grid.Column="3">
+            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="POINTS" TextColor="White" FontSize="Small" BackgroundColor="#000" Grid.Row="1" Grid.Column="1">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="PointsPage"/>
                 </Label.GestureRecognizers>
             </Label>
+            <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="2" />
+            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="SENDS" TextColor="Black" FontSize="Small" BackgroundColor="#FF8E2D" Grid.Row="1" Grid.Column="3"/>
             <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="4" />
-            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"
-                   VerticalOptions="FillAndExpand" Text="SENDS" TextColor="White" FontSize="Small" 
-                   BackgroundColor="#FF8E2D" Grid.Row="1" Grid.Column="5"/>
-            <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="6" />
-            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"
-                   VerticalOptions="FillAndExpand" Text="CALENDAR" TextColor="White" FontSize="Small" 
-                   BackgroundColor="#000" Grid.Row="1" Grid.Column="7">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="CalendarPage"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="8" />
-            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"
-                   VerticalOptions="FillAndExpand" Text="TICK LIST" TextColor="White" FontSize="Small" 
-                   BackgroundColor="#000" Grid.Row="1" Grid.Column="9">
+            <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="TICK LIST" TextColor="White" FontSize="Small" BackgroundColor="#000" Grid.Row="1" Grid.Column="5">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnNavigation" CommandParameter="TickListPage"/>
                 </Label.GestureRecognizers>
             </Label>
-            <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="10" />
-            <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.ColumnSpan="11"/>
+            <BoxView BackgroundColor="#3F3F3F" WidthRequest="1" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="6" />
+            <BoxView BackgroundColor="#3F3F3F" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.ColumnSpan="7"/>
         </Grid>
     </ContentView.Content>
 </ContentView>

@@ -4,6 +4,7 @@
              xmlns:UC="clr-namespace:SloperMobile.UserControls;assembly=SloperMobile" 
              xmlns:XLabUC="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:control="clr-namespace:SloperMobile.CustomControls;assembly=SloperMobile"
              x:Class="SloperMobile.Views.CragDetailsPage">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" Android="0, 0, 0, 0" />
@@ -66,13 +67,13 @@
                 </StackLayout>
             </Grid>
         </StackLayout>
-        <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+        <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Image Source="{Binding CragImage}" Aspect="AspectFill" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
-            <Image Source="bg_portrait_half_fade1.png" Aspect="AspectFill" />
+            <Image Source="bg_portrait_half_fade1.png" IsVisible="{Binding IsDisplayFadeImage,Mode=TwoWay}" Aspect="AspectFill" />
         </Grid>
-        <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Frame Grid.Row="1" Grid.Column="0" IsVisible="{Binding IsDisplayGraphFrame,Mode=TwoWay}" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Frame.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -130,12 +131,81 @@
                         <ScrollView Grid.Row="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0,5,0,5">
                             <Label Text="{Binding Path=CragDesc}" TextColor="White" LineBreakMode="WordWrap" HorizontalOptions="Center" FontSize="Micro" />
                         </ScrollView>
-                        <Button Grid.Row="3" Text="SECTORS" TextColor="White" BorderRadius="0" HorizontalOptions="Fill" VerticalOptions="End" Style="{StaticResource GeneralButtonStyle}" Clicked="Sector_Clicked">
+                        <Button Grid.Row="3" Text="SECTORS" IsVisible="{Binding IsDisplaySectorButton}" TextColor="White" BorderRadius="0" HorizontalOptions="Fill" VerticalOptions="End" Style="{StaticResource GeneralButtonStyle}" Clicked="Sector_Clicked">
                         </Button>
                     </Grid>
                 </Grid>
             </Frame.Content>
         </Frame>
+
+
+        <Frame Grid.Row="1" Grid.Column="0" IsVisible="{Binding IsDisplayOverlayFrame,Mode=TwoWay}" BackgroundColor="#77000000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Frame.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="Center" IsVisible="{Binding IsShowConfirmation}" HorizontalOptions="Fill" Margin="0,50,0,0">
+                        <Label Text="ARE YOU SURE" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="YOU WOULD" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="LIKE TO" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="DOWNLOAD THE" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="{Binding CragName}" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="GUIDE?" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Button Text="LATER" TextColor="White" BorderRadius="0" HorizontalOptions="Fill" 
+                                VerticalOptions="End" Style="{StaticResource GeneralButtonStyle}" Clicked="OnCancelDownload"/>
+                            <Button Text="TOTALLY" TextColor="White" BorderRadius="0" HorizontalOptions="Fill" 
+                                VerticalOptions="End" Style="{StaticResource GeneralButtonStyle}" Clicked="OnDownload"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="Center" IsVisible="{Binding IsShowDownloading}" HorizontalOptions="Fill" Margin="0,50,0,0">
+                        <Label Text="HANG ON A SECOND," TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="DOWNLOADING TOPO'S NOW!" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <ActivityIndicator x:Name="progressbar" IsVisible="true" IsRunning="True" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White">
+                        </ActivityIndicator>
+                    </StackLayout>
+                </Grid>
+            </Frame.Content>
+        </Frame>
+
+        <Frame Grid.Row="1" Grid.Column="0" IsVisible="{Binding IsDisplayRemoveCragFrame,Mode=TwoWay}" BackgroundColor="#77000000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Frame.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="Center" IsVisible="{Binding IsShowRemoveConfirmation}" HorizontalOptions="Fill" Margin="0,50,0,0">
+                        <Label Text="ARE YOU SURE" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="YOU WOULD" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="LIKE TO" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="REMOVE THE" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="{Binding CragName}" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="GUIDE?" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Button Text="LATER" TextColor="White" BorderRadius="0" HorizontalOptions="Fill" 
+                                VerticalOptions="End" Style="{StaticResource GeneralButtonStyle}" Clicked="OnCancelRemove"/>
+                            <Button Text="TOTALLY" TextColor="White" BorderRadius="0" HorizontalOptions="Fill" 
+                                VerticalOptions="End" Style="{StaticResource GeneralButtonStyle}" Clicked="OnRemove"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Orientation="Vertical" VerticalOptions="Center" IsVisible="{Binding IsShowRemoving}" HorizontalOptions="Fill" Margin="0,50,0,0">
+                        <Label Text="HANG ON A SECOND," TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <Label Text="REMOVING TOPO'S NOW!" TextColor="White" FontSize="24" HorizontalOptions="Center" />
+                        <ActivityIndicator x:Name="progressbar_remove" IsVisible="true" IsRunning="True" WidthRequest="30" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White">
+                        </ActivityIndicator>
+                    </StackLayout>
+                </Grid>
+            </Frame.Content>
+        </Frame>
+
+
         <UC:FooterUC Grid.Column="0" Grid.Row="2" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" />
     </Grid>
 </ContentPage>

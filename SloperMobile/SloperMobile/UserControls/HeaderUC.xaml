@@ -1,52 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="SloperMobile.UserControls.HeaderUC">
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <!--Top Header Style-->
-            <Style x:Key="lblTopHeader" TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-                <Setter Property="VerticalOptions" Value="Center"/>
-                <!--<Setter Property="FontSize" Value="Large" />-->
-                <Setter Property="TextColor" Value="#FF8E2D" />
-                <Setter Property="Font" Value="Medium"/>
-            </Style>
-            <Style x:Key="lblsubTopHeader" TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-                <Setter Property="VerticalOptions" Value="Center"/>
-                <!--<Setter Property="FontSize" Value="Small" />-->
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="Font" Value="Small"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentView.Resources>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SloperMobile.UserControls.HeaderUC">
+  <ContentView.Resources>
+    <ResourceDictionary>
+      <!--Top Header Style-->
+      <Style x:Key="lblTopHeader" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center"/>
+				
+        <!--<Setter Property="FontSize" Value="Large" />-->
+        <Setter Property="TextColor" Value="#FF8E2D" />
+        <Setter Property="Font" Value="Medium"/>
+      </Style>
+      <Style x:Key="lblsubTopHeader" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <!--<Setter Property="FontSize" Value="Small" />-->
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="Font" Value="Small"/>
+      </Style>
+    </ResourceDictionary>
+  </ContentView.Resources>
 
-    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" 
-        BackgroundColor="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+  <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" BackgroundColor="Transparent">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <StackLayout Orientation="Vertical" Spacing="0">
+      <Label Style="{StaticResource lblTopHeader}" Text="{Binding Path=PageHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center" />
+      <Label Style="{StaticResource lblsubTopHeader}" Text="{Binding Path=PageSubHeaderText,Mode=TwoWay}" HorizontalTextAlignment="Center" Margin="0,-3,0,0"/>
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+      <Image Source="Menu_button" HeightRequest="25" WidthRequest="25" VerticalOptions="Center" Aspect="AspectFit">
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnMenuTapped"/>
+        </Image.GestureRecognizers>
+      </Image>
+      <Image Source="Search" IsVisible="False" WidthRequest="30" HeightRequest="30" Aspect="AspectFill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Tapped="OnSearch"/>
+        </Image.GestureRecognizers>
+      </Image>
 
-        <StackLayout Orientation="Vertical" Spacing="0">
-            <Label Style="{StaticResource lblTopHeader}" Text="{Binding Path=PageHeaderText,Mode=TwoWay}" 
-             HorizontalTextAlignment="Center" />
-            <Label Style="{StaticResource lblsubTopHeader}" Text="{Binding Path=PageSubHeaderText,Mode=TwoWay}"
-             HorizontalTextAlignment="Center" Margin="0,-3,0,0"/>
-        </StackLayout>
+    </StackLayout>
 
-        <StackLayout Orientation="Horizontal" Margin="5,5,0,0">
-            <Image Source="Menu_button" HeightRequest="25" WidthRequest="25" VerticalOptions="Start" Aspect="AspectFit">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnMenuTapped"/>
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Source="Search" IsVisible="False" WidthRequest="30" HeightRequest="30" Aspect="AspectFill" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnSearch"/>
-                </Image.GestureRecognizers>
-            </Image>
-        </StackLayout>
-
-    </Grid>
+  </Grid>
 </ContentView>

@@ -15,7 +15,6 @@ using SloperMobile.Common.Helpers;
 using SloperMobile.Common.Constants;
 using SQLite.Net;
 using SloperMobile.Common.Interfaces;
-using Acr.UserDialogs;
 
 namespace SloperMobile.ViewModel
 {
@@ -27,7 +26,6 @@ namespace SloperMobile.ViewModel
         private T_CRAG currentCrag;
         public MapViewModel(INavigation navigation)
         {
-            UserDialogs.Instance.ShowLoading("Loading...", MaskType.Black);
             dbConn = DependencyService.Get<ISQLite>().GetConnection();
             currentCrag = App.DAUtil.GetSelectedCragData();
             _navigation = navigation;
@@ -83,7 +81,6 @@ namespace SloperMobile.ViewModel
         {
             try
             {
-                Cache.IsCragOrDefaultImageCount = 0;
                 var sector_images = App.DAUtil.GetSectorImages(SectorImageList.Count(), 10);
                 foreach (var sector in sector_images)
                 {
@@ -100,7 +97,7 @@ namespace SloperMobile.ViewModel
                                 {
                                     if (topoimg[0].image.name == "No_Image.jpg")
                                     {
-                                        objSec.SectorImage = LoadCragAndDefaultImage();                                        
+                                        objSec.SectorImage = LoadCragAndDefaultImage();
                                     }
                                     else
                                     {
@@ -108,7 +105,7 @@ namespace SloperMobile.ViewModel
                                         if (!string.IsNullOrEmpty(strimg64))
                                         {
                                             byte[] imageBytes = Convert.FromBase64String(strimg64);
-                                            objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));                                            
+                                            objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
                                         }
                                     }
                                 }
@@ -120,7 +117,7 @@ namespace SloperMobile.ViewModel
                                         {
                                             if (topoimg[1].image.name == "No_Image.jpg")
                                             {
-                                                objSec.SectorImage = LoadCragAndDefaultImage();                                                
+                                                objSec.SectorImage = LoadCragAndDefaultImage();
                                             }
                                             else
                                             {
@@ -128,25 +125,25 @@ namespace SloperMobile.ViewModel
                                                 if (!string.IsNullOrEmpty(strimg64))
                                                 {
                                                     byte[] imageBytes = Convert.FromBase64String(strimg64);
-                                                    objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));                                                    
+                                                    objSec.SectorImage = ImageSource.FromStream(() => new MemoryStream(imageBytes));
                                                 }
                                             }
                                         }
                                     }
                                     else
                                     {
-                                        objSec.SectorImage = LoadCragAndDefaultImage();                                        
+                                        objSec.SectorImage = LoadCragAndDefaultImage();
                                     }
                                 }
                             }                            
                         }
                         else
-                        {                            
+                        {
                             objSec.SectorImage = LoadCragAndDefaultImage();
                         }
                     }
                     else
-                    {                        
+                    {
                         objSec.SectorImage = LoadCragAndDefaultImage();
                     }
                     objSec.SectorId = sector.sector_id;
@@ -231,13 +228,10 @@ namespace SloperMobile.ViewModel
             {
                 string strerr = ex.Message;
             }
-
-            UserDialogs.Instance.HideLoading();
         }
 
         private ImageSource LoadCragAndDefaultImage()
         {
-            Cache.IsCragOrDefaultImageCount = 1;
             string strimg64 = string.Empty;
             ImageSource SectorImage = null;
             //load Crag Scenic Action Portrait Shot (specific to Gym)
